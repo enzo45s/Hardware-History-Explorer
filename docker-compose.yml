@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: hardware_history
+      POSTGRES_USER: history
+      POSTGRES_PASSWORD: history_dev
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U history -d hardware_history"]
+      interval: 5s
+      retries: 15
+  api:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://history:history_dev@db:5432/hardware_history
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4.1-mini}
+      CORS_ORIGINS: http://localhost:5173,http://localhost:8080
+      UPLOAD_DIR: /code/uploads
+    volumes:
+      - image_uploads:/code/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+    ports: ["8000:8000"]
+  web:
+    build: ./frontend
+    depends_on: [api]
+    ports: ["8080:80"]
+volumes:
+  pgdata:
+  image_uploads:
