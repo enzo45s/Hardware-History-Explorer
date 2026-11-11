@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "catalog-v1",
+  "snapshot_kind": "canonical-subset",
+  "snapshot_origin": "https://github.com/retroflops/retroflops",
+  "attribution": "RetroFlops, CC BY 4.0; adaptation: canonical YAML subset wrapped in JSON for Hardware History Explorer. No original historical values changed.",
+  "retrieved_on": "2026-11-11",
+  "source_file_sha256": {
+    "retroflops-apple-ii.yaml": "14fffdd30b653a7237ab986c8f78ed949ce5d1c714724275b5d1be23e0b1fa58",
+    "retroflops-apple-ii-reference-manual.yaml": "eacabff77397c0b6283fee305e297ce294d6eac7abbb69d6c91a7b22b50c141c"
+  },
+  "systems": [
+    {
+      "id": "apple-ii",
+      "slug": "apple-ii",
+      "name": "Apple II",
+      "manufacturer": "Apple Computer",
+      "type": "home-computer",
+      "releaseDate": "1977-06",
+      "region": "United States",
+      "summary": "A {{measurement:apple-ii:clock-frequency}} 6502 home computer with configuration-dependent motherboard RAM and ROM-resident Integer BASIC.",
+      "description": "The January 1978 manual leaves the fitted RAM amount to the purchased configuration, so this record does not select a capacity. Its {{measurement:apple-ii-rom:capacity}} monitor and Integer BASIC ROM is named separately and is not writable memory.",
+      "configurations": [
+        {
+          "id": "ram-unspecified",
+          "label": "Configuration with unspecified RAM",
+          "region": "United States",
+          "entries": [
+            {
+              "componentId": "apple-ii-6502",
+              "role": "main-cpu",
+              "count": 1,
+              "shared": false,
+              "measurementIds": [
+                "apple-ii:clock-frequency"
+              ]
+            },
+            {
+              "componentId": "apple-ii-video",
+              "role": "gpu",
+              "count": 1,
+              "shared": false,
+              "measurementIds": [
+                "apple-ii:gpu-clock-frequency"
+              ]
+            },
+            {
+              "componentId": "apple-ii-ram",
+              "role": "system-memory",
+              "count": 1,
+              "shared": true,
+              "measurementIds": [
+                "apple-ii-ram:capacity"
+              ]
+            },
+            {
+              "componentId": "apple-ii-rom",
+              "role": "system-memory",
+              "count": 1,
+              "shared": true,
+              "notes": "Read-only monitor and Integer BASIC; not included in writable memory.",
+              "measurementIds": [
+                "apple-ii-rom:capacity"
+              ]
+            }
+          ]
+        }
+      ],
+      "imageIds": [
+        "apple-ii-computer"
+      ],
+      "sourceIds": [
+        "apple-ii-reference-manual"
+      ],
+      "editorialStatus": "approved"
+    }
+  ],
+  "sources": [
+    {
+      "id": "apple-ii-reference-manual",
+      "title": "Apple II Reference Manual",
+      "publisher": "Apple Computer, Inc.",
+      "url": "https://archive.org/download/applerefjan78/appleIIrefjan78.pdf",
+      "archiveUrl": "https://archive.org/details/applerefjan78",
+      "publishedDate": "1978",
+      "accessedDate": "2026-08-22",
+      "locator": "Getting Started, p. 1; Hardware, Sections 2, 6, and 7",
+      "tier": "A",
+      "sourceType": "technical-manual",
+      "editorialStatus": "approved",
+      "fetch": {
+        "url": "https://archive.org/download/applerefjan78/appleIIrefjan78.pdf",
+        "finalUrl": "https://dn760104.eu.archive.org/0/items/applerefjan78/appleIIrefjan78.pdf",
+        "fetchedAt": "2026-10-13 14:58:53+00:00",
+        "httpStatus": 200,
+        "contentType": "application/pdf",
+        "byteLength": 10059029,
+        "sha256": "2fe28aacbc5f4ca682ccd1580067fb261330cbf8d853f579f65d2001ebcac332"
+      }
+    }
+  ],
+  "components": [],
+  "measurements": []
+}

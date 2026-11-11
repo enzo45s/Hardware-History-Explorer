@@ -128,6 +128,19 @@ Le porte Docker sono limitate a localhost. L'app resta single-user, senza autent
 
 ## Pannello amministrativo
 
+La sezione **Amministrazione → Importazioni** permette di caricare CSV/JSON,
+preparare anteprime, controllare duplicati, applicare aggiornamenti incrementali,
+revisionare conflitti e fonti e ripetere tentativi falliti. Sono disponibili
+adattatori Wikidata e RetroFlops, oltre al caricamento manuale autorizzato.
+Originali e decisioni restano nello storico; nessun dato diventa verificato
+automaticamente. Non vengono importati automaticamente dataset o fotografie
+all'avvio.
+
+Vedi [la guida alle importazioni](docs/IMPORTING.md) per formati, migrazione,
+CLI, API e test, e [la valutazione delle fonti](docs/IMPORT_SOURCES.md) per
+licenze e blocchi effettivamente riscontrati. È incluso un campione reale Apple II
+con attribuzione RetroFlops, CC BY 4.0.
+
 Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibliografiche, aggiungere produttori/categorie/mercati e aggiornare commercializzazioni e specifiche tecniche. Le schede conservano fotografie e altri dati storici già archiviati. Le modifiche sono applicate con il pulsante Salva; il pannello segnala quelle non salvate.
 
 La gestione delle fotografie resta disponibile nella normale scheda del calcolatore, raggiungibile anche dal pannello. Non serve una migrazione aggiuntiva del database. Vedi [la guida del pannello](docs/ADMIN.md) per campi, date, fonti e API. Il pannello segue la modalità locale single-user del progetto.
