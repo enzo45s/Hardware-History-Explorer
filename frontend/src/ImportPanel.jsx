@@ -4,7 +4,7 @@ import './imports.css';
 
 const labels = { ready: 'Pronta', imported: 'Importata', updated: 'Aggiornata', unchanged: 'Invariata',
   invalid: 'Scartata', failed: 'Fallita', ambiguous: 'Corrispondenza da scegliere', completed: 'Completata',
-  partial: 'Completata con righe da controllare', pending: 'Da verificare', conflict: 'In conflitto', verified: 'Verificata', rejected: 'Fonte rifiutata per questo dato' };
+  partial: 'Completata con righe da controllare', skipped: 'Esclusa', pending: 'Da verificare', conflict: 'In conflitto', verified: 'Verificata', rejected: 'Fonte rifiutata per questo dato' };
 const status = value => labels[value] || value;
 
 function RowMatch({ row, disabled, onMatch }) {
@@ -144,6 +144,9 @@ export default function ImportPanel({ onSaved }) {
           {row.computer_id && <p>Calcolatore associato: ID {row.computer_id}</p>}
           {!!row.candidates.length && <p>Corrispondenze individuate: {row.candidates.join(', ')}</p>}
           {row.error && <p className="inline-error">{row.error}</p>}
+          {job.status === 'ready' && row.status !== 'skipped' && <button type="button" disabled={busy} onClick={() => action(async () => {
+            await api(`/admin/imports/${job.id}/rows/${row.id}/skip`, { method: 'POST' }); return { id: job.id };
+          })}>Escludi la riga {row.position} da questa importazione</button>}
           <details><summary>Dati originali e normalizzati</summary><h5>Originali</h5><pre>{JSON.stringify(row.raw, null, 2)}</pre><h5>Normalizzati</h5><pre>{JSON.stringify(row.normalized, null, 2)}</pre></details>
           {job.status === 'ready' && ['ready', 'ambiguous'].includes(row.status) && <RowMatch row={row} disabled={busy} onMatch={id => action(async () => {
             await api(`/admin/imports/${job.id}/rows/${row.id}/match`, { method: 'POST', body: JSON.stringify({ computer_id: id }) }); return { id: job.id };

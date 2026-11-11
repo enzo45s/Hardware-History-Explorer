@@ -87,7 +87,7 @@ def retroflops_records(payload):
                     'url': 'https://retroflops.github.io/', 'author': 'RetroFlops',
                     'license': 'CC BY 4.0; https://github.com/retroflops/retroflops — dati adattati per Hardware History Explorer'}
         row = {'external_id': system['id'], 'model_name': system['name'], 'manufacturer': system['manufacturer'],
-               'categories': [system['type']], 'source': citation,
+               'categories': [system['type'].replace('-', ' ').capitalize()], 'source': citation,
                'evidence': json.dumps({'sourceIds': system.get('sourceIds', []), 'sourceRecords': [sources[i] for i in system.get('sourceIds', []) if i in sources]}, ensure_ascii=False)[:3000]}
         # Unresolved editorial markers are not publishable prose.
         prose = system.get('description') or system.get('summary')

@@ -1,5 +1,6 @@
 """Transactional, append-only provenance and conservative catalog merging."""
 import hashlib
+import json
 from datetime import date
 from sqlalchemy import select, text
 from ..models import Computer, Manufacturer, Category, Configuration, Specification, Release, Sale, Review, Fact, Market, Source
@@ -48,6 +49,9 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
         _, records = parse_payload(raw, format)
     if not isinstance(records, list) or not 1 <= len(records) <= MAX_ROWS or not all(isinstance(r, dict) for r in records):
         raise ValueError('Serve un elenco di 1–1000 record adattati')
+    # JSON allows exponent literals that Python may overflow to Infinity;
+    # reject these before storing raw rows in PostgreSQL's strict JSON type.
+    json.dumps(records, allow_nan=False)
     job = ImportJob(provider=provider, filename=filename, format=format,
                     checksum=hashlib.sha256(raw).hexdigest(), raw_payload=raw.decode('utf-8'),
                     request_options=options or {}, retry_of=retry_of)
@@ -89,8 +93,9 @@ def source(db, citation):
     if found:
         return found
     found = Source(**{k: v for k, v in citation.items() if k != 'license'})
-    if isinstance(found.access_date, str):
-        found.access_date = date.fromisoformat(found.access_date)
+    for field in ('access_date', 'publication_date'):
+        if isinstance(getattr(found, field), str):
+            setattr(found, field, date.fromisoformat(getattr(found, field)))
     found.access_date = found.access_date or date.today()
     db.add(found)
     db.flush()
@@ -240,7 +245,7 @@ def import_record(db, job, row):
                 existing = [r for r in existing if r.market_id == market.id]
                 if model is Sale:
                     existing = [r for r in existing if serialize(r.period_start) == entry.get('period_start') and serialize(r.period_end) == entry.get('period_end') and r.metric_type == entry.get('metric_type', 'units_sold')]
-                elif len(existing) > 1:
+                elif len(existing) > 1 or sum(name_key(r['market']) == name_key(entry['market']) for r in data.get('releases', [])) > 1:
                     existing = [r for r in existing if serialize(r.release_date) == serialize(historical_date(entry.get('release_date'))[0])]
             elif model is Review:
                 existing = [r for r in existing if name_key(r.publication) == name_key(entry['publication']) and serialize(r.review_date) == entry.get('review_date')]

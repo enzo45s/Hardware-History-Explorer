@@ -35,6 +35,8 @@ class Citation(Input):
     author: str | None = Field(default=None, max_length=180)
     publisher: str | None = Field(default=None, max_length=180)
     license: str | None = Field(default=None, max_length=300)
+    source_type: str = Field(default='dataset', min_length=1, max_length=60)
+    publication_date: date | None = None
     access_date: date | None = None
 
     @field_validator('url')

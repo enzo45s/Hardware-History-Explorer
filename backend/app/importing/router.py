@@ -150,6 +150,18 @@ def create_import_router(get_db):
         return job_data(stage(db, previous.provider, previous.filename, previous.format, raw, records=records,
                               options=options, retry_of=previous.id))
 
+    @router.post('/{job_id}/rows/{row_id}/skip')
+    def skip(job_id: int, row_id: int, db: Session = Depends(get_db)):
+        job = job_or_404(db, job_id)
+        row = db.get(ImportRow, row_id)
+        if row is None or row.job_id != job_id:
+            raise HTTPException(404, 'Riga non trovata')
+        if job.status != 'ready':
+            raise HTTPException(409, 'Puoi escludere righe solo prima di applicare l’importazione')
+        row.status = 'skipped'
+        db.commit()
+        return {'status': 'skipped'}
+
     @router.post('/{job_id}/rows/{row_id}/match')
     def match(job_id: int, row_id: int, data: Mapping, db: Session = Depends(get_db)):
         job = job_or_404(db, job_id)

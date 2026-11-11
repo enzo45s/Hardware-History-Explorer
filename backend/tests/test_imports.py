@@ -124,6 +124,8 @@ def test_upload_limits_authorization_and_unsafe_urls(client):
     assert upload(client, [record(source={'title': 'Bad', 'url': 'javascript:alert(1)'})]).json()['counts'] == {'invalid': 1}
     assert upload(client, [record(source={'title': 'Bad', 'url': 'https://secret:password@example.org/'})]).json()['counts'] == {'invalid': 1}
     assert upload(client, [record()] * 1001).status_code == 422
+    raw = json.dumps([record()]).replace('"synthetic-1"', '1e9999')
+    assert client.post('/api/admin/imports/upload', files={'file': ('overflow.json', raw)}, data={'rights_confirmed': 'true'}).status_code == 422
     assert client.post('/api/admin/imports/upload', files={'file': ('big.json', b'x' * (8 * 1024 * 1024 + 1))}, data={'rights_confirmed': 'true'}).status_code == 413
 
 
@@ -283,3 +285,22 @@ def test_verification_counts_and_row_pagination(client):
     response = detail(client, job)
     assert len(response['rows']) == 25 and response['verification_counts']['pending'] > 0
     assert len(client.get(f'/api/admin/imports/{job}?offset=25').json()['rows']) == 1
+
+
+def test_multiple_releases_in_same_market_and_source_publication_metadata(client):
+    data = record(releases=[{'market': 'Test market', 'release_date': '1981'}, {'market': 'Test market', 'release_date': '1983'}],
+                  source={'title': 'Synthetic print source', 'source_type': 'book', 'publication_date': '1984-01-01'})
+    job = upload(client, [data]).json()['id']; apply(client, job)
+    row = detail(client, job)['rows'][0]
+    c = client.get(f"/api/computers/{row['computer_id']}").json()
+    assert len(c['releases']) == 2
+    assert c['sources'][0]['source_type'] == 'book' and c['sources'][0]['publication_date'] == '1984-01-01'
+    retry = upload(client, [data]).json()['id']; assert apply(client, retry)['counts'] == {'unchanged': 1}
+
+
+def test_operator_can_exclude_candidate_before_applying(client):
+    job = upload(client, [record(), record(model_name='Excluded synthetic record', external_id='exclude')]).json()['id']
+    row = detail(client, job)['rows'][1]
+    assert client.post(f"/api/admin/imports/{job}/rows/{row['id']}/skip").status_code == 200
+    assert apply(client, job)['counts'] == {'imported': 1, 'skipped': 1}
+    assert client.get('/api/computers', params={'q': 'Excluded synthetic record'}).json()['total'] == 0
