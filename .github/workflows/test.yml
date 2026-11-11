@@ -46,3 +46,12 @@ jobs:
         run: npm run build
       - run: docker compose config --quiet
       - run: docker compose build
+      - run: docker compose up -d --wait
+      - working-directory: frontend
+        run: npx playwright install --with-deps chromium
+      - working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser
+      - if: always()
+        run: docker compose down

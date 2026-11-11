@@ -3,6 +3,7 @@ import { Plus, Pencil, Save, X, BookOpen, Monitor, ExternalLink } from 'lucide-r
 import { api, allComputers, latestRequest } from './api.js';
 import { newComputer, newSource, computerDraft, computerPayload, sourcePayload } from './admin-data.js';
 import './admin.css';
+import ImportPanel from './ImportPanel.jsx';
 
 function Field({ label, value, onChange, wide = false, multiline = false, ...props }) {
   const Tag = multiline ? 'textarea' : 'input';
@@ -184,10 +185,11 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer }) {
     <div className="admin-tabs" aria-label="Sezioni amministrative">
       <button disabled={busy} className={section === 'computers' ? 'active' : ''} onClick={() => chooseSection('computers')}><Monitor size={17} />Calcolatori</button>
       <button disabled={busy} className={section === 'sources' ? 'active' : ''} onClick={() => chooseSection('sources')}><BookOpen size={17} />Fonti</button>
+      <button disabled={busy} className={section === 'imports' ? 'active' : ''} onClick={() => chooseSection('imports')}>Importazioni</button>
     </div>
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
-    <div className="admin-layout"><aside className="panel admin-list">
+    {section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : <div className="admin-layout"><aside className="panel admin-list">
       <button className="admin-primary" disabled={busy || loading} onClick={create}><Plus size={16} />{section === 'computers' ? 'Nuovo calcolatore' : 'Nuova fonte'}</button>
       <label className="admin-field"><span>Cerca {section === 'computers' ? 'calcolatori' : 'fonti'}</span><input value={query} onChange={e => setQuery(e.target.value)} /></label>
       {loading ? <p>Caricamento…</p> : <>
@@ -208,6 +210,6 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer }) {
           </div>
         </fieldset>
       </form>}
-    </div></div>
+    </div></div>}
   </section>;
 }
