@@ -165,3 +165,19 @@ La scelta di ciascun sistema è indipendente e resta valida passando tra le sezi
 Le configurazioni si inseriscono dal pannello amministrativo. Non è prevista un'ereditarietà automatica: una specifica comune va registrata nelle configurazioni a cui si applica. Fotografie, produttore, categorie e prima commercializzazione restano dati del modello. Questa modifica non altera schema o dati archiviati e non richiede migrazioni.
 
 Verifiche: 16 test frontend superati, build frontend/Compose e prova browser con nove varianti RAM, dati parziali, unità miste, scelte indipendenti, conservazione della scelta, configurazioni rimosse, sistemi senza configurazioni, errori/riprova e layout mobile.
+
+## Tema chiaro e Fosfori verdi
+
+Il selettore nella barra superiore offre tre modalità:
+
+- **Sistema**: impostazione iniziale; segue la preferenza chiara/scura comunicata dal sistema operativo e dal browser, anche quando cambia durante l'uso.
+- **Chiaro**: mantiene il tema chiaro indipendentemente dal sistema.
+- **Fosfori verdi**: sfondi quasi neri, testi in gradazioni di verde, accenti luminosi e titoli con carattere monospaziato. L'alone è limitato a logo e accenti del titolo; non viene applicato ai testi lunghi.
+
+Su schermi piccoli il selettore mostra le icone; i nomi restano disponibili alle tecnologie assistive e nei suggerimenti dei pulsanti. Grafici, tooltip, moduli, autocomplete, confronti e gallerie seguono lo stesso tema. Fotografie e immagini caricate conservano i colori originali, senza filtri o inversioni. Errori e avvisi mantengono colori distinti.
+
+La scelta viene salvata nel browser per l'indirizzo dell'app (`localStorage`, chiave `hardware-history-theme`) e sincronizzata tra schede dello stesso indirizzo. Se il salvataggio è bloccato, il selettore funziona comunque per la pagina corrente. Per riprendere il comportamento automatico basta scegliere **Sistema**. Il cambio di tema non ricarica la pagina e non cancella filtri, selezioni o moduli non salvati.
+
+Il file pubblico `theme.js`, caricato prima dell'interfaccia React, applica la preferenza iniziale per evitare un lampo chiaro. I colori dei componenti usano variabili semantiche `--theme-*` con fallback ai colori chiari originali; la palette scura e i token dei grafici si trovano in `frontend/src/theme.css`. I grafici usano variabili CSS anche negli elementi SVG e nei tooltip. Non sono necessarie modifiche al database, credenziali o migrazioni.
+
+Verifiche: 21 test frontend superati; build Docker/frontend e prove Chromium su avvio prima di React, modalità automatiche/manuali, ripristino dopo ricarica, eventi tra schede, storage bloccato, filtri e bozze conservati, grafici/tooltip, fotografie e viewport da 320 e 390 px. Verificato contrasto di almeno 4,5:1 su corpo del testo, input e pulsanti principali nel tema scuro; non si tratta di una certificazione di accessibilità dell'intera applicazione.
