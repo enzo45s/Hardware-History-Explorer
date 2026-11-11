@@ -8,11 +8,12 @@
     "license_url": "https://creativecommons.org/licenses/by/4.0/",
     "attribution": "RetroFlops; https://github.com/retroflops/retroflops",
     "adaptations": [
-      "Selezione di quattro modelli e delle sole misure CPU/RAM con stato value e livello confirmed o reported nella fonte.",
+      "Selezione di quattro modelli, delle denominazioni CPU esplicite e delle misure CPU/RAM con stato value e livello confirmed o reported nella fonte.",
       "Etichette normalizzate CPU/Frequenza, RAM/Capacità e Home computer; quantità e unità originali conservate.",
       "Date e produttori conservati come dichiarati dal dataset; configurazioni distinte; nessuna fotografia o prezzo importato.",
       "Valori ignoti, ROM, GPU, misure aggregate e frequenze rumored non inclusi nelle specifiche importabili.",
-      "Gli stati della fonte non sono verifiche locali: tutte le asserzioni iniziano pending."
+      "Gli stati della fonte non sono verifiche locali: tutte le asserzioni iniziano pending.",
+      "Aggiornamento: modello CPU esplicito per ciascuna configurazione, tratto dai record ufficiali dei componenti; campi e identità già importati conservati."
     ],
     "excluded_uncertain_measurements": [
       {
@@ -28,6 +29,30 @@
         "url": "https://github.com/retroflops/retroflops/blob/fbbed6181149b997329854e5808e0d036ad769e2/LICENSE-CONTENT.md",
         "sha256": "ffd8152583216d1e64112c66554ddf85f163cd87b8c8f0dec398cb2d2919b49e",
         "content_utf8": "# License of the content and the data\n\nThree different things live in this repository, and they are not under one\nlicense.\n\n## The code — MIT\n\nEverything under `src/`, `scripts/`, `tests/` and the configuration files. See\n[LICENSE](LICENSE).\n\n## The catalog and the editorial prose — CC BY 4.0\n\nEverything under `data/canonical/`, the source manifests in `data/sources/`, the\nmethodology and preset texts in `src/content/`, the documents in `docs/`, and\nthe published exports built from them:\n\n- `/data/catalog-v1.json`\n- `/data/catalog-summary-v1.json`\n- `/data/measurements-v1.csv`\n\nThese are licensed under the\n[Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).\nYou may share and adapt them, including commercially, provided you give\nappropriate credit (\"RetroFlops\", with a link to\n<https://github.com/retroflops/retroflops>) and say whether you changed\nanything.\n\nIndividual facts are not copyrightable in most jurisdictions, and this license\ndoes not claim otherwise. What it covers is the compilation: which machines were\nchosen, which figures were judged acceptable, how they were normalized and\ngrouped, and the prose that explains all of it.\n\n## The cited documents — their publishers'\n\nEvery figure in the catalog comes from a document somebody else wrote, and\nnothing here grants any right over those documents.\n\n- Each record in `data/sources/` states the license its publisher applies, in\n  its `license` field, and any constraint that travels with a quotation in\n  `usageNote`. Both are shown on the source's page on the site.\n- **32 of the 38 sources are tier A**, mostly vendor documentation and technical\n  manuals: they are quoted, not republished. Where an extract appears, in a\n  research record or beside a figure, it is short and exists so a reader can\n  check the number against its source.\n- **NASA documents are public domain** as works of the United States Government,\n  and are the only sources here with no restriction at all.\n- **SPEC results carry the\n  [SPEC Fair Use Rules](https://www.spec.org/products/fairuse/)**, which travel\n  with the figure wherever it appears; the `usageNote` on those records is what\n  puts the notice next to the number.\n- **One source states no license at all** — Netlib's Dhrystone performance\n  database, which has no governing body and publishes no terms. Its record says\n  so rather than assuming a permission nobody granted.\n\nIf you are the rights holder of a cited document and something here overreaches,\nopen an issue: the figure will be re-sourced or removed, and the reasoning\nrecorded.\n\n## Redistributing the exports\n\nThe exports carry no timestamp and no build identifier, so a copy can be\nverified byte for byte against a build of the same records. Redistribute them\nunder CC BY 4.0 with attribution, and keep the source records with them: a\nfigure without its citation is exactly what this project exists not to publish.\n"
+      },
+      {
+        "path": "data/canonical/components/cpu-amstrad-cpc464-z80a.yaml",
+        "url": "https://github.com/retroflops/retroflops/blob/fbbed6181149b997329854e5808e0d036ad769e2/data/canonical/components/cpu-amstrad-cpc464-z80a.yaml",
+        "sha256": "b6d5d5e48093e99de35aadd0e209ce19721ef332745f1f7f7f1c7e10dca2e0bf",
+        "content_utf8": "id: amstrad-cpc464-z80a\nslug: amstrad-cpc464-z80a\nkind: cpu\nname: Zilog Z80A\nmanufacturer: Zilog\narchitecture: Z80\nintroducedDate: '1976'\ninstructionSet: Zilog Z80\nsummary: Four-megahertz main processor in the Amstrad CPC 464.\nsourceIds:\n  - amstrad-cpc464-user-instructions\neditorialStatus: provisional\n"
+      },
+      {
+        "path": "data/canonical/components/cpu-atari-800-6502.yaml",
+        "url": "https://github.com/retroflops/retroflops/blob/fbbed6181149b997329854e5808e0d036ad769e2/data/canonical/components/cpu-atari-800-6502.yaml",
+        "sha256": "d159b18ff47aa17330e5712f27260c32a8ef6e8c030ceb92dd3557a7b3384c7e",
+        "content_utf8": "id: atari-800-6502\nslug: atari-800-6502\nkind: cpu\nname: MOS Technology 6502\nmanufacturer: MOS Technology\narchitecture: MOS 6502\nintroducedDate: '1975'\ninstructionSet: MOS 6502\ninstructionSetFamily: mos-6502\nsummary:\n  Eight-bit processor whose clock follows the Atari 800's television standard.\nsourceIds:\n  - atari-800-technical-reference-notes\neditorialStatus: provisional\n"
+      },
+      {
+        "path": "data/canonical/components/cpu-bbc-micro-6502.yaml",
+        "url": "https://github.com/retroflops/retroflops/blob/fbbed6181149b997329854e5808e0d036ad769e2/data/canonical/components/cpu-bbc-micro-6502.yaml",
+        "sha256": "b1c689b2496bff5ca26b14a43187b4c8569a592006f62f3569cb13531eea2c28",
+        "content_utf8": "id: bbc-micro-6502\nslug: bbc-micro-6502\nkind: cpu\nname: MOS Technology 6502\nmanufacturer: MOS Technology\narchitecture: MOS 6502\nintroducedDate: '1975'\ninstructionSet: MOS 6502\ninstructionSetFamily: mos-6502\nsummary: A 6502-compatible main processor used in the BBC Micro Model B.\nsourceIds:\n  - bbc-micro-service-manual\n  - bbc-micro-information-sheet\neditorialStatus: approved\n"
+      },
+      {
+        "path": "data/canonical/components/cpu-zx-spectrum-z80a.yaml",
+        "url": "https://github.com/retroflops/retroflops/blob/fbbed6181149b997329854e5808e0d036ad769e2/data/canonical/components/cpu-zx-spectrum-z80a.yaml",
+        "sha256": "233d13af2baccf67c563a50fc1827d7b20a29611ddeabb33d164c8104e40355f",
+        "content_utf8": "id: zx-spectrum-z80a\nslug: zx-spectrum-z80a\nkind: cpu\nname: Zilog Z80A\nmanufacturer: Zilog\narchitecture: Z80\nintroducedDate: '1976'\ninstructionSet: Zilog Z80\nsummary: The ZX Spectrum's eight-bit main processor.\nsourceIds:\n  - zx-spectrum-48k-manual\neditorialStatus: provisional\n"
       },
       {
         "path": "data/canonical/measurements/amstrad-cpc-464.yaml",
@@ -125,7 +150,8 @@
         "sha256": "0ca291fdb9b228c8b7f18866cafa51d3e7e3a782833100b0c124e977141ef3c6",
         "content_utf8": "id: zx-spectrum-48k-manual\ntitle: Sinclair ZX Spectrum 48 K Service Manual\npublisher: THORN (EMI) DATATECH LTD\nurl: https://archive.org/download/en-sinclair-zx-spectrum-48-k-service-manual/EN%20-%20Sinclair%20Zx%20Spectrum%2048K%20Service%20Manual.pdf\npublishedDate: 1984-05\naccessedDate: 2026-08-22\nlocator: System Description, General Description, PDF p. 5\nextract: 16k or 48k bytes of dynamic RAM memory.\ntier: A\nsourceType: technical-manual\neditorialStatus: provisional\nfetch:\n  url: https://archive.org/download/en-sinclair-zx-spectrum-48-k-service-manual/EN%20-%20Sinclair%20Zx%20Spectrum%2048K%20Service%20Manual.pdf\n  finalUrl: https://dn760102.eu.archive.org/0/items/en-sinclair-zx-spectrum-48-k-service-manual/EN%20-%20Sinclair%20Zx%20Spectrum%2048K%20Service%20Manual.pdf\n  fetchedAt: 2026-08-24T18:59:36Z\n  httpStatus: 200\n  contentType: application/pdf\n  byteLength: 654097\n  sha256: 10e7bcf240954b9c7364060fb7155f222ba4d2f613670bd69b405727287db33a\n"
       }
-    ]
+    ],
+    "sample_version": 2
   },
   "records": [
     {
@@ -155,6 +181,21 @@
         {
           "variant_name": "PAL retail machine",
           "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Zilog Z80A",
+              "source": {
+                "title": "RetroFlops — Amstrad CPC 464 — modello CPU",
+                "url": "https://github.com/retroflops/retroflops/blob/fbbed6181149b997329854e5808e0d036ad769e2/data/canonical/components/cpu-amstrad-cpc464-z80a.yaml",
+                "author": "RetroFlops",
+                "publisher": "RetroFlops",
+                "source_type": "dataset",
+                "license": "CC BY 4.0; RetroFlops, https://github.com/retroflops/retroflops; adattamento: selezione dati, etichette italiane, esclusione valori incerti.",
+                "access_date": "2026-11-12"
+              },
+              "evidence": "{\"upstream_commit\": \"fbbed6181149b997329854e5808e0d036ad769e2\", \"component\": {\"id\": \"amstrad-cpc464-z80a\", \"slug\": \"amstrad-cpc464-z80a\", \"kind\": \"cpu\", \"name\": \"Zilog Z80A\", \"manufacturer\": \"Zilog\", \"architecture\": \"Z80\", \"introducedDate\": \"1976\", \"instructionSet\": \"Zilog Z80\", \"summary\": \"Four-megahertz main processor in the Amstrad CPC 464.\", \"sourceIds\": [\"amstrad-cpc464-user-instructions\"], \"editorialStatus\": \"provisional\"}, \"configuration_id\": \"pal\", \"cited_sources\": {\"amstrad-cpc464-user-instructions\": {\"title\": \"Amstrad CPC464 Guide de l'utilisateur\", \"url\": \"https://archive.org/download/Amstrad_CPC464_Guide_de_lutilisateur_1984_AMSOFT_FR/Amstrad_CPC464_Guide_de_lutilisateur_1984_AMSOFT_FR.pdf\", \"locator\": \"Technical Specification page, LS! CHIPS section\", \"sourceType\": \"technical-manual\"}}, \"verification\": \"Identità CPU riportata da RetroFlops; documenti primari non verificati indipendentemente in questa sessione.\"}"
+            },
             {
               "component_type": "CPU",
               "property_name": "Frequenza",
@@ -221,6 +262,21 @@
           "specifications": [
             {
               "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "MOS Technology 6502",
+              "source": {
+                "title": "RetroFlops — Atari 800 — modello CPU",
+                "url": "https://github.com/retroflops/retroflops/blob/fbbed6181149b997329854e5808e0d036ad769e2/data/canonical/components/cpu-atari-800-6502.yaml",
+                "author": "RetroFlops",
+                "publisher": "RetroFlops",
+                "source_type": "dataset",
+                "license": "CC BY 4.0; RetroFlops, https://github.com/retroflops/retroflops; adattamento: selezione dati, etichette italiane, esclusione valori incerti.",
+                "access_date": "2026-11-12"
+              },
+              "evidence": "{\"upstream_commit\": \"fbbed6181149b997329854e5808e0d036ad769e2\", \"component\": {\"id\": \"atari-800-6502\", \"slug\": \"atari-800-6502\", \"kind\": \"cpu\", \"name\": \"MOS Technology 6502\", \"manufacturer\": \"MOS Technology\", \"architecture\": \"MOS 6502\", \"introducedDate\": \"1975\", \"instructionSet\": \"MOS 6502\", \"instructionSetFamily\": \"mos-6502\", \"summary\": \"Eight-bit processor whose clock follows the Atari 800's television standard.\", \"sourceIds\": [\"atari-800-technical-reference-notes\"], \"editorialStatus\": \"provisional\"}, \"configuration_id\": \"ntsc-48k\", \"cited_sources\": {\"atari-800-technical-reference-notes\": {\"title\": \"Atari 400/800 Technical Reference Notes: Operating System User's Manual, Operating System Source Listing and Hardware Manual\", \"url\": \"https://archive.org/download/atari-400-800-technical-reference-notes-operating-system-user-s-manual-operating/Atari_400-800_Technical_Reference_Notes-Operating_System_User_s_Manual-Operating_System_Source_Listing_and_Hardware_Manual_553_pages.pdf\", \"locator\": \"Hardware Manual sections II and III; Operating System User's Manual, section 1\", \"sourceType\": \"technical-manual\"}}, \"verification\": \"Identità CPU riportata da RetroFlops; documenti primari non verificati indipendentemente in questa sessione.\"}"
+            },
+            {
+              "component_type": "CPU",
               "property_name": "Frequenza",
               "numeric_value": 1.79,
               "unit": "MHz",
@@ -256,6 +312,21 @@
         {
           "variant_name": "PAL, 48 KiB RAM",
           "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "MOS Technology 6502",
+              "source": {
+                "title": "RetroFlops — Atari 800 — modello CPU",
+                "url": "https://github.com/retroflops/retroflops/blob/fbbed6181149b997329854e5808e0d036ad769e2/data/canonical/components/cpu-atari-800-6502.yaml",
+                "author": "RetroFlops",
+                "publisher": "RetroFlops",
+                "source_type": "dataset",
+                "license": "CC BY 4.0; RetroFlops, https://github.com/retroflops/retroflops; adattamento: selezione dati, etichette italiane, esclusione valori incerti.",
+                "access_date": "2026-11-12"
+              },
+              "evidence": "{\"upstream_commit\": \"fbbed6181149b997329854e5808e0d036ad769e2\", \"component\": {\"id\": \"atari-800-6502\", \"slug\": \"atari-800-6502\", \"kind\": \"cpu\", \"name\": \"MOS Technology 6502\", \"manufacturer\": \"MOS Technology\", \"architecture\": \"MOS 6502\", \"introducedDate\": \"1975\", \"instructionSet\": \"MOS 6502\", \"instructionSetFamily\": \"mos-6502\", \"summary\": \"Eight-bit processor whose clock follows the Atari 800's television standard.\", \"sourceIds\": [\"atari-800-technical-reference-notes\"], \"editorialStatus\": \"provisional\"}, \"configuration_id\": \"pal-48k\", \"cited_sources\": {\"atari-800-technical-reference-notes\": {\"title\": \"Atari 400/800 Technical Reference Notes: Operating System User's Manual, Operating System Source Listing and Hardware Manual\", \"url\": \"https://archive.org/download/atari-400-800-technical-reference-notes-operating-system-user-s-manual-operating/Atari_400-800_Technical_Reference_Notes-Operating_System_User_s_Manual-Operating_System_Source_Listing_and_Hardware_Manual_553_pages.pdf\", \"locator\": \"Hardware Manual sections II and III; Operating System User's Manual, section 1\", \"sourceType\": \"technical-manual\"}}, \"verification\": \"Identità CPU riportata da RetroFlops; documenti primari non verificati indipendentemente in questa sessione.\"}"
+            },
             {
               "component_type": "RAM",
               "property_name": "Capacità",
@@ -304,6 +375,21 @@
         {
           "variant_name": "Retail Model B",
           "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "MOS Technology 6502",
+              "source": {
+                "title": "RetroFlops — BBC Micro Model B — modello CPU",
+                "url": "https://github.com/retroflops/retroflops/blob/fbbed6181149b997329854e5808e0d036ad769e2/data/canonical/components/cpu-bbc-micro-6502.yaml",
+                "author": "RetroFlops",
+                "publisher": "RetroFlops",
+                "source_type": "dataset",
+                "license": "CC BY 4.0; RetroFlops, https://github.com/retroflops/retroflops; adattamento: selezione dati, etichette italiane, esclusione valori incerti.",
+                "access_date": "2026-11-12"
+              },
+              "evidence": "{\"upstream_commit\": \"fbbed6181149b997329854e5808e0d036ad769e2\", \"component\": {\"id\": \"bbc-micro-6502\", \"slug\": \"bbc-micro-6502\", \"kind\": \"cpu\", \"name\": \"MOS Technology 6502\", \"manufacturer\": \"MOS Technology\", \"architecture\": \"MOS 6502\", \"introducedDate\": \"1975\", \"instructionSet\": \"MOS 6502\", \"instructionSetFamily\": \"mos-6502\", \"summary\": \"A 6502-compatible main processor used in the BBC Micro Model B.\", \"sourceIds\": [\"bbc-micro-service-manual\", \"bbc-micro-information-sheet\"], \"editorialStatus\": \"approved\"}, \"configuration_id\": \"retail\", \"cited_sources\": {\"bbc-micro-service-manual\": {\"title\": \"BBC Microcomputer Service Manual\", \"url\": \"https://archive.org/download/bbc-micro-service-manual/BBC-Micro-Service-Manual%20Sections-1-2-3_djvu.txt\", \"archiveUrl\": \"https://archive.org/details/bbc-micro-service-manual\", \"locator\": \"Sections 1.2.2, 3.1, 3.3 \\\"CRT controller + video processor + Teletext hardware\\\" (printed p. 12), and 3.14\", \"sourceType\": \"technical-manual\"}, \"bbc-micro-information-sheet\": {\"title\": \"The BBC Microcomputer System\", \"url\": \"https://chrisacorns.computinghistory.org.uk/docs/Acorn/Brochures/Acorn_AMP01_BBCMicro.pdf\", \"locator\": \"Information Sheet 03, Processor and Memory\", \"sourceType\": \"vendor-documentation\"}}, \"verification\": \"Identità CPU riportata da RetroFlops; documenti primari non verificati indipendentemente in questa sessione.\"}"
+            },
             {
               "component_type": "CPU",
               "property_name": "Frequenza",
@@ -368,6 +454,21 @@
         {
           "variant_name": "PAL 48K",
           "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Zilog Z80A",
+              "source": {
+                "title": "RetroFlops — ZX Spectrum 48K — modello CPU",
+                "url": "https://github.com/retroflops/retroflops/blob/fbbed6181149b997329854e5808e0d036ad769e2/data/canonical/components/cpu-zx-spectrum-z80a.yaml",
+                "author": "RetroFlops",
+                "publisher": "RetroFlops",
+                "source_type": "dataset",
+                "license": "CC BY 4.0; RetroFlops, https://github.com/retroflops/retroflops; adattamento: selezione dati, etichette italiane, esclusione valori incerti.",
+                "access_date": "2026-11-12"
+              },
+              "evidence": "{\"upstream_commit\": \"fbbed6181149b997329854e5808e0d036ad769e2\", \"component\": {\"id\": \"zx-spectrum-z80a\", \"slug\": \"zx-spectrum-z80a\", \"kind\": \"cpu\", \"name\": \"Zilog Z80A\", \"manufacturer\": \"Zilog\", \"architecture\": \"Z80\", \"introducedDate\": \"1976\", \"instructionSet\": \"Zilog Z80\", \"summary\": \"The ZX Spectrum's eight-bit main processor.\", \"sourceIds\": [\"zx-spectrum-48k-manual\"], \"editorialStatus\": \"provisional\"}, \"configuration_id\": \"pal\", \"cited_sources\": {\"zx-spectrum-48k-manual\": {\"title\": \"Sinclair ZX Spectrum 48 K Service Manual\", \"url\": \"https://archive.org/download/en-sinclair-zx-spectrum-48-k-service-manual/EN%20-%20Sinclair%20Zx%20Spectrum%2048K%20Service%20Manual.pdf\", \"locator\": \"System Description, General Description, PDF p. 5\", \"sourceType\": \"technical-manual\"}}, \"verification\": \"Identità CPU riportata da RetroFlops; documenti primari non verificati indipendentemente in questa sessione.\"}"
+            },
             {
               "component_type": "CPU",
               "property_name": "Frequenza",

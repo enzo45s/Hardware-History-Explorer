@@ -100,6 +100,15 @@ def retroflops_records(payload):
             specs = []
             for entry in cfg.get('entries', []):
                 component = components.get(entry.get('componentId'), {})
+                cpu_name = component.get('name')
+                if entry.get('role') == 'main-cpu' and component.get('kind') == 'cpu' and isinstance(cpu_name, str) and cpu_name.strip():
+                    # A CPU identity is useful even when its clock is unknown.
+                    # Keep it as a visible sourced value; component_name alone
+                    # is metadata and is not displayed as a specification.
+                    specs.append({'component_type': 'CPU', 'property_name': 'Modello',
+                        'text_value': cpu_name.strip(), 'source': citation,
+                        'evidence': json.dumps({'component': component, 'configuration_id': cfg.get('id'),
+                            'sourceRecords': [sources[i] for i in component.get('sourceIds', []) if i in sources]}, ensure_ascii=False)[:3000]})
                 for mid in entry.get('measurementIds', []):
                     m = measurements.get(mid, {})
                     quantity = m.get('quantity', {})

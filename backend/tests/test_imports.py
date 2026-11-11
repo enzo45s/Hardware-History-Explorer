@@ -304,3 +304,32 @@ def test_operator_can_exclude_candidate_before_applying(client):
     assert client.post(f"/api/admin/imports/{job}/rows/{row['id']}/skip").status_code == 200
     assert apply(client, job)['counts'] == {'imported': 1, 'skipped': 1}
     assert client.get('/api/computers', params={'q': 'Excluded synthetic record'}).json()['total'] == 0
+
+
+def test_retroflops_imports_cpu_model_even_without_clock_measurement():
+    payload = {'schemaVersion': 'catalog-v1', 'systems': [{'id': 'test', 'name': 'Test System', 'manufacturer': 'Test Maker',
+        'type': 'home-computer', 'configurations': [{'id': 'base', 'entries': [{'componentId': 'test-cpu', 'role': 'main-cpu'}]}]}],
+        'components': [{'id': 'test-cpu', 'kind': 'cpu', 'name': 'Synthetic CPU model', 'sourceIds': ['test-manual']}],
+        'sources': [{'id': 'test-manual', 'title': 'Synthetic manual', 'url': 'https://example.org/manual'}]}
+    spec = Record.model_validate(retroflops_records(payload)[0]).configurations[0].specifications[0]
+    assert (spec.component_type, spec.property_name, spec.text_value) == ('CPU', 'Modello', 'Synthetic CPU model')
+    assert spec.numeric_value is None and spec.source.license.startswith('CC BY 4.0')
+    assert 'Synthetic manual' in spec.evidence
+    payload['components'] = []
+    assert retroflops_records(payload)[0]['configurations'][0]['specifications'] == []
+
+
+def test_import_cpu_model_enriches_existing_variant_without_duplicate_or_changed_ram(client):
+    baseline = record()
+    job = upload(client, [baseline]).json()['id']; apply(client, job)
+    c_id = detail(client, job)['rows'][0]['computer_id']
+    original = client.get(f'/api/computers/{c_id}').json()['configurations'][0]
+    enriched = copy.deepcopy(baseline)
+    enriched['configurations'][0]['specifications'].append({'component_type': 'CPU', 'property_name': 'Modello', 'text_value': 'Synthetic CPU model'})
+    job = upload(client, [enriched]).json()['id']; assert apply(client, job)['counts'] == {'updated': 1}
+    current = client.get(f'/api/computers/{c_id}').json()['configurations'][0]
+    assert current['id'] == original['id'] and len(current['specifications']) == 2
+    ram = next(s for s in current['specifications'] if s['component_type'] == 'RAM')
+    assert ram['id'] == original['specifications'][0]['id'] and ram['numeric_value'] == 4
+    assert next(s for s in current['specifications'] if s['component_type'] == 'CPU')['sources']
+    repeat = upload(client, [enriched]).json()['id']; assert apply(client, repeat)['counts'] == {'unchanged': 1}

@@ -147,6 +147,9 @@ recensioni: testata/data; fatti: tipo/testo. Le ambiguità non vengono fuse.
   recuperare dall'URL ufficiale fisso. Solo mainframe, minicomputer, home
   computer, personal computer e workstation; configurazioni e misure numeriche
   conservano contesto e riferimenti. Le misure ignote non diventano zero.
+  Quando il componente principale è esplicitamente una CPU e ne è indicato il
+  nome, viene aggiunta la specifica testuale **CPU · Modello**, anche in assenza
+  di una frequenza nota. Il nome non viene dedotto dall'architettura.
   Attribuzione RetroFlops, CC BY 4.0, con adattamenti dichiarati.
 - **Wikidata**: `wbgetentities`, etichette e statement, poi etichette dei
   produttori. Richiede un produttore univoco. Date P577 senza qualificatori e
