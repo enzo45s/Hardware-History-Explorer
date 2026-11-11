@@ -168,6 +168,14 @@ Verifiche: 16 test frontend superati, build frontend/Compose e prova browser con
 
 ## Tema chiaro e Fosfori verdi
 
+Il marchio nella barra laterale può usare due PNG originali: copia `logo-light.png`
+(lettere blu) e `logo-dark.png` (lettere bianche) in `frontend/public/branding/`.
+Il logo segue il tema effettivo, comprese le variazioni del sistema operativo e
+la scelta manuale. I colori dell'immagine restano invariati; nel tema chiaro
+viene usato un piccolo pannello chiaro e su mobile il logo è ridotto. Se un file
+manca o non è leggibile, rimane disponibile il marchio precedente. I PNG della
+chat non sono inclusi: vedi [le istruzioni dei loghi](frontend/public/branding/README.md).
+
 Il selettore nella barra superiore offre tre modalità:
 
 - **Sistema**: impostazione iniziale; segue la preferenza chiara/scura comunicata dal sistema operativo e dal browser, anche quando cambia durante l'uso.

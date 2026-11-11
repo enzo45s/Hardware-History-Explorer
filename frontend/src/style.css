@@ -4,11 +4,15 @@ body{margin:0}
 button,input,select{font:inherit}
 button{cursor:pointer}
 .shell{display:flex;min-height:100vh}
-.sidebar{width:248px;flex-shrink:0;background:var(--theme-sidebar-bg, #101b33);color:var(--theme-text-muted, #a9b6d2);min-height:100vh;padding:30px 16px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.sidebar{width:248px;flex-shrink:0;background:var(--theme-sidebar-bg, #101b33);color:var(--theme-text-muted, #a9b6d2);min-height:100vh;padding:30px 16px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto}
 .brand{display:flex;gap:12px;align-items:center;color:var(--theme-text-strong, white);padding:0 12px 55px}
 .brand-icon{background:var(--theme-accent, #5976df);padding:11px;border-radius:12px;display:flex}
 .brand b{display:block;letter-spacing:2px;font-size:15px;font-family:'Space Grotesk',sans-serif}
 .brand span{display:block;font-size:9px;letter-spacing:2px;color:var(--theme-text-muted, #9caaca);margin-top:3px}
+.brand-with-logo{padding:0 0 28px;flex-shrink:0}
+.brand-logo-panel{width:216px;max-width:100%;padding:8px;background:#f7f8fc;border-radius:12px}
+.brand-logo{display:block;width:100%;height:auto;object-fit:contain}
+:root[data-theme="dark"] .brand-logo-panel{background:transparent}
 .side-label{font-size:10px;letter-spacing:2px;padding:0 15px 13px;color:var(--theme-text-secondary, #66799e)}
 .sidebar nav{display:grid;gap:6px}
 .sidebar nav button{display:flex;align-items:center;gap:13px;text-align:left;padding:14px;border:0;background:transparent;color:var(--theme-text-muted, #aab7d0);border-radius:9px;font-weight:600;font-size:13px}
@@ -97,6 +101,7 @@ h1 em{color:var(--theme-accent, #5d7de8);font-style:normal}
 @media(max-width:700px){.shell{display:block}
 .sidebar{position:relative;width:100%;height:auto;min-height:0;padding:12px}
 .brand{padding:5px 10px 15px}
+.brand-logo-panel{width:180px}
 .sidebar nav{display:flex;overflow-x:auto}
 .sidebar nav button{white-space:nowrap}
 .side-label,.side-bottom,.header-right{display:none}

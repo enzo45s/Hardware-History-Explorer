@@ -8,6 +8,7 @@ import {
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import './style.css';
 import ThemeSwitcher from './ThemeSwitcher.jsx';
+import BrandLogo from './BrandLogo.jsx';
 import { api, allComputers, latestRequest } from './api.js';
 import AdminPanel from './AdminPanel.jsx';
 import ComparisonPicker from './ComparisonPicker.jsx';
@@ -262,7 +263,7 @@ function App() {
     finally { setLoading(false); }
   };
   return <div className="shell"><aside className="sidebar">
-    <div className="brand"><div className="brand-icon"><Monitor size={22} /></div><div><b>HARDWARE</b><span>HISTORY EXPLORER</span></div></div>
+    <BrandLogo />
     <div className="side-label">ESPLORA</div>
     <nav>{nav.map(([id, label, Icon]) => <button key={id} onClick={() => { if (id === tab && !selected) return; if (tab === 'admin' && adminDirty && !window.confirm('Ci sono modifiche non salvate. Vuoi abbandonarle?')) return; setAdminDirty(false); setTab(id); setSelected(null); }} className={tab === id ? 'active' : ''}><Icon size={18} />{label}{id === 'compare' && compare.length > 0 ? <small>{compare.length}</small> : null}</button>)}</nav>
     <div className="side-bottom"><div className="status-dot" />Archivio dimostrativo<br /><span>Versione 1.1 · Single-user</span></div>
