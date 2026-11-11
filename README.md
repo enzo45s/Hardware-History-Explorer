@@ -172,7 +172,7 @@ Il selettore nella barra superiore offre tre modalità:
 
 - **Sistema**: impostazione iniziale; segue la preferenza chiara/scura comunicata dal sistema operativo e dal browser, anche quando cambia durante l'uso.
 - **Chiaro**: mantiene il tema chiaro indipendentemente dal sistema.
-- **Fosfori verdi**: sfondi quasi neri, testi in gradazioni di verde, accenti luminosi e titoli con carattere monospaziato. L'alone è limitato a logo e accenti del titolo; non viene applicato ai testi lunghi.
+- **Fosfori verdi**: sfondi quasi neri, testi in gradazioni di verde e accenti luminosi. Caratteri, dimensioni e spaziatura dei testi sono gli stessi del tema chiaro. L'alone è limitato a logo e accenti del titolo; non viene applicato ai testi lunghi.
 
 Su schermi piccoli il selettore mostra le icone; i nomi restano disponibili alle tecnologie assistive e nei suggerimenti dei pulsanti. Grafici, tooltip, moduli, autocomplete, confronti e gallerie seguono lo stesso tema. Fotografie e immagini caricate conservano i colori originali, senza filtri o inversioni. Errori e avvisi mantengono colori distinti.
 
