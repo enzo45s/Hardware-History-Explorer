@@ -153,3 +153,15 @@ Per evitare un elenco ingestibile, vengono mostrati fino a otto suggerimenti: se
 L'endpoint `GET /api/computers/suggestions?q=...` cerca nel database e restituisce solo ID, nome, produttore e anno, senza caricare specifiche o altre relazioni. Accetta `limit` da 1 a 10 (il pannello usa 8) e fino a cinque `exclude_ids` ripetuti. La query massima è di 180 caratteri; `%` e `_` sono cercati letteralmente. Non sono necessarie migrazioni del database.
 
 Verifiche della modifica: 74 test backend superati su PostgreSQL; 73 superati e 1 specifico PostgreSQL saltato su SQLite; 10 test frontend superati. Build e avvio Docker riusciti. Nel browser sono stati verificati tastiera, aggiunta/rimozione, limite, duplicati, ricerca oltre 100 record, filtri indipendenti, risultati vuoti, errori, risposte fuori ordine e layout mobile.
+
+### Confronto tra configurazioni
+
+Ogni colonna del confronto ha un menu **Configurazione**. L'opzione iniziale **Tutte le configurazioni** raggruppa i valori distinti senza sovrascriverli: per esempio, varianti con RAM da 4, 8 e 48 KB producono `4 / 8 / 48 KB`. Selezionando una configurazione specifica vengono usate esclusivamente le sue specifiche.
+
+I valori comuni compaiono una sola volta; quelli numerici sono ordinati. Unità diverse restano esplicite, senza conversioni implicite. Se una proprietà è presente solo in alcune configurazioni, la cella ne indica il numero: gli altri dati rimangono sconosciuti. I valori raggruppati possono appartenere a combinazioni diverse; scegli una variante per un confronto preciso tra sistemi.
+
+La scelta di ciascun sistema è indipendente e resta valida passando tra le sezioni o aggiungendo/rimuovendo gli altri sistemi nella stessa sessione della pagina. Rimuovere un sistema elimina la sua scelta; ricaricare la pagina azzera la selezione, come già avveniva per il confronto. Se una configurazione scelta non è più disponibile, viene mostrata la vista generale. Un sistema senza configurazioni conserva i dati del modello, con `—` per le specifiche mancanti.
+
+Le configurazioni si inseriscono dal pannello amministrativo. Non è prevista un'ereditarietà automatica: una specifica comune va registrata nelle configurazioni a cui si applica. Fotografie, produttore, categorie e prima commercializzazione restano dati del modello. Questa modifica non altera schema o dati archiviati e non richiede migrazioni.
+
+Verifiche: 16 test frontend superati, build frontend/Compose e prova browser con nove varianti RAM, dati parziali, unità miste, scelte indipendenti, conservazione della scelta, configurazioni rimosse, sistemi senza configurazioni, errori/riprova e layout mobile.

@@ -10,6 +10,7 @@ import './style.css';
 import { api, allComputers, latestRequest } from './api.js';
 import AdminPanel from './AdminPanel.jsx';
 import ComparisonPicker from './ComparisonPicker.jsx';
+import ComparisonTable from './ComparisonTable.jsx';
 import { comparisonSummary } from './comparison-api.js';
 
 const nav = [
@@ -192,20 +193,6 @@ function Filters({ meta, filters, setFilters }) {
   </div>;
 }
 
-function Compare({ ids }) {
-  const [data, setData] = useState([]);
-  useEffect(() => latestRequest(signal => api('/compare?ids=' + ids.join(','), { signal }), setData, () => setData([])), [ids.join(',')]);
-  const specs = c => Object.fromEntries(c.configurations.flatMap(v => v.specifications.map(s => [s.component_type + ' · ' + s.property_name, String(s.numeric_value ?? s.text_value) + (s.unit ? ' ' + s.unit : '')])));
-  const keys = [...new Set(data.flatMap(c => Object.keys(specs(c))))];
-  return <div className="panel compare-scroll"><table className="comparison"><thead><tr><th>Caratteristica</th>{data.map(c => <th key={c.id}>{c.model_name}</th>)}</tr></thead><tbody>
-    <tr><td>Fotografia</td>{data.map(c => <td key={c.id}><SystemCover src={c.image_url} name={c.model_name} year={c.year} className="compare-photo" /></td>)}</tr>
-    <tr><td>Produttore</td>{data.map(c => <td key={c.id}>{c.manufacturer}</td>)}</tr>
-    <tr><td>Prima commercializzazione</td>{data.map(c => <td key={c.id}>{c.first_release || '—'}</td>)}</tr>
-    <tr><td>Categoria</td>{data.map(c => <td key={c.id}>{c.categories.join(', ')}</td>)}</tr>
-    {keys.map(k => <tr key={k}><td>{k}</td>{data.map(c => <td key={c.id}>{specs(c)[k] || '—'}</td>)}</tr>)}
-  </tbody></table></div>;
-}
-
 function ComputerDetail({ computer, onClose, onChanged }) {
   return <>
     <button className="back" onClick={onClose}><ArrowLeft size={16} /> Torna all'esplorazione</button>
@@ -234,11 +221,18 @@ function App() {
   const [filters, setFilters] = useState({ q: '', category_id: '', manufacturer_id: '', year_from: '', year_to: '' });
   const [selected, setSelected] = useState(null);
   const [compare, setCompare] = useState([]);
+  const [comparisonConfigurations, setComparisonConfigurations] = useState({});
   const [analytics, setAnalytics] = useState(null);
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  useEffect(() => {
+    setComparisonConfigurations(previous => {
+      const kept = Object.entries(previous).filter(([id]) => compare.some(c => String(c.id) === id));
+      return kept.length === Object.keys(previous).length ? previous : Object.fromEntries(kept);
+    });
+  }, [compare.map(c => c.id).join(',')]);
   useEffect(() => { api('/meta').then(setMeta).catch(e => setError(e.message)); }, [revision]);
   useEffect(() => {
     if (tab !== 'timeline' && tab !== 'catalog') return;
@@ -285,7 +279,7 @@ function App() {
         {tab === 'analysis' && <><div className="eyebrow">DATA EXPLORATION</div><h1>Analisi dell'archivio</h1><p className="lead">Distribuzioni temporali e per categoria calcolate direttamente dal database.</p><Stats analytics={analytics} /><div className="charts"><section className="panel"><h3>Sistemi per anno di commercializzazione</h3><div className="chart"><ResponsiveContainer><BarChart data={analytics?.by_year || []}><CartesianGrid strokeDasharray="3 3" vertical={false} /><XAxis dataKey="year" /><YAxis allowDecimals={false} /><Tooltip /><Bar dataKey="count" fill="#5d7de8" radius={[5, 5, 0, 0]} /></BarChart></ResponsiveContainer></div></section><section className="panel"><h3>Distribuzione per categoria</h3><div className="chart"><ResponsiveContainer><BarChart data={analytics?.by_category || []} layout="vertical" margin={{ left: 35 }}><XAxis type="number" allowDecimals={false} /><YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 11 }} /><Tooltip /><Bar dataKey="count" fill="#5d7de8" radius={[0, 5, 5, 0]} /></BarChart></ResponsiveContainer></div></section></div><p className="muted">Le distribuzioni riflettono il campione dimostrativo e non la totalità del mercato storico.</p></>}
         {tab === 'compare' && <><div className="eyebrow">ANALISI COMPARATIVA</div><h1>Confronta i sistemi</h1><p className="lead">Cerca e aggiungi da 2 a 5 sistemi per confrontarli subito. Puoi selezionarli anche dal catalogo e dalla timeline.</p>
           <ComparisonPicker selected={compare} onSelect={toggle} onRemove={id => setCompare(a => a.filter(c => c.id !== id))} />
-          {compare.length >= 2 ? <Compare ids={compare.map(c => c.id)} /> : <div className="empty">{compare.length ? 'Aggiungi un altro sistema per visualizzare il confronto.' : 'Cerca e seleziona almeno due calcolatori per visualizzare il confronto.'}</div>}</>}
+          {compare.length >= 2 ? <ComparisonTable ids={compare.map(c => c.id)} configurations={comparisonConfigurations} onConfigurationChange={(id, value) => setComparisonConfigurations(previous => ({ ...previous, [id]: value }))} Cover={SystemCover} /> : <div className="empty">{compare.length ? 'Aggiungi un altro sistema per visualizzare il confronto.' : 'Cerca e seleziona almeno due calcolatori per visualizzare il confronto.'}</div>}</>}
         {tab === 'assistant' && <><div className="eyebrow">INTERROGAZIONE IN LINGUAGGIO NATURALE</div><h1>Assistente storico <em>AI.</em></h1><p className="lead">Fai domande sull'archivio. L'assistente riceve i dati disponibili e ne segnala le lacune.</p><div className="assistant-panel"><div className="assistant-intro"><Bot size={26} /><h3>Come posso aiutarti?</h3><p>Prova: «Quali sistemi sono stati commercializzati negli anni '70?» oppure «Confronta Apple II e IBM PC».</p></div>{answer && <div className="answer">{answer}</div>}<form onSubmit={ask} className="ask-form"><input value={question} onChange={e => setQuestion(e.target.value)} placeholder="Scrivi una domanda sulla storia dell'hardware..." minLength={3} required /><button disabled={loading}>{loading ? 'Elaborazione…' : 'Invia →'}</button></form></div><p className="muted">L'assistente non può modificare il database o eseguire query SQL arbitrarie. Richiede una chiave API OpenAI configurata sul server.</p></>}
       </>}</div></main></div>;
 }
