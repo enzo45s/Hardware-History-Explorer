@@ -10,7 +10,7 @@ from typing import Optional, Literal
 from fastapi import FastAPI, Depends, HTTPException, Query, UploadFile, File, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field, HttpUrl, field_validator
+from pydantic import BaseModel, Field, HttpUrl, ConfigDict, field_validator
 from sqlalchemy import create_engine, select, func, or_, event
 from sqlalchemy.orm import Session, sessionmaker, selectinload
 from .models import *
@@ -66,7 +66,7 @@ def overview(c):
  releases=sorted((r for r in c.releases if r.release_date),key=lambda r:r.release_date)
  r=releases[0] if releases else None
  return {'id':c.id,'model_name':c.model_name,'manufacturer':c.manufacturer.name,'manufacturer_id':c.manufacturer_id,'categories':[x.name for x in c.categories],'year':r.release_date.year if r else None,'first_release':datefmt(r.release_date,r.release_precision) if r else None,'description':c.description,'image_url':cover,'image_count':len(images)}
-def src(s):return {'id':s.id,'title':s.title,'url':s.url,'publisher':s.publisher,'source_type':s.source_type}
+def src(s):return {'id':s.id,'title':s.title,'url':s.url,'author':s.author,'publisher':s.publisher,'source_type':s.source_type,'publication_date':s.publication_date.isoformat() if s.publication_date else None,'access_date':s.access_date.isoformat() if s.access_date else None}
 def full(c):
  o=overview(c)
  o.update({'images':[image_data(i) for i in computer_images(c)],'announcement_date':datefmt(c.announcement_date,c.announcement_precision),'configurations':[{'id':v.id,'variant_name':v.variant_name,'specifications':[{'id':s.id,'component_type':s.component_type,'component_name':s.component_name,'property_name':s.property_name,'numeric_value':s.numeric_value,'text_value':s.text_value,'unit':s.unit,'sources':[src(z) for z in s.sources]} for s in v.specifications]} for v in c.configurations],'releases':[{'id':r.id,'market':r.market.name,'release_date':datefmt(r.release_date,r.release_precision),'discontinuation_date':datefmt(r.discontinuation_date,r.discontinuation_precision),'price':r.price,'currency':r.currency,'price_type':r.price_type,'sources':[src(z) for z in r.sources]} for r in c.releases],'sales':[{'market':s.market.name,'units_sold':s.units_sold,'metric_type':s.metric_type,'estimated':s.estimated,'sources':[src(z) for z in s.sources]} for s in c.sales],'reviews':[{'publication':r.publication,'score':r.score,'max_score':r.max_score,'summary':r.summary,'sources':[src(z) for z in r.sources]} for r in c.reviews],'facts':[{'type':f.fact_type,'statement':f.statement,'sources':[src(z) for z in f.sources]} for f in c.facts],'sources':[src(z) for z in c.sources]})
@@ -129,6 +129,10 @@ def web_url(value,https_only=True):
  return str(url)
 
 class SourceInput(BaseModel):
+ model_config=ConfigDict(str_strip_whitespace=True,extra='forbid')
+ author:Optional[str]=Field(default=None,max_length=180)
+ publication_date:Optional[date]=None
+ access_date:Optional[date]=None
  title:str=Field(min_length=2,max_length=300)
  url:Optional[str]=Field(default=None,max_length=800)
  publisher:Optional[str]=Field(default=None,max_length=180)
@@ -143,6 +147,20 @@ def create_source(data:SourceInput,db:Session=Depends(get_db)):
  s=Source(**data.model_dump());db.add(s);db.commit();db.refresh(s);return src(s)
 @app.get('/api/sources')
 def sources(db:Session=Depends(get_db)):return [src(s) for s in db.scalars(select(Source).order_by(Source.title))]
+
+@app.get('/api/sources/{source_id}')
+def source(source_id:int,db:Session=Depends(get_db)):
+ s=db.get(Source,source_id)
+ if s is None:raise HTTPException(404,'Fonte non trovata')
+ return src(s)
+
+@app.put('/api/sources/{source_id}')
+def update_source(source_id:int,data:SourceInput,db:Session=Depends(get_db)):
+ s=db.get(Source,source_id)
+ if s is None:raise HTTPException(404,'Fonte non trovata')
+ for field,value in data.model_dump().items():setattr(s,field,value)
+ db.commit();db.refresh(s)
+ return src(s)
 
 # Gestione immagini: import da URL, upload locale, copertina, ordine, eliminazione.
 class ImageLinkInput(BaseModel):
@@ -319,3 +337,7 @@ async def assistant(data:Question,db:Session=Depends(get_db)):
    resp.raise_for_status()
   return {'answer':resp.json()['choices'][0]['message']['content'],'configured':True}
  except Exception:raise HTTPException(502,'Servizio AI temporaneamente non disponibile')
+
+
+from .admin import create_admin_router
+app.include_router(create_admin_router(get_db))

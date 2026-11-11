@@ -125,3 +125,9 @@ docker compose -f docker-compose.yml -f docker-compose.proxy.yml up --build -d
 Il bundle viene montato come secret durante la build e in sola lettura nell'API; la verifica TLS rimane attiva. L'accesso di rete deve comunque consentire registri npm/PyPI, `commons.wikimedia.org` per la ricerca, `upload.wikimedia.org` per visualizzare le fotografie Commons e `api.openai.com` per l'assistente opzionale.
 
 Le porte Docker sono limitate a localhost. L'app resta single-user, senza autenticazione: prima di un'esposizione remota servono controlli degli accessi e limiti delle richieste. Non inserire chiavi o credenziali nei file versionati.
+
+## Pannello amministrativo
+
+Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibliografiche, aggiungere produttori/categorie/mercati e aggiornare commercializzazioni e specifiche tecniche. Le schede conservano fotografie e altri dati storici già archiviati. Le modifiche sono applicate con il pulsante Salva; il pannello segnala quelle non salvate.
+
+La gestione delle fotografie resta disponibile nella normale scheda del calcolatore, raggiungibile anche dal pannello. Non serve una migrazione aggiuntiva del database. Vedi [la guida del pannello](docs/ADMIN.md) per campi, date, fonti e API. Il pannello segue la modalità locale single-user del progetto.

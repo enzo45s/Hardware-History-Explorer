@@ -3,16 +3,17 @@ import { createRoot } from 'react-dom/client';
 import {
   Search, Clock3, Database, BarChart3, GitCompareArrows, Bot, ChevronRight, ArrowLeft,
   ExternalLink, Monitor, BookOpen, Image as ImageIcon, Upload, Link as LinkIcon,
-  Star, Trash2, Plus, X, RefreshCw, Camera, Info, Check, Images
+  Star, Trash2, Plus, X, RefreshCw, Camera, Info, Check, Images, Pencil
 } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import './style.css';
 import { api, allComputers, latestRequest } from './api.js';
+import AdminPanel from './AdminPanel.jsx';
 
 const nav = [
   ['timeline', 'Timeline', Clock3], ['catalog', 'Catalogo', Database],
   ['analysis', 'Analisi', BarChart3], ['compare', 'Confronta', GitCompareArrows],
-  ['assistant', 'Assistente AI', Bot]
+  ['assistant', 'Assistente AI', Bot], ['admin', 'Amministrazione', Pencil]
 ];
 
 function SystemCover({ src, name, year, className = '' }) {
@@ -224,6 +225,8 @@ function ComputerDetail({ computer, onClose, onChanged }) {
 
 function App() {
   const [tab, setTab] = useState('timeline');
+  const [revision, setRevision] = useState(0);
+  const [adminDirty, setAdminDirty] = useState(false);
   const [meta, setMeta] = useState({ manufacturers: [], categories: [] });
   const [items, setItems] = useState([]);
   const [filters, setFilters] = useState({ q: '', category_id: '', manufacturer_id: '', year_from: '', year_to: '' });
@@ -234,12 +237,12 @@ function App() {
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  useEffect(() => { api('/meta').then(setMeta).catch(e => setError(e.message)); }, []);
+  useEffect(() => { api('/meta').then(setMeta).catch(e => setError(e.message)); }, [revision]);
   useEffect(() => {
     const params = new URLSearchParams(Object.entries(filters).filter(([, v]) => v !== ''));
     return latestRequest(signal => allComputers(params, signal), rows => { setItems(rows); setError(''); }, e => setError(e.message));
-  }, [filters]);
-  useEffect(() => { api('/analytics').then(setAnalytics).catch(() => {}); }, []);
+  }, [filters, revision]);
+  useEffect(() => { api('/analytics').then(setAnalytics).catch(() => {}); }, [revision]);
   async function refreshComputer() {
     if (!selected) return;
     const [updated, listing] = await Promise.all([api('/computers/' + selected.id), allComputers()]);
@@ -257,11 +260,12 @@ function App() {
   return <div className="shell"><aside className="sidebar">
     <div className="brand"><div className="brand-icon"><Monitor size={22} /></div><div><b>HARDWARE</b><span>HISTORY EXPLORER</span></div></div>
     <div className="side-label">ESPLORA</div>
-    <nav>{nav.map(([id, label, Icon]) => <button key={id} onClick={() => { setTab(id); setSelected(null); }} className={tab === id ? 'active' : ''}><Icon size={18} />{label}{id === 'compare' && compare.length > 0 ? <small>{compare.length}</small> : null}</button>)}</nav>
+    <nav>{nav.map(([id, label, Icon]) => <button key={id} onClick={() => { if (id === tab && !selected) return; if (tab === 'admin' && adminDirty && !window.confirm('Ci sono modifiche non salvate. Vuoi abbandonarle?')) return; setAdminDirty(false); setTab(id); setSelected(null); }} className={tab === id ? 'active' : ''}><Icon size={18} />{label}{id === 'compare' && compare.length > 0 ? <small>{compare.length}</small> : null}</button>)}</nav>
     <div className="side-bottom"><div className="status-dot" />Archivio dimostrativo<br /><span>Versione 1.1 · Single-user</span></div>
   </aside><main><header><div className="breadcrumb">ARCHIVIO DIGITALE <ChevronRight size={14} /> {nav.find(x => x[0] === tab)?.[1].toUpperCase()}</div><div className="header-right">STORIA DELL'INFORMATICA <span className="avatar">H</span></div></header>
     <div className="content">{error && <div className="error">{error} <button onClick={() => setError('')}>×</button></div>}
       {selected ? <ComputerDetail computer={selected} onClose={() => setSelected(null)} onChanged={refreshComputer} /> : <>
+        {tab === 'admin' && <AdminPanel onSaved={() => setRevision(v => v + 1)} onDirtyChange={setAdminDirty} onOpenComputer={openComputer} />}
         {tab === 'timeline' && <><div className="eyebrow">UN VIAGGIO NELL'EVOLUZIONE TECNOLOGICA</div><h1>La storia dei <em>calcolatori.</em></h1><p className="lead">Esplora i sistemi che hanno definito l'informatica, dai mainframe ai personal computer.</p><Stats analytics={analytics} /><div className="section-title">Timeline delle innovazioni <span>{items.length} sistemi</span></div><Filters meta={meta} filters={filters} setFilters={setFilters} />
           <div className="timeline">{items.map(c => <div className="time-item" key={c.id}><div className="time-year">{c.year || '—'}</div><div className="time-line"><i /></div>
             <div className="time-card" onClick={() => openComputer(c.id)}><div className="time-top"><span className="tag">{c.categories[0]}</span><span>{c.manufacturer}</span></div><div className="time-content"><SystemCover src={c.image_url} name={c.model_name} year={c.year} className="time-photo" /><div className="time-info"><h3>{c.model_name}</h3><p>{c.description}</p></div></div>
