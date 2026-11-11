@@ -9,6 +9,8 @@ import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGri
 import './style.css';
 import { api, allComputers, latestRequest } from './api.js';
 import AdminPanel from './AdminPanel.jsx';
+import ComparisonPicker from './ComparisonPicker.jsx';
+import { comparisonSummary } from './comparison-api.js';
 
 const nav = [
   ['timeline', 'Timeline', Clock3], ['catalog', 'Catalogo', Database],
@@ -239,10 +241,17 @@ function App() {
   const [error, setError] = useState('');
   useEffect(() => { api('/meta').then(setMeta).catch(e => setError(e.message)); }, [revision]);
   useEffect(() => {
+    if (tab !== 'timeline' && tab !== 'catalog') return;
     const params = new URLSearchParams(Object.entries(filters).filter(([, v]) => v !== ''));
     return latestRequest(signal => allComputers(params, signal), rows => { setItems(rows); setError(''); }, e => setError(e.message));
-  }, [filters, revision]);
+  }, [filters, revision, tab]);
   useEffect(() => { api('/analytics').then(setAnalytics).catch(() => {}); }, [revision]);
+  // Refresh stored labels after administrative edits without loading the archive for the picker.
+  useEffect(() => {
+    if (!compare.length) return;
+    return latestRequest(signal => Promise.all(compare.map(c => api('/computers/' + c.id, { signal }))),
+      rows => setCompare(current => current.map(c => comparisonSummary(rows.find(row => row.id === c.id) || c))), () => {});
+  }, [revision]);
   async function refreshComputer() {
     if (!selected) return;
     const [updated, listing] = await Promise.all([api('/computers/' + selected.id), allComputers()]);
@@ -250,7 +259,7 @@ function App() {
     setItems(previous => previous.map(old => listing.find(c => c.id === old.id) || old));
   }
   const openComputer = async id => { try { setSelected(await api('/computers/' + id)); } catch (e) { setError(e.message); } };
-  const toggle = id => setCompare(a => a.includes(id) ? a.filter(x => x !== id) : a.length < 5 ? [...a, id] : a);
+  const toggle = computer => setCompare(a => a.some(c => c.id === computer.id) ? a.filter(c => c.id !== computer.id) : a.length < 5 ? [...a, comparisonSummary(computer)] : a);
   const ask = async e => {
     e.preventDefault(); setLoading(true); setAnswer('');
     try { const result = await api('/assistant', { method: 'POST', body: JSON.stringify({ question }) }); setAnswer(result.answer); }
@@ -269,12 +278,14 @@ function App() {
         {tab === 'timeline' && <><div className="eyebrow">UN VIAGGIO NELL'EVOLUZIONE TECNOLOGICA</div><h1>La storia dei <em>calcolatori.</em></h1><p className="lead">Esplora i sistemi che hanno definito l'informatica, dai mainframe ai personal computer.</p><Stats analytics={analytics} /><div className="section-title">Timeline delle innovazioni <span>{items.length} sistemi</span></div><Filters meta={meta} filters={filters} setFilters={setFilters} />
           <div className="timeline">{items.map(c => <div className="time-item" key={c.id}><div className="time-year">{c.year || '—'}</div><div className="time-line"><i /></div>
             <div className="time-card" onClick={() => openComputer(c.id)}><div className="time-top"><span className="tag">{c.categories[0]}</span><span>{c.manufacturer}</span></div><div className="time-content"><SystemCover src={c.image_url} name={c.model_name} year={c.year} className="time-photo" /><div className="time-info"><h3>{c.model_name}</h3><p>{c.description}</p></div></div>
-              <div className="card-foot"><span>Esplora scheda <ChevronRight size={15} /></span><button onClick={e => { e.stopPropagation(); toggle(c.id); }} className={compare.includes(c.id) ? 'added' : ''}>{compare.includes(c.id) ? '✓ Selezionato' : '+ Confronta'}</button></div></div>
+              <div className="card-foot"><span>Esplora scheda <ChevronRight size={15} /></span><button onClick={e => { e.stopPropagation(); toggle(c); }} className={compare.some(s => s.id === c.id) ? 'added' : ''}>{compare.some(s => s.id === c.id) ? '✓ Selezionato' : '+ Confronta'}</button></div></div>
           </div>)}</div></>}
         {tab === 'catalog' && <><div className="eyebrow">DATABASE STORICO</div><h1>Catalogo sistemi</h1><p className="lead">Cerca, filtra e approfondisci le caratteristiche dei calcolatori.</p><Filters meta={meta} filters={filters} setFilters={setFilters} />
-          <div className="catalog-grid">{items.map(c => <article className="catalog-card" key={c.id}><SystemCover src={c.image_url} name={c.model_name} year={c.year} className="catalog-photo" /><span className="tag">{c.categories[0]}</span><h3>{c.model_name}</h3><p className="muted">{c.manufacturer}</p><p>{c.description}</p><div className="card-foot"><button onClick={() => openComputer(c.id)}>Dettagli <ChevronRight size={15} /></button><button onClick={() => toggle(c.id)} className={compare.includes(c.id) ? 'added' : ''}>{compare.includes(c.id) ? '✓' : '+ Confronta'}</button></div></article>)}</div></>}
+          <div className="catalog-grid">{items.map(c => <article className="catalog-card" key={c.id}><SystemCover src={c.image_url} name={c.model_name} year={c.year} className="catalog-photo" /><span className="tag">{c.categories[0]}</span><h3>{c.model_name}</h3><p className="muted">{c.manufacturer}</p><p>{c.description}</p><div className="card-foot"><button onClick={() => openComputer(c.id)}>Dettagli <ChevronRight size={15} /></button><button onClick={() => toggle(c)} className={compare.some(s => s.id === c.id) ? 'added' : ''}>{compare.some(s => s.id === c.id) ? '✓' : '+ Confronta'}</button></div></article>)}</div></>}
         {tab === 'analysis' && <><div className="eyebrow">DATA EXPLORATION</div><h1>Analisi dell'archivio</h1><p className="lead">Distribuzioni temporali e per categoria calcolate direttamente dal database.</p><Stats analytics={analytics} /><div className="charts"><section className="panel"><h3>Sistemi per anno di commercializzazione</h3><div className="chart"><ResponsiveContainer><BarChart data={analytics?.by_year || []}><CartesianGrid strokeDasharray="3 3" vertical={false} /><XAxis dataKey="year" /><YAxis allowDecimals={false} /><Tooltip /><Bar dataKey="count" fill="#5d7de8" radius={[5, 5, 0, 0]} /></BarChart></ResponsiveContainer></div></section><section className="panel"><h3>Distribuzione per categoria</h3><div className="chart"><ResponsiveContainer><BarChart data={analytics?.by_category || []} layout="vertical" margin={{ left: 35 }}><XAxis type="number" allowDecimals={false} /><YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 11 }} /><Tooltip /><Bar dataKey="count" fill="#5d7de8" radius={[0, 5, 5, 0]} /></BarChart></ResponsiveContainer></div></section></div><p className="muted">Le distribuzioni riflettono il campione dimostrativo e non la totalità del mercato storico.</p></>}
-        {tab === 'compare' && <><div className="eyebrow">ANALISI COMPARATIVA</div><h1>Confronta i sistemi</h1><p className="lead">Seleziona da 2 a 5 sistemi nel catalogo o nella timeline.</p><div className="panel"><div className="compare-picks">{items.map(c => <button key={c.id} onClick={() => toggle(c.id)} className={compare.includes(c.id) ? 'chosen' : ''}>{compare.includes(c.id) ? '✓ ' : '+ '}{c.model_name}</button>)}</div></div>{compare.length >= 2 ? <Compare ids={compare} /> : <div className="empty">Seleziona almeno due calcolatori per visualizzare il confronto.</div>}</>}
+        {tab === 'compare' && <><div className="eyebrow">ANALISI COMPARATIVA</div><h1>Confronta i sistemi</h1><p className="lead">Cerca e aggiungi da 2 a 5 sistemi per confrontarli subito. Puoi selezionarli anche dal catalogo e dalla timeline.</p>
+          <ComparisonPicker selected={compare} onSelect={toggle} onRemove={id => setCompare(a => a.filter(c => c.id !== id))} />
+          {compare.length >= 2 ? <Compare ids={compare.map(c => c.id)} /> : <div className="empty">{compare.length ? 'Aggiungi un altro sistema per visualizzare il confronto.' : 'Cerca e seleziona almeno due calcolatori per visualizzare il confronto.'}</div>}</>}
         {tab === 'assistant' && <><div className="eyebrow">INTERROGAZIONE IN LINGUAGGIO NATURALE</div><h1>Assistente storico <em>AI.</em></h1><p className="lead">Fai domande sull'archivio. L'assistente riceve i dati disponibili e ne segnala le lacune.</p><div className="assistant-panel"><div className="assistant-intro"><Bot size={26} /><h3>Come posso aiutarti?</h3><p>Prova: «Quali sistemi sono stati commercializzati negli anni '70?» oppure «Confronta Apple II e IBM PC».</p></div>{answer && <div className="answer">{answer}</div>}<form onSubmit={ask} className="ask-form"><input value={question} onChange={e => setQuestion(e.target.value)} placeholder="Scrivi una domanda sulla storia dell'hardware..." minLength={3} required /><button disabled={loading}>{loading ? 'Elaborazione…' : 'Invia →'}</button></form></div><p className="muted">L'assistente non può modificare il database o eseguire query SQL arbitrarie. Richiede una chiave API OpenAI configurata sul server.</p></>}
       </>}</div></main></div>;
 }

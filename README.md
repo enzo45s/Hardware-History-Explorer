@@ -141,3 +141,15 @@ Gli errori distinguono ora timeout (504), limitazione/sovraccarico Wikimedia (50
 Dopo un aggiornamento, ricostruisci e ricrea i servizi con `docker compose up --build -d`. Puoi consultare `docker compose logs --tail=100 api`: i messaggi `Wikimedia search failed` indicano categoria e stato upstream senza includere testo della ricerca, risposte remote o credenziali del proxy.
 
 Una risposta HTTP 200 a una richiesta `siteinfo` conferma la raggiungibilità, ma non prova che una ricerca completa funzioni. Verifica anche l'operazione di ricerca dallo stesso container API: User-Agent, parametri e tempi di risposta possono differire da quelli del browser. Nelle reti con policy restrittive deve essere consentito l'accesso a `commons.wikimedia.org`.
+
+## Ricerca dei sistemi nel confronto
+
+In **Confronta**, usa **Cerca un sistema da aggiungere**: i suggerimenti appaiono mentre scrivi il nome del modello o del produttore. Ogni risultato mostra anche produttore e anno, quando disponibile. Scegli con un clic oppure con le frecce e Invio; Esc chiude i suggerimenti e il pulsante × cancella la ricerca.
+
+I sistemi scelti rimangono visibili sotto la barra, con un pulsante per rimuoverli. Da due sistemi in poi la tabella si aggiorna immediatamente, fino al limite di cinque. La selezione da catalogo e timeline rimane disponibile. La ricerca nel confronto consulta tutto l'archivio, indipendentemente dai filtri lasciati nel catalogo, ed esclude i sistemi già selezionati.
+
+Per evitare un elenco ingestibile, vengono mostrati fino a otto suggerimenti: se ce ne sono altri, affina il testo. Le richieste attendono una breve pausa di digitazione e le risposte obsolete sono ignorate. Sono previsti messaggi per caricamento, nessun risultato ed errore con Riprova.
+
+L'endpoint `GET /api/computers/suggestions?q=...` cerca nel database e restituisce solo ID, nome, produttore e anno, senza caricare specifiche o altre relazioni. Accetta `limit` da 1 a 10 (il pannello usa 8) e fino a cinque `exclude_ids` ripetuti. La query massima è di 180 caratteri; `%` e `_` sono cercati letteralmente. Non sono necessarie migrazioni del database.
+
+Verifiche della modifica: 74 test backend superati su PostgreSQL; 73 superati e 1 specifico PostgreSQL saltato su SQLite; 10 test frontend superati. Build e avvio Docker riusciti. Nel browser sono stati verificati tastiera, aggiunta/rimozione, limite, duplicati, ricerca oltre 100 record, filtri indipendenti, risultati vuoti, errori, risposte fuori ordine e layout mobile.

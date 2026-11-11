@@ -10,8 +10,8 @@ from typing import Optional, Literal
 from fastapi import FastAPI, Depends, HTTPException, Query, UploadFile, File, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field, HttpUrl, ConfigDict, field_validator
-from sqlalchemy import create_engine, select, func, or_, event
+from pydantic import BaseModel, Field, HttpUrl, ConfigDict, PositiveInt, field_validator
+from sqlalchemy import create_engine, select, func, or_, event, case
 from sqlalchemy.orm import Session, sessionmaker, selectinload
 from .models import *
 from .seed import seed
@@ -98,6 +98,20 @@ def computers(q:str='',manufacturer_id:Optional[int]=None,category_id:Optional[i
  else:stmt=stmt.order_by(first_release.asc().nulls_last(),Computer.model_name,Computer.id)
  rows=db.scalars(stmt.options(*OVERVIEW_EAGER).offset(offset).limit(limit)).unique().all()
  return {'total':total,'items':[overview(c) for c in rows]}
+@app.get('/api/computers/suggestions')
+def computer_suggestions(q:str=Query(min_length=1,max_length=180),limit:int=Query(8,ge=1,le=10),
+                         exclude_ids:list[PositiveInt]=Query(default=[],max_length=5),db:Session=Depends(get_db)):
+ q=q.strip()
+ if not q:return {'items':[],'has_more':False}
+ first_release=select(func.min(Release.release_date)).where(Release.computer_id==Computer.id).correlate(Computer).scalar_subquery()
+ stmt=select(Computer.id,Computer.model_name,Manufacturer.name.label('manufacturer'),first_release.label('first_release')).join(Computer.manufacturer)
+ stmt=stmt.where(or_(Computer.model_name.icontains(q,autoescape=True),Manufacturer.name.icontains(q,autoescape=True)))
+ if exclude_ids:stmt=stmt.where(Computer.id.not_in(exclude_ids))
+ stmt=stmt.order_by(case((Computer.model_name.istartswith(q,autoescape=True),0),else_=1),Computer.model_name,Manufacturer.name,Computer.id).limit(limit+1)
+ rows=db.execute(stmt).all()
+ return {'items':[{'id':r.id,'model_name':r.model_name,'manufacturer':r.manufacturer,
+                  'year':r.first_release.year if r.first_release else None} for r in rows[:limit]],'has_more':len(rows)>limit}
+
 @app.get('/api/computers/{computer_id}')
 def computer(computer_id:int,db:Session=Depends(get_db)):
  c=db.scalar(select(Computer).where(Computer.id==computer_id).options(*EAGER))
