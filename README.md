@@ -131,3 +131,13 @@ Le porte Docker sono limitate a localhost. L'app resta single-user, senza autent
 Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibliografiche, aggiungere produttori/categorie/mercati e aggiornare commercializzazioni e specifiche tecniche. Le schede conservano fotografie e altri dati storici già archiviati. Le modifiche sono applicate con il pulsante Salva; il pannello segnala quelle non salvate.
 
 La gestione delle fotografie resta disponibile nella normale scheda del calcolatore, raggiungibile anche dal pannello. Non serve una migrazione aggiuntiva del database. Vedi [la guida del pannello](docs/ADMIN.md) per campi, date, fonti e API. Il pannello segue la modalità locale single-user del progetto.
+
+### Problemi nella ricerca Wikimedia Commons
+
+La ricerca Commons è gratuita e non usa la chiave OpenAI. Il backend si identifica con lo User-Agent `HardwareHistoryExplorer/1.2 (https://github.com/enzo45s/Hardware-History-Explorer)`, richiede esplicitamente il formato JSON con pagine indicizzate e attende fino a 30 secondi per ciascuna fase della richiesta HTTP.
+
+Gli errori distinguono ora timeout (504), limitazione/sovraccarico Wikimedia (503, conservando `Retry-After` numerico), HTTP 403, problemi del proxy, certificati HTTPS e risposte inattese. Un risultato senza fotografie rimane una ricerca riuscita con elenco vuoto. Non disabilitare la verifica TLS: per una CA privata usa l'override proxy descritto sopra.
+
+Dopo un aggiornamento, ricostruisci e ricrea i servizi con `docker compose up --build -d`. Puoi consultare `docker compose logs --tail=100 api`: i messaggi `Wikimedia search failed` indicano categoria e stato upstream senza includere testo della ricerca, risposte remote o credenziali del proxy.
+
+Una risposta HTTP 200 a una richiesta `siteinfo` conferma la raggiungibilità, ma non prova che una ricerca completa funzioni. Verifica anche l'operazione di ricerca dallo stesso container API: User-Agent, parametri e tempi di risposta possono differire da quelli del browser. Nelle reti con policy restrittive deve essere consentito l'accesso a `commons.wikimedia.org`.

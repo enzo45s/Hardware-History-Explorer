@@ -15,6 +15,7 @@ from sqlalchemy import create_engine, select, func, or_, event
 from sqlalchemy.orm import Session, sessionmaker, selectinload
 from .models import *
 from .seed import seed
+from .commons import search_pages
 
 UPLOAD_DIR=Path(os.getenv('UPLOAD_DIR',str(Path(__file__).resolve().parents[1] / 'uploads')))
 UPLOAD_DIR.mkdir(parents=True,exist_ok=True)
@@ -277,23 +278,7 @@ def plain_html(value):
 
 @app.get('/api/images/search')
 async def search_commons(q:str=Query(min_length=2,max_length=90),limit:int=Query(10,ge=1,le=12)):
- # URL fisso: la ricerca non può essere usata per contattare host arbitrari.
- params={'action':'query','format':'json','generator':'search','gsrsearch':q,
-         'gsrnamespace':'6','gsrlimit':str(limit),'prop':'imageinfo',
-         'iiprop':'url|extmetadata|mime','iiurlwidth':'500',
-         'iiextmetadatafilter':'Artist|Attribution|LicenseShortName|LicenseUrl|Copyrighted|UsageTerms'}
- try:
-  async with httpx.AsyncClient(timeout=15,headers={'User-Agent':'HardwareHistoryExplorer/1.1 (educational local project; image metadata from Wikimedia Commons)'}) as client:
-   response=await client.get('https://commons.wikimedia.org/w/api.php',params=params)
-   response.raise_for_status()
-   payload=response.json()
-   if not isinstance(payload,dict) or 'error' in payload:raise ValueError('Risposta Wikimedia non valida')
-   query=payload.get('query') or {}
-   if not isinstance(query,dict):raise ValueError('Query Wikimedia non valida')
-   pages=query.get('pages',{})
-   if not isinstance(pages,dict):raise ValueError('Pagine Wikimedia non valide')
- except (httpx.HTTPError,ValueError) as exc:
-  raise HTTPException(502,'Ricerca Wikimedia Commons temporaneamente non disponibile') from exc
+ pages=await search_pages(q,limit)
  results=[]
  for page in pages.values():
   if not isinstance(page,dict):continue
