@@ -39,7 +39,7 @@ Non è stato eseguito scraping massivo. Per dettagli: [valutazione fonti](IMPORT
 
 ## Dati storici effettivamente importati
 
-Database SQLite separato di prova `/tmp/hhe-real-import.sqlite`:
+Database SQLite separato di prova `/tmp/hhe-real-import-final.sqlite`:
 
 - **1 modello reale: Apple II**, da un sottoinsieme dei record canonici RetroFlops.
 - Produttore, categoria, configurazione con RAM non specificata e data di
@@ -114,3 +114,17 @@ recupero dei dati per l'assistente, adattamento e gestione dei fallimenti.
 I dati dimostrativi già presenti non sono stati riscritti e non si eseguono
 importazioni automatiche all'avvio. Per istruzioni e limiti di abbinamento
 vedi [la guida](IMPORTING.md).
+
+## Consegna GitHub
+
+Cinque commit coerenti sono stati inviati al branch della funzionalità, seguiti
+da questo aggiornamento del resoconto. La creazione effettiva della PR con
+`gh pr create --base feat/admin-panel --head feat/historical-data-import`
+è stata tentata ma bloccata con `Post https://api.github.com/graphql: Forbidden`
+(HTTP 403). Il push Git è riuscito; non è un rifiuto automatico di approvazione.
+Non viene dichiarata una PR già aperta o una CI remota già eseguita.
+
+[Apri il confronto per creare la PR](https://github.com/enzo45s/Hardware-History-Explorer/compare/feat/admin-panel...feat/historical-data-import?expand=1).
+Titolo proposto: «Importazione storica con staging, fonti e revisione dei conflitti»;
+descrizione pronta in [IMPORT_PR.md](IMPORT_PR.md). Il riferimento remoto di
+main è rimasto `6f96f2b79bc2a6dd59e419e2a1037ccbd6b5ded2`.
