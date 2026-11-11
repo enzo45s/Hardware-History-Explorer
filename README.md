@@ -27,15 +27,17 @@ Se stai **aggiornando la versione 1.0**, scompatta la nuova versione in una cart
 
 ## Sviluppo senza Docker
 
-Backend (Python 3.12+):
+Backend (Python 3.12+, verificato su Linux e Docker):
 
 ```bash
 cd backend
 python -m venv .venv
 # attiva il virtualenv
-pip install -r requirements.txt
+pip install -r requirements.lock
 uvicorn app.main:app --reload
 ```
+
+Se hai creato `.env` nella radice del repository, avvia con `uvicorn app.main:app --reload --env-file ../.env`; il comando senza `--env-file` usa solo le variabili già esportate.
 
 In assenza di `DATABASE_URL` si usa SQLite (`hardware_history.db`); le fotografie vengono salvate in `backend/uploads` a meno che non sia impostato `UPLOAD_DIR`.
 
@@ -43,7 +45,7 @@ Frontend (Node.js 20+):
 
 ```bash
 cd frontend
-npm install
+npm ci
 npm run dev
 ```
 
@@ -82,3 +84,44 @@ Questo progetto è progettato per uso **locale single-user**: gli endpoint di mo
 cd backend
 pytest -q
 ```
+
+## Correzioni, dipendenze e verifiche
+
+Vedi [il rapporto tecnico](docs/REVIEW.md) per architettura, correzioni, limiti e risultati. I filtri per anno si riferiscono alla **prima commercializzazione** del sistema; sono validi gli anni da 1 a 9999. Il catalogo legge tutte le pagine API e ignora le risposte di ricerche ormai superate.
+
+Usa `backend/requirements.lock` e `npm ci` per riprodurre le versioni verificate. `backend/requirements.txt` mantiene i requisiti diretti; dopo un aggiornamento intenzionale, aggiorna il lock da un virtualenv pulito e riesegui test e audit. Pillow 13 è richiesto per le correzioni di sicurezza della libreria immagini.
+
+```bash
+cd backend
+python -m pytest -q
+cd ../frontend
+npm test
+npm run build
+npm audit
+```
+
+I test backend usano database e upload temporanei. Per testare PostgreSQL, crea un database **dedicato** con nome che termina in `_test` e imposta `HHE_TEST_DATABASE_URL` prima di `python -m pytest -q`. La suite ricrea le tabelle in quel database: non indicare il database dell'applicazione. In assenza della variabile usa SQLite. La CI esegue entrambe le modalità, i test/build frontend e la build Docker.
+
+### Database già esistenti
+
+`create_all()` non modifica i vincoli di tabelle già presenti. Per applicare il nuovo controllo sulla scala delle recensioni, fai un backup, ferma l'API ed esegui da `backend`:
+
+```bash
+# DATABASE_URL deve indicare il database da migrare, tramite ambiente sicuro.
+python -m migrations.review_score
+```
+
+La migrazione supporta PostgreSQL e SQLite, è ripetibile e preserva righe e riferimenti. Si ferma senza modificare dati se trova punteggi fuori scala, uno schema inatteso o violazioni di chiave esterna. I punteggi richiedono `max_score` positivo; prima di riprovare, esamina e correggi consapevolmente gli eventuali dati storici invalidi. In Docker il modulo è incluso nell'immagine API: con l'API fermata puoi usare `docker compose run --rm --no-deps api python -m migrations.review_score` mentre il database è avviato. Non usare `down -v`.
+
+### Proxy HTTPS con CA privata
+
+Solo se la rete usa una CA privata affidabile, indica un bundle PEM con radici pubbliche e CA del proxy e usa l'override opzionale:
+
+```bash
+export PROXY_CA_BUNDLE=/percorso/assoluto/ca-bundle.pem
+docker compose -f docker-compose.yml -f docker-compose.proxy.yml up --build -d
+```
+
+Il bundle viene montato come secret durante la build e in sola lettura nell'API; la verifica TLS rimane attiva. L'accesso di rete deve comunque consentire registri npm/PyPI, `commons.wikimedia.org` per la ricerca, `upload.wikimedia.org` per visualizzare le fotografie Commons e `api.openai.com` per l'assistente opzionale.
+
+Le porte Docker sono limitate a localhost. L'app resta single-user, senza autenticazione: prima di un'esposizione remota servono controlli degli accessi e limiti delle richieste. Non inserire chiavi o credenziali nei file versionati.

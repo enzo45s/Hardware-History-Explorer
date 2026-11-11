@@ -7,23 +7,7 @@ import {
 } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import './style.css';
-
-async function api(path, options = {}) {
-  const isForm = options.body instanceof FormData;
-  const response = await fetch('/api' + path, {
-    ...options,
-    headers: { ...(isForm ? {} : { 'Content-Type': 'application/json' }), ...options.headers }
-  });
-  if (!response.ok) {
-    let explanation = 'Errore ' + response.status;
-    try {
-      const payload = await response.json();
-      if (typeof payload.detail === 'string') explanation = payload.detail;
-    } catch { /* risposta non JSON */ }
-    throw Error(explanation);
-  }
-  return response.status === 204 ? null : response.json();
-}
+import { api, allComputers, latestRequest } from './api.js';
 
 const nav = [
   ['timeline', 'Timeline', Clock3], ['catalog', 'Catalogo', Database],
@@ -199,15 +183,15 @@ function Filters({ meta, filters, setFilters }) {
     <div className="search"><Search size={17} /><input placeholder="Cerca un sistema…" value={filters.q} onChange={e => update('q', e.target.value)} /></div>
     <select value={filters.category_id} onChange={e => update('category_id', e.target.value)} aria-label="Categoria"><option value="">Tutte le categorie</option>{meta.categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}</select>
     <select value={filters.manufacturer_id} onChange={e => update('manufacturer_id', e.target.value)} aria-label="Produttore"><option value="">Tutti i produttori</option>{meta.manufacturers.map(m => <option key={m.id} value={m.id}>{m.name}</option>)}</select>
-    <input className="year-input" type="number" placeholder="Da anno" value={filters.year_from} onChange={e => update('year_from', e.target.value)} />
-    <input className="year-input" type="number" placeholder="A anno" value={filters.year_to} onChange={e => update('year_to', e.target.value)} />
+    <input className="year-input" type="number" min="1" max="9999" placeholder="Da anno" value={filters.year_from} onChange={e => update('year_from', e.target.value)} />
+    <input className="year-input" type="number" min="1" max="9999" placeholder="A anno" value={filters.year_to} onChange={e => update('year_to', e.target.value)} />
     <button onClick={() => setFilters({ q: '', category_id: '', manufacturer_id: '', year_from: '', year_to: '' })}>Reset</button>
   </div>;
 }
 
 function Compare({ ids }) {
   const [data, setData] = useState([]);
-  useEffect(() => { api('/compare?ids=' + ids.join(',')).then(setData).catch(() => setData([])); }, [ids.join(',')]);
+  useEffect(() => latestRequest(signal => api('/compare?ids=' + ids.join(','), { signal }), setData, () => setData([])), [ids.join(',')]);
   const specs = c => Object.fromEntries(c.configurations.flatMap(v => v.specifications.map(s => [s.component_type + ' · ' + s.property_name, String(s.numeric_value ?? s.text_value) + (s.unit ? ' ' + s.unit : '')])));
   const keys = [...new Set(data.flatMap(c => Object.keys(specs(c))))];
   return <div className="panel compare-scroll"><table className="comparison"><thead><tr><th>Caratteristica</th>{data.map(c => <th key={c.id}>{c.model_name}</th>)}</tr></thead><tbody>
@@ -253,14 +237,14 @@ function App() {
   useEffect(() => { api('/meta').then(setMeta).catch(e => setError(e.message)); }, []);
   useEffect(() => {
     const params = new URLSearchParams(Object.entries(filters).filter(([, v]) => v !== ''));
-    api('/computers?' + params).then(r => setItems(r.items)).catch(e => setError(e.message));
+    return latestRequest(signal => allComputers(params, signal), rows => { setItems(rows); setError(''); }, e => setError(e.message));
   }, [filters]);
   useEffect(() => { api('/analytics').then(setAnalytics).catch(() => {}); }, []);
   async function refreshComputer() {
     if (!selected) return;
-    const [updated, listing] = await Promise.all([api('/computers/' + selected.id), api('/computers')]);
+    const [updated, listing] = await Promise.all([api('/computers/' + selected.id), allComputers()]);
     setSelected(updated);
-    setItems(previous => previous.map(old => listing.items.find(c => c.id === old.id) || old));
+    setItems(previous => previous.map(old => listing.find(c => c.id === old.id) || old));
   }
   const openComputer = async id => { try { setSelected(await api('/computers/' + id)); } catch (e) { setError(e.message); } };
   const toggle = id => setCompare(a => a.includes(id) ? a.filter(x => x !== id) : a.length < 5 ? [...a, id] : a);

@@ -104,7 +104,7 @@ class Sale(Base):
  sources=relationship('Source',secondary=sale_source)
 class Review(Base):
  __tablename__='reviews'
- __table_args__=(CheckConstraint('score IS NULL OR (max_score > 0 AND score >= 0 AND score <= max_score)','valid_score'),)
+ __table_args__=(CheckConstraint('score IS NULL OR (max_score IS NOT NULL AND max_score > 0 AND score >= 0 AND score <= max_score)','valid_score'),)
  id:Mapped[int]=mapped_column(primary_key=True)
  computer_id:Mapped[int]=mapped_column(ForeignKey('computers.id',ondelete='CASCADE'))
  publication:Mapped[str]=mapped_column(String(160))

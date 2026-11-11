@@ -1,4 +1,4 @@
-import os, json, re, uuid, html
+import os, json, uuid, html
 from pathlib import Path
 from io import BytesIO
 from html.parser import HTMLParser
@@ -6,12 +6,12 @@ from PIL import Image, ImageOps, UnidentifiedImageError
 import httpx
 from datetime import date
 from contextlib import asynccontextmanager
-from typing import Optional
+from typing import Optional, Literal
 from fastapi import FastAPI, Depends, HTTPException, Query, UploadFile, File, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field, field_validator
-from sqlalchemy import create_engine, select, func, or_
+from pydantic import BaseModel, Field, HttpUrl, field_validator
+from sqlalchemy import create_engine, select, func, or_, event
 from sqlalchemy.orm import Session, sessionmaker, selectinload
 from .models import *
 from .seed import seed
@@ -22,14 +22,27 @@ MAX_UPLOAD_BYTES=10*1024*1024
 Image.MAX_IMAGE_PIXELS=20_000_000
 URL=os.getenv('DATABASE_URL','sqlite:///./hardware_history.db')
 engine=create_engine(URL,connect_args={'check_same_thread':False} if URL.startswith('sqlite') else {},pool_pre_ping=True)
+if engine.dialect.name == 'sqlite':
+ @event.listens_for(engine, 'connect')
+ def enable_foreign_keys(connection, _):
+  cursor=connection.cursor()
+  cursor.execute('PRAGMA foreign_keys=ON')
+  cursor.close()
 SessionLocal=sessionmaker(bind=engine)
+class MediaFiles(StaticFiles):
+ async def get_response(self,path,scope):
+  response=await super().get_response(path,scope)
+  # Uploads are WebP; do not rely on an OS MIME database in slim images.
+  if path.endswith('.webp') and response.status_code in (200,206):
+   response.headers['content-type']='image/webp'
+  return response
 @asynccontextmanager
 async def lifespan(app):
  Base.metadata.create_all(engine)
  with SessionLocal() as db: seed(db)
  yield
 app=FastAPI(title='Hardware History Explorer API',version='1.1.0',lifespan=lifespan)
-app.mount('/media',StaticFiles(directory=str(UPLOAD_DIR)),name='media')
+app.mount('/media',MediaFiles(directory=str(UPLOAD_DIR)),name='media')
 app.add_middleware(CORSMiddleware,allow_origins=os.getenv('CORS_ORIGINS','http://localhost:5173,http://localhost:8080').split(','),allow_methods=['*'],allow_headers=['*'])
 def get_db():
  with SessionLocal() as db:yield db
@@ -64,18 +77,26 @@ def health():return {'status':'ok'}
 @app.get('/api/meta')
 def meta(db:Session=Depends(get_db)):
  return {'manufacturers':[{'id':x.id,'name':x.name} for x in db.scalars(select(Manufacturer).order_by(Manufacturer.name))],'categories':[{'id':x.id,'name':x.name} for x in db.scalars(select(Category).order_by(Category.name))],'markets':[{'id':x.id,'name':x.name} for x in db.scalars(select(Market).order_by(Market.name))]}
+OVERVIEW_EAGER=(selectinload(Computer.images),selectinload(Computer.manufacturer),selectinload(Computer.categories),selectinload(Computer.releases))
 @app.get('/api/computers')
-def computers(q:str='',manufacturer_id:Optional[int]=None,category_id:Optional[int]=None,year_from:Optional[int]=None,year_to:Optional[int]=None,sort:str='year',limit:int=Query(100,ge=1,le=500),offset:int=Query(0,ge=0),db:Session=Depends(get_db)):
- stmt=select(Computer).options(*EAGER)
+def computers(q:str='',manufacturer_id:Optional[int]=None,category_id:Optional[int]=None,
+              year_from:Optional[int]=Query(None,ge=1,le=9999),year_to:Optional[int]=Query(None,ge=1,le=9999),
+              sort:Literal['year','name']='year',limit:int=Query(100,ge=1,le=500),offset:int=Query(0,ge=0),db:Session=Depends(get_db)):
+ if year_from is not None and year_to is not None and year_from>year_to:
+  raise HTTPException(422,'L’anno iniziale deve precedere quello finale')
+ first_release=select(func.min(Release.release_date)).where(Release.computer_id==Computer.id).correlate(Computer).scalar_subquery()
+ stmt=select(Computer)
  if q:stmt=stmt.where(or_(Computer.model_name.ilike(f'%{q}%'),Computer.description.ilike(f'%{q}%')))
  if manufacturer_id:stmt=stmt.where(Computer.manufacturer_id==manufacturer_id)
  if category_id:stmt=stmt.where(Computer.categories.any(Category.id==category_id))
- if year_from or year_to:
-  stmt=stmt.where(Computer.releases.any(Release.release_date>=date(year_from or 1,1,1))) if year_from else stmt
-  stmt=stmt.where(Computer.releases.any(Release.release_date<=date(year_to,12,31))) if year_to else stmt
- rows=[overview(c) for c in db.scalars(stmt).unique().all()]
- rows.sort(key=(lambda c:(c['manufacturer'],c['model_name'])) if sort=='name' else (lambda c:(c['year'] is None,c['year'] or 9999,c['model_name'])))
- return {'total':len(rows),'items':rows[offset:offset+limit]}
+ # Match the first commercial release displayed in the timeline.
+ if year_from is not None:stmt=stmt.where(first_release>=date(year_from,1,1))
+ if year_to is not None:stmt=stmt.where(first_release<=date(year_to,12,31))
+ total=db.scalar(select(func.count()).select_from(stmt.subquery()))
+ if sort=='name':stmt=stmt.join(Computer.manufacturer).order_by(Manufacturer.name,Computer.model_name,Computer.id)
+ else:stmt=stmt.order_by(first_release.asc().nulls_last(),Computer.model_name,Computer.id)
+ rows=db.scalars(stmt.options(*OVERVIEW_EAGER).offset(offset).limit(limit)).unique().all()
+ return {'total':total,'items':[overview(c) for c in rows]}
 @app.get('/api/computers/{computer_id}')
 def computer(computer_id:int,db:Session=Depends(get_db)):
  c=db.scalar(select(Computer).where(Computer.id==computer_id).options(*EAGER))
@@ -83,7 +104,7 @@ def computer(computer_id:int,db:Session=Depends(get_db)):
  return full(c)
 @app.get('/api/analytics')
 def analytics(category_id:Optional[int]=None,manufacturer_id:Optional[int]=None,db:Session=Depends(get_db)):
- stmt=select(Computer).options(*EAGER)
+ stmt=select(Computer).options(*OVERVIEW_EAGER)
  if category_id:stmt=stmt.where(Computer.categories.any(Category.id==category_id))
  if manufacturer_id:stmt=stmt.where(Computer.manufacturer_id==manufacturer_id)
  rows=[overview(c) for c in db.scalars(stmt).unique()]
@@ -98,15 +119,27 @@ def compare(ids:str,db:Session=Depends(get_db)):
  try:nums=list(dict.fromkeys(int(x) for x in ids.split(',')))
  except ValueError:raise HTTPException(400,'IDs non validi')
  if not 2<=len(nums)<=5:raise HTTPException(400,'Confronta da 2 a 5 calcolatori')
- return [full(c) for c in db.scalars(select(Computer).where(Computer.id.in_(nums)).options(*EAGER)).unique()]
+ rows={c.id:c for c in db.scalars(select(Computer).where(Computer.id.in_(nums)).options(*EAGER)).unique()}
+ if len(rows)!=len(nums):raise HTTPException(404,'Uno o più calcolatori non esistono')
+ return [full(rows[n]) for n in nums]
+def web_url(value,https_only=True):
+ url=HttpUrl(value)
+ if (https_only and url.scheme!='https') or url.username is not None or url.password is not None:
+  raise ValueError('URL HTTPS senza credenziali richiesto' if https_only else 'URL HTTP(S) senza credenziali richiesto')
+ return str(url)
+
 class SourceInput(BaseModel):
  title:str=Field(min_length=2,max_length=300)
- url:Optional[str]=None
- publisher:Optional[str]=None
- source_type:str='website'
+ url:Optional[str]=Field(default=None,max_length=800)
+ publisher:Optional[str]=Field(default=None,max_length=180)
+ source_type:str=Field(default='website',min_length=1,max_length=60)
+
+ @field_validator('url',mode='before')
+ @classmethod
+ def validate_url(cls,value):
+  return web_url(value,https_only=False) if value is not None else None
 @app.post('/api/sources',status_code=201)
 def create_source(data:SourceInput,db:Session=Depends(get_db)):
- if data.url and not re.match(r'^https?://',data.url):raise HTTPException(422,'URL http(s) richiesto')
  s=Source(**data.model_dump());db.add(s);db.commit();db.refresh(s);return src(s)
 @app.get('/api/sources')
 def sources(db:Session=Depends(get_db)):return [src(s) for s in db.scalars(select(Source).order_by(Source.title))]
@@ -122,15 +155,13 @@ class ImageLinkInput(BaseModel):
  source_url:str|None=Field(default=None,max_length=1600)
  is_primary:bool=False
 
- @field_validator('image_url','thumbnail_url','license_url','source_url')
+ @field_validator('image_url','thumbnail_url','license_url','source_url',mode='before')
  @classmethod
  def validate_https(cls,value):
-  if value is not None and not value.startswith('https://'):
-   raise ValueError('È richiesto un URL HTTPS')
-  return value
+  return web_url(value) if value is not None else None
 
 def ensure_computer(db,computer_id):
- c=db.get(Computer,computer_id)
+ c=db.scalar(select(Computer).where(Computer.id==computer_id).with_for_update())
  if c is None:raise HTTPException(404,'Calcolatore non trovato')
  return c
 
@@ -154,7 +185,7 @@ def add_image_link(computer_id:int,payload:ImageLinkInput,db:Session=Depends(get
  return save_image(db,c,ComputerImage(remote_url=payload.image_url,**data))
 
 @app.post('/api/computers/{computer_id}/images/upload',status_code=201)
-async def upload_image(computer_id:int,file:UploadFile=File(...),caption:str|None=Form(None),
+def upload_image(computer_id:int,file:UploadFile=File(...),caption:str|None=Form(None),
                        author:str|None=Form(None),license_name:str|None=Form(None),
                        license_url:str|None=Form(None),source_url:str|None=Form(None),
                        is_primary:bool=Form(False),db:Session=Depends(get_db)):
@@ -162,9 +193,11 @@ async def upload_image(computer_id:int,file:UploadFile=File(...),caption:str|Non
  for value,maxlen in ((caption,300),(author,350),(license_name,160),(license_url,800),(source_url,1600)):
   if value is not None and len(value)>maxlen:raise HTTPException(422,'Metadati troppo lunghi')
  for value in (license_url,source_url):
-  if value and not value.startswith('https://'):raise HTTPException(422,'È richiesto un URL HTTPS')
- raw=await file.read(MAX_UPLOAD_BYTES+1)
- await file.close()
+  if value:
+   try:web_url(value)
+   except ValueError as exc:raise HTTPException(422,'URL HTTPS valido senza credenziali richiesto') from exc
+ try:raw=file.file.read(MAX_UPLOAD_BYTES+1)
+ finally:file.file.close()
  if len(raw)>MAX_UPLOAD_BYTES:raise HTTPException(413,'Immagine troppo grande: massimo 10 MB')
  try:
   with Image.open(BytesIO(raw)) as src:
@@ -221,7 +254,7 @@ class StripHtml(HTMLParser):
  def text(self):return html.unescape(''.join(self.parts)).strip()
 
 def plain_html(value):
- parser=StripHtml();parser.feed(value or '')
+ parser=StripHtml();parser.feed(value if isinstance(value,str) else '')
  return parser.text()[:350]
 
 @app.get('/api/images/search')
@@ -235,33 +268,46 @@ async def search_commons(q:str=Query(min_length=2,max_length=90),limit:int=Query
   async with httpx.AsyncClient(timeout=15,headers={'User-Agent':'HardwareHistoryExplorer/1.1 (educational local project; image metadata from Wikimedia Commons)'}) as client:
    response=await client.get('https://commons.wikimedia.org/w/api.php',params=params)
    response.raise_for_status()
-   pages=response.json().get('query',{}).get('pages',{})
+   payload=response.json()
+   if not isinstance(payload,dict) or 'error' in payload:raise ValueError('Risposta Wikimedia non valida')
+   query=payload.get('query') or {}
+   if not isinstance(query,dict):raise ValueError('Query Wikimedia non valida')
+   pages=query.get('pages',{})
+   if not isinstance(pages,dict):raise ValueError('Pagine Wikimedia non valide')
  except (httpx.HTTPError,ValueError) as exc:
   raise HTTPException(502,'Ricerca Wikimedia Commons temporaneamente non disponibile') from exc
  results=[]
  for page in pages.values():
+  if not isinstance(page,dict):continue
   infos=page.get('imageinfo') or []
-  if not infos:continue
+  if not isinstance(infos,list) or not infos or not isinstance(infos[0],dict):continue
   info=infos[0]
   if info.get('mime') not in ('image/jpeg','image/png','image/webp','image/gif'):continue
   properties=info.get('extmetadata') or {}
-  def field(k):return plain_html(properties.get(k,{}).get('value',''))
+  if not isinstance(properties,dict):continue
+  def metadata(k):
+   item=properties.get(k,{})
+   return item.get('value','') if isinstance(item,dict) else ''
+  def field(k):return plain_html(metadata(k))
   link=info.get('url','')
-  if not link.startswith('https://'):continue
+  if not isinstance(link,str) or not link.startswith('https://'):continue
   thumb=info.get('thumburl') or link
-  license_url=properties.get('LicenseUrl',{}).get('value') or None
-  results.append({'title':page.get('title',''),'image_url':link,'thumbnail_url':thumb,
-                  'source_url':info.get('descriptionurl',''),
-                  'author':field('Attribution') or field('Artist'),
-                  'license_name':field('LicenseShortName') or 'Licenza da verificare',
-                  'license_url':license_url if license_url and license_url.startswith('https://') else None})
+  license_url=metadata('LicenseUrl') or None
+  try:
+   image=ImageLinkInput(image_url=link,thumbnail_url=thumb,
+                        caption=str(page.get('title',''))[:300],source_url=info.get('descriptionurl') or None,
+                        author=field('Attribution') or field('Artist'),license_name=field('LicenseShortName')[:160] or 'Licenza da verificare',
+                        license_url=license_url if isinstance(license_url,str) and license_url.startswith('https://') else None)
+  except ValueError:continue
+  results.append({'title':image.caption,'image_url':image.image_url,'thumbnail_url':image.thumbnail_url,
+                  'source_url':image.source_url,'author':image.author,'license_name':image.license_name,'license_url':image.license_url})
  return {'items':results[:limit],'notice':'Verifica sempre autore, licenza e corrispondenza della fotografia prima di associarla al sistema.'}
 
 class Question(BaseModel):question:str=Field(min_length=3,max_length=1000)
 @app.post('/api/assistant')
 async def assistant(data:Question,db:Session=Depends(get_db)):
  import httpx
- rows=[full(c) for c in db.scalars(select(Computer).options(*EAGER)).unique().all()][:100]
+ rows=[full(c) for c in db.scalars(select(Computer).order_by(Computer.id).limit(100).options(*EAGER)).unique().all()]
  # The model receives bounded, read-only database evidence. It never runs SQL.
  compact=[{'id':r['id'],'model':r['model_name'],'manufacturer':r['manufacturer'],'year':r['year'],'categories':r['categories'],'specifications':[{'property':s['property_name'],'value':s['numeric_value'] if s['numeric_value'] is not None else s['text_value'],'unit':s['unit']} for v in r['configurations'] for s in v['specifications']],'sources':r['sources']} for r in rows]
  key=os.getenv('OPENAI_API_KEY','')
