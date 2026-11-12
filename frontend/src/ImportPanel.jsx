@@ -108,9 +108,6 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
     <p className="muted">Uso locale single-user. Non pubblicare queste funzioni su Internet senza autenticazione e protezioni adeguate.</p>
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
-    <ArchivePanel onReset={() => { setJob(null); setCatalogRevision(revision => revision + 1);
-      api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onArchiveReset(); }} />
-    <DuplicatePanel key={catalogRevision} onSaved={() => { setJob(null); api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onSaved(); }} />
     <section className="panel">
       <label className="admin-field"><span>Fonte dati</span><select value={provider} disabled={busy} onChange={e => { setProvider(e.target.value); setRights(false); }}>
         {providers.map(p => <option value={p.id} key={p.id}>{p.name}</option>)}
@@ -176,5 +173,8 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
           <button disabled={busy || offset + 25 >= job.total} onClick={() => open(job.id, offset + 25)}>Righe successive</button></div>
       </>}
     </section></div>
+    <DuplicatePanel key={catalogRevision} onSaved={() => { setJob(null); api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onSaved(); }} />
+    <ArchivePanel onReset={() => { setJob(null); setCatalogRevision(revision => revision + 1);
+      api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onArchiveReset(); }} />
   </div>;
 }
