@@ -12,9 +12,10 @@ git pull --ff-only
 docker compose up --build -d
 ```
 
-L'avvio crea cinque tabelle additive: `import_jobs`, `import_rows`,
-`import_identities`, `import_claims`, `catalog_reconciliations`. L'ultima
-conserva l'audit delle riconciliazioni esplicitamente richieste dall'operatore.
+L'avvio crea sei tabelle additive: `import_jobs`, `import_rows`,
+`import_identities`, `import_claims`, `catalog_reconciliations`, `archive_resets`.
+Le ultime due conservano l'audit delle riconciliazioni e degli svuotamenti
+esplicitamente richiesti dall'operatore. Un aggiornamento non svuota il catalogo.
 Nessuna tabella del catalogo viene
 ricreata e nessun dato viene cancellato. Non servono nuove variabili d'ambiente
 o chiavi API per gli importatori. Per una migrazione esplicita, dopo un backup
@@ -132,6 +133,11 @@ prima dell'upload. Nessuna formula viene eseguita. Limiti: **8 MB e 1000 righe**
 per lotto; suddividi dataset più grandi.
 
 ## Deduplicazione e qualità
+
+Per ripartire da zero usa [il reset controllato dell'archivio](ARCHIVE_RESET.md):
+anteprima, backup, conferma esplicita e catalogo vuoto anche al riavvio.
+Lo storico e le fonti restano conservati; le vecchie corrispondenze non
+vengono riutilizzate dai nuovi import.
 
 Nomi normalizzati con Unicode NFKC, spazi e confronto senza maiuscole. Gli alias
 espliciti di produttori e modelli sono riconosciuti da `importing/identity.py`

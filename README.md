@@ -146,6 +146,10 @@ nomi proposti e attuali, separati dalla citazione bibliografica.
 Per alias già duplicati, citazioni tecniche e prezzi mancanti vedi
 [la guida alla riconciliazione](docs/RECONCILIATION.md): anteprima e scelta della
 scheda da mantenere, trasferimento dei dati e storico degli originali.
+Per ripartire con zero macchine usa **Svuota archivio per un nuovo import**:
+[guida, backup e ambito del reset](docs/ARCHIVE_RESET.md). Il reset richiede
+anteprima e conferma esplicita, conserva fonti e storico e impedisce che i
+dieci sistemi dimostrativi ricompaiano al riavvio.
 
 Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibliografiche, aggiungere produttori/categorie/mercati e aggiornare commercializzazioni e specifiche tecniche. Le schede conservano fotografie e altri dati storici già archiviati. Le modifiche sono applicate con il pulsante Salva; il pannello segnala quelle non salvate.
 

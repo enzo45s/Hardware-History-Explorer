@@ -32,6 +32,10 @@ merge automatico su main.
   propri ID; famiglie e modelli specifici non vengono confusi.
 - Bibliografia comprensiva delle citazioni dei singoli dati, fonti visibili
   sulle specifiche e conteggio dei prezzi effettivamente presenti nel file.
+- Reset locale del catalogo con anteprima, conferma del backup, frase esplicita
+  e audit dei metadati precedenti. Il catalogo resta vuoto anche al riavvio,
+  fonti e file fotografici sono conservati, le vecchie importazioni archiviate
+  e gli abbinamenti precedenti isolati dai nuovi import. Nessun reset automatico.
 
 Le pagine delle cinque fonti sono bloccate dal proxy cloud con 403. Per
 RetroFlops sono stati letti repository e licenza ufficiali: incluso un campione
@@ -46,12 +50,14 @@ dell'utente e nessuna importazione automatica all'avvio.
 Il campione non contiene prezzi: i campi assenti non vengono inventati e i
 prezzi già archiviati sono conservati.
 
-Verifiche aggiornate: 120 test SQLite passati e uno specifico PostgreSQL saltato,
-121 test PostgreSQL passati, 23 test frontend passati, build e avvio Compose,
-Chromium con revisione conflitti, riconciliazione e layout mobile a 320/390 px riusciti. Vite
+Verifiche aggiornate: 126 test SQLite passati e uno specifico PostgreSQL saltato,
+127 test PostgreSQL passati, 23 test frontend passati, build e avvio Compose,
+Chromium con revisione conflitti, riconciliazione, reset esplicito e layout mobile
+a 320/390 px riusciti. Dopo il reset e un riavvio API il catalogo rimane vuoto:
+il campione produce 19 importati e poi 19 invariati su PostgreSQL. Vite
 segnala il bundle oltre 500 kB; la CI remota va confermata su GitHub.
 
-Verifiche e limiti aggiornati in `docs/RECONCILIATION.md` e `docs/IMPORT_NORMALIZATION_REPORT.md`;
+Verifiche e limiti aggiornati in `docs/ARCHIVE_RESET.md`, `docs/RECONCILIATION.md` e `docs/IMPORT_NORMALIZATION_REPORT.md`;
 verifica iniziale in `docs/IMPORT_REPORT.md`; istruzioni e formati
 in `docs/IMPORTING.md`, valutazione delle fonti in `docs/IMPORT_SOURCES.md`.
 Il pannello resta locale single-user senza nuova autenticazione. La generazione
