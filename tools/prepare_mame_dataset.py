@@ -45,7 +45,7 @@ def write_coverage(output, records):
         text = str(value)
         return "'" + text if text.lstrip().startswith(('=', '+', '-', '@')) else text
     with (output / 'coverage.csv').open('w', encoding='utf-8-sig', newline='') as stream:
-        writer = csv.writer(stream, delimiter=';')
+        writer = csv.writer(stream, delimiter=';', lineterminator='\n')
         writer.writerow(['external_id', 'produttore', 'nome', 'anni_MAME', 'CPU_emulate', 'clock_emulati_MHz', 'RAM_predefinite_MAME_KiB', 'configurazioni', 'prezzi_presenti'])
         for record in records:
             specs = [s for cfg in record['configurations'] for s in cfg['specifications']]
