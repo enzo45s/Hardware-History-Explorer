@@ -1,5 +1,6 @@
 .env
 node_modules/
+frontend/test-results/
 dist/
 __pycache__/
 .pytest_cache/

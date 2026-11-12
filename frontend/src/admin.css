@@ -1,4 +1,4 @@
-.admin-tabs{display:flex;gap:8px;margin:22px 0}
+.admin-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}
 .admin-panel button{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--theme-border, #dce4f0);background:var(--theme-surface, #f8faff);border-radius:8px;color:var(--theme-text-secondary, #435777);padding:10px 13px;font:inherit;font-size:12px;cursor:pointer}
 .admin-panel button:disabled{opacity:.55;cursor:wait}
 .admin-panel .admin-primary,.admin-tabs .active{color:var(--theme-on-accent, white);background:var(--theme-accent, #5273d8);border-color:var(--theme-border-active, #5273d8)}
