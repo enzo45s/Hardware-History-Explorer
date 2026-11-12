@@ -1,5 +1,9 @@
 # Normalizzazione e campione ampliato — 12 novembre 2026
 
+I risultati qui sotto descrivono la prima versione della fase. La successiva
+correzione per alias già duplicati, fonti visibili e prezzi mancanti è
+documentata in [RECONCILIATION.md](RECONCILIATION.md), con conteggi aggiornati.
+
 Sviluppo sul branch `feat/historical-data-import`. Nessuna modifica diretta
 o merge su `main`; nessuna nuova migrazione e nessuna dipendenza aggiunta.
 

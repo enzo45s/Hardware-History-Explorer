@@ -25,6 +25,13 @@ merge automatico su main.
   una vista normalizzata additiva. Parti hardware e unità ambigue restano distinte.
 - Conflitti con nomi/valori leggibili e contesto; citazione separata dal dato,
   rifiuto motivato e blocco dell'accettazione di decisioni ormai superate.
+- Registro esplicito di alias dei produttori/modelli, riuso delle schede
+  esistenti e riconciliazione dei duplicati pregressi con anteprima, scelta
+  dell'ID da mantenere, consenso dell'operatore e audit degli originali.
+  Configurazioni, foto, prezzi e citazioni sono trasferiti senza perdere i
+  propri ID; famiglie e modelli specifici non vengono confusi.
+- Bibliografia comprensiva delle citazioni dei singoli dati, fonti visibili
+  sulle specifiche e conteggio dei prezzi effettivamente presenti nel file.
 
 Le pagine delle cinque fonti sono bloccate dal proxy cloud con 403. Per
 RetroFlops sono stati letti repository e licenza ufficiali: incluso un campione
@@ -32,16 +39,19 @@ reale Apple II e due campioni con misure tecniche, attribuzione, originali e has
 Il campione ampliato contiene 19 modelli, 26 configurazioni e 70 specifiche.
 Su SQLite e PostgreSQL separati, partendo dal seed e dal precedente campione,
 ha prodotto 11 importati, 4 aggiornati e 4 invariati (25 schede totali); il
-replay restituisce 19 invariati. Sette differenze editoriali restano in revisione,
+replay restituisce 19 invariati. Due differenze nelle descrizioni restano in revisione,
 nessuna asserzione viene verificata automaticamente. Nessuna modifica al DB
 dell'utente e nessuna importazione automatica all'avvio.
 
-Verifiche aggiornate: 111 test SQLite passati e uno specifico PostgreSQL saltato,
-112 test PostgreSQL passati, 22 test frontend passati, build e avvio Compose,
-Chromium con revisione conflitti e layout mobile a 320/390 px riusciti. Vite
+Il campione non contiene prezzi: i campi assenti non vengono inventati e i
+prezzi già archiviati sono conservati.
+
+Verifiche aggiornate: 120 test SQLite passati e uno specifico PostgreSQL saltato,
+121 test PostgreSQL passati, 23 test frontend passati, build e avvio Compose,
+Chromium con revisione conflitti, riconciliazione e layout mobile a 320/390 px riusciti. Vite
 segnala il bundle oltre 500 kB; la CI remota va confermata su GitHub.
 
-Verifiche e limiti aggiornati in `docs/IMPORT_NORMALIZATION_REPORT.md`;
+Verifiche e limiti aggiornati in `docs/RECONCILIATION.md` e `docs/IMPORT_NORMALIZATION_REPORT.md`;
 verifica iniziale in `docs/IMPORT_REPORT.md`; istruzioni e formati
 in `docs/IMPORTING.md`, valutazione delle fonti in `docs/IMPORT_SOURCES.md`.
 Il pannello resta locale single-user senza nuova autenticazione. La generazione

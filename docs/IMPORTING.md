@@ -12,8 +12,10 @@ git pull --ff-only
 docker compose up --build -d
 ```
 
-L'avvio crea solo quattro tabelle additive: `import_jobs`, `import_rows`,
-`import_identities`, `import_claims`. Nessuna tabella del catalogo viene
+L'avvio crea cinque tabelle additive: `import_jobs`, `import_rows`,
+`import_identities`, `import_claims`, `catalog_reconciliations`. L'ultima
+conserva l'audit delle riconciliazioni esplicitamente richieste dall'operatore.
+Nessuna tabella del catalogo viene
 ricreata e nessun dato viene cancellato. Non servono nuove variabili d'ambiente
 o chiavi API per gli importatori. Per una migrazione esplicita, dopo un backup
 e con il database avviato:
@@ -131,8 +133,13 @@ per lotto; suddividi dataset più grandi.
 
 ## Deduplicazione e qualità
 
-Nomi normalizzati con Unicode NFKC, spazi e confronto senza maiuscole; non si
-fondono automaticamente ragioni sociali diverse o nomi simili. `4 kbytes`
+Nomi normalizzati con Unicode NFKC, spazi e confronto senza maiuscole. Gli alias
+espliciti di produttori e modelli sono riconosciuti da `importing/identity.py`
+(per esempio Apple/Apple Computer e IBM PC 5150/IBM Personal Computer 5150).
+Una corrispondenza univoca riusa scheda e nome esistenti; più corrispondenze
+richiedono una decisione. Non si fondono automaticamente nomi solo simili.
+Per duplicati già creati usa la [riconciliazione con anteprima](RECONCILIATION.md).
+Famiglie e modelli specifici, come System/360 e Model 50, restano distinti. `4 kbytes`
 diventa `4 KB`, ma `KB`, `KiB` e `kb` rimangono distinti. Non si convertono
 valute o unità ambigue. Non sono previste traduzioni automatiche dei nomi.
 
@@ -155,7 +162,7 @@ commercializzazione. Queste regole non certificano l'attendibilità storica.
 
 L'identità è `(fonte, external_id)`; per file generici l'ID è anche separato
 per URL della citazione, o titolo/autore per fonti senza URL. Altrimenti il
-motore cerca produttore e modello normalizzati esatti. Più corrispondenze
+motore cerca produttore e modello normalizzati, includendo gli alias espliciti. Più corrispondenze
 richiedono una scelta. Gli abbinamenti manuali sono mantenuti dalle identità
 esterne; eventuali nomi discordanti producono asserzioni in conflitto.
 
@@ -193,8 +200,9 @@ di URL arbitrari. I blocchi di rete restano lavori falliti ripetibili.
 record canonici ufficiali Apple II e della fonte. La trasformazione YAML →
 sottoinsieme JSON, attribuzione e impronte sono dichiarate: non è il download
 dell'esportazione live. Non contiene misure tecniche; quelle assenti restano
-ignote. Nel database dimostrativo associa il record all'Apple II esistente:
-«Apple Computer» e «Apple» non sono alias automatici.
+ignote. Nel database dimostrativo il nuovo registro di alias riusa l'Apple II
+esistente anche con «Apple Computer» e «Apple». Se esistono già due schede,
+controlla prima i duplicati o scegli esplicitamente la corrispondenza.
 
 Sono disponibili anche il [campione di quattro modelli](examples/retroflops-home-computers-4.README.md)
 e il [campione ampliato di 19 modelli](examples/retroflops-computers-19.README.md),

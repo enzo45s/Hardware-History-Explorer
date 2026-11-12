@@ -143,6 +143,9 @@ con attribuzione RetroFlops, CC BY 4.0, e un [campione ampliato di 19 modelli](d
 con CPU e misure tecniche corredate di fonte. La normalizzazione uniforma alias
 e unità esplicite senza riscrivere i dati originali; i conflitti mostrano i
 nomi proposti e attuali, separati dalla citazione bibliografica.
+Per alias già duplicati, citazioni tecniche e prezzi mancanti vedi
+[la guida alla riconciliazione](docs/RECONCILIATION.md): anteprima e scelta della
+scheda da mantenere, trasferimento dei dati e storico degli originali.
 
 Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibliografiche, aggiungere produttori/categorie/mercati e aggiornare commercializzazioni e specifiche tecniche. Le schede conservano fotografie e altri dati storici già archiviati. Le modifiche sono applicate con il pulsante Salva; il pannello segnala quelle non salvate.
 

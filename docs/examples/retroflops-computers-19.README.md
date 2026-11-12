@@ -23,8 +23,8 @@ La ricostruzione serve anche ad aggiornare normalizzazione e interfaccia.
    formato del progetto. Il selettore RetroFlops richiede invece l'export originale.
 3. Carica `docs/examples/retroflops-computers-19.json`, conferma la licenza
    CC BY 4.0 conservata nello snapshot e prepara l'anteprima.
-4. **Prima di applicare**, controlla le corrispondenze. Nel catalogo
-   dimostrativo standard associa manualmente queste quattro righe:
+4. **Prima di applicare**, controlla le corrispondenze. Il registro di alias
+   aggiornato riconosce automaticamente queste quattro righe nel seed standard:
 
 | Nome nel file | Scheda già presente |
 |---|---|
@@ -33,14 +33,17 @@ La ricostruzione serve anche ad aggiornare normalizzazione e interfaccia.
 | Commodore 64 (Commodore Business Machines) | Commodore 64 (Commodore) |
 | IBM Personal Computer 5150 | IBM PC 5150 |
 
-Il motore non presume che ragioni sociali o nomi simili siano sinonimi.
+Gli alias sono espliciti e circoscritti al produttore; non si deducono da
+somiglianze vaghe. Se hai già importato duplicati con una versione precedente,
+usa prima [Duplicati già importati](../RECONCILIATION.md) oppure scegli la
+scheda corretta nell'anteprima. Non creare altri modelli per risolvere gli alias.
 Non associare **IBM System/360 Model 50** alla scheda generica **System/360**:
 una famiglia non equivale a un suo specifico modello. **PDP-8** e **PDP-11**
 sono sistemi diversi. Se il tuo archivio è diverso dal seed, controlla tutte
 le corrispondenze e applica solo quelle corrette.
 
-5. Applica le righe pronte e apri **Fonti e verifiche**. Le differenze di nome,
-   produttore e descrizione richiedono una decisione umana; la citazione del
+5. Applica le righe pronte e apri **Fonti e verifiche**. Le differenze di
+   descrizione richiedono una decisione umana; la citazione del
    manuale è mostrata separatamente dal dato contestato. Nessun dato viene
    verificato automaticamente.
 6. Ripeti il caricamento: il numero dei calcolatori deve rimanere invariato.
@@ -114,11 +117,11 @@ documenti citati e non scrive nel database. Non è uno scraper generalista.
 Prova con API reale e database SQLite temporaneo separato, partendo dal seed
 di 10 sistemi e dal precedente campione di quattro modelli già importato:
 
-- Anteprima ampliata: **19 righe pronte**, dopo le quattro associazioni esplicite.
+- Anteprima ampliata: **19 righe pronte**, con alias riconosciuti senza mapping manuale.
 - Applicazione: **11 importati, 4 aggiornati, 4 invariati**; totale **25** schede.
 - Nuovo caricamento: **19 invariati**, totale ancora **25**.
-- **7 conflitti editoriali**: produttore Apple II; nome/produttore/descrizione
-  Macintosh 128K; produttore Commodore 64; nome/descrizione IBM PC 5150.
+- **2 conflitti di descrizione**: Macintosh 128K e IBM PC 5150. Gli alias non
+  producono nuovi calcolatori, produttori o falsi conflitti di nome.
 - Nessun conflitto quantitativo; **0 asserzioni verificate automaticamente**.
 - Identificativi delle configurazioni e specifiche dei quattro modelli
   precedenti conservati. Frequenze M1 e annuncio conservati correttamente.
