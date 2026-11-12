@@ -13,6 +13,7 @@ from ..import_models import ImportJob, ImportRow, ImportClaim
 from .normalize import MAX_BYTES, parse_payload
 from .engine import stage, apply_job, review_claim
 from .providers import PROVIDERS, fetch_provider, retroflops_records, wikidata_records
+from .presentation import claim_presentation
 
 
 def job_data(job):
@@ -30,7 +31,7 @@ def claim_data(c):
             'field': c.field, 'value': c.value, 'previous': c.previous, 'status': c.status,
             'estimated': c.estimated, 'evidence': c.evidence, 'review_note': c.review_note,
             'reviewed_at': c.reviewed_at.isoformat() if c.reviewed_at else None,
-            'source': {'id': c.source.id, 'title': c.source.title, 'url': c.source.url}}
+            'source': {'id': c.source.id, 'title': c.source.title, 'url': c.source.url}, 'display': claim_presentation(c)}
 
 
 class RemoteRequest(Input):
@@ -115,8 +116,13 @@ def create_import_router(get_db):
     def detail(job_id: int, offset: int = Query(0, ge=0), limit: int = Query(25, ge=1, le=100), db: Session = Depends(get_db)):
         job = job_or_404(db, job_id)
         rows = db.scalars(select(ImportRow).where(ImportRow.job_id == job_id).order_by(ImportRow.position).offset(offset).limit(limit))
+        def computer_label(computer_id):
+            c = db.get(Computer, computer_id) if computer_id else None
+            return f'{c.manufacturer.name} · {c.model_name}' if c else None
         return {**job_data(job), 'rows': [{'id': r.id, 'position': r.position, 'raw': r.raw, 'normalized': r.normalized,
                   'status': r.status, 'error': r.error, 'computer_id': r.computer_id, 'candidates': r.candidates,
+                  'computer_label': computer_label(r.computer_id),
+                  'candidate_labels': [computer_label(cid) or f'Voce rimossa (ID {cid})' for cid in r.candidates],
                   'claims': [claim_data(c) for c in r.claims]} for r in rows]}
 
     @router.get('/{job_id}/original')

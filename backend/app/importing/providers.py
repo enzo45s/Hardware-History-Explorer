@@ -3,6 +3,7 @@ import json
 import re
 import httpx
 from .normalize import MAX_BYTES, MAX_ROWS
+from .vocabulary import measurement_property, system_dates
 
 USER_AGENT = 'HardwareHistoryExplorer/1.3 (https://github.com/enzo45s/Hardware-History-Explorer)'
 PROVIDERS = [
@@ -93,8 +94,7 @@ def retroflops_records(payload):
         prose = system.get('description') or system.get('summary')
         if prose and '{{' not in prose:
             row['description'] = prose
-        if isinstance(system.get('releaseDate'), str):
-            row['releases'] = [{'market': system.get('region') or 'Non specificato dalla fonte', 'release_date': system['releaseDate']}]
+        row.update(system_dates(system))
         variants = []
         for cfg in system.get('configurations', []):
             specs = []
@@ -112,12 +112,11 @@ def retroflops_records(payload):
                 for mid in entry.get('measurementIds', []):
                     m = measurements.get(mid, {})
                     quantity = m.get('quantity', {})
-                    if quantity.get('state') != 'value':
+                    if quantity.get('state') != 'value' or m.get('evidenceLevel') == 'rumored':
                         continue
                     # Preserve benchmark/method/scope; never invent aggregate performance scores.
                     specs.append({'component_type': entry.get('role', 'component'), 'component_name': component.get('name'),
-                        'property_name': m['metric'], 'numeric_value': quantity['value'], 'unit': quantity.get('unit'),
-                        'estimated': m.get('evidenceLevel') == 'rumored',
+                        'property_name': measurement_property(m), 'numeric_value': quantity['value'], 'unit': quantity.get('unit'),
                         'evidence': json.dumps(m, ensure_ascii=False)[:3000], 'source': citation})
             variants.append({'variant_name': cfg.get('label') or cfg['id'], 'specifications': specs})
         row['configurations'] = variants

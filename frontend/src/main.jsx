@@ -206,7 +206,10 @@ function ComputerDetail({ computer, onClose, onChanged }) {
     <Gallery computer={computer} />
     <ImageManager computer={computer} onChanged={onChanged} />
     <div className="section-title">Configurazioni e specifiche</div>
-    {computer.configurations.map(c => <section className="panel" key={c.id}><h3>{c.variant_name}</h3><table><tbody>{c.specifications.map(s => <tr key={s.id}><td>{s.component_type} · {s.property_name}</td><td><strong>{s.numeric_value ?? s.text_value} {s.unit || ''}</strong></td></tr>)}</tbody></table></section>)}
+    {computer.configurations.map(c => <section className="panel" key={c.id}><h3>{c.variant_name}</h3><table><tbody>{c.specifications.map(s => {
+      const view = s.normalized || s;
+      return <tr key={s.id}><td>{view.component_type} · {view.property_name}</td><td><strong title={'Valore registrato: ' + (s.numeric_value ?? s.text_value) + (s.unit ? ' ' + s.unit : '')}>{view.numeric_value ?? view.text_value} {view.unit || ''}</strong></td></tr>;
+    })}</tbody></table></section>)}
     <div className="section-title">Commercializzazione</div>
     {computer.releases.map(r => <section className="panel" key={r.id}><b>{r.market}</b><p>{r.release_date || 'Data non disponibile'} · {r.price != null ? `${r.price} ${r.currency}` : 'Prezzo non disponibile'}</p>{r.sources.map(s => <Source key={s.id} s={s} />)}</section>)}
     <div className="section-title">Fonti e verificabilità</div>

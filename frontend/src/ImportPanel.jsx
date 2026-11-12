@@ -30,22 +30,29 @@ function RowMatch({ row, disabled, onMatch }) {
 function Claim({ claim, disabled, onReview }) {
   const [note, setNote] = useState('');
   const reviewable = ['pending', 'conflict'].includes(claim.status);
+  const display = claim.display;
   return <section className={'import-claim ' + (claim.status === 'conflict' ? 'import-conflict' : '')}>
-    <b>{claim.entity} #{claim.target_id} · {claim.field}</b>
+    <b>{display?.field_label || claim.field}</b>
+    {display?.context && <p className="import-context">{display.context}</p>}
     <p>{status(claim.status)}{claim.estimated ? ' · Stima' : ''}</p>
-    <p>Valore della fonte: <code>{JSON.stringify(claim.value)}</code></p>
-    {claim.status === 'conflict' && <p>Valore conservato nell'archivio: <code>{JSON.stringify(claim.previous)}</code></p>}
-    <p>{claim.source.url ? <a href={claim.source.url} target="_blank" rel="noopener noreferrer">{claim.source.title}</a> : claim.source.title}</p>
+    <dl className="import-values"><dt>Valore proposto dalla fonte</dt><dd>{display?.proposed || JSON.stringify(claim.value)}</dd>
+      {claim.status === 'conflict' && <><dt>Valore attuale nell'archivio</dt><dd>{display?.current || JSON.stringify(claim.previous)}</dd></>}
+    </dl>
+    {claim.status === 'conflict' && <p>Il valore attuale resta conservato finché non accetti la proposta.</p>}
+    {reviewable && display?.stale && <p className="inline-error" role="alert">Il dato è cambiato dopo questa importazione. Prepara una nuova anteprima prima di verificarlo.</p>}
+    <p>Fonte a supporto: {claim.source.url ? <a href={claim.source.url} target="_blank" rel="noopener noreferrer">{claim.source.title}</a> : claim.source.title}</p>
     {claim.evidence && <details><summary>Passaggio, licenza e metadati</summary><pre>{claim.evidence}</pre></details>}
+    <details><summary>Identificativi e valori originali</summary><pre>{JSON.stringify({ entity: claim.entity, target_id: claim.target_id, field: claim.field, value: claim.value, previous: claim.previous }, null, 2)}</pre></details>
     {claim.review_note && <p>Nota di verifica: {claim.review_note}</p>}
     {reviewable && <div className="import-review">
-      <label>Motivazione della decisione per l'asserzione {claim.id}
+      <label>Motivazione della decisione
         <textarea rows={2} disabled={disabled} value={note} onChange={e => setNote(e.target.value)} maxLength={2000} />
       </label>
-      <button type="button" disabled={disabled || note.trim().length < 5} onClick={() => onReview(claim.id, 'accept', note)}>
+      <button type="button" disabled={disabled || display?.stale || note.trim().length < 5} onClick={() => onReview(claim.id, 'accept', note)}>
         {claim.status === 'conflict' ? 'Accetta il valore della fonte e verifica' : 'Conferma verifica della fonte'}
       </button>
-      <button type="button" disabled={disabled || note.trim().length < 5} onClick={() => onReview(claim.id, 'reject', note)}>Rifiuta questa fonte per il dato</button>
+      <button type="button" disabled={disabled || note.trim().length < 5} onClick={() => onReview(claim.id, 'reject', note)}>{claim.status === 'conflict' ? 'Mantieni il dato attuale' : 'Rifiuta questa asserzione'}</button>
+      <p className="muted">La decisione riguarda questa asserzione, non l'intera fonte. Rifiutarla non elimina valori già importati: per correggerli usa l'editor del calcolatore.</p>
     </div>}
   </section>;
 }
@@ -141,8 +148,8 @@ export default function ImportPanel({ onSaved }) {
         </div>
         {job.rows.map(row => <article className="import-row" key={row.id}>
           <h4>Riga {row.position}: {row.normalized?.model_name || 'Dati non validi'} · {status(row.status)}</h4>
-          {row.computer_id && <p>Calcolatore associato: ID {row.computer_id}</p>}
-          {!!row.candidates.length && <p>Corrispondenze individuate: {row.candidates.join(', ')}</p>}
+          {row.computer_id && <p>Calcolatore associato: {row.computer_label || 'ID ' + row.computer_id}</p>}
+          {!!row.candidates.length && <p>Corrispondenze individuate: {(row.candidate_labels || row.candidates).join(' · ')}</p>}
           {row.error && <p className="inline-error">{row.error}</p>}
           {job.status === 'ready' && row.status !== 'skipped' && <button type="button" disabled={busy} onClick={() => action(async () => {
             await api(`/admin/imports/${job.id}/rows/${row.id}/skip`, { method: 'POST' }); return { id: job.id };

@@ -4,6 +4,18 @@ import { comparisonSpecifications, selectedConfiguration } from '../src/comparis
 
 const spec = (component, property, numeric, text = null, unit = null) => ({ component_type: component, property_name: property, numeric_value: numeric, text_value: text, unit });
 const key = (component, property) => JSON.stringify([component, property]);
+
+test('backend normalized views align legacy labels and equivalent units without mutating raw data', () => {
+  const computer = { configurations: [{ id: 1, specifications: [
+    { ...spec('main-cpu', 'clock-frequency', 1000000, null, 'Hz'), normalized: spec('CPU', 'Frequenza', 1, null, 'MHz') },
+    spec('CPU', 'Frequenza', 1, null, 'MHz')
+  ] }] };
+  const before = JSON.stringify(computer);
+  const result = comparisonSpecifications(computer);
+  assert.equal(result.size, 1);
+  assert.equal(result.get(key('CPU', 'Frequenza')).text, '1 MHz');
+  assert.equal(JSON.stringify(computer), before);
+});
 const family = {
   configurations: [48, 4, 8, 12, 16, 20, 24, 32, 36].map((ram, index) => ({
     id: index + 1, variant_name: `RAM ${ram} KB`, specifications: [spec('RAM', 'Capacità', ram, null, 'KB'), spec('CPU', 'Modello', null, 'MOS 6502')]

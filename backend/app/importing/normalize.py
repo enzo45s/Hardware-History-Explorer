@@ -6,6 +6,7 @@ import unicodedata
 from datetime import date
 from pydantic import Field, field_validator, model_validator
 from ..admin import Input, historical_date
+from .vocabulary import unit_name, normalize_spec
 
 MAX_BYTES = 8 * 1024 * 1024
 MAX_ROWS = 1000
@@ -17,16 +18,6 @@ def name_key(value):
 
 def clean(value):
     return ' '.join(unicodedata.normalize('NFKC', value).split())
-
-
-def unit_name(value):
-    # KB is intentionally not equated with KiB: historical usage is ambiguous.
-    aliases = {'kb': 'KB', 'kbyte': 'KB', 'kbytes': 'KB', 'kib': 'KiB', 'mb': 'MB',
-               'mib': 'MiB', 'gb': 'GB', 'gib': 'GiB', 'mhz': 'MHz', 'khz': 'kHz',
-               'ghz': 'GHz', 'hz': 'Hz', 'bytes': 'B', 'byte': 'B', 'bits': 'bit'}
-    if value and value.casefold() in ('kb', 'mb', 'gb') and value not in ('KB', 'kB', 'MB', 'GB'):
-        return value  # Lower-case b may mean bits; do not reinterpret it as bytes.
-    return aliases.get(value.casefold(), value) if value else None
 
 
 class Citation(Input):
@@ -68,14 +59,13 @@ class Spec(Supported):
     @model_validator(mode='before')
     @classmethod
     def quantity(cls, data):
-        data = dict(data)
+        data = normalize_spec(data)
         text = data.get('text_value')
-        if isinstance(text, str) and data.get('numeric_value') is None:
+        if isinstance(text, str) and data.get('numeric_value') is None and data['property_name'] not in ('Modello', 'Architettura'):
             match = re.fullmatch(r'([+-]?\d+(?:\.\d+)?)\s+([A-Za-z]+)', text.strip())
             if match and not data.get('unit'):
                 data.update(numeric_value=float(match[1]), unit=match[2], text_value=None)
-        data['unit'] = unit_name(data.get('unit'))
-        return data
+        return normalize_spec(data)
 
     @model_validator(mode='after')
     def one_value(self):

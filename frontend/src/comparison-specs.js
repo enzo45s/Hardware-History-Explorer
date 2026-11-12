@@ -9,7 +9,8 @@ export function comparisonSpecifications(computer, requested = 'all') {
   const configurations = chosen ? [chosen] : computer.configurations;
   const groups = new Map();
   configurations.forEach((config, index) => {
-    for (const spec of config.specifications) {
+    for (const original of config.specifications) {
+      const spec = original.normalized || original;
       const numeric = spec.numeric_value != null;
       if (numeric && !Number.isFinite(spec.numeric_value)) continue;
       const raw = numeric ? spec.numeric_value : spec.text_value?.trim();

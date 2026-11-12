@@ -19,4 +19,8 @@
 .import-match{margin:16px 0}
 .import-match button{display:block;width:100%;text-align:left;margin:6px 0}
 .import-detail{min-width:0}
+.import-values{margin:12px 0;overflow-wrap:anywhere}
+.import-values dt{font-size:12px;color:var(--theme-text-secondary,#64738b)}
+.import-values dd{font-weight:700;margin:4px 0 12px;color:var(--theme-text-strong,#243455)}
+.import-context{color:var(--theme-text-secondary,#64738b);overflow-wrap:anywhere}
 @media(max-width:1100px){.import-layout{grid-template-columns:1fr}}

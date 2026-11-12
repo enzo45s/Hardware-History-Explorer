@@ -50,7 +50,7 @@ async function assertMobileLayout(page) {
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
   const model = `Synthetic Browser Fixture ${Date.now()}`;
-  const record = { manufacturer: 'Synthetic Browser Test Manufacturer', model_name: model,
+  const record = { external_id: model, manufacturer: 'Synthetic Browser Test Manufacturer', model_name: model,
     source: { title: 'Synthetic browser fixture', url: 'https://example.org/browser-fixture' },
     releases: [{ market: 'Synthetic market', release_date: '1980' }],
     configurations: [{ variant_name: 'Synthetic variant', specifications: [{ component_type: 'RAM', property_name: 'Capacity', numeric_value: 4, unit: 'KB' }] }] };
@@ -80,6 +80,20 @@ async function assertMobileLayout(page) {
     await conflict.getByRole('button', { name: 'Accetta il valore della fonte e verifica' }).click();
     await page.waitForFunction(() => !document.querySelector('.import-conflict'));
     console.log('Browser: upload, staging, explicit apply, duplicate detection, sourced conflict and human review pass.');
+
+    const alias = { ...updated, manufacturer: 'Synthetic Manufacturer Alternative' };
+    await upload(alias);
+    await page.locator('.import-row').getByText(/Fonti e verifiche/).click();
+    const manufacturerConflict = page.locator('.import-conflict');
+    assert.equal(await manufacturerConflict.count(), 1);
+    assert.equal(await manufacturerConflict.locator('b').first().innerText(), 'Produttore');
+    assert.deepEqual(await manufacturerConflict.locator('.import-values dd').allTextContents(),
+      ['Synthetic Manufacturer Alternative', 'Synthetic Browser Test Manufacturer']);
+    assert.match(await manufacturerConflict.innerText(), /Fonte a supporto: Synthetic browser fixture/);
+    await manufacturerConflict.getByRole('textbox').fill('Keep the existing synthetic manufacturer name.');
+    await manufacturerConflict.getByRole('button', { name: 'Mantieni il dato attuale', exact: true }).click();
+    await page.waitForFunction(() => !document.querySelector('.import-conflict'));
+    console.log('Browser: manufacturer names replace raw IDs, bibliography stays separate, retaining the current value records rejection.');
 
     await page.getByRole('button', { name: 'Tema: Fosfori verdi', exact: true }).click();
     await page.screenshot({ path: path.join(artifactDir, 'imports-desktop.png'), fullPage: true });

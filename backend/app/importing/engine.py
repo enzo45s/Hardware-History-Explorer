@@ -7,6 +7,7 @@ from ..models import Computer, Manufacturer, Category, Configuration, Specificat
 from ..import_models import ImportJob, ImportRow, ImportClaim, ExternalIdentity, now
 from ..admin import historical_date
 from .normalize import Record, name_key, parse_payload, MAX_BYTES, MAX_ROWS
+from .vocabulary import matching_specs, quantity_equal
 
 TARGETS = {c.__name__: c for c in (Computer, Configuration, Specification, Release, Sale, Review, Fact)}
 DATE_PRECISION = {'announcement_date': 'announcement_precision', 'release_date': 'release_precision',
@@ -206,9 +207,7 @@ def import_record(db, job, row):
         db.flush()
         record_fields(variant, cfg, ('variant_name', 'description'))
         for spec in cfg.get('specifications', []):
-            key = lambda v: (name_key(v.component_type), name_key(v.property_name), name_key(v.component_name or ''))
-            skey = (name_key(spec['component_type']), name_key(spec['property_name']), name_key(spec.get('component_name', '')))
-            matches = [s for s in variant.specifications if key(s) == skey]
+            matches = matching_specs(variant.specifications, spec)
             if len(matches) > 1:
                 raise ValueError('Specifiche ripetute: scegli configurazioni distinte prima di importare')
             if matches:
@@ -222,7 +221,7 @@ def import_record(db, job, row):
                 old = {k: getattr(target, k) for k in ('numeric_value', 'text_value', 'unit')}
                 val = {k: spec.get(k) for k in old}
                 db.add(ImportClaim(row_id=row.id, computer_id=c.id, source_id=s.id, entity='Specification', target_id=target.id,
-                    field='quantity', value=val, previous=old, status='pending' if val == old else 'conflict',
+                    field='quantity', value=val, previous=old, status='pending' if quantity_equal(target, val, old) else 'conflict',
                     estimated=spec.get('estimated', False) or cfg.get('estimated', False) or root_estimate,
                     evidence='\n'.join(x for x in (spec.get('evidence') or cfg.get('evidence') or data.get('evidence'),
                         ('Licenza: ' + s_citation['license']) if s_citation.get('license') else None) if x) or None))
@@ -326,7 +325,8 @@ def review_claim(db, claim, decision, note):
             if claim.field in DATE_PRECISION:
                 current['precision'] = getattr(target, DATE_PRECISION[claim.field])
             expected = claim.previous if claim.status == 'conflict' else claim.value
-            if current != expected:
+            same = quantity_equal(target, current, expected) if claim.field == 'quantity' else current == expected
+            if not same:
                 raise ValueError('Il dato è cambiato dopo l’importazione: riesamina con una nuova anteprima')
             if claim.field in BUNDLES:
                 for field, value in claim.value.items():
