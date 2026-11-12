@@ -181,6 +181,11 @@ recensioni: testata/data; fatti: tipo/testo. Le ambiguità non vengono fuse.
 
 ## Fonti integrate e campione reale
 
+Per provare l'archivio oltre le mille schede usa il [pacchetto MAME 0.276](datasets/mame-0276/README.md):
+cinque JSON canonici da caricare come **CSV / JSON autorizzato**. I valori
+emulati sono indicati nelle proprietà e non sovrascrivono le proprietà storiche
+standard. Copertura e lacune sono documentate; non c'è un nuovo fetch remoto MAME.
+
 - **RetroFlops**: esportazione completa `catalog-v1.json` da caricare oppure
   recuperare dall'URL ufficiale fisso. Solo mainframe, minicomputer, home
   computer, personal computer e workstation; configurazioni e misure numeriche

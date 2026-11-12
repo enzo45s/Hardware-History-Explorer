@@ -155,6 +155,11 @@ Per ripartire con zero macchine usa **Svuota archivio per un nuovo import**:
 anteprima e conferma esplicita, conserva fonti e storico e impedisce che i
 dieci sistemi dimostrativi ricompaiano al riavvio.
 
+Per una prova più ampia è disponibile il [corpus MAME da 1.139 schede in cinque lotti](docs/datasets/mame-0276/README.md),
+con indice di copertura e originali. CPU, clock e RAM sono esplicitamente dati
+dell'emulatore, distinti dalle specifiche storiche verificate. Non contiene prezzi
+né costituisce un catalogo commerciale completo: tutte le asserzioni restano da revisionare.
+
 Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibliografiche, aggiungere produttori/categorie/mercati e aggiornare commercializzazioni e specifiche tecniche. Le schede conservano fotografie e altri dati storici già archiviati. Le modifiche sono applicate con il pulsante Salva; il pannello segnala quelle non salvate.
 
 La gestione delle fotografie resta disponibile nella normale scheda del calcolatore, raggiungibile anche dal pannello. Non serve una migrazione aggiuntiva del database. Vedi [la guida del pannello](docs/ADMIN.md) per campi, date, fonti e API. Il pannello segue la modalità locale single-user del progetto.

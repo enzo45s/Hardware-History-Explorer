@@ -36,6 +36,12 @@ merge automatico su main.
   e audit dei metadati precedenti. Il catalogo resta vuoto anche al riavvio,
   fonti e file fotografici sono conservati, le vecchie importazioni archiviate
   e gli abbinamenti precedenti isolati dai nuovi import. Nessun reset automatico.
+- Corpus aggiuntivo da MAME 0.276: 1.139 schede candidate in cinque lotti JSON,
+  con 1.251 configurazioni emulate e 3.184 specifiche citate. Generatore
+  riproducibile da Git ed export ufficiale XML della stessa versione; originali,
+  licenze e hash conservati. CPU/clock/RAM hanno proprietà esplicitamente
+  riferite all'emulatore, separate dai valori storici. Copertura CSV leggibile
+  in Excel; nessun nuovo servizio remoto o dipendenza di runtime.
 
 Le pagine delle cinque fonti sono bloccate dal proxy cloud con 403. Per
 RetroFlops sono stati letti repository e licenza ufficiali: incluso un campione
@@ -50,14 +56,23 @@ dell'utente e nessuna importazione automatica all'avvio.
 Il campione non contiene prezzi: i campi assenti non vengono inventati e i
 prezzi già archiviati sono conservati.
 
-Verifiche aggiornate: 126 test SQLite passati e uno specifico PostgreSQL saltato,
-127 test PostgreSQL passati, 23 test frontend passati, build e avvio Compose,
+Il corpus MAME non fornisce prezzi e non certifica commercializzazioni o
+configurazioni vendute. Date e specifiche richiedono revisione storica.
+Importazione completa e replay dei cinque lotti provati su SQLite e PostgreSQL:
+1.139 schede, 1.251 configurazioni e 3.184 specifiche restano invariati;
+controllate via API tutte le schede e le citazioni delle specifiche. Chromium
+con il catalogo reale verifica timeline, catalogo, confronto, analisi e
+paginazione delle fonti. Nessuna verifica automatica dei dati.
+
+Verifiche aggiornate: 143 test SQLite passati e uno specifico PostgreSQL saltato,
+144 test PostgreSQL passati, 23 test frontend passati, build e avvio Compose,
 Chromium con revisione conflitti, riconciliazione, reset esplicito e layout mobile
 a 320/390 px riusciti. Dopo il reset e un riavvio API il catalogo rimane vuoto:
 il campione produce 19 importati e poi 19 invariati su PostgreSQL. Vite
 segnala il bundle oltre 500 kB; la CI remota va confermata su GitHub.
 
 Verifiche e limiti aggiornati in `docs/ARCHIVE_RESET.md`, `docs/RECONCILIATION.md` e `docs/IMPORT_NORMALIZATION_REPORT.md`;
+verifica del corpus in `docs/datasets/mame-0276/VALIDATION.md`;
 verifica iniziale in `docs/IMPORT_REPORT.md`; istruzioni e formati
 in `docs/IMPORTING.md`, valutazione delle fonti in `docs/IMPORT_SOURCES.md`.
 Il pannello resta locale single-user senza nuova autenticazione. La generazione

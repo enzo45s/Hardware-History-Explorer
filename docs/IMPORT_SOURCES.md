@@ -1,5 +1,27 @@
 # Valutazione fonti — 11 novembre 2026
 
+## Aggiornamento del 12 novembre: corpus ampio
+
+È stato preparato un [pacchetto da 1.139 schede candidate](datasets/mame-0276/README.md)
+da **MAME 0.276**, repository ufficiale e export offline `-listxml`. Git e i
+pacchetti ufficiali Debian sono accessibili da questa rete. L'estrazione non
+esegue scraping di siti, non richiede ROM e non scarica immagini o manuali.
+I file dichiarano licenze aperte individuali; copyright, licenze complete,
+revisione Git, versione binaria, originali selezionati e hash sono conservati.
+CPU/clock/RAM sono metadati **dell'emulatore**, con proprietà distinte dalle
+misure storiche. Commercializzazione e date non sono verificate indipendentemente.
+
+Esaminato anche **AppleDB**, repository ufficiale
+<https://github.com/littlebyteorg/appledb>, commit
+`5fb98e557f544b7ed783e7855e78c9db9d05ee57`. Letti README, API.md, schema
+deviceFiles e licenza **MIT, Copyright (c) 2022 emiyl**. Nelle 14 famiglie di
+computer esaminate risultano 395 voci, 10 marcate `internal`, 72 con SoC, 24 con
+RAM e nessuna con prezzi. Non è stato integrato nel pacchetto: è monomarca e
+non risolve la completezza delle specifiche o dei prezzi. Nessun accessorio,
+software o dispositivo mobile è stato spacciato per un computer importato.
+
+Il resto di questo documento conserva l'analisi iniziale delle cinque fonti.
+
 Verifica effettuata dall'ambiente cloud. Per tutte le pagine HTML e i
 `robots.txt` sotto elencati il proxy ha rifiutato il tunnel HTTPS con **403**.
 Questo è un blocco della rete dell'ambiente, non una risposta del sito e non
