@@ -4,9 +4,10 @@ le corrispondenze, può escludere righe e applica esplicitamente il lotto. I dat
 mancanti vengono aggiunti e i valori discordanti rimangono in revisione finché
 una persona decide, con nota e controllo sui valori modificati nel frattempo.
 
-La PR è basata su `feat/admin-panel`, che contiene l'amministrazione, i confronti
-e i temi già presenti nel progetto. Questo mantiene il diff focalizzato sul
-sistema d'importazione. Non effettua merge su main.
+La PR punta a `main`, dove `feat/admin-panel` è già confluito con la PR #2.
+Il diff comprende il sistema d'importazione e i suoi successivi miglioramenti;
+amministrazione, confronti e temi sono già presenti nella base. Non effettua
+merge automatico su main.
 
 - ETL modulare, normalizzazione di nomi/unità/date, deduplicazione conservativa,
   identità esterne separate per fonte, importazioni incrementali e ripetibili.

@@ -82,3 +82,22 @@ Restano gli avvisi già esistenti: bundle Vite oltre 500 kB e deprecazione
 TestClient/httpx. La CI remota va confermata su GitHub dopo il push; una prova
 locale riuscita non certifica l'esito remoto. Non sono stati riprovati il
 servizio AI esterno o recuperi live dai siti bloccati dal proxy.
+
+## Consegna GitHub
+
+Codice e campione inviati al branch `feat/historical-data-import` nei commit
+`6a889bf` e `1463e0e`, seguiti dall'aggiornamento della documentazione di
+consegna. Verificato anche il download del JSON al commit pubblicato: 19
+modelli e 70 specifiche presenti. Working tree pulito alla consegna.
+
+Il riferimento remoto di `main` ora contiene il merge della PR #2
+(`3e406f2`), eseguito esternamente a questo lavoro. Poiché l'amministrazione è
+già nella base, il confronto delle importazioni punta ora direttamente a
+`main`. Nessun merge o push su `main` è stato eseguito da questa attività.
+
+Tentata la creazione della PR con `gh pr create --base main --head
+feat/historical-data-import --body-file docs/IMPORT_PR.md`: la rete cloud
+risponde `Post https://api.github.com/graphql: Forbidden` (403). Il push Git
+è riuscito; non è un rifiuto automatico di approvazione. Non viene dichiarata
+una PR effettivamente aperta. [Confronto pronto per creare la PR](https://github.com/enzo45s/Hardware-History-Explorer/compare/main...feat/historical-data-import?expand=1),
+con descrizione aggiornata in [IMPORT_PR.md](IMPORT_PR.md).
