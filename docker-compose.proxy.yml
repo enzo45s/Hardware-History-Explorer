@@ -1,0 +1,19 @@
+# Optional trusted HTTPS proxy support. Supply a PEM bundle with public roots
+# plus the trusted proxy CA; never disable TLS verification.
+services:
+  api:
+    build:
+      secrets: [proxy_ca]
+    environment:
+      SSL_CERT_FILE: /run/proxy-ca.pem
+    volumes:
+      - type: bind
+        source: ${PROXY_CA_BUNDLE:?Set PROXY_CA_BUNDLE to your trusted CA bundle}
+        target: /run/proxy-ca.pem
+        read_only: true
+  web:
+    build:
+      secrets: [proxy_ca]
+secrets:
+  proxy_ca:
+    file: ${PROXY_CA_BUNDLE:?Set PROXY_CA_BUNDLE to your trusted CA bundle}

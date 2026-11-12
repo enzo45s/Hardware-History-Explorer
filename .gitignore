@@ -6,3 +6,7 @@ __pycache__/
 *.pyc
 *.db
 backend/uploads/
+
+.venv/
+.coverage
+htmlcov/
