@@ -2,9 +2,9 @@
 import os
 from sqlalchemy import create_engine
 from app.models import Base
-from app.import_models import ImportJob, ImportRow, ImportClaim, ExternalIdentity
+from app.import_models import ImportJob, ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation
 
-TABLES = [c.__table__ for c in (ImportJob, ImportRow, ImportClaim, ExternalIdentity)]
+TABLES = [c.__table__ for c in (ImportJob, ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation)]
 
 
 def migrate(engine):

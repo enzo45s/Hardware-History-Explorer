@@ -9,11 +9,12 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, object_session
 from ..admin import Input
 from ..models import Computer
-from ..import_models import ImportJob, ImportRow, ImportClaim
+from ..import_models import ImportJob, ImportRow, ImportClaim, CatalogReconciliation
 from .normalize import MAX_BYTES, parse_payload
 from .engine import stage, apply_job, review_claim
 from .providers import PROVIDERS, fetch_provider, retroflops_records, wikidata_records
 from .presentation import claim_presentation
+from . import reconcile
 
 
 def job_data(job):
@@ -21,9 +22,12 @@ def job_data(job):
     db = object_session(job)
     verification = dict(db.execute(select(ImportClaim.status, func.count()).join(ImportRow, ImportClaim.row_id == ImportRow.id)
         .where(ImportRow.job_id == job.id).group_by(ImportClaim.status)).all()) if db else {}
+    records = [row.normalized for row in job.rows if row.normalized]
+    prices = sum(release.get('price') is not None for record in records for release in record.get('releases', []))
     return {'id': job.id, 'provider': job.provider, 'filename': job.filename, 'checksum': job.checksum,
             'format': job.format, 'status': job.status, 'error': job.error, 'retry_of': job.retry_of,
-            'created_at': job.created_at.isoformat(), 'total': len(job.rows), 'counts': dict(counts), 'verification_counts': verification}
+            'created_at': job.created_at.isoformat(), 'total': len(job.rows), 'counts': dict(counts), 'verification_counts': verification,
+            'data_coverage': {'records_with_source': sum(bool(record.get('source')) for record in records), 'prices': prices}}
 
 
 def claim_data(c):
@@ -45,6 +49,17 @@ class Mapping(Input):
 
 class Decision(Input):
     decision: Literal['accept', 'reject']
+    note: str = Field(min_length=5, max_length=2000)
+
+
+class ReconciliationRequest(Input):
+    entity: Literal['computer', 'manufacturer']
+    source_id: int = Field(gt=0)
+    target_id: int = Field(gt=0)
+
+
+class ReconciliationApply(ReconciliationRequest):
+    token: str = Field(pattern=r'^[a-f0-9]{64}$')
     note: str = Field(min_length=5, max_length=2000)
 
 
@@ -74,6 +89,40 @@ def create_import_router(get_db):
     @router.get('/providers')
     def providers():
         return PROVIDERS
+
+    @router.get('/reconciliation/duplicates')
+    def duplicates(db: Session = Depends(get_db)):
+        return reconcile.duplicate_groups(db)
+
+    @router.post('/reconciliation/preview')
+    def preview_reconciliation(data: ReconciliationRequest, db: Session = Depends(get_db)):
+        try:
+            return reconcile.prepare(db, data.entity, data.source_id, data.target_id)[3]
+        except ValueError as exc:
+            raise HTTPException(409, str(exc)) from exc
+
+    @router.post('/reconciliation/apply')
+    def apply_reconciliation(data: ReconciliationApply, db: Session = Depends(get_db)):
+        try:
+            return reconcile.apply(db, **data.model_dump())
+        except (ValueError, IntegrityError) as exc:
+            db.rollback()
+            raise HTTPException(409, str(exc) if isinstance(exc, ValueError) else 'Dati in conflitto: aggiorna l’anteprima prima di riprovare') from exc
+
+    @router.get('/reconciliation/history')
+    def reconciliation_history(db: Session = Depends(get_db), limit: int = Query(30, ge=1, le=100), offset: int = Query(0, ge=0)):
+        return [{'id': r.id, 'entity': r.entity, 'source_id': r.source_id, 'target_id': r.target_id, 'note': r.note,
+                 'created_at': r.created_at.isoformat()} for r in db.scalars(select(CatalogReconciliation)
+                     .order_by(CatalogReconciliation.id.desc()).offset(offset).limit(limit))]
+
+    @router.get('/reconciliation/history/{reconciliation_id}')
+    def reconciliation_original(reconciliation_id: int, db: Session = Depends(get_db)):
+        from fastapi.responses import JSONResponse
+        audit = db.get(CatalogReconciliation, reconciliation_id)
+        if audit is None:
+            raise HTTPException(404, 'Riconciliazione non trovata')
+        return JSONResponse(audit.snapshot, headers={'Content-Disposition': 'attachment; filename="reconciliation-original.json"',
+                                                     'X-Content-Type-Options': 'nosniff'})
 
     @router.get('')
     def jobs(limit: int = Query(30, ge=1, le=100), offset: int = Query(0, ge=0), db: Session = Depends(get_db)):

@@ -66,3 +66,15 @@ class ImportClaim(Base):
     review_note: Mapped[str | None] = mapped_column(Text)
     reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     source = relationship('Source')
+
+
+class CatalogReconciliation(Base):
+    """Explicit operator decisions with original rows, references and source links."""
+    __tablename__ = 'catalog_reconciliations'
+    id: Mapped[int] = mapped_column(primary_key=True)
+    entity: Mapped[str] = mapped_column(String(20))
+    source_id: Mapped[int]
+    target_id: Mapped[int]
+    note: Mapped[str] = mapped_column(Text)
+    snapshot: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)

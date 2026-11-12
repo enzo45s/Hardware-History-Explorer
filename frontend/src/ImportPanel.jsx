@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { api, latestRequest } from './api.js';
+import DuplicatePanel from './DuplicatePanel.jsx';
 import './imports.css';
 
 const labels = { ready: 'Pronta', imported: 'Importata', updated: 'Aggiornata', unchanged: 'Invariata',
@@ -105,6 +106,7 @@ export default function ImportPanel({ onSaved }) {
     <p className="muted">Uso locale single-user. Non pubblicare queste funzioni su Internet senza autenticazione e protezioni adeguate.</p>
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
+    <DuplicatePanel onSaved={() => { setJob(null); api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onSaved(); }} />
     <section className="panel">
       <label className="admin-field"><span>Fonte dati</span><select value={provider} disabled={busy} onChange={e => { setProvider(e.target.value); setRights(false); }}>
         {providers.map(p => <option value={p.id} key={p.id}>{p.name}</option>)}
@@ -138,6 +140,8 @@ export default function ImportPanel({ onSaved }) {
         <h3>Importazione #{job.id} · {status(job.status)}</h3>
         {job.error && <p className="inline-error">{job.error}</p>}
         <p>Totale: {job.total} righe. {Object.entries(job.counts).map(([k, n]) => `${status(k)}: ${n}`).join(' · ')}</p>
+        {job.data_coverage && <p>Record con fonte nel file: {job.data_coverage.records_with_source}. Prezzi presenti nel file: {job.data_coverage.prices}.
+          {!job.data_coverage.prices && ' Il dataset non contiene prezzi: il caricamento non ne aggiunge e conserva quelli già archiviati.'}</p>}
         <p>Asserzioni: {Object.entries(job.verification_counts || {}).map(([k, n]) => `${status(k)}: ${n}`).join(' · ') || 'non ancora applicate'}</p>
         {job.retry_of && <p>Nuovo tentativo dell'importazione #{job.retry_of}.</p>}
         <details><summary>Impronta del file</summary><code>{job.checksum}</code></details>

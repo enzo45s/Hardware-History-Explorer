@@ -14,6 +14,7 @@ import AdminPanel from './AdminPanel.jsx';
 import ComparisonPicker from './ComparisonPicker.jsx';
 import ComparisonTable from './ComparisonTable.jsx';
 import { comparisonSummary } from './comparison-api.js';
+import { computerSources } from './computer-sources.js';
 
 const nav = [
   ['timeline', 'Timeline', Clock3], ['catalog', 'Catalogo', Database],
@@ -208,12 +209,13 @@ function ComputerDetail({ computer, onClose, onChanged }) {
     <div className="section-title">Configurazioni e specifiche</div>
     {computer.configurations.map(c => <section className="panel" key={c.id}><h3>{c.variant_name}</h3><table><tbody>{c.specifications.map(s => {
       const view = s.normalized || s;
-      return <tr key={s.id}><td>{view.component_type} · {view.property_name}</td><td><strong title={'Valore registrato: ' + (s.numeric_value ?? s.text_value) + (s.unit ? ' ' + s.unit : '')}>{view.numeric_value ?? view.text_value} {view.unit || ''}</strong></td></tr>;
+      return <tr key={s.id}><td>{view.component_type} · {view.property_name}</td><td><strong title={'Valore registrato: ' + (s.numeric_value ?? s.text_value) + (s.unit ? ' ' + s.unit : '')}>{view.numeric_value ?? view.text_value} {view.unit || ''}</strong>{s.sources?.map(source => <Source key={source.id} s={source} />)}</td></tr>;
     })}</tbody></table></section>)}
     <div className="section-title">Commercializzazione</div>
+    {!computer.releases.some(r => r.price != null) && <p className="muted">Nessun prezzo documentato presente in questa scheda. Le fonti importate possono non riportarlo; non viene stimato automaticamente.</p>}
     {computer.releases.map(r => <section className="panel" key={r.id}><b>{r.market}</b><p>{r.release_date || 'Data non disponibile'} · {r.price != null ? `${r.price} ${r.currency}` : 'Prezzo non disponibile'}</p>{r.sources.map(s => <Source key={s.id} s={s} />)}</section>)}
     <div className="section-title">Fonti e verificabilità</div>
-    <section className="panel">{computer.sources.length ? computer.sources.map(s => <Source key={s.id} s={s} />) : <p className="muted">Non sono ancora state associate fonti verificate a questa scheda. I dati iniziali sono dimostrativi. Le fonti fotografiche sono indicate nella galleria.</p>}</section>
+    <section className="panel">{computerSources(computer).length ? <><p className="muted">Fonti della scheda e dei singoli dati. La presenza di una citazione non implica una verifica: gli stati e le decisioni sono in Amministrazione → Importazioni → Fonti e verifiche.</p>{computerSources(computer).map(s => <Source key={s.id} s={s} />)}</> : <p className="muted">Nessuna fonte associata alla scheda o ai suoi dati. Le fonti fotografiche sono indicate nella galleria. Se hai importato una seconda scheda dello stesso modello, controlla i duplicati in Amministrazione → Importazioni.</p>}</section>
   </>;
 }
 

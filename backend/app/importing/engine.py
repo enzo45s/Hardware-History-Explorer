@@ -8,6 +8,8 @@ from ..import_models import ImportJob, ImportRow, ImportClaim, ExternalIdentity,
 from ..admin import historical_date
 from .normalize import Record, name_key, parse_payload, MAX_BYTES, MAX_ROWS
 from .vocabulary import matching_specs, quantity_equal
+from .identity import maker_key, computer_key
+from .reconcile import reconciled_configuration
 
 TARGETS = {c.__name__: c for c in (Computer, Configuration, Specification, Release, Sale, Review, Fact)}
 DATE_PRECISION = {'announcement_date': 'announcement_precision', 'release_date': 'release_precision',
@@ -37,9 +39,9 @@ def catalog_candidates(db, data, provider):
             # A stable identity also preserves an explicitly approved alias mapping.
             # Changed names/manufacturers still produce non-overwriting field conflicts.
             return [identity.computer_id], False
-    makers = [m.id for m in db.scalars(select(Manufacturer)) if name_key(m.name) == name_key(data['manufacturer'])]
+    makers = [m.id for m in db.scalars(select(Manufacturer)) if maker_key(m.name) == maker_key(data['manufacturer'])]
     candidates = [c.id for c in db.scalars(select(Computer).where(Computer.manufacturer_id.in_(makers)))
-                  if name_key(c.model_name) == name_key(data['model_name'])]
+                  if computer_key(c.manufacturer.name, c.model_name) == computer_key(data['manufacturer'], data['model_name'])]
     return candidates, len(candidates) > 1
 
 
@@ -75,7 +77,8 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
 
 
 def reference(db, model, name):
-    rows = [x for x in db.scalars(select(model)) if name_key(x.name) == name_key(name)]
+    identity = maker_key if model is Manufacturer else name_key
+    rows = [x for x in db.scalars(select(model)) if identity(x.name) == identity(name)]
     if len(rows) > 1:
         raise ValueError(f'Riferimento ambiguo: {name}')
     if rows:
@@ -146,7 +149,7 @@ def import_record(db, job, row):
     if c is None and candidates:
         c = db.get(Computer, candidates[0])
     created = c is None
-    maker = reference(db, Manufacturer, data['manufacturer'])
+    maker = c.manufacturer if c is not None and maker_key(c.manufacturer.name) == maker_key(data['manufacturer']) else reference(db, Manufacturer, data['manufacturer'])
     if created:
         c = Computer(manufacturer=maker, model_name=data['model_name'])
         db.add(c)
@@ -186,7 +189,8 @@ def import_record(db, job, row):
             evidence='\n'.join(x for x in (entry.get('evidence') or data.get('evidence'),
                  ('Licenza: ' + citation['license']) if citation.get('license') else None) if x) or None))
 
-    record_fields(c, {**data, 'manufacturer_id': maker.id}, ('model_name', 'manufacturer_id', 'description', 'announcement_date'))
+    model_name = c.model_name if computer_key(c.manufacturer.name, c.model_name) == computer_key(data['manufacturer'], data['model_name']) else data['model_name']
+    record_fields(c, {**data, 'model_name': model_name, 'manufacturer_id': maker.id}, ('model_name', 'manufacturer_id', 'description', 'announcement_date'))
     for name in data.get('categories', []):
         cat = reference(db, Category, name)
         if cat not in c.categories:
@@ -197,7 +201,8 @@ def import_record(db, job, row):
         db.add(ImportClaim(row_id=row.id, computer_id=c.id, source_id=s.id, entity='Computer', target_id=c.id,
             field='category', value={'value': cat.id}, previous={'value': None}, status='pending', estimated=root_estimate))
     for cfg in data.get('configurations', []):
-        matches = [v for v in c.configurations if name_key(v.variant_name) == name_key(cfg['variant_name'])]
+        reconciled = reconciled_configuration(db, c.id, identity_provider(job.provider, data), data.get('external_id'), cfg['variant_name'])
+        matches = [reconciled] if reconciled else [v for v in c.configurations if name_key(v.variant_name) == name_key(cfg['variant_name'])]
         if len(matches) > 1:
             raise ValueError('Configurazione ambigua')
         variant = matches[0] if matches else Configuration(variant_name=cfg['variant_name'])
@@ -205,7 +210,7 @@ def import_record(db, job, row):
             c.configurations.append(variant)
             changed = True
         db.flush()
-        record_fields(variant, cfg, ('variant_name', 'description'))
+        record_fields(variant, {**cfg, 'variant_name': variant.variant_name} if reconciled else cfg, ('variant_name', 'description'))
         for spec in cfg.get('specifications', []):
             matches = matching_specs(variant.specifications, spec)
             if len(matches) > 1:
