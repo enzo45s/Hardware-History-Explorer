@@ -2,6 +2,7 @@ from datetime import date
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from .models import Manufacturer,Category,Computer,Configuration,Specification,Market,Release,Fact,Source
+from .import_models import ArchiveReset
 
 # Esempi dimostrativi: valori indicativi, non un corpus verificato.
 DATA=[
@@ -17,6 +18,7 @@ DATA=[
  ('Digital Equipment Corporation','PDP-11','Minicomputer',1970,'Famiglia di minicomputer a 16 bit.', [('CPU','Architettura','16-bit')]),
 ]
 def seed(db:Session):
+ if db.scalar(select(ArchiveReset.id).limit(1)) is not None:return
  if db.scalar(select(Computer.id).limit(1)) is not None:return
  world=Market(name='Globale',region='Globale'); db.add(world)
  makers={};cats={}

@@ -121,7 +121,7 @@ function SourceEditor({ draft, setDraft }) {
   </div>;
 }
 
-export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer }) {
+export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onArchiveReset = onSaved }) {
   const [section, setSection] = useState('computers');
   const [records, setRecords] = useState([]);
   const [sources, setSources] = useState([]);
@@ -189,7 +189,8 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer }) {
     </div>
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
-    {section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : <div className="admin-layout"><aside className="panel admin-list">
+    {section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }}
+      onArchiveReset={() => { setDraft(null); setDirty(false); setQuery(''); setMessage(''); onArchiveReset(); reload().catch(e => setError(e.message)); }} /> : <div className="admin-layout"><aside className="panel admin-list">
       <button className="admin-primary" disabled={busy || loading} onClick={create}><Plus size={16} />{section === 'computers' ? 'Nuovo calcolatore' : 'Nuova fonte'}</button>
       <label className="admin-field"><span>Cerca {section === 'computers' ? 'calcolatori' : 'fonti'}</span><input value={query} onChange={e => setQuery(e.target.value)} /></label>
       {loading ? <p>Caricamento…</p> : <>

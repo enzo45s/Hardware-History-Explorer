@@ -7,7 +7,7 @@ from sqlalchemy import select, text
 from ..models import (Computer, Manufacturer, Configuration, Specification, Release, Sale, Review, Fact,
                       ComputerImage, Source, computer_source, computer_category, spec_source,
                       release_source, sale_source, review_source, fact_source)
-from ..import_models import ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation
+from ..import_models import ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation, ArchiveReset
 from .identity import computer_key, maker_key
 from .normalize import name_key
 
@@ -175,7 +175,8 @@ def reconciled_configuration(db, computer_id, provider, external_id, variant_nam
     """
     if not external_id:
         return None
-    for audit in db.scalars(select(CatalogReconciliation).where(CatalogReconciliation.entity == 'computer')
+    cutoff = db.scalar(select(ArchiveReset.reconciliation_cutoff).order_by(ArchiveReset.id.desc()).limit(1)) or 0
+    for audit in db.scalars(select(CatalogReconciliation).where(CatalogReconciliation.entity == 'computer', CatalogReconciliation.id > cutoff)
                             .order_by(CatalogReconciliation.id.desc())):
         original = audit.snapshot
         if not any(i['computer_id'] == audit.source_id and i['provider'] == provider and i['external_id'] == external_id

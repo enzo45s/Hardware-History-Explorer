@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test tests/*.test.js",
-    "test:browser": "node tests/browser/imports.cjs"
+    "test:browser": "node tests/browser/imports.cjs",
+    "test:browser:reset": "node tests/browser/reset.cjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

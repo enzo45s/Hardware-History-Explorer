@@ -346,3 +346,5 @@ from .admin import create_admin_router
 app.include_router(create_admin_router(get_db))
 from .importing.router import create_import_router
 app.include_router(create_import_router(get_db))
+from .archive import create_archive_router
+app.include_router(create_archive_router(get_db))

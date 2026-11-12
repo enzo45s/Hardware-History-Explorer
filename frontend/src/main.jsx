@@ -275,7 +275,10 @@ function App() {
   </aside><main><header><div className="breadcrumb">ARCHIVIO DIGITALE <ChevronRight size={14} /> {nav.find(x => x[0] === tab)?.[1].toUpperCase()}</div><div className="header-actions"><ThemeSwitcher /><div className="header-right"><span className="header-tagline">STORIA DELL'INFORMATICA</span><span className="avatar">H</span></div></div></header>
     <div className="content">{error && <div className="error">{error} <button onClick={() => setError('')}>×</button></div>}
       {selected ? <ComputerDetail computer={selected} onClose={() => setSelected(null)} onChanged={refreshComputer} /> : <>
-        {tab === 'admin' && <AdminPanel onSaved={() => setRevision(v => v + 1)} onDirtyChange={setAdminDirty} onOpenComputer={openComputer} />}
+        {tab === 'admin' && <AdminPanel onSaved={() => setRevision(v => v + 1)} onDirtyChange={setAdminDirty} onOpenComputer={openComputer}
+          onArchiveReset={() => { setCompare([]); setComparisonConfigurations({}); setSelected(null); setItems([]);
+            setFilters({ q: '', category_id: '', manufacturer_id: '', year_from: '', year_to: '' });
+            setAnswer(''); setRevision(v => v + 1); }} />}
         {tab === 'timeline' && <><div className="eyebrow">UN VIAGGIO NELL'EVOLUZIONE TECNOLOGICA</div><h1>La storia dei <em>calcolatori.</em></h1><p className="lead">Esplora i sistemi che hanno definito l'informatica, dai mainframe ai personal computer.</p><Stats analytics={analytics} /><div className="section-title">Timeline delle innovazioni <span>{items.length} sistemi</span></div><Filters meta={meta} filters={filters} setFilters={setFilters} />
           <div className="timeline">{items.map(c => <div className="time-item" key={c.id}><div className="time-year">{c.year || '—'}</div><div className="time-line"><i /></div>
             <div className="time-card" onClick={() => openComputer(c.id)}><div className="time-top"><span className="tag">{c.categories[0]}</span><span>{c.manufacturer}</span></div><div className="time-content"><SystemCover src={c.image_url} name={c.model_name} year={c.year} className="time-photo" /><div className="time-info"><h3>{c.model_name}</h3><p>{c.description}</p></div></div>

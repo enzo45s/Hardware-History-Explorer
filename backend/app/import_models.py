@@ -78,3 +78,14 @@ class CatalogReconciliation(Base):
     note: Mapped[str] = mapped_column(Text)
     snapshot: Mapped[dict] = mapped_column(JSON)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+
+
+class ArchiveReset(Base):
+    """An explicit empty-catalog state plus metadata retained before removal."""
+    __tablename__ = 'archive_resets'
+    id: Mapped[int] = mapped_column(primary_key=True)
+    note: Mapped[str] = mapped_column(Text)
+    counts: Mapped[dict] = mapped_column(JSON)
+    snapshot: Mapped[dict] = mapped_column(JSON)
+    reconciliation_cutoff: Mapped[int]
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)

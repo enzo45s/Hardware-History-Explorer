@@ -46,7 +46,7 @@ def current_value(claim, target):
 
 
 def format_value(db, claim, values, target):
-    if values is None:
+    if values is None or target is None:
         return 'Elemento non più disponibile'
     if claim.field in REFERENCES:
         value = values.get('value')
@@ -72,7 +72,7 @@ def format_value(db, claim, values, target):
 
 def claim_presentation(claim):
     db = object_session(claim)
-    target = db.get(TARGETS[claim.entity], claim.target_id)
+    target = db.get(TARGETS[claim.entity], claim.target_id) if claim.computer_id is not None else None
     computer = db.get(Computer, claim.computer_id) if claim.computer_id else None
     context = computer.model_name if computer else 'Scheda non più disponibile'
     field_label = FIELDS.get(claim.field, claim.field.replace('_', ' '))

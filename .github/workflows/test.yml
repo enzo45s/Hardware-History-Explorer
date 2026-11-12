@@ -53,6 +53,12 @@ jobs:
         env:
           HHE_BASE_URL: http://127.0.0.1:8080/
         run: npm run test:browser
+      - name: Browser reset on disposable Compose database
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+          HHE_ALLOW_TEST_RESET: '1'
+        run: npm run test:browser:reset
       - name: Upload browser diagnostics on failure
         if: failure()
         uses: actions/upload-artifact@v4

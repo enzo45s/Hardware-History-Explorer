@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { api, latestRequest } from './api.js';
 import DuplicatePanel from './DuplicatePanel.jsx';
+import ArchivePanel from './ArchivePanel.jsx';
 import './imports.css';
 
 const labels = { ready: 'Pronta', imported: 'Importata', updated: 'Aggiornata', unchanged: 'Invariata',
   invalid: 'Scartata', failed: 'Fallita', ambiguous: 'Corrispondenza da scegliere', completed: 'Completata',
-  partial: 'Completata con righe da controllare', skipped: 'Esclusa', pending: 'Da verificare', conflict: 'In conflitto', verified: 'Verificata', rejected: 'Fonte rifiutata per questo dato' };
+  partial: 'Completata con righe da controllare', skipped: 'Esclusa', archived: 'Archiviata dopo svuotamento', pending: 'Da verificare', conflict: 'In conflitto', verified: 'Verificata', rejected: 'Fonte rifiutata per questo dato' };
 const status = value => labels[value] || value;
 
 function RowMatch({ row, disabled, onMatch }) {
@@ -30,7 +31,7 @@ function RowMatch({ row, disabled, onMatch }) {
 
 function Claim({ claim, disabled, onReview }) {
   const [note, setNote] = useState('');
-  const reviewable = ['pending', 'conflict'].includes(claim.status);
+  const reviewable = claim.computer_id != null && ['pending', 'conflict'].includes(claim.status);
   const display = claim.display;
   return <section className={'import-claim ' + (claim.status === 'conflict' ? 'import-conflict' : '')}>
     <b>{display?.field_label || claim.field}</b>
@@ -58,7 +59,7 @@ function Claim({ claim, disabled, onReview }) {
   </section>;
 }
 
-export default function ImportPanel({ onSaved }) {
+export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
   const [providers, setProviders] = useState([]);
   const [provider, setProvider] = useState('manual');
   const [file, setFile] = useState(null);
@@ -70,6 +71,7 @@ export default function ImportPanel({ onSaved }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  const [catalogRevision, setCatalogRevision] = useState(0);
   useEffect(() => latestRequest(signal => Promise.all([api('/admin/imports/providers', { signal }), api('/admin/imports', { signal })]),
     ([p, j]) => { setProviders(p); setJobs(j); }, e => setError(e.message)), []);
   async function open(id, nextOffset = 0) {
@@ -106,7 +108,9 @@ export default function ImportPanel({ onSaved }) {
     <p className="muted">Uso locale single-user. Non pubblicare queste funzioni su Internet senza autenticazione e protezioni adeguate.</p>
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
-    <DuplicatePanel onSaved={() => { setJob(null); api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onSaved(); }} />
+    <ArchivePanel onReset={() => { setJob(null); setCatalogRevision(revision => revision + 1);
+      api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onArchiveReset(); }} />
+    <DuplicatePanel key={catalogRevision} onSaved={() => { setJob(null); api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onSaved(); }} />
     <section className="panel">
       <label className="admin-field"><span>Fonte dati</span><select value={provider} disabled={busy} onChange={e => { setProvider(e.target.value); setRights(false); }}>
         {providers.map(p => <option value={p.id} key={p.id}>{p.name}</option>)}
@@ -138,6 +142,7 @@ export default function ImportPanel({ onSaved }) {
       {busy && <p role="status">Operazione in corso…</p>}
       {!job ? <p>Scegli un'importazione per vedere originali, dati normalizzati, corrispondenze e verifiche.</p> : <>
         <h3>Importazione #{job.id} · {status(job.status)}</h3>
+        {job.status === 'archived' && <p>Esiti storici precedenti allo svuotamento. Le schede associate sono state rimosse. Usa una nuova anteprima per importare nuovamente questi dati.</p>}
         {job.error && <p className="inline-error">{job.error}</p>}
         <p>Totale: {job.total} righe. {Object.entries(job.counts).map(([k, n]) => `${status(k)}: ${n}`).join(' · ')}</p>
         {job.data_coverage && <p>Record con fonte nel file: {job.data_coverage.records_with_source}. Prezzi presenti nel file: {job.data_coverage.prices}.

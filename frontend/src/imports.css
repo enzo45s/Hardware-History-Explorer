@@ -26,4 +26,8 @@
 .import-duplicates{margin:18px 0;min-width:0;overflow-wrap:anywhere}
 .import-duplicates .import-row button{display:block;text-align:left;max-width:100%;white-space:normal;overflow-wrap:anywhere;margin:8px 0}
 .import-duplicates textarea{box-sizing:border-box}
+.archive-maintenance{margin:18px 0;min-width:0;overflow-wrap:anywhere}
+.archive-maintenance input:not([type=checkbox]),.archive-maintenance textarea{box-sizing:border-box;display:block;width:100%;max-width:650px;margin:6px 0 16px;padding:9px;border:1px solid var(--theme-border,#dce3f0);border-radius:6px;background:var(--theme-field-bg,white);color:var(--theme-text-primary,#344563);font:inherit}
+.archive-maintenance button{max-width:100%;white-space:normal;overflow-wrap:anywhere;margin:8px 8px 8px 0}
+.archive-maintenance .archive-reset-button{border-color:var(--theme-warning-border,#bc6c27)}
 @media(max-width:1100px){.import-layout{grid-template-columns:1fr}}
