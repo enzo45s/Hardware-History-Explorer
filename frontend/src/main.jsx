@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   Search, Clock3, Database, BarChart3, GitCompareArrows, Bot, ChevronRight, ArrowLeft,
@@ -67,7 +67,7 @@ function Gallery({ computer }) {
 function ImageManager({ computer, onChanged }) {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState('commons');
-  const [query, setQuery] = useState(computer.manufacturer + ' ' + computer.model_name);
+  const [query, setQuery] = useState(computer.model_name);
   const [results, setResults] = useState([]);
   const [file, setFile] = useState(null);
   const [url, setUrl] = useState('');
@@ -80,7 +80,7 @@ function ImageManager({ computer, onChanged }) {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
-  useEffect(() => { setQuery(computer.manufacturer + ' ' + computer.model_name); setResults([]); setMessage(''); }, [computer.id]);
+  useEffect(() => { setQuery(computer.model_name); setResults([]); setMessage(''); }, [computer.id]);
 
   async function perform(action, success) {
     setBusy(true); setError(''); setMessage('');
@@ -234,6 +234,8 @@ function App() {
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  // Restore the new view before painting; data refreshes keep reading position.
+  useLayoutEffect(() => { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }, [tab, selected?.id]);
   useEffect(() => {
     setComparisonConfigurations(previous => {
       const kept = Object.entries(previous).filter(([id]) => compare.some(c => String(c.id) === id));

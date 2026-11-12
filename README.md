@@ -2,6 +2,10 @@
 
 Web app per esplorare la storia dei calcolatori commerciali: timeline, catalogo, gallerie fotografiche, schede, confronti, statistiche e assistente AI basato sui dati archiviati.
 
+La navigazione fra sezioni, l'apertura/chiusura delle schede e il cambio di
+sezione amministrativa riportano la pagina in cima. Aggiornamenti dei dati e
+ricerche nella stessa vista conservano la posizione di lettura.
+
 ## Avvio con Docker
 
 1. Installa Docker Desktop / Docker Engine e Docker Compose.
@@ -156,6 +160,9 @@ Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibl
 La gestione delle fotografie resta disponibile nella normale scheda del calcolatore, raggiungibile anche dal pannello. Non serve una migrazione aggiuntiva del database. Vedi [la guida del pannello](docs/ADMIN.md) per campi, date, fonti e API. Il pannello segue la modalità locale single-user del progetto.
 
 ### Problemi nella ricerca Wikimedia Commons
+
+La ricerca parte dal solo nome del modello: per esempio `Apple Macintosh 128K`,
+senza aggiungere il produttore davanti. Il testo resta modificabile.
 
 La ricerca Commons è gratuita e non usa la chiave OpenAI. Il backend si identifica con lo User-Agent `HardwareHistoryExplorer/1.2 (https://github.com/enzo45s/Hardware-History-Explorer)`, richiede esplicitamente il formato JSON con pagine indicizzate e attende fino a 30 secondi per ciascuna fase della richiesta HTTP.
 

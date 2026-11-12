@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Plus, Pencil, Save, X, BookOpen, Monitor, ExternalLink } from 'lucide-react';
 import { api, allComputers, latestRequest } from './api.js';
 import { newComputer, newSource, computerDraft, computerPayload, sourcePayload } from './admin-data.js';
@@ -123,6 +123,7 @@ function SourceEditor({ draft, setDraft }) {
 
 export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onArchiveReset = onSaved }) {
   const [section, setSection] = useState('computers');
+  useLayoutEffect(() => { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }, [section]);
   const [records, setRecords] = useState([]);
   const [sources, setSources] = useState([]);
   const [meta, setMeta] = useState({ manufacturers: [], categories: [], markets: [] });
