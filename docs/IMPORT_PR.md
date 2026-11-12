@@ -19,15 +19,29 @@ sistema d'importazione. Non effettua merge su main.
   fonti, stime e stati; nessuna modifica a fotografie o funzioni esistenti.
 - Adattatori per export RetroFlops CC BY 4.0 e Wikidata; le altre tre fonti
   restano manuali finché permessi e disponibilità non sono accertati.
+- Alias tecnici e unità esplicite uniformati anche per le specifiche precedenti,
+  senza riscritture automatiche dei dati originali; schede e confronti usano
+  una vista normalizzata additiva. Parti hardware e unità ambigue restano distinte.
+- Conflitti con nomi/valori leggibili e contesto; citazione separata dal dato,
+  rifiuto motivato e blocco dell'accettazione di decisioni ormai superate.
 
 Le pagine delle cinque fonti sono bloccate dal proxy cloud con 403. Per
 RetroFlops sono stati letti repository e licenza ufficiali: incluso un campione
-reale Apple II derivato da record canonici, con attribuzione, originali e hash.
-Il campione ha prodotto un solo modello in un database di prova separato, nessuna
-misura tecnica aggiunta e nessuna asserzione promossa a verificata. Il replay
-è invariato. Nessuna importazione storica massiva o modifica al DB dell'utente.
+reale Apple II e due campioni con misure tecniche, attribuzione, originali e hash.
+Il campione ampliato contiene 19 modelli, 26 configurazioni e 70 specifiche.
+Su SQLite e PostgreSQL separati, partendo dal seed e dal precedente campione,
+ha prodotto 11 importati, 4 aggiornati e 4 invariati (25 schede totali); il
+replay restituisce 19 invariati. Sette differenze editoriali restano in revisione,
+nessuna asserzione viene verificata automaticamente. Nessuna modifica al DB
+dell'utente e nessuna importazione automatica all'avvio.
 
-Verifiche e limiti dettagliati in `docs/IMPORT_REPORT.md`; istruzioni e formati
+Verifiche aggiornate: 111 test SQLite passati e uno specifico PostgreSQL saltato,
+112 test PostgreSQL passati, 22 test frontend passati, build e avvio Compose,
+Chromium con revisione conflitti e layout mobile a 320/390 px riusciti. Vite
+segnala il bundle oltre 500 kB; la CI remota va confermata su GitHub.
+
+Verifiche e limiti aggiornati in `docs/IMPORT_NORMALIZATION_REPORT.md`;
+verifica iniziale in `docs/IMPORT_REPORT.md`; istruzioni e formati
 in `docs/IMPORTING.md`, valutazione delle fonti in `docs/IMPORT_SOURCES.md`.
 Il pannello resta locale single-user senza nuova autenticazione. La generazione
 AI esterna non è stata provata con una chiave/crediti configurati.

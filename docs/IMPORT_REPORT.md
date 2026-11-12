@@ -1,5 +1,9 @@
 # Resoconto importazioni — 11 novembre 2026
 
+Questo documento conserva la verifica iniziale. Per lo stato successivo,
+normalizzazione, conflitti leggibili e prova di 19 modelli su SQLite/PostgreSQL,
+vedi il [resoconto del 12 novembre](IMPORT_NORMALIZATION_REPORT.md).
+
 Branch `feat/historical-data-import`, base `feat/admin-panel` (`9c701fc`).
 Nessuna modifica diretta o merge su main. Funzioni e dati precedenti preservati.
 

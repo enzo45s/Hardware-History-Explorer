@@ -45,6 +45,14 @@ Migrazione ripetibile su PostgreSQL e SQLite. Non sostituisce la migrazione
    accettare il valore proposto con una motivazione oppure rifiutare quella
    fonte per l'asserzione. Nessuna verifica è automatica.
 
+Le decisioni mostrano nomi leggibili (per esempio **Produttore: Apple Computer**
+contro **Apple**) e il contesto della scheda/configurazione. **Fonte a supporto**
+è la citazione: il titolo di un manuale non è il produttore proposto.
+**Mantieni il dato attuale** rifiuta solo quella asserzione, senza eliminare la
+fonte dalla bibliografia. Gli identificativi originali restano espandibili.
+Se il dato è cambiato dopo l'importazione, prepara una nuova anteprima prima
+di accettare; il pulsante è disabilitato per una decisione ormai superata.
+
 Rifiutare una fonte non cancella retroattivamente valori già inseriti: usa
 l'editor per correggere il catalogo. Nessuna importazione cancella fotografie,
 configurazioni o dati assenti nel nuovo file. I collegamenti `*_sources`
@@ -128,6 +136,23 @@ fondono automaticamente ragioni sociali diverse o nomi simili. `4 kbytes`
 diventa `4 KB`, ma `KB`, `KiB` e `kb` rimangono distinti. Non si convertono
 valute o unità ambigue. Non sono previste traduzioni automatiche dei nomi.
 
+Il vocabolario delle specifiche uniforma alias espliciti: `main-cpu` diventa
+`CPU`, `clock-frequency` diventa `Frequenza`, `memory-capacity` diventa
+`Capacità`. RAM e ROM restano distinte; `system-memory` senza indicazioni
+univoche resta **Memoria**. Le frequenze CPU/GPU in Hz/kHz/MHz/GHz sono
+espresse in MHz; le capacità in B/KiB/MiB/GiB in KiB. `KB`, `MB`, `GB` e bit
+restano distinti dalle unità IEC. I dati originali non vengono riscritti:
+upload e asserzioni mantengono l'audit, e le API delle schede aggiungono una
+vista `normalized` alle specifiche mantenendo i campi originali. Anche le
+specifiche precedenti si abbinano per significato e quantità equivalente,
+senza duplicarle o cambiare automaticamente i loro identificativi.
+
+Le frequenze di parti hardware differenti (per esempio core prestazioni ed
+efficienza) restano proprietà separate. I valori RetroFlops `rumored` non
+diventano stime attendibili e sono esclusi; restano negli originali. Una data
+esplicitamente descritta dalla fonte come annuncio non diventa una data di
+commercializzazione. Queste regole non certificano l'attendibilità storica.
+
 L'identità è `(fonte, external_id)`; per file generici l'ID è anche separato
 per URL della citazione, o titolo/autore per fonti senza URL. Altrimenti il
 motore cerca produttore e modello normalizzati esatti. Più corrispondenze
@@ -171,9 +196,13 @@ dell'esportazione live. Non contiene misure tecniche; quelle assenti restano
 ignote. Nel database dimostrativo associa il record all'Apple II esistente:
 «Apple Computer» e «Apple» non sono alias automatici.
 
-È stato importato **un modello reale** da questo campione in un database di
-prova separato, in stato pending. Nessuna importazione massiva e nessuna
-modifica al database sul computer dell'utente sono state effettuate dal cloud.
+Sono disponibili anche il [campione di quattro modelli](examples/retroflops-home-computers-4.README.md)
+e il [campione ampliato di 19 modelli](examples/retroflops-computers-19.README.md),
+con modelli CPU e misure corredate di fonte. Quest'ultimo comprende 26
+configurazioni e 70 specifiche. Le istruzioni descrivono le associazioni
+manuali da controllare e i risultati delle importazioni in database separati.
+Nessun dato è stato verificato automaticamente o importato sul computer
+dell'utente dal cloud.
 
 ## CLI e API
 

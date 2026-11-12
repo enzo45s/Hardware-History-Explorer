@@ -139,7 +139,10 @@ all'avvio.
 Vedi [la guida alle importazioni](docs/IMPORTING.md) per formati, migrazione,
 CLI, API e test, e [la valutazione delle fonti](docs/IMPORT_SOURCES.md) per
 licenze e blocchi effettivamente riscontrati. È incluso un campione reale Apple II
-con attribuzione RetroFlops, CC BY 4.0.
+con attribuzione RetroFlops, CC BY 4.0, e un [campione ampliato di 19 modelli](docs/examples/retroflops-computers-19.README.md)
+con CPU e misure tecniche corredate di fonte. La normalizzazione uniforma alias
+e unità esplicite senza riscrivere i dati originali; i conflitti mostrano i
+nomi proposti e attuali, separati dalla citazione bibliografica.
 
 Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibliografiche, aggiungere produttori/categorie/mercati e aggiornare commercializzazioni e specifiche tecniche. Le schede conservano fotografie e altri dati storici già archiviati. Le modifiche sono applicate con il pulsante Salva; il pannello segnala quelle non salvate.
 
