@@ -61,7 +61,7 @@ class Spec(Supported):
     def quantity(cls, data):
         data = normalize_spec(data)
         text = data.get('text_value')
-        if isinstance(text, str) and data.get('numeric_value') is None and data['property_name'] not in ('Modello', 'Architettura'):
+        if isinstance(text, str) and data.get('numeric_value') is None and data['property_name'] not in ('Modello', 'Architettura', 'Modello emulato (MAME)'):
             match = re.fullmatch(r'([+-]?\d+(?:\.\d+)?)\s+([A-Za-z]+)', text.strip())
             if match and not data.get('unit'):
                 data.update(numeric_value=float(match[1]), unit=match[2], text_value=None)
