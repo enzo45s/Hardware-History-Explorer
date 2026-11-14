@@ -38,6 +38,14 @@ da verificare e non cambiano gli originali o le impronte dei cinque lotti.
 Le [foto automatiche Commons](../../AUTOMATIC_PHOTOS.md) sono un'operazione
 separata, avviata dall'operatore; questi JSON continuano a non contenere immagini.
 
+È disponibile anche la [rifinitura del catalogo esistente](../../CATALOG_REFINEMENT.md):
+34 schede regionali accorpabili in 22 gruppi, descrizioni italiane e dati
+aggiuntivi tramite uno snapshot separato. I cinque lotti originali restano
+invariati; non vanno ricaricati per ottenere l'arricchimento. Il totale dopo
+questo accorpamento esplicito è 1.105, con tutte le configurazioni regionali
+conservate. I cinque prezzi IBM RT appartengono al pacchetto aggiuntivo,
+non a questi file originali.
+
 Le proprietà tecniche sono deliberatamente esplicite:
 
 - **CPU · Modello emulato (MAME)**;

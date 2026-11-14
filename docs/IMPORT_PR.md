@@ -51,6 +51,17 @@ merge automatico su main.
   conservate. Coda persistente, pausa/ripresa, una richiesta per volta, rispetto
   dei limiti e protezione delle fotografie già presenti. Due nuove tabelle
   additive e migrazione ripetibile; nessun processo automatico all'avvio.
+- Rifinitura opt-in del catalogo esistente: accorpamento di 34 schede regionali
+  in 22 gruppi, con trasferimento di tutti i dati e audit; revisioni hardware
+  distinte. Le importazioni successive seguono configurazioni e prezzi originali
+  tramite le identità nell'audit, anche dopo collisioni di nomi/mercato/data.
+- Snapshot AppleDB/MAME con originali e licenze: 105 specifiche documentali,
+  3.891 proprietà esplicitamente emulate e cinque prezzi IBM RT contestualizzati.
+  Descrizioni italiane per le schede vuote, preservando il testo già scritto.
+  Nessun nuovo modello tramite l'arricchimento locale; replay invariato.
+- Adattatore Wikidata esteso a descrizioni italiane, CPU/OS, unità e prezzi.
+  Prezzi qualificati/multipli o con valuta non risolta rimangono note contestuali;
+  codici valuta risolti via ISO 4217, senza inventare mercati o date di lancio.
 
 Le pagine delle cinque fonti sono bloccate dal proxy cloud con 403. Per
 RetroFlops sono stati letti repository e licenza ufficiali: incluso un campione
@@ -65,7 +76,7 @@ dell'utente e nessuna importazione automatica all'avvio.
 Il campione non contiene prezzi: i campi assenti non vengono inventati e i
 prezzi già archiviati sono conservati.
 
-Il corpus MAME non fornisce prezzi e non certifica commercializzazioni o
+I cinque lotti MAME iniziali non contengono prezzi e non certificano commercializzazioni o
 configurazioni vendute. Date e specifiche richiedono revisione storica.
 Importazione completa e replay dei cinque lotti provati su SQLite e PostgreSQL:
 1.139 schede, 1.251 configurazioni e 3.184 specifiche restano invariati;
@@ -73,8 +84,8 @@ controllate via API tutte le schede e le citazioni delle specifiche. Chromium
 con il catalogo reale verifica timeline, catalogo, confronto, analisi e
 paginazione delle fonti. Nessuna verifica automatica dei dati.
 
-Verifiche aggiornate: 172 test SQLite passati e uno specifico PostgreSQL saltato,
-173 test PostgreSQL passati, 23 test frontend passati, build e avvio Compose,
+Verifiche aggiornate: 197 test SQLite passati e uno specifico PostgreSQL saltato,
+198 test PostgreSQL passati, 23 test frontend passati, build e avvio Compose,
 Chromium con revisione conflitti, riconciliazione, reset esplicito e layout mobile
 a 320/390 px riusciti. Dopo il reset e un riavvio API il catalogo rimane vuoto:
 il campione produce 19 importati e poi 19 invariati su PostgreSQL. Vite
@@ -94,3 +105,12 @@ di importazione/conflitti/riconciliazione. Categorie applicate su PostgreSQL
 isolato al corpus completo, con tutte le 1.139 schede controllate prima/dopo
 e replay di zero aggiornamenti. Guide in `docs/AUTOMATIC_PHOTOS.md` e
 `docs/CLASSIFICATION.md`; database dell'utente mai raggiunto.
+
+Rifinitura verificata sull'intero corpus PostgreSQL isolato: 1.105 sistemi,
+1.308 configurazioni e 7.180 specifiche; tutti gli ID delle configurazioni e
+specifiche preesistenti conservati. Descrizioni presenti su tutte le 1.105
+schede nella prova, cinque prezzi effettivamente importati e replay con zero
+aggiornamenti. Ricaricato anche il primo lotto MAME originale: 250 invariati.
+Browser con accorpamento, fotografia preservata, arricchimento e prezzo
+visibile su mobile. Limiti storici e copertura parziale espliciti in
+`docs/CATALOG_REFINEMENT.md`, prova in `docs/CATALOG_REFINEMENT_VALIDATION.md`.

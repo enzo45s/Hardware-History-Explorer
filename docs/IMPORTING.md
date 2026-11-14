@@ -181,6 +181,11 @@ recensioni: testata/data; fatti: tipo/testo. Le ambiguità non vengono fuse.
 
 ## Fonti integrate e campione reale
 
+Per il catalogo già caricato è disponibile la [rifinitura delle schede esistenti](CATALOG_REFINEMENT.md):
+accorpamento regionale con audit, descrizioni italiane e snapshot AppleDB/MAME
+con dati aggiuntivi. L'arricchimento locale impone `existing_only`: una scheda
+rimossa nel frattempo non viene ricreata. Non serve svuotare o ricaricare i lotti.
+
 Per provare l'archivio oltre le mille schede usa il [pacchetto MAME 0.276](datasets/mame-0276/README.md):
 cinque JSON canonici da caricare come **CSV / JSON autorizzato**. I valori
 emulati sono indicati nelle proprietà e non sovrascrivono le proprietà storiche

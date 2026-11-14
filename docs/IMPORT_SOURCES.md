@@ -22,6 +22,21 @@ software o dispositivo mobile è stato spacciato per un computer importato.
 
 Il resto di questo documento conserva l'analisi iniziale delle cinque fonti.
 
+### Arricchimento del 14 novembre
+
+Lo [snapshot di rifinitura](CATALOG_REFINEMENT.md) integra ora **35 JSON AppleDB**
+corrispondenti a modelli già presenti, con MIT e originali conservati, insieme
+a commenti documentali MAME BSD-3-Clause ed ulteriori metadati dell'export
+ufficiale 0.276. I dati emulatori restano proprietà separate. Cinque prezzi
+IBM RT provengono dalla tabella MAME con rimandi ad annunci ENUS: i documenti
+primari non sono stati riletti; USD deriva da quel contesto statunitense.
+
+Wikidata/Wikipedia e i due archivi HTML sono ancora bloccati dal proxy: nessun
+nuovo recupero live o scraping. L'adattatore Wikidata gestisce ora anche
+descrizioni italiane, CPU, OS, unità e prezzi con ambito/valuta espliciti, ma le
+nuove mappature sono provate con fixture. I prezzi qualificati o non risolti
+restano fatti contestuali. Non si dichiara una copertura completa dei prezzi.
+
 Verifica effettuata dall'ambiente cloud. Per tutte le pagine HTML e i
 `robots.txt` sotto elencati il proxy ha rifiutato il tunnel HTTPS con **403**.
 Questo è un blocco della rete dell'ambiente, non una risposta del sito e non
