@@ -59,6 +59,28 @@ const path = require('node:path');
     assert.equal(done.requests, 6);
     const report = await (await page.request.get(apiBase + `/api/admin/1000bit/bulk/${done.id}/report`)).json();
     assert.equal(report.targets.length, before);
+    const legacyResponse = await page.request.post(apiBase + '/__bulk_fixture/legacy-fujitsu');
+    assert.equal(legacyResponse.status(), 200);
+    const legacy = await legacyResponse.json();
+    await page.reload();
+    await openPanel();
+    await panel.getByRole('button', { name: 'Riprova le pagine non abbinate', exact: true }).click();
+    await panel.getByRole('button', { name: 'Riprendi arricchimento del catalogo', exact: true }).waitFor();
+    const requeued = (await (await page.request.get(apiBase + '/api/admin/1000bit/bulk')).json()).job;
+    assert.equal(requeued.id, legacy.job_id);
+    assert.equal(requeued.requests, legacy.requests);
+    assert.equal(requeued.counts.updated, 2, 'Earlier successful updates must be preserved.');
+    assert.equal(requeued.pages.pending, 1);
+    await panel.getByRole('button', { name: 'Riprendi arricchimento del catalogo', exact: true }).click();
+    await panel.getByRole('heading', { name: /Visita terminata/ }).waitFor();
+    const recovered = (await (await page.request.get(apiBase + '/api/admin/1000bit/bulk')).json()).job;
+    assert.equal(recovered.counts.updated, 3);
+    assert.equal(recovered.requests, legacy.requests + 1, 'Retry must fetch only the old unmatched sheet.');
+    const fujitsu = await (await page.request.get(apiBase + '/api/computers/' + legacy.computer_id)).json();
+    assert.equal(fujitsu.manufacturer, 'Fujitsu');
+    assert.equal(fujitsu.model_name, 'FM-11 EX');
+    assert(fujitsu.sources.some(source => source.url === 'https://www.1000bit.it/scheda.asp?id=935'));
+    assert.equal((await (await page.request.get(apiBase + '/api/computers')).json()).total, before + 1);
     await page.screenshot({ path: path.join(dir, 'bulk-desktop.png'), fullPage: true });
     for (const width of [320, 390]) {
       await page.setViewportSize({ width, height: 844 });
@@ -67,8 +89,9 @@ const path = require('node:path');
     }
     await page.screenshot({ path: path.join(dir, 'bulk-mobile.png'), fullPage: true });
     assert.deepEqual(errors, []);
-    fs.writeFileSync(path.join(dir, 'bulk-browser-validation.json'), JSON.stringify({ before, after: before, job: done, jsErrors: errors }, null, 2));
-    console.log('Bulk browser: automatic traversal, pause/reload/resume, sourced updates, unchanged catalog size and desktop/mobile pass.');
+    fs.writeFileSync(path.join(dir, 'bulk-browser-validation.json'), JSON.stringify({ before, after: before + 1,
+      addedByFixture: 1, job: done, recovered, jsErrors: errors }, null, 2));
+    console.log('Bulk browser: automatic traversal, pause/reload/resume, sourced updates, legacy Fujitsu retry with brand/model normalization, preserved successes and desktop/mobile pass.');
   } catch (error) {
     await page.screenshot({ path: path.join(dir, 'bulk-failure.png'), fullPage: true });
     throw error;

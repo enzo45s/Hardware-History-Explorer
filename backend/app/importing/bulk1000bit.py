@@ -20,14 +20,14 @@ from sqlalchemy import DateTime, ForeignKey, JSON, String, Text, UniqueConstrain
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Mapped, Session, mapped_column
 
-from ..admin import Input
+from ..admin import Input, catalog_lock
 from ..models import Base, Computer
 from ..import_models import ImportJob, ImportRow, ImportClaim
 from .bit1000 import decode_html, html_record, sheet_url
 from .collect_1000bit import (AGENT, USER_AGENT, MAX_PAGE_BYTES, MAX_ROBOTS_BYTES,
                             origin, page_url, robots_rules, robots_interval, snapshot)
 from .engine import stage, apply_job, catalog_candidates
-from .identity import computer_key
+from .identity import provider_computer_key
 from .normalize import Record
 
 INDEX = 'https://www.1000bit.it/database.asp?by=S_NOM'  # Link in the supplied real sheet.
@@ -219,7 +219,7 @@ def details(db, job):
             'interval_seconds': job.interval_seconds, 'conflicts': conflicts,
             'next_request_at': utc(job.next_request_at).isoformat() if job.next_request_at else None,
             'lease_until': utc(job.lease_until).isoformat() if job.lease_token and job.lease_until else None,
-            'recent': [{'url': p.url, 'model_name': p.model_name, 'status': p.status, 'error': p.error,
+            'recent': [{'url': p.url, 'model_name': p.model_name, 'manufacturer': p.manufacturer, 'status': p.status, 'error': p.error,
                         'import_job_id': p.import_job_id} for p in recent],
             'reviews': [{'url': p.url, 'model_name': p.model_name, 'import_job_id': p.import_job_id} for p in reviews],
             'not_found': [{'id': t.original_id, 'computer_id': t.computer_id, 'model_name': t.model_name, 'manufacturer': t.manufacturer, 'status': t.status}
@@ -230,30 +230,32 @@ def details(db, job):
 def import_page(db, job, page, raw, content_type):
     record = Record.model_validate(html_record(raw, page.url, content_type)).model_dump(mode='json', exclude_none=True)
     page.model_name, page.manufacturer = record['model_name'], record['manufacturer']
-    candidates, _ = catalog_candidates(db, record, '1000bit')
+    candidates, ambiguous = catalog_candidates(db, record, '1000bit')
     targets = list(db.scalars(select(BulkTarget).where(BulkTarget.job_id == job.id, BulkTarget.computer_id.in_(candidates))))
     valid = []
     for target in targets:
         computer = db.get(Computer, target.computer_id)
-        if computer_key(computer.manufacturer.name, computer.model_name) != computer_key(target.manufacturer, target.model_name):
+        if provider_computer_key('1000bit', computer.manufacturer.name, computer.model_name) != provider_computer_key('1000bit', target.manufacturer, target.model_name):
             target_status(target, 'stale')
         else:
             valid.append(target)
-    if not valid:
-        page.status = 'unmatched'
-        return
     imported = stage(db, '1000bit', f'1000bit-bulk-{job.id}-{page.id}.html', 'html', raw, records=[record],
                      options={'upload': True, 'existing_only': True, 'bulk_job_id': job.id, 'source_url': page.url}, commit=False)
     page.import_job_id = imported.id
     row = db.scalar(select(ImportRow).where(ImportRow.job_id == imported.id))
+    if not valid:
+        page.status = 'unmatched'
+        page.error = f'Nessuna corrispondenza nel catalogo iniziale per {record["manufacturer"]} · {record["model_name"]}.'
+        row.status, row.error, imported.status = 'skipped', page.error, 'completed'
+        return
     if row.status == 'invalid':
         page.status = 'review'
         for target in valid:
             if target.status == 'pending':
                 target.status = 'ambiguous'
         return
-    if len(valid) > 1:
-        row.status, row.computer_id, row.candidates = 'ambiguous', None, [t.computer_id for t in valid]
+    if ambiguous or len(valid) > 1:
+        row.status, row.computer_id, row.candidates = 'ambiguous', None, candidates
         page.status = 'review'
         for target in valid:
             if target.status in ('pending', 'not_found'):
@@ -360,7 +362,8 @@ def step(db, job_id, fetcher=None):
                             import_page(db, job, page, raw, content_type)
                         else:
                             page.status = 'indexed'
-                        page.error = None
+                        if page.status != 'unmatched':
+                            page.error = None
             except (ValueError, TypeError, KeyError) as exc:
                 job.status = 'paused'; job.error = page.error = str(exc)[:2000]
                 delay = retry_delay(headers.get('retry-after', '')) if status in (429, 503) else 60
@@ -442,6 +445,36 @@ def create_bulk_router(get_db):
     @router.post('/{job_id}/refresh')
     def refresh(job_id: int, db: Session = Depends(get_db)):
         job = get(db, job_id); refresh_reviews(db, job); db.commit()
+        return details(db, job)
+
+    @router.post('/{job_id}/retry-unmatched')
+    def retry_unmatched(job_id: int, data: Resume, db: Session = Depends(get_db)):
+        catalog_lock(db)
+        job = db.scalar(select(BulkJob).where(BulkJob.id == job_id).with_for_update())
+        if job is None:
+            raise HTTPException(404, 'Raccolta 1000bit non trovata.')
+        if job.status not in ('ready', 'paused', 'limited', 'completed'):
+            raise HTTPException(409, 'Questa sessione non può essere ripresa.')
+        if job.lease_token and job.lease_until and utc(job.lease_until) > now():
+            raise HTTPException(409, 'Attendi la conclusione della richiesta corrente prima di ritentare gli abbinamenti.')
+        active = db.scalar(select(BulkJob.id).where(BulkJob.active_key == '1000bit', BulkJob.id != job_id))
+        if active is not None:
+            raise HTTPException(409, 'Un’altra sessione è attiva: continua quella corrente.')
+        if data.max_requests is not None:
+            job.max_requests = max(job.requests, data.max_requests)
+        if job.requests >= job.max_requests:
+            raise HTTPException(409, 'Aumenta il limite richieste prima di ritentare le pagine non abbinate.')
+        pages = db.scalars(select(BulkPage).where(BulkPage.job_id == job_id, BulkPage.status == 'unmatched')).all()
+        if not pages:
+            raise HTTPException(409, 'Nessuna pagina non abbinata da ritentare.')
+        for page in pages:
+            page.status, page.error = 'pending', None
+        # Preserve successes, human reviews, the snapshot and remote cooldown.
+        db.execute(update(BulkTarget).where(BulkTarget.job_id == job_id, BulkTarget.status == 'not_found', BulkTarget.computer_id.is_not(None))
+                   .values(status='pending').execution_options(synchronize_session=False))
+        job.status, job.active_key, job.error = 'paused', '1000bit', None
+        job.lease_token = None; job.lease_until = None
+        db.commit()
         return details(db, job)
 
     @router.get('/{job_id}/report')

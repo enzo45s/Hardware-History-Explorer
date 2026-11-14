@@ -167,6 +167,10 @@ registrati e l'audit restano conservati.
 Per 1000bit puoi [arricchire automaticamente tutto il catalogo](docs/1000BIT_BULK.md)
 con un solo avvio: visita dei collegamenti, abbinamenti conservativi e coda
 riprendibile. Il caricamento di singole schede resta facoltativo.
+L'abbinamento 1000bit usa insieme marca e modello, normalizzando paesi tra
+parentesi e spazi/trattini equivalenti: `Fujitsu (Japan) · FM 11 EX` corrisponde
+a `Fujitsu · FM-11 EX`. **Riprova le pagine non abbinate** permette di
+recuperare gli scarti precedenti conservando gli aggiornamenti già riusciti.
 In **Amministrazione → Foto automatiche** puoi associare il primo risultato
 Wikimedia utilizzabile ai sistemi senza foto, senza conferme per singola immagine:
 [istruzioni, pausa/ripresa e correzione delle immagini](docs/AUTOMATIC_PHOTOS.md).

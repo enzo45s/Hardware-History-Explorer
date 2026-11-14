@@ -4,7 +4,7 @@ import { api, latestRequest } from './api.js';
 const endpoint = '/admin/1000bit/bulk';
 const labels = { ready: 'Pronta da riprendere', paused: 'In pausa', limited: 'Limite richieste raggiunto',
   completed: 'Visita terminata', cancelled: 'Sessione terminata', archived: 'Archiviata dopo svuotamento',
-  updated: 'Aggiornato', unchanged: 'Invariato', indexed: 'Indice letto', unmatched: 'Nessun abbinamento univoco',
+  updated: 'Aggiornato', unchanged: 'Invariato', indexed: 'Indice letto', unmatched: 'Nessuna corrispondenza trovata',
   blocked: 'Escluso da robots.txt', review: 'Da controllare', skipped: 'Saltato', redirect: 'Reindirizzamento',
   not_found: 'Non abbinato nelle pagine visitate', ambiguous: 'Corrispondenza da controllare', stale: 'Scheda modificata', removed: 'Scheda rimossa' };
 
@@ -60,7 +60,8 @@ export default function Bulk1000bitPanel({ onSaved, onOpenImport, revision }) {
   }
   async function action(name) {
     active.current = false; setBusy(true); setError('');
-    try { setJob(await api(`${endpoint}/${snapshot.job.id}/${name}`, { method: 'POST' })); }
+    try { setJob(await api(`${endpoint}/${snapshot.job.id}/${name}`, { method: 'POST',
+      ...(name === 'retry-unmatched' ? { body: JSON.stringify({ max_requests: Math.max(Number(limit), snapshot.job.max_requests) }) } : {}) })); }
     catch (e) { if (mounted.current) setError(e.message); }
     finally { if (mounted.current) { setBusy(false); onSaved(); } }
   }
@@ -82,8 +83,10 @@ export default function Bulk1000bitPanel({ onSaved, onOpenImport, revision }) {
       {running && <button type="button" disabled={busy} onClick={() => action('pause')}>Metti in pausa la raccolta</button>}
       {!finished && !running && <button type="button" disabled={busy} onClick={() => action('cancel')}>Termina questa sessione</button>}
       {job?.status === 'paused' && !running && <button type="button" disabled={busy} onClick={() => action('skip')}>Salta la pagina corrente</button>}
+      {!!job?.pages.unmatched && !running && !['cancelled', 'archived'].includes(job.status) && <button type="button" disabled={busy} onClick={() => action('retry-unmatched')}>Riprova le pagine non abbinate</button>}
     </div>
     <p className="muted">Mantieni aperta questa sezione per proseguire. Può durare ore: puoi mettere in pausa e riprendere anche dopo un riavvio, senza riscaricare le pagine già elaborate. Sono rispettati robots.txt e le pause richieste dal sito. Se nessuna scheda è abbinabile, il sistema resta invariato.</p>
+    {!!job?.pages.unmatched && <p className="muted">Puoi rimettere in coda le sole pagine non abbinate e poi premere Riprendi. Gli aggiornamenti già riusciti restano conservati. Per gli abbinamenti sono considerate insieme marca e modello, ignorando spazi/trattini equivalenti e le indicazioni geografiche riconosciute della marca.</p>}
     {error && <p className="inline-error" role="alert">{error}</p>}
     {job && <section aria-label="Avanzamento arricchimento 1000bit">
       <h4>Sessione #{job.id} · {running ? 'In corso' : labels[job.status]}</h4>
@@ -101,7 +104,7 @@ export default function Bulk1000bitPanel({ onSaved, onOpenImport, revision }) {
       </p>)}</details>}
       {!!job.not_found.length && <details><summary>Esempi di sistemi non abbinati o da controllare</summary><ul>{job.not_found.map(t => <li key={t.id ?? t.model_name}>{t.manufacturer} · {t.model_name}: {labels[t.status]}</li>)}</ul></details>}
       {!!job.recent.length && <details><summary>Ultime pagine elaborate</summary><ul>{job.recent.map(p => <li key={p.url}>
-        <a href={p.url} target="_blank" rel="noopener noreferrer">{p.model_name || p.url}</a>: {labels[p.status] || p.status}
+        <a href={p.url} target="_blank" rel="noopener noreferrer">{p.manufacturer && p.model_name ? `${p.manufacturer} · ${p.model_name}` : p.model_name || p.url}</a>: {labels[p.status] || p.status}
         {p.import_job_id && <> <button type="button" onClick={() => onOpenImport(p.import_job_id)}>Controlla fonti e dati</button></>}
         {p.error && <p className="muted">{p.error}</p>}
       </li>)}</ul></details>}

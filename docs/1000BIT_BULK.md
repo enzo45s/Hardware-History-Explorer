@@ -10,10 +10,11 @@ Sul branch `feat/historical-data-import`:
 
 ```powershell
 git pull --ff-only
-docker compose up --build -d
+docker compose -p hhe-import-test up --build -d
 ```
 
-Conserva l'eventuale nome progetto `-p`; non svuotare il database né ricaricare
+L'esempio usa il progetto attivo `hhe-import-test` diagnosticato su Windows;
+se la tua istanza ha un altro nome, conserva quello. Non svuotare il database né ricaricare
 i lotti originali. Premi Ctrl+F5, poi:
 
 1. **Amministrazione → Importazioni → Fonte dati → 1000bit**.
@@ -68,6 +69,51 @@ un modello automaticamente.
   diventa un conflitto. La raccolta continua senza richiedere conferme per
   ogni conflitto. Per esaminarli usa **Controlla fonti e dati** sulle pagine
   elaborate o gli ID delle importazioni nel resoconto completo.
+
+Per 1000bit, marca e modello vengono confrontati insieme dopo una
+normalizzazione deterministica. Si ignorano le annotazioni geografiche
+riconosciute della marca, gli spazi/trattini equivalenti nel modello e il
+prefisso della marca già contenuto nel nome. Gli alias espliciti già presenti
+restano validi. Per esempio, la scheda
+[935](https://www.1000bit.it/scheda.asp?id=935), indicata dall'operatore come
+**Fujitsu (Japan) · FM 11 EX**, corrisponde a **Fujitsu · FM-11 EX**.
+La regola vale anche per le importazioni singole con fonte 1000bit.
+
+Numeri, sigle tecniche, `+`, `/`, punti e annotazioni non geografiche restano
+significativi: `FM-11 EX` non corrisponde a `FM-11 AD` né alla sola famiglia
+`FM-11`. Marche differenti e divisioni non riconosciute non vengono assimilate.
+Se due schede del catalogo condividono la chiave normalizzata, entrambe vengono
+proposte per revisione, anche se una delle scritture coincide esattamente.
+Le altre fonti mantengono le proprie regole precedenti.
+
+Il nome del modello e il produttore HHE restano conservati; non viene creato
+un produttore duplicato soltanto perché la fonte aggiunge il paese. I nomi
+originali della fonte rimangono nei dati grezzi e normalizzati, senza conflitti
+artificiali per sole differenze di formattazione.
+
+### Recuperare le pagine già non abbinate
+
+Dopo l'aggiornamento, ricarica con Ctrl+F5 e riapri la sezione 1000bit.
+Metti in pausa l'eventuale visita in corso e attendi che termini la richiesta
+già partita, poi premi **Riprova le pagine non abbinate** e
+**Riprendi arricchimento del catalogo**.
+
+Vengono rimessi in coda soltanto gli URL con esito `unmatched`, inclusi quelli
+di una visita terminata prima della correzione. Le pagine vengono recuperate
+nuovamente rispettando robots.txt, pause e limite di richieste. Indici, pagine
+già riuscite, snapshot del catalogo e decisioni umane restano conservati.
+Non occorre ricominciare tutto il catalogo, fornire HTML o svuotare l'archivio.
+Se serve, aumenta il limite richieste nel pannello prima di ritentare.
+
+Un'altra sessione attiva, una richiesta ancora in corso o una sessione
+archiviata/annullata impediscono la riattivazione. Dopo un annullamento si può
+avviare una nuova visita incrementale con il pulsante normale. I casi con più
+candidati restano in **Corrispondenze da controllare**.
+
+Le nuove pagine senza corrispondenza conservano anche l'HTML originale e un
+motivo leggibile con marca e modello. Non essere abbinata significa che manca
+una corrispondenza sicura nello snapshot della sessione, non che la macchina
+non esista su 1000bit. La nuova etichetta distingue questo esito dall'ambiguità.
 
 Descrizioni esistenti, categorie, fotografie e prezzi non vengono cancellati.
 Restano le regole dell'[adattatore 1000bit](1000BIT.md): date di produzione
@@ -135,3 +181,38 @@ completo; il primo accesso robots è rifiutato dal proxy e mette in pausa la
 sessione con 1.105 sistemi ancora pending, senza falsi esiti «non trovato».
 Il totale e le analisi del catalogo restano identici prima e dopo. Nessun
 database Windows dell'operatore è stato raggiunto.
+
+### Correzione degli abbinamenti marca-modello
+
+Caso segnalato dall'operatore: URL `scheda.asp?id=935`, Nome `FM 11 EX`,
+Costruttore `Fujitsu (Japan)`. La fixture dei test ricostruisce soltanto questi
+campi e l'URL: non è un HTML scaricato e non contiene specifiche o prezzi
+aggiunti. Il matcher precedente falliva sia per il paese nella marca sia
+per il trattino nel nome HHE `FM-11 EX`.
+
+Suite complete: 367 test PostgreSQL superati, 366 SQLite superati e uno
+specifico PG saltato, 27 frontend; build React e Compose riusciti. Dopo
+l'ultima protezione sulle collisioni aggiunte al catalogo durante una sessione,
+ripetuti tutti i 48 test di matching/raccolta sia su SQLite sia su PostgreSQL.
+Le prove includono upload, raccolta automatica, nomi originali conservati,
+assenza di produttori duplicati, varianti tecniche distinte, ambiguità e
+riattivazione limitata alle pagine non abbinate delle sessioni precedenti.
+
+Analizzate le chiavi dei 1.105 modelli del dataset di base dopo la normalizzazione
+regionale: zero collisioni. Nel catalogo PostgreSQL isolato, una verifica
+in sola lettura trova un unico candidato Fujitsu FM-11 EX per i due valori
+della scheda 935. Questo prova l'abbinamento sul catalogo, senza recuperare
+o importare altre informazioni storiche della pagina.
+
+Browser Chromium sul frontend compilato e sito sintetico: visita iniziale,
+pausa/ricaricamento/ripresa, nuova sessione preesistente con il Fujitsu non
+abbinato, comando di riprova, un solo URL nuovamente recuperato e risultati
+precedenti conservati. Nome HHE e produttore rimangono gli stessi, la citazione
+935 è associata senza nuovi calcolatori. Layout a 320/390 px e nessun errore
+JavaScript. La suite browser già inclusa in CI copre anche questa regressione.
+
+API: `POST /api/admin/1000bit/bulk/{id}/retry-unmatched`, con JSON `{}` oppure
+`{"max_requests": 20000}`, rimette in pausa la sessione e ricoda gli scarti.
+Segue il normale `/resume`. Nessuna nuova tabella o migrazione. Il proxy cloud
+continua a impedire l'accesso live a 1000bit, compreso robots.txt; nessuna visita
+reale completa o recupero di nuovi dati tecnici viene dichiarato.

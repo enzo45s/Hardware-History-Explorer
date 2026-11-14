@@ -203,3 +203,23 @@ confronti, persistenza e layout mobile. Prova sul corpus isolato, eliminando
 soltanto i record sintetici creati dalla suite; nessun accesso al database utente.
 Ripetuta anche la suite browser precedente: importazioni, conflitti, revisioni,
 1000bit HTML e confronto superati con il pannello amministrativo aggiornato.
+
+1000bit ora abbina insieme marca e modello con normalizzazione specifica della
+fonte: paesi riconosciuti nelle annotazioni della marca, spazi/trattini e
+prefissi del produttore. Il caso segnalato `Fujitsu (Japan) · FM 11 EX` trova
+la scheda `Fujitsu · FM-11 EX`, senza rinominarla o creare un nuovo produttore.
+Sigle, numeri, +, /, punti e divisioni non geografiche restano significativi;
+le collisioni sono in revisione anche se aggiunte al catalogo dopo l'avvio.
+Il pannello permette di ritentare i soli URL non abbinati di una visita
+precedente, preservando risultati, snapshot e cooldown. Anche gli originali
+delle nuove pagine non abbinate restano nell'audit con un motivo leggibile.
+
+Verifiche: suite complete 367 PostgreSQL, 366 SQLite più uno specifico PG
+saltato e 27 frontend. Ripetuti 48 test matching/raccolta SQLite e PG dopo
+l'ultima guardia sulle collisioni. Build e Compose riusciti; browser su
+frontend compilato verifica il recupero della sola scheda 935 da una sessione
+precedente, risultati conservati e mobile. Zero collisioni nelle nuove chiavi
+dei 1.105 modelli di base; lettura sul corpus PostgreSQL trova il Fujitsu.
+La fixture 935 ricostruisce soltanto i nomi e l'URL forniti dall'operatore;
+1000bit live resta bloccato dal proxy. Nessun nuovo dato tecnico storico
+recuperato o dichiarato verificato e nessuna modifica allo schema.

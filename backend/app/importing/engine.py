@@ -9,7 +9,7 @@ from ..import_models import ImportJob, ImportRow, ImportClaim, ExternalIdentity,
 from ..admin import historical_date
 from .normalize import Record, name_key, parse_payload, MAX_BYTES, MAX_ROWS
 from .vocabulary import matching_specs, quantity_equal
-from .identity import maker_key, computer_key
+from .identity import provider_computer_key, provider_maker_key
 from .reconcile import reconciled_configuration, reconciled_release
 
 TARGETS = {c.__name__: c for c in (Computer, Configuration, Specification, Release, Sale, Review, Fact)}
@@ -40,9 +40,11 @@ def catalog_candidates(db, data, provider):
             # A stable identity also preserves an explicitly approved alias mapping.
             # Changed names/manufacturers still produce non-overwriting field conflicts.
             return [identity.computer_id], False
-    makers = [m.id for m in db.scalars(select(Manufacturer)) if maker_key(m.name) == maker_key(data['manufacturer'])]
+    makers = [m.id for m in db.scalars(select(Manufacturer))
+              if provider_maker_key(provider, m.name) == provider_maker_key(provider, data['manufacturer'])]
     candidates = [c.id for c in db.scalars(select(Computer).where(Computer.manufacturer_id.in_(makers)))
-                  if computer_key(c.manufacturer.name, c.model_name) == computer_key(data['manufacturer'], data['model_name'])]
+                  if provider_computer_key(provider, c.manufacturer.name, c.model_name)
+                  == provider_computer_key(provider, data['manufacturer'], data['model_name'])]
     return candidates, len(candidates) > 1
 
 
@@ -94,8 +96,8 @@ def original_bytes(job):
     return job.raw_payload.encode('utf-8')
 
 
-def reference(db, model, name):
-    identity = maker_key if model is Manufacturer else name_key
+def reference(db, model, name, provider=None):
+    identity = (lambda value: provider_maker_key(provider, value)) if model is Manufacturer else name_key
     rows = [x for x in db.scalars(select(model)) if identity(x.name) == identity(name)]
     if len(rows) > 1:
         raise ValueError(f'Riferimento ambiguo: {name}')
@@ -171,7 +173,7 @@ def import_record(db, job, row):
     if c is None and candidates:
         c = db.get(Computer, candidates[0])
     created = c is None
-    maker = c.manufacturer if c is not None and maker_key(c.manufacturer.name) == maker_key(data['manufacturer']) else reference(db, Manufacturer, data['manufacturer'])
+    maker = c.manufacturer if c is not None and provider_maker_key(job.provider, c.manufacturer.name) == provider_maker_key(job.provider, data['manufacturer']) else reference(db, Manufacturer, data['manufacturer'], provider=job.provider)
     if created:
         c = Computer(manufacturer=maker, model_name=data['model_name'])
         db.add(c)
@@ -211,7 +213,7 @@ def import_record(db, job, row):
             evidence='\n'.join(x for x in (entry.get('evidence') or data.get('evidence'),
                  ('Licenza: ' + citation['license']) if citation.get('license') else None) if x) or None))
 
-    model_name = c.model_name if computer_key(c.manufacturer.name, c.model_name) == computer_key(data['manufacturer'], data['model_name']) else data['model_name']
+    model_name = c.model_name if provider_computer_key(job.provider, c.manufacturer.name, c.model_name) == provider_computer_key(job.provider, data['manufacturer'], data['model_name']) else data['model_name']
     record_fields(c, {**data, 'model_name': model_name, 'manufacturer_id': maker.id}, ('model_name', 'manufacturer_id', 'description', 'announcement_date'))
     for name in data.get('categories', []):
         cat = reference(db, Category, name)
