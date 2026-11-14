@@ -160,6 +160,13 @@ con indice di copertura e originali. CPU, clock e RAM sono esplicitamente dati
 dell'emulatore, distinti dalle specifiche storiche verificate. Non contiene prezzi
 né costituisce un catalogo commerciale completo: tutte le asserzioni restano da revisionare.
 
+Per completare le categorie delle schede generiche già caricate usa
+**Importazioni → Completa le categorie delle schede generiche**:
+[criteri e copertura](docs/CLASSIFICATION.md). Non serve ripetere i caricamenti.
+In **Amministrazione → Foto automatiche** puoi associare il primo risultato
+Wikimedia utilizzabile ai sistemi senza foto, senza conferme per singola immagine:
+[istruzioni, pausa/ripresa e correzione delle immagini](docs/AUTOMATIC_PHOTOS.md).
+
 Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibliografiche, aggiungere produttori/categorie/mercati e aggiornare commercializzazioni e specifiche tecniche. Le schede conservano fotografie e altri dati storici già archiviati. Le modifiche sono applicate con il pulsante Salva; il pannello segnala quelle non salvate.
 
 La gestione delle fotografie resta disponibile nella normale scheda del calcolatore, raggiungibile anche dal pannello. Non serve una migrazione aggiuntiva del database. Vedi [la guida del pannello](docs/ADMIN.md) per campi, date, fonti e API. Il pannello segue la modalità locale single-user del progetto.

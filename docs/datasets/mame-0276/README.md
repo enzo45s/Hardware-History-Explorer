@@ -31,6 +31,13 @@ una verifica della prima disponibilità commerciale, del mercato o della data
 giornaliera. Le categorie puntuali e le descrizioni storiche non sono state
 inventate: il gruppo generico è **Calcolatore**.
 
+Dal 14 novembre è disponibile un [completamento editoriale delle categorie](../../CLASSIFICATION.md)
+per le schede già caricate: riconosce 610 schede, lasciandone 529 generiche.
+Si applica dal pannello Importazioni senza nuovi upload. Le assegnazioni sono
+da verificare e non cambiano gli originali o le impronte dei cinque lotti.
+Le [foto automatiche Commons](../../AUTOMATIC_PHOTOS.md) sono un'operazione
+separata, avviata dall'operatore; questi JSON continuano a non contenere immagini.
+
 Le proprietà tecniche sono deliberatamente esplicite:
 
 - **CPU · Modello emulato (MAME)**;

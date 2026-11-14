@@ -42,6 +42,15 @@ merge automatico su main.
   licenze e hash conservati. CPU/clock/RAM hanno proprietà esplicitamente
   riferite all'emulatore, separate dai valori storici. Copertura CSV leggibile
   in Excel; nessun nuovo servizio remoto o dipendenza di runtime.
+- Completamento editoriale opt-in delle categorie sulle schede generiche già
+  caricate: anteprima, regole versionate e asserzioni pending nello storico.
+  Sul corpus reale riconosce 610 schede e ne lascia 529 generiche, preservando
+  classificazioni manuali, ID e tutti gli altri dati.
+- Foto automatiche Commons: associazione del primo risultato utilizzabile,
+  ordinato per rilevanza, senza conferma per immagine; attribuzione e licenza
+  conservate. Coda persistente, pausa/ripresa, una richiesta per volta, rispetto
+  dei limiti e protezione delle fotografie già presenti. Due nuove tabelle
+  additive e migrazione ripetibile; nessun processo automatico all'avvio.
 
 Le pagine delle cinque fonti sono bloccate dal proxy cloud con 403. Per
 RetroFlops sono stati letti repository e licenza ufficiali: incluso un campione
@@ -64,8 +73,8 @@ controllate via API tutte le schede e le citazioni delle specifiche. Chromium
 con il catalogo reale verifica timeline, catalogo, confronto, analisi e
 paginazione delle fonti. Nessuna verifica automatica dei dati.
 
-Verifiche aggiornate: 143 test SQLite passati e uno specifico PostgreSQL saltato,
-144 test PostgreSQL passati, 23 test frontend passati, build e avvio Compose,
+Verifiche aggiornate: 172 test SQLite passati e uno specifico PostgreSQL saltato,
+173 test PostgreSQL passati, 23 test frontend passati, build e avvio Compose,
 Chromium con revisione conflitti, riconciliazione, reset esplicito e layout mobile
 a 320/390 px riusciti. Dopo il reset e un riavvio API il catalogo rimane vuoto:
 il campione produce 19 importati e poi 19 invariati su PostgreSQL. Vite
@@ -77,3 +86,11 @@ verifica iniziale in `docs/IMPORT_REPORT.md`; istruzioni e formati
 in `docs/IMPORTING.md`, valutazione delle fonti in `docs/IMPORT_SOURCES.md`.
 Il pannello resta locale single-user senza nuova autenticazione. La generazione
 AI esterna non è stata provata con una chiave/crediti configurati.
+
+Aggiornamento 14 novembre: browser con backend reale e Commons sintetico,
+dieci immagini associate, pausa/ricaricamento/ripresa e modifica dalla galleria;
+nessuna ricerca live riuscita a causa del proxy cloud. Ripetuta la suite browser
+di importazione/conflitti/riconciliazione. Categorie applicate su PostgreSQL
+isolato al corpus completo, con tutte le 1.139 schede controllate prima/dopo
+e replay di zero aggiornamenti. Guide in `docs/AUTOMATIC_PHOTOS.md` e
+`docs/CLASSIFICATION.md`; database dell'utente mai raggiunto.
