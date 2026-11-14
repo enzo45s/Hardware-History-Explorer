@@ -32,6 +32,12 @@ Migrazione ripetibile su PostgreSQL e SQLite. Non sostituisce la migrazione
 
 ## Utilizzo
 
+Il pannello mostra soltanto il caricamento e il dettaglio dell'importazione
+corrente: non espone l'elenco delle importazioni precedenti né i pannelli di
+duplicati, completamento categorie e rifinitura. Lo storico e gli originali
+restano conservati nel database e accessibili tramite le API esistenti.
+Il comando **Svuota archivio** resta in fondo alla pagina.
+
 1. Apri **Amministrazione → Importazioni** e seleziona la fonte.
 2. Carica CSV/JSON autorizzati confermando i diritti di riuso, oppure recupera
    l'esportazione RetroFlops o fino a 20 QID dall'API Wikidata.

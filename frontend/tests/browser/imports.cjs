@@ -95,30 +95,11 @@ async function assertMobileLayout(page) {
     await page.waitForFunction(() => !document.querySelector('.import-conflict'));
     console.log('Browser: manufacturer names replace raw IDs, bibliography stays separate, retaining the current value records rejection.');
 
-    const endpoint = route => new URL(route, page.url()).href;
-    const catalog = await (await page.request.get(endpoint('/api/computers?q=' + encodeURIComponent(model)))).json();
-    const original = catalog.items.find(c => c.model_name === model);
-    const duplicateResponse = await page.request.post(endpoint('/api/computers'), { data: {
-      manufacturer_id: original.manufacturer_id, model_name: model, description: 'Synthetic duplicate for browser reconciliation.' } });
-    assert.equal(duplicateResponse.status(), 201);
-    const duplicate = await duplicateResponse.json();
-    await page.getByRole('button', { name: 'Controlla duplicati e produttori', exact: true }).click();
-    await page.getByRole('button', { name: /^Anteprima: unisci/ }).filter({ hasText: `(mantieni ID ${original.id})` }).click();
-    const reconciliation = page.getByRole('region', { name: 'Anteprima riconciliazione' });
-    await reconciliation.getByLabel('Motivazione della riconciliazione', { exact: true }).fill('Checked the synthetic duplicate against the browser fixture.');
-    const applyReconciliation = reconciliation.getByRole('button', { name: 'Applica la riconciliazione controllata', exact: true });
-    assert.equal(await applyReconciliation.isEnabled(), false);
-    await reconciliation.getByLabel('Ho controllato che si tratta dello stesso elemento', { exact: false }).check();
-    await page.setViewportSize({ width: 320, height: 740 });
-    await assertMobileLayout(page);
-    await page.screenshot({ path: path.join(artifactDir, 'reconciliation-preview.png'), fullPage: true });
-    await applyReconciliation.click();
-    await page.getByText('Riconciliazione completata. Dati trasferiti e originali conservati nello storico.', { exact: true }).waitFor();
-    assert.equal((await page.request.get(endpoint(`/api/computers/${duplicate.id}`))).status(), 404);
-    const retained = await (await page.request.get(endpoint(`/api/computers/${original.id}`))).json();
-    assert(retained.sources.length > 0 && retained.configurations.length > 0);
-    await page.setViewportSize({ width: 1440, height: 1000 });
-    console.log('Browser: reviewed duplicate reconciliation requires confirmation, keeps the chosen ID and existing citations/configurations, mobile preview fits.');
+    for (const title of [/Ultime importazioni/i, /Duplicati già importati/i, /Completa le categorie/i, /Rifinisci catalogo/i]) {
+      assert.equal(await page.locator('.imports h3, .imports summary').filter({ hasText: title }).count(), 0);
+    }
+    assert.equal(await page.getByText('Svuota archivio per un nuovo import', { exact: true }).count(), 1);
+    console.log('Browser: simplified imports panel keeps the current result and archive reset, without history or maintenance sections.');
 
     await page.getByRole('button', { name: 'Tema: Fosfori verdi', exact: true }).click();
     await page.screenshot({ path: path.join(artifactDir, 'imports-desktop.png'), fullPage: true });

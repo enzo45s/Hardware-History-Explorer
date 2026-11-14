@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { api, latestRequest } from './api.js';
-import DuplicatePanel from './DuplicatePanel.jsx';
 import ArchivePanel from './ArchivePanel.jsx';
-import ClassificationPanel from './ClassificationPanel.jsx';
-import CatalogRefinementPanel from './CatalogRefinementPanel.jsx';
 import './imports.css';
 
 const labels = { ready: 'Pronta', imported: 'Importata', updated: 'Aggiornata', unchanged: 'Invariata',
@@ -67,15 +64,13 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
   const [file, setFile] = useState(null);
   const [rights, setRights] = useState(false);
   const [ids, setIds] = useState('');
-  const [jobs, setJobs] = useState([]);
   const [job, setJob] = useState(null);
   const [offset, setOffset] = useState(0);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
-  const [catalogRevision, setCatalogRevision] = useState(0);
-  useEffect(() => latestRequest(signal => Promise.all([api('/admin/imports/providers', { signal }), api('/admin/imports', { signal })]),
-    ([p, j]) => { setProviders(p); setJobs(j); }, e => setError(e.message)), []);
+  useEffect(() => latestRequest(signal => api('/admin/imports/providers', { signal }),
+    setProviders, e => setError(e.message)), []);
   async function open(id, nextOffset = 0) {
     setBusy(true); setError('');
     try { const detail = await api(`/admin/imports/${id}?offset=${nextOffset}`); setJob(detail); setOffset(nextOffset); }
@@ -89,7 +84,6 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
       const result = await work();
       const id = result?.id || job?.id;
       if (id) { setJob(await api(`/admin/imports/${id}`)); setOffset(0); }
-      setJobs(await api('/admin/imports'));
       if (saved) onSaved();
       setMessage('Operazione completata. Controlla esito e righe prima di proseguire.');
     } catch (e) { setError(e.message); }
@@ -131,15 +125,9 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
         <p className="muted">Richieste limitate alle API/esportazioni ufficiali. Una rete bloccata produce un lavoro fallito, conservato e ripetibile.</p>
       </div>}
     </section>
-    <div className="import-layout"><section className="panel">
-      <h3>Ultime importazioni</h3>
-      {!jobs.length && <p>Nessuna importazione.</p>}
-      {jobs.map(j => <button className="import-job" key={j.id} disabled={busy} onClick={() => open(j.id)}>
-        <b>#{j.id} · {j.provider}</b><span>{j.filename}</span><small>{status(j.status)} · {j.total} righe</small>
-      </button>)}
-    </section><section className="panel import-detail" aria-busy={busy}>
+    {(job || busy) && <section className="panel import-detail" aria-busy={busy}>
       {busy && <p role="status">Operazione in corso…</p>}
-      {!job ? <p>Scegli un'importazione per vedere originali, dati normalizzati, corrispondenze e verifiche.</p> : <>
+      {job && <>
         <h3>Importazione #{job.id} · {status(job.status)}</h3>
         {job.status === 'archived' && <p>Esiti storici precedenti allo svuotamento. Le schede associate sono state rimosse. Usa una nuova anteprima per importare nuovamente questi dati.</p>}
         {job.error && <p className="inline-error">{job.error}</p>}
@@ -174,11 +162,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
           <span>{job.total ? offset + 1 : 0}–{Math.min(offset + 25, job.total)} di {job.total}</span>
           <button disabled={busy || offset + 25 >= job.total} onClick={() => open(job.id, offset + 25)}>Righe successive</button></div>
       </>}
-    </section></div>
-    <CatalogRefinementPanel onSaved={() => { setJob(null); api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onSaved(); }} />
-    <ClassificationPanel onSaved={() => { api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onSaved(); }} />
-    <DuplicatePanel key={catalogRevision} onSaved={() => { setJob(null); api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onSaved(); }} />
-    <ArchivePanel onReset={() => { setJob(null); setCatalogRevision(revision => revision + 1);
-      api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onArchiveReset(); }} />
+    </section>}
+    <ArchivePanel onReset={() => { setJob(null); setOffset(0); onArchiveReset(); }} />
   </div>;
 }

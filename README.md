@@ -160,15 +160,17 @@ con indice di copertura e originali. La provenienza di CPU, clock e RAM
 è registrata nelle fonti, distinta dalle specifiche storiche verificate. Non contiene prezzi
 né costituisce un catalogo commerciale completo: tutte le asserzioni restano da revisionare.
 
-Per completare le categorie delle schede generiche già caricate usa
-**Importazioni → Completa le categorie delle schede generiche**:
-[criteri e copertura](docs/CLASSIFICATION.md). Non serve ripetere i caricamenti.
+Il pannello **Importazioni** mostra caricamento, anteprima ed esito del lotto
+corrente, con **Svuota archivio** in fondo. Le sezioni di storico, duplicati e
+manutenzione del catalogo non sono più esposte nell'interfaccia; i dati già
+registrati e l'audit restano conservati.
 In **Amministrazione → Foto automatiche** puoi associare il primo risultato
 Wikimedia utilizzabile ai sistemi senza foto, senza conferme per singola immagine:
 [istruzioni, pausa/ripresa e correzione delle immagini](docs/AUTOMATIC_PHOTOS.md).
 
-Per rifinire il catalogo già popolato usa **Importazioni → Rifinisci catalogo**:
-[accorpamento delle varianti regionali, brevi descrizioni italiane e dati aggiuntivi](docs/CATALOG_REFINEMENT.md).
+Le regole di [classificazione](docs/CLASSIFICATION.md) e di
+[rifinitura del catalogo](docs/CATALOG_REFINEMENT.md) già utilizzate restano
+documentate come riferimento tecnico; i relativi pannelli sono stati rimossi.
 
 Le [etichette delle schede e dei confronti](docs/CATALOG_PRESENTATION.md) descrivono
 l'hardware; la provenienza del dataset resta nelle fonti e nell'audit, senza
