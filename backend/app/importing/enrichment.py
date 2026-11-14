@@ -36,11 +36,8 @@ def italian_summary(c):
     first = f'{c.model_name} è {category} di {c.manufacturer.name}.'
     cpus = sorted({s.text_value for cfg in c.configurations for s in cfg.specifications
                    if s.property_name == 'Modello emulato (MAME)' and s.text_value})
-    years = sorted({r.release_date.year for r in c.releases if r.release_date and any(s.publisher == 'MAME' for s in r.sources)})
-    if len(years) == 1:
-        first += f' MAME associa il modello all’anno {years[0]}.'
     if cpus:
-        first += ' Le configurazioni emulate documentano ' + ', '.join(cpus[:2]) + (' e altre CPU.' if len(cpus)>2 else '.')
+        first += ' Le configurazioni censite riportano ' + ', '.join(cpus[:2]) + (' e altre CPU.' if len(cpus)>2 else '.')
     return first
 
 

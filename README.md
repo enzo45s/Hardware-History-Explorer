@@ -156,8 +156,8 @@ anteprima e conferma esplicita, conserva fonti e storico e impedisce che i
 dieci sistemi dimostrativi ricompaiano al riavvio.
 
 Per una prova più ampia è disponibile il [corpus MAME da 1.139 schede in cinque lotti](docs/datasets/mame-0276/README.md),
-con indice di copertura e originali. CPU, clock e RAM sono esplicitamente dati
-dell'emulatore, distinti dalle specifiche storiche verificate. Non contiene prezzi
+con indice di copertura e originali. La provenienza di CPU, clock e RAM
+è registrata nelle fonti, distinta dalle specifiche storiche verificate. Non contiene prezzi
 né costituisce un catalogo commerciale completo: tutte le asserzioni restano da revisionare.
 
 Per completare le categorie delle schede generiche già caricate usa
@@ -169,10 +169,15 @@ Wikimedia utilizzabile ai sistemi senza foto, senza conferme per singola immagin
 
 Per rifinire il catalogo già popolato usa **Importazioni → Rifinisci catalogo**:
 [accorpamento delle varianti regionali, brevi descrizioni italiane e dati aggiuntivi](docs/CATALOG_REFINEMENT.md).
-Sul pacchetto MAME, 34 schede regionali vengono accorpate conservandone le
+
+Le [etichette delle schede e dei confronti](docs/CATALOG_PRESENTATION.md) descrivono
+l'hardware; la provenienza del dataset resta nelle fonti e nell'audit, senza
+dover reimportare le schede esistenti.
+
+Sul pacchetto di base, 34 schede regionali vengono accorpate conservandone le
 configurazioni, con 1.105 sistemi risultanti. Lo snapshot aggiunge dati AppleDB
 e documentazione MAME, comprese cinque voci di prezzo IBM RT; la copertura
-storica resta parziale e i dati emulati sono etichettati separatamente.
+storica resta parziale e gli originali delle fonti restano disponibili nell'audit.
 
 Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibliografiche, aggiungere produttori/categorie/mercati e aggiornare commercializzazioni e specifiche tecniche. Le schede conservano fotografie e altri dati storici già archiviati. Le modifiche sono applicate con il pulsante Salva; il pannello segnala quelle non salvate.
 

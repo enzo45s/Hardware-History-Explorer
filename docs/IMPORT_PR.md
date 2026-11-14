@@ -114,3 +114,12 @@ aggiornamenti. Ricaricato anche il primo lotto MAME originale: 250 invariati.
 Browser con accorpamento, fotografia preservata, arricchimento e prezzo
 visibile su mobile. Limiti storici e copertura parziale espliciti in
 `docs/CATALOG_REFINEMENT.md`, prova in `docs/CATALOG_REFINEMENT_VALIDATION.md`.
+
+Le viste del catalogo ora usano nomi hardware leggibili senza ripetere MAME
+in descrizioni, configurazioni e specifiche. Fonti complete e chiavi originali
+restano conservate; nessuna migrazione o reimportazione necessaria. Le capacità
+di riferimento restano distinte dai limiti commerciali documentati. L'editor
+mantiene le chiavi importate nei salvataggi non relativi alle etichette.
+Verifica: 200 test SQLite più uno specifico PG saltato, 201 PostgreSQL,
+25 frontend, build/Compose e prove Chromium di schede, confronto, editor e
+importazioni riuscite. Dettagli in `docs/CATALOG_PRESENTATION.md`.

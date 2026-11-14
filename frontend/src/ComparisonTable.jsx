@@ -1,6 +1,7 @@
 import React, { useEffect, useId, useState } from 'react';
 import { api, latestRequest } from './api.js';
 import { comparisonSpecifications, selectedConfiguration } from './comparison-specs.js';
+import { displayDescription, displayConfigurationName } from './catalog-display.js';
 import './comparison-table.css';
 
 export default function ComparisonTable({ ids, configurations, onConfigurationChange, Cover }) {
@@ -27,9 +28,9 @@ export default function ComparisonTable({ ids, configurations, onConfigurationCh
           disabled={!computer.configurations.length} value={selectedConfiguration(computer, configurations[computer.id])?.id ?? 'all'}
           onChange={event => onConfigurationChange(computer.id, event.target.value)}>
           <option value="all">{computer.configurations.length ? `Tutte le configurazioni (${computer.configurations.length})` : 'Nessuna configurazione disponibile'}</option>
-          {computer.configurations.map(config => <option key={config.id} value={config.id}>{config.variant_name}</option>)}
+          {computer.configurations.map(config => <option key={config.id} value={config.id}>{displayConfigurationName(config)}</option>)}
         </select>
-        {selectedConfiguration(computer, configurations[computer.id])?.description && <p className="comparison-config-description">{selectedConfiguration(computer, configurations[computer.id]).description}</p>}
+        {selectedConfiguration(computer, configurations[computer.id]) && displayDescription(selectedConfiguration(computer, configurations[computer.id])) && <p className="comparison-config-description">{displayDescription(selectedConfiguration(computer, configurations[computer.id]))}</p>}
       </th>)}</tr></thead>
       <tbody>
         <tr><th scope="row">Fotografia</th>{data.map(c => <td key={c.id}><Cover src={c.image_url} name={c.model_name} year={c.year} className="compare-photo" /></td>)}</tr>

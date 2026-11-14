@@ -162,7 +162,7 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onA
     if (!discard()) return;
     setBusy(true); setError(''); setMessage('');
     try {
-      const record = await api(section === 'computers' ? '/admin/computers/' + id : '/sources/' + id);
+      const record = await api(section === 'computers' ? '/admin/computers/' + id + '?readable=true' : '/sources/' + id);
       setDraft(section === 'computers' ? computerDraft(record) : record); setDirty(false);
     } catch (e) { setError(e.message); }
     finally { setBusy(false); }
@@ -171,7 +171,7 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onA
     event.preventDefault(); setBusy(true); setError(''); setMessage('');
     try {
       const payload = section === 'computers' ? computerPayload(draft) : sourcePayload(draft);
-      const result = await api('/' + section + (draft.id ? '/' + draft.id : ''), { method: draft.id ? 'PUT' : 'POST', body: JSON.stringify(payload) });
+      const result = await api('/' + section + (draft.id ? '/' + draft.id : '') + (section === 'computers' ? '?readable=true' : ''), { method: draft.id ? 'PUT' : 'POST', body: JSON.stringify(payload) });
       setDraft(section === 'computers' ? computerDraft(result) : result); setDirty(false);
       setMessage(section === 'computers' ? 'Calcolatore salvato.' : 'Fonte salvata.');
       onSaved();

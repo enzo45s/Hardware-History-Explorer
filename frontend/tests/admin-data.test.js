@@ -48,3 +48,34 @@ test('source payload excludes server fields and keeps optional dates unknown', (
   assert.equal(value.publication_date, null);
   assert.equal(value.access_date, '2026-11-11');
 });
+
+test('readable editor labels round trip raw import keys until explicitly edited', () => {
+  const dto = { ...newComputer(), id: 20, model_name: 'Example', manufacturer_id: 1,
+    description: 'Originale MAME', display_description: 'Descrizione leggibile',
+    configurations: [{ id: 5, variant_name: 'MAME example — Example', display_name: 'Configurazione di riferimento',
+      description: 'Configurazione emulata MAME; registrazione: Example.', display_description: '',
+      specifications: [{ id: 6, component_type: 'CPU', property_name: 'Modello emulato (MAME)',
+        display: { component_type: 'CPU', property_name: 'Modello' }, text_value: '6502', source_ids: [3] }] }] };
+  const draft = computerDraft(dto);
+  assert.equal(draft.description, 'Descrizione leggibile');
+  assert.equal(draft.configurations[0].variant_name, 'Configurazione di riferimento');
+  assert.equal(draft.configurations[0].description, '');
+  assert.equal(draft.configurations[0].specifications[0].property_name, 'Modello');
+  draft.model_name = 'Example aggiornato';
+  const sent = computerPayload(draft);
+  assert.equal(sent.description, dto.description);
+  assert.equal(sent.configurations[0].variant_name, dto.configurations[0].variant_name);
+  assert.equal(sent.configurations[0].description, dto.configurations[0].description);
+  assert.equal(sent.configurations[0].specifications[0].property_name, 'Modello emulato (MAME)');
+  assert.deepEqual(sent.configurations[0].specifications[0].source_ids, [3]);
+  assert.equal(JSON.stringify(sent).includes('_displayOriginal'), false);
+  assert.equal(JSON.stringify(sent).includes('display_name'), false);
+  draft.description = 'Testo scritto a mano';
+  draft.configurations[0].variant_name = 'Revisione A';
+  draft.configurations[0].specifications[0].property_name = 'Modello documentato';
+  const edited = computerPayload(draft);
+  assert.equal(edited.description, 'Testo scritto a mano');
+  assert.equal(edited.configurations[0].variant_name, 'Revisione A');
+  assert.equal(edited.configurations[0].specifications[0].property_name, 'Modello documentato');
+  assert.equal(dto.configurations[0].specifications[0].property_name, 'Modello emulato (MAME)');
+});

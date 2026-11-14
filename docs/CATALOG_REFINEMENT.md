@@ -74,8 +74,10 @@ configurazioni in ogni variante regionale. L'ordine consigliato resta quello sop
 
 Le 3.891 specifiche emulate comprendono 1.239 risoluzioni, 1.239 frequenze
 video, 744 elenchi di opzioni RAM e 669 elenchi di chip audio. Restano nelle
-configurazioni MAME originali, con nomi che esplicitano la natura emulata.
-Non sono presentate come configurazioni ordinate al lancio. Rumori floppy,
+configurazioni originali; la provenienza resta nelle fonti e nell'audit,
+mentre l'interfaccia usa etichette centrate sull'hardware. Le capacità di
+riferimento restano distinte dai limiti minimi/massimi documentati e non
+attestano configurazioni ordinate al lancio. Rumori floppy,
 cassette, speaker, slot e filtri software dell'emulatore non diventano
 ulteriori chip audio fisici.
 
@@ -110,7 +112,9 @@ dall'emulatore. Per gli altri modelli i prezzi restano assenti.
 Per 44 modelli lo snapshot contiene testi italiani curati ricavati dai dati
 AppleDB e dai commenti tecnici MAME realmente letti. Per le altre schede viene
 costruita una breve sintesi deterministica di produttore, categoria registrata,
-anno attribuito da MAME e CPU emulate disponibili. Non serve un servizio AI.
+e CPU disponibili nelle configurazioni censite. Non serve un servizio AI.
+Le descrizioni generate in precedenza vengono rese leggibili anche senza
+rieseguire l'arricchimento; gli originali registrati non vengono riscritti.
 
 Queste sintesi non inventano primati, diffusione, vendite, successo commerciale
 o destinazioni d'uso non documentate. Non trasformano l'anno di un registro

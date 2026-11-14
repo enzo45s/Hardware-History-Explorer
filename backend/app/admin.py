@@ -11,6 +11,8 @@ from sqlalchemy.orm import Session
 
 from .models import Category, Computer, Configuration, Manufacturer, Market, Release, Source, Specification
 
+from .catalog_display import description_text, configuration_displays, specification_display
+
 PositiveID = Annotated[int, Field(gt=0)]
 IDs = Annotated[list[PositiveID], Field(max_length=500)]
 Name = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=180)]
@@ -141,8 +143,8 @@ def date_text(value, precision):
     return str(value.year).zfill(4) if precision == 'year' else f'{value.year:04d}-{value.month:02d}' if precision == 'month' else value.isoformat()
 
 
-def editable(c):
-    return {
+def editable(c, readable=False):
+    result = {
         'id': c.id, 'model_name': c.model_name, 'manufacturer_id': c.manufacturer_id,
         'description': c.description, 'announcement_date': date_text(c.announcement_date, c.announcement_precision),
         'category_ids': [r.id for r in c.categories], 'source_ids': [r.id for r in c.sources],
@@ -160,6 +162,16 @@ def editable(c):
             } for s in sorted(cfg.specifications, key=lambda s: s.id)]
         } for cfg in sorted(c.configurations, key=lambda cfg: cfg.id)]
     }
+
+    # Opt in to presentation metadata; default editor DTO remains round-trippable.
+    if readable:
+        result['display_description'] = description_text(c.description)
+        displays = configuration_displays(c.configurations, c.model_name)
+        for cfg in result['configurations']:
+            cfg.update(displays[cfg['id']])
+            for spec in cfg['specifications']:
+                spec['display'] = specification_display(spec)
+    return result
 
 
 def apply_computer(db, c, data):
@@ -239,27 +251,27 @@ def create_admin_router(get_db):
             raise HTTPException(409, 'Dati in conflitto con un elemento esistente; ricarica e riprova') from exc
 
     @router.get('/admin/computers/{computer_id}')
-    def edit_computer(computer_id: int, db: Session = Depends(get_db)):
+    def edit_computer(computer_id: int, readable: bool = False, db: Session = Depends(get_db)):
         c = db.get(Computer, computer_id)
         if c is None:
             raise HTTPException(404, 'Calcolatore non trovato')
-        return editable(c)
+        return editable(c, readable)
 
     @router.post('/computers', status_code=201)
-    def create_computer(data: ComputerInput, db: Session = Depends(get_db)):
+    def create_computer(data: ComputerInput, readable: bool = False, db: Session = Depends(get_db)):
         c = Computer()
         apply_computer(db, c, data)
         commit(db)
-        return editable(c)
+        return editable(c, readable)
 
     @router.put('/computers/{computer_id}')
-    def update_computer(computer_id: int, data: ComputerInput, db: Session = Depends(get_db)):
+    def update_computer(computer_id: int, data: ComputerInput, readable: bool = False, db: Session = Depends(get_db)):
         c = db.scalar(select(Computer).where(Computer.id == computer_id).with_for_update())
         if c is None:
             raise HTTPException(404, 'Calcolatore non trovato')
         apply_computer(db, c, data)
         commit(db)
-        return editable(c)
+        return editable(c, readable)
 
     def reference_endpoint(model):
         def create(data: ReferenceInput, db: Session = Depends(get_db)):

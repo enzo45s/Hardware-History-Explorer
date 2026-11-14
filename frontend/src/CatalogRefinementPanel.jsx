@@ -53,8 +53,8 @@ export default function CatalogRefinementPanel({ onSaved }) {
       })}>Accorpa le varianti regionali proposte</button>
     </>}
     <h4>Descrizioni italiane e arricchimento documentato</h4>
-    <p>Completa le descrizioni vuote con brevi sintesi italiane e aggiunge i dati disponibili nel pacchetto versionato AppleDB/MAME. Conserva le descrizioni già scritte e i valori esistenti: eventuali differenze restano in revisione.</p>
-    <p>I dati video/audio e le opzioni RAM dell'emulatore sono etichettati MAME. Le informazioni documentali e i prezzi hanno fonti separate; il pacchetto contiene cinque prezzi IBM RT, non prezzi per l'intero catalogo.</p>
+    <p>Completa le descrizioni vuote con brevi sintesi italiane e aggiunge i dati tecnici disponibili nel pacchetto versionato. Conserva le descrizioni già scritte e i valori esistenti: eventuali differenze restano in revisione.</p>
+    <p>Ogni dato mantiene la propria fonte. Le capacità di riferimento non attestano la dotazione ordinabile al lancio. Il pacchetto contiene cinque prezzi IBM RT, non prezzi per l'intero catalogo.</p>
     <button disabled={busy} onClick={() => action(async () => { setPreview(await api('/admin/enrichment/preview')); setProgress(null); })}>Anteprima arricchimento</button>
     {preview && <>
       <p>{preview.total} sistemi esistenti. Descrizioni mancanti: {preview.coverage.missing_descriptions}.
