@@ -123,3 +123,11 @@ mantiene le chiavi importate nei salvataggi non relativi alle etichette.
 Verifica: 200 test SQLite più uno specifico PG saltato, 201 PostgreSQL,
 25 frontend, build/Compose e prove Chromium di schede, confronto, editor e
 importazioni riuscite. Dettagli in `docs/CATALOG_PRESENTATION.md`.
+
+1000bit: aggiunto un raccoglitore locale di massimo cinque pagine selezionate,
+con originali, SHA-256, controllo robots e richieste distanziate. Il permesso di
+recupero è stato dichiarato dall'operatore. Il proxy cloud blocca ancora il sito:
+estrazione HTML e importazione automatica non sono abilitate, in attesa di una
+scheda reale. Zero dati storici 1000bit importati. Suite aggiornata: 227 test
+SQLite più uno specifico PG saltato, 228 PostgreSQL; 27 coprono il raccoglitore.
+Build API riuscita; istruzioni e limiti in `docs/1000BIT.md`.

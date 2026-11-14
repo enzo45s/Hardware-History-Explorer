@@ -212,6 +212,9 @@ standard. Copertura e lacune sono documentate; non c'è un nuovo fetch remoto MA
   anche le entità dei produttori e `requested_ids` nell'oggetto JSON.
 - **Oldcomputers, 1000bit, Computer History Museum**: caricamento canonico
   manuale autorizzato, nessun adattatore HTML automatico abilitato.
+  Per 1000bit è disponibile anche il [raccoglitore locale di pagine originali](1000BIT.md):
+  il permesso è stato dichiarato dall'operatore; serve una scheda reale per
+  verificare la struttura prima di abilitare l'estrazione automatica.
 
 I metadati non mappati restano nel file originale con SHA-256. Per Wikidata lo
 snapshot aggrega le risposte entità e produttori utilizzate. I timeout e il
