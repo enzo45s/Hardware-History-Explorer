@@ -2,7 +2,7 @@ from datetime import date
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from .models import Manufacturer,Category,Computer,Configuration,Specification,Market,Release,Fact,Source
-from .import_models import ArchiveReset
+from .import_models import ArchiveReset, CatalogReconciliation
 
 # Esempi dimostrativi: valori indicativi, non un corpus verificato.
 DATA=[
@@ -19,6 +19,7 @@ DATA=[
 ]
 def seed(db:Session):
  if db.scalar(select(ArchiveReset.id).limit(1)) is not None:return
+ if db.scalar(select(CatalogReconciliation.id).where(CatalogReconciliation.entity.in_(['computer_delete', 'manufacturer_delete'])).limit(1)) is not None:return
  if db.scalar(select(Computer.id).limit(1)) is not None:return
  world=Market(name='Globale',region='Globale'); db.add(world)
  makers={};cats={}

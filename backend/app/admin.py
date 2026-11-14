@@ -2,10 +2,11 @@
 from datetime import date
 from uuid import uuid4
 from typing import Annotated
+import unicodedata
 
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, field_validator, model_validator
-from sqlalchemy import select
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, field_validator, model_validator
+from sqlalchemy import delete, func, select, text, update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
@@ -127,6 +128,51 @@ class ComputerInput(Input):
 
 class ReferenceInput(Input):
     name: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100)]
+
+
+class ManufacturerInput(Input):
+    name: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=160)]
+    country: str | None = Field(default=None, max_length=100)
+    founded: date | None = None
+    website: str | None = Field(default=None, max_length=500)
+
+    @field_validator('name')
+    @classmethod
+    def clean_name(cls, value):
+        return ' '.join(value.split())
+
+    @field_validator('founded', mode='before')
+    @classmethod
+    def full_founding_date(cls, value):
+        if value is not None and (not isinstance(value, str) or [len(part) for part in value.split('-')] != [4, 2, 2]):
+            raise ValueError('La data di fondazione richiede AAAA-MM-GG; lascia vuoto se non conosci la data completa')
+        return value
+
+    @field_validator('website', mode='before')
+    @classmethod
+    def valid_website(cls, value):
+        if value is None:
+            return None
+        url = HttpUrl(value)
+        if url.username is not None or url.password is not None:
+            raise ValueError('URL HTTP(S) senza credenziali richiesto')
+        return str(url)
+
+
+def catalog_lock(db):
+    """Keep the same lock order as imports, photo jobs and catalog reset."""
+    if db.bind.dialect.name == 'postgresql':
+        db.execute(text('SELECT pg_advisory_xact_lock(68484931)'))
+    else:
+        db.execute(text('BEGIN IMMEDIATE'))
+
+
+def manufacturer_data(db, item, count=None):
+    if count is None:
+        count = db.scalar(select(func.count()).select_from(Computer).where(Computer.manufacturer_id == item.id))
+    return {'id': item.id, 'name': item.name, 'country': item.country,
+            'founded': item.founded.isoformat() if item.founded else None,
+            'website': item.website, 'computer_count': count}
 
 
 def references(db, model, ids):
@@ -259,6 +305,7 @@ def create_admin_router(get_db):
 
     @router.post('/computers', status_code=201)
     def create_computer(data: ComputerInput, readable: bool = False, db: Session = Depends(get_db)):
+        catalog_lock(db)
         c = Computer()
         apply_computer(db, c, data)
         commit(db)
@@ -266,12 +313,103 @@ def create_admin_router(get_db):
 
     @router.put('/computers/{computer_id}')
     def update_computer(computer_id: int, data: ComputerInput, readable: bool = False, db: Session = Depends(get_db)):
+        catalog_lock(db)
         c = db.scalar(select(Computer).where(Computer.id == computer_id).with_for_update())
         if c is None:
             raise HTTPException(404, 'Calcolatore non trovato')
         apply_computer(db, c, data)
         commit(db)
         return editable(c, readable)
+
+    @router.delete('/computers/{computer_id}', status_code=204)
+    def delete_computer(computer_id: int, db: Session = Depends(get_db)):
+        # Lazy imports avoid the Input/normalization/router import cycle.
+        from .import_models import CatalogReconciliation, ImportRow
+        from .importing.reconcile import snapshot
+        from .importing.bulk1000bit import BulkTarget
+        from .photo_jobs import PhotoItem, PhotoJob
+        catalog_lock(db)
+        c = db.scalar(select(Computer).where(Computer.id == computer_id).with_for_update())
+        if c is None:
+            raise HTTPException(404, 'Calcolatore non trovato')
+        original = snapshot(db, 'computer', c, c)
+        db.add(CatalogReconciliation(entity='computer_delete', source_id=c.id, target_id=c.id,
+            note='Eliminazione manuale del calcolatore dal pannello amministrativo.', snapshot=original))
+        # Invalidate staged matches and JSON candidates as well as foreign keys.
+        related_rows = [row['id'] for row in original['import_rows']]
+        for row in db.scalars(select(ImportRow).where(ImportRow.id.in_(related_rows))):
+            if computer_id in row.candidates:
+                row.candidates = [cid for cid in row.candidates if cid != computer_id]
+            if row.computer_id == computer_id:
+                if row.status in ('ready', 'ambiguous', 'failed'):
+                    row.status, row.error = 'skipped', 'Calcolatore eliminato dal catalogo; prepara una nuova anteprima per reimportarlo.'
+                row.computer_id = None
+        jobs = list(db.scalars(select(PhotoItem.job_id).where(PhotoItem.computer_id == computer_id, PhotoItem.status == 'pending')).unique())
+        db.execute(update(PhotoItem).where(PhotoItem.computer_id == computer_id, PhotoItem.status == 'pending')
+            .values(status='skipped', error='Calcolatore eliminato dal catalogo.').execution_options(synchronize_session=False))
+        db.execute(update(BulkTarget).where(BulkTarget.computer_id == computer_id).values(status='removed')
+            .execution_options(synchronize_session=False))
+        db.flush()
+        db.execute(delete(Computer).where(Computer.id == computer_id))
+        for jid in jobs:
+            if not db.scalar(select(PhotoItem.id).where(PhotoItem.job_id == jid, PhotoItem.status == 'pending').limit(1)):
+                db.execute(update(PhotoJob).where(PhotoJob.id == jid, PhotoJob.status.in_(['ready', 'paused']))
+                    .values(status='completed', active_key=None, lease_token=None, lease_until=None))
+        commit(db)
+
+    @router.get('/manufacturers')
+    def list_manufacturers(db: Session = Depends(get_db)):
+        rows = db.execute(select(Manufacturer, func.count(Computer.id)).outerjoin(Computer, Computer.manufacturer_id == Manufacturer.id)
+            .group_by(Manufacturer.id).order_by(func.lower(Manufacturer.name), Manufacturer.id))
+        return [manufacturer_data(db, item, count) for item, count in rows]
+
+    @router.get('/manufacturers/{manufacturer_id}')
+    def get_manufacturer(manufacturer_id: int, db: Session = Depends(get_db)):
+        item = db.get(Manufacturer, manufacturer_id)
+        if item is None:
+            raise HTTPException(404, 'Produttore non trovato')
+        return manufacturer_data(db, item)
+
+    def unique_manufacturer(db, data, excluding=None):
+        def key(name):
+            return unicodedata.normalize('NFKC', ' '.join(name.split())).casefold()
+        if any(item.id != excluding and key(item.name) == key(data.name) for item in db.scalars(select(Manufacturer))):
+            raise HTTPException(409, 'Un produttore con questo nome è già presente')
+
+    @router.post('/manufacturers', status_code=201)
+    def create_manufacturer(data: ManufacturerInput, db: Session = Depends(get_db)):
+        catalog_lock(db)
+        unique_manufacturer(db, data)
+        item = Manufacturer(**data.model_dump())
+        db.add(item); commit(db)
+        return manufacturer_data(db, item)
+
+    @router.put('/manufacturers/{manufacturer_id}')
+    def update_manufacturer(manufacturer_id: int, data: ManufacturerInput, db: Session = Depends(get_db)):
+        catalog_lock(db)
+        item = db.scalar(select(Manufacturer).where(Manufacturer.id == manufacturer_id).with_for_update())
+        if item is None:
+            raise HTTPException(404, 'Produttore non trovato')
+        unique_manufacturer(db, data, excluding=manufacturer_id)
+        for field in data.model_fields_set:
+            setattr(item, field, getattr(data, field))
+        commit(db)
+        return manufacturer_data(db, item)
+
+    @router.delete('/manufacturers/{manufacturer_id}', status_code=204)
+    def delete_manufacturer(manufacturer_id: int, db: Session = Depends(get_db)):
+        from .import_models import CatalogReconciliation
+        from .importing.reconcile import snapshot
+        catalog_lock(db)
+        item = db.scalar(select(Manufacturer).where(Manufacturer.id == manufacturer_id).with_for_update())
+        if item is None:
+            raise HTTPException(404, 'Produttore non trovato')
+        count = manufacturer_data(db, item)['computer_count']
+        if count:
+            raise HTTPException(409, f'Produttore collegato a {count} calcolatori: riassegnali prima di eliminarlo.')
+        db.add(CatalogReconciliation(entity='manufacturer_delete', source_id=item.id, target_id=item.id,
+            note='Eliminazione manuale di un produttore senza calcolatori.', snapshot=snapshot(db, 'manufacturer', item, item)))
+        db.delete(item); commit(db)
 
     def reference_endpoint(model):
         def create(data: ReferenceInput, db: Session = Depends(get_db)):
@@ -282,6 +420,6 @@ def create_admin_router(get_db):
             commit(db)
             return {'id': item.id, 'name': item.name}
         return create
-    for path, model in [('manufacturers', Manufacturer), ('categories', Category), ('markets', Market)]:
+    for path, model in [('categories', Category), ('markets', Market)]:
         router.add_api_route('/' + path, reference_endpoint(model), methods=['POST'], status_code=201)
     return router

@@ -22,6 +22,12 @@ export function newComputer() {
 export function newSource() {
   return { title: '', author: '', publisher: '', url: '', source_type: 'website', publication_date: '', access_date: '' };
 }
+export function newManufacturer() {
+  return { name: '', country: '', founded: '', website: '' };
+}
+export function manufacturerPayload(draft) {
+  return { name: draft.name.trim(), country: optional(draft.country), founded: optional(draft.founded), website: optional(draft.website) };
+}
 export function computerDraft(computer) {
   return { ...readable(computer, { description: computer.display_description }), configurations: computer.configurations.map(cfg => ({
     ...readable(cfg, { variant_name: cfg.display_name, description: cfg.display_description }),

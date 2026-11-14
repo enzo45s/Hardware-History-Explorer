@@ -190,6 +190,13 @@ storica resta parziale e gli originali delle fonti restano disponibili nell'audi
 
 Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibliografiche, aggiungere produttori/categorie/mercati e aggiornare commercializzazioni e specifiche tecniche. Le schede conservano fotografie e altri dati storici già archiviati. Le modifiche sono applicate con il pulsante Salva; il pannello segnala quelle non salvate.
 
+La sezione **Produttori** permette di aggiungere, modificare ed eliminare
+produttori, con paese, data di fondazione, sito e conteggio delle schede
+associate. Un produttore utilizzato richiede prima la riassegnazione dei
+calcolatori. In **Calcolatori**, **Elimina calcolatore** rimuove la scheda dopo
+conferma, aggiornando catalogo e confronti; fonti e storico delle importazioni
+restano conservati. I dettagli sono nella [guida amministrativa](docs/ADMIN.md).
+
 La gestione delle fotografie resta disponibile nella normale scheda del calcolatore, raggiungibile anche dal pannello. Non serve una migrazione aggiuntiva del database. Vedi [la guida del pannello](docs/ADMIN.md) per campi, date, fonti e API. Il pannello segue la modalità locale single-user del progetto.
 
 ### Problemi nella ricerca Wikimedia Commons

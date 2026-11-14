@@ -1,6 +1,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { computerDraft, computerPayload, newComputer, sourcePayload } from '../src/admin-data.js';
+import { computerDraft, computerPayload, newComputer, newManufacturer, manufacturerPayload, sourcePayload } from '../src/admin-data.js';
+
+test('manufacturer payload keeps known metadata and excludes counts and IDs', () => {
+  assert.deepEqual(manufacturerPayload({ ...newManufacturer(), name: ' Example ', id: 1, computer_count: 42 }),
+    { name: 'Example', country: null, founded: null, website: null });
+  assert.deepEqual(manufacturerPayload({ name: ' Example ', country: ' Italia ', founded: '1980-02-03', website: ' https://example.org ' }),
+    { name: 'Example', country: 'Italia', founded: '1980-02-03', website: 'https://example.org' });
+});
 
 test('editing preserves nested IDs, precision, zero values and source associations', () => {
   const dto = {

@@ -185,3 +185,21 @@ l'ultima modifica ai metadati. Browser con sostituzione, pausa/riapertura,
 ricerca manuale e layout mobile. Compose con nuova coda da 1.105 modelli
 sul corpus isolato, senza modificare schede o foto durante la preparazione;
 zero richieste reali Commons. Nessun accesso al database Windows dell'utente.
+
+Gestione del catalogo: sezione Produttori con creazione, modifica di nome,
+paese/data di fondazione/sito, conteggio delle schede ed eliminazione protetta
+dei produttori non utilizzati. I nomi duplicati sono controllati anche senza
+distinzione di maiuscole e spazi. L'editor dei calcolatori offre eliminazione
+con conferma; fonti, originali ETL e uno snapshot dei metadati restano nell'audit.
+Candidati e corrispondenze delle importazioni vengono invalidati, le code
+fotografiche saltano la scheda e la selezione del confronto viene aggiornata.
+Il catalogo resta vuoto dopo il riavvio se viene eliminata l'ultima scheda.
+Nessuna modifica allo schema o migrazione aggiuntiva.
+
+Verifiche: 340 test PostgreSQL, 339 SQLite più uno specifico PG saltato,
+27 frontend, build React e Compose. Nuova suite browser inclusa in CI per
+CRUD, duplicati, produttori usati, conferma/annullamento, rimozione dei computer,
+confronti, persistenza e layout mobile. Prova sul corpus isolato, eliminando
+soltanto i record sintetici creati dalla suite; nessun accesso al database utente.
+Ripetuta anche la suite browser precedente: importazioni, conflitti, revisioni,
+1000bit HTML e confronto superati con il pannello amministrativo aggiornato.

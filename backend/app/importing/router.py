@@ -7,7 +7,7 @@ from pydantic import Field
 from sqlalchemy import select, func
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, object_session
-from ..admin import Input
+from ..admin import Input, catalog_lock
 from ..models import Computer
 from ..import_models import ImportJob, ImportRow, ImportClaim, CatalogReconciliation
 from .normalize import MAX_BYTES, parse_payload
@@ -242,6 +242,7 @@ def create_import_router(get_db):
 
     @router.post('/claims/{claim_id}/review')
     def review(claim_id: int, data: Decision, db: Session = Depends(get_db)):
+        catalog_lock(db)
         c = db.scalar(select(ImportClaim).where(ImportClaim.id == claim_id).with_for_update())
         if c is None:
             raise HTTPException(404, 'Asserzione non trovata')

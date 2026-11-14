@@ -280,6 +280,15 @@ function App() {
     <div className="content">{error && <div className="error">{error} <button onClick={() => setError('')}>×</button></div>}
       {selected ? <ComputerDetail computer={selected} onClose={() => setSelected(null)} onChanged={refreshComputer} /> : <>
         {tab === 'admin' && <AdminPanel onSaved={() => setRevision(v => v + 1)} onDirtyChange={setAdminDirty} onOpenComputer={openComputer}
+          onDeleted={({ type, id }) => {
+            if (type === 'computers') {
+              setCompare(previous => previous.filter(computer => computer.id !== id));
+              setItems(previous => previous.filter(computer => computer.id !== id));
+              setSelected(previous => previous?.id === id ? null : previous);
+            } else if (type === 'manufacturers') {
+              setFilters(previous => String(previous.manufacturer_id) === String(id) ? { ...previous, manufacturer_id: '' } : previous);
+            }
+          }}
           onArchiveReset={() => { setCompare([]); setComparisonConfigurations({}); setSelected(null); setItems([]);
             setFilters({ q: '', category_id: '', manufacturer_id: '', year_from: '', year_to: '' });
             setAnswer(''); setRevision(v => v + 1); }} />}
