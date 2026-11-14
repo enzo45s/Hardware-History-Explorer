@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { api, latestRequest } from './api.js';
 import './imports.css';
 
-const labels = { added: 'Foto associata', no_match: 'Nessuna foto utilizzabile', skipped: 'Saltata',
+const labels = { added: 'Foto associata', replaced: 'Copertina aggiornata', no_match: 'Nessuna foto utilizzabile', skipped: 'Saltata',
   search_error: 'Ricerca non valida',
-  ready: 'Pronta da riprendere', paused: 'In pausa', completed: 'Completata', archived: 'Archiviata dopo svuotamento' };
+  ready: 'Pronta da riprendere', paused: 'In pausa', completed: 'Completata', archived: 'Archiviata dopo svuotamento', superseded: 'Sostituita da una nuova ricerca' };
+
+const finishedStates = ['completed', 'archived', 'superseded'];
 
 export default function PhotoPanel({ onSaved }) {
   const [snapshot, setSnapshot] = useState(null);
@@ -20,12 +22,14 @@ export default function PhotoPanel({ onSaved }) {
     return () => { mounted.current = false; active.current = false; cancel(); };
   }, []);
   useEffect(() => setQuery(snapshot?.job?.current?.query || ''), [snapshot?.job?.current?.id, snapshot?.job?.current?.query]);
-  async function run() {
+  async function run({ restart = false } = {}) {
     if (active.current || busy) return;
     active.current = true; setRunning(true); setBusy(true); setError('');
     try {
       let job = snapshot?.job;
-      if (!job || ['completed', 'archived'].includes(job.status)) job = await api('/admin/photos', { method: 'POST' });
+      if (restart) job = await api('/admin/photos/restart', { method: 'POST',
+        body: JSON.stringify({ expected_job_id: job?.id ?? null }) });
+      else if (!job || finishedStates.includes(job.status)) job = await api('/admin/photos', { method: 'POST' });
       if (!mounted.current || !active.current) return;
       job = await api(`/admin/photos/${job.id}/resume`, { method: 'POST' });
       setSnapshot(previous => ({ ...previous, job })); setBusy(false);
@@ -55,8 +59,7 @@ export default function PhotoPanel({ onSaved }) {
           continue;
         }
         if (!mounted.current) return;
-        setSnapshot(previous => ({ ...previous, job, missing: Math.max(0, previous.missing
-          - Math.max(0, (job.counts.added || 0) - (previous.job?.counts.added || 0))) }));
+        setSnapshot(previous => ({ ...previous, job, missing: job.missing ?? previous.missing }));
       }
     } catch (e) { if (mounted.current) setError(e.message); }
     finally {
@@ -91,27 +94,32 @@ export default function PhotoPanel({ onSaved }) {
     finally { if (mounted.current) setBusy(false); }
   }
   const job = snapshot?.job;
-  const finished = !job || ['completed', 'archived'].includes(job.status);
+  const finished = !job || finishedStates.includes(job.status);
   const pending = job?.counts.pending || 0;
   const done = job ? job.total - pending : 0;
   return <section className="imports photo-panel">
     <h2>Foto automatiche da Wikimedia Commons</h2>
-    <p>Associa automaticamente il primo risultato utilizzabile ai sistemi senza foto. Cerca solo il nome del modello, una macchina alla volta, con almeno due secondi fra le richieste.</p>
-    <p>Le immagini sono scelte automaticamente: potrebbero raffigurare un modello diverso. Puoi correggerle nella scheda del sistema, da <b>Gestisci fotografie</b>. Autore, licenza e pagina Commons vengono conservati; le foto già presenti restano conservate.</p>
+    <p>Associa automaticamente il primo risultato utilizzabile, cercando «marca - modello», una macchina alla volta, con almeno due secondi fra le richieste.</p>
+    <p>Puoi completare le schede senza foto oppure ricominciare su tutti i sistemi, aggiornando anche le copertine già associate. Una nuova copertina viene impostata solo quando la ricerca trova una foto utilizzabile; le altre immagini della galleria restano disponibili.</p>
+    <p>Le immagini sono scelte automaticamente: potrebbero raffigurare un modello diverso. Puoi correggerle nella scheda del sistema, da <b>Gestisci fotografie</b>. Autore, licenza e pagina Commons vengono conservati.</p>
     <p className="muted">Uso locale single-user. Le immagini restano collegamenti esterni. I risultati privi di attribuzione o licenza riconoscibile non vengono associati automaticamente.</p>
     {error && <p role="alert" className="inline-error">{error}</p>}
-    {snapshot && <p>Sistemi attualmente senza foto: <b>{snapshot.missing}</b>.</p>}
+    {snapshot && <p>Sistemi a catalogo: <b>{snapshot.total}</b>. Sistemi attualmente senza foto: <b>{snapshot.missing}</b>.</p>}
     <div className="import-actions">
-      <button type="button" disabled={!snapshot || running || busy || (finished ? snapshot.missing === 0 : !pending)} onClick={run}>
-        {job && !['completed', 'archived'].includes(job.status) ? 'Riprendi ricerca automatica' : 'Avvia ricerca automatica'}
+      <button type="button" disabled={!snapshot || running || busy || (finished ? snapshot.missing === 0 : !pending)} onClick={() => run()}>
+        {job && !finished ? 'Riprendi ricerca automatica' : 'Avvia ricerca automatica'}
+      </button>
+      <button type="button" disabled={!snapshot?.total || running || busy} onClick={() => run({ restart: true })}>
+        Ricomincia su tutti e sostituisci le copertine
       </button>
       {running && <button type="button" disabled={busy || !job} onClick={pause}>Metti in pausa</button>}
     </div>
     <p className="muted">Mantieni aperta questa sezione per proseguire. Uscendo, la richiesta già partita può terminare; il resto resta in attesa. Puoi riprendere anche dopo il riavvio dell'applicazione.</p>
     {job && <section className="panel" aria-label="Avanzamento ricerca fotografica">
       <h3>Ricerca #{job.id} · {running ? 'In corso' : labels[job.status] || job.status}</h3>
+      <p className="muted">{job.replace_existing ? 'Tutti i sistemi, comprese le copertine esistenti.' : 'Solo sistemi senza foto.'}</p>
       <progress aria-label="Sistemi elaborati" value={done} max={job.total || 1} />
-      <p role="status">Elaborati {done} di {job.total}. Foto associate: {job.counts.added || 0}. Senza risultato: {job.counts.no_match || 0}. Ricerche non valide: {job.counts.search_error || 0}. Saltati: {job.counts.skipped || 0}.</p>
+      <p role="status">Elaborati {done} di {job.total}. Foto associate: {job.counts.added || 0}. Copertine aggiornate: {job.counts.replaced || 0}. Senza risultato: {job.counts.no_match || 0}. Ricerche non valide: {job.counts.search_error || 0}. Saltati: {job.counts.skipped || 0}.</p>
       {job.current && <div className="photo-current">
         <h4>Modello corrente: {job.current.model_name}</h4>
         <label className="admin-field"><span>Ricerca Commons del modello corrente</span>

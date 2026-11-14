@@ -13,6 +13,26 @@ URL = 'https://commons.wikimedia.org/w/api.php'
 USER_AGENT = 'HardwareHistoryExplorer/1.2 (https://github.com/enzo45s/Hardware-History-Explorer)'
 logger = logging.getLogger(__name__)
 
+
+def photo_query(manufacturer, model):
+    """Brand - model, removing only known brand prefixes from the model name."""
+    from .importing.identity import MAKERS, maker_key
+    manufacturer = ' '.join((manufacturer or '').split())
+    model = ' '.join((model or '').split())
+    aliases = MAKERS.get(maker_key(manufacturer), (manufacturer,))
+    brand = aliases[0] if manufacturer else ''
+    for alias in sorted(set(aliases) | {manufacturer}, key=len, reverse=True):
+        if not alias:
+            continue
+        match = re.match(re.escape(alias) + r'(?=$|[\s:/-])', model, flags=re.I)
+        if match:
+            model = model[match.end():].lstrip(' -:/')
+            break
+    if not model or not brand:
+        return (model or brand)[:90]
+    brand = brand[:40]
+    return f'{brand} - {model}'[:90].rstrip()
+
 INVALID_SEARCH = {'badsearch', 'cirrussearch-parse-error', 'cirrussearch-regex-syntax-error',
                   'cirrussearch-regex-empty-expression', 'cirrussearch-regex-too-complex-error',
                   'cirrussearch-query-too-long', 'cirrussearch-query-too-long-with-exemptions'}

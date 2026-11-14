@@ -5,13 +5,13 @@ import uuid
 import unicodedata
 
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy import DateTime, ForeignKey, String, Text, UniqueConstraint, func, select, update, text
+from sqlalchemy import Boolean, DateTime, ForeignKey, String, Text, UniqueConstraint, func, inspect, select, update, text
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.orm import Mapped, Session, mapped_column
+from sqlalchemy.orm import Mapped, Session, mapped_column, selectinload
 
 from .models import Base, Computer, ComputerImage
 from .admin import Input
-from .commons import retry_seconds
+from .commons import photo_query, retry_seconds
 from pydantic import Field, field_validator
 
 
@@ -29,6 +29,7 @@ class PhotoJob(Base):
     # Only one unfinished queue, even across concurrent API processes.
     active_key: Mapped[str | None] = mapped_column(String(20), unique=True)
     status: Mapped[str] = mapped_column(String(20), default='ready')
+    replace_existing: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False, server_default=text('false'))
     error: Mapped[str | None] = mapped_column(Text)
     lease_token: Mapped[str | None] = mapped_column(String(36))
     lease_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
@@ -55,17 +56,39 @@ def missing_images():
     return ~Computer.images.any() & ((Computer.image_url.is_(None)) | (Computer.image_url == ''))
 
 
+def ensure_photo_schema(engine):
+    """Add the opt-in mode to pre-existing queues; old queues keep their behavior."""
+    with engine.begin() as connection:
+        if connection.dialect.name == 'postgresql':
+            connection.execute(text('SELECT pg_advisory_xact_lock(68484931)'))
+        if 'replace_existing' not in {column['name'] for column in inspect(connection).get_columns('commons_photo_jobs')}:
+            connection.execute(text('ALTER TABLE commons_photo_jobs ADD COLUMN replace_existing BOOLEAN NOT NULL DEFAULT FALSE'))
+
+
+def image_state(db, computer):
+    if computer is None:
+        return None
+    return (computer.image_url, tuple(db.execute(select(*ComputerImage.__table__.columns)
+        .where(ComputerImage.computer_id == computer.id).order_by(ComputerImage.id)).all()))
+
+
 def simple_query(value):
     """Fallback only after a query rejection; retain meaningful vintage model names."""
     value = unicodedata.normalize('NFKC', value)
-    value = re.sub(r'\bApple\s*(?:\]\[|//(?=[ce]\b))', 'Apple II', value, flags=re.I)
-    value = re.sub(r'\bApple\s*///', 'Apple III', value, flags=re.I)
+    value = re.sub(r'\bApple(\s*-\s*)?\s*(?:\]\[|//(?=[ce]\b))',
+                   lambda match: 'Apple' + (' - ' if match[1] else ' ') + 'II', value, flags=re.I)
+    value = re.sub(r'\bApple(\s*-\s*)?\s*///',
+                   lambda match: 'Apple' + (' - ' if match[1] else ' ') + 'III', value, flags=re.I)
     value = value.replace('+', ' Plus ')
     return ' '.join(re.sub(r'[^\w\s.-]', ' ', value, flags=re.UNICODE).split()).strip('.- ')[:90]
 
 
 class CurrentItem(Input):
     item_id: int = Field(gt=0)
+
+
+class RestartPhotos(Input):
+    expected_job_id: int | None = Field(ge=1)
 
 
 class EditQuery(CurrentItem):
@@ -98,6 +121,8 @@ def job_data(db, job):
     current = db.scalar(select(PhotoItem).where(PhotoItem.job_id == job.id, PhotoItem.status == 'pending')
                         .order_by(PhotoItem.position).limit(1)) if job.status in ('ready', 'paused') else None
     return {'id': job.id, 'status': job.status, 'counts': counts, 'total': sum(counts.values()),
+            'replace_existing': job.replace_existing,
+            'missing': db.scalar(select(func.count()).select_from(Computer).where(missing_images())),
             'error': job.error, 'next_request_at': utc(job.next_request_at).isoformat() if job.next_request_at else None,
             'lease_until': utc(job.lease_until).isoformat() if job.lease_token and job.lease_until else None,
             'current': {'id': current.id, 'computer_id': current.computer_id, 'model_name': current.model_name,
@@ -115,6 +140,41 @@ def get_job(db, job_id):
 
 def create_photo_router(get_db, search):
     router = APIRouter(prefix='/api/admin/photos', tags=['Fotografie automatiche locali'])
+
+    def enqueue(db, job, *, all_computers=False):
+        computers = select(Computer).options(selectinload(Computer.manufacturer)).order_by(Computer.id)
+        if not all_computers:
+            computers = computers.where(missing_images())
+        count = 0
+        for count, computer in enumerate(db.scalars(computers), 1):
+            db.add(PhotoItem(job_id=job.id, position=count, computer_id=computer.id,
+                model_name=computer.model_name, query=photo_query(computer.manufacturer.name, computer.model_name)))
+        if not count:
+            job.status, job.active_key = 'completed', None
+
+    @router.post('/restart', status_code=201)
+    def restart(data: RestartPhotos, db: Session = Depends(get_db)):
+        if db.bind.dialect.name == 'postgresql':
+            db.execute(text('SELECT pg_advisory_xact_lock(68484931)'))
+        else:
+            db.execute(text('BEGIN IMMEDIATE'))
+        previous = db.scalar(select(PhotoJob).order_by(PhotoJob.id.desc()).limit(1).with_for_update())
+        if (previous.id if previous else None) != data.expected_job_id:
+            raise HTTPException(409, 'La ricerca è cambiata: aggiorna il pannello prima di ricominciare.')
+        deadline = now()
+        if previous:
+            # Carry over remote cooldown and any in-flight lease before releasing it.
+            deadline = max(deadline, utc(previous.next_request_at) or deadline, utc(previous.lease_until) or deadline)
+            previous.active_key = None
+            previous.lease_token = None; previous.lease_until = None
+            if previous.status in ('ready', 'paused'):
+                previous.status = 'superseded'
+            db.flush()
+        job = PhotoJob(active_key='commons', replace_existing=True, next_request_at=deadline)
+        db.add(job); db.flush()
+        enqueue(db, job, all_computers=True)
+        db.commit()
+        return job_data(db, job)
 
     def editable_current(db, job_id, item_id):
         if db.bind.dialect.name == 'postgresql':
@@ -157,10 +217,15 @@ def create_photo_router(get_db, search):
     def status(db: Session = Depends(get_db)):
         job = db.scalar(select(PhotoJob).order_by(PhotoJob.id.desc()).limit(1))
         return {'missing': db.scalar(select(func.count()).select_from(Computer).where(missing_images())),
+                'total': db.scalar(select(func.count()).select_from(Computer)),
                 'job': job_data(db, job) if job else None}
 
     @router.post('', status_code=201)
     def create(db: Session = Depends(get_db)):
+        if db.bind.dialect.name == 'postgresql':
+            db.execute(text('SELECT pg_advisory_xact_lock(68484931)'))
+        else:
+            db.execute(text('BEGIN IMMEDIATE'))
         active = db.scalar(select(PhotoJob).where(PhotoJob.active_key == 'commons'))
         if active:
             return job_data(db, active)
@@ -170,9 +235,7 @@ def create_photo_router(get_db, search):
         except IntegrityError:
             db.rollback()
             return job_data(db, db.scalar(select(PhotoJob).where(PhotoJob.active_key == 'commons')))
-        for position, computer in enumerate(db.scalars(select(Computer).where(missing_images()).order_by(Computer.id)), 1):
-            db.add(PhotoItem(job_id=job.id, position=position, computer_id=computer.id,
-                             model_name=computer.model_name, query=computer.model_name.strip()[:90]))
+        enqueue(db, job)
         db.commit()
         return job_data(db, job)
 
@@ -215,8 +278,10 @@ def create_photo_router(get_db, search):
             return job_data(db, job)
         row_id, computer_id, model_name, query = row.id, row.computer_id, row.model_name, row.query
         c = db.get(Computer, computer_id) if computer_id else None
-        already_present = c is not None and (c.image_url or db.scalar(select(ComputerImage.id).where(ComputerImage.computer_id == c.id).limit(1)))
-        skip = not c or c.model_name != model_name or already_present or len(query) < 2
+        before_images = image_state(db, c)
+        already_present = before_images is not None and bool(before_images[0] or before_images[1])
+        replace_existing = job.replace_existing
+        skip = not c or c.model_name != model_name or (already_present and not replace_existing) or len(query) < 2
         db.rollback()  # Never keep a database transaction/row lock open across the network.
         response, failure = None, None
         if not skip:
@@ -230,7 +295,7 @@ def create_photo_router(get_db, search):
             db.execute(text('SELECT pg_advisory_xact_lock(68484931)'))
         else:
             db.execute(text('BEGIN IMMEDIATE'))
-        c = db.scalar(select(Computer).where(Computer.id == computer_id).with_for_update()) if computer_id else None
+        c = db.scalar(select(Computer).where(Computer.id == computer_id).with_for_update().execution_options(populate_existing=True)) if computer_id else None
         job = db.scalar(select(PhotoJob).where(PhotoJob.id == job_id).with_for_update().execution_options(populate_existing=True))
         if job.status == 'archived' or job.lease_token != token:
             db.rollback()
@@ -253,18 +318,28 @@ def create_photo_router(get_db, search):
                     row.status = 'search_error'
             else:
                 job.status = 'paused'; job.error = str(failure.detail)
-        elif skip or c is None or c.model_name != model_name or c.image_url or db.scalar(select(ComputerImage.id).where(ComputerImage.computer_id == c.id).limit(1)):
-            row.status = 'skipped'; row.error = 'Scheda rimossa, rinominata, non ricercabile o già provvista di foto.'
+        elif skip or c is None or c.model_name != model_name or image_state(db, c) != before_images:
+            row.status = 'skipped'; row.error = 'Scheda rimossa, rinominata, non ricercabile, già provvista di foto o modificata durante la ricerca.'
         else:
             selected = next((item for item in response['items'] if reusable(item)), None)
             if selected is None:
                 row.status = 'no_match'; row.error = 'Nessun risultato con immagine, attribuzione e licenza utilizzabili automaticamente.'
             else:
-                image = ComputerImage(computer_id=c.id, remote_url=selected['image_url'], thumbnail_url=selected['thumbnail_url'],
-                    caption=('Scelta automatica Commons · ' + selected['title'])[:300], author=selected['author'],
-                    license_name=selected['license_name'], license_url=selected['license_url'], source_url=selected['source_url'], is_primary=True)
+                images = db.scalars(select(ComputerImage).where(ComputerImage.computer_id == c.id)).all()
+                image = next((old for old in images if old.remote_url == selected['image_url']), None)
+                if image is None:
+                    image = ComputerImage(computer_id=c.id, remote_url=selected['image_url'], thumbnail_url=selected['thumbnail_url'],
+                        caption=('Scelta automatica Commons · ' + selected['title'])[:300], author=selected['author'],
+                        license_name=selected['license_name'], license_url=selected['license_url'], source_url=selected['source_url'])
+                else:
+                    for field in ('thumbnail_url', 'author', 'license_name', 'license_url', 'source_url'):
+                        setattr(image, field, selected[field])
+                for old in images:
+                    old.is_primary = False
+                image.is_primary = True
                 db.add(image); db.flush()
-                row.status = 'added'; row.image_id = image.id; row.source_url = image.source_url; row.error = None
+                row.status = 'replaced' if already_present else 'added'
+                row.image_id = image.id; row.source_url = selected['source_url']; row.error = None
         db.flush()
         if not db.scalar(select(PhotoItem.id).where(PhotoItem.job_id == job_id, PhotoItem.status == 'pending').limit(1)):
             job.status = 'completed'; job.active_key = None

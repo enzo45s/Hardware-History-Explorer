@@ -14,13 +14,41 @@ Apri **Amministrazione → Foto automatiche → Avvia ricerca automatica**.
 Non occorre confermare ogni immagine: viene associato automaticamente il primo
 risultato utilizzabile nell'ordine di rilevanza restituito da Commons.
 Le foto compaiono anche nelle copertine del catalogo, nella timeline e nei
-confronti. La ricerca usa soltanto il nome del modello, senza aggiungere
-nuovamente il produttore.
+confronti. La ricerca usa **marca - modello**, per esempio
+`Apple - Macintosh 128K` o `IBM - PC 5150`. I prefissi della marca già presenti
+nel modello vengono rimossi tramite corrispondenze esplicite, comprese le
+forme note `Apple Computer`, IBM e Commodore, senza cambiare i nomi nel catalogo.
+La stessa stringa iniziale viene usata da **Gestisci fotografie** nella scheda.
 
-La coda iniziale contiene solo le schede senza foto in galleria e senza
+Il normale **Avvia ricerca automatica** contiene solo le schede senza foto in galleria e senza
 copertina nel precedente campo `image_url`. Le foto esistenti non vengono
 sostituite. Anche una foto inserita manualmente durante la ricerca viene
 ricontrollata prima del salvataggio e conservata.
+
+### Ricominciare su tutto il catalogo e sostituire le copertine
+
+Premi **Ricomincia su tutti e sostituisci le copertine**. La nuova coda riparte
+da zero sui sistemi attualmente nel database, anche quelli già fotografati:
+con 1.105 schede include esattamente 1.105 modelli. L'eventuale vecchia coda
+viene contrassegnata come sostituita; esiti e riferimenti alle fonti restano
+nello storico. Le nuove ricerche vengono rigenerate come **marca - modello**;
+le vecchie stringhe conservate non vengono riutilizzate.
+
+Per ogni risultato utilizzabile viene impostata la nuova copertina. La
+copertina precedente e le altre immagini restano in galleria e possono essere
+ripristinate da **Gestisci fotografie**. Se Commons restituisce la stessa
+immagine già presente, viene riutilizzata senza duplicarla. **Copertine
+aggiornate** conta i sistemi già fotografati; **Foto associate** quelli prima
+senza foto. Il conteggio dei sistemi mancanti viene riletto dal database.
+
+Se non esiste un risultato utilizzabile o Commons fallisce, la foto attuale
+rimane disponibile. Una modifica manuale durante la richiesta viene rispettata
+e il modello viene saltato, evitando di sovrascrivere una scelta appena fatta.
+La modalità di sostituzione resta attiva dopo pausa, ricaricamento e riavvio.
+
+Il nuovo avvio rispetta anche il cooldown e l'eventuale richiesta ancora in
+corso della coda precedente; una risposta tardiva della vecchia coda non può
+salvare immagini. Non è necessario svuotare il catalogo o eliminare i volumi.
 
 ### Pausa e ripresa
 
@@ -85,7 +113,10 @@ caricare una tua foto e cambiare copertina con i controlli già presenti.
 
 Due tabelle additive, `commons_photo_jobs` e `commons_photo_items`, conservano
 coda, prenotazione della richiesta, esiti e riferimenti alle immagini. Sono
-create al normale avvio dell'API senza modificare le tabelle esistenti.
+create al normale avvio dell'API senza cambiare i dati storici del catalogo.
+L'avvio aggiunge in modo ripetibile la colonna booleana `replace_existing`
+alle code precedenti: il valore predefinito `false` mantiene il loro comportamento
+finché l'operatore sceglie il nuovo comando di riavvio completo.
 Per una migrazione esplicita, a servizio fermo e con backup disponibile:
 
 ```bash
@@ -100,8 +131,11 @@ API locali: `GET/POST /api/admin/photos`,
 `POST /api/admin/photos/{id}/step`, `/pause`, `/resume`, `/query` e `/skip`.
 Gli ultimi due richiedono `item_id` del modello corrente; `/query` richiede
 anche `query` (2–90 caratteri). Una selezione obsoleta o una richiesta ancora
-in corso produce 409. Non sono necessarie nuove colonne o migrazioni per
-questi controlli.
+in corso produce 409. `POST /api/admin/photos/restart` richiede
+`{"expected_job_id": ID_ULTIMA_CODA}` (oppure `null` se non esiste una coda)
+e crea la nuova coda completa con sostituzione. Un ID superato produce 409,
+senza creare due nuove code per un doppio invio. La migrazione sopra aggiorna
+anche gli schemi precedenti all'introduzione della modalità di sostituzione.
 Una prenotazione atomica impedisce due elaborazioni contemporanee anche con
 più processi API. Le transazioni database non rimangono aperte durante la
 richiesta a Wikimedia. Lo svuotamento dell'archivio archivia anche le code,
@@ -174,3 +208,25 @@ licenza, `Retry-After` lungo e recupero senza cambiare ID o esiti della coda.
 Il significato di `urlparamnormal` è riscontrabile nell'implementazione
 ufficiale MediaWiki, metodo `checkParameterNormalise` di
 [ApiQueryImageInfo](https://github.com/wikimedia/mediawiki/blob/master/includes/Api/ApiQueryImageInfo.php).
+
+### Verifica del riavvio completo e delle copertine sostitutive
+
+325 test SQLite superati (uno specifico PostgreSQL saltato), 326 PostgreSQL,
+26 frontend e build React riuscita. Dopo l'ultimo aggiornamento dei metadati
+delle immagini riutilizzate, ripetuti tutti i 46 test delle code fotografiche
+sia su SQLite sia su PostgreSQL. Verificati anche la migrazione di una coda
+senza la nuova colonna, il riavvio concorrente a una ricerca e il mantenimento
+delle pause di Commons. Il test di scala include esattamente 1.105 sistemi,
+sia con foto in galleria sia con copertine legacy.
+
+Chromium con backend reale e Commons sintetico: nuova coda anche con zero
+foto mancanti, copertine esistenti aggiornate, immagine precedente conservata
+in galleria, ricerca senza risultati che conserva la foto, modalità completa
+persistente dopo pausa/ricaricamento/ripresa, contatori e stringa iniziale della
+ricerca manuale. Layout a 320 px senza overflow e nessun errore JavaScript.
+
+Compose aggiornato sul catalogo PostgreSQL isolato: avvio riuscito, migrazione
+automatica, nuova coda con 1.105 righe e query nel formato marca - modello.
+Catalogo e copertine invariati durante la creazione; coda lasciata in pausa
+senza avviare richieste Commons. Il database locale dell'operatore non è
+raggiungibile dal cloud: il nuovo pulsante avvia la ricerca sulla sua istanza.

@@ -170,6 +170,10 @@ riprendibile. Il caricamento di singole schede resta facoltativo.
 In **Amministrazione → Foto automatiche** puoi associare il primo risultato
 Wikimedia utilizzabile ai sistemi senza foto, senza conferme per singola immagine:
 [istruzioni, pausa/ripresa e correzione delle immagini](docs/AUTOMATIC_PHOTOS.md).
+Il comando **Ricomincia su tutti e sostituisci le copertine** crea una nuova
+coda sull'intero catalogo attuale, comprese le schede già fotografate. Una
+foto utilizzabile diventa la nuova copertina; la galleria e le foto prive di
+un risultato sostitutivo restano conservate.
 
 Le regole di [classificazione](docs/CLASSIFICATION.md) e di
 [rifinitura del catalogo](docs/CATALOG_REFINEMENT.md) già utilizzate restano
@@ -190,8 +194,10 @@ La gestione delle fotografie resta disponibile nella normale scheda del calcolat
 
 ### Problemi nella ricerca Wikimedia Commons
 
-La ricerca parte dal solo nome del modello: per esempio `Apple Macintosh 128K`,
-senza aggiungere il produttore davanti. Il testo resta modificabile.
+La ricerca parte da **marca - modello**: per esempio `Apple - Macintosh 128K`
+o `IBM - PC 5150`. I prefissi noti già presenti nel modello vengono rimossi
+per evitare ripetizioni della marca. Il testo resta modificabile, sia nelle
+ricerche singole sia nel modello corrente della coda automatica.
 
 La ricerca Commons è gratuita e non usa la chiave OpenAI. Il backend si identifica con lo User-Agent `HardwareHistoryExplorer/1.2 (https://github.com/enzo45s/Hardware-History-Explorer)`, richiede esplicitamente il formato JSON con pagine indicizzate e attende fino a 30 secondi per ciascuna fase della richiesta HTTP.
 

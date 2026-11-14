@@ -51,7 +51,7 @@ def test_first_relevant_reusable_result_and_attribution(client, monkeypatch, clo
     assert image['url'].endswith('/First.jpg') and image['author'] == 'Alice'
     assert image['license_name'] == 'CC BY-SA 4.0' and image['license_url']
     assert image['source_url'].endswith('File:First.jpg') and image['is_primary']
-    assert image['caption'].startswith('Scelta automatica Commons') and seen == [c['model_name']]
+    assert image['caption'].startswith('Scelta automatica Commons') and seen == [c['photo_search_query']]
     assert client.post(f'/api/admin/photos/{jid}/step').json()['counts'] == {'added': 1}
     assert client.post(f'/api/admin/photos/{jid}/pause').json()['status'] == 'completed'
     assert client.post(f'/api/admin/photos/{jid}/resume').json()['status'] == 'completed'
@@ -224,7 +224,154 @@ def test_current_edit_and_skip_cannot_race_an_inflight_request_or_archived_job(c
 
 
 @pytest.mark.parametrize('value,expected', [('Apple ][', 'Apple II'), ('Apple //e', 'Apple IIe'),
-    ('Apple ///', 'Apple III'), ('ZX Spectrum +2', 'ZX Spectrum Plus 2'), ('IBM (360): test', 'IBM 360 test')])
+    ('Apple ///', 'Apple III'), ('Apple - ][', 'Apple - II'), ('Apple - //e', 'Apple - IIe'),
+    ('Apple - ///', 'Apple - III'), ('ZX Spectrum +2', 'ZX Spectrum Plus 2'), ('IBM (360): test', 'IBM 360 test')])
 def test_fallback_retains_distinguishing_model_tokens(value, expected):
     assert photo_jobs.simple_query(value) == expected
     assert photo_jobs.simple_query(expected) == expected
+
+
+@pytest.mark.parametrize('maker,model,expected', [
+    ('Apple Computer', 'Apple Macintosh 128K', 'Apple - Macintosh 128K'),
+    ('Apple Computer, Inc.', 'Apple Computer II', 'Apple - II'),
+    ('Apple', 'Apple ][', 'Apple - ]['),
+    ('IBM', 'IBM PC 5150', 'IBM - PC 5150'),
+    ('International Business Machines', 'IBM System/360', 'IBM - System/360'),
+    ('Commodore Business Machines', 'Commodore 64', 'Commodore - 64'),
+    ('Acorn', 'Acornsoft 123', 'Acorn - Acornsoft 123'),
+    ('Sinclair', 'ZX Spectrum +2', 'Sinclair - ZX Spectrum +2'),
+    ('', 'Unknown model', 'Unknown model'),
+])
+def test_brand_model_query_preserves_model_and_avoids_repeated_brand(maker, model, expected):
+    assert photo_jobs.photo_query(maker, model) == expected
+    assert len(photo_jobs.photo_query('M' * 180, 'Model' * 36)) <= 90
+
+
+def restart_queue(client, previous=None):
+    response = client.post('/api/admin/photos/restart', json={'expected_job_id': previous})
+    assert response.status_code == 201, response.text
+    return response.json()
+
+
+def test_restart_uses_current_1105_computers_including_existing_photos(client, clock):
+    old_photo = client.post('/api/computers/1/images', json={'image_url': 'https://example.org/old.jpg'}).json()
+    previous = client.post('/api/admin/photos').json()
+    with SessionLocal() as db:
+        maker = db.get(Computer, 1).manufacturer_id
+        db.add_all(Computer(manufacturer_id=maker, model_name=f'Synthetic model {i}') for i in range(1095))
+        db.get(Computer, 2).image_url = 'https://example.org/legacy.jpg'
+        db.get(PhotoJob, previous['id']).next_request_at = clock[0] + timedelta(seconds=60)
+        old_items = db.scalars(select(PhotoItem).where(PhotoItem.job_id == previous['id'])).all()
+        old_items[0].status = 'no_match'
+        db.commit()
+    job = restart_queue(client, previous['id'])
+    assert job['replace_existing'] is True and job['total'] == 1105 and job['counts'] == {'pending': 1105}
+    assert client.get('/api/admin/photos').json()['total'] == 1105
+    assert job['missing'] == 1103
+    assert client.post(f"/api/admin/photos/{job['id']}/step").status_code == 429
+    assert client.post('/api/admin/photos/restart', json={'expected_job_id': previous['id']}).status_code == 409
+    with SessionLocal() as db:
+        old = db.get(PhotoJob, previous['id'])
+        assert old.status == 'superseded' and old.active_key is None
+        assert len(db.scalars(select(PhotoItem).where(PhotoItem.job_id == old.id)).all()) == previous['total']
+        rows = db.scalars(select(PhotoItem).where(PhotoItem.job_id == job['id']).order_by(PhotoItem.position)).all()
+        assert len({row.computer_id for row in rows}) == 1105
+        assert rows[0].query == 'IBM - System/360' and rows[-1].position == 1105
+    assert client.get('/api/computers/1/images').json() == [old_photo]
+    assert client.post(f"/api/admin/photos/{previous['id']}/resume").json()['status'] == 'superseded'
+
+
+def test_replacement_sets_new_cover_and_keeps_other_gallery_images(client, monkeypatch, clock):
+    first = client.post('/api/computers/1/images', json={'image_url': 'https://example.org/old.jpg', 'is_primary': True}).json()
+    second = client.post('/api/computers/1/images', json={'image_url': 'https://example.org/gallery.jpg'}).json()
+    job = restart_queue(client)
+    queries = []
+    async def search(query, limit):
+        queries.append(query); return {'1': page('Replacement')}
+    monkeypatch.setattr(main, 'search_pages', search)
+    result = client.post(f"/api/admin/photos/{job['id']}/step").json()
+    assert result['counts'] == {'replaced': 1, 'pending': 9} and result['missing'] == 9
+    photos = client.get('/api/computers/1/images').json()
+    assert len(photos) == 3 and photos[0]['url'].endswith('/Replacement.jpg')
+    assert photos[0]['author'] == 'Alice' and photos[0]['license_name'] == 'CC BY-SA 4.0'
+    assert sum(photo['is_primary'] for photo in photos) == 1
+    assert {photo['id'] for photo in photos[1:]} == {first['id'], second['id']}
+    assert client.get('/api/computers/1').json()['image_url'].endswith('/thumb/Replacement.jpg')
+    assert queries == ['IBM - System/360']
+
+
+@pytest.mark.parametrize('outcome', ['no_match', 'unlicensed', 'outage'])
+def test_replacement_keeps_existing_cover_until_usable_result(client, monkeypatch, clock, outcome):
+    previous = client.post('/api/computers/1/images', json={'image_url': 'https://example.org/keep.jpg'}).json()
+    job = restart_queue(client)
+    async def search(query, limit):
+        if outcome == 'outage': raise HTTPException(503, 'Commons busy', headers={'Retry-After': '60'})
+        return {} if outcome == 'no_match' else {'1': page(licence='Unknown')}
+    monkeypatch.setattr(main, 'search_pages', search)
+    result = client.post(f"/api/admin/photos/{job['id']}/step").json()
+    assert result['status'] == ('paused' if outcome == 'outage' else 'ready')
+    assert result['counts'] == ({'pending': 10} if outcome == 'outage' else {'no_match': 1, 'pending': 9})
+    assert client.get('/api/computers/1/images').json() == [previous]
+
+
+def test_replacement_reuses_same_image_without_duplicate_gallery_entries(client, monkeypatch, clock):
+    previous = client.post('/api/computers/1/images', json={'image_url': 'https://upload.wikimedia.org/First.jpg'}).json()
+    job = restart_queue(client)
+    async def search(query, limit): return {'1': page()}
+    monkeypatch.setattr(main, 'search_pages', search)
+    assert client.post(f"/api/admin/photos/{job['id']}/step").json()['counts']['replaced'] == 1
+    images = client.get('/api/computers/1/images').json()
+    assert len(images) == 1 and images[0]['id'] == previous['id'] and images[0]['is_primary']
+    assert images[0]['author'] == 'Alice' and images[0]['license_name'] == 'CC BY-SA 4.0'
+
+
+def test_replacement_does_not_overwrite_manual_changes_during_network_request(client, monkeypatch, clock):
+    client.post('/api/computers/1/images', json={'image_url': 'https://example.org/old.jpg'})
+    job = restart_queue(client)
+    async def search(query, limit):
+        with SessionLocal() as db:
+            db.get(Computer, 1).image_url = 'https://example.org/new-manual-cover.jpg'
+            db.commit()
+        return {'1': page('DoNotSave')}
+    monkeypatch.setattr(main, 'search_pages', search)
+    result = client.post(f"/api/admin/photos/{job['id']}/step").json()
+    assert result['counts'] == {'skipped': 1, 'pending': 9}
+    assert len(client.get('/api/computers/1/images').json()) == 1
+    with SessionLocal() as db: assert db.get(Computer, 1).image_url.endswith('/new-manual-cover.jpg')
+
+
+def test_restart_during_inflight_request_invalidates_old_result_and_keeps_lease_delay(client, monkeypatch, clock):
+    previous = client.post('/api/admin/photos').json()
+    async def search(query, limit):
+        await asyncio.to_thread(restart_queue, client, previous['id'])
+        return {'1': page('OldResponse')}
+    monkeypatch.setattr(main, 'search_pages', search)
+    result = client.post(f"/api/admin/photos/{previous['id']}/step").json()
+    assert result['status'] == 'superseded' and result['counts'] == {'pending': 10}
+    latest = client.get('/api/admin/photos').json()['job']
+    assert latest['replace_existing'] is True
+    assert client.post(f"/api/admin/photos/{latest['id']}/step").status_code == 429
+    assert client.get('/api/computers/1/images').json() == []
+    clock[0] += timedelta(seconds=91)
+    async def empty(query, limit): return {}
+    monkeypatch.setattr(main, 'search_pages', empty)
+    assert client.post(f"/api/admin/photos/{latest['id']}/step").json()['counts']['no_match'] == 1
+
+
+def test_migration_adds_mode_to_legacy_queue_and_is_repeatable(client):
+    from sqlalchemy import text
+    from migrations.photo_jobs import migrate
+    jid, _ = single_queue(client)
+    with main.engine.begin() as connection:
+        connection.execute(text('ALTER TABLE commons_photo_jobs DROP COLUMN replace_existing'))
+    migrate(main.engine); migrate(main.engine)
+    result = client.get('/api/admin/photos').json()['job']
+    assert result['id'] == jid and result['replace_existing'] is False and result['total'] == 1
+
+
+def test_empty_catalog_restart_finishes_immediately(client):
+    with SessionLocal() as db:
+        for computer in db.scalars(select(Computer)).all(): db.delete(computer)
+        db.commit()
+    result = restart_queue(client)
+    assert result['status'] == 'completed' and result['total'] == 0

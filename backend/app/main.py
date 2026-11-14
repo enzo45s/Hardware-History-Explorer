@@ -18,7 +18,7 @@ from .seed import seed
 from . import import_models
 from . import photo_jobs
 from .importing.vocabulary import normalize_spec, spec_values
-from .commons import search_pages
+from .commons import photo_query, search_pages
 from .catalog_display import description_text, configuration_displays, specification_display
 
 UPLOAD_DIR=Path(os.getenv('UPLOAD_DIR',str(Path(__file__).resolve().parents[1] / 'uploads')))
@@ -44,6 +44,7 @@ class MediaFiles(StaticFiles):
 @asynccontextmanager
 async def lifespan(app):
  Base.metadata.create_all(engine)
+ photo_jobs.ensure_photo_schema(engine)
  with SessionLocal() as db: seed(db)
  yield
 app=FastAPI(title='Hardware History Explorer API',version='1.1.0',lifespan=lifespan)
@@ -78,6 +79,7 @@ def specification_data(s):
  return {'id':s.id,**spec_values(s),'normalized':normalized,'display':specification_display(normalized),'sources':[src(z) for z in s.sources]}
 def full(c):
  o=overview(c)
+ o['photo_search_query']=photo_query(c.manufacturer.name,c.model_name)
  displays=configuration_displays(c.configurations,c.model_name)
  o.update({'images':[image_data(i) for i in computer_images(c)],'announcement_date':datefmt(c.announcement_date,c.announcement_precision),'configurations':[{'id':v.id,'variant_name':v.variant_name,'description':v.description,**displays[v.id],'specifications':[specification_data(s) for s in v.specifications]} for v in c.configurations],'releases':[{'id':r.id,'market':r.market.name,'release_date':datefmt(r.release_date,r.release_precision),'discontinuation_date':datefmt(r.discontinuation_date,r.discontinuation_precision),'price':r.price,'currency':r.currency,'price_type':r.price_type,'sources':[src(z) for z in r.sources]} for r in c.releases],'sales':[{'market':s.market.name,'units_sold':s.units_sold,'metric_type':s.metric_type,'estimated':s.estimated,'sources':[src(z) for z in s.sources]} for s in c.sales],'reviews':[{'publication':r.publication,'score':r.score,'max_score':r.max_score,'summary':r.summary,'sources':[src(z) for z in r.sources]} for r in c.reviews],'facts':[{'type':f.fact_type,'statement':f.statement,'sources':[src(z) for z in f.sources]} for f in c.facts],'sources':[src(z) for z in c.sources]})
  return o

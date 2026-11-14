@@ -168,3 +168,20 @@ modifica, ricaricamento/ripresa, foto conservata e layout a 320 px. Risposte
 Commons sintetiche: il caso reale `urlparamnormal` è stato diagnosticato sul
 computer dell'operatore, ma la richiesta live dal cloud resta bloccata dal
 proxy. Dettagli e comandi per il progetto Compose attivo nella guida foto.
+
+Ricerca fotografica completa: comando per ricominciare su tutte le schede
+attuali e aggiornare anche le copertine già presenti, con stringa condivisa
+`marca - modello` e rimozione dei prefissi noti ripetuti. Le sostituzioni
+avvengono dopo un risultato utilizzabile; galleria, dati storici e foto senza
+sostituto restano conservati. Immagini già presenti vengono riutilizzate con
+metadati Commons aggiornati, senza duplicarle. Coda precedente resa inattiva,
+cooldown mantenuto e risposte tardive invalidate. Migrazione additiva automatica
+e ripetibile del flag di sostituzione; le vecchie code restano in modalità
+solo mancanti fino al nuovo avvio esplicito.
+
+Verifiche: 325 test SQLite più uno specifico PG saltato, 326 PostgreSQL,
+26 frontend e build React; ripetuti i 46 test fotografici SQLite/PG dopo
+l'ultima modifica ai metadati. Browser con sostituzione, pausa/riapertura,
+ricerca manuale e layout mobile. Compose con nuova coda da 1.105 modelli
+sul corpus isolato, senza modificare schede o foto durante la preparazione;
+zero richieste reali Commons. Nessun accesso al database Windows dell'utente.
