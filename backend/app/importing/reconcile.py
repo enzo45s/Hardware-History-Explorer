@@ -3,13 +3,14 @@ import hashlib
 import json
 from datetime import date, datetime
 from collections import defaultdict
-from sqlalchemy import select, text
+from sqlalchemy import select, text, func
 from ..models import (Computer, Manufacturer, Configuration, Specification, Release, Sale, Review, Fact,
                       ComputerImage, Source, computer_source, computer_category, spec_source,
                       release_source, sale_source, review_source, fact_source)
 from ..import_models import ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation, ArchiveReset
 from .identity import computer_key, maker_key
 from .normalize import name_key
+from ..photo_jobs import PhotoItem
 
 
 def value(v):
@@ -36,6 +37,7 @@ def snapshot(db, entity, source, target):
               (ImportClaim, 'computer_id'), (ExternalIdentity, 'computer_id'))
     for model, field in tables:
         result[model.__tablename__] = rows(db, model.__table__, getattr(model, field).in_(ids))
+    result['commons_photo_items'] = rows(db, PhotoItem.__table__, PhotoItem.computer_id.in_(ids))
     config_ids = [r['id'] for r in result['configurations']]
     result['specifications'] = rows(db, Specification.__table__, Specification.configuration_id.in_(config_ids))
     result['computer_categories'] = rows(db, computer_category, computer_category.c.computer_id.in_(ids))
@@ -45,8 +47,11 @@ def snapshot(db, entity, source, target):
                              (review_source, [r['id'] for r in result['reviews']]),
                              (fact_source, [r['id'] for r in result['facts']])):
         result[table.name] = rows(db, table, table.c.target_id.in_(child_ids))
-    result['import_rows'] = [r for r in rows(db, ImportRow.__table__)
-                             if r['computer_id'] in ids or any(i in ids for i in r['candidates'])]
+    # Scan only small mapping fields; loading every raw/normalized row for
+    # each pair makes large regional batches needlessly expensive.
+    related_ids = [r.id for r in db.execute(select(ImportRow.id,ImportRow.computer_id,ImportRow.candidates))
+                   if r.computer_id in ids or any(i in ids for i in r.candidates)]
+    result['import_rows'] = rows(db,ImportRow.__table__,ImportRow.id.in_(related_ids))
     source_ids = {r['source_id'] for table in (computer_source, spec_source, release_source, sale_source, review_source, fact_source)
                   for r in result[table.name]}
     result['sources'] = rows(db, Source.__table__, Source.id.in_(source_ids))
@@ -83,7 +88,7 @@ def prepare(db, entity, source_id, target_id, lock=False):
         'differences': differences, 'counts': counts}
 
 
-def apply(db, entity, source_id, target_id, token, note):
+def apply(db, entity, source_id, target_id, token, note, commit=True):
     source, target, original, preview = prepare(db, entity, source_id, target_id, lock=True)
     if token != preview['token']:
         raise ValueError('I dati sono cambiati: prepara una nuova anteprima di riconciliazione')
@@ -119,13 +124,18 @@ def apply(db, entity, source_id, target_id, token, note):
         for relationship in ('releases', 'sales', 'reviews', 'facts'):
             for child in list(getattr(source, relationship)):
                 child.computer = target
-        for row in db.scalars(select(ImportRow)):
+        for row in db.scalars(select(ImportRow).where(ImportRow.id.in_([r['id'] for r in original['import_rows']]))):
             if row.computer_id == source_id:
                 row.computer_id = target_id
             if source_id in row.candidates:
                 row.candidates = list(dict.fromkeys(target_id if i == source_id else i for i in row.candidates))
         for identity in db.scalars(select(ExternalIdentity).where(ExternalIdentity.computer_id == source_id)):
             identity.computer_id = target_id
+        for item in db.scalars(select(PhotoItem).where(PhotoItem.computer_id == source_id)):
+            item.computer_id = target_id
+            if item.status == 'pending':
+                item.model_name = target.model_name
+                item.query = target.model_name.strip()[:90]
         for claim in db.scalars(select(ImportClaim).where(ImportClaim.computer_id == source_id)):
             claim.computer_id = target_id
             if claim.entity == 'Computer' and claim.target_id == source_id:
@@ -152,7 +162,8 @@ def apply(db, entity, source_id, target_id, token, note):
     audit = CatalogReconciliation(entity=entity, source_id=source_id, target_id=target_id, note=note, snapshot=original)
     db.add(audit)
     db.delete(source)
-    db.commit()
+    if commit: db.commit()
+    else: db.flush()
     return {'reconciliation_id': audit.id, 'target_id': target_id, 'entity': entity}
 
 
@@ -167,28 +178,44 @@ def duplicate_groups(db):
     return result
 
 
-def reconciled_configuration(db, computer_id, provider, external_id, variant_name):
-    """Follow original configuration IDs even when a name collision required renaming.
-
-    The immutable reconciliation snapshots already contain the identity and
-    original configuration names; no inference between hardware variants is used.
-    """
-    if not external_id:
-        return None
+def original_identity(db,provider,external_id):
+    """Earliest pre-merge owner, cached per Session and invalidated by new audits/resets."""
+    if not external_id:return None
     cutoff = db.scalar(select(ArchiveReset.reconciliation_cutoff).order_by(ArchiveReset.id.desc()).limit(1)) or 0
-    for audit in db.scalars(select(CatalogReconciliation).where(CatalogReconciliation.entity == 'computer', CatalogReconciliation.id > cutoff)
-                            .order_by(CatalogReconciliation.id.desc())):
-        original = audit.snapshot
-        if not any(i['computer_id'] == audit.source_id and i['provider'] == provider and i['external_id'] == external_id
-                   for i in original['import_identities']):
-            continue
-        candidates = [cfg for cfg in original['configurations'] if cfg['computer_id'] == audit.source_id
-                      and name_key(cfg['variant_name']) == name_key(variant_name)]
-        if len(candidates) > 1:
-            raise ValueError('Configurazioni originali ambigue: controlla la riconciliazione')
-        if candidates:
-            config = db.get(Configuration, candidates[0]['id'])
-            if config is None or config.computer_id != computer_id:
-                raise ValueError('Configurazione riconciliata non più disponibile: controlla scheda e corrispondenza')
-            return config
-    return None
+    latest=db.scalar(select(func.max(CatalogReconciliation.id))) or 0
+    marker=(cutoff,latest)
+    cached=db.info.get('hhe_original_identities')
+    if not cached or cached[0]!=marker:
+        index={}
+        for audit in db.scalars(select(CatalogReconciliation).where(CatalogReconciliation.entity=='computer',CatalogReconciliation.id>cutoff).order_by(CatalogReconciliation.id)):
+            for identity in audit.snapshot.get('import_identities',[]):
+                index.setdefault((identity['provider'],identity['external_id']),(identity['computer_id'],audit.snapshot))
+        cached=(marker,index);db.info['hhe_original_identities']=cached
+    return cached[1].get((provider,external_id))
+
+
+def reconciled_configuration(db, computer_id, provider, external_id, variant_name):
+    """Follow immutable original IDs, including configurations renamed on a collision."""
+    origin=original_identity(db,provider,external_id)
+    if not origin:return None
+    owner,original=origin
+    candidates=[cfg for cfg in original['configurations'] if cfg['computer_id']==owner and name_key(cfg['variant_name'])==name_key(variant_name)]
+    if len(candidates)>1:raise ValueError('Configurazioni originali ambigue: controlla la riconciliazione')
+    if candidates:
+        config=db.get(Configuration,candidates[0]['id'])
+        if config is None or config.computer_id!=computer_id:
+            raise ValueError('Configurazione riconciliata non più disponibile: controlla scheda e corrispondenza')
+        return config
+
+
+def reconciled_release(db,computer_id,provider,external_id,market_id,release_date):
+    origin=original_identity(db,provider,external_id)
+    if not origin:return None
+    owner,original=origin
+    candidates=[r for r in original['releases'] if r['computer_id']==owner and r['market_id']==market_id and r['release_date']==release_date]
+    if len(candidates)>1:raise ValueError('Commercializzazioni originali ambigue: controlla la riconciliazione')
+    if candidates:
+        release=db.get(Release,candidates[0]['id'])
+        if release is None or release.computer_id!=computer_id:
+            raise ValueError('Commercializzazione riconciliata non più disponibile: controlla scheda e corrispondenza')
+        return release

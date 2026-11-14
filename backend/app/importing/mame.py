@@ -8,6 +8,7 @@ import json
 import re
 from pathlib import Path
 import xml.etree.ElementTree as ET
+from .regional_names import regional_name
 
 LICENSES = {'BSD-3-Clause', 'BSD-2-Clause', 'GPL-2.0+', 'LGPL-2.1+', 'CC0-1.0'}
 REJECT = re.compile(r'prototype|\bproto\b|\bhomebrew\b|\bhack\b|\bmodified\b|\boverclock|\btrainer\b|development|evaluation|\bterminal\b|\bprinter\b|\bcalculator\b|\bdisk drive\b|\bcontroller\b|\bupgrade\b|\bexpansion\b|\btest board\b|\bmotherboard\b|\bcpu board\b', re.I)
@@ -90,7 +91,7 @@ def model_label(description):
     name = re.sub(r'\(([^()]*)\)', replace, description)
     firmware = re.search(r'\s*/\s*(\d+(?:st|nd|rd|th) released version)\s*$', name, re.I)
     if firmware: variants.append(firmware[1]); name = name[:firmware.start()]
-    return ' '.join(name.split()).strip(), variants
+    return regional_name(' '.join(name.split()).strip()), variants
 
 
 def registrations(path, text):

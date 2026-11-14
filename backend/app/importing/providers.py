@@ -4,6 +4,7 @@ import re
 import httpx
 from .normalize import MAX_BYTES, MAX_ROWS
 from .vocabulary import measurement_property, system_dates
+from .wikidata_details import augment, linked_ids
 
 USER_AGENT = 'HardwareHistoryExplorer/1.3 (https://github.com/enzo45s/Hardware-History-Explorer)'
 PROVIDERS = [
@@ -68,6 +69,7 @@ def wikidata_records(payload):
         if len(dates) == 1:
             row['releases'] = [{'market': 'Non specificato dalla fonte', 'release_date': dates[0]}]
         # P571 (inception) is intentionally not interpreted as a commercial release.
+        augment(row,entity,entities,active,label)
         records.append(row)
     return records
 
@@ -134,21 +136,18 @@ def fetch_provider(provider, options):
         ids = options.get('ids', [])
         if not 1 <= len(ids) <= 20 or any(not re.fullmatch(r'Q[1-9]\d{0,12}', q) for q in ids):
             raise ValueError('Indica da 1 a 20 identificativi Wikidata Q…')
-        _, payload = get_json('https://www.wikidata.org/w/api.php', {'action': 'wbgetentities', 'ids': '|'.join(ids), 'format': 'json', 'props': 'labels|claims', 'languages': 'it|en'})
+        _, payload = get_json('https://www.wikidata.org/w/api.php', {'action': 'wbgetentities', 'ids': '|'.join(ids), 'format': 'json', 'props': 'labels|claims|descriptions', 'languages': 'it|en','maxlag':'5'})
         if 'error' in payload:
             raise ValueError('Wikidata ha rifiutato la richiesta; riprova più tardi')
         entities = payload.get('entities', {})
-        maker_ids = set()
-        for e in entities.values():
-            for s in e.get('claims', {}).get('P176', []):
-                qid = s.get('mainsnak', {}).get('datavalue', {}).get('value', {}).get('id')
-                if qid and re.fullmatch(r'Q[1-9]\d{0,12}', qid):
-                    maker_ids.add(qid)
-        if len(maker_ids) > 50:
-            raise ValueError('Troppi produttori: riduci il lotto')
-        if maker_ids:
-            _, makers = get_json('https://www.wikidata.org/w/api.php', {'action': 'wbgetentities', 'ids': '|'.join(sorted(maker_ids)), 'format': 'json', 'props': 'labels', 'languages': 'it|en'})
-            entities.update(makers.get('entities', {}))
+        related=sorted(linked_ids(entities))
+        if len(related)>200:
+            raise ValueError('Troppi riferimenti a componenti/unità/valute: riduci il lotto')
+        for offset in range(0,len(related),50):
+            _, linked = get_json('https://www.wikidata.org/w/api.php', {'action':'wbgetentities','ids':'|'.join(related[offset:offset+50]),
+                'format':'json','props':'labels|claims','languages':'it|en','maxlag':'5'})
+            if 'error' in linked:raise ValueError('Wikidata ha rifiutato i riferimenti: riduci il lotto e riprova')
+            entities.update(linked.get('entities',{}))
         payload['requested_ids'] = ids
         raw = json.dumps(payload, ensure_ascii=False).encode()
         return raw, wikidata_records(payload)

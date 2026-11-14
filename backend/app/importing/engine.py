@@ -9,7 +9,7 @@ from ..admin import historical_date
 from .normalize import Record, name_key, parse_payload, MAX_BYTES, MAX_ROWS
 from .vocabulary import matching_specs, quantity_equal
 from .identity import maker_key, computer_key
-from .reconcile import reconciled_configuration
+from .reconcile import reconciled_configuration, reconciled_release
 
 TARGETS = {c.__name__: c for c in (Computer, Configuration, Specification, Release, Sale, Review, Fact)}
 DATE_PRECISION = {'announcement_date': 'announcement_precision', 'release_date': 'release_precision',
@@ -123,8 +123,9 @@ def attribute(db, row, target, field, incoming, citation, evidence=None, estimat
         incoming = serialize(value)
     precision_field = DATE_PRECISION.get(field)
     old_precision = getattr(target, precision_field) if precision_field else None
-    conflict = previous is not None and (previous != incoming or (precision_field and old_precision != precision))
-    changed = previous is None
+    missing = previous is None or (field=='description' and isinstance(previous,str) and not previous.strip())
+    conflict = not missing and (previous != incoming or (precision_field and old_precision != precision))
+    changed = missing
     if changed:
         setattr(target, field, value)
         if precision_field:
@@ -143,6 +144,9 @@ def import_record(db, job, row):
     data = Record.model_validate(row.normalized).model_dump(mode='json', exclude_none=True)
     candidates, ambiguous = catalog_candidates(db, data, job.provider)
     c = db.get(Computer, row.computer_id) if row.computer_id else None
+    if job.request_options.get('existing_only') and c is None:
+        row.status, row.error = 'skipped', 'La scheda da arricchire è stata rimossa; nessun calcolatore creato.'
+        return
     if c is None and ambiguous:
         row.status, row.candidates = 'ambiguous', candidates
         return
@@ -248,8 +252,12 @@ def import_record(db, job, row):
             if model in (Release, Sale):
                 market = reference(db, Market, entry['market'])
                 existing = [r for r in existing if r.market_id == market.id]
+                original_release = reconciled_release(db,c.id,identity_provider(job.provider,data),data.get('external_id'),
+                    market.id,serialize(historical_date(entry.get('release_date'))[0])) if model is Release else None
                 if model is Sale:
                     existing = [r for r in existing if serialize(r.period_start) == entry.get('period_start') and serialize(r.period_end) == entry.get('period_end') and r.metric_type == entry.get('metric_type', 'units_sold')]
+                elif original_release is not None:
+                    existing=[original_release]
                 elif len(existing) > 1 or sum(name_key(r['market']) == name_key(entry['market']) for r in data.get('releases', [])) > 1:
                     existing = [r for r in existing if serialize(r.release_date) == serialize(historical_date(entry.get('release_date'))[0])]
             elif model is Review:
