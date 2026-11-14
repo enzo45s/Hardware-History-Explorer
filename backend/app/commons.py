@@ -25,6 +25,7 @@ async def search_pages(query, limit):
     params = {
         'action': 'query', 'format': 'json', 'formatversion': '1', 'generator': 'search',
         'gsrsearch': query, 'gsrnamespace': '6', 'gsrlimit': str(limit), 'prop': 'imageinfo',
+        'gsrsort': 'relevance',
         'iiprop': 'url|extmetadata|mime', 'iiurlwidth': '500',
         'iiextmetadatafilter': 'Artist|Attribution|LicenseShortName|LicenseUrl|Copyrighted|UsageTerms',
     }

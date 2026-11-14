@@ -13,6 +13,7 @@ from .admin import Input
 from .models import (Base, Computer, Manufacturer, Category, Market, Configuration, Specification,
                      Release, Sale, Review, Fact, ComputerImage, Source)
 from .import_models import ImportJob, ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation, ArchiveReset
+from .photo_jobs import PhotoJob
 
 CATALOG = (Manufacturer, Category, Market, Computer, Configuration, Specification, Release, Sale, Review, Fact, ComputerImage)
 
@@ -78,6 +79,7 @@ def reset_catalog(db, data):
     db.execute(update(ImportJob).values(status='archived'))
     db.execute(update(ImportRow).values(computer_id=None, candidates=[]))
     db.execute(update(ImportClaim).values(computer_id=None))
+    db.execute(update(PhotoJob).values(status='archived', active_key=None, lease_token=None, lease_until=None))
     db.execute(delete(ExternalIdentity))
     db.execute(delete(Computer))  # DB cascades cover specifications, images and joins.
     for model in (Manufacturer, Category, Market):

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { api, latestRequest } from './api.js';
 import DuplicatePanel from './DuplicatePanel.jsx';
 import ArchivePanel from './ArchivePanel.jsx';
+import ClassificationPanel from './ClassificationPanel.jsx';
 import './imports.css';
 
 const labels = { ready: 'Pronta', imported: 'Importata', updated: 'Aggiornata', unchanged: 'Invariata',
@@ -173,6 +174,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
           <button disabled={busy || offset + 25 >= job.total} onClick={() => open(job.id, offset + 25)}>Righe successive</button></div>
       </>}
     </section></div>
+    <ClassificationPanel onSaved={() => { api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onSaved(); }} />
     <DuplicatePanel key={catalogRevision} onSaved={() => { setJob(null); api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onSaved(); }} />
     <ArchivePanel onReset={() => { setJob(null); setCatalogRevision(revision => revision + 1);
       api('/admin/imports').then(setJobs).catch(e => setError(e.message)); onArchiveReset(); }} />

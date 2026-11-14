@@ -16,6 +16,7 @@ from sqlalchemy.orm import Session, sessionmaker, selectinload
 from .models import *
 from .seed import seed
 from . import import_models
+from . import photo_jobs
 from .importing.vocabulary import normalize_spec, spec_values
 from .commons import search_pages
 
@@ -68,7 +69,7 @@ def overview(c):
  cover=image_data(images[0])['thumbnail_url'] if images else c.image_url
  releases=sorted((r for r in c.releases if r.release_date),key=lambda r:r.release_date)
  r=releases[0] if releases else None
- return {'id':c.id,'model_name':c.model_name,'manufacturer':c.manufacturer.name,'manufacturer_id':c.manufacturer_id,'categories':[x.name for x in c.categories],'year':r.release_date.year if r else None,'first_release':datefmt(r.release_date,r.release_precision) if r else None,'description':c.description,'image_url':cover,'image_count':len(images)}
+ return {'id':c.id,'model_name':c.model_name,'manufacturer':c.manufacturer.name,'manufacturer_id':c.manufacturer_id,'categories':[x.name for x in sorted(c.categories,key=lambda cat:(cat.name=='Calcolatore',cat.name))],'year':r.release_date.year if r else None,'first_release':datefmt(r.release_date,r.release_precision) if r else None,'description':c.description,'image_url':cover,'image_count':len(images)}
 def src(s):return {'id':s.id,'title':s.title,'url':s.url,'author':s.author,'publisher':s.publisher,'source_type':s.source_type,'publication_date':s.publication_date.isoformat() if s.publication_date else None,'access_date':s.access_date.isoformat() if s.access_date else None}
 def specification_data(s):
  # Keep the public raw fields backward compatible; views use this additive DTO.
@@ -299,7 +300,11 @@ def plain_html(value):
 async def search_commons(q:str=Query(min_length=2,max_length=90),limit:int=Query(10,ge=1,le=12)):
  pages=await search_pages(q,limit)
  results=[]
- for page in pages.values():
+ # Generator pages are keyed by page ID; JSON key order is not search rank.
+ def search_rank(page):
+  rank=page.get('index') if isinstance(page,dict) else None
+  return rank if isinstance(rank,int) else 1000000
+ for page in sorted(pages.values(),key=search_rank):
   if not isinstance(page,dict):continue
   infos=page.get('imageinfo') or []
   if not isinstance(infos,list) or not infos or not isinstance(infos[0],dict):continue
@@ -348,3 +353,6 @@ from .importing.router import create_import_router
 app.include_router(create_import_router(get_db))
 from .archive import create_archive_router
 app.include_router(create_archive_router(get_db))
+app.include_router(photo_jobs.create_photo_router(get_db,search_commons))
+from .importing.classification import create_classification_router
+app.include_router(create_classification_router(get_db))

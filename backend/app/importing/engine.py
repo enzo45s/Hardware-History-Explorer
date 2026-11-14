@@ -199,7 +199,8 @@ def import_record(db, job, row):
         # Categories are sets, so a claim records the asserted membership.
         s = source(db, root_source)
         db.add(ImportClaim(row_id=row.id, computer_id=c.id, source_id=s.id, entity='Computer', target_id=c.id,
-            field='category', value={'value': cat.id}, previous={'value': None}, status='pending', estimated=root_estimate))
+            field='category', value={'value': cat.id}, previous={'value': None}, status='pending', estimated=root_estimate,
+            evidence=data.get('evidence')))
     for cfg in data.get('configurations', []):
         reconciled = reconciled_configuration(db, c.id, identity_provider(job.provider, data), data.get('external_id'), cfg['variant_name'])
         matches = [reconciled] if reconciled else [v for v in c.configurations if name_key(v.variant_name) == name_key(cfg['variant_name'])]

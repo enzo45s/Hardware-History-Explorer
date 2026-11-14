@@ -4,6 +4,7 @@ import { api, allComputers, latestRequest } from './api.js';
 import { newComputer, newSource, computerDraft, computerPayload, sourcePayload } from './admin-data.js';
 import './admin.css';
 import ImportPanel from './ImportPanel.jsx';
+import PhotoPanel from './PhotoPanel.jsx';
 
 function Field({ label, value, onChange, wide = false, multiline = false, ...props }) {
   const Tag = multiline ? 'textarea' : 'input';
@@ -187,10 +188,11 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onA
       <button disabled={busy} className={section === 'computers' ? 'active' : ''} onClick={() => chooseSection('computers')}><Monitor size={17} />Calcolatori</button>
       <button disabled={busy} className={section === 'sources' ? 'active' : ''} onClick={() => chooseSection('sources')}><BookOpen size={17} />Fonti</button>
       <button disabled={busy} className={section === 'imports' ? 'active' : ''} onClick={() => chooseSection('imports')}>Importazioni</button>
+      <button disabled={busy} className={section === 'photos' ? 'active' : ''} onClick={() => chooseSection('photos')}>Foto automatiche</button>
     </div>
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
-    {section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }}
+    {section === 'photos' ? <PhotoPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }}
       onArchiveReset={() => { setDraft(null); setDirty(false); setQuery(''); setMessage(''); onArchiveReset(); reload().catch(e => setError(e.message)); }} /> : <div className="admin-layout"><aside className="panel admin-list">
       <button className="admin-primary" disabled={busy || loading} onClick={create}><Plus size={16} />{section === 'computers' ? 'Nuovo calcolatore' : 'Nuova fonte'}</button>
       <label className="admin-field"><span>Cerca {section === 'computers' ? 'calcolatori' : 'fonti'}</span><input value={query} onChange={e => setQuery(e.target.value)} /></label>
