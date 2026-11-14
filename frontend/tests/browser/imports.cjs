@@ -140,6 +140,7 @@ async function assertMobileLayout(page) {
     await page.getByRole('button', { name: 'Amministrazione', exact: true }).click();
     await page.getByRole('button', { name: 'Importazioni', exact: true }).click();
     await page.getByLabel('Fonte dati', { exact: true }).selectOption('1000bit');
+    await page.getByText('Importa singole schede o file (facoltativo)', { exact: true }).click();
     assert.equal(await page.getByLabel('Aggiorna solo calcolatori già presenti', { exact: true }).isChecked(), true);
     const remote = page.getByRole('button', { name: 'Recupera dalla fonte e prepara anteprima', exact: true });
     assert.equal(await remote.isEnabled(), false);

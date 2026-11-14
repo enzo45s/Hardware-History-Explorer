@@ -57,6 +57,29 @@ def snapshot(url, body, content_type):
             'body_base64': base64.b64encode(body).decode('ascii')}
 
 
+def robots_rules(body, content_type, status=200):
+    rules = RobotFileParser()
+    if status == 404:
+        rules.allow_all = True
+        return rules
+    if 'html' in content_type.casefold() or body.lstrip().lower().startswith((b'<!doctype html', b'<html')):
+        raise ValueError('robots.txt restituisce HTML: verifica manuale necessaria.')
+    lines = body.decode('utf-8-sig', errors='replace').splitlines()
+    directives = [line.split('#', 1)[0].strip().casefold() for line in lines]
+    directives = [line for line in directives if line]
+    if directives and not any(line.startswith('user-agent:') for line in directives) and not all(
+            line.startswith('sitemap:') for line in directives):
+        raise ValueError('robots.txt non interpretabile: nessuna scheda richiesta.')
+    rules.parse(lines)
+    return rules
+
+
+def robots_interval(rules, minimum=MIN_INTERVAL):
+    rate = rules.request_rate(AGENT)
+    return max(minimum, rules.crawl_delay(AGENT) or 0,
+               rate.seconds / rate.requests if rate and rate.requests > 0 else 0)
+
+
 class Collector:
     def __init__(self, client, interval=MIN_INTERVAL, clock=time.monotonic, sleep=time.sleep):
         if not math.isfinite(interval) or interval < MIN_INTERVAL:
@@ -105,22 +128,8 @@ class Collector:
         host = origin(url)
         if host not in self.rules:
             robots_url, status, body, content_type = self.get(host + '/robots.txt', MAX_ROBOTS_BYTES, robots=True)
-            rules = RobotFileParser()
-            if status == 404:
-                rules.allow_all = True
-            else:
-                if 'html' in content_type.casefold() or body.lstrip().lower().startswith((b'<!doctype html', b'<html')):
-                    raise ValueError('robots.txt restituisce HTML: verifica manuale necessaria.')
-                lines = body.decode('utf-8-sig', errors='replace').splitlines()
-                directives = [line.split('#', 1)[0].strip().casefold() for line in lines]
-                directives = [line for line in directives if line]
-                if directives and not any(line.startswith('user-agent:') for line in directives) and not all(
-                        line.startswith('sitemap:') for line in directives):
-                    raise ValueError('robots.txt non interpretabile: nessuna scheda richiesta.')
-                rules.parse(lines)
-            delay = rules.crawl_delay(AGENT) or 0
-            rate = rules.request_rate(AGENT)
-            self.interval = max(self.interval, delay, rate.seconds / rate.requests if rate and rate.requests > 0 else 0)
+            rules = robots_rules(body, content_type, status)
+            self.interval = robots_interval(rules, self.interval)
             self.rules[host] = rules
             self.robots.append({**snapshot(robots_url, body, content_type), 'http_status': status})
         if not self.rules[host].can_fetch(AGENT, url):

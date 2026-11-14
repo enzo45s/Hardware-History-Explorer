@@ -1,8 +1,8 @@
 # Importazione dati storici
 
 Il sistema riutilizza le entità del catalogo e i collegamenti alle fonti.
-Non esegue scansioni massive né importa fotografie automaticamente; per
-1000bit legge le sole schede autorizzate selezionate dall'operatore. Prima di
+Non importa fotografie automaticamente. Per 1000bit è disponibile una
+raccolta automatica autorizzata, limitata agli indici e alle schede del database. Prima di
 caricare materiale di terzi leggi [la valutazione delle fonti](IMPORT_SOURCES.md).
 
 ## Avvio e migrazione
@@ -13,10 +13,12 @@ git pull --ff-only
 docker compose up --build -d
 ```
 
-L'avvio crea sei tabelle additive: `import_jobs`, `import_rows`,
-`import_identities`, `import_claims`, `catalog_reconciliations`, `archive_resets`.
-Le ultime due conservano l'audit delle riconciliazioni e degli svuotamenti
-esplicitamente richiesti dall'operatore. Un aggiornamento non svuota il catalogo.
+L'avvio crea nove tabelle additive: `import_jobs`, `import_rows`,
+`import_identities`, `import_claims`, `catalog_reconciliations`, `archive_resets`,
+`bit1000_bulk_jobs`, `bit1000_bulk_targets`, `bit1000_bulk_pages`.
+Le tabelle di riconciliazione e svuotamento conservano le operazioni richieste
+dall'operatore; le tre tabelle 1000bit conservano coda e avanzamento della raccolta.
+Un aggiornamento non svuota il catalogo.
 Nessuna tabella del catalogo viene
 ricreata e nessun dato viene cancellato. Non servono nuove variabili d'ambiente
 o chiavi API per gli importatori. Per una migrazione esplicita, dopo un backup
@@ -33,7 +35,10 @@ Migrazione ripetibile su PostgreSQL e SQLite. Non sostituisce la migrazione
 
 ## Utilizzo
 
-Il pannello mostra soltanto il caricamento e il dettaglio dell'importazione
+Per **1000bit su tutto il catalogo** usa [l’avvio automatico con coda riprendibile](1000BIT_BULK.md).
+Le istruzioni seguenti riguardano i caricamenti singoli o da file, che restano facoltativi per questa fonte.
+
+Per i caricamenti singoli, il pannello mostra il dettaglio dell'importazione
 corrente: non espone l'elenco delle importazioni precedenti né i pannelli di
 duplicati, completamento categorie e rifinitura. Lo storico e gli originali
 restano conservati nel database e accessibili tramite le API esistenti.
@@ -213,7 +218,8 @@ standard. Copertura e lacune sono documentate; non c'è un nuovo fetch remoto MA
   anche le entità dei produttori e `requested_ids` nell'oggetto JSON.
 - **Oldcomputers, Computer History Museum**: caricamento canonico manuale
   autorizzato, nessun adattatore HTML automatico abilitato.
-- **1000bit**: [schede HTML, JSON del raccoglitore e recupero da 1–5 URL](1000BIT.md).
+- **1000bit**: [arricchimento automatico del catalogo](1000BIT_BULK.md), con
+  [HTML, JSON e URL singoli](1000BIT.md) come opzioni facoltative.
   Formato verificato sulla copia reale Amiga 1200 fornita dall'operatore.
   Aggiorna solo modelli esistenti per impostazione predefinita; conserva i
   prezzi ambigui e le date di produzione come informazioni contestuali.

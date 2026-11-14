@@ -3,8 +3,10 @@ import os
 from sqlalchemy import create_engine
 from app.models import Base
 from app.import_models import ImportJob, ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation, ArchiveReset
+from app.importing.bulk1000bit import BulkJob, BulkTarget, BulkPage
 
-TABLES = [c.__table__ for c in (ImportJob, ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation, ArchiveReset)]
+TABLES = [c.__table__ for c in (ImportJob, ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation, ArchiveReset,
+                              BulkJob, BulkTarget, BulkPage)]
 
 
 def migrate(engine):

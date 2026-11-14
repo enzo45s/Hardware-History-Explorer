@@ -59,6 +59,20 @@ jobs:
           HHE_BASE_URL: http://127.0.0.1:8080/
           HHE_ALLOW_TEST_RESET: '1'
         run: npm run test:browser:reset
+      - name: Browser automatic 1000bit traversal on isolated synthetic website
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+          HHE_BULK_API_URL: http://127.0.0.1:18093
+        run: |
+          HHE_ALLOW_BULK_BROWSER_FIXTURE=1 python backend/tests/browser_bulk_app.py > /tmp/hhe-bulk-browser.log 2>&1 &
+          bulk_fixture_pid=$!
+          trap 'kill "$bulk_fixture_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS -o /dev/null http://127.0.0.1:18093/__bulk_fixture; then break; fi
+            sleep 1
+          done
+          cd frontend
+          npm run test:browser:bulk
       - name: Upload browser diagnostics on failure
         if: failure()
         uses: actions/upload-artifact@v4

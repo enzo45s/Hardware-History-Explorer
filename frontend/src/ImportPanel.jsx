@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { api, latestRequest } from './api.js';
 import ArchivePanel from './ArchivePanel.jsx';
+import Bulk1000bitPanel from './Bulk1000bitPanel.jsx';
 import './imports.css';
 
 const labels = { ready: 'Pronta', imported: 'Importata', updated: 'Aggiornata', unchanged: 'Invariata',
@@ -67,6 +68,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
   const [urls, setUrls] = useState('');
   const [existingOnly, setExistingOnly] = useState(true);
   const [sourceUrl, setSourceUrl] = useState('');
+  const [bulkRevision, setBulkRevision] = useState(0);
   const [job, setJob] = useState(null);
   const [offset, setOffset] = useState(0);
   const [busy, setBusy] = useState(false);
@@ -87,7 +89,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
       const result = await work();
       const id = result?.id || job?.id;
       if (id) { setJob(await api(`/admin/imports/${id}`)); setOffset(0); }
-      if (saved) onSaved();
+      if (saved) { setBulkRevision(value => value + 1); onSaved(); }
       setMessage('Operazione completata. Controlla esito e righe prima di proseguire.');
     } catch (e) { setError(e.message); }
     finally { setBusy(false); }
@@ -105,19 +107,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
     await action(async () => { await api(`/admin/imports/claims/${id}/review`, { method: 'POST', body: JSON.stringify({ decision, note }) }); return { id: job.id }; }, true);
   }
   const selected = providers.find(p => p.id === provider);
-  return <div className="imports">
-    <h2>Importazione dati storici</h2>
-    <p>Carica un lotto, controlla l'anteprima e poi applicalo all'archivio. I dati importati restano da verificare; i conflitti conservano il valore esistente.</p>
-    <p className="muted">Uso locale single-user. Non pubblicare queste funzioni su Internet senza autenticazione e protezioni adeguate.</p>
-    {error && <p className="inline-error" role="alert">{error}</p>}
-    {message && <p className="inline-success" role="status">{message}</p>}
-    <section className="panel">
-      <label className="admin-field"><span>Fonte dati</span><select aria-label="Fonte dati" value={provider} disabled={busy} onChange={e => { setProvider(e.target.value); setRights(false); }}>
-        {providers.map(p => <option value={p.id} key={p.id}>{p.name}</option>)}
-      </select></label>
-      <p>{selected?.license}</p>
-      {selected?.url && <p><a href={selected.url} target="_blank" rel="noopener noreferrer">Consulta la fonte</a></p>}
-      {selected?.mode === 'manual' && <p>Fonte solo manuale: verifica termini e autorizzazione prima di trascrivere o caricare dati. Nessuno scraping automatico.</p>}
+  const singleImport = <>
       {provider === '1000bit' && <>
         <p>Carica una scheda HTML salvata dal browser, un JSON del raccoglitore oppure un dataset CSV/JSON. Controlla l'anteprima prima di applicare i dati.</p>
         <label className="import-rights"><input type="checkbox" checked={existingOnly} disabled={busy} onChange={e => setExistingOnly(e.target.checked)} />Aggiorna solo calcolatori già presenti</label>
@@ -140,7 +130,26 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
         }))}>Recupera dalla fonte e prepara anteprima</button>
         <p className="muted">{provider === '1000bit' ? 'Schede selezionate, una richiesta alla volta, con almeno 5 secondi di pausa e rispetto di robots.txt. Nessuna scansione del catalogo. Se la rete è bloccata, carica le pagine salvate dal browser.' : 'Richieste limitate alle API/esportazioni ufficiali. Una rete bloccata produce un lavoro fallito, conservato e ripetibile.'}</p>
       </div>}
+  </>;
+  return <div className="imports">
+    <h2>Importazione dati storici</h2>
+    <p>{provider === '1000bit' ? 'Avvia l’arricchimento automatico del catalogo. Il caricamento delle singole schede resta disponibile come opzione facoltativa.' : 'Carica un lotto, controlla l’anteprima e poi applicalo all’archivio.'} I dati importati restano da verificare; i conflitti conservano il valore esistente.</p>
+    <p className="muted">Uso locale single-user. Non pubblicare queste funzioni su Internet senza autenticazione e protezioni adeguate.</p>
+    {error && <p className="inline-error" role="alert">{error}</p>}
+    {message && <p className="inline-success" role="status">{message}</p>}
+    <section className="panel">
+      <label className="admin-field"><span>Fonte dati</span><select aria-label="Fonte dati" value={provider} disabled={busy} onChange={e => { setProvider(e.target.value); setRights(false); }}>
+        {providers.map(p => <option value={p.id} key={p.id}>{p.name}</option>)}
+      </select></label>
+      <p>{selected?.license}</p>
+      {selected?.url && <p><a href={selected.url} target="_blank" rel="noopener noreferrer">Consulta la fonte</a></p>}
+      {selected?.mode === 'manual' && <p>Fonte solo manuale: verifica termini e autorizzazione prima di trascrivere o caricare dati. Nessuno scraping automatico.</p>}
     </section>
+    {provider === '1000bit' && <Bulk1000bitPanel onSaved={onSaved} onOpenImport={open} revision={bulkRevision} />}
+    {provider === '1000bit' ? <details className="panel">
+      <summary>Importa singole schede o file (facoltativo)</summary>
+      {singleImport}
+    </details> : <section className="panel">{singleImport}</section>}
     {(job || busy) && <section className="panel import-detail" aria-busy={busy}>
       {busy && <p role="status">Operazione in corso…</p>}
       {job && <>

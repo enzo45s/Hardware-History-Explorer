@@ -46,7 +46,7 @@ def catalog_candidates(db, data, provider):
     return candidates, len(candidates) > 1
 
 
-def stage(db, provider, filename, format, raw, records=None, options=None, retry_of=None):
+def stage(db, provider, filename, format, raw, records=None, options=None, retry_of=None, commit=True):
     if len(raw) > MAX_BYTES:
         raise ValueError('Massimo 8 MB per importazione')
     if records is None:
@@ -84,7 +84,7 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
         except (ValueError, TypeError) as exc:
             row.status, row.error = 'invalid', str(exc)[:5000]
         db.add(row)
-    db.commit()
+    db.commit() if commit else db.flush()
     return job
 
 
@@ -315,7 +315,7 @@ def import_record(db, job, row):
     row.status = 'imported' if created else 'updated' if changed else 'unchanged'
 
 
-def apply_job(db, job_id):
+def apply_job(db, job_id, commit=True):
     # Serialize import writers across jobs on PostgreSQL; SQLite serializes the first write.
     if db.bind.dialect.name == 'postgresql':
         db.execute(text('SELECT pg_advisory_xact_lock(68484931)'))
@@ -338,7 +338,7 @@ def apply_job(db, job_id):
             row.status = 'failed'
             row.error = str(exc)[:1000] if isinstance(exc, ValueError) else 'Errore di integrità: controlla dati e corrispondenze; riprova.'
     job.status = 'partial' if any(r.status in ('failed', 'invalid', 'ambiguous') for r in job.rows) else 'completed'
-    db.commit()
+    db.commit() if commit else db.flush()
     return job
 
 

@@ -363,3 +363,5 @@ from .importing.regional import create_regional_router
 app.include_router(create_regional_router(get_db))
 from .importing.enrichment import create_enrichment_router
 app.include_router(create_enrichment_router(get_db))
+from .importing.bulk1000bit import create_bulk_router
+app.include_router(create_bulk_router(get_db))

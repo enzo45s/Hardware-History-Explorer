@@ -164,8 +164,9 @@ Il pannello **Importazioni** mostra caricamento, anteprima ed esito del lotto
 corrente, con **Svuota archivio** in fondo. Le sezioni di storico, duplicati e
 manutenzione del catalogo non sono più esposte nell'interfaccia; i dati già
 registrati e l'audit restano conservati.
-Per 1000bit puoi [importare schede HTML, JSON del raccoglitore o URL espliciti](docs/1000BIT.md),
-con anteprima, citazioni e aggiornamento dei soli modelli esistenti come impostazione predefinita.
+Per 1000bit puoi [arricchire automaticamente tutto il catalogo](docs/1000BIT_BULK.md)
+con un solo avvio: visita dei collegamenti, abbinamenti conservativi e coda
+riprendibile. Il caricamento di singole schede resta facoltativo.
 In **Amministrazione → Foto automatiche** puoi associare il primo risultato
 Wikimedia utilizzabile ai sistemi senza foto, senza conferme per singola immagine:
 [istruzioni, pausa/ripresa e correzione delle immagini](docs/AUTOMATIC_PHOTOS.md).

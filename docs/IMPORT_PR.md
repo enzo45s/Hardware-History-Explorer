@@ -138,6 +138,16 @@ bloccato dal proxy cloud; nessuna API o copertura dell'intero database 1000bit
 viene dichiarata. Browser verifica HTML, associazione, replay, fonti e mobile.
 Istruzioni, mappature e limiti in `docs/1000BIT.md`.
 
-Verifiche attuali: 248 test SQLite più uno specifico PG saltato, 249
-PostgreSQL, 25 frontend, build React, Compose e browser di importazione/reset
-riusciti. Nessun nuovo requisito Python e nessuna migrazione necessaria.
+È ora disponibile anche l'arricchimento automatico dell'intero catalogo da
+1000bit: visita dei collegamenti dell'indice, coda persistente, aggiornamenti
+univoci senza nuovi modelli, limiti e pause, ripresa dopo ricaricamento e
+resoconto completo. I caricamenti singoli restano facoltativi. Tre tabelle
+additive incluse nella migrazione ripetibile; reset e richieste concorrenti
+non possono riattivare una vecchia sessione. Nessun nuovo requisito Python.
+
+Verifiche attuali: 268 test SQLite più uno specifico PG saltato, 269 PostgreSQL,
+25 frontend, build React e browser di importazione/reset e raccolta automatica.
+Test di scala con 1.105 modelli; sito remoto simulato e coda verificata dopo
+pausa/riapertura. Il proxy cloud continua a impedire la visita reale di 1000bit:
+nessun dato storico nuovo viene dichiarato recuperato in massa. La copertura
+effettiva della prima visita locale è esportabile nel resoconto.
