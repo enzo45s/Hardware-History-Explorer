@@ -1,4 +1,4 @@
-"""Fixed official endpoints only: no generic URL fetcher or HTML crawler."""
+"""Official exports/APIs and explicitly selected, authorized 1000bit sheets."""
 import json
 import re
 import httpx
@@ -12,7 +12,7 @@ PROVIDERS = [
     {'id': 'wikidata', 'name': 'Wikidata', 'mode': 'api', 'license': 'CC0 (dati strutturati)', 'url': 'https://www.wikidata.org/'},
     {'id': 'retroflops', 'name': 'RetroFlops', 'mode': 'api', 'license': 'CC BY 4.0 — RetroFlops; adattamento dei dati', 'url': 'https://retroflops.github.io/data/'},
     {'id': 'oldcomputers', 'name': 'Oldcomputers.net', 'mode': 'manual', 'license': 'Permessi da verificare', 'url': 'https://www.oldcomputers.net/'},
-    {'id': '1000bit', 'name': '1000bit', 'mode': 'manual', 'license': 'Permessi da verificare', 'url': 'https://www.1000bit.it/'},
+    {'id': '1000bit', 'name': '1000bit', 'mode': 'sheets', 'license': 'Autorizzazione del titolare; nessuna licenza aperta presunta', 'url': 'https://www.1000bit.it/'},
     {'id': 'computerhistory', 'name': 'Computer History Museum', 'mode': 'manual', 'license': 'Permessi da verificare', 'url': 'https://dev.computerhistory.org/'},
 ]
 
@@ -129,6 +129,19 @@ def retroflops_records(payload):
 
 
 def fetch_provider(provider, options):
+    if provider == '1000bit':
+        from .bit1000 import sheet_url, snapshot_records
+        from .collect_1000bit import Collector
+        urls = options.get('urls', [])
+        if not 1 <= len(urls) <= 5:
+            raise ValueError('Indica da 1 a 5 URL di schede 1000bit.')
+        urls = [sheet_url(url) for url in urls]
+        with httpx.Client(timeout=httpx.Timeout(20, connect=10), follow_redirects=False,
+                          headers={'User-Agent': USER_AGENT, 'Accept': 'text/html,text/plain;q=0.9'}) as client:
+            payload = Collector(client).collect(urls)
+        if not payload['pages']:
+            raise ValueError(payload['errors'][0]['error'] if payload['errors'] else 'Nessuna scheda recuperata.')
+        return json.dumps(payload, ensure_ascii=False).encode(), snapshot_records(payload)
     if provider == 'retroflops':
         raw, payload = get_json('https://retroflops.github.io/data/catalog-v1.json')
         return raw, retroflops_records(payload)
@@ -152,3 +165,14 @@ def fetch_provider(provider, options):
         raw = json.dumps(payload, ensure_ascii=False).encode()
         return raw, wikidata_records(payload)
     raise ValueError('Fonte disponibile solo tramite caricamento manuale autorizzato')
+
+
+def upload_records(provider, format, raw, source_url=None):
+    """One adapter path shared by upload, retry and CLI."""
+    if provider == '1000bit':
+        from .bit1000 import uploaded_records
+        return uploaded_records(raw, format, source_url)
+    if format == 'json' and provider in ('wikidata', 'retroflops'):
+        payload = json.loads(raw.decode('utf-8-sig'))
+        return retroflops_records(payload) if provider == 'retroflops' else wikidata_records(payload)
+    return None

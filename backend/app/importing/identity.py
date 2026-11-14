@@ -5,7 +5,7 @@ from .regional_names import regional_name
 MAKERS = {
     'apple': ('Apple', 'Apple Computer', 'Apple Computer Inc.', 'Apple Computer, Inc.', 'Apple Inc.'),
     'ibm': ('IBM', 'International Business Machines', 'International Business Machines Corporation'),
-    'commodore': ('Commodore', 'Commodore Business Machines', 'Commodore Business Machines, Inc.'),
+    'commodore': ('Commodore', 'Commodore Business Machines', 'Commodore Business Machines, Inc.', 'Commodore Business Machines (USA)'),
     'dec': ('DEC', 'Digital Equipment Corporation'),
 }
 MANUFACTURERS = {name_key(alias): key for key, aliases in MAKERS.items() for alias in aliases}

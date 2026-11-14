@@ -121,6 +121,56 @@ async function assertMobileLayout(page) {
     const search = page.getByRole('combobox', { name: 'Cerca un sistema da aggiungere' });
     await search.fill(model);
     await page.getByRole('option').filter({ hasText: model }).waitFor();
+
+    // Real 1000bit excerpt supplied by the operator; applied only to this test DB.
+    const endpoint = route => new URL(route, page.url()).href;
+    const meta = await (await page.request.get(endpoint('/api/meta'))).json();
+    const maker = meta.manufacturers.find(m => m.name === 'Commodore');
+    assert(maker, 'The disposable seed must include Commodore.');
+    const catalog = await (await page.request.get(endpoint('/api/computers?q=Amiga%201200'))).json();
+    let amiga = catalog.items.find(c => c.model_name === 'Amiga 1200' && c.manufacturer_id === maker.id);
+    if (!amiga) {
+      const response = await page.request.post(endpoint('/api/computers'), { data: {
+        model_name: 'Amiga 1200', manufacturer_id: maker.id, description: 'Scheda iniziale del test browser: da conservare.' } });
+      assert.equal(response.status(), 201);
+      amiga = await response.json();
+    }
+    const beforeAmiga = await (await page.request.get(endpoint('/api/computers/' + amiga.id))).json();
+    const count = (await (await page.request.get(endpoint('/api/computers'))).json()).total;
+    await page.getByRole('button', { name: 'Amministrazione', exact: true }).click();
+    await page.getByRole('button', { name: 'Importazioni', exact: true }).click();
+    await page.getByLabel('Fonte dati', { exact: true }).selectOption('1000bit');
+    assert.equal(await page.getByLabel('Aggiorna solo calcolatori già presenti', { exact: true }).isChecked(), true);
+    const remote = page.getByRole('button', { name: 'Recupera dalla fonte e prepara anteprima', exact: true });
+    assert.equal(await remote.isEnabled(), false);
+    await page.getByLabel('URL delle schede 1000bit', { exact: false }).fill('https://www.1000bit.it/scheda.asp?id=282');
+    assert.equal(await remote.isEnabled(), true);
+    async function uploadSheet() {
+      await page.getByLabel('Scheda HTML o dataset CSV/JSON 1000bit', { exact: false })
+        .setInputFiles(path.resolve(__dirname, '../../../backend/tests/fixtures/1000bit-amiga1200.html'));
+      await page.getByLabel('Ho verificato il diritto', { exact: false }).check();
+      await page.getByRole('button', { name: 'Prepara anteprima dal file', exact: true }).click();
+      await page.getByRole('button', { name: "Applica le righe pronte all'archivio", exact: true }).waitFor();
+      assert.match(await page.locator('.import-detail').innerText(), /Solo aggiornamenti/);
+      assert.equal((await (await page.request.get(endpoint('/api/computers'))).json()).total, count);
+      await page.getByRole('button', { name: "Applica le righe pronte all'archivio", exact: true }).click();
+      await page.locator('.import-detail h3').filter({ hasText: 'Completata' }).waitFor();
+    }
+    await uploadSheet();
+    assert.match(await page.locator('.import-detail').innerText(), /(?:Aggiornata|Invariata): 1/);
+    await uploadSheet();
+    assert.match(await page.locator('.import-detail').innerText(), /Invariata: 1/);
+    const updatedAmiga = await (await page.request.get(endpoint('/api/computers/' + amiga.id))).json();
+    const sheet = updatedAmiga.configurations.find(c => c.variant_name === 'Scheda tecnica');
+    assert.equal(sheet.specifications.find(s => s.component_type === 'CPU' && s.property_name === 'Modello').text_value, '68EC020');
+    assert.deepEqual(updatedAmiga.releases, beforeAmiga.releases, 'Production date and zero currency placeholder do not alter commercial releases.');
+    assert(sheet.specifications.every(s => s.sources.some(c => c.url === 'https://www.1000bit.it/scheda.asp?id=282')));
+    for (const width of [320, 390]) {
+      await page.setViewportSize({ width, height: 740 });
+      await assertMobileLayout(page);
+    }
+    await page.screenshot({ path: path.join(artifactDir, '1000bit-import-mobile.png'), fullPage: true });
+    console.log('Browser: 1000bit HTML preview, existing-only update, sourced CPU, replay without duplicates and missing-price handling pass.');
     assert.deepEqual(errors, []);
     console.log('Browser: imported system searchable in comparison, dark/mobile layout fits at 320 px, no JavaScript errors.');
   } catch (error) {

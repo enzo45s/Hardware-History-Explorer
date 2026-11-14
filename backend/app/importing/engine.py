@@ -1,5 +1,6 @@
 """Transactional, append-only provenance and conservative catalog merging."""
 import hashlib
+import base64
 import json
 from datetime import date
 from sqlalchemy import select, text
@@ -55,14 +56,25 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
     # JSON allows exponent literals that Python may overflow to Infinity;
     # reject these before storing raw rows in PostgreSQL's strict JSON type.
     json.dumps(records, allow_nan=False)
+    options = dict(options or {})
+    options.pop('raw_payload_encoding', None)
+    try:
+        original_text = raw.decode('utf-8')
+    except UnicodeDecodeError:
+        if provider != '1000bit' or format not in ('html', 'htm'):
+            raise ValueError('Il dataset richiede UTF-8.')
+        original_text = base64.b64encode(raw).decode('ascii')
+        options['raw_payload_encoding'] = 'base64'
     job = ImportJob(provider=provider, filename=filename, format=format,
-                    checksum=hashlib.sha256(raw).hexdigest(), raw_payload=raw.decode('utf-8'),
-                    request_options=options or {}, retry_of=retry_of)
+                    checksum=hashlib.sha256(raw).hexdigest(), raw_payload=original_text,
+                    request_options=options, retry_of=retry_of)
     db.add(job)
     db.flush()
     for position, original in enumerate(records, 1):
         row = ImportRow(job_id=job.id, position=position, raw=original)
         try:
+            if isinstance(original.get('error'), str) and original['error']:
+                raise ValueError(original['error'])
             data = Record.model_validate(original).model_dump(mode='json', exclude_none=True)
             candidates, ambiguous = catalog_candidates(db, data, provider)
             row.normalized = data
@@ -74,6 +86,12 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
         db.add(row)
     db.commit()
     return job
+
+
+def original_bytes(job):
+    if job.request_options.get('raw_payload_encoding') == 'base64':
+        return base64.b64decode(job.raw_payload, validate=True)
+    return job.raw_payload.encode('utf-8')
 
 
 def reference(db, model, name):
@@ -254,6 +272,10 @@ def import_record(db, job, row):
                 existing = [r for r in existing if r.market_id == market.id]
                 original_release = reconciled_release(db,c.id,identity_provider(job.provider,data),data.get('external_id'),
                     market.id,serialize(historical_date(entry.get('release_date'))[0])) if model is Release else None
+                # An undated price must not inherit a launch date from another
+                # source merely because the catalog has one release in this market.
+                if model is Release and original_release is None and entry.get('price') is not None and not entry.get('release_date'):
+                    existing = [r for r in existing if r.release_date is None]
                 if model is Sale:
                     existing = [r for r in existing if serialize(r.period_start) == entry.get('period_start') and serialize(r.period_end) == entry.get('period_end') and r.metric_type == entry.get('metric_type', 'units_sold')]
                 elif original_release is not None:

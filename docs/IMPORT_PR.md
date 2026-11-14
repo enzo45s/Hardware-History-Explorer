@@ -124,10 +124,20 @@ Verifica: 200 test SQLite più uno specifico PG saltato, 201 PostgreSQL,
 25 frontend, build/Compose e prove Chromium di schede, confronto, editor e
 importazioni riuscite. Dettagli in `docs/CATALOG_PRESENTATION.md`.
 
-1000bit: aggiunto un raccoglitore locale di massimo cinque pagine selezionate,
-con originali, SHA-256, controllo robots e richieste distanziate. Il permesso di
-recupero è stato dichiarato dall'operatore. Il proxy cloud blocca ancora il sito:
-estrazione HTML e importazione automatica non sono abilitate, in attesa di una
-scheda reale. Zero dati storici 1000bit importati. Suite aggiornata: 227 test
-SQLite più uno specifico PG saltato, 228 PostgreSQL; 27 coprono il raccoglitore.
-Build API riuscita; istruzioni e limiti in `docs/1000BIT.md`.
+1000bit: implementata l'estrazione dalla scheda HTML reale Amiga 1200 fornita
+dall'operatore, con upload HTML/JSON, retry, CLI e recupero di 1–5 URL espliciti.
+Anteprima obbligatoria, aggiornamento dei soli modelli esistenti predefinito,
+fonti per ogni specifica e originali verificabili. Alias Commodore attestato,
+RAM con unità ambigue conservata, CPU opzionali nelle note, produzione distinta
+dalle date commerciali e prezzi privi di data separati dai lanci già presenti.
+
+Prova reale su PostgreSQL isolato: Amiga 1200 aggiornato, sette specifiche e due
+note aggiunte, una fonte; 1.105 modelli prima e dopo e replay invariato. Zero
+prezzi nel file reale, nessuna verifica automatica. Il recupero live rimane
+bloccato dal proxy cloud; nessuna API o copertura dell'intero database 1000bit
+viene dichiarata. Browser verifica HTML, associazione, replay, fonti e mobile.
+Istruzioni, mappature e limiti in `docs/1000BIT.md`.
+
+Verifiche attuali: 248 test SQLite più uno specifico PG saltato, 249
+PostgreSQL, 25 frontend, build React, Compose e browser di importazione/reset
+riusciti. Nessun nuovo requisito Python e nessuna migrazione necessaria.

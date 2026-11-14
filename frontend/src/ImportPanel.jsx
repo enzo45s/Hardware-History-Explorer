@@ -64,6 +64,9 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
   const [file, setFile] = useState(null);
   const [rights, setRights] = useState(false);
   const [ids, setIds] = useState('');
+  const [urls, setUrls] = useState('');
+  const [existingOnly, setExistingOnly] = useState(true);
+  const [sourceUrl, setSourceUrl] = useState('');
   const [job, setJob] = useState(null);
   const [offset, setOffset] = useState(0);
   const [busy, setBusy] = useState(false);
@@ -92,6 +95,10 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
   function upload(event) {
     event.preventDefault();
     const form = new FormData(); form.append('file', file); form.append('provider', provider); form.append('rights_confirmed', String(rights));
+    if (provider === '1000bit') {
+      form.append('existing_only', String(existingOnly));
+      if (sourceUrl.trim()) form.append('source_url', sourceUrl.trim());
+    }
     action(() => api('/admin/imports/upload', { method: 'POST', body: form }));
   }
   async function review(id, decision, note) {
@@ -105,24 +112,33 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
     <section className="panel">
-      <label className="admin-field"><span>Fonte dati</span><select value={provider} disabled={busy} onChange={e => { setProvider(e.target.value); setRights(false); }}>
+      <label className="admin-field"><span>Fonte dati</span><select aria-label="Fonte dati" value={provider} disabled={busy} onChange={e => { setProvider(e.target.value); setRights(false); }}>
         {providers.map(p => <option value={p.id} key={p.id}>{p.name}</option>)}
       </select></label>
       <p>{selected?.license}</p>
       {selected?.url && <p><a href={selected.url} target="_blank" rel="noopener noreferrer">Consulta la fonte</a></p>}
       {selected?.mode === 'manual' && <p>Fonte solo manuale: verifica termini e autorizzazione prima di trascrivere o caricare dati. Nessuno scraping automatico.</p>}
+      {provider === '1000bit' && <>
+        <p>Carica una scheda HTML salvata dal browser, un JSON del raccoglitore oppure un dataset CSV/JSON. Controlla l'anteprima prima di applicare i dati.</p>
+        <label className="import-rights"><input type="checkbox" checked={existingOnly} disabled={busy} onChange={e => setExistingOnly(e.target.checked)} />Aggiorna solo calcolatori già presenti</label>
+        <p className="muted">Con questa opzione attiva, associa le righe senza corrispondenza a una scheda esistente; quelle non associate saranno escluse senza creare nuovi calcolatori.</p>
+      </>}
       <form onSubmit={upload}>
-        <label className="admin-field"><span>Dataset CSV o JSON (UTF-8, massimo 8 MB e 1000 righe)</span>
-          <input type="file" accept=".csv,.json" disabled={busy} required onChange={e => setFile(e.target.files[0] || null)} /></label>
+        <label className="admin-field"><span>{provider === '1000bit' ? 'Scheda HTML o dataset CSV/JSON 1000bit (massimo 8 MB)' : 'Dataset CSV o JSON (UTF-8, massimo 8 MB e 1000 righe)'}</span>
+          <input type="file" accept={provider === '1000bit' ? '.html,.htm,.csv,.json' : '.csv,.json'} disabled={busy} required onChange={e => setFile(e.target.files[0] || null)} /></label>
+        {provider === '1000bit' && <label className="admin-field"><span>URL originale della scheda HTML (facoltativo se presente nel file)</span>
+          <input type="url" value={sourceUrl} maxLength={800} disabled={busy} placeholder="https://www.1000bit.it/scheda.asp?id=…" onChange={e => setSourceUrl(e.target.value)} /></label>}
         <label className="import-rights"><input type="checkbox" checked={rights} disabled={busy} required onChange={e => setRights(e.target.checked)} />Ho verificato il diritto di importare questo dataset e conservarne l'attribuzione.</label>
         <button type="submit" disabled={busy || !file || !rights}>Prepara anteprima dal file</button>
       </form>
-      {selected?.mode === 'api' && <div className="import-remote">
+      {['api', 'sheets'].includes(selected?.mode) && <div className="import-remote">
         {provider === 'wikidata' && <label className="admin-field"><span>Identificativi Wikidata (da 1 a 20, separati da spazi o virgole)</span><input disabled={busy} value={ids} onChange={e => setIds(e.target.value)} maxLength={300} placeholder="Q…" /></label>}
-        <button type="button" disabled={busy || (provider === 'wikidata' && !ids.trim())} onClick={() => action(() => api('/admin/imports/remote', {
-          method: 'POST', body: JSON.stringify({ provider, ids: ids.trim().split(/[\s,]+/).filter(Boolean) })
+        {provider === '1000bit' && <label className="admin-field"><span>URL delle schede 1000bit (da 1 a 5, uno per riga)</span>
+          <textarea rows={3} disabled={busy} value={urls} maxLength={4004} onChange={e => setUrls(e.target.value)} placeholder="https://www.1000bit.it/scheda.asp?id=282" /></label>}
+        <button type="button" disabled={busy || (provider === 'wikidata' && !ids.trim()) || (provider === '1000bit' && !urls.trim())} onClick={() => action(() => api('/admin/imports/remote', {
+          method: 'POST', body: JSON.stringify(provider === '1000bit' ? { provider, urls: urls.trim().split(/\s+/).filter(Boolean), existing_only: existingOnly } : { provider, ids: ids.trim().split(/[\s,]+/).filter(Boolean) })
         }))}>Recupera dalla fonte e prepara anteprima</button>
-        <p className="muted">Richieste limitate alle API/esportazioni ufficiali. Una rete bloccata produce un lavoro fallito, conservato e ripetibile.</p>
+        <p className="muted">{provider === '1000bit' ? 'Schede selezionate, una richiesta alla volta, con almeno 5 secondi di pausa e rispetto di robots.txt. Nessuna scansione del catalogo. Se la rete è bloccata, carica le pagine salvate dal browser.' : 'Richieste limitate alle API/esportazioni ufficiali. Una rete bloccata produce un lavoro fallito, conservato e ripetibile.'}</p>
       </div>}
     </section>
     {(job || busy) && <section className="panel import-detail" aria-busy={busy}>
@@ -132,6 +148,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
         {job.status === 'archived' && <p>Esiti storici precedenti allo svuotamento. Le schede associate sono state rimosse. Usa una nuova anteprima per importare nuovamente questi dati.</p>}
         {job.error && <p className="inline-error">{job.error}</p>}
         <p>Totale: {job.total} righe. {Object.entries(job.counts).map(([k, n]) => `${status(k)}: ${n}`).join(' · ')}</p>
+        {job.existing_only && <p className="muted">Solo aggiornamenti a calcolatori esistenti. Nessuna nuova scheda verrà creata.</p>}
         {job.data_coverage && <p>Record con fonte nel file: {job.data_coverage.records_with_source}. Prezzi presenti nel file: {job.data_coverage.prices}.
           {!job.data_coverage.prices && ' Il dataset non contiene prezzi: il caricamento non ne aggiunge e conserva quelli già archiviati.'}</p>}
         <p>Asserzioni: {Object.entries(job.verification_counts || {}).map(([k, n]) => `${status(k)}: ${n}`).join(' · ') || 'non ancora applicate'}</p>
@@ -145,6 +162,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
         {job.rows.map(row => <article className="import-row" key={row.id}>
           <h4>Riga {row.position}: {row.normalized?.model_name || 'Dati non validi'} · {status(row.status)}</h4>
           {row.computer_id && <p>Calcolatore associato: {row.computer_label || 'ID ' + row.computer_id}</p>}
+          {job.existing_only && job.status === 'ready' && !row.computer_id && row.status === 'ready' && <p>Associa questa riga a un calcolatore esistente prima di applicarla, altrimenti sarà esclusa.</p>}
           {!!row.candidates.length && <p>Corrispondenze individuate: {(row.candidate_labels || row.candidates).join(' · ')}</p>}
           {row.error && <p className="inline-error">{row.error}</p>}
           {job.status === 'ready' && row.status !== 'skipped' && <button type="button" disabled={busy} onClick={() => action(async () => {

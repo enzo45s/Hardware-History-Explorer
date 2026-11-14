@@ -1,7 +1,7 @@
 """Collect a small, explicitly selected set of authorized 1000bit HTML pages.
 
 This module deliberately does not guess the site's markup or import computers.
-Original response bodies can be inspected offline to build a verified adapter.
+Original response bodies can be imported through the shared 1000bit adapter.
 """
 import argparse
 import base64

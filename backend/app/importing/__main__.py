@@ -6,7 +6,7 @@ from pathlib import Path
 from collections import Counter
 from .engine import stage, apply_job
 from .normalize import MAX_BYTES
-from .providers import retroflops_records, wikidata_records
+from .providers import upload_records
 
 
 def main():
@@ -15,6 +15,9 @@ def main():
     parser.add_argument('--provider', choices=['manual', 'wikidata', 'retroflops', 'oldcomputers', '1000bit', 'computerhistory'], default='manual')
     parser.add_argument('--rights-confirmed', action='store_true', required=True)
     parser.add_argument('--apply', action='store_true')
+    parser.add_argument('--existing-only', action=argparse.BooleanOptionalAction, default=None,
+                        help='Aggiorna solo schede esistenti; predefinito per 1000bit.')
+    parser.add_argument('--source-url', help='URL originale per una scheda HTML senza metadati di origine.')
     args = parser.parse_args()
     with args.file.open('rb') as file:
         raw = file.read(MAX_BYTES + 1)
@@ -26,12 +29,11 @@ def main():
     format = args.file.suffix.lower().lstrip('.')
     records = None
     try:
-        if format == 'json' and args.provider in ('wikidata', 'retroflops'):
-            payload = json.loads(raw.decode('utf-8-sig'))
-            records = retroflops_records(payload) if args.provider == 'retroflops' else wikidata_records(payload)
+        records = upload_records(args.provider, format, raw, args.source_url)
         with SessionLocal() as db:
             job = stage(db, args.provider, args.file.name[:250], format, raw, records=records,
-                        options={'upload': True, 'rights_confirmed': True})
+                        options={'upload': True, 'rights_confirmed': True, 'source_url': args.source_url,
+                                 'existing_only': args.existing_only if args.existing_only is not None else args.provider == '1000bit'})
             if args.apply:
                 job = apply_job(db, job.id)
             print(json.dumps({'id': job.id, 'status': job.status, 'counts': dict(Counter(r.status for r in job.rows))}))

@@ -11,8 +11,8 @@ from ..admin import Input
 from ..models import Computer
 from ..import_models import ImportJob, ImportRow, ImportClaim, CatalogReconciliation
 from .normalize import MAX_BYTES, parse_payload
-from .engine import stage, apply_job, review_claim
-from .providers import PROVIDERS, fetch_provider, retroflops_records, wikidata_records
+from .engine import stage, apply_job, review_claim, original_bytes
+from .providers import PROVIDERS, fetch_provider, upload_records
 from .presentation import claim_presentation
 from . import reconcile
 
@@ -27,6 +27,7 @@ def job_data(job):
     return {'id': job.id, 'provider': job.provider, 'filename': job.filename, 'checksum': job.checksum,
             'format': job.format, 'status': job.status, 'error': job.error, 'retry_of': job.retry_of,
             'created_at': job.created_at.isoformat(), 'total': len(job.rows), 'counts': dict(counts), 'verification_counts': verification,
+            'existing_only': bool(job.request_options.get('existing_only')),
             'data_coverage': {'records_with_source': sum(bool(record.get('source')) for record in records), 'prices': prices}}
 
 
@@ -39,8 +40,10 @@ def claim_data(c):
 
 
 class RemoteRequest(Input):
-    provider: Literal['wikidata', 'retroflops']
+    provider: Literal['wikidata', 'retroflops', '1000bit']
     ids: list[str] = Field(default_factory=list, max_length=20)
+    urls: list[str] = Field(default_factory=list, max_length=5)
+    existing_only: bool | None = None
 
 
 class Mapping(Input):
@@ -130,7 +133,8 @@ def create_import_router(get_db):
 
     @router.post('/upload', status_code=201)
     def upload(file: UploadFile = File(...), provider: str = Form('manual'),
-               rights_confirmed: bool = Form(False), db: Session = Depends(get_db)):
+               rights_confirmed: bool = Form(False), existing_only: bool | None = Form(None),
+               source_url: str | None = Form(None, max_length=800), db: Session = Depends(get_db)):
         if provider not in {p['id'] for p in PROVIDERS}:
             raise HTTPException(422, 'Fonte sconosciuta')
         if not rights_confirmed:
@@ -144,14 +148,10 @@ def create_import_router(get_db):
         filename = (file.filename or 'dataset').replace('\\', '/').split('/')[-1][:250]
         format = filename.rsplit('.', 1)[-1].lower()
         try:
-            if provider in ('wikidata', 'retroflops') and format == 'json':
-                import json
-                payload = json.loads(raw.decode('utf-8-sig'))
-                records = retroflops_records(payload) if provider == 'retroflops' else wikidata_records(payload)
-                job = stage(db, provider, filename, format, raw, records=records,
-                            options={'upload': True, 'rights_confirmed': True})
-            else:
-                job = stage(db, provider, filename, format, raw, options={'upload': True, 'rights_confirmed': True})
+            records = upload_records(provider, format, raw, source_url)
+            job = stage(db, provider, filename, format, raw, records=records,
+                        options={'upload': True, 'rights_confirmed': True, 'source_url': source_url,
+                                 'existing_only': existing_only if existing_only is not None else provider == '1000bit'})
         except (ValueError, TypeError, KeyError, RecursionError, csv.Error) as exc:
             db.rollback()
             raise HTTPException(422, 'Dataset non valido: ' + str(exc)[:2000]) from exc
@@ -159,7 +159,20 @@ def create_import_router(get_db):
 
     @router.post('/remote', status_code=201)
     def remote(data: RemoteRequest, db: Session = Depends(get_db)):
-        return job_data(remote_job(db, data.provider, {'ids': data.ids}))
+        if data.provider == '1000bit':
+            from .bit1000 import sheet_url
+            try:
+                if not data.urls or data.ids:
+                    raise ValueError('Indica da 1 a 5 URL di schede 1000bit.')
+                urls = [sheet_url(url) for url in data.urls]
+            except ValueError as exc:
+                raise HTTPException(422, str(exc)) from exc
+        else:
+            if data.urls:
+                raise HTTPException(422, 'Gli URL delle schede sono disponibili solo per 1000bit.')
+            urls = []
+        return job_data(remote_job(db, data.provider, {'ids': data.ids, 'urls': urls,
+            'existing_only': data.existing_only if data.existing_only is not None else data.provider == '1000bit'}))
 
     @router.get('/{job_id}')
     def detail(job_id: int, offset: int = Query(0, ge=0), limit: int = Query(25, ge=1, le=100), db: Session = Depends(get_db)):
@@ -178,7 +191,7 @@ def create_import_router(get_db):
     def original(job_id: int, db: Session = Depends(get_db)):
         from fastapi.responses import Response
         job = job_or_404(db, job_id)
-        return Response(job.raw_payload, media_type='text/plain; charset=utf-8',
+        return Response(original_bytes(job), media_type='application/octet-stream',
                         headers={'Content-Disposition': 'attachment; filename="import-original.txt"', 'X-Content-Type-Options': 'nosniff'})
 
     @router.post('/{job_id}/apply')
@@ -196,12 +209,8 @@ def create_import_router(get_db):
         options = previous.request_options
         if not options.get('upload'):
             return job_data(remote_job(db, previous.provider, options, retry_of=previous.id))
-        raw = previous.raw_payload.encode('utf-8')
-        records = None
-        if previous.provider in ('wikidata', 'retroflops') and previous.format == 'json':
-            import json
-            payload = json.loads(raw)
-            records = retroflops_records(payload) if previous.provider == 'retroflops' else wikidata_records(payload)
+        raw = original_bytes(previous)
+        records = upload_records(previous.provider, previous.format, raw, options.get('source_url'))
         return job_data(stage(db, previous.provider, previous.filename, previous.format, raw, records=records,
                               options=options, retry_of=previous.id))
 

@@ -1,7 +1,8 @@
 # Importazione dati storici
 
 Il sistema riutilizza le entità del catalogo e i collegamenti alle fonti.
-Non esegue scraping HTML né importa fotografie automaticamente. Prima di
+Non esegue scansioni massive né importa fotografie automaticamente; per
+1000bit legge le sole schede autorizzate selezionate dall'operatore. Prima di
 caricare materiale di terzi leggi [la valutazione delle fonti](IMPORT_SOURCES.md).
 
 ## Avvio e migrazione
@@ -210,11 +211,12 @@ standard. Copertura e lacune sono documentate; non c'è un nuovo fetch remoto MA
   con calendario gregoriano; P571 non viene reinterpretata come lancio.
   Nessuna fotografia o pagina enciclopedica viene importata. Per upload includi
   anche le entità dei produttori e `requested_ids` nell'oggetto JSON.
-- **Oldcomputers, 1000bit, Computer History Museum**: caricamento canonico
-  manuale autorizzato, nessun adattatore HTML automatico abilitato.
-  Per 1000bit è disponibile anche il [raccoglitore locale di pagine originali](1000BIT.md):
-  il permesso è stato dichiarato dall'operatore; serve una scheda reale per
-  verificare la struttura prima di abilitare l'estrazione automatica.
+- **Oldcomputers, Computer History Museum**: caricamento canonico manuale
+  autorizzato, nessun adattatore HTML automatico abilitato.
+- **1000bit**: [schede HTML, JSON del raccoglitore e recupero da 1–5 URL](1000BIT.md).
+  Formato verificato sulla copia reale Amiga 1200 fornita dall'operatore.
+  Aggiorna solo modelli esistenti per impostazione predefinita; conserva i
+  prezzi ambigui e le date di produzione come informazioni contestuali.
 
 I metadati non mappati restano nel file originale con SHA-256. Per Wikidata lo
 snapshot aggrega le risposte entità e produttori utilizzate. I timeout e il
@@ -254,7 +256,8 @@ API sotto `/api/admin/imports`: `GET /providers`, `GET /` con limit/offset,
 (`provider`, `ids`), `GET /{id}` con righe paginate, `GET /{id}/original`,
 `POST /{id}/apply`, `POST /{id}/retry`, `POST /{id}/rows/{row_id}/match`
 (`computer_id`), `POST /{id}/rows/{row_id}/skip`, `POST /claims/{claim_id}/review` (`decision: accept|reject`,
-`note`). Il download originale è testo allegato, non HTML eseguibile.
+`note`). Il download originale è un allegato con Content-Type
+`application/octet-stream` e `nosniff`, senza esecuzione dell'HTML.
 
 Catalogo, timeline, analisi e confronti leggono subito le entità normali.
 L'assistente cerca nell'intero catalogo e seleziona fino a 30 schede pertinenti
