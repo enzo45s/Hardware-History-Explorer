@@ -195,7 +195,14 @@ senza aggiungere il produttore davanti. Il testo resta modificabile.
 
 La ricerca Commons è gratuita e non usa la chiave OpenAI. Il backend si identifica con lo User-Agent `HardwareHistoryExplorer/1.2 (https://github.com/enzo45s/Hardware-History-Explorer)`, richiede esplicitamente il formato JSON con pagine indicizzate e attende fino a 30 secondi per ciascuna fase della richiesta HTTP.
 
-Gli errori distinguono ora timeout (504), limitazione/sovraccarico Wikimedia (503, conservando `Retry-After` numerico), HTTP 403, problemi del proxy, certificati HTTPS e risposte inattese. Un risultato senza fotografie rimane una ricerca riuscita con elenco vuoto. Non disabilitare la verifica TLS: per una CA privata usa l'override proxy descritto sopra.
+Gli errori distinguono ora timeout (504), limitazione/sovraccarico Wikimedia (503, conservando `Retry-After` anche come data HTTP), ricerche non valide (422), HTTP 403, problemi del proxy, certificati HTTPS e risposte inattese. Un risultato senza fotografie rimane una ricerca riuscita con elenco vuoto. Non disabilitare la verifica TLS: per una CA privata usa l'override proxy descritto sopra.
+
+Se una miniatura causa l'errore API `urlparamnormal`, il backend ritenta una
+volta la stessa ricerca senza ridimensionamento, mantenendo i controlli su
+immagini, attribuzione e licenza. Nel pannello automatico puoi vedere il
+modello corrente, correggere il testo o saltare esplicitamente quella ricerca.
+Coda ed immagini già associate restano conservate; vedi la
+[guida alla ripresa e alle istanze Compose](docs/AUTOMATIC_PHOTOS.md#ripresa-di-unistanza-esistente).
 
 Dopo un aggiornamento, ricostruisci e ricrea i servizi con `docker compose up --build -d`. Puoi consultare `docker compose logs --tail=100 api`: i messaggi `Wikimedia search failed` indicano categoria e stato upstream senza includere testo della ricerca, risposte remote o credenziali del proxy.
 

@@ -1,5 +1,10 @@
 """Wikimedia requests with bounded timeouts and actionable, privacy-safe errors."""
+import asyncio
 import logging
+import math
+import re
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 
 import httpx
 from fastapi import HTTPException
@@ -8,16 +13,43 @@ URL = 'https://commons.wikimedia.org/w/api.php'
 USER_AGENT = 'HardwareHistoryExplorer/1.2 (https://github.com/enzo45s/Hardware-History-Explorer)'
 logger = logging.getLogger(__name__)
 
+INVALID_SEARCH = {'badsearch', 'cirrussearch-parse-error', 'cirrussearch-regex-syntax-error',
+                  'cirrussearch-regex-empty-expression', 'cirrussearch-regex-too-complex-error',
+                  'cirrussearch-query-too-long', 'cirrussearch-query-too-long-with-exemptions'}
+BUSY = {'ratelimited', 'maxlag', 'readonly', 'cirrussearch-too-busy-error',
+        'cirrussearch-backend-error', 'cirrussearch-regex-too-busy-error',
+        'srsearch-text-disabled', 'srsearch-title-disabled'}
+
+
+def retry_seconds(value):
+    """Retry-After can be a delay or an HTTP date; never retry before it."""
+    if not isinstance(value, str) or not value.strip():
+        return None
+    value = value.strip()
+    if value.isascii() and value.isdigit():
+        return 86400 if len(value) > 6 else min(86400, int(value))
+    try:
+        deadline = parsedate_to_datetime(value)
+        if deadline.tzinfo is None:
+            deadline = deadline.replace(tzinfo=timezone.utc)
+        return min(86400, max(0, math.ceil((deadline - datetime.now(timezone.utc)).total_seconds())))
+    except (ValueError, TypeError, OverflowError):
+        return None
+
 
 def retry_headers(response):
     value = getattr(response, 'headers', {}).get('Retry-After', '')
-    return {'Retry-After': value} if value.isascii() and value.isdigit() else None
+    seconds = retry_seconds(value)
+    return {'Retry-After': str(seconds)} if seconds is not None else None
 
 
-def unavailable(detail, *, cause, status=502, response=None):
+def unavailable(detail, *, cause, status=502, response=None, api_code=None):
     # Do not log search terms, proxy credentials, response bodies or raw exceptions.
     upstream = getattr(response, 'status_code', None)
     logger.warning('Wikimedia search failed: cause=%s upstream_status=%s', cause, upstream)
+    # Expose only the bounded API code, never info, query, response body or proxy details.
+    if isinstance(api_code, str) and re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,79}', api_code):
+        detail = detail.rstrip('.') + f' (codice API: {api_code}).'
     return HTTPException(status, detail, headers=retry_headers(response) if response is not None else None)
 
 
@@ -26,6 +58,7 @@ async def search_pages(query, limit):
         'action': 'query', 'format': 'json', 'formatversion': '1', 'generator': 'search',
         'gsrsearch': query, 'gsrnamespace': '6', 'gsrlimit': str(limit), 'prop': 'imageinfo',
         'gsrsort': 'relevance',
+        'maxlag': '5',
         'iiprop': 'url|extmetadata|mime', 'iiurlwidth': '500',
         'iiextmetadatafilter': 'Artist|Attribution|LicenseShortName|LicenseUrl|Copyrighted|UsageTerms',
     }
@@ -34,21 +67,38 @@ async def search_pages(query, limit):
         async with httpx.AsyncClient(timeout=httpx.Timeout(30), headers={
             'User-Agent': USER_AGENT, 'Accept': 'application/json'
         }) as client:
-            response = await client.get(URL, params=params)
-            response.raise_for_status()
-            payload = response.json()
+            for attempt in range(2):
+                response = await client.get(URL, params=params)
+                response.raise_for_status()
+                payload = response.json()
+                error = payload.get('error') if isinstance(payload, dict) else None
+                if attempt == 0 and isinstance(error, dict) and error.get('code') == 'urlparamnormal':
+                    # One unrenderable file can abort the entire imageinfo generator.
+                    # Retry the same search without thumbnails, not a different model.
+                    delay = retry_seconds(response.headers.get('Retry-After', ''))
+                    if delay is not None and delay > 5:
+                        raise unavailable('Wikimedia Commons richiede una pausa prima di ritentare la ricerca.',
+                                          cause='thumbnail_retry_wait', status=503, response=response,
+                                          api_code='urlparamnormal')
+                    await asyncio.sleep(max(2, delay or 0))
+                    params.pop('iiurlwidth')
+                    continue
+                break
         if not isinstance(payload, dict):
             raise ValueError('Unexpected response structure')
         if 'error' in payload:
             error = payload['error']
             code = error.get('code') if isinstance(error, dict) else None
-            if code in ('ratelimited', 'maxlag', 'readonly'):
+            if not isinstance(code, str):
+                code = None
+            if code in BUSY:
                 raise unavailable('Wikimedia Commons è temporaneamente occupato o ha limitato le richieste. Attendi e riprova.',
-                                  cause=code, status=503, response=response)
-            if code in ('badsearch', 'srsearch-text-disabled', 'srsearch-title-disabled'):
+                                  cause='upstream_busy', status=503, response=response, api_code=code)
+            if code in INVALID_SEARCH:
                 raise unavailable('Wikimedia Commons non può elaborare questa ricerca. Prova un nome più semplice.',
-                                  cause='invalid_search', status=422, response=response)
-            raise unavailable('Wikimedia Commons ha restituito un errore API. Riprova tra poco.', cause='api_error', response=response)
+                                  cause='invalid_search', status=422, response=response, api_code=code)
+            raise unavailable('Wikimedia Commons ha restituito un errore API. Riprova tra poco.',
+                              cause='api_error', response=response, api_code=code)
         result = payload.get('query', {})
         if not isinstance(result, dict):
             raise ValueError('Unexpected query structure')

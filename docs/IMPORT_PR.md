@@ -151,3 +151,20 @@ Test di scala con 1.105 modelli; sito remoto simulato e coda verificata dopo
 pausa/riapertura. Il proxy cloud continua a impedire la visita reale di 1000bit:
 nessun dato storico nuovo viene dichiarato recuperato in massa. La copertura
 effettiva della prima visita locale è esportabile nel resoconto.
+
+Correzione della ricerca fotografica bloccata: l'errore Commons
+`urlparamnormal` produce un solo nuovo tentativo della stessa ricerca senza
+ridimensionamento. Formati, crediti e licenze restano filtrati. Il pannello
+mostra il modello corrente e permette di correggere la ricerca o saltarlo;
+le ricerche con sintassi rifiutata hanno una semplificazione limitata, mentre
+limiti, guasti remoti e risposte sconosciute conservano la macchina in pausa.
+La ripresa rispetta lease e `Retry-After`, inclusi quelli espressi come data.
+Nessuna nuova migrazione e nessuna sostituzione delle foto esistenti.
+
+Verifiche della correzione: 303 test SQLite più uno specifico PG saltato,
+304 PostgreSQL, 26 frontend, build React, Compose e smoke sul catalogo
+isolato di 1.105 schede. Chromium verifica fallback miniature, 429, salto,
+modifica, ricaricamento/ripresa, foto conservata e layout a 320 px. Risposte
+Commons sintetiche: il caso reale `urlparamnormal` è stato diagnosticato sul
+computer dell'operatore, ma la richiesta live dal cloud resta bloccata dal
+proxy. Dettagli e comandi per il progetto Compose attivo nella guida foto.

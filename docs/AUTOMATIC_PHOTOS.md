@@ -35,7 +35,24 @@ ricontrollata prima del salvataggio e conservata.
   di rete e alle eventuali pause.
 - Errori di rete, timeout e limiti Commons fermano la coda sulla macchina
   corrente. Riprendendo viene ritentata la stessa macchina e viene rispettato
-  `Retry-After` numerico, oppure una pausa di 30 secondi.
+  `Retry-After` (secondi o data HTTP), oppure una pausa di 30 secondi.
+- Il pannello mostra **Modello corrente** e il testo della ricerca. A ricerca
+  ferma puoi **Salva ricerca per questo modello**, poi riprendere, oppure
+  **Salta questo modello**. Il nome nella scheda e le foto esistenti non
+  cambiano. Questi comandi conservano le pause richieste da Commons.
+- Se Commons rifiuta la sintassi della ricerca (422), viene provata una sola
+  semplificazione persistente del nome; per esempio `Apple ][` diventa
+  `Apple II`. Se non è possibile semplificare ulteriormente, la macchina viene
+  conteggiata come **Ricerca non valida** e la coda prosegue. Errori temporanei
+  e risposte sconosciute restano invece in pausa, senza scartare il modello.
+- L'errore API `urlparamnormal` riguarda il ridimensionamento dei file, non
+  l'assenza di risultati. La stessa ricerca viene ritentata una sola volta
+  senza richiedere miniature, dopo almeno due secondi. Restano i filtri su
+  formato, attribuzione e licenza; per i risultati utilizzabili si usa l'URL
+  originale anche come anteprima. Le altre ricerche mantengono miniature a
+  500 px. Se il secondo tentativo fallisce, la macchina resta in attesa.
+  Un `Retry-After` superiore a cinque secondi rinvia il tentativo alla ripresa
+  della coda, evitando di tenere occupata la richiesta API durante lunghe pause.
 - Dopo un'interruzione improvvisa, una richiesta bloccata viene resa di nuovo
   disponibile alla scadenza della prenotazione di 90 secondi.
 
@@ -80,7 +97,11 @@ Serve `DATABASE_URL` impostata sul database corretto; la migrazione è ripetibil
 Non viene avviata alcuna ricerca all'avvio o durante la migrazione.
 
 API locali: `GET/POST /api/admin/photos`,
-`POST /api/admin/photos/{id}/step`, `/pause` e `/resume`.
+`POST /api/admin/photos/{id}/step`, `/pause`, `/resume`, `/query` e `/skip`.
+Gli ultimi due richiedono `item_id` del modello corrente; `/query` richiede
+anche `query` (2–90 caratteri). Una selezione obsoleta o una richiesta ancora
+in corso produce 409. Non sono necessarie nuove colonne o migrazioni per
+questi controlli.
 Una prenotazione atomica impedisce due elaborazioni contemporanee anche con
 più processi API. Le transazioni database non rimangono aperte durante la
 richiesta a Wikimedia. Lo svuotamento dell'archivio archivia anche le code,
@@ -109,3 +130,47 @@ oltre 500 kB e sulla deprecazione Starlette TestClient/httpx.
 La ricerca live dall'ambiente cloud è bloccata dal proxy: non è stato eseguito
 un recupero reale delle foto per le 1.139 schede. La selezione effettiva delle
 immagini andrà controllata sul computer dell'operatore.
+
+## Ripresa di un'istanza esistente
+
+Se `docker compose ls -a` mostra più progetti, usa quello che contiene il
+catalogo effettivamente consultato. Nel caso diagnosticato su Windows il
+progetto attivo è `hhe-import-test`; l'istanza predefinita ha API e web nello
+stato `Created` e non è quella da aggiornare:
+
+```powershell
+git pull --ff-only
+docker compose -p hhe-import-test up --build -d
+docker compose -p hhe-import-test ps
+```
+
+Ricarica il browser con Ctrl+F5 e premi **Riprendi ricerca automatica**.
+La coda già ferma a 304/1139, le 205 foto e tutti gli esiti rimangono nel
+database: non svuotare l'archivio e non rimuovere i volumi. L'aggiornamento
+non richiede una nuova coda. Per i log usa lo stesso nome progetto:
+`docker compose -p hhe-import-test logs --tail=100 api`.
+
+Il caso reale `MicroMainFrame 9000` ha restituito HTTP 200 con codice API
+`urlparamnormal` dal computer dell'operatore. Il fallback, i limiti e la
+conservazione delle foto sono verificati con risposte Commons sintetiche;
+la verifica live dal cloud resta impedita dal proxy.
+
+### Verifica della correzione della ripresa
+
+303 test SQLite superati (uno specifico PostgreSQL saltato), 304 PostgreSQL
+su database isolato e 26 frontend. Build React e avvio Compose riusciti;
+catalogo PostgreSQL di prova conservato a 1.105 schede, API foto disponibile.
+Restano gli avvisi preesistenti sul bundle Vite e Starlette TestClient/httpx.
+
+Nel browser Chromium con backend reale e Commons simulato: ripresa di una
+coda già in pausa, errore `urlparamnormal` seguito da successo senza miniature,
+429 locale senza arresto della coda, pausa per indisponibilità remota, salto
+esplicito, modifica della ricerca, ricaricamento e ripresa dopo il cooldown.
+Due foto associate e una macchina saltata; la foto preesistente conservata.
+Controllato anche il layout a 320 px, senza overflow né errori JavaScript.
+I test coprono inoltre ritentativi limitati, filtro PDF, attribuzione e
+licenza, `Retry-After` lungo e recupero senza cambiare ID o esiti della coda.
+
+Il significato di `urlparamnormal` è riscontrabile nell'implementazione
+ufficiale MediaWiki, metodo `checkParameterNormalise` di
+[ApiQueryImageInfo](https://github.com/wikimedia/mediawiki/blob/master/includes/Api/ApiQueryImageInfo.php).

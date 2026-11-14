@@ -1,7 +1,8 @@
-"""Durable, opt-in Commons cover search. One bounded request per step; no worker."""
+"""Durable, opt-in Commons cover search. One model per bounded step; no worker."""
 from datetime import datetime, timedelta, timezone
 import re
 import uuid
+import unicodedata
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import DateTime, ForeignKey, String, Text, UniqueConstraint, func, select, update, text
@@ -9,6 +10,9 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Mapped, Session, mapped_column
 
 from .models import Base, Computer, ComputerImage
+from .admin import Input
+from .commons import retry_seconds
+from pydantic import Field, field_validator
 
 
 def now():
@@ -51,6 +55,30 @@ def missing_images():
     return ~Computer.images.any() & ((Computer.image_url.is_(None)) | (Computer.image_url == ''))
 
 
+def simple_query(value):
+    """Fallback only after a query rejection; retain meaningful vintage model names."""
+    value = unicodedata.normalize('NFKC', value)
+    value = re.sub(r'\bApple\s*(?:\]\[|//(?=[ce]\b))', 'Apple II', value, flags=re.I)
+    value = re.sub(r'\bApple\s*///', 'Apple III', value, flags=re.I)
+    value = value.replace('+', ' Plus ')
+    return ' '.join(re.sub(r'[^\w\s.-]', ' ', value, flags=re.UNICODE).split()).strip('.- ')[:90]
+
+
+class CurrentItem(Input):
+    item_id: int = Field(gt=0)
+
+
+class EditQuery(CurrentItem):
+    query: str = Field(min_length=2, max_length=90)
+
+    @field_validator('query')
+    @classmethod
+    def printable(cls, value):
+        if any(unicodedata.category(char).startswith('C') for char in value):
+            raise ValueError('La ricerca non può contenere caratteri di controllo.')
+        return value
+
+
 def reusable(item):
     """Automation requires attribution and a recognizable free licence, unlike manual review."""
     licence = (item.get('license_name') or '').strip().casefold()
@@ -67,8 +95,13 @@ def job_data(db, job):
                             .group_by(PhotoItem.status)).all())
     recent = db.scalars(select(PhotoItem).where(PhotoItem.job_id == job.id, PhotoItem.status != 'pending')
                         .order_by(PhotoItem.position.desc()).limit(10)).all()
+    current = db.scalar(select(PhotoItem).where(PhotoItem.job_id == job.id, PhotoItem.status == 'pending')
+                        .order_by(PhotoItem.position).limit(1)) if job.status in ('ready', 'paused') else None
     return {'id': job.id, 'status': job.status, 'counts': counts, 'total': sum(counts.values()),
             'error': job.error, 'next_request_at': utc(job.next_request_at).isoformat() if job.next_request_at else None,
+            'lease_until': utc(job.lease_until).isoformat() if job.lease_token and job.lease_until else None,
+            'current': {'id': current.id, 'computer_id': current.computer_id, 'model_name': current.model_name,
+                        'query': current.query, 'error': current.error} if current else None,
             'recent': [{'computer_id': row.computer_id, 'model_name': row.model_name, 'status': row.status,
                         'error': row.error, 'source_url': row.source_url} for row in recent]}
 
@@ -82,6 +115,43 @@ def get_job(db, job_id):
 
 def create_photo_router(get_db, search):
     router = APIRouter(prefix='/api/admin/photos', tags=['Fotografie automatiche locali'])
+
+    def editable_current(db, job_id, item_id):
+        if db.bind.dialect.name == 'postgresql':
+            db.execute(text('SELECT pg_advisory_xact_lock(68484931)'))
+        else:
+            db.execute(text('BEGIN IMMEDIATE'))
+        job = db.scalar(select(PhotoJob).where(PhotoJob.id == job_id).with_for_update())
+        if job is None:
+            raise HTTPException(404, 'Ricerca fotografica non trovata')
+        if job.active_key != 'commons' or job.status not in ('paused', 'ready'):
+            raise HTTPException(409, 'Questa coda non può più essere modificata.')
+        if job.lease_token and job.lease_until and utc(job.lease_until) > now():
+            raise HTTPException(409, 'Attendi la conclusione o la scadenza della ricerca corrente.')
+        row = db.scalar(select(PhotoItem).where(PhotoItem.job_id == job_id, PhotoItem.status == 'pending')
+                        .order_by(PhotoItem.position).limit(1))
+        if row is None or row.id != item_id:
+            raise HTTPException(409, 'La coda è avanzata: aggiorna il pannello prima di modificare la ricerca.')
+        job.lease_token = None; job.lease_until = None
+        return job, row
+
+    @router.post('/{job_id}/query')
+    def edit_query(job_id: int, data: EditQuery, db: Session = Depends(get_db)):
+        job, row = editable_current(db, job_id, data.item_id)
+        row.query, row.error, job.error, job.status = data.query, None, None, 'paused'
+        db.commit()
+        return job_data(db, job)
+
+    @router.post('/{job_id}/skip')
+    def skip_current(job_id: int, data: CurrentItem, db: Session = Depends(get_db)):
+        job, row = editable_current(db, job_id, data.item_id)
+        row.status, row.error = 'skipped', 'Ricerca saltata esplicitamente dall’operatore; nessuna foto eliminata.'
+        job.error, job.status = None, 'paused'
+        db.flush()
+        if not db.scalar(select(PhotoItem.id).where(PhotoItem.job_id == job_id, PhotoItem.status == 'pending').limit(1)):
+            job.status, job.active_key = 'completed', None
+        db.commit()
+        return job_data(db, job)
 
     @router.get('')
     def status(db: Session = Depends(get_db)):
@@ -169,10 +239,20 @@ def create_photo_router(get_db, search):
         job.lease_token = None; job.lease_until = None
         job.next_request_at = now() + timedelta(seconds=2)
         if failure:
-            job.status = 'paused'; job.error = str(failure.detail); row.error = job.error
-            retry = (failure.headers or {}).get('Retry-After', '30')
-            delay = min(86400, max(2, int(retry))) if retry.isascii() and retry.isdigit() else 30
-            job.next_request_at = now() + timedelta(seconds=delay)
+            row.error = str(failure.detail)
+            headers = failure.headers or {}
+            delay = retry_seconds(headers.get('Retry-After') or headers.get('retry-after') or '')
+            job.next_request_at = now() + timedelta(seconds=max(2, delay if delay is not None else (2 if failure.status_code == 422 else 30)))
+            if failure.status_code == 422:
+                fallback = simple_query(query)
+                job.error = None
+                if len(fallback) >= 2 and fallback != query:
+                    row.query = fallback
+                    row.error = 'Ricerca rifiutata: al prossimo passo verrà provato il nome semplificato «' + fallback + '».'
+                else:
+                    row.status = 'search_error'
+            else:
+                job.status = 'paused'; job.error = str(failure.detail)
         elif skip or c is None or c.model_name != model_name or c.image_url or db.scalar(select(ComputerImage.id).where(ComputerImage.computer_id == c.id).limit(1)):
             row.status = 'skipped'; row.error = 'Scheda rimossa, rinominata, non ricercabile o già provvista di foto.'
         else:
@@ -186,7 +266,7 @@ def create_photo_router(get_db, search):
                 db.add(image); db.flush()
                 row.status = 'added'; row.image_id = image.id; row.source_url = image.source_url; row.error = None
         db.flush()
-        if not failure and not db.scalar(select(PhotoItem.id).where(PhotoItem.job_id == job_id, PhotoItem.status == 'pending').limit(1)):
+        if not db.scalar(select(PhotoItem.id).where(PhotoItem.job_id == job_id, PhotoItem.status == 'pending').limit(1)):
             job.status = 'completed'; job.active_key = None
         db.commit()
         return job_data(db, job)

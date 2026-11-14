@@ -146,3 +146,85 @@ def test_repeatable_migration_preserves_catalog_and_queue(client):
     migrate(main.engine); migrate(main.engine)
     assert client.get('/api/admin/photos').json()['job']['id'] == jid
     assert client.get(f'/api/computers/{cid}').status_code == 200
+
+
+def test_rejected_query_gets_one_persisted_simplification_then_recovers(client, monkeypatch, clock):
+    jid, cid = single_queue(client)
+    with SessionLocal() as db:
+        row = db.scalar(select(PhotoItem).where(PhotoItem.job_id == jid))
+        row.query = 'Apple ]['; db.commit()
+    calls = []
+    async def search(query, limit):
+        calls.append(query)
+        if query == 'Apple ][':
+            raise HTTPException(422, 'Invalid query (cirrussearch-parse-error)')
+        return {'1': page()}
+    monkeypatch.setattr(main, 'search_pages', search)
+    first = client.post(f'/api/admin/photos/{jid}/step').json()
+    assert first['status'] == 'ready' and first['current']['query'] == 'Apple II'
+    assert first['counts'] == {'pending': 1}
+    assert client.get('/api/admin/photos').json()['job']['current']['query'] == 'Apple II'
+    assert client.post(f'/api/admin/photos/{jid}/step').status_code == 429
+    clock[0] += timedelta(seconds=2)
+    second = client.post(f'/api/admin/photos/{jid}/step').json()
+    assert second['status'] == 'completed' and second['counts'] == {'added': 1}
+    assert calls == ['Apple ][', 'Apple II']
+
+
+def test_permanent_failure_of_simple_query_does_not_block_next_model(client, monkeypatch, clock):
+    jid = client.post('/api/admin/photos').json()['id']
+    with SessionLocal() as db:
+        row = db.scalar(select(PhotoItem).where(PhotoItem.job_id == jid).order_by(PhotoItem.position))
+        row.query = 'Plain model'; db.commit()
+    calls = []
+    async def invalid(query, limit):
+        calls.append(query)
+        raise HTTPException(422, 'Invalid query')
+    monkeypatch.setattr(main, 'search_pages', invalid)
+    first = client.post(f'/api/admin/photos/{jid}/step').json()
+    assert first['status'] == 'ready' and first['counts']['search_error'] == 1
+    assert first['current']['model_name'] != first['recent'][0]['model_name']
+    clock[0] += timedelta(seconds=2)
+    client.post(f'/api/admin/photos/{jid}/step')
+    assert len(calls) == 2 and calls[0] != calls[1]
+
+
+def test_current_query_edit_and_skip_preserve_cooldown_and_do_not_change_catalog(client, monkeypatch, clock):
+    jid = client.post('/api/admin/photos').json()['id']
+    async def unavailable(*args):
+        raise HTTPException(503, 'Commons busy', headers={'Retry-After': '60'})
+    monkeypatch.setattr(main, 'search_pages', unavailable)
+    paused = client.post(f'/api/admin/photos/{jid}/step').json()
+    current = paused['current']; before = client.get(f"/api/computers/{current['computer_id']}").json()
+    edited = client.post(f'/api/admin/photos/{jid}/query', json={'item_id': current['id'], 'query': 'IBM 360'}).json()
+    assert edited['current']['query'] == 'IBM 360' and edited['error'] is None
+    assert edited['next_request_at'] == paused['next_request_at']
+    client.post(f'/api/admin/photos/{jid}/resume')
+    assert client.post(f'/api/admin/photos/{jid}/step').status_code == 429
+    skipped = client.post(f'/api/admin/photos/{jid}/skip', json={'item_id': current['id']}).json()
+    assert skipped['counts']['skipped'] == 1 and skipped['current']['id'] != current['id']
+    assert skipped['next_request_at'] == paused['next_request_at']
+    assert client.get(f"/api/computers/{current['computer_id']}").json() == before
+    assert client.post(f'/api/admin/photos/{jid}/skip', json={'item_id': current['id']}).status_code == 409
+
+
+def test_current_edit_and_skip_cannot_race_an_inflight_request_or_archived_job(client, clock):
+    jid, cid = single_queue(client)
+    state = client.get('/api/admin/photos').json()['job']; item_id = state['current']['id']
+    with SessionLocal() as db:
+        job = db.get(PhotoJob, jid); job.lease_token = 'inflight'; job.lease_until = clock[0] + timedelta(seconds=90); db.commit()
+    assert client.post(f'/api/admin/photos/{jid}/skip', json={'item_id': item_id}).status_code == 409
+    assert client.post(f'/api/admin/photos/{jid}/query', json={'item_id': item_id, 'query': 'Other search'}).status_code == 409
+    clock[0] += timedelta(seconds=91)
+    assert client.post(f'/api/admin/photos/{jid}/query', json={'item_id': item_id, 'query': 'Other search'}).status_code == 200
+    with SessionLocal() as db:
+        job = db.get(PhotoJob, jid); job.status = 'archived'; job.active_key = None; db.commit()
+    assert client.get('/api/admin/photos').json()['job']['current'] is None
+    assert client.post(f'/api/admin/photos/{jid}/query', json={'item_id': item_id, 'query': 'Other search'}).status_code == 409
+
+
+@pytest.mark.parametrize('value,expected', [('Apple ][', 'Apple II'), ('Apple //e', 'Apple IIe'),
+    ('Apple ///', 'Apple III'), ('ZX Spectrum +2', 'ZX Spectrum Plus 2'), ('IBM (360): test', 'IBM 360 test')])
+def test_fallback_retains_distinguishing_model_tokens(value, expected):
+    assert photo_jobs.simple_query(value) == expected
+    assert photo_jobs.simple_query(expected) == expected
