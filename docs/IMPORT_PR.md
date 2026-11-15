@@ -223,3 +223,32 @@ dei 1.105 modelli di base; lettura sul corpus PostgreSQL trova il Fujitsu.
 La fixture 935 ricostruisce soltanto i nomi e l'URL forniti dall'operatore;
 1000bit live resta bloccato dal proxy. Nessun nuovo dato tecnico storico
 recuperato o dichiarato verificato e nessuna modifica allo schema.
+
+Prezzi da ricerca: aggiunta la fonte **Prezzi storici (Excel / CSV / JSON)**,
+con caricamento diretto XLSX del foglio principale, anteprima ed esito. Sono
+consentiti solo aggiornamenti di schede esistenti, abbinati per marca/modello,
+senza interpretare gli ordinali Excel come ID del database. Il lettore non
+esegue formule o segue URL, riallinea soltanto le rotazioni inequivocabili delle
+colonne e conserva l'originale binario, l'impronta e i valori per riga. Nessuna
+nuova dipendenza o migrazione. Valuta, mercato, configurazione, imposte e
+varianti restano tracciati; l'anno non diventa automaticamente data di lancio.
+Famiglie/varianti diverse e indicazioni parziali restano note. Gli URL sono
+riferimenti da verificare; la fiducia dichiarata nel foglio non marca i dati
+come verificati e non viene inventata una data di consultazione della fonte.
+
+Sul file ricevuto: 569 prezzi riportati, 22 listini successivi, 12 note,
+502 righe senza importo escluse e 19 disallineamenti di colonne corretti.
+Nel test PostgreSQL tutte le 603 righe sono abbinate, 591 prezzi aggiunti,
+3.594 asserzioni pending e replay di 603 invariati. Hash delle tabelle
+protette invariati; transazione di prova annullata. Il database Windows
+non è stato raggiunto. Corretto anche l'elenco esportato che aveva rimosso
+slash da alcune sigle; l'abbinamento prezzi supporta il file precedente senza
+rinominare i sistemi. L'Excel e i risultati normalizzati non sono pubblicati
+nel repository: i test usano esclusivamente prezzi sintetici.
+
+Verifiche: suite complete 394 PostgreSQL, 393 SQLite più uno specifico PG
+saltato e 27 frontend. Ripetuti i 27 test prezzi su entrambi i database dopo
+l'ultimo controllo numerico. Build/Compose e browser per anteprima, report,
+download XLSX, applicazione, replay e mobile riusciti. CI estesa con la prova
+browser dei prezzi. Accesso live alle fonti campione bloccato dal proxy:
+nessun prezzo dichiarato storicamente verificato. Guida in `docs/HISTORICAL_PRICES.md`.

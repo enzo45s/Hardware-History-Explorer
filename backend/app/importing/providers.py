@@ -9,6 +9,7 @@ from .wikidata_details import augment, linked_ids
 USER_AGENT = 'HardwareHistoryExplorer/1.3 (https://github.com/enzo45s/Hardware-History-Explorer)'
 PROVIDERS = [
     {'id': 'manual', 'name': 'CSV / JSON autorizzato', 'mode': 'upload', 'license': 'Dichiarata dall’operatore'},
+    {'id': 'historical_prices', 'name': 'Prezzi storici (Excel / CSV / JSON)', 'mode': 'upload', 'license': 'Ricerca fornita dall’operatore; URL e dati da verificare'},
     {'id': 'wikidata', 'name': 'Wikidata', 'mode': 'api', 'license': 'CC0 (dati strutturati)', 'url': 'https://www.wikidata.org/'},
     {'id': 'retroflops', 'name': 'RetroFlops', 'mode': 'api', 'license': 'CC BY 4.0 — RetroFlops; adattamento dei dati', 'url': 'https://retroflops.github.io/data/'},
     {'id': 'oldcomputers', 'name': 'Oldcomputers.net', 'mode': 'manual', 'license': 'Permessi da verificare', 'url': 'https://www.oldcomputers.net/'},

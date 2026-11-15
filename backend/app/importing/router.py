@@ -28,6 +28,7 @@ def job_data(job):
             'format': job.format, 'status': job.status, 'error': job.error, 'retry_of': job.retry_of,
             'created_at': job.created_at.isoformat(), 'total': len(job.rows), 'counts': dict(counts), 'verification_counts': verification,
             'existing_only': bool(job.request_options.get('existing_only')),
+            'price_workbook_report': job.request_options.get('price_workbook_report'),
             'data_coverage': {'records_with_source': sum(bool(record.get('source')) for record in records), 'prices': prices}}
 
 
@@ -148,9 +149,15 @@ def create_import_router(get_db):
         filename = (file.filename or 'dataset').replace('\\', '/').split('/')[-1][:250]
         format = filename.rsplit('.', 1)[-1].lower()
         try:
-            records = upload_records(provider, format, raw, source_url)
+            price_report = None
+            if provider == 'historical_prices' and format == 'xlsx':
+                from .prices import workbook_records
+                records, price_report = workbook_records(raw)
+            else:
+                records = upload_records(provider, format, raw, source_url)
             job = stage(db, provider, filename, format, raw, records=records,
                         options={'upload': True, 'rights_confirmed': True, 'source_url': source_url,
+                                 **({'price_workbook_report': price_report} if price_report is not None else {}),
                                  'existing_only': existing_only if existing_only is not None else provider == '1000bit'})
         except (ValueError, TypeError, KeyError, RecursionError, csv.Error) as exc:
             db.rollback()
@@ -191,8 +198,9 @@ def create_import_router(get_db):
     def original(job_id: int, db: Session = Depends(get_db)):
         from fastapi.responses import Response
         job = job_or_404(db, job_id)
+        extension = 'xlsx' if job.provider == 'historical_prices' and job.format == 'xlsx' else 'txt'
         return Response(original_bytes(job), media_type='application/octet-stream',
-                        headers={'Content-Disposition': 'attachment; filename="import-original.txt"', 'X-Content-Type-Options': 'nosniff'})
+                        headers={'Content-Disposition': f'attachment; filename="import-original.{extension}"', 'X-Content-Type-Options': 'nosniff'})
 
     @router.post('/{job_id}/apply')
     def apply(job_id: int, db: Session = Depends(get_db)):
@@ -210,7 +218,12 @@ def create_import_router(get_db):
         if not options.get('upload'):
             return job_data(remote_job(db, previous.provider, options, retry_of=previous.id))
         raw = original_bytes(previous)
-        records = upload_records(previous.provider, previous.format, raw, options.get('source_url'))
+        if previous.provider == 'historical_prices' and previous.format == 'xlsx':
+            from .prices import workbook_records
+            records, report = workbook_records(raw)
+            options = {**options, 'price_workbook_report': report}
+        else:
+            records = upload_records(previous.provider, previous.format, raw, options.get('source_url'))
         return job_data(stage(db, previous.provider, previous.filename, previous.format, raw, records=records,
                               options=options, retry_of=previous.id))
 

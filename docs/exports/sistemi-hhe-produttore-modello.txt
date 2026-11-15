@@ -91,17 +91,17 @@ Amstrad plc - PenPad PDA 600
 Amstrad plc - ZX Spectrum +2
 Amstrad plc - ZX Spectrum +2a
 Amstrad plc - ZX Spectrum +3
+Apple - ///
+Apple - //c
+Apple - //c (rev 4)
+Apple - //c (UniDisk 3.5)
+Apple - //c Plus
+Apple - //e
+Apple - //e (enhanced)
+Apple - //e (Platinum)
 Apple - ][
 Apple - ][ J-Plus
 Apple - ][+
-Apple - Apple ///
-Apple - c
-Apple - c (rev 4)
-Apple - c (UniDisk 3.5)
-Apple - c Plus
-Apple - e
-Apple - e (enhanced)
-Apple - e (Platinum)
 Apple - I
 Apple - IIgs
 Apple - iMac (Bondi blue)
@@ -322,7 +322,7 @@ Daewoo - Zemmix CPC-50B
 Daewoo - Zemmix CPC-51
 Daewoo - Zemmix CPC-61
 Daewoo - Zemmix CPG-120 Normal
-Data General - One
+Data General - Data General/One
 Didaktik Skalica - Didaktik 90
 Didaktik Skalica - Didaktik Gama 87
 Didaktik Skalica - Didaktik Gama 88
@@ -698,9 +698,9 @@ Olympia - PHC-2
 Olympia - PHC-28
 Omni Logic Inc. - Omni 4 Logic Analyzer
 Orel - BK-08
-Osborne - 1
-Osborne - 1 with SCREEN-PAC
 Osborne - Executive
+Osborne - Osborne-1
+Osborne - Osborne-1 with SCREEN-PAC
 Osborne - Vixen
 Osborne/Nuevo - Osborne-1 (Nuevo Video)
 Panasonic - CF-2700

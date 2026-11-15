@@ -171,6 +171,12 @@ L'abbinamento 1000bit usa insieme marca e modello, normalizzando paesi tra
 parentesi e spazi/trattini equivalenti: `Fujitsu (Japan) · FM 11 EX` corrisponde
 a `Fujitsu · FM-11 EX`. **Riprova le pagine non abbinate** permette di
 recuperare gli scarti precedenti conservando gli aggiornamenti già riusciti.
+
+Per una ricerca prezzi in Excel, scegli **Prezzi storici (Excel / CSV / JSON)**:
+legge il foglio **Prezzi per modello**, mostra l'anteprima e aggiorna solo
+sistemi esistenti. Conserva URL, mercato, valuta e contesto della configurazione;
+prezzi e affidabilità dichiarata restano da verificare. Non usa l'anno del
+foglio come data di lancio. Vedi [istruzioni e verifica del file prezzi](docs/HISTORICAL_PRICES.md).
 In **Amministrazione → Foto automatiche** puoi associare il primo risultato
 Wikimedia utilizzabile ai sistemi senza foto, senza conferme per singola immagine:
 [istruzioni, pausa/ripresa e correzione delle immagini](docs/AUTOMATIC_PHOTOS.md).

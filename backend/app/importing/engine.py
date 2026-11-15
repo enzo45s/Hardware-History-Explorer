@@ -9,7 +9,7 @@ from ..import_models import ImportJob, ImportRow, ImportClaim, ExternalIdentity,
 from ..admin import historical_date
 from .normalize import Record, name_key, parse_payload, MAX_BYTES, MAX_ROWS
 from .vocabulary import matching_specs, quantity_equal
-from .identity import provider_computer_key, provider_maker_key
+from .identity import price_model_keys, provider_computer_key, provider_maker_key
 from .reconcile import reconciled_configuration, reconciled_release
 
 TARGETS = {c.__name__: c for c in (Computer, Configuration, Specification, Release, Sale, Review, Fact)}
@@ -42,9 +42,11 @@ def catalog_candidates(db, data, provider):
             return [identity.computer_id], False
     makers = [m.id for m in db.scalars(select(Manufacturer))
               if provider_maker_key(provider, m.name) == provider_maker_key(provider, data['manufacturer'])]
+    key = provider_computer_key(provider, data['manufacturer'], data['model_name'])
+    price_keys = price_model_keys(data['manufacturer'], data['model_name']) if provider == 'historical_prices' else None
     candidates = [c.id for c in db.scalars(select(Computer).where(Computer.manufacturer_id.in_(makers)))
-                  if provider_computer_key(provider, c.manufacturer.name, c.model_name)
-                  == provider_computer_key(provider, data['manufacturer'], data['model_name'])]
+                  if (bool(price_keys & price_model_keys(c.manufacturer.name, c.model_name)) if price_keys is not None
+                      else key == provider_computer_key(provider, c.manufacturer.name, c.model_name))]
     return candidates, len(candidates) > 1
 
 
@@ -59,14 +61,20 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
     # reject these before storing raw rows in PostgreSQL's strict JSON type.
     json.dumps(records, allow_nan=False)
     options = dict(options or {})
+    if provider == 'historical_prices':
+        options['existing_only'] = True
     options.pop('raw_payload_encoding', None)
-    try:
-        original_text = raw.decode('utf-8')
-    except UnicodeDecodeError:
-        if provider != '1000bit' or format not in ('html', 'htm'):
-            raise ValueError('Il dataset richiede UTF-8.')
+    if provider == 'historical_prices' and format == 'xlsx':
         original_text = base64.b64encode(raw).decode('ascii')
         options['raw_payload_encoding'] = 'base64'
+    else:
+        try:
+            original_text = raw.decode('utf-8')
+        except UnicodeDecodeError:
+            if provider != '1000bit' or format not in ('html', 'htm'):
+                raise ValueError('Il dataset richiede UTF-8.')
+            original_text = base64.b64encode(raw).decode('ascii')
+            options['raw_payload_encoding'] = 'base64'
     job = ImportJob(provider=provider, filename=filename, format=format,
                     checksum=hashlib.sha256(raw).hexdigest(), raw_payload=original_text,
                     request_options=options, retry_of=retry_of)
@@ -120,7 +128,8 @@ def source(db, citation):
     for field in ('access_date', 'publication_date'):
         if isinstance(getattr(found, field), str):
             setattr(found, field, date.fromisoformat(getattr(found, field)))
-    found.access_date = found.access_date or date.today()
+    if found.source_type != 'research_reference':
+        found.access_date = found.access_date or date.today()
     db.add(found)
     db.flush()
     return found
@@ -173,7 +182,7 @@ def import_record(db, job, row):
     if c is None and candidates:
         c = db.get(Computer, candidates[0])
     created = c is None
-    maker = c.manufacturer if c is not None and provider_maker_key(job.provider, c.manufacturer.name) == provider_maker_key(job.provider, data['manufacturer']) else reference(db, Manufacturer, data['manufacturer'], provider=job.provider)
+    maker = c.manufacturer if c is not None and (job.provider == 'historical_prices' or provider_maker_key(job.provider, c.manufacturer.name) == provider_maker_key(job.provider, data['manufacturer'])) else reference(db, Manufacturer, data['manufacturer'], provider=job.provider)
     if created:
         c = Computer(manufacturer=maker, model_name=data['model_name'])
         db.add(c)
@@ -213,7 +222,7 @@ def import_record(db, job, row):
             evidence='\n'.join(x for x in (entry.get('evidence') or data.get('evidence'),
                  ('Licenza: ' + citation['license']) if citation.get('license') else None) if x) or None))
 
-    model_name = c.model_name if provider_computer_key(job.provider, c.manufacturer.name, c.model_name) == provider_computer_key(job.provider, data['manufacturer'], data['model_name']) else data['model_name']
+    model_name = c.model_name if job.provider == 'historical_prices' or provider_computer_key(job.provider, c.manufacturer.name, c.model_name) == provider_computer_key(job.provider, data['manufacturer'], data['model_name']) else data['model_name']
     record_fields(c, {**data, 'model_name': model_name, 'manufacturer_id': maker.id}, ('model_name', 'manufacturer_id', 'description', 'announcement_date'))
     for name in data.get('categories', []):
         cat = reference(db, Category, name)

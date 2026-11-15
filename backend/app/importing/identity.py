@@ -51,11 +51,11 @@ def manufacturer_base(name):
 def provider_maker_key(provider, name):
     # 1000bit appends the manufacturer's country, e.g. Fujitsu (Japan).
     # Strip only recognized geographic annotations, never corporate divisions.
-    return maker_key(manufacturer_base(name)) if provider == '1000bit' else maker_key(name)
+    return maker_key(manufacturer_base(name)) if provider in ('1000bit', 'historical_prices') else maker_key(name)
 
 
 def provider_computer_key(provider, manufacturer, model):
-    if provider != '1000bit':
+    if provider not in ('1000bit', 'historical_prices'):
         return computer_key(manufacturer, model)
     maker = manufacturer_base(manufacturer)
     normalized = model_key(maker, name_key(model))
@@ -72,3 +72,24 @@ def provider_computer_key(provider, manufacturer, model):
     # All candidates with this key must be considered, even when one is exact.
     normalized = re.sub(r'[\s_\-\u2010-\u2015]+', '', normalized)
     return provider_maker_key(provider, manufacturer), normalized
+
+
+def price_model_keys(manufacturer, model):
+    """Also recognize the exact legacy name export consumed by the workbook.
+
+    The old exporter trimmed brand prefixes and leading slashes. Compare all
+    resulting catalog candidates, never guess that an isolated 'c' means IIc.
+    """
+    keys = {provider_computer_key('historical_prices', manufacturer, model)}
+    aliases = set(MAKERS.get(maker_key(manufacturer), ())) | {manufacturer}
+    for alias in sorted(aliases, key=len, reverse=True):
+        match = re.match(re.escape(alias) + r'(?=$|[\s:/-])', model, flags=re.I)
+        if match:
+            exported = model[match.end():].lstrip(' -:/')
+            if exported:
+                keys.add(provider_computer_key('historical_prices', manufacturer, exported))
+            break
+    else:
+        brand = MAKERS.get(maker_key(manufacturer), (manufacturer,))[0]
+        keys.add(provider_computer_key('historical_prices', manufacturer, f'{brand} {model}'))
+    return keys

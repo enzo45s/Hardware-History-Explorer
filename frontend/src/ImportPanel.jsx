@@ -101,6 +101,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
       form.append('existing_only', String(existingOnly));
       if (sourceUrl.trim()) form.append('source_url', sourceUrl.trim());
     }
+    if (provider === 'historical_prices') form.append('existing_only', 'true');
     action(() => api('/admin/imports/upload', { method: 'POST', body: form }));
   }
   async function review(id, decision, note) {
@@ -108,14 +109,18 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
   }
   const selected = providers.find(p => p.id === provider);
   const singleImport = <>
+      {provider === 'historical_prices' && <>
+        <p>Carica l'Excel con il foglio «Prezzi per modello», oppure un CSV/JSON canonico. Aggiorna soltanto i sistemi già presenti, abbinandoli per produttore e modello: gli ID del foglio non sono ID del catalogo.</p>
+        <p className="muted">Gli URL e l'affidabilità dichiarata restano da verificare. Prezzi, valuta, mercato, configurazione e note vengono conservati; l'anno della ricerca non viene trasformato in una data di lancio. Le indicazioni riferite a famiglie o varianti diverse restano note.</p>
+      </>}
       {provider === '1000bit' && <>
         <p>Carica una scheda HTML salvata dal browser, un JSON del raccoglitore oppure un dataset CSV/JSON. Controlla l'anteprima prima di applicare i dati.</p>
         <label className="import-rights"><input type="checkbox" checked={existingOnly} disabled={busy} onChange={e => setExistingOnly(e.target.checked)} />Aggiorna solo calcolatori già presenti</label>
         <p className="muted">Con questa opzione attiva, associa le righe senza corrispondenza a una scheda esistente; quelle non associate saranno escluse senza creare nuovi calcolatori.</p>
       </>}
       <form onSubmit={upload}>
-        <label className="admin-field"><span>{provider === '1000bit' ? 'Scheda HTML o dataset CSV/JSON 1000bit (massimo 8 MB)' : 'Dataset CSV o JSON (UTF-8, massimo 8 MB e 1000 righe)'}</span>
-          <input type="file" accept={provider === '1000bit' ? '.html,.htm,.csv,.json' : '.csv,.json'} disabled={busy} required onChange={e => setFile(e.target.files[0] || null)} /></label>
+        <label className="admin-field"><span>{provider === 'historical_prices' ? 'Excel dei prezzi o dataset CSV/JSON (massimo 8 MB)' : provider === '1000bit' ? 'Scheda HTML o dataset CSV/JSON 1000bit (massimo 8 MB)' : 'Dataset CSV o JSON (UTF-8, massimo 8 MB e 1000 righe)'}</span>
+          <input type="file" accept={provider === 'historical_prices' ? '.xlsx,.csv,.json' : provider === '1000bit' ? '.html,.htm,.csv,.json' : '.csv,.json'} disabled={busy} required onChange={e => setFile(e.target.files[0] || null)} /></label>
         {provider === '1000bit' && <label className="admin-field"><span>URL originale della scheda HTML (facoltativo se presente nel file)</span>
           <input type="url" value={sourceUrl} maxLength={800} disabled={busy} placeholder="https://www.1000bit.it/scheda.asp?id=…" onChange={e => setSourceUrl(e.target.value)} /></label>}
         <label className="import-rights"><input type="checkbox" checked={rights} disabled={busy} required onChange={e => setRights(e.target.checked)} />Ho verificato il diritto di importare questo dataset e conservarne l'attribuzione.</label>
@@ -158,6 +163,11 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
         {job.error && <p className="inline-error">{job.error}</p>}
         <p>Totale: {job.total} righe. {Object.entries(job.counts).map(([k, n]) => `${status(k)}: ${n}`).join(' · ')}</p>
         {job.existing_only && <p className="muted">Solo aggiornamenti a calcolatori esistenti. Nessuna nuova scheda verrà creata.</p>}
+        {job.price_workbook_report && <div className="panel" role="region" aria-label="Controllo Excel dei prezzi">
+          <p>Excel: {job.price_workbook_report.models} sistemi; {job.price_workbook_report.without_price} senza importo esclusi. Prezzi numerici: {job.price_workbook_report.price_records}; sole note: {job.price_workbook_report.context_only_records}.</p>
+          <p>Righe con colonne fonte riallineate: {job.price_workbook_report.source_columns_repaired}. Righe non valide: {job.price_workbook_report.invalid_records}.</p>
+          <p className="muted">Viene letto soltanto «Prezzi per modello», per evitare doppioni fra i fogli. Riporta qui eventuali nuovi risultati prima di importare un Excel aggiornato. URL e giudizi di affidabilità provengono dal file e restano da verificare.</p>
+        </div>}
         {job.data_coverage && <p>Record con fonte nel file: {job.data_coverage.records_with_source}. Prezzi presenti nel file: {job.data_coverage.prices}.
           {!job.data_coverage.prices && ' Il dataset non contiene prezzi: il caricamento non ne aggiunge e conserva quelli già archiviati.'}</p>}
         <p>Asserzioni: {Object.entries(job.verification_counts || {}).map(([k, n]) => `${status(k)}: ${n}`).join(' · ') || 'non ancora applicate'}</p>

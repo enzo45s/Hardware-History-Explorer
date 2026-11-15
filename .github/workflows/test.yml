@@ -53,6 +53,11 @@ jobs:
         env:
           HHE_BASE_URL: http://127.0.0.1:8080/
         run: npm run test:browser
+      - name: Browser historical price workbook
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:prices
       - name: Browser manufacturer management and computer deletion
         working-directory: frontend
         env:

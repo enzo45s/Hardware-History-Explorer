@@ -36,6 +36,8 @@ Migrazione ripetibile su PostgreSQL e SQLite. Non sostituisce la migrazione
 ## Utilizzo
 
 Per **1000bit su tutto il catalogo** usa [l’avvio automatico con coda riprendibile](1000BIT_BULK.md).
+Per l'Excel della ricerca prezzi usa [Prezzi storici e relative regole](HISTORICAL_PRICES.md):
+caricamento diretto XLSX, sola integrazione di schede esistenti e contesto dei prezzi conservato.
 Le istruzioni seguenti riguardano i caricamenti singoli o da file, che restano facoltativi per questa fonte.
 
 Per i caricamenti singoli, il pannello mostra il dettaglio dell'importazione
