@@ -2,8 +2,9 @@
 
 `tools/Transfer-HheArchive.ps1` crea e ripristina un singolo archivio
 **`.hhe-backup.tar.gz`** per PostgreSQL + fotografie. Funziona con Windows
-PowerShell 5.1 incluso in Windows e PowerShell 7; occorre Docker Desktop con
-container Linux. Non richiede Python, PostgreSQL o altri programmi sul PC.
+PowerShell 5.1 incluso in Windows e PowerShell 7 su Windows, macOS e Linux;
+occorre Docker Desktop con container Linux. Su macOS installa PowerShell 7
+separatamente. Non richiede Python o PostgreSQL installati sul computer.
 Non aggiunge endpoint amministrativi esposti via HTTP.
 
 ## Cosa viene trasferito
@@ -96,6 +97,72 @@ copia esportata. Il primo PC non viene modificato dal ripristino sul secondo.
 Lavora su un PC alla volta: prima di tornare all'altro ripeti esportazione e
 ripristino nella direzione opposta. Due archivi modificati indipendentemente
 non vengono riconciliati automaticamente. Non usare `docker compose down -v`.
+
+## Secondo computer: MacBook Intel i5 con macOS Sonoma
+
+Il backup creato su Windows puo essere ripristinato sul Mac senza conversioni:
+contiene un dump logico PostgreSQL e file fotografici, non una copia fisica del
+volume PostgreSQL o delle immagini Docker. Queste ultime vengono ricompilate
+dal progetto sul Mac. La procedura qui riguarda esclusivamente **Mac Intel**.
+
+Installa e avvia **Docker Desktop per Mac con processore Intel**. Installa
+anche PowerShell 7: se hai Homebrew, dal Terminale:
+
+```bash
+brew install --cask powershell
+pwsh --version
+```
+
+Senza Homebrew puoi usare il pacchetto ufficiale **x64** dalla
+[guida Microsoft per macOS](https://learn.microsoft.com/powershell/scripting/install/installing-powershell-on-macos).
+Non occorre cambiare la shell predefinita del Mac: `pwsh -File` esegue lo script
+direttamente dal normale Terminale (zsh). `-ExecutionPolicy Bypass` serve solo
+nei comandi Windows e non e necessario qui.
+
+Apri il Terminale nella cartella del repository sul Mac e aggiorna il branch:
+
+```bash
+git fetch origin
+git switch feat/historical-data-import
+git pull --ff-only
+git rev-parse HEAD
+```
+
+Se il branch non esiste ancora sul Mac, al posto di `git switch` usa
+`git switch --track origin/feat/historical-data-import`.
+La revisione deve essere la stessa usata per **creare** il backup su Windows.
+Se il backup e precedente a un aggiornamento, il controllo di versione lo
+segnala: puoi aggiornare Windows e creare un nuovo backup oppure usare sul Mac
+la revisione di origine. Non serve aggirare il controllo per passare da un
+sistema operativo all'altro.
+
+Copia il file da Windows nella cartella `backups/` del repository sul Mac
+(creala se necessario con `mkdir -p backups`). Puoi usare una chiavetta, una
+condivisione di rete o un altro trasferimento di file. Dalla cartella del progetto:
+
+```bash
+docker compose -p hhe-import-test up --build -d --wait
+pwsh -NoProfile -File ./tools/Transfer-HheArchive.ps1 -Mode Restore -ProjectName hhe-import-test -ArchivePath "./backups/NOME-FILE.hhe-backup.tar.gz" -ConfirmRestore
+```
+
+Sostituisci `NOME-FILE` con il nome reale. Il ripristino conserva una copia
+automatica dell'archivio precedente del Mac e poi lo sostituisce con quello
+esportato da Windows. Apri **http://localhost:8080** al termine. Configura
+separatamente `.env` sul Mac se vuoi usare l'assistente AI.
+
+Per tornare a lavorare su Windows, prima esporta dal Mac:
+
+```bash
+pwsh -NoProfile -File ./tools/Transfer-HheArchive.ps1 -Mode Export -ProjectName hhe-import-test
+```
+
+Copia il nuovo file da `backups/` a Windows e usa il comando di ripristino
+Windows descritto sopra. Indica sempre il progetto Compose con il tuo archivio
+locale se sul Mac usavi gia un nome diverso da `hhe-import-test`.
+
+La prova completa disponibile e stata eseguita su Linux Intel/x86-64 con
+PowerShell 7 e Docker; l'esecuzione nativa su macOS Sonoma non e stata verificata
+in questo ambiente. Non e stata svolta alcuna verifica Apple Silicon.
 
 ## Controlli e gestione degli errori
 

@@ -17,7 +17,7 @@ ricerche nella stessa vista conservano la posizione di lettura.
 
 Se stai **aggiornando la versione 1.0**, scompatta la nuova versione in una cartella e assicurati di avviare Compose dallo **stesso progetto/cartella**, così Docker può riutilizzare i precedenti volumi. Per backup e migrazione tra cartelle Compose usa un nome progetto stabile (`docker compose -p hardware-history-explorer ...`) e verifica i volumi. Non eseguire `docker compose down -v` perché elimina i volumi, incluse le immagini.
 
-## Trasferire l'archivio fra due computer (Windows)
+## Trasferire l'archivio fra due computer (Windows e Mac)
 
 Con Docker Desktop avviato, dalla cartella del progetto in PowerShell:
 
@@ -40,6 +40,19 @@ automaticamente un backup `prima-del-ripristino-…` in `backups\`. Conserva pre
 fonti, originali e stato delle importazioni. `.env` e chiavi API restano locali.
 Il nome progetto deve corrispondere all'istanza con i tuoi dati: controlla
 `docker compose ls -a`. [Guida completa, recupero e verifiche](docs/BACKUP_TRANSFER.md).
+
+Sul **Mac Intel con macOS Sonoma**, installa Docker Desktop per Intel e
+PowerShell 7 (`brew install --cask powershell`, se usi Homebrew). Nel Terminale,
+con la stessa revisione Git di Windows e il backup copiato in `backups/`:
+
+```bash
+docker compose -p hhe-import-test up --build -d --wait
+pwsh -NoProfile -File ./tools/Transfer-HheArchive.ps1 -Mode Restore -ProjectName hhe-import-test -ArchivePath "./backups/NOME-FILE.hhe-backup.tar.gz" -ConfirmRestore
+```
+
+Puoi trasferire il backup fra Windows e Mac senza convertirlo. Per esportare
+dal Mac usa lo stesso comando con `-Mode Export`, senza `-ArchivePath` e
+senza `-ConfirmRestore`.
 
 ## Aggiungere le fotografie
 
