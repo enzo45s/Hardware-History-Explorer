@@ -4,6 +4,14 @@ le corrispondenze, può escludere righe e applica esplicitamente il lotto. I dat
 mancanti vengono aggiunti e i valori discordanti rimangono in revisione finché
 una persona decide, con nota e controllo sui valori modificati nel frattempo.
 
+Per lavorare su due PC, `tools/Transfer-HheArchive.ps1` esporta e ripristina
+database PostgreSQL completo e volume fotografico in un archivio portabile.
+Il ripristino verifica SHA-256 e versione del codice, crea il backup della
+destinazione, carica il dump in un database separato e cambia quello attivo
+solo dopo il completamento. Nessun nuovo endpoint HTTP o requisito Python
+sul PC Windows. I backup locali restano esclusi da Git;
+istruzioni in `docs/BACKUP_TRANSFER.md`.
+
 La PR punta a `main`, dove `feat/admin-panel` è già confluito con la PR #2.
 Il diff comprende il sistema d'importazione e i suoi successivi miglioramenti;
 amministrazione, confronti e temi sono già presenti nella base. Non effettua

@@ -17,6 +17,30 @@ ricerche nella stessa vista conservano la posizione di lettura.
 
 Se stai **aggiornando la versione 1.0**, scompatta la nuova versione in una cartella e assicurati di avviare Compose dallo **stesso progetto/cartella**, così Docker può riutilizzare i precedenti volumi. Per backup e migrazione tra cartelle Compose usa un nome progetto stabile (`docker compose -p hardware-history-explorer ...`) e verifica i volumi. Non eseguire `docker compose down -v` perché elimina i volumi, incluse le immagini.
 
+## Trasferire l'archivio fra due computer (Windows)
+
+Con Docker Desktop avviato, dalla cartella del progetto in PowerShell:
+
+```powershell
+git pull --ff-only
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Transfer-HheArchive.ps1 -Mode Export -ProjectName hhe-import-test
+```
+
+Il file creato in **`backups\`** contiene l'intero database PostgreSQL e le foto
+caricate. Copialo sul secondo PC. Con la stessa versione Git del progetto:
+
+```powershell
+git pull --ff-only
+docker compose -p hhe-import-test up --build -d --wait
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Transfer-HheArchive.ps1 -Mode Restore -ProjectName hhe-import-test -ArchivePath ".\backups\NOME-FILE.hhe-backup.tar.gz" -ConfirmRestore
+```
+
+Il ripristino **sostituisce l'archivio del secondo PC**, dopo averne creato
+automaticamente un backup `prima-del-ripristino-…` in `backups\`. Conserva prezzi,
+fonti, originali e stato delle importazioni. `.env` e chiavi API restano locali.
+Il nome progetto deve corrispondere all'istanza con i tuoi dati: controlla
+`docker compose ls -a`. [Guida completa, recupero e verifiche](docs/BACKUP_TRANSFER.md).
+
 ## Aggiungere le fotografie
 
 1. Apri il **Catalogo** (o la Timeline), poi una scheda con **Dettagli**.

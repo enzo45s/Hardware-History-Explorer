@@ -3,6 +3,17 @@ on: [push, pull_request]
 permissions:
   contents: read
 jobs:
+  powershell-syntax:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse transfer tool with Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          $tokens = $null
+          $issues = $null
+          [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'tools/Transfer-HheArchive.ps1'), [ref]$tokens, [ref]$issues) | Out-Null
+          if ($issues.Count) { $issues | Format-List; exit 1 }
   verify:
     runs-on: ubuntu-latest
     services:
@@ -25,6 +36,8 @@ jobs:
           cache-dependency-path: backend/requirements.lock
       - run: python -m pip install -r backend/requirements.lock
       - run: python -m pip check
+      - name: Full-backup archive integrity and filesystem rollback
+        run: python -m unittest discover -s tools/tests -v
       - name: SQLite tests
         working-directory: backend
         run: python -m pytest -q
@@ -47,6 +60,8 @@ jobs:
       - run: docker compose config --quiet
       - run: docker compose build
       - run: docker compose up -d --wait
+      - name: Full database and photo transfer on disposable Compose projects
+        run: python tools/tests/transfer_roundtrip.py
       - working-directory: frontend
         run: npx playwright install --with-deps chromium
       - working-directory: frontend

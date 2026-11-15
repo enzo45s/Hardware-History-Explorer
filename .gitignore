@@ -11,3 +11,9 @@ backend/uploads/
 .venv/
 .coverage
 htmlcov/
+
+# Local full database/photo backups; never commit private snapshots or secrets.
+backups/
+*.hhe-backup.tar.gz
+.hhe-transfer-*/
+.hhe-transfer-*.lock
