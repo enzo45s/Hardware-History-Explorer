@@ -42,7 +42,12 @@ Il nome progetto deve corrispondere all'istanza con i tuoi dati: controlla
 `docker compose ls -a`. [Guida completa, recupero e verifiche](docs/BACKUP_TRANSFER.md).
 
 Sul **Mac Intel con macOS Sonoma**, installa Docker Desktop per Intel e
-PowerShell 7 (`brew install --cask powershell`, se usi Homebrew). Nel Terminale,
+PowerShell 7 dal pacchetto ufficiale **`osx-x64.pkg`** indicato nella
+[guida Microsoft](https://learn.microsoft.com/powershell/scripting/install/install-powershell-on-macos).
+In alternativa, Homebrew usa la formula `brew install powershell`, senza
+`--cask`; su Intel puo richiedere la compilazione. Sonoma non figura piu
+nell'elenco attuale dei sistemi ufficialmente supportati da PowerShell:
+l'esecuzione nativa su questo sistema non e stata verificata qui. Nel Terminale,
 con la stessa revisione Git di Windows e il backup copiato in `backups/`:
 
 ```bash

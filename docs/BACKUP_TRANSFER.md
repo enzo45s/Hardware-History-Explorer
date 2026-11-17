@@ -105,16 +105,37 @@ contiene un dump logico PostgreSQL e file fotografici, non una copia fisica del
 volume PostgreSQL o delle immagini Docker. Queste ultime vengono ricompilate
 dal progetto sul Mac. La procedura qui riguarda esclusivamente **Mac Intel**.
 
-Installa e avvia **Docker Desktop per Mac con processore Intel**. Installa
-anche PowerShell 7: se hai Homebrew, dal Terminale:
+Installa e avvia **Docker Desktop per Mac con processore Intel**. Per PowerShell
+7, usa preferibilmente il pacchetto Microsoft stabile **`osx-x64.pkg`**, disponibile
+nella [guida ufficiale per macOS](https://learn.microsoft.com/powershell/scripting/install/install-powershell-on-macos).
+Apri il pacchetto con un doppio clic e segui l'installazione, poi riapri il
+Terminale e verifica:
 
 ```bash
-brew install --cask powershell
 pwsh --version
 ```
 
-Senza Homebrew puoi usare il pacchetto ufficiale **x64** dalla
-[guida Microsoft per macOS](https://learn.microsoft.com/powershell/scripting/install/installing-powershell-on-macos).
+In alternativa, Homebrew offre adesso una **formula**, non il precedente cask:
+
+```bash
+brew update
+brew install powershell
+pwsh --version
+```
+
+Il vecchio `brew install --cask powershell` non e piu valido. Il suggerimento
+`powershell@preview` riguarda una versione di anteprima e non serve per questa
+procedura. Anche il vecchio tap `powershell/tap` e deprecato: non occorre
+aggiungerlo. La formula Homebrew compila dai sorgenti; il pacchetto Microsoft
+evita questo passaggio, utile sul Mac Intel.
+
+Indicazioni controllate il 17 novembre 2026 sulla
+[documentazione del progetto PowerShell](https://github.com/PowerShell/homebrew-tap#recommended-installation)
+e sulle istruzioni Microsoft. L'elenco attuale Microsoft dei sistemi supportati
+non comprende piu **macOS Sonoma 14**: la disponibilita del pacchetto x64 non
+certifica la compatibilita con Sonoma. Non e stata eseguita una prova nativa
+su questo sistema nell'ambiente cloud.
+
 Non occorre cambiare la shell predefinita del Mac: `pwsh -File` esegue lo script
 direttamente dal normale Terminale (zsh). `-ExecutionPolicy Bypass` serve solo
 nei comandi Windows e non e necessario qui.
