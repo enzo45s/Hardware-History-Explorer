@@ -4,6 +4,13 @@ le corrispondenze, può escludere righe e applica esplicitamente il lotto. I dat
 mancanti vengono aggiunti e i valori discordanti rimangono in revisione finché
 una persona decide, con nota e controllo sui valori modificati nel frattempo.
 
+Le commercializzazioni ora presentano insieme data e prezzo da registrazioni
+complementari quando l'abbinamento e univoco. Sintesi con citazioni, originali
+consultabili e ambito della data esplicito; mercati/prezzi multipli, date
+discordanti e listini successivi rimangono distinti. Nessuna modifica agli ID,
+all'audit ETL o alle evidenze originali usate dall'editor e dall'assistente AI.
+Regole e verifica in `docs/RELEASE_SUMMARIES.md`.
+
 Per lavorare su due PC, `tools/Transfer-HheArchive.ps1` esporta e ripristina
 database PostgreSQL completo e volume fotografico in un archivio portabile.
 Il ripristino verifica SHA-256 e versione del codice, crea il backup della

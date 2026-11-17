@@ -115,6 +115,11 @@ La struttura dati comprende ora **19 tabelle**: le 18 originali più `computer_i
 - Timeline ordinata per primo lancio commerciale, con precisione storica delle date.
 - Catalogo filtrabile per nome, produttore, categoria e anni.
 - Schede con specifiche, configurazioni, mercati, dati di vendita, recensioni, fatti e fonti.
+- Commercializzazioni accorpate automaticamente quando data e prezzo hanno un
+  unico abbinamento compatibile: anno e prezzo appaiono nella stessa scheda del
+  mercato. Originali e citazioni restano disponibili; mercati multipli, date
+  discordanti e listini successivi non ricevono date inventate.
+  [Regole ed esempi](docs/RELEASE_SUMMARIES.md).
 - Confronti tra 2–5 sistemi, analisi e distribuzioni statistiche.
 - Assistente AI opzionale: solo dati del database, nessun accesso arbitrario a SQL.
 

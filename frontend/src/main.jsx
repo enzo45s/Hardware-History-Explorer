@@ -13,6 +13,7 @@ import { api, allComputers, latestRequest } from './api.js';
 import AdminPanel from './AdminPanel.jsx';
 import ComparisonPicker from './ComparisonPicker.jsx';
 import ComparisonTable from './ComparisonTable.jsx';
+import ReleasePanels from './ReleasePanels.jsx';
 import { comparisonSummary } from './comparison-api.js';
 import { computerSources } from './computer-sources.js';
 import { displaySpecification, displayDescription, displayConfigurationName } from './catalog-display.js';
@@ -213,8 +214,7 @@ function ComputerDetail({ computer, onClose, onChanged }) {
       return <tr key={s.id}><td>{view.component_type} · {view.property_name}</td><td><strong title={'Valore registrato: ' + (s.numeric_value ?? s.text_value) + (s.unit ? ' ' + s.unit : '')}>{view.numeric_value ?? view.text_value} {view.unit || ''}</strong>{s.sources?.map(source => <Source key={source.id} s={source} compact />)}</td></tr>;
     })}</tbody></table></section>)}
     <div className="section-title">Commercializzazione</div>
-    {!computer.releases.some(r => r.price != null) && <p className="muted">Nessun prezzo documentato presente in questa scheda. Le fonti importate possono non riportarlo; non viene stimato automaticamente.</p>}
-    {computer.releases.map(r => <section className="panel" key={r.id}><b>{r.market}</b><p>{r.release_date || 'Data non disponibile'} · {r.price != null ? `${r.price} ${r.currency}` : 'Prezzo non disponibile'}</p>{r.price_type && <p className="muted">Tipo di prezzo: {r.price_type}</p>}{r.sources.map(s => <Source key={s.id} s={s} compact />)}</section>)}
+    <ReleasePanels computer={computer} renderSource={source => <Source key={source.id} s={source} compact />} />
     {!!computer.facts.length && <><div className="section-title">Note e dati contestuali</div><section className="panel">{computer.facts.map(f => <div key={f.type + f.statement}><b>{f.type}</b><p>{f.statement}</p>{f.sources.map(s => <Source key={s.id} s={s} compact />)}</div>)}</section></>}
     <div className="section-title">Fonti e verificabilità</div>
     <section className="panel">{computerSources(computer).length ? <><p className="muted">Fonti della scheda e dei singoli dati. I valori di riferimento non attestano una configurazione ordinabile al lancio. La presenza di una citazione non implica una verifica: gli stati e le decisioni sono in Amministrazione → Importazioni → Fonti e verifiche.</p>{computerSources(computer).map(s => <Source key={s.id} s={s} />)}</> : <p className="muted">Nessuna fonte associata alla scheda o ai suoi dati. Le fonti fotografiche sono indicate nella galleria. Se hai importato una seconda scheda dello stesso modello, controlla i duplicati in Amministrazione → Importazioni.</p>}</section>

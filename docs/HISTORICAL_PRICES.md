@@ -53,6 +53,12 @@ Le date già archiviate restano conservate. Non si convertono valute, imposte
 o prezzi in moneta corrente e non si estraggono automaticamente altre cifre
 dalla colonna delle varianti.
 
+Nel catalogo una [sintesi delle commercializzazioni](RELEASE_SUMMARIES.md)
+puo affiancare anno e prezzo quando l'abbinamento e univoco, con le fonti e
+l'ambito geografico della data espliciti. Le registrazioni originali e il
+prezzo senza data restano invariati; i listini successivi non ereditano l'anno
+di lancio.
+
 Configurazione, monitor/accessori, imposte, altri listini, affidabilità dichiarata
 e note restano in **Contesto del prezzo**, con fonte e riferimento alla riga.
 Le colonne URL/affidabilità/varianti vengono riallineate soltanto per il formato
