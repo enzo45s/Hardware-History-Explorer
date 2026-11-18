@@ -68,6 +68,15 @@ sono conservate. La ricerca è riprendibile e mostra anche i sistemi senza una
 fonte italiana adatta. Non richiede chiavi AI né chiamate a pagamento.
 [Istruzioni, criteri e limiti di copertura](docs/HISTORICAL_DESCRIPTIONS.md).
 
+## Controllare RAM e varianti
+
+In **Amministrazione → RAM e varianti** puoi recuperare i valori RAM disponibili
+da fonti documentate e riunire le varianti proposte in configurazioni di una
+scheda comune. Sigle precedenti, RAM, prezzi, foto e fonti restano conservati;
+le importazioni successive seguono gli alias approvati. Non viene attribuita
+una quantità di memoria quando manca una fonte utilizzabile.
+[Regole, caso HP 85 e istruzioni](docs/CATALOG_QUALITY.md).
+
 ## Aggiungere le fotografie
 
 1. Apri il **Catalogo** (o la Timeline), poi una scheda con **Dettagli**.
@@ -117,7 +126,7 @@ Apri **http://localhost:5173**. Vite inoltra `/api` e `/media` a FastAPI sulla p
 | `DELETE` | `/api/computers/{id}/images/{image_id}` | Elimina un'immagine |
 | `GET` | `/api/images/search?q=...` | Ricerca Wikimedia Commons |
 
-La struttura dati comprende ora **19 tabelle**: le 18 originali più `computer_images`. Il campo storico `computers.image_url` resta per compatibilità con database esistenti. I media vengono restituiti tramite `/media/<nome>.webp` e non sono inclusi nelle risposte testuali dell'assistente AI.
+Le entità del catalogo sono affiancate dalle tabelle fotografiche, di importazione, di ricerca e dagli alias approvati. Il campo storico `computers.image_url` resta per compatibilità con database esistenti. I media vengono restituiti tramite `/media/<nome>.webp` e non sono inclusi nelle risposte testuali dell'assistente AI.
 
 ## Altre funzionalità
 

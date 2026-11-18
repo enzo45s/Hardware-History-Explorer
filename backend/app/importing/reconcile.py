@@ -7,7 +7,7 @@ from sqlalchemy import select, text, func
 from ..models import (Computer, Manufacturer, Configuration, Specification, Release, Sale, Review, Fact,
                       ComputerImage, Source, computer_source, computer_category, spec_source,
                       release_source, sale_source, review_source, fact_source)
-from ..import_models import ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation, ArchiveReset
+from ..import_models import ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation, ArchiveReset, ComputerAlias
 from .identity import computer_key, maker_key
 from .normalize import name_key
 from ..photo_jobs import PhotoItem
@@ -38,6 +38,11 @@ def snapshot(db, entity, source, target):
     for model, field in tables:
         result[model.__tablename__] = rows(db, model.__table__, getattr(model, field).in_(ids))
     result['commons_photo_items'] = rows(db, PhotoItem.__table__, PhotoItem.computer_id.in_(ids))
+    from ..history_models import HistoryItem
+    from .bulk1000bit import BulkTarget
+    result['history_research_items'] = rows(db, HistoryItem.__table__, HistoryItem.computer_id.in_(ids))
+    result['bit1000_bulk_targets'] = rows(db, BulkTarget.__table__, BulkTarget.computer_id.in_(ids))
+    result['computer_aliases'] = rows(db, ComputerAlias.__table__, ComputerAlias.computer_id.in_(ids))
     config_ids = [r['id'] for r in result['configurations']]
     result['specifications'] = rows(db, Specification.__table__, Specification.configuration_id.in_(config_ids))
     result['computer_categories'] = rows(db, computer_category, computer_category.c.computer_id.in_(ids))
@@ -59,7 +64,7 @@ def snapshot(db, entity, source, target):
     return result
 
 
-def prepare(db, entity, source_id, target_id, lock=False):
+def prepare(db, entity, source_id, target_id, lock=False, variants=False):
     if source_id == target_id:
         raise ValueError('Scegli due schede diverse')
     model = Computer if entity == 'computer' else Manufacturer
@@ -73,7 +78,8 @@ def prepare(db, entity, source_id, target_id, lock=False):
         raise ValueError('Una delle schede non è più disponibile: aggiorna i duplicati')
     source, target = items[source_id], items[target_id]
     identity = (lambda c: computer_key(c.manufacturer.name, c.model_name)) if entity == 'computer' else (lambda m: maker_key(m.name))
-    if identity(source) != identity(target):
+    from .variant_names import same_variant_family
+    if identity(source) != identity(target) and not (variants and entity == 'computer' and same_variant_family(source, target)):
         raise ValueError('Queste schede non sono alias riconosciuti dello stesso elemento. Famiglie e modelli specifici restano separati.')
     original = snapshot(db, entity, source, target)
     token = hashlib.sha256(json.dumps(original, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
@@ -88,8 +94,8 @@ def prepare(db, entity, source_id, target_id, lock=False):
         'differences': differences, 'counts': counts}
 
 
-def apply(db, entity, source_id, target_id, token, note, commit=True):
-    source, target, original, preview = prepare(db, entity, source_id, target_id, lock=True)
+def apply(db, entity, source_id, target_id, token, note, commit=True, variants=False):
+    source, target, original, preview = prepare(db, entity, source_id, target_id, lock=True, variants=variants)
     if token != preview['token']:
         raise ValueError('I dati sono cambiati: prepara una nuova anteprima di riconciliazione')
     if entity == 'computer':
@@ -131,11 +137,25 @@ def apply(db, entity, source_id, target_id, token, note, commit=True):
                 row.candidates = list(dict.fromkeys(target_id if i == source_id else i for i in row.candidates))
         for identity in db.scalars(select(ExternalIdentity).where(ExternalIdentity.computer_id == source_id)):
             identity.computer_id = target_id
+        for alias in db.scalars(select(ComputerAlias).where(ComputerAlias.computer_id == source_id)):
+            alias.computer_id = target_id
+        from ..history_models import HistoryItem
+        from .bulk1000bit import BulkTarget
+        for item in db.scalars(select(HistoryItem).where(HistoryItem.computer_id == source_id)):
+            item.computer_id = target_id
+            if item.status == 'pending':
+                item.status, item.error = 'changed', 'Scheda accorpata in un altro modello; dati della ricerca conservati.'
+        for item in db.scalars(select(BulkTarget).where(BulkTarget.computer_id == source_id)):
+            item.computer_id = target_id
+            item.model_name, item.manufacturer = target.model_name, target.manufacturer.name
         for item in db.scalars(select(PhotoItem).where(PhotoItem.computer_id == source_id)):
             item.computer_id = target_id
             if item.status == 'pending':
                 item.model_name = target.model_name
-                item.query = target.model_name.strip()[:90]
+                from ..commons import photo_query
+                item.query = photo_query(target.manufacturer.name, target.model_name)
+                if variants:
+                    item.status, item.error = 'skipped', 'Variante accorpata: copertina gestita nella scheda comune.'
         for claim in db.scalars(select(ImportClaim).where(ImportClaim.computer_id == source_id)):
             claim.computer_id = target_id
             if claim.entity == 'Computer' and claim.target_id == source_id:

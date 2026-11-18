@@ -28,7 +28,7 @@ def configuration_summaries(configurations, model_name):
         signature = ('single', row['id'])
         if region:
             label, countries = region
-            signature = ('europe', geographic_key(label), description_key(row),
+            signature = ('europe', row.get('model_variant'), row.get('variant_description'), row.get('variant_announcement_date'), geographic_key(label), description_key(row),
                          tuple(sorted(Counter(spec_key(spec) for spec in row['specifications']).items(), key=repr)))
             row['display_name'] = label
             row['display_region'] = 'Europa'

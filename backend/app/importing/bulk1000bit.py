@@ -239,6 +239,16 @@ def import_page(db, job, page, raw, content_type):
             target_status(target, 'stale')
         else:
             valid.append(target)
+    # Prefer the original variant's snapshot row, even though several rows now
+    # share the same surviving catalog owner.
+    from .catalog_aliases import alias_for
+    alias = alias_for(db, record['manufacturer'], record['model_name'])
+    original_ids = {member.get('computer_id') for member in alias.original.get('members', [alias.original])} if alias else set()
+    scoped_targets = [target for target in valid if target.original_id in original_ids]
+    if scoped_targets:
+        valid = scoped_targets
+    # Consolidated configurations share a catalog owner, not an ambiguous match.
+    valid = list({target.computer_id: target for target in valid}.values())
     imported = stage(db, '1000bit', f'1000bit-bulk-{job.id}-{page.id}.html', 'html', raw, records=[record],
                      options={'upload': True, 'existing_only': True, 'bulk_job_id': job.id, 'source_url': page.url}, commit=False)
     page.import_job_id = imported.id
@@ -266,6 +276,8 @@ def import_page(db, job, page, raw, content_type):
     apply_job(db, imported.id, commit=False)
     page.status = row.status if row.status in ('updated', 'unchanged') else 'review'
     target_status(valid[0], row.status if row.status in ('updated', 'unchanged') else 'ambiguous')
+    for target in scoped_targets[1:]:
+        target_status(target, row.status if row.status in ('updated', 'unchanged') else 'ambiguous')
 
 
 def step(db, job_id, fetcher=None):

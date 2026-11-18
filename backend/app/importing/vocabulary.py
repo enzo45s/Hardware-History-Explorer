@@ -80,6 +80,12 @@ def normalize_spec(values):
     result = dict(values)
     result['component_type'] = component_type(values.get('component_type', ''), values.get('component_name'))
     result['property_name'] = property_name(values.get('property_name', ''), result['component_type'])
+    if result['component_type'] == 'RAM' and result['property_name'] in ('Capacità', 'Capacità riportata') and values.get('numeric_value') is None and not values.get('unit'):
+        from ..ram_values import ram_literal
+        literal = ram_literal(values.get('text_value'))
+        if literal:
+            values = {**values, 'numeric_value': literal[0], 'text_value': None, 'unit': literal[1]}
+            result.update(numeric_value=literal[0], text_value=None)
     result['unit'] = unit_name(values.get('unit'))
     number = values.get('numeric_value')
     unit = result['unit']

@@ -35,6 +35,7 @@ export function Claim({ claim, disabled, onReview }) {
   const display = claim.display;
   return <section className={'import-claim ' + (claim.status === 'conflict' ? 'import-conflict' : '')}>
     <b>{display?.field_label || claim.field}</b>
+    {claim.model_variant && <p className="import-context">Configurazione: {claim.model_variant}</p>}
     {display?.context && <p className="import-context">{display.context}</p>}
     <p>{status(claim.status)}{claim.estimated ? ' · Stima' : ''}</p>
     <dl className="import-values"><dt>Valore proposto dalla fonte</dt><dd>{display?.proposed || JSON.stringify(claim.value)}</dd>

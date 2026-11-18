@@ -127,6 +127,19 @@ jobs:
           done
           cd frontend
           npm run test:browser:history
+      - name: Browser sourced RAM and configuration consolidation
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: |
+          HHE_ALLOW_QUALITY_BROWSER_FIXTURE=1 python backend/tests/browser_quality_app.py > /tmp/hhe-quality-browser.log 2>&1 &
+          quality_fixture_pid=$!
+          trap 'kill "$quality_fixture_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS -o /dev/null http://127.0.0.1:18095/__quality_fixture; then break; fi
+            sleep 1
+          done
+          cd frontend
+          npm run test:browser:quality
       - name: Upload browser diagnostics on failure
         if: failure()
         uses: actions/upload-artifact@v4

@@ -34,9 +34,11 @@ def job_data(job):
 
 
 def claim_data(c):
+    from .catalog_aliases import assertion_variant
     return {'id': c.id, 'computer_id': c.computer_id, 'entity': c.entity, 'target_id': c.target_id,
             'field': c.field, 'value': c.value, 'previous': c.previous, 'status': c.status,
             'estimated': c.estimated, 'evidence': c.evidence, 'review_note': c.review_note,
+            'model_variant': assertion_variant(object_session(c), c),
             'reviewed_at': c.reviewed_at.isoformat() if c.reviewed_at else None,
             'source': {'id': c.source.id, 'title': c.source.title, 'url': c.source.url}, 'display': claim_presentation(c)}
 

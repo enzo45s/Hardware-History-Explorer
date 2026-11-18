@@ -141,6 +141,17 @@ def html_record(raw, source_url=None, content_type='', accessed_at=None):
     parser.feed(decode_html(raw, content_type))
     parser.close()
     fields = parser.fields
+    # The site may return either language, independently of the crawler locale.
+    translated = {'name': 'nome', 'manufacturer': 'costruttore', 'type': 'tipo',
+        'operating system': 'sistema operativo', 'text (cols x rows)': 'testo (col. x righe)',
+        'graphics': 'grafica', 'sound': 'suono', 'storage memory': 'memoria di massa',
+        'serial port': 'porta seriale', 'parallel port': 'porta parallela', 'others port': 'altre porte',
+        'original price': 'prezzo originale', 'currency original price': 'prezzo originale in valuta'}
+    for english, italian in translated.items():
+        if english in fields:
+            if italian in fields and fields[italian] != fields[english]:
+                raise ValueError('Campi italiani e inglesi discordanti nella scheda.')
+            fields[italian] = fields.pop(english)
     if parser.sections != 1 or not present(fields.get('nome')) or not present(fields.get('costruttore')):
         raise ValueError('Non è una scheda 1000bit riconosciuta: mancano tabDatiTecnici, Nome o Costruttore.')
     urls = {sheet_url(value) for value in parser.urls}

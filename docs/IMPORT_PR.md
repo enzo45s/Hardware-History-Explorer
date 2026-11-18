@@ -37,6 +37,14 @@ tentativo. Gestisce i casi PowerBook 180, BBC Model B e Atari 130XE/400/800XL;
 un comando dedicato ritenta gli esiti senza testo conservando gli aggiornamenti
 già riusciti e lo storico delle ricerche precedenti.
 
+Il pannello RAM e varianti recupera capacità documentate (incluso HP 85 da
+1000bit) e consolida le denominazioni di configurazione conservando dati,
+prezzi e testi per variante. Alias approvati evitano la ricreazione di schede
+da importazioni successive; ricerca e assistente mantengono accessibili le
+sigle precedenti. Il parser 1000bit riconosce anche le etichette inglesi.
+Sul corpus completo: 1.109 → 1.099 schede, 1.261 configurazioni e 3.199 specifiche
+conservate; 1.139 righe reimportate invariate. Dettagli in `docs/CATALOG_QUALITY.md`.
+
 Per lavorare su due PC, `tools/Transfer-HheArchive.ps1` esporta e ripristina
 database PostgreSQL completo e volume fotografico in un archivio portabile.
 Il ripristino verifica SHA-256 e versione del codice, crea il backup della

@@ -47,6 +47,10 @@ def catalog_candidates(db, data, provider):
     candidates = [c.id for c in db.scalars(select(Computer).where(Computer.manufacturer_id.in_(makers)))
                   if (bool(price_keys & price_model_keys(c.manufacturer.name, c.model_name)) if price_keys is not None
                       else key == provider_computer_key(provider, c.manufacturer.name, c.model_name))]
+    from .catalog_aliases import alias_for
+    alias = alias_for(db, data['manufacturer'], data['model_name'])
+    if alias and alias.computer_id not in candidates:
+        candidates.append(alias.computer_id)
     return candidates, len(candidates) > 1
 
 
@@ -191,6 +195,26 @@ def import_record(db, job, row):
     changed = False
     root_source = data['source']
     root_estimate = data.get('estimated', False)
+    from .catalog_aliases import alias_for
+    alias = alias_for(db, data['manufacturer'], data['model_name'], c.id)
+    scoped_configs, scoped_releases, scoped_names = [], [], {}
+    if alias:
+        # Variant prose/dates must not overwrite or become the family's values.
+        for field, kind in (('description', 'Descrizione variante'), ('announcement_date', 'Annuncio variante')):
+            incoming = data.pop(field, None)
+            if incoming and field == 'description' and job.provider == '1000bit':
+                import re
+                template = re.escape(f"{data['model_name']} è un calcolatore di {data['manufacturer']}.") + r'(?: La scheda tecnica riporta la CPU [^\n]+\.)?'
+                if re.fullmatch(template, incoming):
+                    continue  # The adapter's technical summary is already in the specifications.
+            members = alias.original.get('members', [alias.original])
+            same = any(incoming == member.get(field) for member in members)
+            if incoming and field == 'announcement_date':
+                day, precision = historical_date(incoming)
+                same = any((serialize(day), precision) == (member.get(field), member.get('announcement_precision')) for member in members)
+            if incoming and not same:
+                data.setdefault('facts', []).append({'fact_type': kind,
+                    'statement': f'{alias.original_name}: {incoming}', 'source': root_source})
 
     def record_fields(target, values, fields, parent=None):
         nonlocal changed
@@ -222,7 +246,7 @@ def import_record(db, job, row):
             evidence='\n'.join(x for x in (entry.get('evidence') or data.get('evidence'),
                  ('Licenza: ' + citation['license']) if citation.get('license') else None) if x) or None))
 
-    model_name = c.model_name if job.provider == 'historical_prices' or provider_computer_key(job.provider, c.manufacturer.name, c.model_name) == provider_computer_key(job.provider, data['manufacturer'], data['model_name']) else data['model_name']
+    model_name = c.model_name if alias or job.provider == 'historical_prices' or provider_computer_key(job.provider, c.manufacturer.name, c.model_name) == provider_computer_key(job.provider, data['manufacturer'], data['model_name']) else data['model_name']
     record_fields(c, {**data, 'model_name': model_name, 'manufacturer_id': maker.id}, ('model_name', 'manufacturer_id', 'description', 'announcement_date'))
     for name in data.get('categories', []):
         cat = reference(db, Category, name)
@@ -236,15 +260,19 @@ def import_record(db, job, row):
             evidence=data.get('evidence')))
     for cfg in data.get('configurations', []):
         reconciled = reconciled_configuration(db, c.id, identity_provider(job.provider, data), data.get('external_id'), cfg['variant_name'])
-        matches = [reconciled] if reconciled else [v for v in c.configurations if name_key(v.variant_name) == name_key(cfg['variant_name'])]
+        pool = [v for v in c.configurations if v.id in alias.original.get('configurations', [])] if alias else c.configurations
+        matches = [reconciled] if reconciled else [v for v in pool if name_key(alias.original.get('configuration_names', {}).get(str(v.id), v.variant_name) if alias else v.variant_name) == name_key(cfg['variant_name'])]
         if len(matches) > 1:
             raise ValueError('Configurazione ambigua')
-        variant = matches[0] if matches else Configuration(variant_name=cfg['variant_name'])
+        new_name = (alias.original_name + ' · ' + cfg['variant_name'])[:140] if alias else cfg['variant_name']
+        variant = matches[0] if matches else Configuration(variant_name=new_name)
         if not matches:
             c.configurations.append(variant)
             changed = True
         db.flush()
-        record_fields(variant, {**cfg, 'variant_name': variant.variant_name} if reconciled else cfg, ('variant_name', 'description'))
+        scoped_configs.append(variant.id)
+        scoped_names[str(variant.id)] = cfg['variant_name']
+        record_fields(variant, {**cfg, 'variant_name': variant.variant_name} if reconciled or alias else cfg, ('variant_name', 'description'))
         for spec in cfg.get('specifications', []):
             matches = matching_specs(variant.specifications, spec)
             if len(matches) > 1:
@@ -278,6 +306,8 @@ def import_record(db, job, row):
     ):
         for entry in data.get(collection, []):
             existing = list(getattr(c, collection))
+            if alias and model is Release:
+                existing = [item for item in existing if item.id in alias.original.get('releases', [])]
             if model in (Release, Sale):
                 market = reference(db, Market, entry['market'])
                 existing = [r for r in existing if r.market_id == market.id]
@@ -316,6 +346,13 @@ def import_record(db, job, row):
             if model in (Release, Sale):
                 record_fields(target, {**entry, 'market_id': market.id}, ('market_id',))
             record_fields(target, entry, remaining_fields)
+            if model is Release:
+                scoped_releases.append(target.id)
+    if alias:
+        alias.original = {**alias.original,
+            'configurations': list(dict.fromkeys(alias.original.get('configurations', []) + scoped_configs)),
+            'configuration_names': {**alias.original.get('configuration_names', {}), **scoped_names},
+            'releases': list(dict.fromkeys(alias.original.get('releases', []) + scoped_releases))}
     if data.get('external_id'):
         namespace = identity_provider(job.provider, data)
         identity = db.scalar(select(ExternalIdentity).where(ExternalIdentity.provider == namespace, ExternalIdentity.external_id == data['external_id']))

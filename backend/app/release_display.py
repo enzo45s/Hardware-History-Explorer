@@ -33,6 +33,8 @@ LAUNCH_TYPES = {'', 'launch', 'launch_price', 'lancio', 'prezzo di lancio', 'pre
 
 def compatible(rows):
     """No conflicting values, precision upgrades or backwards date ranges."""
+    if len({row.get('model_variant') for row in rows}) > 1:
+        return False
     for field in (*DATES, 'currency'):
         if len({row[field] for row in rows if row.get(field) is not None}) > 1:
             return False
@@ -54,7 +56,10 @@ def release_summaries(releases):
     over several markets. Plans are computed before merging, independent of order.
     """
     rows = sorted(deepcopy(releases), key=lambda row: row['id'])
-    known_markets = {market_key(row) for row in rows if market_key(row)}
+    known_markets = defaultdict(set)
+    for row in rows:
+        if market_key(row):
+            known_markets[row.get('model_variant')].add(market_key(row))
     dates, prices, others = [], [], []
     duplicates = {}
     for row in rows:
@@ -62,7 +67,7 @@ def release_summaries(releases):
         if row.get('price') is not None:
             prices.append(group)
         elif any(row.get(field) for field in DATES):
-            signature = (market_key(row), *(row.get(field) for field in DATES), row.get('currency'), row.get('price_type'))
+            signature = (row.get('model_variant'), market_key(row), *(row.get(field) for field in DATES), row.get('currency'), row.get('price_type'))
             if signature in duplicates:
                 duplicates[signature]['originals'].append(deepcopy(row))
             else:
@@ -78,7 +83,7 @@ def release_summaries(releases):
     for group in prices:
         row = group['row']
         if market_key(row) == 'europa' and row.get('currency'):
-            european_prices[tuple(row.get(field) for field in ('price', 'currency', 'price_type', *DATES))].append(group)
+            european_prices[tuple(row.get(field) for field in ('model_variant', 'price', 'currency', 'price_type', *DATES))].append(group)
         else:
             price_groups.append(group)
     for repeated in european_prices.values():
@@ -101,7 +106,7 @@ def release_summaries(releases):
             source_market, target_market = market_key(row), market_key(price)
             if source_market != target_market:
                 # Only the date's missing region can use the sole known market.
-                if source_market or not target_market or known_markets != {target_market}:
+                if source_market or not target_market or known_markets[row.get('model_variant')] != {target_market}:
                     continue
             if not price.get('release_date') and key(price.get('price_type')) not in LAUNCH_TYPES:
                 continue

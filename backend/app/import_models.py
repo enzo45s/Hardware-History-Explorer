@@ -80,6 +80,18 @@ class CatalogReconciliation(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
 
 
+class ComputerAlias(Base):
+    """Explicitly consolidated names; future imports reuse the surviving model."""
+    __tablename__ = 'computer_aliases'
+    __table_args__ = (UniqueConstraint('manufacturer_key', 'model_key'),)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    manufacturer_key: Mapped[str] = mapped_column(String(160))
+    model_key: Mapped[str] = mapped_column(String(180))
+    original_name: Mapped[str] = mapped_column(String(180))
+    original: Mapped[dict] = mapped_column(JSON, default=dict)
+    computer_id: Mapped[int] = mapped_column(ForeignKey('computers.id', ondelete='CASCADE'), index=True)
+
+
 class ArchiveReset(Base):
     """An explicit empty-catalog state plus metadata retained before removal."""
     __tablename__ = 'archive_resets'
