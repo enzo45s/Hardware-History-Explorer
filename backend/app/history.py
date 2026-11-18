@@ -32,10 +32,17 @@ def get_job(db, job_id):
 
 
 def item_data(item):
+    plan = history_sources.search_plan(item.model_name, item.manufacturer)
+    attempt = item.result.get('next_attempt', 0)
+    pending_search = plan[attempt] if item.status == 'pending' and 0 <= attempt < len(plan) else None
     return {'id': item.id, 'computer_id': item.computer_id, 'model_name': item.model_name,
         'manufacturer': item.manufacturer, 'status': item.status, 'error': item.error,
         'description': item.result.get('description'), 'url': item.result.get('url'),
-        'candidates': item.result.get('candidates', []), 'import_job_id': item.import_job_id}
+        'candidates': item.result.get('candidates', []), 'import_job_id': item.import_job_id,
+        'searches': item.result.get('searches', []),
+        'previous_runs': len(item.raw_payload.get('previous_runs', [])),
+        'next_query': (pending_search.get('query') or item.result.get('full_title') or pending_search.get('titles')) if pending_search else None,
+        'attempt': attempt + 1 if pending_search else None}
 
 
 def details(db, job):
@@ -149,6 +156,34 @@ def create_history_router(get_db):
         db.commit()
         return details(db, job)
 
+    @router.post('/{job_id}/retry-unresolved')
+    def retry_unresolved(job_id: int, db: Session = Depends(get_db)):
+        catalog_lock(db)
+        get_job(db, job_id)
+        job = db.scalar(select(HistoryJob).where(HistoryJob.id == job_id).with_for_update().execution_options(populate_existing=True))
+        if job.status not in ('paused', 'completed') or (job.lease_token and utc(job.lease_until) > now()):
+            raise HTTPException(409, 'Metti in pausa e attendi la conclusione della richiesta prima di riprovare.')
+        if db.scalar(select(HistoryJob.id).where(HistoryJob.active_key == 'italian', HistoryJob.id != job.id)):
+            raise HTTPException(409, 'È già attiva un’altra ricerca storica: riprendi quella coda.')
+        for item in db.scalars(select(HistoryItem).where(HistoryItem.job_id == job.id, HistoryItem.status.in_(['no_match', 'search_error']))):
+            computer = db.get(Computer, item.computer_id) if item.computer_id else None
+            if not computer or (computer.model_name, computer.manufacturer.name, computer.description) != (item.model_name, item.manufacturer, item.previous):
+                continue
+            if not history_sources.replaceable(item.model_name, item.manufacturer, computer.description):
+                continue
+            prior = item.raw_payload.get('previous_runs', [])
+            snapshot = {'result': item.result, 'raw_payload': {k: v for k, v in item.raw_payload.items() if k != 'previous_runs'}}
+            item.raw_payload = {'previous_runs': prior + [snapshot]}
+            item.result, item.status, item.error = {}, 'pending', None
+        db.flush()
+        if db.scalar(select(HistoryItem.id).where(HistoryItem.job_id == job.id, HistoryItem.status == 'pending').limit(1)):
+            job.status, job.active_key, job.error = 'ready', 'italian', None
+            job.lease_token, job.lease_until = None, None
+        else:
+            finish(db, job)
+        db.commit()
+        return details(db, job)
+
     @router.get('/{job_id}/report')
     def report(job_id: int, db: Session = Depends(get_db)):
         job = get_job(db, job_id)
@@ -178,13 +213,17 @@ def create_history_router(get_db):
             return details(db, job)
         item_id, computer_id = item.id, item.computer_id
         model, maker, previous = item.model_name, item.manufacturer, item.previous
+        attempt, full_title = item.result.get('next_attempt', 0), item.result.get('full_title')
+        searches = item.result.get('searches', [])
+        originals = item.raw_payload.get('attempts', [])
+        previous_runs = item.raw_payload.get('previous_runs', [])
         computer = db.get(Computer, computer_id) if computer_id else None
         unchanged = computer and (computer.model_name, computer.manufacturer.name, computer.description) == (model, maker, previous)
         db.rollback()  # No transaction or lock across the network.
         result, raw, failure = {}, {}, None
         if unchanged:
             try:
-                result, raw = await history_sources.research(model, maker)
+                result, raw = await history_sources.research(model, maker, attempt=attempt, full_title=full_title) if attempt else await history_sources.research(model, maker)
             except HTTPException as exc:
                 failure = exc
         catalog_lock(db)
@@ -205,11 +244,22 @@ def create_history_router(get_db):
         elif not history_sources.replaceable(model, maker, computer.description):
             item.status = 'preserved'
         else:
-            item.result, item.raw_payload = result, raw
+            if 'search' in result:
+                item.result = {**result, 'searches': searches + [result['search']]}
+                item.raw_payload = {'attempts': originals + [{'search': result['search'], 'response': raw}]}
+            else:
+                item.result, item.raw_payload = result, raw
+            if previous_runs:
+                item.raw_payload = {**item.raw_payload, 'previous_runs': previous_runs}
             item.error = result.get('reason')
             if result['status'] == 'found':
-                apply_description(db, item, computer, result, raw)
+                # Large previous searches remain in HistoryItem; the ETL
+                # original contains the selected response and the query log.
+                audit = {'history_item_id': item.id, 'searches': item.result['searches'], 'selected_response': raw} if 'search' in result else raw
+                apply_description(db, item, computer, result, audit)
                 item.status = 'updated'
+            elif result.get('next_attempt') is not None:
+                item.error = 'Nessun abbinamento con questo tentativo; seguirà una ricerca alternativa.'
             else:
                 item.status = result['status']
         db.flush()

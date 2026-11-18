@@ -14,16 +14,21 @@ from app import history_sources
 from fastapi import HTTPException
 import uvicorn
 calls = []
-async def research(model, maker):
+async def research(model, maker, *, attempt=0, full_title=None):
     calls.append(model)
     if len(calls) == 1:
         raise HTTPException(503, 'Pausa sintetica della fonte; puoi riprendere.', headers={'Retry-After': '2'})
-    if model == 'Synthetic History Missing': return {'status': 'no_match', 'reason': 'Nessuna voce italiana nella fixture.', 'candidates': []}, {'query': {'pages': []}}
-    assert model == 'Synthetic History Browser', 'Curated descriptions must not be researched.'
+    if model == 'Synthetic History Missing' and calls.count(model) == 1:
+        return {'status': 'no_match', 'reason': 'Nessuna voce italiana nella fixture.', 'candidates': []}, {'query': {'pages': []}}
+    assert model in ('Synthetic History Browser', 'Synthetic History Missing'), 'Curated descriptions must not be researched.'
+    if model == 'Synthetic History Browser' and attempt == 0:
+        return {'status': 'no_match', 'next_attempt': 1, 'search': {'strategy': 'literal', 'query': '"Synthetic History Browser" computer'}}, {'query': {'pages': []}}
     text = (f'{model} è un computer di {maker} introdotto nel 1981 nel contesto storico sintetico della prova browser. '
             'Lo sviluppo e il posizionamento commerciale sono descritti esclusivamente come dati sintetici per verificare il funzionamento della ricerca.')
     raw = {'query': {'pages': [{'ns': 0, 'title': model, 'extract': text, 'revisions': [{'revid': 456}]}]}}
-    return history_sources.select_result(model, maker, raw), raw
+    result = history_sources.select_result(model, maker, raw)
+    result['search'] = {'strategy': 'brand_model', 'query': f'{maker} {model}'}
+    return result, raw
 history_sources.research = research
 @app.get('/__history_fixture')
 def marker(): return {'fixture': 'italian-history-synthetic', 'isolated': True, 'calls': calls}

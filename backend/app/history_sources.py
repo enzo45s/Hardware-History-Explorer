@@ -2,16 +2,75 @@
 import asyncio
 import re
 import unicodedata
-from urllib.parse import urlencode
+from urllib.parse import urlencode, quote
 import httpx
 from fastapi import HTTPException
 from .commons import USER_AGENT, retry_seconds
 from .catalog_display import description_text
-from .importing.identity import provider_computer_key, manufacturer_base
+from .importing.identity import provider_computer_key, manufacturer_base, MAKERS, MODELS, maker_key
 
 API = 'https://it.wikipedia.org/w/api.php'
 LICENSE = 'https://creativecommons.org/licenses/by-sa/4.0/'
 MAX_RESPONSE = 2 * 1024 * 1024
+SEARCH_VERSION = 2
+
+
+def maker_aliases(maker):
+    """Research spellings only; never change catalog manufacturer identities."""
+    compact = lambda value: re.sub(r'[^\w]', '', manufacturer_base(value))
+    groups = list(MAKERS.values()) + [
+        ('HP', 'Hewlett-Packard', 'Hewlett Packard'),
+        ('Acorn', 'Acorn Computers', 'Acorn Computers Ltd.'),
+        ('Atari', 'Atari Inc.', 'Atari, Inc.', 'Atari Corporation'),
+        ('Sinclair', 'Sinclair Research', 'Sinclair Research Ltd.'),
+        ('Sun', 'Sun Microsystems'),
+    ]
+    return next((aliases for aliases in groups if compact(maker) in {compact(a) for a in aliases}), (maker.strip(),))
+
+
+def canonical_model(model, maker):
+    text = unicodedata.normalize('NFKC', model).strip()
+    spelling = lambda value: re.sub(r'[\s-]+', '', value).casefold()
+    for aliases in MODELS.get(maker_key(maker_aliases(maker)[0]), ()):
+        if spelling(text) in {spelling(a) for a in aliases}:
+            return aliases[0]
+    return text
+
+
+def search_plan(model, maker):
+    """Broader keywords and a full-page lookup, one request per durable step."""
+    canonical = canonical_model(model, maker)
+    aliases = maker_aliases(maker)
+    core = canonical
+    for alias in sorted(aliases, key=len, reverse=True):
+        match = re.match(re.escape(alias) + r'(?=$|[\s:/-]|\d)', core, flags=re.I)
+        if match:
+            core = core[match.end():].lstrip(' -:/')
+            break
+    words = lambda value: ' '.join(re.sub(r'[^\w]+', ' ', value).split())
+    brand_query = words(aliases[0] + ' ' + core)
+    # The second keyword attempt also handles "PowerBook180" vs "PowerBook 180".
+    model_query = words(re.sub(r'(?<=[A-Za-z])(?=\d)', ' ', core))
+    full_title = aliases[0] + ' ' + core
+    key = model_key(maker, model)
+    if key == model_key('HP', 'HP 85'):
+        first = {'strategy': 'documented_title', 'titles': 'HP 9800'}
+    elif key == model_key('IBM', 'IBM PC 5150'):
+        first = {'strategy': 'documented_title', 'titles': 'PC IBM', 'exintro': 1}
+    else:
+        literal = re.sub(r'["\[\]{}|:]', ' ', model).strip()
+        first = {'strategy': 'literal', 'query': f'"{literal}" computer'}
+    # BBC Model B has no Italian redirect, but its model-specific history is
+    # documented in BBC Micro. The passage still has to identify the model.
+    bbc = re.fullmatch(r'(?:bbc)?(?:micro)?model([ab])\+?', key[1])
+    if aliases[0] == 'Acorn' and bbc:
+        full_title = 'BBC Micro'
+    plan = [first, {'strategy': 'brand_model', 'query': brand_query},
+        {'strategy': 'model_keywords', 'query': model_query},
+        {'strategy': 'full_page', 'titles': full_title}]
+    if canonical.casefold() != full_title.casefold():
+        plan.append({'strategy': 'full_page', 'titles': canonical})
+    return plan
 
 
 def replaceable(model, maker, value):
@@ -27,7 +86,10 @@ def replaceable(model, maker, value):
 def model_key(maker, model):
     # Remove only article disambiguation, not hardware or regional qualifiers.
     title = re.sub(r'\s*\((?:computer|informatica|home computer|personal computer)\)$', '', model, flags=re.I)
-    maker = manufacturer_base(maker)
+    title = canonical_model(title, maker)
+    for alias in maker_aliases(maker):
+        title = re.sub(r'^' + re.escape(alias) + r'(?=\d)', alias + ' ', title, flags=re.I)
+    maker = maker_aliases(maker)[0]
     # HP's full corporate spelling is common in Italian article titles.
     if maker.casefold() in ('hp', 'hewlett-packard', 'hewlett packard'):
         maker = 'HP'
@@ -48,11 +110,7 @@ def intro(extract):
 
 
 def maker_in_text(maker, text):
-    from .importing.identity import MAKERS, maker_key, manufacturer_base
-    maker = manufacturer_base(maker)
-    aliases = MAKERS.get(maker_key(maker), (maker,))
-    if maker in ('hp', 'hewlett-packard', 'hewlett packard'):
-        aliases = ('HP', 'Hewlett-Packard', 'Hewlett Packard')
+    aliases = maker_aliases(maker)
     normalized = unicodedata.normalize('NFKC', text)
     return any(re.search(r'(?<!\w)' + re.escape(alias) + r'(?!\w)', normalized, re.I) for alias in aliases)
 
@@ -87,7 +145,66 @@ def pc5150_article(model, maker, page):
         and re.search(r'\bIBM 5150\b', page.get('extract', '')) is not None)
 
 
-def select_result(model, maker, payload):
+def family_excerpt(model, maker, page, payload):
+    """Quote model-specific passages only in an explicitly linked family page."""
+    text = page.get('extract', '')
+    lead = text.split('\n\n', 1)[0]
+    if not maker_in_text(maker, lead) or not re.search(r'\b(?:\w*computer|calcolator\w*)\b', lead, re.I):
+        return None
+    aliases = maker_aliases(maker)
+    core = model_key(maker, model)[1]
+    bbc = page['title'] == 'BBC Micro' and aliases[0] == 'Acorn' and re.fullmatch(r'(?:bbc)?(?:micro)?model([ab])(\+)?', core)
+    redirect = next((r for r in payload.get('query', {}).get('redirects', [])
+        if r.get('to') == page['title'] and model_key(maker, r.get('from', '')) == model_key(maker, model)), None)
+    if not bbc and (not redirect or not redirect.get('tofragment')):
+        return None
+    if bbc:
+        suffix = bbc[1] + (bbc[2] or '')
+        patterns = [r'(?:model|modello)\s*' + re.escape(suffix)]
+    else:
+        # Keep all model suffixes. "800" cannot match "800XL" or "180c".
+        patterns = [r'[\s_-]*'.join(re.escape(char) for char in core)]
+        if core.isdigit():
+            patterns = [re.escape(aliases[0]) + r'\s*' + core, r'modell[oi]\s+' + core]
+    expression = re.compile(r'(?<![\w+])(?:' + '|'.join(patterns) + r')(?![\w+])', re.I)
+    fragment = redirect.get('tofragment', '') if redirect else ''
+    paragraph_matches, path = [], []
+    in_fragment = not fragment
+    for line in text.splitlines():
+        heading = re.fullmatch(r'(={2,6})\s*(.*?)\s*\1', line.strip())
+        if heading:
+            level, name = len(heading[1]), heading[2]
+            path = [(depth, title) for depth, title in path if depth < level] + [(level, name)]
+            in_fragment = not fragment or any(title.replace('_', ' ').casefold() == fragment.replace('_', ' ').casefold() for _, title in path)
+            continue
+        paragraph = line.strip()
+        if not in_fragment or len(paragraph) < 60 or not paragraph.endswith(('.', '!', '?')):
+            continue
+        if any(re.search(r'architettura|specifiche|cronologia|periferiche|software|videogiochi|bibliografia|note|collegamenti', title, re.I) for _, title in path):
+            continue
+        match = expression.search(paragraph)
+        # Numeric model IDs are safe as bare numbers only within the exact
+        # model redirect's section, whose heading also identifies that number.
+        if not match and core.isdigit() and fragment and re.search(r'(?<!\w)' + re.escape(core) + r'(?!\w)', fragment):
+            match = re.search(r'(?<!\w)' + re.escape(core) + r'(?!\w)', paragraph)
+        if not match:
+            continue
+        score = (3 if match.start() < 24 else 1) + (2 if re.search(r'\b(?:19\d{2}|20\d{2}|commercial\w*|introd\w*|success\w*|lanciat\w*)', paragraph, re.I) else 0)
+        paragraph_matches.append((score, len(paragraph_matches), paragraph, path[-1][1] if path else ''))
+    if not paragraph_matches:
+        return None
+    selected = sorted(sorted(paragraph_matches, key=lambda p: (-p[0], p[1]))[:2], key=lambda p: p[1])
+    first_sentence = re.split(r'(?<=[.!?])\s+', lead)[0]
+    excerpt = first_sentence + '\n\n' + '\n\n'.join(p[2] for p in selected)
+    if len(excerpt) > 1500:
+        ends = list(re.finditer(r'[.!?](?=\s|$)', excerpt[:1501]))
+        excerpt = excerpt[:ends[-1].end()] if ends else ''
+    if len(excerpt) < 180 or not expression.search(excerpt):
+        return None
+    return excerpt, fragment or selected[0][3]
+
+
+def select_result(model, maker, payload, *, full_page=False):
     pages = payload.get('query', {}).get('pages', [])
     if not isinstance(pages, list):
         raise ValueError('Formato API inatteso')
@@ -104,13 +221,18 @@ def select_result(model, maker, payload):
             url = 'https://it.wikipedia.org/w/index.php?' + urlencode({'oldid': revision})
         candidates.append({'title': page['title'], 'url': url})
         note = hp85_note(model, maker, page)
-        text = note[0] if note else intro(page.get('extract', ''))
+        family = family_excerpt(model, maker, page, payload) if full_page and not note else None
+        text = note[0] if note else family[0] if family else intro(page.get('extract', ''))
         exact_model = model_key(maker, page['title']) == model_key(maker, model) or pc5150_article(model, maker, page)
-        if not text or (not note and (not exact_model or not maker_in_text(maker, text))):
+        if not text or (not note and not family and (not exact_model or not maker_in_text(maker, text))):
             continue
+        if family:
+            url += '#' + quote(family[1].replace(' ', '_'))
+            if len(url) > 800:
+                url = url.split('#', 1)[0]
         accepted.append({'description': text, 'evidence': note[1] if note else text,
             'title': page['title'], 'url': url, 'revision_id': revision,
-            'method': 'sintesi editoriale da passaggi italiani' if note else 'estratto introduttivo italiano',
+            'method': 'sintesi editoriale da passaggi italiani' if note else 'passaggi italiani dedicati al modello' if family else 'estratto introduttivo italiano',
             'license_url': LICENSE})
     if len(accepted) == 1:
         return {'status': 'found', **accepted[0], 'candidates': candidates}
@@ -118,16 +240,21 @@ def select_result(model, maker, payload):
         'reason': 'Più voci compatibili: nessuna scelta automatica.' if accepted else 'Nessun testo storico italiano sufficientemente completo con abbinamento certo al modello.'}
 
 
-async def research(model, maker):
+async def research(model, maker, *, attempt=0, full_title=None):
+    plan = search_plan(model, maker)
+    if not 0 <= attempt < len(plan):
+        raise ValueError('Tentativo di ricerca non valido')
+    search = dict(plan[attempt])
+    if search['strategy'] == 'full_page' and full_title:
+        search['titles'] = full_title
     params = {'action': 'query', 'format': 'json', 'formatversion': 2, 'maxlag': 5,
         'prop': 'extracts|pageprops|revisions', 'explaintext': 1, 'rvprop': 'ids', 'ppprop': 'disambiguation'}
-    if model_key(maker, model) == model_key('HP', 'HP 85'):
-        params['titles'] = 'HP 9800'
-    elif model_key(maker, model) == model_key('IBM', 'IBM PC 5150'):
-        params.update(titles='PC IBM', exintro=1)
+    if 'titles' in search:
+        params.update(titles=search['titles'], redirects=1)
+        if search.get('exintro'):
+            params['exintro'] = 1
     else:
-        query = re.sub(r'["\[\]{}|:]', ' ', model).strip()
-        params.update(generator='search', gsrsearch=f'"{query}" computer', gsrnamespace=0, gsrlimit=5, exintro=1, exlimit=5)
+        params.update(generator='search', gsrsearch=search['query'], gsrnamespace=0, gsrlimit=5, exintro=1, exlimit=5)
     try:
         async with asyncio.timeout(35), httpx.AsyncClient(timeout=httpx.Timeout(25, connect=10), headers={'User-Agent': USER_AGENT}, follow_redirects=False) as client:
             async with client.stream('GET', API, params=params) as response:
@@ -148,8 +275,24 @@ async def research(model, maker):
         if payload.get('error'):
             code = payload['error'].get('code', '')
             if code in ('badsearch', 'cirrussearch-parse-error', 'urlparamnormal'):
-                return {'status': 'search_error', 'reason': 'Query rifiutata da Wikipedia; nessuna modifica.'}, payload
-            raise HTTPException(503, 'Wikipedia ha segnalato un errore API. Riprendi per ritentare.', headers={'Retry-After': str(retry)})
-        return select_result(model, maker, payload), payload
+                result = {'status': 'search_error', 'reason': 'Query rifiutata da Wikipedia; nessuna modifica.'}
+            else:
+                raise HTTPException(503, 'Wikipedia ha segnalato un errore API. Riprendi per ritentare.', headers={'Retry-After': str(retry)})
+        else:
+            result = select_result(model, maker, payload, full_page=search['strategy'] == 'full_page')
+        result.update(search={**search, 'attempt': attempt + 1}, search_version=SEARCH_VERSION)
+        # A matching page with a short introduction may have useful history in
+        # its body. Preserve its exact title for the later full-page lookup.
+        result['full_title'] = full_title
+        for page in payload.get('query', {}).get('pages', []):
+            lead = page.get('extract', '').split('\n\n', 1)[0]
+            if (not page.get('missing') and 'disambiguation' not in page.get('pageprops', {})
+                and model_key(maker, page['title']) == model_key(maker, model)
+                and maker_in_text(maker, lead) and re.search(r'\b(?:\w*computer|calcolator\w*)\b', lead, re.I)):
+                result['full_title'] = page['title']
+                break
+        if result['status'] in ('no_match', 'search_error') and attempt + 1 < len(plan):
+            result['next_attempt'] = attempt + 1
+        return result, payload
     except (httpx.HTTPError, TimeoutError, ValueError, KeyError, TypeError, AttributeError) as exc:
         raise HTTPException(503, 'Risposta Wikipedia non disponibile o non valida. Riprendi per ritentare.', headers={'Retry-After': '30'}) from exc

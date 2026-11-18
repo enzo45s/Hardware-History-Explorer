@@ -31,6 +31,11 @@ asserzioni pending; nessuna chiamata AI a pagamento. Prova reale isolata:
 10 descrizioni aggiornate su 11 sistemi, un caso senza abbinamento idoneo.
 Copertura non garantita per l'intero catalogo; istruzioni e criteri in
 `docs/HISTORICAL_DESCRIPTIONS.md`.
+La ricerca riprova con parole chiave marca/modello e consulta le sezioni di
+famiglia collegate dal modello, con originali e attese persistenti per ogni
+tentativo. Gestisce i casi PowerBook 180, BBC Model B e Atari 130XE/400/800XL;
+un comando dedicato ritenta gli esiti senza testo conservando gli aggiornamenti
+già riusciti e lo storico delle ricerche precedenti.
 
 Per lavorare su due PC, `tools/Transfer-HheArchive.ps1` esporta e ripristina
 database PostgreSQL completo e volume fotografico in un archivio portabile.
