@@ -9,6 +9,7 @@ from copy import deepcopy
 from datetime import date
 import re
 import unicodedata
+from .geography import european_countries
 
 
 def key(value):
@@ -22,7 +23,7 @@ def unknown_market(value):
 
 
 def market_key(row):
-    return '' if unknown_market(row['market']) else key(row['market'])
+    return '' if unknown_market(row['market']) else 'europa' if european_countries(row['market']) else key(row['market'])
 
 
 DATES = ('release_date', 'discontinuation_date')
@@ -48,7 +49,7 @@ def compatible(rows):
 def release_summaries(releases):
     """Only complementary date/price records with a unique match are combined.
 
-    Never merge two prices (they may describe different configurations), assign
+    Never merge two prices from the same country (they may describe different configurations), assign
     a price of unknown geography to a country, or distribute a global model date
     over several markets. Plans are computed before merging, independent of order.
     """
@@ -69,6 +70,27 @@ def release_summaries(releases):
                 dates.append(group)
         else:
             others.append(group)
+
+    # Equal offers repeated across different European countries become one
+    # regional offer. Multiple identical rows in one country remain ambiguous.
+    european_prices = defaultdict(list)
+    price_groups = []
+    for group in prices:
+        row = group['row']
+        if market_key(row) == 'europa' and row.get('currency'):
+            european_prices[tuple(row.get(field) for field in ('price', 'currency', 'price_type', *DATES))].append(group)
+        else:
+            price_groups.append(group)
+    for repeated in european_prices.values():
+        countries = [country for group in repeated for country in european_countries(group['row']['market'])]
+        if len(countries) != len(set(countries)):
+            price_groups.extend(repeated)
+            continue
+        target = repeated[0]
+        for group in repeated[1:]:
+            target['originals'].extend(group['originals'])
+        price_groups.append(target)
+    prices = sorted(price_groups, key=lambda group: group['row']['id'])
 
     plans = defaultdict(list)
     for group in dates:
@@ -109,7 +131,13 @@ def release_summaries(releases):
         summary['id'] = min(summary['release_ids'])
         summary['merged'] = len(originals) > 1
         summary['original_releases'] = originals
-        summary['market'] = summary['market'] if market_key(summary) else 'Mercato non documentato'
+        if market_key(summary) == 'europa':
+            summary['market'] = 'Europa'
+            summary['countries'] = sorted({country for row in originals for country in european_countries(row['market'])})
+            summary['price_countries'] = sorted({country for row in originals if row.get('price') is not None for country in european_countries(row['market'])})
+        elif not market_key(summary):
+            summary['market'] = 'Mercato non documentato'
+        summary['original_markets'] = list(dict.fromkeys(row['market'] for row in originals))
         summary['date_scope'] = 'model' if (market_key(summary) and summary.get('release_date') and not any(
             market_key(row) == market_key(summary) and row.get('release_date') == summary['release_date'] for row in originals)) else 'market'
         # Preserve which source supports each field, not merely the union of URLs.

@@ -16,6 +16,14 @@ discordanti e listini successivi rimangono distinti. Nessuna modifica agli ID,
 all'audit ETL o alle evidenze originali usate dall'editor e dall'assistente AI.
 Regole e verifica in `docs/RELEASE_SUMMARIES.md`.
 
+Schede e confronti riuniscono in Europa i profili tecnici regionali identici,
+conservando revisioni, tastiere e dotazioni differenti. Un riquadro Europa
+raggruppa le offerte regionali, accorpando solo dati equivalenti. Paesi non
+europei o transcontinentali non vengono assegnati automaticamente al continente.
+Originali, identificativi e importazioni restano invariati. HTML senza cache e
+`build-info.json` permettono di verificare il frontend effettivamente distribuito;
+criteri, aggiornamento forzato e verifiche in `docs/EUROPE_GROUPING.md`.
+
 Per lavorare su due PC, `tools/Transfer-HheArchive.ps1` esporta e ripristina
 database PostgreSQL completo e volume fotografico in un archivio portabile.
 Il ripristino verifica SHA-256 e versione del codice, crea il backup della

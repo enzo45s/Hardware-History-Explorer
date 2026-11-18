@@ -115,12 +115,15 @@ La struttura dati comprende ora **19 tabelle**: le 18 originali più `computer_i
 - Timeline ordinata per primo lancio commerciale, con precisione storica delle date.
 - Catalogo filtrabile per nome, produttore, categoria e anni.
 - Schede con specifiche, configurazioni, mercati, dati di vendita, recensioni, fatti e fonti.
+- Profili regionali europei identici riuniti in **Europa** nelle schede e nei
+  confronti; offerte europee raggruppate senza perdere date, prezzi, valute o
+  revisioni differenti. [Criteri geografici e verifica della build](docs/EUROPE_GROUPING.md).
 - Commercializzazioni accorpate automaticamente quando data e prezzo hanno un
   unico abbinamento compatibile: anno e prezzo appaiono nella stessa scheda del
   mercato. Originali e citazioni restano disponibili; mercati multipli, date
   discordanti e listini successivi non ricevono date inventate.
   [Regole ed esempi](docs/RELEASE_SUMMARIES.md).
-- Commercializzazione con una sola citazione e senza riquadro di provenienza;
+- Una citazione per offerta e nessun riquadro di provenienza;
   le fonti MAME e le autocitazioni HHE sono escluse dal catalogo, dal pannello
   Fonti e dal contesto AI. RetroFlops resta visibile solo se ancora collegato
   a dati del catalogo. Dati tecnici e originali interni delle importazioni restano

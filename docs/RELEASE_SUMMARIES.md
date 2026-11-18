@@ -39,12 +39,17 @@ nella [politica delle fonti](SOURCE_POLICY.md).
 
 ## Cosa rimane separato
 
-- Piu prezzi possibili, anche uguali: possono riferirsi a configurazioni diverse.
-- Piu mercati conosciuti: la data generica non viene attribuita a uno arbitrariamente.
+- Piu prezzi possibili nello stesso paese, anche uguali: possono riferirsi a configurazioni diverse.
+- Piu aree geografiche conosciute: la data generica non viene attribuita a una arbitrariamente.
 - Anni/date differenti o precisioni differenti tra le registrazioni.
 - Un listino successivo senza data: non riceve l'anno di lancio del modello.
 - Informazioni prive di un abbinamento sicuro; se nessuna fonte indica il
   mercato, la scheda mostra **Mercato non documentato**.
+
+Le [regioni europee](EUROPE_GROUPING.md) vengono presentate sotto **Europa**.
+Offerte con tutti i dati uguali e ripetute in paesi europei differenti possono
+essere riunite; importi, valute e date differenti restano offerte distinte
+nello stesso riquadro. Non si equiparano prezzi privi di valuta.
 
 ## Conservazione e aggiornamento
 

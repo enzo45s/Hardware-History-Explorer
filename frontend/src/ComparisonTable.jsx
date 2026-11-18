@@ -1,7 +1,7 @@
 import React, { useEffect, useId, useState } from 'react';
 import { api, latestRequest } from './api.js';
 import { comparisonSpecifications, selectedConfiguration } from './comparison-specs.js';
-import { displayDescription, displayConfigurationName } from './catalog-display.js';
+import { displayDescription, displayConfigurationName, displayConfigurations } from './catalog-display.js';
 import './comparison-table.css';
 
 export default function ComparisonTable({ ids, configurations, onConfigurationChange, Cover }) {
@@ -17,7 +17,7 @@ export default function ComparisonTable({ ids, configurations, onConfigurationCh
   const data = response.data;
   const specifications = data.map(computer => comparisonSpecifications(computer, configurations[computer.id]));
   const rows = new Map(specifications.flatMap(specs => [...specs].map(([key, spec]) => [key, spec.label])));
-  const aggregated = data.some(computer => computer.configurations.length > 1 && !selectedConfiguration(computer, configurations[computer.id]));
+  const aggregated = data.some(computer => displayConfigurations(computer).length > 1 && !selectedConfiguration(computer, configurations[computer.id]));
   return <section className="comparison-results">
     {aggregated && <p className="comparison-variant-help" role="note">I valori raggruppati appartengono a configurazioni diverse. Scegli una variante per confrontare una combinazione precisa; i dati mancanti non vengono dedotti dalle altre configurazioni.</p>}
     <div className="panel compare-scroll"><table className="comparison"><caption className="comparison-caption">Confronto dei sistemi e delle configurazioni selezionate</caption>
@@ -25,10 +25,10 @@ export default function ComparisonTable({ ids, configurations, onConfigurationCh
         <div className="comparison-system-name">{computer.model_name}</div>
         <label className="comparison-config-label" htmlFor={tableId + '-' + computer.id}>Configurazione</label>
         <select id={tableId + '-' + computer.id} className="comparison-config-select" aria-label={'Configurazione di ' + computer.model_name}
-          disabled={!computer.configurations.length} value={selectedConfiguration(computer, configurations[computer.id])?.id ?? 'all'}
+          disabled={!displayConfigurations(computer).length} value={selectedConfiguration(computer, configurations[computer.id])?.id ?? 'all'}
           onChange={event => onConfigurationChange(computer.id, event.target.value)}>
-          <option value="all">{computer.configurations.length ? `Tutte le configurazioni (${computer.configurations.length})` : 'Nessuna configurazione disponibile'}</option>
-          {computer.configurations.map(config => <option key={config.id} value={config.id}>{displayConfigurationName(config)}</option>)}
+          <option value="all">{displayConfigurations(computer).length ? `Tutte le configurazioni (${displayConfigurations(computer).length})` : 'Nessuna configurazione disponibile'}</option>
+          {displayConfigurations(computer).map(config => <option key={config.id} value={config.id}>{displayConfigurationName(config)}</option>)}
         </select>
         {selectedConfiguration(computer, configurations[computer.id]) && displayDescription(selectedConfiguration(computer, configurations[computer.id])) && <p className="comparison-config-description">{displayDescription(selectedConfiguration(computer, configurations[computer.id]))}</p>}
       </th>)}</tr></thead>

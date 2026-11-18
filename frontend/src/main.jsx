@@ -16,7 +16,7 @@ import ComparisonTable from './ComparisonTable.jsx';
 import ReleasePanels from './ReleasePanels.jsx';
 import { comparisonSummary } from './comparison-api.js';
 import { computerSources } from './computer-sources.js';
-import { displaySpecification, displayDescription, displayConfigurationName } from './catalog-display.js';
+import { displaySpecification, displayDescription, displayConfigurationName, displayConfigurations } from './catalog-display.js';
 
 const nav = [
   ['timeline', 'Timeline', Clock3], ['catalog', 'Catalogo', Database],
@@ -209,7 +209,7 @@ function ComputerDetail({ computer, onClose, onChanged }) {
     <Gallery computer={computer} />
     <ImageManager computer={computer} onChanged={onChanged} />
     <div className="section-title">Configurazioni e specifiche</div>
-    {computer.configurations.map(c => <section className="panel" key={c.id}><h3>{displayConfigurationName(c)}</h3>{displayDescription(c) && <p className="muted">{displayDescription(c)}</p>}<table><tbody>{c.specifications.map(s => {
+    {displayConfigurations(computer).map(c => <section className="panel" key={c.id} aria-label={'Configurazione · ' + displayConfigurationName(c)}><h3>{displayConfigurationName(c)}</h3>{displayDescription(c) && <p className="muted">{displayDescription(c)}</p>}<table><tbody>{c.specifications.map(s => {
       const view = displaySpecification(s);
       return <tr key={s.id}><td>{view.component_type} · {view.property_name}</td><td><strong title={'Valore registrato: ' + (s.numeric_value ?? s.text_value) + (s.unit ? ' ' + s.unit : '')}>{view.numeric_value ?? view.text_value} {view.unit || ''}</strong>{s.sources?.map(source => <Source key={source.id} s={source} compact />)}</td></tr>;
     })}</tbody></table></section>)}

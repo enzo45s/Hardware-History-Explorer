@@ -83,6 +83,11 @@ jobs:
         env:
           HHE_BASE_URL: http://127.0.0.1:8080/
         run: npm run test:browser:sources
+      - name: Browser European profiles, regional offers and fresh frontend assets
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:europe
       - name: Browser manufacturer management and computer deletion
         working-directory: frontend
         env:

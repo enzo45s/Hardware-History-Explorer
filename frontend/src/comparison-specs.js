@@ -1,14 +1,15 @@
-import { displaySpecification } from './catalog-display.js';
+import { displaySpecification, displayConfigurations } from './catalog-display.js';
 
 // Missing values remain unknown; variants and units must never be silently merged.
 export function selectedConfiguration(computer, requested) {
   if (requested == null || requested === 'all') return null;
-  return computer.configurations.find(config => String(config.id) === String(requested)) || null;
+  return displayConfigurations(computer).find(config => String(config.id) === String(requested)
+    || config.configuration_ids?.some(id => String(id) === String(requested))) || null;
 }
 
 export function comparisonSpecifications(computer, requested = 'all') {
   const chosen = selectedConfiguration(computer, requested);
-  const configurations = chosen ? [chosen] : computer.configurations;
+  const configurations = chosen ? [chosen] : displayConfigurations(computer);
   const groups = new Map();
   configurations.forEach((config, index) => {
     for (const original of config.specifications) {

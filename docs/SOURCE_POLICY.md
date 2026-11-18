@@ -3,7 +3,7 @@
 Le schermate del catalogo e dell'amministrazione escludono le citazioni MAME
 e le autocitazioni HHE dalla bibliografia operativa. Le fonti RetroFlops sono
 mostrate soltanto se ancora collegate a dati attuali del catalogo.
-La commercializzazione mostra al massimo una
+Ogni offerta mostra al massimo una
 fonte, privilegiando quella del prezzo; non presenta il riquadro di provenienza
 o la nota tecnica sull'accorpamento. Le altre fonti indipendenti restano disponibili.
 
