@@ -15,7 +15,7 @@ from .engine import stage, apply_job, review_claim, original_bytes
 from .providers import PROVIDERS, fetch_provider, upload_records
 from .presentation import claim_presentation
 from . import reconcile
-from ..source_policy import excluded_source_ids, is_mame_source
+from ..source_policy import excluded_source_ids, is_visible_source
 
 
 def job_data(job):
@@ -185,6 +185,7 @@ def create_import_router(get_db):
     @router.get('/{job_id}')
     def detail(job_id: int, offset: int = Query(0, ge=0), limit: int = Query(25, ge=1, le=100), db: Session = Depends(get_db)):
         job = job_or_404(db, job_id)
+        hidden_sources = set(excluded_source_ids(db))
         rows = db.scalars(select(ImportRow).where(ImportRow.job_id == job_id).order_by(ImportRow.position).offset(offset).limit(limit))
         def computer_label(computer_id):
             c = db.get(Computer, computer_id) if computer_id else None
@@ -193,7 +194,7 @@ def create_import_router(get_db):
                   'status': r.status, 'error': r.error, 'computer_id': r.computer_id, 'candidates': r.candidates,
                   'computer_label': computer_label(r.computer_id),
                   'candidate_labels': [computer_label(cid) or f'Voce rimossa (ID {cid})' for cid in r.candidates],
-                  'claims': [claim_data(c) for c in r.claims if not is_mame_source(c.source)]} for r in rows]}
+                  'claims': [claim_data(c) for c in r.claims if c.source_id not in hidden_sources]} for r in rows]}
 
     @router.get('/{job_id}/original')
     def original(job_id: int, db: Session = Depends(get_db)):
@@ -258,7 +259,7 @@ def create_import_router(get_db):
     def review(claim_id: int, data: Decision, db: Session = Depends(get_db)):
         catalog_lock(db)
         c = db.scalar(select(ImportClaim).where(ImportClaim.id == claim_id).with_for_update())
-        if c is None or is_mame_source(c.source):
+        if c is None or not is_visible_source(db,c.source):
             raise HTTPException(404, 'Asserzione non trovata')
         try:
             review_claim(db, c, data.decision, data.note)

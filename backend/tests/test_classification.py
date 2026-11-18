@@ -2,6 +2,7 @@ import pytest
 from sqlalchemy import select
 from app.main import SessionLocal
 from app.models import Computer, Category
+from app.import_models import ImportClaim, ImportRow
 from app.importing.classification import classify
 
 
@@ -33,8 +34,12 @@ def test_additive_category_repair_preserves_ids_specs_photos_and_pending_audit(c
     assert c['categories'] == ['Home computer', 'Calcolatore']
     assert client.get('/api/computers').json()['total'] == 10
     detail = client.get('/api/admin/imports/' + str(result.json()['job_id'])).json()
-    assert detail['verification_counts'] == {'pending': preview['total']}
-    assert all('Classificazione editoriale' in claim['evidence'] for row in detail['rows'] for claim in row['claims'])
+    assert detail['verification_counts'] == {}
+    assert all(row['claims'] == [] for row in detail['rows'])
+    with SessionLocal() as db:
+        claims = db.scalars(select(ImportClaim).join(ImportRow).where(ImportRow.job_id == result.json()['job_id'])).all()
+        assert len(claims) == preview['total'] and all(claim.status == 'pending' for claim in claims)
+        assert all('Classificazione editoriale' in claim.evidence for claim in claims)
     second = client.get('/api/admin/classification/preview').json()
     assert second['total'] == 0
     assert client.post('/api/admin/classification/apply', json={'token': second['token']}).json()['updated'] == 0

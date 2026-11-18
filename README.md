@@ -121,8 +121,9 @@ La struttura dati comprende ora **19 tabelle**: le 18 originali più `computer_i
   discordanti e listini successivi non ricevono date inventate.
   [Regole ed esempi](docs/RELEASE_SUMMARIES.md).
 - Commercializzazione con una sola citazione e senza riquadro di provenienza;
-  le fonti MAME della base dati sono escluse dal catalogo, dal pannello Fonti
-  e dal contesto AI. Dati tecnici e originali interni delle importazioni restano
+  le fonti MAME e le autocitazioni HHE sono escluse dal catalogo, dal pannello
+  Fonti e dal contesto AI. RetroFlops resta visibile solo se ancora collegato
+  a dati del catalogo. Dati tecnici e originali interni delle importazioni restano
   conservati. [Politica delle fonti](docs/SOURCE_POLICY.md).
 - Confronti tra 2–5 sistemi, analisi e distribuzioni statistiche.
 - Assistente AI opzionale: solo dati del database, nessun accesso arbitrario a SQL.

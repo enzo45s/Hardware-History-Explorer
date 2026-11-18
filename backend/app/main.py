@@ -21,7 +21,7 @@ from .importing.vocabulary import normalize_spec, spec_values
 from .commons import photo_query, search_pages
 from .catalog_display import description_text, configuration_displays, specification_display
 from .release_display import release_summaries
-from .source_policy import is_mame_source
+from .source_policy import excluded_source_ids, is_internal_source, is_visible_source
 
 UPLOAD_DIR=Path(os.getenv('UPLOAD_DIR',str(Path(__file__).resolve().parents[1] / 'uploads')))
 UPLOAD_DIR.mkdir(parents=True,exist_ok=True)
@@ -75,7 +75,7 @@ def overview(c):
  r=releases[0] if releases else None
  return {'id':c.id,'model_name':c.model_name,'manufacturer':c.manufacturer.name,'manufacturer_id':c.manufacturer_id,'categories':[x.name for x in sorted(c.categories,key=lambda cat:(cat.name=='Calcolatore',cat.name))],'year':r.release_date.year if r else None,'first_release':datefmt(r.release_date,r.release_precision) if r else None,'description':c.description,'display_description':description_text(c.description),'image_url':cover,'image_count':len(images)}
 def src(s):return {'id':s.id,'title':s.title,'url':s.url,'author':s.author,'publisher':s.publisher,'source_type':s.source_type,'publication_date':s.publication_date.isoformat() if s.publication_date else None,'access_date':s.access_date.isoformat() if s.access_date else None}
-def source_list(items):return [src(s) for s in items if not is_mame_source(s)]
+def source_list(items):return [src(s) for s in items if not is_internal_source(s)]
 def specification_data(s):
  # Keep the public raw fields backward compatible; views use this additive DTO.
  normalized=normalize_spec(spec_values(s))
@@ -175,25 +175,25 @@ class SourceInput(BaseModel):
 
  @model_validator(mode='after')
  def bibliography_source(self):
-  if is_mame_source(self):
-   raise ValueError('Le citazioni MAME del dataset di base sono escluse dalla bibliografia')
+  if is_internal_source(self):
+   raise ValueError('Le citazioni del dataset di base e le autocitazioni HHE sono escluse dalla bibliografia')
   return self
 @app.post('/api/sources',status_code=201)
 def create_source(data:SourceInput,db:Session=Depends(get_db)):
  s=Source(**data.model_dump());db.add(s);db.commit();db.refresh(s);return src(s)
 @app.get('/api/sources')
-def sources(db:Session=Depends(get_db)):return source_list(db.scalars(select(Source).order_by(Source.title)))
+def sources(db:Session=Depends(get_db)):return source_list(db.scalars(select(Source).where(Source.id.not_in(excluded_source_ids(db))).order_by(Source.title)))
 
 @app.get('/api/sources/{source_id}')
 def source(source_id:int,db:Session=Depends(get_db)):
  s=db.get(Source,source_id)
- if s is None or is_mame_source(s):raise HTTPException(404,'Fonte non trovata')
+ if s is None or not is_visible_source(db,s):raise HTTPException(404,'Fonte non trovata')
  return src(s)
 
 @app.put('/api/sources/{source_id}')
 def update_source(source_id:int,data:SourceInput,db:Session=Depends(get_db)):
  s=db.get(Source,source_id)
- if s is None or is_mame_source(s):raise HTTPException(404,'Fonte non trovata')
+ if s is None or not is_visible_source(db,s):raise HTTPException(404,'Fonte non trovata')
  for field,value in data.model_dump().items():setattr(s,field,value)
  db.commit();db.refresh(s)
  return src(s)

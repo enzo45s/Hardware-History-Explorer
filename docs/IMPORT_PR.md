@@ -7,8 +7,10 @@ una persona decide, con nota e controllo sui valori modificati nel frattempo.
 Le commercializzazioni ora presentano insieme data e prezzo da registrazioni
 complementari quando l'abbinamento e univoco. Sintesi con una sola citazione
 e senza riquadro di provenienza; originali e ambito della data conservati
-internamente. Le citazioni MAME sono escluse da catalogo, pannello Fonti,
-asserzioni visibili e contesto AI, mantenendo dati e audit ETL.
+internamente. Le citazioni MAME e le autocitazioni HHE sono escluse da catalogo,
+pannello Fonti, asserzioni visibili e contesto AI, mantenendo dati e audit ETL.
+Le fonti RetroFlops sono visibili solo quando ancora collegate ad almeno un
+calcolatore, specifica, commercializzazione, vendita, recensione o fatto.
 Mercati/prezzi multipli, date
 discordanti e listini successivi rimangono distinti. Nessuna modifica agli ID,
 all'audit ETL o alle evidenze originali usate dall'editor e dall'assistente AI.

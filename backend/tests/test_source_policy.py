@@ -6,9 +6,9 @@ from sqlalchemy import func, select
 
 from app.main import EAGER, SessionLocal, full
 from app.assistant_context import retrieve
-from app.import_models import ImportClaim, ImportJob
+from app.import_models import ImportClaim, ImportJob, ImportRow
 from app.models import Computer, Configuration, Fact, Release, Review, Sale, Source, Specification
-from app.source_policy import is_mame_source
+from app.source_policy import is_hhe_source, is_mame_source, is_retroflops_source
 
 
 @pytest.mark.parametrize('citation', [
@@ -34,10 +34,14 @@ def test_preserves_independent_sources_and_avoids_substring_false_positives(cita
     assert not is_mame_source(citation)
 
 
-def test_legacy_mame_source_is_absent_from_all_public_bibliographies_but_data_is_unchanged(client):
+@pytest.mark.parametrize('citation', [
+    {'title': 'MAME test document', 'url': 'https://github.com/mamedev/mame', 'publisher': 'MAME'},
+    {'title': 'HHE · Sintesi italiana del catalogo', 'publisher': 'Hardware History Explorer', 'source_type': 'editorial_summary'},
+])
+def test_legacy_internal_source_is_absent_from_all_public_bibliographies_but_data_is_unchanged(client, citation):
     with SessionLocal() as db:
         computer = db.get(Computer, 1)
-        mame = Source(title='MAME test document', url='https://github.com/mamedev/mame', publisher='MAME')
+        mame = Source(**citation)
         independent = Source(title='Independent hardware manual', url='https://example.org/manual')
         db.add_all([mame, independent]); db.flush()
         computer.sources = [mame, independent]
@@ -72,24 +76,29 @@ def test_legacy_mame_source_is_absent_from_all_public_bibliographies_but_data_is
         context = retrieve(db, data['model_name'], EAGER, full)
         item = next(row for row in context['computers'] if row['id'] == 1)
         assert [source['id'] for source in item['sources']] == [keep_id]
-        assert db.get(Source, mame_id).publisher == 'MAME'
+        assert db.get(Source, mame_id).publisher == citation['publisher']
         assert {source.id for source in db.get(Specification, spec_id).sources} == {mame_id, keep_id}
         for model in protected:
             assert db.execute(select(*model.__table__.columns).order_by(model.id)).all() == before[model.__name__]
 
 
-def test_manual_mame_sources_cannot_reappear_in_source_panel(client):
+def test_manual_internal_sources_cannot_reappear_in_source_panel(client):
     for citation in [{'title': 'MAME driver'}, {'title': 'Dataset', 'url': 'https://www.mamedev.org/'},
-                     {'title': 'Dataset', 'publisher': 'MAME'}]:
+                     {'title': 'Dataset', 'publisher': 'MAME'}, {'title': 'HHE · Editorial'},
+                     {'title': 'Summary', 'publisher': 'Hardware History Explorer'}]:
         assert client.post('/api/sources', json=citation).status_code == 422
     keep = client.post('/api/sources', json={'title': 'Independent manual'}).json()
     assert client.put(f"/api/sources/{keep['id']}", json={'title': 'MAME driver'}).status_code == 422
     assert client.get(f"/api/sources/{keep['id']}").json()['title'] == 'Independent manual'
 
 
-def test_mame_import_stays_idempotent_and_keeps_audit_without_visible_claims(client):
+@pytest.mark.parametrize('citation', [
+    {'title': 'MAME synthetic dataset', 'url': 'https://github.com/mamedev/mame'},
+    {'title': 'HHE · Synthetic summary', 'publisher': 'Hardware History Explorer'},
+])
+def test_internal_import_stays_idempotent_and_keeps_audit_without_visible_claims(client, citation):
     record = {'manufacturer': 'Synthetic maker', 'model_name': 'Synthetic source-policy computer',
-        'source': {'title': 'MAME synthetic dataset', 'url': 'https://github.com/mamedev/mame'},
+        'source': citation,
         'description': 'A synthetic computer', 'categories': ['Test category'],
         'configurations': [{'variant_name': 'Test variant', 'specifications': [
             {'component_type': 'CPU', 'property_name': 'Clock', 'numeric_value': 2, 'unit': 'MHz'}]}]}
@@ -105,7 +114,7 @@ def test_mame_import_stays_idempotent_and_keeps_audit_without_visible_claims(cli
     first = upload_apply()
     assert first['counts'] == {'imported': 1}
     assert first['verification_counts'] == {} and first['rows'][0]['claims'] == []
-    assert first['rows'][0]['raw']['source']['title'] == 'MAME synthetic dataset'
+    assert first['rows'][0]['raw']['source']['title'] == citation['title']
     assert client.get('/api/sources').json() == []
     second = upload_apply()
     assert second['counts'] == {'unchanged': 1}
@@ -121,3 +130,117 @@ def test_mame_import_stays_idempotent_and_keeps_audit_without_visible_claims(cli
         assert item['import_assertions'] == [] and item['sources'] == []
     response = client.post(f'/api/admin/imports/claims/{claim_id}/review', json={'decision': 'accept', 'note': 'Synthetic review'})
     assert response.status_code == 404
+
+
+@pytest.mark.parametrize('citation', [
+    {'title': 'HHE · Classificazione editoriale v1'}, {'title': 'HHE'},
+    {'title': 'Hardware History Explorer — note'}, {'publisher': 'Hardware History Explorer'},
+    {'author': 'HHE'}, {'source_type': 'hhe_editorial'},
+    {'url': 'https://github.com/enzo45s/Hardware-History-Explorer/blob/main/README.md'},
+    {'url': 'https://raw.githubusercontent.com/enzo45s/Hardware-History-Explorer/main/README.md'},
+    {'url': 'https://enzo45s.github.io/Hardware-History-Explorer/'},
+])
+def test_recognizes_project_self_citations(citation):
+    assert is_hhe_source(citation)
+
+
+@pytest.mark.parametrize('citation', [
+    {'title': 'Independent review of Hardware History Explorer', 'publisher': 'Independent archive'},
+    {'title': 'HHelectron laboratory manual'}, {'title': 'Editorial rule', 'publisher': 'Independent archive'},
+    {'url': 'https://example.org/?project=HHE'},
+    {'url': 'https://github.com/enzo45s/Hardware-History-Explorer-notes'},
+    {'url': 'https://github.com/other/Hardware-History-Explorer'},
+    {'url': 'https://example.org/enzo45s/Hardware-History-Explorer'},
+])
+def test_does_not_mistake_external_documents_for_self_citations(citation):
+    assert not is_hhe_source(citation)
+
+
+@pytest.mark.parametrize('citation', [
+    {'title': 'RetroFlops — Apple II'}, {'author': 'RetroFlops'},
+    {'url': 'https://retroflops.github.io/data/'}, {'source_type': 'retroflops_dataset'},
+    {'url': 'https://github.com/retroflops/retroflops'},
+    {'url': 'https://raw.githubusercontent.com/retroflops/retroflops/main/catalog.json'},
+])
+def test_recognizes_retroflops_citations(citation):
+    assert is_retroflops_source(citation)
+
+
+@pytest.mark.parametrize('citation', [
+    {'title': 'Historical flops table'}, {'url': 'https://retroflops.github.io.example.org/'},
+    {'url': 'https://example.org/?provider=retroflops'},
+    {'url': 'https://github.com/retroflops/retroflops-tools'},
+])
+def test_preserves_other_sources_when_cleaning_retroflops(citation):
+    assert not is_retroflops_source(citation)
+
+
+@pytest.mark.parametrize('kind', ['computer', 'specification', 'release', 'sale', 'review', 'fact'])
+def test_retroflops_visibility_tracks_current_catalog_links_and_ignores_old_audit(client, kind):
+    with SessionLocal() as db:
+        computer = db.get(Computer, 1)
+        used = Source(title='RetroFlops — still used', url='https://retroflops.github.io/')
+        retired = Source(title='RetroFlops — old import', url='https://retroflops.github.io/')
+        independent = Source(title='Independent unused manual', url='https://example.org/manual')
+        db.add_all([used, retired, independent]); db.flush()
+        market = computer.releases[0].market
+        targets = {'computer': computer, 'specification': computer.configurations[0].specifications[0],
+                   'release': computer.releases[0]}
+        if kind == 'sale':
+            targets[kind] = Sale(computer=computer, market=market, units_sold=123)
+        elif kind == 'review':
+            targets[kind] = Review(computer=computer, publication='Synthetic review')
+        elif kind == 'fact':
+            targets[kind] = Fact(computer=computer, fact_type='Synthetic fact', statement='Synthetic statement')
+        target = targets[kind]
+        target.sources.append(used)
+        db.add(target)
+        # An old import retains a source reference but no longer describes a live model.
+        job = ImportJob(provider='retroflops', filename='synthetic-old.json', format='json', checksum='a' * 64,
+            raw_payload='{"original":"RetroFlops archive"}', status='completed')
+        db.add(job); db.flush()
+        archived = ImportRow(job_id=job.id, position=1, raw={}, normalized={}, status='updated')
+        db.add(archived); db.flush()
+        db.add(ImportClaim(row_id=archived.id, computer_id=None, source_id=retired.id,
+            entity='Computer', target_id=99999, field='description', value={'value': 'Old text'}, previous={'value': None}))
+        db.commit()
+        used_id, retired_id, keep_id, job_id, target_id, target_model = used.id, retired.id, independent.id, job.id, target.id, type(target)
+        before = db.execute(select(*target_model.__table__.columns).where(target_model.id == target_id)).one()
+
+    def source_ids():
+        return {source['id'] for source in client.get('/api/sources').json()}
+    assert source_ids() == {used_id, keep_id}
+    assert client.get(f'/api/sources/{used_id}').status_code == 200
+    assert client.get(f'/api/sources/{retired_id}').status_code == 404
+    detail = client.get(f'/api/admin/imports/{job_id}').json()
+    assert detail['verification_counts'] == {} and detail['rows'][0]['claims'] == []
+    with SessionLocal() as db:
+        target = db.get(target_model, target_id)
+        target.sources.clear()
+        db.commit()
+    assert source_ids() == {keep_id}
+    assert client.get(f'/api/sources/{used_id}').status_code == 404
+    with SessionLocal() as db:
+        assert db.execute(select(*target_model.__table__.columns).where(target_model.id == target_id)).one() == before
+        assert db.get(Source, retired_id) is not None
+        assert db.get(ImportJob, job_id).raw_payload == '{"original":"RetroFlops archive"}'
+        # A new import can use the original identity again without duplicating it.
+        restored_target = db.get(target_model, target_id)
+        restored_target.sources.append(db.get(Source, used_id))
+        db.commit()
+    assert source_ids() == {used_id, keep_id}
+
+
+def test_retroflops_is_kept_until_its_last_association_is_removed(client):
+    with SessionLocal() as db:
+        computer = db.get(Computer, 1)
+        source = Source(title='RetroFlops — multiple references')
+        computer.sources.append(source)
+        computer.configurations[0].specifications[0].sources.append(source)
+        db.commit(); source_id = source.id
+        computer.sources.clear(); db.commit()
+    assert client.get(f'/api/sources/{source_id}').status_code == 200
+    # Computer deletion cascades all remaining technical links.
+    assert client.delete('/api/computers/1').status_code == 204
+    assert client.get(f'/api/sources/{source_id}').status_code == 404
+    assert client.get('/api/sources').json() == []

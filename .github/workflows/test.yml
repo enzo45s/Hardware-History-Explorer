@@ -78,6 +78,11 @@ jobs:
         env:
           HHE_BASE_URL: http://127.0.0.1:8080/
         run: npm run test:browser:releases
+      - name: Browser self-citations and conditional RetroFlops references
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:sources
       - name: Browser manufacturer management and computer deletion
         working-directory: frontend
         env:
