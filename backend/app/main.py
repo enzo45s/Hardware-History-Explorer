@@ -17,6 +17,7 @@ from .models import *
 from .seed import seed
 from . import import_models
 from . import photo_jobs
+from .history import create_history_router, attribution as history_attribution
 from .importing.vocabulary import normalize_spec, spec_values
 from .commons import photo_query, search_pages
 from .catalog_display import description_text, configuration_displays, specification_display, fact_statement
@@ -88,6 +89,7 @@ def full(c):
  o.update({'images':[image_data(i) for i in computer_images(c)],'announcement_date':datefmt(c.announcement_date,c.announcement_precision),'configurations':[{'id':v.id,'variant_name':v.variant_name,'description':v.description,**displays[v.id],'specifications':[specification_data(s) for s in v.specifications]} for v in c.configurations],'releases':[{'id':r.id,'market':r.market.name,'release_date':datefmt(r.release_date,r.release_precision),'discontinuation_date':datefmt(r.discontinuation_date,r.discontinuation_precision),'price':r.price,'currency':r.currency,'price_type':r.price_type,'sources':source_list(r.sources)} for r in c.releases],'sales':[{'market':s.market.name,'units_sold':s.units_sold,'metric_type':s.metric_type,'estimated':s.estimated,'sources':source_list(s.sources)} for s in c.sales],'reviews':[{'publication':r.publication,'score':r.score,'max_score':r.max_score,'summary':r.summary,'sources':source_list(r.sources)} for r in c.reviews],'facts':[{'type':f.fact_type,'statement':f.statement,'display_statement':fact_statement(f.fact_type,f.statement),'sources':source_list(f.sources)} for f in c.facts],'sources':source_list(c.sources)})
  o['display_releases']=release_summaries(o['releases'])
  o['display_configurations']=configuration_summaries(o['configurations'],c.model_name)
+ o['description_attribution']=history_attribution(c)
  return o
 EAGER=(selectinload(Computer.images),selectinload(Computer.manufacturer),selectinload(Computer.categories),selectinload(Computer.releases).selectinload(Release.market),selectinload(Computer.releases).selectinload(Release.sources),selectinload(Computer.configurations).selectinload(Configuration.specifications).selectinload(Specification.sources),selectinload(Computer.sales).selectinload(Sale.market),selectinload(Computer.sales).selectinload(Sale.sources),selectinload(Computer.reviews).selectinload(Review.sources),selectinload(Computer.facts).selectinload(Fact.sources),selectinload(Computer.sources))
 @app.get('/api/health')
@@ -371,6 +373,7 @@ app.include_router(create_import_router(get_db))
 from .archive import create_archive_router
 app.include_router(create_archive_router(get_db))
 app.include_router(photo_jobs.create_photo_router(get_db,search_commons))
+app.include_router(create_history_router(get_db))
 from .importing.classification import create_classification_router
 app.include_router(create_classification_router(get_db))
 from .importing.regional import create_regional_router

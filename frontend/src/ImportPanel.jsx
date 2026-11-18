@@ -29,7 +29,7 @@ function RowMatch({ row, disabled, onMatch }) {
   </div>;
 }
 
-function Claim({ claim, disabled, onReview }) {
+export function Claim({ claim, disabled, onReview }) {
   const [note, setNote] = useState('');
   const reviewable = claim.computer_id != null && ['pending', 'conflict'].includes(claim.status);
   const display = claim.display;

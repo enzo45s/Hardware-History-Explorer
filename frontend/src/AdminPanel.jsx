@@ -5,6 +5,7 @@ import { newComputer, newSource, newManufacturer, computerDraft, computerPayload
 import './admin.css';
 import ImportPanel from './ImportPanel.jsx';
 import PhotoPanel from './PhotoPanel.jsx';
+import HistoryPanel from './HistoryPanel.jsx';
 
 function Field({ label, value, onChange, wide = false, multiline = false, ...props }) {
   const Tag = multiline ? 'textarea' : 'input';
@@ -226,10 +227,11 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onD
       <button disabled={busy} className={section === 'sources' ? 'active' : ''} onClick={() => chooseSection('sources')}><BookOpen size={17} />Fonti</button>
       <button disabled={busy} className={section === 'imports' ? 'active' : ''} onClick={() => chooseSection('imports')}>Importazioni</button>
       <button disabled={busy} className={section === 'photos' ? 'active' : ''} onClick={() => chooseSection('photos')}>Foto automatiche</button>
+      <button disabled={busy} className={section === 'history' ? 'active' : ''} onClick={() => chooseSection('history')}>Cenni storici</button>
     </div>
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
-    {section === 'photos' ? <PhotoPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }}
+    {section === 'history' ? <HistoryPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'photos' ? <PhotoPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }}
       onArchiveReset={() => { setDraft(null); setDirty(false); setQuery(''); setMessage(''); onArchiveReset(); reload().catch(e => setError(e.message)); }} /> : <div className="admin-layout"><aside className="panel admin-list">
       <button className="admin-primary" disabled={busy || loading} onClick={create}><Plus size={16} />{entity.create}</button>
       <label className="admin-field"><span>Cerca {entity.plural}</span><input value={query} onChange={e => setQuery(e.target.value)} /></label>

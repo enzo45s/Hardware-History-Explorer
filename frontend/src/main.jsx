@@ -205,6 +205,7 @@ function ComputerDetail({ computer, onClose, onChanged }) {
     <h1>{computer.model_name}</h1>
     <p className="lead">{computer.manufacturer} · {computer.first_release || 'Data non disponibile'}</p>
     <p>{displayDescription(computer)}</p><div className="tag-row">{computer.categories.map(x => <span className="tag" key={x}>{x}</span>)}</div>
+    {computer.description_attribution && <p className="muted">{computer.description_attribution.method === 'estratto introduttivo italiano' ? 'Estratto da ' : 'Sintesi da '}<a href={computer.description_attribution.url} target="_blank" rel="noopener noreferrer">{computer.description_attribution.title}</a> · Collaboratori di Wikipedia · <a href={computer.description_attribution.license_url} target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a></p>}
     <div className="section-title">Galleria fotografica <span>{computer.images?.length || 0} fotografie</span></div>
     <Gallery computer={computer} />
     <ImageManager computer={computer} onChanged={onChanged} />

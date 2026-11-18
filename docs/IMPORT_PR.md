@@ -24,6 +24,14 @@ Originali, identificativi e importazioni restano invariati. HTML senza cache e
 `build-info.json` permettono di verificare il frontend effettivamente distribuito;
 criteri, aggiornamento forzato e verifiche in `docs/EUROPE_GROUPING.md`.
 
+Il pannello Cenni storici ricerca descrizioni italiane da Wikipedia e completa
+i testi vuoti o generati, conservando quelli curati. Coda persistente, pausa,
+attese della fonte, controllo su modifiche concorrenti, originali, citazioni e
+asserzioni pending; nessuna chiamata AI a pagamento. Prova reale isolata:
+10 descrizioni aggiornate su 11 sistemi, un caso senza abbinamento idoneo.
+Copertura non garantita per l'intero catalogo; istruzioni e criteri in
+`docs/HISTORICAL_DESCRIPTIONS.md`.
+
 Per lavorare su due PC, `tools/Transfer-HheArchive.ps1` esporta e ripristina
 database PostgreSQL completo e volume fotografico in un archivio portabile.
 Il ripristino verifica SHA-256 e versione del codice, crea il backup della

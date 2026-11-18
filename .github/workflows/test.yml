@@ -113,6 +113,20 @@ jobs:
           done
           cd frontend
           npm run test:browser:bulk
+      - name: Browser Italian historical descriptions on disposable database
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+          HHE_HISTORY_API_URL: http://127.0.0.1:18094
+        run: |
+          HHE_ALLOW_HISTORY_BROWSER_FIXTURE=1 python backend/tests/browser_history_app.py > /tmp/hhe-history-browser.log 2>&1 &
+          history_fixture_pid=$!
+          trap 'kill "$history_fixture_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS -o /dev/null http://127.0.0.1:18094/__history_fixture; then break; fi
+            sleep 1
+          done
+          cd frontend
+          npm run test:browser:history
       - name: Upload browser diagnostics on failure
         if: failure()
         uses: actions/upload-artifact@v4

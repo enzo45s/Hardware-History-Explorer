@@ -217,6 +217,8 @@ def create_import_router(get_db):
     def retry(job_id: int, db: Session = Depends(get_db)):
         previous = job_or_404(db, job_id)
         options = previous.request_options
+        if options.get('managed_history'):
+            raise HTTPException(409, 'Questa ricerca si gestisce da Amministrazione → Cenni storici. Riprendi la coda o avvia una nuova ricerca da quel pannello.')
         if not options.get('upload'):
             return job_data(remote_job(db, previous.provider, options, retry_of=previous.id))
         raw = original_bytes(previous)

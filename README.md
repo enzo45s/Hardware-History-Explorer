@@ -59,6 +59,15 @@ Puoi trasferire il backup fra Windows e Mac senza convertirlo. Per esportare
 dal Mac usa lo stesso comando con `-Mode Export`, senza `-ArchivePath` e
 senza `-ConfirmRestore`.
 
+## Completare le introduzioni storiche
+
+Da **Amministrazione → Cenni storici → Cerca cenni storici** puoi cercare
+introduzioni documentate su Wikipedia in italiano per tutto il catalogo.
+Vengono sostituite solo le descrizioni vuote o preimpostate; quelle già curate
+sono conservate. La ricerca è riprendibile e mostra anche i sistemi senza una
+fonte italiana adatta. Non richiede chiavi AI né chiamate a pagamento.
+[Istruzioni, criteri e limiti di copertura](docs/HISTORICAL_DESCRIPTIONS.md).
+
 ## Aggiungere le fotografie
 
 1. Apri il **Catalogo** (o la Timeline), poi una scheda con **Dettagli**.
