@@ -3,7 +3,7 @@ from types import SimpleNamespace
 
 from sqlalchemy import select
 
-from app.catalog_display import configuration_displays, description_text, specification_display
+from app.catalog_display import configuration_displays, description_text, specification_display, fact_statement
 from app.main import SessionLocal, EAGER, full
 from app.models import Computer, Configuration, Source, Specification
 from app.assistant_context import retrieve
@@ -17,6 +17,13 @@ def test_display_keeps_default_ram_separate_from_documented_capacity():
     assert len({view('Capacità predefinita (MAME)'), view('Capacità minima riportata'),
                 view('Capacità massima riportata'), view('Capacità')}) == 4
     assert view('Nuova misura sconosciuta') == 'Nuova misura sconosciuta'
+
+
+def test_price_note_badge_is_removed_without_rewriting_quotations_or_other_fact_types():
+    assert fact_statement('Contesto del prezzo', 'Ricerca da verificare. Configurazione: 64 KB; prezzo: 100 USD') == 'Configurazione: 64 KB; prezzo: 100 USD'
+    quoted = 'La fonte descrive una "Ricerca da verificare" nel testo originale.'
+    assert fact_statement('Contesto del prezzo', quoted) == quoted
+    assert fact_statement('Citazione', 'Ricerca da verificare. Testo originale') == 'Ricerca da verificare. Testo originale'
 
 
 def test_display_names_preserve_revisions_and_resolve_collisions_stably():

@@ -118,6 +118,34 @@ def test_existing_price_conflict_keeps_saved_value_and_configuration_context(cli
     assert 'Synthetic configuration with monitor' in price['evidence']
 
 
+def test_price_badge_is_absent_from_display_but_originals_claim_states_and_replay_stay_unchanged(client):
+    from app.models import Fact
+    from app.assistant_context import retrieve
+    from app.main import EAGER, full
+    job = upload(client)
+    apply(client, job)
+    detail = client.get(f"/api/admin/imports/{job['id']}").json()
+    computer_id = detail['rows'][0]['computer_id']
+    before_claims = [(claim['id'], claim['status']) for claim in detail['rows'][0]['claims']]
+    data = client.get(f'/api/computers/{computer_id}').json()
+    note = next(fact for fact in data['facts'] if fact['type'] == 'Contesto del prezzo')
+    assert note['statement'].startswith('Ricerca da verificare.')
+    assert note['display_statement'] == note['statement'].removeprefix('Ricerca da verificare. ')
+    assert 'Synthetic configuration with monitor' in note['display_statement']
+    assert note['sources'] and any(release['price'] == 1000.5 for release in data['releases'])
+    with SessionLocal() as db:
+        stored = db.scalar(select(Fact).where(Fact.computer_id == computer_id))
+        assert stored.statement == note['statement']
+        context = retrieve(db, data['model_name'], EAGER, full)
+        item = next(row for row in context['computers'] if row['id'] == computer_id)
+        assert item['facts'][0]['statement'] == note['display_statement']
+        assert all(claim['status'] == 'pending' for claim in item['import_assertions'])
+    after = client.get(f"/api/admin/imports/{job['id']}").json()
+    assert [(claim['id'], claim['status']) for claim in after['rows'][0]['claims']] == before_claims
+    assert apply(client, upload(client))['counts'] == {'unchanged': 1}
+    assert len(client.get(f'/api/computers/{computer_id}').json()['facts']) == 1
+
+
 def test_unknown_model_is_skipped_even_when_creation_is_requested(client):
     job = upload(client, workbook([entry(**{'Modello': 'Unknown synthetic system'})]), existing_only='false')
     assert apply(client, job)['counts'] == {'skipped': 1}

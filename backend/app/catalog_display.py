@@ -41,6 +41,13 @@ def description_text(value):
     return value
 
 
+def fact_statement(fact_type, statement):
+    """Hide the old price-research badge, preserving actual notes and audit text."""
+    if fact_type == 'Contesto del prezzo' and statement:
+        return re.sub(r'^\s*Ricerca da verificare\.\s*', '', statement, count=1, flags=re.I)
+    return statement
+
+
 def configuration_description(value):
     if not value:
         return value

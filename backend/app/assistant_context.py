@@ -24,7 +24,8 @@ def retrieve(db, question, eager, full):
         item = {'id': r['id'], 'model': r['model_name'], 'manufacturer': r['manufacturer'], 'year': r['year'],
             'categories': r['categories'], 'description': (r.get('display_description', r['description']) or '')[:2000],
             'configurations': [{'name': v.get('display_name', v['variant_name']), 'specifications': v['specifications'][:12]} for v in r['configurations'][:4]],
-            'releases': r['releases'][:5], 'sales': r['sales'][:5], 'reviews': r['reviews'][:5], 'facts': r['facts'][:5], 'sources': r['sources'][:10],
+            'releases': r['releases'][:5], 'sales': r['sales'][:5], 'reviews': r['reviews'][:5],
+            'facts': [{**fact, 'statement': fact.get('display_statement', fact['statement'])} for fact in r['facts'][:5]], 'sources': r['sources'][:10],
             'import_assertions': [{'entity': c.entity, 'target_id': c.target_id, 'field': c.field, 'value': c.value,
                 'status': c.status, 'estimated': c.estimated, 'source': {'title': c.source.title, 'url': c.source.url}} for c in claims[:30]]}
         # Keep whole objects with citations; never cut a JSON string midway.

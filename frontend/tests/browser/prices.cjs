@@ -66,8 +66,17 @@ const { execFileSync } = require('node:child_process');
       await page.setViewportSize({ width, height: 900 });
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     }
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.getByRole('button', { name: 'Catalogo', exact: true }).click();
+    await page.getByPlaceholder('Cerca un sistema…', { exact: true }).fill(prefix + '-A');
+    await page.locator('.catalog-card').filter({ has: page.getByRole('heading', { name: prefix + '-A', exact: true }) })
+      .getByRole('button', { name: 'Dettagli', exact: true }).click();
+    await page.getByRole('heading', { name: prefix + '-A', exact: true, level: 1 }).waitFor();
+    const shown = await page.locator('main').innerText();
+    assert.doesNotMatch(shown, /Ricerca da verificare/i);
+    assert.match(shown, /Synthetic configuration with monitor/);
     assert.deepEqual(errors, []);
-    console.log('PASS price browser: Excel preview/report, column repair, original download, price context, undated/later-list prices, context-only variants, replay without duplicates and mobile.');
+    console.log('PASS price browser: original Excel, price context without research badge, undated/later-list prices, unchanged replay, source preservation and mobile.');
   } finally {
     for (const id of ids) await page.request.delete(api('/computers/' + id)).catch(() => {});
     await browser.close();

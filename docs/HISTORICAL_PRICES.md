@@ -62,6 +62,10 @@ di lancio.
 
 Configurazione, monitor/accessori, imposte, altri listini, affidabilità dichiarata
 e note restano in **Contesto del prezzo**, con fonte e riferimento alla riga.
+Nelle schede e nelle note fornite all'assistente viene omesso il vecchio prefisso
+**Ricerca da verificare.** Questo vale anche per le note già importate, senza
+ricaricare l'Excel. Testi originali nell'archivio, fonti e stati di verifica
+restano invariati; ripetere l'importazione non duplica le note.
 Le colonne URL/affidabilità/varianti vengono riallineate soltanto per il formato
 inequivocabile riscontrato nel file; casi ambigui restano invalidi.
 

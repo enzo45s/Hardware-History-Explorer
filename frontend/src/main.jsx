@@ -215,7 +215,7 @@ function ComputerDetail({ computer, onClose, onChanged }) {
     })}</tbody></table></section>)}
     <div className="section-title">Commercializzazione</div>
     <ReleasePanels computer={computer} renderSource={source => <Source key={source.id} s={source} compact />} />
-    {!!computer.facts.length && <><div className="section-title">Note e dati contestuali</div><section className="panel">{computer.facts.map(f => <div key={f.type + f.statement}><b>{f.type}</b><p>{f.statement}</p>{f.sources.map(s => <Source key={s.id} s={s} compact />)}</div>)}</section></>}
+    {!!computer.facts.length && <><div className="section-title">Note e dati contestuali</div><section className="panel">{computer.facts.map(f => <div key={f.type + f.statement}><b>{f.type}</b><p>{f.display_statement ?? f.statement}</p>{f.sources.map(s => <Source key={s.id} s={s} compact />)}</div>)}</section></>}
     <div className="section-title">Fonti e verificabilità</div>
     <section className="panel">{computerSources(computer).length ? <><p className="muted">Fonti della scheda e dei singoli dati. I valori di riferimento non attestano una configurazione ordinabile al lancio. La presenza di una citazione non implica una verifica: gli stati e le decisioni sono in Amministrazione → Importazioni → Fonti e verifiche.</p>{computerSources(computer).map(s => <Source key={s.id} s={s} />)}</> : <p className="muted">Nessuna fonte associata alla scheda o ai suoi dati. Le fonti fotografiche sono indicate nella galleria. Se hai importato una seconda scheda dello stesso modello, controlla i duplicati in Amministrazione → Importazioni.</p>}</section>
   </>;
