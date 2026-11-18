@@ -31,6 +31,27 @@ const { chromium } = require('playwright');
       { market_id: us.id, price: 3298, currency: 'USD', price_type: 'prezzo riportato', source_ids: [priced.id] }
     ];
     id = (await post('/computers', { model_name: model, manufacturer_id: meta.manufacturers[0].id, releases })).id;
+    // A base-dataset import still keeps its original technical provenance, but
+    // must never add MAME back into the reader/admin bibliography.
+    const imported = await page.request.post(api('/admin/imports/upload'), { multipart: {
+      provider: 'manual', rights_confirmed: 'true', file: { name: 'synthetic-base.json', mimeType: 'application/json',
+        buffer: Buffer.from(JSON.stringify([{ manufacturer: meta.manufacturers[0].name, model_name: model,
+          source: { title: 'MAME synthetic base ' + suffix, url: 'https://github.com/mamedev/mame' },
+          releases: [{ market: unknown.name, release_date: '1982' }],
+          configurations: [{ variant_name: 'Synthetic base', specifications: [
+            { component_type: 'CPU', property_name: 'Frequenza', numeric_value: 2, unit: 'MHz' }] }]
+        }])) }
+    } });
+    assert.equal(imported.status(), 201, await imported.text());
+    const job = await imported.json();
+    const applied = await page.request.post(api('/admin/imports/' + job.id + '/apply'));
+    assert.equal(applied.status(), 200);
+    assert.equal((await applied.json()).counts.updated, 1);
+    const technical = await (await page.request.get(api('/computers/' + id))).json();
+    assert(technical.configurations.some(config => config.variant_name === 'Synthetic base' &&
+      config.specifications.some(spec => spec.numeric_value === 2 && spec.unit === 'MHz' && spec.sources.length === 0)));
+    const sources = await (await page.request.get(api('/sources'))).json();
+    assert(!sources.some(source => /mame|mamedev/i.test(JSON.stringify(source))));
     const open = async () => {
       await page.goto(base);
       await page.getByRole('button', { name: 'Catalogo', exact: true }).click();
@@ -43,19 +64,21 @@ const { chromium } = require('playwright');
     const summary = page.getByRole('region', { name: 'Commercializzazione · Stati Uniti', exact: true });
     assert.equal(await page.getByRole('region', { name: /^Commercializzazione ·/ }).count(), 1);
     assert.match(await summary.innerText(), /1982 · 3298 USD/);
-    assert.match(await summary.innerText(), /Data del modello/);
-    assert.equal(await summary.locator('a:visible').count(), 2);
-    await summary.getByText('Provenienza dei dati accorpati', { exact: true }).click();
-    assert.match(await summary.innerText(), /Non specificato dalla fonte/);
-    assert.match(await summary.innerText(), /Data non disponibile · 3298 USD/);
-    assert(await summary.locator('details').getByRole('link', { name: 'Fonte: ' + dated.title, exact: true }).isVisible());
-    assert(await summary.locator('details').getByRole('link', { name: 'Fonte: ' + priced.title, exact: true }).isVisible());
+    assert.equal(await summary.locator('a:visible').count(), 1);
+    assert.equal(await summary.locator('details').count(), 0);
+    assert(await summary.getByRole('link', { name: 'Fonte: ' + priced.title, exact: true }).isVisible());
+    assert.doesNotMatch(await summary.innerText(), /Provenienza dei dati accorpati|Data del modello|Non specificato dalla fonte/);
+    assert.doesNotMatch(await page.locator('main').innerText(), /MAME|mamedev/);
     for (const width of [320, 390]) {
       await page.setViewportSize({ width, height: 1000 });
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     }
     const raw = await (await page.request.get(api('/admin/computers/' + id))).json();
     assert.equal(raw.releases.length, 2); assert.equal(raw.releases[1].release_date, null);
+    await page.getByRole('button', { name: 'Amministrazione', exact: true }).click();
+    await page.getByRole('button', { name: 'Fonti', exact: true }).click();
+    await page.getByRole('button', { name: 'Nuova fonte', exact: true }).waitFor();
+    assert.doesNotMatch(await page.locator('main').innerText(), /MAME|mamedev/);
     let response = await page.request.put(api('/computers/' + id), { data: {
       model_name: model, manufacturer_id: raw.manufacturer_id,
       releases: [...raw.releases, { market_id: japan.id, price: 200000, currency: 'JPY', source_ids: [priced.id] }]
@@ -73,7 +96,7 @@ const { chromium } = require('playwright');
     assert.equal(await page.getByRole('region', { name: /^Commercializzazione ·/ }).count(), 2);
     assert.match(await page.getByRole('region', { name: 'Commercializzazione · Stati Uniti', exact: true }).innerText(), /Data non disponibile · 3298 USD/);
     assert.deepEqual(errors, []);
-    console.log('PASS releases: one regional 1982/3298 USD summary, original source provenance, raw editor unchanged, ambiguous markets and later lists kept separate, mobile 320/390px.');
+    console.log('PASS releases: one price source, no provenance box, MAME absent from catalog/admin after import, technical data and raw editor preserved, ambiguous markets/later lists separate, mobile 320/390px.');
   } finally {
     if (id) await page.request.delete(api('/computers/' + id)).catch(() => {});
     await browser.close();

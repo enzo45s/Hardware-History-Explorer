@@ -12,12 +12,17 @@ Per esempio:
 | Non specificato dalla fonte | 1982 | assente |
 | Stati Uniti | assente | 3298 USD |
 
-La scheda mostra **Stati Uniti · 1982 · 3298 USD**, con le citazioni di entrambe
-le registrazioni. **Provenienza dei dati accorpati** permette di consultare i
-valori originali e le rispettive fonti. Se la data originale non specificava il
-mercato, una nota indica che si tratta della **data del modello**: non diventa
-una prova indipendente della disponibilita in quella regione o della data del
-listino. Il tipo di prezzo rimane quello riportato dalla sua fonte.
+La scheda mostra **Stati Uniti · 1982 · 3298 USD**, con una sola citazione,
+privilegiando la fonte del prezzo quando disponibile. Il riquadro di provenienza
+e la nota tecnica sull'accorpamento sono stati rimossi dall'interfaccia.
+L'anno resta un dato del modello: l'accorpamento non certifica una data di
+listino o una disponibilita regionale non documentata. Il tipo di prezzo
+rimane quello riportato dalla sua fonte; i valori originali e il loro ambito
+restano nel database e nei campi tecnici API.
+
+Le citazioni MAME non compaiono nella bibliografia della scheda o nel pannello
+Fonti; lo storico interno delle importazioni viene conservato, come descritto
+nella [politica delle fonti](SOURCE_POLICY.md).
 
 ## Quando vengono accorpati
 
@@ -74,8 +79,10 @@ cd frontend
 npm run test:browser:releases
 ```
 
-Controlla la sintesi, l'apertura degli originali con le fonti e i viewport
-da 320 e 390 px; elimina soltanto il computer sintetico creato dalla prova.
+Controlla la sintesi con una sola fonte del prezzo, l'assenza del riquadro di
+provenienza e delle fonti MAME anche dopo una nuova importazione, il pannello
+Fonti e i viewport da 320 e 390 px; elimina soltanto il computer sintetico
+creato dalla prova. Gli originali rimangono conservati internamente.
 
 Verifiche del 17 novembre 2026: **411 test SQLite superati e uno specifico
 PostgreSQL saltato; 412 test PostgreSQL superati; 27 test frontend superati**.

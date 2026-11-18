@@ -5,8 +5,11 @@ mancanti vengono aggiunti e i valori discordanti rimangono in revisione finché
 una persona decide, con nota e controllo sui valori modificati nel frattempo.
 
 Le commercializzazioni ora presentano insieme data e prezzo da registrazioni
-complementari quando l'abbinamento e univoco. Sintesi con citazioni, originali
-consultabili e ambito della data esplicito; mercati/prezzi multipli, date
+complementari quando l'abbinamento e univoco. Sintesi con una sola citazione
+e senza riquadro di provenienza; originali e ambito della data conservati
+internamente. Le citazioni MAME sono escluse da catalogo, pannello Fonti,
+asserzioni visibili e contesto AI, mantenendo dati e audit ETL.
+Mercati/prezzi multipli, date
 discordanti e listini successivi rimangono distinti. Nessuna modifica agli ID,
 all'audit ETL o alle evidenze originali usate dall'editor e dall'assistente AI.
 Regole e verifica in `docs/RELEASE_SUMMARIES.md`.

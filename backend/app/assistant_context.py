@@ -4,6 +4,7 @@ import json
 from sqlalchemy import select, or_, case, func, literal
 from .models import Computer, Manufacturer
 from .import_models import ImportClaim
+from .source_policy import excluded_source_ids
 
 
 def retrieve(db, question, eager, full):
@@ -17,8 +18,9 @@ def retrieve(db, question, eager, full):
     stmt = stmt.order_by(case((exact, 0), else_=1), Computer.id.desc()).limit(30).options(*eager)
     rows = [full(c) for c in db.scalars(stmt).unique()]
     compact = []
+    hidden_sources = excluded_source_ids(db)
     for r in rows:
-        claims = db.scalars(select(ImportClaim).where(ImportClaim.computer_id == r['id']).order_by(ImportClaim.id.desc()).limit(100)).all()
+        claims = db.scalars(select(ImportClaim).where(ImportClaim.computer_id == r['id'], ImportClaim.source_id.not_in(hidden_sources)).order_by(ImportClaim.id.desc()).limit(100)).all()
         item = {'id': r['id'], 'model': r['model_name'], 'manufacturer': r['manufacturer'], 'year': r['year'],
             'categories': r['categories'], 'description': (r.get('display_description', r['description']) or '')[:2000],
             'configurations': [{'name': v.get('display_name', v['variant_name']), 'specifications': v['specifications'][:12]} for v in r['configurations'][:4]],

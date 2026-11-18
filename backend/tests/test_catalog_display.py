@@ -63,7 +63,7 @@ def test_catalog_editor_compare_and_assistant_keep_raw_evidence(client):
     spec = next(s for s in cfg['specifications'] if s['id'] == spec_id)
     assert spec['property_name'] == 'Modello emulato (MAME)'
     assert spec['display']['property_name'] == 'Modello'
-    assert spec['sources'][0]['id'] == source_id and spec['sources'][0]['publisher'] == 'MAME'
+    assert spec['sources'] == []
     overview = next(r for r in client.get('/api/computers').json()['items'] if r['id'] == 1)
     assert overview['display_description'] == record['display_description']
     assert client.get('/api/compare?ids=1,2').json()[0] == record
@@ -80,4 +80,5 @@ def test_catalog_editor_compare_and_assistant_keep_raw_evidence(client):
         item = next(r for r in context['computers'] if r['id'] == 1)
         assert item['description'] == record['display_description']
         assert next(v for v in item['configurations'] if v['name'] == 'Example')
-        assert any(s['id'] == source_id for s in item['sources'])
+        assert not any(s['id'] == source_id for s in item['sources'])
+        assert db.get(Source, source_id).publisher == 'MAME'

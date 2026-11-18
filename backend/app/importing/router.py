@@ -15,13 +15,14 @@ from .engine import stage, apply_job, review_claim, original_bytes
 from .providers import PROVIDERS, fetch_provider, upload_records
 from .presentation import claim_presentation
 from . import reconcile
+from ..source_policy import excluded_source_ids, is_mame_source
 
 
 def job_data(job):
     counts = Counter(r.status for r in job.rows)
     db = object_session(job)
     verification = dict(db.execute(select(ImportClaim.status, func.count()).join(ImportRow, ImportClaim.row_id == ImportRow.id)
-        .where(ImportRow.job_id == job.id).group_by(ImportClaim.status)).all()) if db else {}
+        .where(ImportRow.job_id == job.id, ImportClaim.source_id.not_in(excluded_source_ids(db))).group_by(ImportClaim.status)).all()) if db else {}
     records = [row.normalized for row in job.rows if row.normalized]
     prices = sum(release.get('price') is not None for record in records for release in record.get('releases', []))
     return {'id': job.id, 'provider': job.provider, 'filename': job.filename, 'checksum': job.checksum,
@@ -192,7 +193,7 @@ def create_import_router(get_db):
                   'status': r.status, 'error': r.error, 'computer_id': r.computer_id, 'candidates': r.candidates,
                   'computer_label': computer_label(r.computer_id),
                   'candidate_labels': [computer_label(cid) or f'Voce rimossa (ID {cid})' for cid in r.candidates],
-                  'claims': [claim_data(c) for c in r.claims]} for r in rows]}
+                  'claims': [claim_data(c) for c in r.claims if not is_mame_source(c.source)]} for r in rows]}
 
     @router.get('/{job_id}/original')
     def original(job_id: int, db: Session = Depends(get_db)):
@@ -257,7 +258,7 @@ def create_import_router(get_db):
     def review(claim_id: int, data: Decision, db: Session = Depends(get_db)):
         catalog_lock(db)
         c = db.scalar(select(ImportClaim).where(ImportClaim.id == claim_id).with_for_update())
-        if c is None:
+        if c is None or is_mame_source(c.source):
             raise HTTPException(404, 'Asserzione non trovata')
         try:
             review_claim(db, c, data.decision, data.note)

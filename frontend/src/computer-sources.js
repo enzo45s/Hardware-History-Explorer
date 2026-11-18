@@ -9,3 +9,15 @@ export function computerSources(computer) {
   }
   return [...sources.values()];
 }
+
+// One citation per commercialization; prefer documented price evidence when present.
+export function commercializationSource(release) {
+  const sources = release.sources || [];
+  const field = release.price != null ? 'price' : 'release_date';
+  const supports = new Set(release.field_sources?.[field] || []);
+  return sources.find(source => supports.has(source.id) && source.url)
+    || sources.find(source => supports.has(source.id))
+    || sources.find(source => source.url)
+    || sources[0]
+    || null;
+}

@@ -54,8 +54,9 @@ o prezzi in moneta corrente e non si estraggono automaticamente altre cifre
 dalla colonna delle varianti.
 
 Nel catalogo una [sintesi delle commercializzazioni](RELEASE_SUMMARIES.md)
-puo affiancare anno e prezzo quando l'abbinamento e univoco, con le fonti e
-l'ambito geografico della data espliciti. Le registrazioni originali e il
+puo affiancare anno e prezzo quando l'abbinamento e univoco, mostrando una sola
+fonte e privilegiando quella del prezzo. Le registrazioni originali, l'ambito
+geografico della data e il
 prezzo senza data restano invariati; i listini successivi non ereditano l'anno
 di lancio.
 
