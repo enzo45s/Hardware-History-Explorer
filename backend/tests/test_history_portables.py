@@ -59,7 +59,7 @@ def test_portable_search_remembers_the_matching_title_without_following_a_generi
     monkeypatch.setattr(h.httpx,'AsyncClient',lambda **kw:original(transport=httpx.MockTransport(handler),**kw))
     first,_=asyncio.run(h.research('Portfolio','Atari'))
     assert first['status']=='no_match' and first['full_title']=='Atari Portfolio'
-    result,_=asyncio.run(h.research('Portfolio','Atari',attempt=3,full_title=first['full_title']))
+    result,_=asyncio.run(h.research('Portfolio','Atari',attempt=len(h.search_plan('Portfolio','Atari'))-1,full_title=first['full_title']))
     assert seen[1]['titles']=='Atari Portfolio' and result['status']=='found'
 
 

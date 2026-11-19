@@ -37,7 +37,7 @@ def get_job(db, job_id):
 
 def item_data(item):
     plan = history_sources.search_plan(item.model_name, item.manufacturer)
-    attempt = item.result.get('next_attempt', 0)
+    attempt = history_sources.pending_attempt(item.model_name, item.manufacturer, item.result)
     pending_search = plan[attempt] if item.status == 'pending' and 0 <= attempt < len(plan) else None
     return {'id': item.id, 'computer_id': item.computer_id, 'model_name': item.model_name,
         'manufacturer': item.manufacturer, 'status': item.status, 'error': item.error,
@@ -46,7 +46,7 @@ def item_data(item):
         'searches': item.result.get('searches', []),
         'search_version': item.result.get('search_version', 0),
         'previous_runs': len(item.raw_payload.get('previous_runs', [])),
-        'next_query': (pending_search.get('query') or item.result.get('full_title') or pending_search.get('titles')) if pending_search else None,
+        'next_query': (pending_search.get('query') or (item.result.get('full_title') if item.result.get('search_version') == history_sources.SEARCH_VERSION else None) or pending_search.get('titles')) if pending_search else None,
         'attempt': attempt + 1 if pending_search else None}
 
 
@@ -233,7 +233,8 @@ def create_history_router(get_db):
             return details(db, job)
         item_id, computer_id = item.id, item.computer_id
         model, maker, previous = item.model_name, item.manufacturer, item.previous
-        attempt, full_title = item.result.get('next_attempt', 0), item.result.get('full_title')
+        attempt = history_sources.pending_attempt(model, maker, item.result)
+        full_title = item.result.get('full_title') if item.result.get('search_version') == history_sources.SEARCH_VERSION else None
         searches = item.result.get('searches', [])
         originals = item.raw_payload.get('attempts', [])
         previous_runs = item.raw_payload.get('previous_runs', [])

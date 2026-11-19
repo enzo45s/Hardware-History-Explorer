@@ -23,7 +23,8 @@ async def research(model, maker, *, attempt=0, full_title=None):
                 'candidates': [{'title': model, 'url': 'https://example.org/synthetic-history'}]}, {'query': {'pages': []}}
     assert model in ('Synthetic History Browser', 'Synthetic History Missing'), 'Curated descriptions must not be researched.'
     if model == 'Synthetic History Browser' and attempt == 0:
-        return {'status': 'no_match', 'next_attempt': 1, 'search': {'strategy': 'literal', 'query': '"Synthetic History Browser" computer'}}, {'query': {'pages': []}}
+        return {'status': 'no_match', 'next_attempt': 1, 'search_version': history_sources.SEARCH_VERSION,
+                'search': history_sources.search_plan(model, maker)[0]}, {'query': {'pages': []}}
     text = (f'{model} è un computer di {maker} introdotto nel 1981 nel contesto storico sintetico della prova browser. '
             'Lo sviluppo e il posizionamento commerciale sono descritti esclusivamente come dati sintetici per verificare il funzionamento della ricerca.')
     raw = {'query': {'pages': [{'ns': 0, 'title': model, 'extract': text, 'revisions': [{'revid': 456}]}]}}

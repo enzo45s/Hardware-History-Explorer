@@ -55,13 +55,32 @@ Viene usata l'API ufficiale di [Wikipedia in italiano](https://it.wikipedia.org/
 con User-Agent identificativo, `maxlag=5`, timeout e dimensione massima della
 risposta. Non vengono scansionati siti né aperti URL scelti dai risultati.
 Ogni passo esegue una sola richiesta, con al massimo cinque voci candidate.
-Se non basta il nome esatto fra virgolette con la parola «computer», seguono
-tentativi con le sole parole chiave **marca e modello**, poi con il modello
-senza virgolette e infine la lettura della pagina completa. I tentativi sono
-salvati separatamente e distanziati di almeno due secondi; per sistema sono
-previste al massimo cinque strategie, oltre agli eventuali ritentativi dopo
-errori di rete, interrompendosi appena trova un testo
+Si prova subito il nome del modello senza virgolette né la parola obbligatoria
+«computer», poi **marca breve e modello** soltanto se è una query diversa,
+infine la pagina completa (usando il titolo trovato nelle ricerche precedenti,
+quando disponibile). Numeri, numeri romani e sigle generiche come PC sono
+qualificati subito con la marca. I tentativi sono salvati separatamente e
+distanziati di almeno due secondi; per sistema sono previste al massimo tre
+strategie (quattro per le eccezioni documentate HP 85 e IBM PC 5150), oltre
+agli eventuali ritentativi dopo errori di rete, interrompendosi appena trova un testo
 utilizzabile. Il pannello e il resoconto mostrano le query usate.
+
+Le ricerche usano Sun al posto di Sun Microsystems/Microsystem, NeXT al posto
+di NeXT Software Inc. e Kaypro al posto di Kaypro Corporation; vengono tolti
+anche i suffissi societari finali Inc., Corporation, Ltd. e simili. Non si
+duplicano marchi già nel modello (`NeXTcube`, `Kaypro II`, `Atari 400`). Queste
+regole riguardano solo la ricerca: i nomi del catalogo non vengono modificati.
+La velocità migliora riducendo le richieste, senza aggirare le pause di Wikipedia.
+
+Per aggiornare durante una ricerca: metterla in pausa, aggiornare il branch e
+ricostruire i container, quindi premere **Riprendi ricerca storica**. Gli indici
+dei tentativi della vecchia versione vengono ricalcolati per il solo elemento
+ancora in attesa; risposte originali, tentativi precedenti, descrizioni già
+aggiornate e testi curati rimangono conservati. A ricerca conclusa, il comando
+**Riprova gli abbinamenti migliorati** riprende i casi con nuove query utili o
+precedenti candidati scartati, senza ripetere una ricerca già conclusa con
+questa versione. Un tentativo soltanto riordinato o eliminato non basta a
+suggerire una nuova ricerca.
 
 Vengono riconosciuti anche alias espliciti come `Apple //c` → `Apple IIc`,
 `PowerBook180` → parole chiave `PowerBook 180` e le grafie note del produttore,

@@ -20,10 +20,10 @@ def wiki_fixture(name):
 
 def test_keyword_plan_has_canonical_brand_and_no_literal_restrictions():
     plan = history_sources.search_plan('Apple //c', 'Apple Computer Inc')
-    assert plan[1]['query'] == 'Apple IIc'
-    assert '"' not in plan[1]['query'] and 'computer' not in plan[1]['query'].lower()
-    assert history_sources.search_plan('PowerBook180', 'Apple Computer Inc')[2]['query'] == 'PowerBook 180'
-    assert history_sources.search_plan('Atari 800XL', 'Atari Corporation')[1]['query'] == 'Atari 800XL'
+    assert plan[0]['query'] == 'Apple IIc'
+    assert '"' not in plan[0]['query'] and 'computer' not in plan[0]['query'].lower()
+    assert history_sources.search_plan('PowerBook180', 'Apple Computer Inc')[0]['query'] == 'PowerBook 180'
+    assert history_sources.search_plan('Atari 800XL', 'Atari Corporation')[0]['query'] == 'Atari 800XL'
     assert history_sources.maker_in_text('Apple Computer Inc', 'Un computer prodotto da Apple Inc.')
     assert history_sources.model_key('Atari', 'Atari800XL') == history_sources.model_key('Atari', 'Atari 800XL')
     assert history_sources.model_key('Apple', 'AppleIIc') == history_sources.model_key('Apple', 'Apple //c')
@@ -79,9 +79,9 @@ def test_numeric_result_cannot_replace_manufacturer_qualified_lookup(monkeypatch
             return httpx.Response(200, json=payload(page('400', text='400 è un numero naturale successivo a 399 e precedente a 401.')))
         return httpx.Response(200, json=wiki_fixture('wikipedia-it-atari-family.json'))
     install_transport(monkeypatch, handler)
-    first, _ = asyncio.run(history_sources.research('Atari 400', 'Atari', attempt=2))
+    first, _ = asyncio.run(history_sources.research('Atari 400', 'Atari'))
     assert first['status'] == 'no_match' and first['full_title'] is None
-    second, _ = asyncio.run(history_sources.research('Atari 400', 'Atari', attempt=3, full_title=first['full_title']))
+    second, _ = asyncio.run(history_sources.research('Atari 400', 'Atari', attempt=1, full_title=first['full_title']))
     assert seen[1]['titles'] == 'Atari 400' and second['status'] == 'found'
 
 
@@ -109,7 +109,7 @@ def test_keyword_attempt_survives_pause_and_retains_all_original_responses(clien
     assert client.post(f'/api/admin/history/{jid}/step').json()['status'] == 'paused'
     client.post(f'/api/admin/history/{jid}/resume'); clock[0] += timedelta(seconds=60)
     assert client.post(f'/api/admin/history/{jid}/step').json()['counts']['updated'] == 1
-    assert requests[0]['gsrsearch'] == '"Synthetic History One" computer' and requests[1]['gsrsearch'] == requests[2]['gsrsearch']
+    assert requests[0]['gsrsearch'] == 'Synthetic History One' and requests[1]['gsrsearch'] == requests[2]['gsrsearch']
     with SessionLocal() as db:
         item = db.scalar(select(HistoryItem).where(HistoryItem.status == 'updated'))
         assert len(item.raw_payload['attempts']) == 2

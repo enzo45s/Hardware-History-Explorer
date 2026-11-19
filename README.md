@@ -66,6 +66,8 @@ introduzioni documentate su Wikipedia in italiano per tutto il catalogo.
 Vengono sostituite solo le descrizioni vuote o preimpostate; quelle già curate
 sono conservate. La ricerca è riprendibile e mostra anche i sistemi senza una
 fonte italiana adatta. Non richiede chiavi AI né chiamate a pagamento.
+Le query privilegiano il nome del modello e marche brevi come Sun, NeXT e
+Kaypro, senza ripetere marchi già presenti o tentativi equivalenti.
 [Istruzioni, criteri e limiti di copertura](docs/HISTORICAL_DESCRIPTIONS.md).
 
 ## Controllare RAM e varianti

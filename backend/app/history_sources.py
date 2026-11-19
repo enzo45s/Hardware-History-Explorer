@@ -13,7 +13,7 @@ from .catalog_names import catalog_name
 API = 'https://it.wikipedia.org/w/api.php'
 LICENSE = 'https://creativecommons.org/licenses/by-sa/4.0/'
 MAX_RESPONSE = 2 * 1024 * 1024
-SEARCH_VERSION = 5
+SEARCH_VERSION = 6
 COMPUTING_CONTEXT = re.compile(
     r'\b(?:\w*computers?|calcolator\w*|elaborator\w*|mainframe|workstation|'
     r'palmare|palmari|palmtop|notebook|netbook|subnotebook|laptop|'
@@ -22,7 +22,11 @@ COMPUTING_CONTEXT = re.compile(
 
 def maker_aliases(maker):
     """Research spellings only; never change catalog manufacturer identities."""
-    compact = lambda value: re.sub(r'[^\w]', '', manufacturer_base(value))
+    # Remove legal suffixes only, not arbitrary words or company divisions.
+    legal = r'(?:incorporated|inc|corporation|corp|limited|ltd|plc|gmbh|s\.?p\.?a\.?)'
+    without_legal = lambda value: re.sub(r'(?:[\s,.]+' + legal + r'[\s,.]*)+$', '', value.strip(), flags=re.I).strip()
+    short = without_legal(maker)
+    compact = lambda value: re.sub(r'[^\w]', '', without_legal(manufacturer_base(value)))
     groups = [aliases for key, aliases in MAKERS.items() if key != 'dec'] + [
         ('DEC', 'Digital Equipment Corporation', 'Digital Equipment'),
         ('NeXT', 'NeXT Inc.', 'NeXT Computer Inc.', 'Next Software Inc', 'NeXT Software, Inc.'),
@@ -30,9 +34,35 @@ def maker_aliases(maker):
         ('Acorn', 'Acorn Computers', 'Acorn Computers Ltd.'),
         ('Atari', 'Atari Inc.', 'Atari, Inc.', 'Atari Corporation'),
         ('Sinclair', 'Sinclair Research', 'Sinclair Research Ltd.'),
-        ('Sun', 'Sun Microsystems'),
+        ('Sun', 'Sun Microsystems', 'Sun Microsystem'),
+        ('Kaypro', 'Kaypro Corporation', 'Kaypro Corp.'),
+        ('EACA', 'EACA Computers'),
     ]
-    return next((aliases for aliases in groups if compact(maker) in {compact(a) for a in aliases}), (maker.strip(),))
+    aliases = next((aliases for aliases in groups if {compact(maker), compact(short)} & {compact(a) for a in aliases}), (short or maker.strip(),))
+    return tuple(dict.fromkeys((*aliases, maker.strip())))
+
+
+def model_names(model, maker):
+    """Short research title and unbranded model, retaining hardware suffixes."""
+    canonical, aliases = canonical_model(model, maker), maker_aliases(maker)
+    title = core = canonical
+    while True:
+        for alias in sorted(aliases, key=len, reverse=True):
+            if not alias:
+                continue
+            # NeXTcube/NeXTstation are actual joined product names. Do not
+            # strip arbitrary substrings (e.g. Sun in Sunrise).
+            boundary = r'(?=$|[\s:/-]|\d)'
+            if alias.casefold() == 'next':
+                boundary = r'(?=$|[\s:/-]|\d|cube\b|station\b|computer\b)'
+            match = re.match(re.escape(alias) + boundary, core, flags=re.I)
+            if match and core[match.end():].lstrip(' -:/'):
+                remainder = core[match.end():]
+                title = core if alias.casefold() == 'next' and not remainder.startswith(' ') else aliases[0] + ' ' + remainder.lstrip(' -:/')
+                core = remainder.lstrip(' -:/')
+                break
+        else:
+            return title, core
 
 
 def canonical_model(model, maker):
@@ -49,39 +79,46 @@ def canonical_model(model, maker):
 
 
 def search_plan(model, maker):
-    """Broader keywords and a full-page lookup, one request per durable step."""
-    canonical = canonical_model(model, maker)
+    """At most three distinct attempts (four for documented exceptions)."""
+    canonical, core = model_names(model, maker)
     aliases = maker_aliases(maker)
-    core = canonical
-    for alias in sorted(aliases, key=len, reverse=True):
-        match = re.match(re.escape(alias) + r'(?=$|[\s:/-]|\d)', core, flags=re.I)
-        if match:
-            core = core[match.end():].lstrip(' -:/')
-            break
     words = lambda value: ' '.join(re.sub(r'[^\w]+', ' ', value).split())
-    brand_query = words(aliases[0] + ' ' + core)
-    # The second keyword attempt also handles "PowerBook180" vs "PowerBook 180".
-    model_query = words(re.sub(r'(?<=[A-Za-z])(?=\d)', ' ', core))
-    full_title = aliases[0] + ' ' + core
+    spaced = lambda value: re.sub(r'(?<=[A-Za-z])(?=\d)', ' ', value)
+    branded = canonical if core != canonical else aliases[0] + ' ' + core
+    brand_query = words(spaced(branded))
+    model_query = words(spaced(canonical))
+    # Bare numbers, Roman numerals and generic PC/XT/AT names are not useful
+    # searches. Qualify them with the common brand from the first attempt.
+    informative = (bool(re.search(r'[a-z]{3}', model_query, re.I))
+        and not re.fullmatch(r'[ivxlcdm]+', model_query, re.I)
+        and model_query.casefold() not in {'computer', 'personal computer', 'desktop', 'portable'})
+    first_query = model_query if informative else brand_query
+    plan = [{'strategy': 'model_keywords', 'query': first_query}]
+    if brand_query.casefold() != first_query.casefold():
+        plan.append({'strategy': 'brand_model', 'query': brand_query})
+    full_title = spaced(canonical) if informative else spaced(branded)
     key = model_key(maker, model)
     if key == model_key('HP', 'HP 85'):
-        first = {'strategy': 'documented_title', 'titles': 'HP 9800'}
+        plan.insert(0, {'strategy': 'documented_title', 'titles': 'HP 9800'})
     elif key == model_key('IBM', 'IBM PC 5150'):
-        first = {'strategy': 'documented_title', 'titles': 'PC IBM', 'exintro': 1}
-    else:
-        literal = re.sub(r'["\[\]{}|:]', ' ', canonical).strip()
-        first = {'strategy': 'literal', 'query': f'"{literal}" computer'}
+        plan.insert(0, {'strategy': 'documented_title', 'titles': 'PC IBM', 'exintro': 1})
     # BBC Model B has no Italian redirect, but its model-specific history is
     # documented in BBC Micro. The passage still has to identify the model.
     bbc = re.fullmatch(r'(?:bbc)?(?:micro)?model([ab])\+?', key[1])
     if aliases[0] == 'Acorn' and bbc:
         full_title = 'BBC Micro'
-    plan = [first, {'strategy': 'brand_model', 'query': brand_query},
-        {'strategy': 'model_keywords', 'query': model_query},
-        {'strategy': 'full_page', 'titles': full_title}]
-    if canonical.casefold() != full_title.casefold():
-        plan.append({'strategy': 'full_page', 'titles': canonical})
+    # A title discovered in either keyword search replaces this fallback.
+    # Fetch one full extract: TextExtracts restricts non-intro responses to one.
+    plan.append({'strategy': 'full_page', 'titles': full_title})
     return plan
+
+
+def pending_attempt(model, maker, result):
+    """Old numeric cursors must not index a changed, shorter search plan."""
+    attempt = result.get('next_attempt', 0)
+    if result and result.get('search_version', 0) != SEARCH_VERSION:
+        return 0
+    return attempt if isinstance(attempt, int) and 0 <= attempt < len(search_plan(model, maker)) else 0
 
 
 def replaceable(model, maker, value):
@@ -105,20 +142,23 @@ def improved_retry(model, maker, result):
     if result.get('candidates'):
         return True
     searches = result.get('searches', [])
-    if len(searches) < 3:
+    if not searches:
         return False
-    keys = ('strategy', 'query', 'titles', 'exintro')
-    clean = lambda search: {k: search[k] for k in keys if k in search}
-    return [clean(s) for s in searches[:3]] != [clean(s) for s in search_plan(model, maker)[:3]]
+    # Reordering or removing a redundant attempt alone is not a reason to
+    # repeat a failed job. Suggest only genuinely new query/title spellings.
+    def signatures(search):
+        if 'query' in search:
+            return {('query', ' '.join(search['query'].casefold().split()))}
+        return {('title', title.casefold(), bool(search.get('exintro'))) for title in search.get('titles', '').split('|') if title}
+    tried = set().union(*(signatures(s) for s in searches))
+    return any(not signatures(s) <= tried for s in search_plan(model, maker))
 
 
 def model_key(maker, model):
     # Research uses the public model name; hardware variants remain in the
     # catalog's configurations and original records, not in search queries.
     title = re.sub(r'\s*\((?:computer|informatica|home computer|personal computer)\)$', '', model, flags=re.I)
-    title = canonical_model(title, maker)
-    for alias in maker_aliases(maker):
-        title = re.sub(r'^' + re.escape(alias) + r'(?=\d)', alias + ' ', title, flags=re.I)
+    _, title = model_names(title, maker)
     maker = maker_aliases(maker)[0]
     # HP's full corporate spelling is common in Italian article titles.
     if maker.casefold() in ('hp', 'hewlett-packard', 'hewlett packard'):
