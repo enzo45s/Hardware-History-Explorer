@@ -73,6 +73,12 @@ a ricerca in pausa o completata, riparte dai testi ancora mancanti conservando
 descrizioni già curate e resoconti precedenti.
 [Istruzioni, criteri e limiti di copertura](docs/HISTORICAL_DESCRIPTIONS.md).
 
+Puoi anche caricare descrizioni preparate esternamente da **Amministrazione →
+Importazioni → Fonte dati → Descrizioni storiche (JSON)**. L'anteprima mostra
+testi, fonti e abbinamenti; aggiorna solo schede esistenti, completa i testi
+preimpostati e conserva quelli già curati salvo revisione esplicita dei conflitti.
+[Formato del JSON e istruzioni](docs/DESCRIPTION_IMPORT.md).
+
 ## Controllare RAM e varianti
 
 In **Amministrazione → RAM e varianti** puoi recuperare i valori RAM disponibili

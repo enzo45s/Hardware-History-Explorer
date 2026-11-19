@@ -192,9 +192,15 @@ def create_import_router(get_db):
         def computer_label(computer_id):
             c = db.get(Computer, computer_id) if computer_id else None
             return f'{c.manufacturer.name} · {c.model_name}' if c else None
+        def description_preview(row):
+            if job.provider == 'historical_descriptions':
+                from .descriptions import preview
+                return preview(db, row)
+            return None
         return {**job_data(job), 'rows': [{'id': r.id, 'position': r.position, 'raw': r.raw, 'normalized': r.normalized,
                   'status': r.status, 'error': r.error, 'computer_id': r.computer_id, 'candidates': r.candidates,
                   'computer_label': computer_label(r.computer_id),
+                  'description_preview': description_preview(r),
                   'candidate_labels': [computer_label(cid) or f'Voce rimossa (ID {cid})' for cid in r.candidates],
                   'claims': [claim_data(c) for c in r.claims if c.source_id not in hidden_sources]} for r in rows]}
 
@@ -202,7 +208,7 @@ def create_import_router(get_db):
     def original(job_id: int, db: Session = Depends(get_db)):
         from fastapi.responses import Response
         job = job_or_404(db, job_id)
-        extension = 'xlsx' if job.provider == 'historical_prices' and job.format == 'xlsx' else 'txt'
+        extension = 'json' if job.provider == 'historical_descriptions' else 'xlsx' if job.provider == 'historical_prices' and job.format == 'xlsx' else 'txt'
         return Response(original_bytes(job), media_type='application/octet-stream',
                         headers={'Content-Disposition': f'attachment; filename="import-original.{extension}"', 'X-Content-Type-Options': 'nosniff'})
 

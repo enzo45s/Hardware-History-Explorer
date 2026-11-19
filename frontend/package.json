@@ -14,6 +14,7 @@
     "test:browser:sources": "node tests/browser/sources.cjs",
     "test:browser:europe": "node tests/browser/europe.cjs",
     "test:browser:history": "node tests/browser/history.cjs",
+    "test:browser:descriptions": "node tests/browser/descriptions.cjs",
     "test:browser:quality": "node tests/browser/quality.cjs",
     "test:browser:admin": "node tests/browser/admin.cjs",
     "test:browser:bulk": "node tests/browser/bulk1000bit.cjs",

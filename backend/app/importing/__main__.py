@@ -12,7 +12,7 @@ from .providers import upload_records
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('file', type=Path)
-    parser.add_argument('--provider', choices=['manual', 'wikidata', 'retroflops', 'oldcomputers', '1000bit', 'computerhistory'], default='manual')
+    parser.add_argument('--provider', choices=['manual', 'historical_descriptions', 'wikidata', 'retroflops', 'oldcomputers', '1000bit', 'computerhistory'], default='manual')
     parser.add_argument('--rights-confirmed', action='store_true', required=True)
     parser.add_argument('--apply', action='store_true')
     parser.add_argument('--existing-only', action=argparse.BooleanOptionalAction, default=None,

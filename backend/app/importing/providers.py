@@ -9,6 +9,7 @@ from .wikidata_details import augment, linked_ids
 USER_AGENT = 'HardwareHistoryExplorer/1.3 (https://github.com/enzo45s/Hardware-History-Explorer)'
 PROVIDERS = [
     {'id': 'manual', 'name': 'CSV / JSON autorizzato', 'mode': 'upload', 'license': 'Dichiarata dall’operatore'},
+    {'id': 'historical_descriptions', 'name': 'Descrizioni storiche (JSON)', 'mode': 'upload', 'license': 'Testi e fonti forniti dall’operatore; contenuti da verificare'},
     {'id': 'historical_prices', 'name': 'Prezzi storici (Excel / CSV / JSON)', 'mode': 'upload', 'license': 'Ricerca fornita dall’operatore; URL e dati da verificare'},
     {'id': 'wikidata', 'name': 'Wikidata', 'mode': 'api', 'license': 'CC0 (dati strutturati)', 'url': 'https://www.wikidata.org/'},
     {'id': 'retroflops', 'name': 'RetroFlops', 'mode': 'api', 'license': 'CC BY 4.0 — RetroFlops; adattamento dei dati', 'url': 'https://retroflops.github.io/data/'},
@@ -170,6 +171,11 @@ def fetch_provider(provider, options):
 
 def upload_records(provider, format, raw, source_url=None):
     """One adapter path shared by upload, retry and CLI."""
+    if provider == 'historical_descriptions':
+        if format != 'json':
+            raise ValueError('Le descrizioni storiche richiedono un file JSON UTF-8')
+        from .normalize import parse_payload
+        return parse_payload(raw, format)[1]
     if provider == '1000bit':
         from .bit1000 import uploaded_records
         return uploaded_records(raw, format, source_url)

@@ -8,6 +8,14 @@ const labels = { ready: 'Pronta', imported: 'Importata', updated: 'Aggiornata', 
   invalid: 'Scartata', failed: 'Fallita', ambiguous: 'Corrispondenza da scegliere', completed: 'Completata',
   partial: 'Completata con righe da controllare', skipped: 'Esclusa', archived: 'Archiviata dopo svuotamento', pending: 'Da verificare', conflict: 'In conflitto', verified: 'Verificata', rejected: 'Fonte rifiutata per questo dato' };
 const status = value => labels[value] || value;
+const descriptionActions = {
+  fill: 'Descrizione mancante: verrà inserita.',
+  replace_template: 'Testo preimpostato: verrà sostituito.',
+  unchanged: 'Testo già presente.',
+  conflict: 'Descrizione già curata: resta conservata, la proposta richiede una decisione in Fonti e verifiche.',
+  unmatched: 'Nessun abbinamento: associa un calcolatore esistente oppure la riga sarà esclusa.',
+  ambiguous: 'Più corrispondenze: scegli il calcolatore prima di applicare la riga.',
+};
 
 function RowMatch({ row, disabled, onMatch }) {
   const [query, setQuery] = useState('');
@@ -102,7 +110,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
       form.append('existing_only', String(existingOnly));
       if (sourceUrl.trim()) form.append('source_url', sourceUrl.trim());
     }
-    if (provider === 'historical_prices') form.append('existing_only', 'true');
+    if (['historical_prices', 'historical_descriptions'].includes(provider)) form.append('existing_only', 'true');
     action(() => api('/admin/imports/upload', { method: 'POST', body: form }));
   }
   async function review(id, decision, note) {
@@ -110,6 +118,11 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
   }
   const selected = providers.find(p => p.id === provider);
   const singleImport = <>
+      {provider === 'historical_descriptions' && <>
+        <p>Carica il JSON delle descrizioni: un elenco di oggetti con manufacturer, model_name, description e source (title, url e source_type). Sono accettati anche elenchi racchiusi in records.</p>
+        <p>Associa soltanto computer già censiti, riconoscendo marche brevi, nomi equivalenti e alias approvati. I testi vuoti o preimpostati vengono completati; le descrizioni già curate restano conservate e le proposte diverse diventano conflitti da esaminare.</p>
+        <p className="muted">Il caricamento non crea sistemi e non cambia nomi, specifiche, foto o prezzi. Testi e URL provengono dal file e restano da verificare; nessuna ricerca online e nessun costo API.</p>
+      </>}
       {provider === 'historical_prices' && <>
         <p>Carica l'Excel con il foglio «Prezzi per modello», oppure un CSV/JSON canonico. Aggiorna soltanto i sistemi già presenti, abbinandoli per produttore e modello: gli ID del foglio non sono ID del catalogo.</p>
         <p className="muted">Gli URL e l'affidabilità dichiarata restano da verificare. Prezzi, valuta, mercato, configurazione e note vengono conservati; l'anno della ricerca non viene trasformato in una data di lancio. Le indicazioni riferite a famiglie o varianti diverse restano note.</p>
@@ -120,8 +133,8 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
         <p className="muted">Con questa opzione attiva, associa le righe senza corrispondenza a una scheda esistente; quelle non associate saranno escluse senza creare nuovi calcolatori.</p>
       </>}
       <form onSubmit={upload}>
-        <label className="admin-field"><span>{provider === 'historical_prices' ? 'Excel dei prezzi o dataset CSV/JSON (massimo 8 MB)' : provider === '1000bit' ? 'Scheda HTML o dataset CSV/JSON 1000bit (massimo 8 MB)' : 'Dataset CSV o JSON (UTF-8, massimo 8 MB e 1000 righe)'}</span>
-          <input type="file" accept={provider === 'historical_prices' ? '.xlsx,.csv,.json' : provider === '1000bit' ? '.html,.htm,.csv,.json' : '.csv,.json'} disabled={busy} required onChange={e => setFile(e.target.files[0] || null)} /></label>
+        <label className="admin-field"><span>{provider === 'historical_descriptions' ? 'JSON delle descrizioni (UTF-8, massimo 8 MB e 1000 righe)' : provider === 'historical_prices' ? 'Excel dei prezzi o dataset CSV/JSON (massimo 8 MB)' : provider === '1000bit' ? 'Scheda HTML o dataset CSV/JSON 1000bit (massimo 8 MB)' : 'Dataset CSV o JSON (UTF-8, massimo 8 MB e 1000 righe)'}</span>
+          <input type="file" accept={provider === 'historical_descriptions' ? '.json' : provider === 'historical_prices' ? '.xlsx,.csv,.json' : provider === '1000bit' ? '.html,.htm,.csv,.json' : '.csv,.json'} disabled={busy} required onChange={e => setFile(e.target.files[0] || null)} /></label>
         {provider === '1000bit' && <label className="admin-field"><span>URL originale della scheda HTML (facoltativo se presente nel file)</span>
           <input type="url" value={sourceUrl} maxLength={800} disabled={busy} placeholder="https://www.1000bit.it/scheda.asp?id=…" onChange={e => setSourceUrl(e.target.value)} /></label>}
         <label className="import-rights"><input type="checkbox" checked={rights} disabled={busy} required onChange={e => setRights(e.target.checked)} />Ho verificato il diritto di importare questo dataset e conservarne l'attribuzione.</label>
@@ -169,7 +182,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
           <p>Righe con colonne fonte riallineate: {job.price_workbook_report.source_columns_repaired}. Righe non valide: {job.price_workbook_report.invalid_records}.</p>
           <p className="muted">Viene letto soltanto «Prezzi per modello», per evitare doppioni fra i fogli. Riporta qui eventuali nuovi risultati prima di importare un Excel aggiornato. URL e giudizi di affidabilità provengono dal file e restano da verificare.</p>
         </div>}
-        {job.data_coverage && <p>Record con fonte nel file: {job.data_coverage.records_with_source}. Prezzi presenti nel file: {job.data_coverage.prices}.
+        {job.provider !== 'historical_descriptions' && job.data_coverage && <p>Record con fonte nel file: {job.data_coverage.records_with_source}. Prezzi presenti nel file: {job.data_coverage.prices}.
           {!job.data_coverage.prices && ' Il dataset non contiene prezzi: il caricamento non ne aggiunge e conserva quelli già archiviati.'}</p>}
         <p>Asserzioni: {Object.entries(job.verification_counts || {}).map(([k, n]) => `${status(k)}: ${n}`).join(' · ') || 'non ancora applicate'}</p>
         {job.retry_of && <p>Nuovo tentativo dell'importazione #{job.retry_of}.</p>}
@@ -185,6 +198,12 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
           {job.existing_only && job.status === 'ready' && !row.computer_id && row.status === 'ready' && <p>Associa questa riga a un calcolatore esistente prima di applicarla, altrimenti sarà esclusa.</p>}
           {!!row.candidates.length && <p>Corrispondenze individuate: {(row.candidate_labels || row.candidates).join(' · ')}</p>}
           {row.error && <p className="inline-error">{row.error}</p>}
+          {row.description_preview && <section className="panel" aria-label={`Anteprima descrizione riga ${row.position}`}>
+            <p><b>{descriptionActions[row.description_preview.action]}</b></p>
+            {row.description_preview.current && <><h5>Testo attuale</h5><p className="import-description-text">{row.description_preview.current}</p></>}
+            <h5>Testo nel file</h5><p className="import-description-text">{row.description_preview.proposed}</p>
+            <p>Fonte dichiarata: <a href={row.description_preview.source.url} target="_blank" rel="noopener noreferrer">{row.description_preview.source.title}</a></p>
+          </section>}
           {job.status === 'ready' && row.status !== 'skipped' && <button type="button" disabled={busy} onClick={() => action(async () => {
             await api(`/admin/imports/${job.id}/rows/${row.id}/skip`, { method: 'POST' }); return { id: job.id };
           })}>Escludi la riga {row.position} da questa importazione</button>}

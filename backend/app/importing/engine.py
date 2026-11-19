@@ -33,7 +33,13 @@ def identity_provider(provider, data):
     return provider + ':' + hashlib.sha256(namespace.encode()).hexdigest()[:16]
 
 
-def catalog_candidates(db, data, provider):
+def catalog_candidates(db, data, provider, description_index=None):
+    if provider == 'historical_descriptions':
+        from .descriptions import candidate_index
+        from ..history_sources import model_key
+        index = description_index if description_index is not None else candidate_index(db)
+        candidates = index.get(model_key(data['manufacturer'], data['model_name']), [])
+        return candidates, len(candidates) > 1
     if data.get('external_id'):
         identity = db.scalar(select(ExternalIdentity).where(ExternalIdentity.provider == identity_provider(provider, data),
                              ExternalIdentity.external_id == data['external_id']))
@@ -73,7 +79,7 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
     # reject these before storing raw rows in PostgreSQL's strict JSON type.
     json.dumps(records, allow_nan=False)
     options = dict(options or {})
-    if provider == 'historical_prices':
+    if provider in ('historical_prices', 'historical_descriptions'):
         options['existing_only'] = True
     options.pop('raw_payload_encoding', None)
     if provider == 'historical_prices' and format == 'xlsx':
@@ -92,13 +98,21 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
                     request_options=options, retry_of=retry_of)
     db.add(job)
     db.flush()
+    description_index = None
+    if provider == 'historical_descriptions':
+        from .descriptions import candidate_index
+        description_index = candidate_index(db)
     for position, original in enumerate(records, 1):
         row = ImportRow(job_id=job.id, position=position, raw=original)
         try:
             if isinstance(original.get('error'), str) and original['error']:
                 raise ValueError(original['error'])
-            data = Record.model_validate(original).model_dump(mode='json', exclude_none=True)
-            candidates, ambiguous = catalog_candidates(db, data, provider)
+            if provider == 'historical_descriptions':
+                from .descriptions import normalize_record
+                data = normalize_record(original)
+            else:
+                data = Record.model_validate(original).model_dump(mode='json', exclude_none=True)
+            candidates, ambiguous = catalog_candidates(db, data, provider, description_index)
             row.normalized = data
             row.candidates = candidates
             row.status = 'ambiguous' if ambiguous else 'ready'
@@ -129,7 +143,7 @@ def reference(db, model, name, provider=None):
     return value
 
 
-def source(db, citation):
+def source(db, citation, accessed=True):
     conditions = [Source.title == citation['title'], Source.url == citation.get('url')]
     if not citation.get('url'):
         conditions.extend([Source.author == citation.get('author'), Source.publisher == citation.get('publisher')])
@@ -140,18 +154,18 @@ def source(db, citation):
     for field in ('access_date', 'publication_date'):
         if isinstance(getattr(found, field), str):
             setattr(found, field, date.fromisoformat(getattr(found, field)))
-    if found.source_type != 'research_reference':
+    if accessed and found.source_type != 'research_reference':
         found.access_date = found.access_date or date.today()
     db.add(found)
     db.flush()
     return found
 
 
-def attribute(db, row, target, field, incoming, citation, evidence=None, estimated=False):
+def attribute(db, row, target, field, incoming, citation, evidence=None, estimated=False, *, accessed=True):
     """Keep differing values staged as claims; fill only genuinely missing fields."""
     if incoming is None:
         return False
-    s = source(db, citation)
+    s = source(db, citation, accessed=accessed)
     linked = False
     if hasattr(target, 'sources') and s not in target.sources:
         target.sources.append(s)
@@ -182,6 +196,9 @@ def attribute(db, row, target, field, incoming, citation, evidence=None, estimat
 
 
 def import_record(db, job, row):
+    if job.provider == 'historical_descriptions':
+        from .descriptions import apply_row
+        return apply_row(db, row)
     data = Record.model_validate(row.normalized).model_dump(mode='json', exclude_none=True)
     candidates, ambiguous = catalog_candidates(db, data, job.provider)
     c = db.get(Computer, row.computer_id) if row.computer_id else None
