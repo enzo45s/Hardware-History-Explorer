@@ -10,8 +10,8 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Mapped, Session, mapped_column, selectinload
 
 from .models import Base, Computer, ComputerImage
-from .admin import Input
-from .commons import photo_query, retry_seconds
+from .admin import Input, catalog_lock
+from .commons import photo_query, legacy_photo_queries, retry_seconds
 from pydantic import Field, field_validator
 
 
@@ -81,6 +81,19 @@ def simple_query(value):
                    lambda match: 'Apple' + (' - ' if match[1] else ' ') + 'III', value, flags=re.I)
     value = value.replace('+', ' Plus ')
     return ' '.join(re.sub(r'[^\w\s.-]', ' ', value, flags=re.UNICODE).split()).strip('.- ')[:90]
+
+
+def refresh_generated_query(row, computer):
+    if computer is None or computer.model_name != row.model_name:
+        return False
+    old = legacy_photo_queries(computer.manufacturer.name, row.model_name)
+    old_fallback = (row.error or '').startswith('Ricerca rifiutata:') and row.query in {simple_query(q) for q in old}
+    if row.query not in old and not old_fallback:
+        return False
+    row.query = photo_query(computer.manufacturer.name, row.model_name)
+    if old_fallback:
+        row.error = None
+    return True
 
 
 class CurrentItem(Input):
@@ -249,9 +262,19 @@ def create_photo_router(get_db, search):
 
     @router.post('/{job_id}/resume')
     def resume(job_id: int, db: Session = Depends(get_db)):
-        job = get_job(db, job_id)
-        db.execute(update(PhotoJob).where(PhotoJob.id == job_id, PhotoJob.status == 'paused',
-                   PhotoJob.active_key == 'commons').values(status='ready', error=None).execution_options(synchronize_session=False))
+        catalog_lock(db)
+        job = db.scalar(select(PhotoJob).where(PhotoJob.id == job_id).with_for_update())
+        if job is None:
+            raise HTTPException(404, 'Ricerca fotografica non trovata')
+        if job.active_key == 'commons' and job.status in ('ready', 'paused'):
+            if not (job.lease_token and job.lease_until and utc(job.lease_until) > now()):
+                pending = db.execute(select(PhotoItem, Computer).join(Computer, PhotoItem.computer_id == Computer.id)
+                    .where(PhotoItem.job_id == job.id, PhotoItem.status == 'pending')
+                    .options(selectinload(Computer.manufacturer)))
+                for row, computer in pending:
+                    refresh_generated_query(row, computer)
+            if job.status == 'paused':
+                job.status, job.error = 'ready', None
         db.commit(); db.refresh(job)
         return job_data(db, job)
 
@@ -276,8 +299,11 @@ def create_photo_router(get_db, search):
             job.status = 'completed'; job.active_key = None; job.lease_token = None; job.lease_until = None
             db.commit()
             return job_data(db, job)
-        row_id, computer_id, model_name, query = row.id, row.computer_id, row.model_name, row.query
+        computer_id = row.computer_id
         c = db.get(Computer, computer_id) if computer_id else None
+        if refresh_generated_query(row, c):
+            db.commit()  # Retain the new query even if the remote request fails.
+        row_id, model_name, query = row.id, row.model_name, row.query
         before_images = image_state(db, c)
         already_present = before_images is not None and bool(before_images[0] or before_images[1])
         replace_existing = job.replace_existing

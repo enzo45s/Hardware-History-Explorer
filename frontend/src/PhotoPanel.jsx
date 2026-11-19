@@ -99,7 +99,7 @@ export default function PhotoPanel({ onSaved }) {
   const done = job ? job.total - pending : 0;
   return <section className="imports photo-panel">
     <h2>Foto automatiche da Wikimedia Commons</h2>
-    <p>Associa automaticamente il primo risultato utilizzabile, cercando «marca - modello», una macchina alla volta, con almeno due secondi fra le richieste.</p>
+    <p>Associa automaticamente il primo risultato utilizzabile, cercando marca e modello separati da uno spazio, una macchina alla volta, con almeno due secondi fra le richieste.</p>
     <p>Puoi completare le schede senza foto oppure ricominciare su tutti i sistemi, aggiornando anche le copertine già associate. Una nuova copertina viene impostata solo quando la ricerca trova una foto utilizzabile; le altre immagini della galleria restano disponibili.</p>
     <p>Le immagini sono scelte automaticamente: potrebbero raffigurare un modello diverso. Puoi correggerle nella scheda del sistema, da <b>Gestisci fotografie</b>. Autore, licenza e pagina Commons vengono conservati.</p>
     <p className="muted">Uso locale single-user. Le immagini restano collegamenti esterni. I risultati privi di attribuzione o licenza riconoscibile non vengono associati automaticamente.</p>

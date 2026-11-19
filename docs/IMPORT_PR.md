@@ -60,6 +60,9 @@ e suffissi video lasciano una scheda principale, con configurazioni e originali
 conservati. Include rinomine singole, applicazione in lotti oltre 100 gruppi,
 ricerche con nome pulito e prevenzione dei duplicati nelle nuove importazioni.
 Le viste pubbliche omettono PAL/NTSC e frequenze video regionali 50/60 Hz.
+Le ricerche Commons usano marca e modello con uno spazio, senza trattino
+separatore. Le vecchie query automatiche pendenti vengono aggiornate alla
+ripresa, conservando query personalizzate, risultati, pause e modalità foto.
 
 Per lavorare su due PC, `tools/Transfer-HheArchive.ps1` esporta e ripristina
 database PostgreSQL completo e volume fotografico in un archivio portabile.

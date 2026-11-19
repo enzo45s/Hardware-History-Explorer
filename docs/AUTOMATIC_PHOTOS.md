@@ -14,8 +14,8 @@ Apri **Amministrazione → Foto automatiche → Avvia ricerca automatica**.
 Non occorre confermare ogni immagine: viene associato automaticamente il primo
 risultato utilizzabile nell'ordine di rilevanza restituito da Commons.
 Le foto compaiono anche nelle copertine del catalogo, nella timeline e nei
-confronti. La ricerca usa **marca - modello**, per esempio
-`Apple - Macintosh 128K` o `IBM - PC 5150`. I prefissi della marca già presenti
+confronti. La ricerca usa **marca e modello separati da uno spazio**, per esempio
+`Apple Macintosh 128K` o `IBM PC 5150`, senza trattino separatore. I prefissi della marca già presenti
 nel modello vengono rimossi tramite corrispondenze esplicite, comprese le
 forme note `Apple Computer`, IBM e Commodore, senza cambiare i nomi nel catalogo.
 La stessa stringa iniziale viene usata da **Gestisci fotografie** nella scheda.
@@ -31,7 +31,7 @@ Premi **Ricomincia su tutti e sostituisci le copertine**. La nuova coda riparte
 da zero sui sistemi attualmente nel database, anche quelli già fotografati:
 con 1.105 schede include esattamente 1.105 modelli. L'eventuale vecchia coda
 viene contrassegnata come sostituita; esiti e riferimenti alle fonti restano
-nello storico. Le nuove ricerche vengono rigenerate come **marca - modello**;
+nello storico. Le nuove ricerche vengono rigenerate come **marca e modello**;
 le vecchie stringhe conservate non vengono riutilizzate.
 
 Per ogni risultato utilizzabile viene impostata la nuova copertina. La
@@ -51,6 +51,15 @@ corso della coda precedente; una risposta tardiva della vecchia coda non può
 salvare immagini. Non è necessario svuotare il catalogo o eliminare i volumi.
 
 ### Pausa e ripresa
+
+Le vecchie query automatiche con il separatore ` - ` vengono aggiornate a
+marca e modello con uno spazio quando riprendi una coda, oppure prima del
+prossimo passo. Restano conservati esiti, posizione, modalità di sostituzione
+e pause della fonte. Non servono una nuova ricerca su tutti i sistemi o una
+migrazione del database. Le query personalizzate non vengono riscritte e i
+trattini propri di System-80, PDP-11 e nomi simili restano al loro posto.
+Una richiesta già in corso termina con la propria query: l'aggiornamento non
+interferisce con la prenotazione del worker né con le foto già presenti.
 
 - Mantieni aperta questa sezione per proseguire. Non è un servizio in background.
 - **Metti in pausa** interrompe l'avanzamento; una richiesta già partita può
@@ -226,7 +235,14 @@ persistente dopo pausa/ricaricamento/ripresa, contatori e stringa iniziale della
 ricerca manuale. Layout a 320 px senza overflow e nessun errore JavaScript.
 
 Compose aggiornato sul catalogo PostgreSQL isolato: avvio riuscito, migrazione
-automatica, nuova coda con 1.105 righe e query nel formato marca - modello.
+automatica, nuova coda con 1.105 righe e query con marca e modello.
 Catalogo e copertine invariati durante la creazione; coda lasciata in pausa
 senza avviare richieste Commons. Il database locale dell'operatore non è
 raggiungibile dal cloud: il nuovo pulsante avvia la ricerca sulla sua istanza.
+
+Verifica del 19 novembre sul separatore: l'API Commons ha risposto HTTP 200
+con e senza trattino su Macintosh 128K e IBM PC 5150. I conteggi dei risultati
+erano uguali nei due formati, mentre i primi risultati IBM non erano identici.
+Non è una prova che il trattino impedisse la ricerca o che rimuoverlo migliori
+sempre l'immagine scelta. Il formato con spazio evita un separatore superfluo;
+attribuzione, licenza e correzione manuale restano disponibili.

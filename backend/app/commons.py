@@ -14,10 +14,10 @@ USER_AGENT = 'HardwareHistoryExplorer/1.2 (https://github.com/enzo45s/Hardware-H
 logger = logging.getLogger(__name__)
 
 
-def photo_query(manufacturer, model):
-    """Brand - public model name, without source/variant annotations."""
+def _photo_query(manufacturer, model, separator, *, clean=True):
     from .catalog_names import catalog_name
-    model = catalog_name(model)
+    if clean:
+        model = catalog_name(model)
     from .importing.identity import MAKERS, maker_key
     manufacturer = ' '.join((manufacturer or '').split())
     model = ' '.join((model or '').split())
@@ -33,7 +33,17 @@ def photo_query(manufacturer, model):
     if not model or not brand:
         return (model or brand)[:90]
     brand = brand[:40]
-    return f'{brand} - {model}'[:90].rstrip()
+    return f'{brand}{separator}{model}'[:90].rstrip()
+
+
+def photo_query(manufacturer, model):
+    """Plain brand and model keywords; keep hyphens belonging to model names."""
+    return _photo_query(manufacturer, model, ' ')
+
+
+def legacy_photo_queries(manufacturer, model):
+    """Recognize only old automatically generated strings, including pre-cleanup names."""
+    return {_photo_query(manufacturer, model, ' - '), _photo_query(manufacturer, model, ' - ', clean=False)}
 
 INVALID_SEARCH = {'badsearch', 'cirrussearch-parse-error', 'cirrussearch-regex-syntax-error',
                   'cirrussearch-regex-empty-expression', 'cirrussearch-regex-too-complex-error',

@@ -293,10 +293,14 @@ La gestione delle fotografie resta disponibile nella normale scheda del calcolat
 
 ### Problemi nella ricerca Wikimedia Commons
 
-La ricerca parte da **marca - modello**: per esempio `Apple - Macintosh 128K`
-o `IBM - PC 5150`. I prefissi noti già presenti nel modello vengono rimossi
+La ricerca parte da **marca e modello separati da uno spazio**: per esempio
+`Apple Macintosh 128K` o `IBM PC 5150`, senza trattino separatore. I prefissi noti già presenti nel modello vengono rimossi
 per evitare ripetizioni della marca. Il testo resta modificabile, sia nelle
 ricerche singole sia nel modello corrente della coda automatica.
+Le vecchie query automatiche ancora in attesa vengono aggiornate alla ripresa,
+senza azzerare la coda, cambiare la modalità di sostituzione o modificare foto.
+Le ricerche personalizzate restano invariate; i trattini propri di nomi come
+System-80 e PDP-11 vengono conservati.
 
 La ricerca Commons è gratuita e non usa la chiave OpenAI. Il backend si identifica con lo User-Agent `HardwareHistoryExplorer/1.2 (https://github.com/enzo45s/Hardware-History-Explorer)`, richiede esplicitamente il formato JSON con pagine indicizzate e attende fino a 30 secondi per ciascuna fase della richiesta HTTP.
 

@@ -232,14 +232,16 @@ def test_fallback_retains_distinguishing_model_tokens(value, expected):
 
 
 @pytest.mark.parametrize('maker,model,expected', [
-    ('Apple Computer', 'Apple Macintosh 128K', 'Apple - Macintosh 128K'),
-    ('Apple Computer, Inc.', 'Apple Computer II', 'Apple - II'),
-    ('Apple', 'Apple ][', 'Apple - ]['),
-    ('IBM', 'IBM PC 5150', 'IBM - PC 5150'),
-    ('International Business Machines', 'IBM System/360', 'IBM - System/360'),
-    ('Commodore Business Machines', 'Commodore 64', 'Commodore - 64'),
-    ('Acorn', 'Acornsoft 123', 'Acorn - Acornsoft 123'),
-    ('Sinclair', 'ZX Spectrum +2', 'Sinclair - ZX Spectrum +2'),
+    ('Apple Computer', 'Apple Macintosh 128K', 'Apple Macintosh 128K'),
+    ('Apple Computer, Inc.', 'Apple Computer II', 'Apple II'),
+    ('Apple', 'Apple ][', 'Apple ]['),
+    ('IBM', 'IBM PC 5150', 'IBM PC 5150'),
+    ('International Business Machines', 'IBM System/360', 'IBM System/360'),
+    ('Commodore Business Machines', 'Commodore 64', 'Commodore 64'),
+    ('Acorn', 'Acornsoft 123', 'Acorn Acornsoft 123'),
+    ('Sinclair', 'ZX Spectrum +2', 'Sinclair ZX Spectrum +2'),
+    ('EACA', 'System-80', 'EACA System-80'),
+    ('DEC', 'PDP-11', 'DEC PDP-11'),
     ('', 'Unknown model', 'Unknown model'),
 ])
 def test_brand_model_query_preserves_model_and_avoids_repeated_brand(maker, model, expected):
@@ -276,7 +278,7 @@ def test_restart_uses_current_1105_computers_including_existing_photos(client, c
         assert len(db.scalars(select(PhotoItem).where(PhotoItem.job_id == old.id)).all()) == previous['total']
         rows = db.scalars(select(PhotoItem).where(PhotoItem.job_id == job['id']).order_by(PhotoItem.position)).all()
         assert len({row.computer_id for row in rows}) == 1105
-        assert rows[0].query == 'IBM - System/360' and rows[-1].position == 1105
+        assert rows[0].query == 'IBM System/360' and rows[-1].position == 1105
     assert client.get('/api/computers/1/images').json() == [old_photo]
     assert client.post(f"/api/admin/photos/{previous['id']}/resume").json()['status'] == 'superseded'
 
@@ -297,7 +299,7 @@ def test_replacement_sets_new_cover_and_keeps_other_gallery_images(client, monke
     assert sum(photo['is_primary'] for photo in photos) == 1
     assert {photo['id'] for photo in photos[1:]} == {first['id'], second['id']}
     assert client.get('/api/computers/1').json()['image_url'].endswith('/thumb/Replacement.jpg')
-    assert queries == ['IBM - System/360']
+    assert queries == ['IBM System/360']
 
 
 @pytest.mark.parametrize('outcome', ['no_match', 'unlicensed', 'outage'])

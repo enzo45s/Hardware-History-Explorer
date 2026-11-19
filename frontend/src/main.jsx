@@ -69,7 +69,7 @@ function Gallery({ computer }) {
 function ImageManager({ computer, onChanged }) {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState('commons');
-  const [query, setQuery] = useState(computer.photo_search_query || `${computer.manufacturer} - ${computer.model_name}`);
+  const [query, setQuery] = useState(computer.photo_search_query || `${computer.manufacturer} ${computer.model_name}`);
   const [results, setResults] = useState([]);
   const [file, setFile] = useState(null);
   const [url, setUrl] = useState('');
@@ -82,7 +82,7 @@ function ImageManager({ computer, onChanged }) {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
-  useEffect(() => { setQuery(computer.photo_search_query || `${computer.manufacturer} - ${computer.model_name}`); setResults([]); setMessage(''); }, [computer.id]);
+  useEffect(() => { setQuery(computer.photo_search_query || `${computer.manufacturer} ${computer.model_name}`); setResults([]); setMessage(''); }, [computer.id]);
 
   async function perform(action, success) {
     setBusy(true); setError(''); setMessage('');
