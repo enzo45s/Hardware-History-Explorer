@@ -1,8 +1,8 @@
 # Commercializzazioni: sintesi di date, mercati e prezzi
 
 Una scheda puo contenere una data del modello da una fonte e un prezzo regionale
-da un'altra, importati in registrazioni separate. Il catalogo ora presenta una
-sola commercializzazione quando l'abbinamento e univoco e i valori compatibili.
+da un'altra, importati in registrazioni separate. Il catalogo presenta anno e
+prezzo insieme quando i valori sono compatibili, anche con più offerte e mercati.
 Si applica automaticamente anche ai dati gia presenti e alle nuove importazioni.
 
 Per esempio:
@@ -26,11 +26,16 @@ nella [politica delle fonti](SOURCE_POLICY.md).
 
 ## Quando vengono accorpati
 
-- Una registrazione con data e senza prezzo puo completare una registrazione
-  con prezzo, se esiste un solo abbinamento compatibile.
-- Mercati esplicitamente uguali sono compatibili. Una data senza mercato puo
-  accompagnare il prezzo dell'unico mercato noto del modello. Non si deduce
+- Una registrazione con data e senza prezzo può completare una o più offerte
+  compatibili dello stesso modello. Tutte le fonti pertinenti devono concordare
+  sulla data: non viene scelta una delle date in base all'ordine dei record.
+- Mercati esplicitamente uguali sono compatibili. Una data senza mercato può
+  accompagnare i prezzi di più mercati come contesto del modello. Non si deduce
   un paese dalla valuta e non si assegna a un paese un prezzo senza mercato.
+- Una data regionale può completare più prezzi nel medesimo mercato, senza
+  essere estesa a paesi differenti. Configurazioni sostanziali con un ambito
+  distinto restano separate. Prezzi differenti o ripetuti nello stesso paese
+  rimangono offerte distinte, ciascuna con il proprio identificativo.
 - Date, precisioni, valute e fine commercializzazione non devono essere in
   conflitto. Fonti concordi sulla stessa data possono essere riunite; la
   precisione non viene aumentata e il periodo non puo essere invertito.
@@ -39,8 +44,12 @@ nella [politica delle fonti](SOURCE_POLICY.md).
 
 ## Cosa rimane separato
 
-- Piu prezzi possibili nello stesso paese, anche uguali: possono riferirsi a configurazioni diverse.
-- Piu aree geografiche conosciute: la data generica non viene attribuita a una arbitrariamente.
+- Più prezzi possibili nello stesso paese, anche uguali: possono riferirsi a
+  configurazioni diverse. Ora possono condividere il contesto della data,
+  senza essere ridotti a un solo importo.
+- Più aree geografiche mantengono prezzi e valute propri. La data generale resta
+  del modello, senza certificare la disponibilità locale del sistema o un
+  listino a quella data.
 - Anni/date differenti o precisioni differenti tra le registrazioni.
 - Un listino successivo senza data: non riceve l'anno di lancio del modello.
 - Informazioni prive di un abbinamento sicuro; se nessuna fonte indica il
@@ -56,6 +65,10 @@ nello stesso riquadro. Non si equiparano prezzi privi di valuta.
 L'accorpamento e una vista di lettura, senza migrazioni o cancellazioni.
 `GET /api/computers/{id}` e `GET /api/compare` aggiungono `display_releases`:
 contiene sintesi, ID originali, provenienza dei campi e ambito della data.
+Se una data supporta più offerte, il suo ID può comparire in più elenchi
+`release_ids`; gli ID delle sintesi restano univoci. `date_scope: model` distingue
+il contesto del modello dalla data regionale. Il testo sulla data offre una
+spiegazione al passaggio del puntatore, senza nuovi riquadri di provenienza.
 `releases` conserva i valori originali e gli ID utilizzati da amministrazione,
 importatori e revisioni delle asserzioni. L'assistente AI continua a ricevere
 queste evidenze originali, senza trasformare un prezzo senza data in un prezzo
@@ -71,6 +84,11 @@ docker compose -p hhe-import-test up --build -d --wait
 
 Ricarica la pagina del catalogo. Non occorre importare nuovamente i dati o
 svuotare l'archivio. Mantieni il nome Compose della tua istanza se diverso.
+
+Questa regola si applica a ogni lettura del catalogo: vale per tutto il database
+esistente, i confronti e i successivi caricamenti Excel, senza procedure da
+eseguire scheda per scheda. I prezzi importati senza una data rimangono tali
+nell'editor e nei dati originali: la sintesi non riscrive la storia dei mercati.
 
 ## Verifiche
 
@@ -101,3 +119,19 @@ una transazione poi annullata: **512 gruppi data/prezzo accorpati**. Tutti gli
 ID originali, importi e collegamenti alle fonti sono conservati; la vista non
 modifica le righe originali. Nessuna importazione persistente del file e
 nessun accesso al database locale Windows/Mac dell'utente.
+
+Verifica del 19 novembre 2026: **738 test SQLite superati, uno specifico
+PostgreSQL saltato; 135 test mirati PostgreSQL e 31 test frontend superati**.
+La regressione comprende due modelli con anno distinto e successive importazioni
+Excel su Stati Uniti, Giappone e Regno Unito: tutte le offerte compatibili
+ricevono il contesto corretto, senza riscrivere le date originali o confondere
+gli identificativi delle offerte.
+
+Su un database SQLite temporaneo con i cinque lotti del catalogo e il foglio
+Excel allegato in precedenza sono state controllate **1.073 schede e 1.641
+commercializzazioni originali**. Sei ulteriori schede sono normalizzate dalla
+regola per più offerte; 27 mantengono dati separati: cinque hanno anni discordanti
+e 22 riportano listini successivi senza data. Le 547 sintesi con data e prezzo
+non alterano importi, date, ID o collegamenti alle fonti. Il database temporaneo
+è stato eliminato; il nuovo Excel dell'utente non è stato allegato e non è stato
+verificato direttamente.

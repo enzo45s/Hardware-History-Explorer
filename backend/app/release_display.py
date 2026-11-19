@@ -1,8 +1,8 @@
 """Conservative commercial-release summaries; never rewrite historical evidence.
 
 An undated price is still undated in storage and in the raw API. This view can
-place a model's independently sourced year beside one unambiguous market price,
-while exposing both original records and the date's geographical scope.
+place a model's independently sourced date beside compatible market offers,
+while retaining the original records and the date's geographical scope.
 """
 from collections import defaultdict
 from copy import deepcopy
@@ -48,12 +48,43 @@ def compatible(rows):
     return True
 
 
+def complete_launch_dates(dates, prices, consumed):
+    """One consistent date may contextualize several distinct launch offers.
+
+    Plan against the unchanged evidence first: never choose a year by input
+    order, equate amounts or infer a country from a currency. Regional dates
+    only complete their market; a marketless date remains model-level context.
+    """
+    plans = []
+    remaining = [group for group in dates if group['row']['id'] not in consumed]
+    for target in prices:
+        price = target['row']
+        if price.get('release_date') or key(price.get('price_type')) not in LAUNCH_TYPES:
+            continue
+        candidates = [group for group in remaining if group['row'].get('release_date')
+            and (not market_key(group['row']) or market_key(group['row']) == market_key(price))
+            and group['row'].get('model_variant') == price.get('model_variant')]
+        if not candidates or not compatible([price, *(group['row'] for group in candidates)]):
+            continue
+        plans.append((target, candidates))
+    for target, candidates in plans:
+        for group in candidates:
+            for field in DATES:
+                if target['row'].get(field) is None:
+                    target['row'][field] = group['row'].get(field)
+            target['originals'].extend(deepcopy(group['originals']))
+            consumed.add(group['row']['id'])
+        # Shared date evidence can occur in several summaries. Use each
+        # offer's own ID so React keys and API offer IDs remain unique.
+        target['summary_id'] = target['row']['id']
+
+
 def release_summaries(releases):
     """Only complementary date/price records with a unique match are combined.
 
-    Never merge two prices from the same country (they may describe different configurations), assign
-    a price of unknown geography to a country, or distribute a global model date
-    over several markets. Plans are computed before merging, independent of order.
+    Never merge two prices from the same country (they may describe different
+    configurations) or assign a price of unknown geography to a country. Shared
+    dates add context to offers, preserving their original geographical scope.
     """
     rows = sorted(deepcopy(releases), key=lambda row: row['id'])
     known_markets = defaultdict(set)
@@ -127,13 +158,15 @@ def release_summaries(releases):
             target['originals'].extend(group['originals'])
             consumed.add(group['row']['id'])
 
+    complete_launch_dates(dates, prices, consumed)
+
     result = []
     groups = prices + [group for group in dates if group['row']['id'] not in consumed] + others
     for group in groups:
         summary = group['row']
         originals = sorted(group['originals'], key=lambda row: row['id'])
         summary['release_ids'] = [row['id'] for row in originals]
-        summary['id'] = min(summary['release_ids'])
+        summary['id'] = group.get('summary_id', min(summary['release_ids']))
         summary['merged'] = len(originals) > 1
         summary['original_releases'] = originals
         if market_key(summary) == 'europa':

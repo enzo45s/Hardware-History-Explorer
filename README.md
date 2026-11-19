@@ -156,10 +156,10 @@ Le entità del catalogo sono affiancate dalle tabelle fotografiche, di importazi
 - Profili regionali europei identici riuniti in **Europa** nelle schede e nei
   confronti; offerte europee raggruppate senza perdere date, prezzi, valute o
   revisioni differenti. [Criteri geografici e verifica della build](docs/EUROPE_GROUPING.md).
-- Commercializzazioni accorpate automaticamente quando data e prezzo hanno un
-  unico abbinamento compatibile: anno e prezzo appaiono nella stessa scheda del
-  mercato. Originali e citazioni restano disponibili; mercati multipli, date
-  discordanti e listini successivi non ricevono date inventate.
+- Commercializzazioni normalizzate su tutto il catalogo: una data generale
+  univoca accompagna i prezzi compatibili anche con più mercati o più offerte.
+  Prezzi e valute restano distinti; date regionali, originali e citazioni sono
+  conservati. I listini successivi senza data non ricevono l'anno di lancio.
   [Regole ed esempi](docs/RELEASE_SUMMARIES.md).
 - Una citazione per offerta e nessun riquadro di provenienza;
   le fonti MAME e le autocitazioni HHE sono escluse dal catalogo, dal pannello

@@ -85,8 +85,14 @@ const { chromium } = require('playwright');
     } });
     assert.equal(response.status(), 200, await response.text());
     await open();
-    assert.equal(await page.getByRole('region', { name: /^Commercializzazione ·/ }).count(), 3);
-    assert.match(await page.getByRole('region', { name: 'Commercializzazione · Stati Uniti', exact: true }).innerText(), /Data non disponibile · 3298 USD/);
+    assert.equal(await page.getByRole('region', { name: /^Commercializzazione ·/ }).count(), 2);
+    assert.match(await page.getByRole('region', { name: 'Commercializzazione · Stati Uniti', exact: true }).innerText(), /1982 · 3298 USD/);
+    assert.match(await page.getByRole('region', { name: 'Commercializzazione · Giappone', exact: true }).innerText(), /1982 · 200000 JPY/);
+    const normalized = await (await page.request.get(api('/computers/' + id))).json();
+    assert.equal(new Set(normalized.display_releases.map(row => row.id)).size, 2);
+    assert(normalized.display_releases.every(row => row.date_scope === 'model'));
+    assert(normalized.releases.filter(row => row.price != null).every(row => row.release_date === null));
+    assert.doesNotMatch(await page.locator('main').innerText(), /Mercato non documentato|Provenienza dei dati accorpati/);
     response = await page.request.put(api('/computers/' + id), { data: {
       model_name: model, manufacturer_id: raw.manufacturer_id,
       releases: [raw.releases[0], { ...raw.releases[1], price_type: 'listino successivo' }]
@@ -96,7 +102,7 @@ const { chromium } = require('playwright');
     assert.equal(await page.getByRole('region', { name: /^Commercializzazione ·/ }).count(), 2);
     assert.match(await page.getByRole('region', { name: 'Commercializzazione · Stati Uniti', exact: true }).innerText(), /Data non disponibile · 3298 USD/);
     assert.deepEqual(errors, []);
-    console.log('PASS releases: one price source, no provenance box, MAME absent from catalog/admin after import, technical data and raw editor preserved, ambiguous markets/later lists separate, mobile 320/390px.');
+    console.log('PASS releases: shared model date across markets, distinct prices, one price source, no provenance box, raw editor and technical evidence preserved, later lists undated, mobile 320/390px.');
   } finally {
     if (id) await page.request.delete(api('/computers/' + id)).catch(() => {});
     await browser.close();

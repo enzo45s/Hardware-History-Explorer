@@ -41,10 +41,6 @@ def test_same_documented_market_has_regional_date_scope_and_zero_price():
 
 @pytest.mark.parametrize('entries', [
     [row(1, year='1982'), row(2, 'Stati Uniti', year='1983', price=3298, currency='USD')],
-    [row(1, year='1982'), row(2, 'Stati Uniti', price=3298, currency='USD'), row(3, 'Giappone', price=200000, currency='JPY')],
-    [row(1, year='1982'), row(2, 'Stati Uniti', price=3298, currency='USD'), row(3, 'Stati Uniti', price=3998, currency='USD')],
-    # Equal amounts can describe different configurations; they are not duplicates.
-    [row(1, year='1982'), row(2, 'Stati Uniti', price=3298, currency='USD'), row(3, 'Stati Uniti', price=3298, currency='USD')],
     [row(1, 'Stati Uniti', year='1982'), row(2, price=3298, currency='USD')],
     [row(1, year='1982'), row(2, 'Stati Uniti', price=3298, currency='USD', price_type='listino successivo')],
     [row(1, year='1982'), row(2, 'Stati Uniti', price=3298, currency='USD', end='1981')],
@@ -56,6 +52,63 @@ def test_ambiguous_or_conflicting_releases_remain_distinct(entries):
     result = release_summaries(entries)
     assert len(result) == len(entries) and not any(item['merged'] for item in result)
     assert sorted(identifier for item in result for identifier in item['release_ids']) == [row['id'] for row in entries]
+
+
+@pytest.mark.parametrize('offers', [
+    [row(2, 'Stati Uniti', price=3298, currency='USD'), row(3, 'Giappone', price=200000, currency='JPY')],
+    [row(2, 'Stati Uniti', price=3298, currency='USD'), row(3, 'Stati Uniti', price=3998, currency='USD')],
+    # Equal amounts may describe different configurations: retain both offers.
+    [row(2, 'Stati Uniti', price=3298, currency='USD'), row(3, 'Stati Uniti', price=3298, currency='USD')],
+    [row(2, 'Francia', price=1000, currency='FRF'), row(3, 'Regno Unito', price=1000, currency='GBP')],
+])
+def test_model_date_completes_all_launch_offers_without_collapsing_prices(offers):
+    original = [row(1, year='1982'), *offers]
+    before = deepcopy(original)
+    result = release_summaries(original)
+    assert original == before and len(result) == 2
+    assert [item['id'] for item in result] == [2, 3]
+    assert all(item['release_date'] == '1982' and item['date_scope'] == 'model' for item in result)
+    assert [item['price'] for item in result] == [offer['price'] for offer in offers]
+    for item, offer in zip(result, offers):
+        assert item['currency'] == offer['currency'] and item['release_ids'] == [1, offer['id']]
+        assert item['field_sources']['release_date'] == [1]
+        assert item['field_sources']['price'] == [offer['id']]
+    for ordering in permutations(original):
+        assert release_summaries(ordering) == result
+
+
+def test_shared_market_date_does_not_leak_to_another_country_or_variant():
+    rows = [row(1, 'Stati Uniti', year='1982'),
+        row(2, 'Stati Uniti', price=3298, currency='USD'), row(3, 'Stati Uniti', price=3998, currency='USD'),
+        row(4, 'Giappone', price=200000, currency='JPY'),
+        {**row(5, 'Stati Uniti', price=4998, currency='USD'), 'model_variant': 'Synthetic hardware revision'}]
+    result = {item['id']: item for item in release_summaries(rows)}
+    assert set(result) == {2, 3, 4, 5}
+    assert result[2]['release_date'] == result[3]['release_date'] == '1982'
+    assert result[2]['date_scope'] == result[3]['date_scope'] == 'market'
+    assert result[4]['release_date'] is None and result[5]['release_date'] is None
+
+
+def test_disagreeing_shared_years_and_later_price_lists_remain_undated():
+    rows = [row(1, year='1982'), row(2, year='1983'), row(3, 'Stati Uniti', price=3298, currency='USD'),
+        row(4, 'Giappone', price=200000, currency='JPY')]
+    for ordering in permutations(rows):
+        result = release_summaries(ordering)
+        assert len(result) == 4 and all(item['release_date'] is None for item in result if item['price'] is not None)
+    result = release_summaries([row(1, year='1982'), row(2, 'Stati Uniti', price=3298, currency='USD'),
+        row(3, 'Giappone', price=200000, currency='JPY', price_type='listino successivo')])
+    assert result[0]['release_date'] == '1982'
+    assert result[1]['release_date'] is None and result[1]['price_type'] == 'listino successivo'
+
+
+def test_documented_regional_date_and_currencies_are_preserved_with_shared_year():
+    rows = [row(1, year='1982'), row(2, 'Stati Uniti', price=3298, currency='USD'),
+        row(3, 'Giappone', year='1983-05', price=200000, currency='JPY')]
+    result = {item['market']: item for item in release_summaries(rows)}
+    assert result['Stati Uniti']['release_date'] == '1982'
+    assert result['Stati Uniti']['date_scope'] == 'model'
+    assert result['Giappone']['release_date'] == '1983-05' and result['Giappone']['date_scope'] == 'market'
+    assert result['Giappone']['original_releases'] == [rows[2]]
 
 
 def test_disagreeing_date_sources_do_not_choose_a_year_by_input_order():
