@@ -44,7 +44,34 @@ const {chromium}=require('playwright');
   assert.equal(await page.getByRole('region',{name:/Configurazione · PET 2001-/}).count(),6);
   assert.match(await page.locator('main').innerText(),/Configurazione: PET 2001-N16/);
   assert.match(await page.locator('main').innerText(),/Storia sintetica B8/);
+  // Different source profiles are one sheet; video standards remain on values.
+  const atariResponse=await page.request.post(apiBase+'/api/computers',{data:{manufacturer_id:maker.id,model_name:'Synthetic Atari 400',configurations:[
+   {variant_name:'NTSC',specifications:[{component_type:'CPU',component_name:'maincpu',property_name:'Modello',text_value:'6502'},
+    {component_type:'Video',property_name:'Frequenza di aggiornamento',numeric_value:60,unit:'Hz'}]},
+   {variant_name:'PAL',specifications:[{component_type:'CPU',component_name:'maincpu',property_name:'Modello',text_value:'6502'},
+    {component_type:'Video',property_name:'Frequenza di aggiornamento',numeric_value:50,unit:'Hz'}]},
+   {variant_name:'Scheda tecnica',specifications:[{component_type:'CPU',property_name:'Modello',text_value:'6502'},
+    {component_type:'RAM',property_name:'Capacità riportata',text_value:'16 - 48Kb'}]}
+  ]}});assert.equal(atariResponse.status(),201);const atariId=(await atariResponse.json()).id;
+  await page.getByRole('button',{name:'Catalogo',exact:true}).click();await page.getByPlaceholder('Cerca un sistema…',{exact:true}).fill('Synthetic Atari 400');
+  await page.locator('.catalog-card').filter({has:page.getByRole('heading',{name:'Synthetic Atari 400',exact:true})}).getByRole('button',{name:'Dettagli',exact:true}).click();
+  const technical=page.getByRole('region',{name:'Configurazione · Scheda tecnica',exact:true});await technical.waitFor();
+  assert.equal(await page.getByRole('region',{name:/^Configurazione ·/}).count(),1);
+  assert.equal(await technical.getByRole('row').filter({hasText:'CPU · Modello'}).count(),1);
+  assert.match(await technical.innerText(),/60 Hz \(NTSC\) \/ 50 Hz \(PAL\)/);
+  assert.match(await technical.innerText(),/16 - 48Kb/);
+  assert.match(await technical.innerText(),/Varianti regionali: NTSC · PAL/);
+  for(const width of [320,390]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
+  await page.setViewportSize({width:1440,height:1000});
+  const atariRaw=await(await page.request.get(apiBase+`/api/admin/computers/${atariId}`)).json();assert.equal(atariRaw.configurations.length,3);
+  await page.getByRole('button',{name:'Confronta',exact:true}).click();
+  const picker=page.getByRole('combobox',{name:'Cerca un sistema da aggiungere'});
+  for(const name of ['Synthetic Atari 400','PET 2001']){await picker.fill(name);await page.getByRole('listbox',{name:'Sistemi trovati'}).getByRole('option').filter({hasText:name}).click();}
+  await page.getByRole('table',{name:'Confronto dei sistemi e delle configurazioni selezionate'}).waitFor();
+  assert.equal(await page.getByRole('combobox',{name:'Configurazione di Synthetic Atari 400',exact:true}).count(),0);
+  assert.equal(await page.getByRole('combobox',{name:'Configurazione di PET 2001',exact:true}).getByRole('option').count(),7);
+  assert.match(await page.locator('.comparison-results').innerText(),/60 Hz \(NTSC\) \/ 50 Hz \(PAL\)/);
   await openQuality();for(const width of [320,390]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
-  assert.deepEqual(errors,[]);console.log('PASS quality browser: HP 85 sourced RAM, PET variants/configurations, price scope, old-name search, preserved histories and mobile.');
+  assert.deepEqual(errors,[]);console.log('PASS quality browser: sourced RAM, PET variants, one Atari technical sheet with scoped PAL/NTSC values, preserved originals and mobile.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

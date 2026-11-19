@@ -31,3 +31,17 @@ test('comparison uses consolidated profiles and preserves selections of old regi
   assert.equal(comparisonSpecifications(computer).get(key).coverage, 1);
   assert.deepEqual(displayConfigurations({ configurations: [] }), []);
 });
+
+test('one technical sheet retains scoped values and resolves the former PAL/NTSC selection', () => {
+  const computer = { configurations: [{ id: 1 }, { id: 2 }, { id: 3 }], display_configurations: [{
+    id: 1, configuration_ids: [1, 2, 3], display_name: 'Scheda tecnica', specifications: [{
+      component_type: 'Video', property_name: 'Frequenza di aggiornamento', numeric_value: null,
+      text_value: '60 Hz (NTSC) / 50 Hz (PAL)', unit: null
+    }]
+  }] };
+  assert.equal(selectedConfiguration(computer, '2').display_name, 'Scheda tecnica');
+  const result = comparisonSpecifications(computer, '2').get(JSON.stringify(['Video', 'Frequenza di aggiornamento']));
+  assert.equal(result.text, '60 Hz (NTSC) / 50 Hz (PAL)');
+  assert.equal(result.total, 1);
+  assert.equal(result.partial, false);
+});

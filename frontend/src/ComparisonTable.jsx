@@ -23,13 +23,13 @@ export default function ComparisonTable({ ids, configurations, onConfigurationCh
     <div className="panel compare-scroll"><table className="comparison"><caption className="comparison-caption">Confronto dei sistemi e delle configurazioni selezionate</caption>
       <thead><tr><th scope="col">Caratteristica</th>{data.map(computer => <th scope="col" key={computer.id}>
         <div className="comparison-system-name">{computer.model_name}</div>
-        <label className="comparison-config-label" htmlFor={tableId + '-' + computer.id}>Configurazione</label>
+        {displayConfigurations(computer).length > 1 ? <><label className="comparison-config-label" htmlFor={tableId + '-' + computer.id}>Configurazione</label>
         <select id={tableId + '-' + computer.id} className="comparison-config-select" aria-label={'Configurazione di ' + computer.model_name}
           disabled={!displayConfigurations(computer).length} value={selectedConfiguration(computer, configurations[computer.id])?.id ?? 'all'}
           onChange={event => onConfigurationChange(computer.id, event.target.value)}>
           <option value="all">{displayConfigurations(computer).length ? `Tutte le configurazioni (${displayConfigurations(computer).length})` : 'Nessuna configurazione disponibile'}</option>
           {displayConfigurations(computer).map(config => <option key={config.id} value={config.id}>{displayConfigurationName(config)}</option>)}
-        </select>
+        </select></> : <p className="comparison-config-label">{displayConfigurations(computer).length ? 'Scheda tecnica' : 'Dati tecnici non disponibili'}</p>}
         {selectedConfiguration(computer, configurations[computer.id]) && displayDescription(selectedConfiguration(computer, configurations[computer.id])) && <p className="comparison-config-description">{displayDescription(selectedConfiguration(computer, configurations[computer.id]))}</p>}
       </th>)}</tr></thead>
       <tbody>

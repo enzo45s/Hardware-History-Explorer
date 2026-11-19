@@ -159,7 +159,7 @@ def test_api_has_european_profiles_but_editor_and_saved_data_preserve_every_coun
         original_markets = [(r.id, r.market.name) for r in computer.releases]
     data = client.get('/api/computers/1').json()
     assert len(data['configurations']) == 4 and len(data['display_configurations']) == 1
-    assert data['display_configurations'][0]['display_name'] == 'Europa'
+    assert data['display_configurations'][0]['display_name'] == 'Scheda tecnica'
     assert len(data['releases']) == 4 and len(data['display_releases']) == 1
     assert data['display_releases'][0]['market'] == 'Europa'
     assert client.get('/api/compare?ids=1,2').json()[0]['display_configurations'] == data['display_configurations']

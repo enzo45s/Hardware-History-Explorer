@@ -210,7 +210,7 @@ function ComputerDetail({ computer, onClose, onChanged }) {
     <Gallery computer={computer} />
     <ImageManager computer={computer} onChanged={onChanged} />
     <div className="section-title">Configurazioni e specifiche</div>
-    {displayConfigurations(computer).map(c => <section className="panel" key={c.id} aria-label={'Configurazione · ' + displayConfigurationName(c)}><h3>{displayConfigurationName(c)}</h3>{c.variant_description && <p>{c.variant_description}</p>}{c.variant_announcement_date && <p className="muted">Annuncio della configurazione: {c.variant_announcement_date}</p>}{displayDescription(c) && <p className="muted">{displayDescription(c)}</p>}<table><tbody>{c.specifications.map(s => {
+    {displayConfigurations(computer).map(c => <section className="panel" key={c.id} aria-label={'Configurazione · ' + displayConfigurationName(c)}><h3>{displayConfigurationName(c)}</h3>{c.regional_variants?.length > 0 && <p className="muted">Varianti regionali: {c.regional_variants.join(' · ')}</p>}{c.variant_description && <p>{c.variant_description}</p>}{c.variant_announcement_date && <p className="muted">Annuncio della configurazione: {c.variant_announcement_date}</p>}{displayDescription(c) && <p className="muted">{displayDescription(c)}</p>}<table><tbody>{c.specifications.map(s => {
       const view = displaySpecification(s);
       return <tr key={s.id}><td>{view.component_type} · {view.property_name}</td><td><strong title={'Valore registrato: ' + (s.numeric_value ?? s.text_value) + (s.unit ? ' ' + s.unit : '')}>{view.numeric_value ?? view.text_value} {view.unit || ''}</strong>{s.sources?.map(source => <Source key={source.id} s={source} compact />)}</td></tr>;
     })}</tbody></table></section>)}

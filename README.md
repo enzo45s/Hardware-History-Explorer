@@ -77,6 +77,12 @@ le importazioni successive seguono gli alias approvati. Non viene attribuita
 una quantità di memoria quando manca una fonte utilizzabile.
 [Regole, caso HP 85 e istruzioni](docs/CATALOG_QUALITY.md).
 
+Le schede riuniscono inoltre dati complementari e profili PAL/NTSC in una
+**scheda tecnica unica**, con valori comuni senza ripetizioni e differenze
+qualificate nella stessa tabella. Le configurazioni hardware sostanziali e gli
+originali restano distinti. Il confronto usa la stessa presentazione.
+[Criteri e aggiornamento delle schede tecniche](docs/TECHNICAL_SHEETS.md).
+
 ## Aggiungere le fotografie
 
 1. Apri il **Catalogo** (o la Timeline), poi una scheda con **Dettagli**.

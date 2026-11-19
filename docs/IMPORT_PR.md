@@ -45,6 +45,13 @@ sigle precedenti. Il parser 1000bit riconosce anche le etichette inglesi.
 Sul corpus completo: 1.109 → 1.099 schede, 1.261 configurazioni e 3.199 specifiche
 conservate; 1.139 righe reimportate invariate. Dettagli in `docs/CATALOG_QUALITY.md`.
 
+Le viste tecniche riuniscono profili regionali e fonti complementari (per esempio
+PAL/NTSC e scheda 1000bit dell'Atari 400) in una tabella, deduplicando i dati
+equivalenti e mantenendo le differenze qualificate. Le configurazioni hardware
+distinte, le fonti, gli ID e gli originali restano conservati; il confronto e
+il contesto AI usano la stessa vista. Nessuna migrazione o reimportazione richiesta.
+Criteri e verifiche in `docs/TECHNICAL_SHEETS.md`.
+
 Per lavorare su due PC, `tools/Transfer-HheArchive.ps1` esporta e ripristina
 database PostgreSQL completo e volume fotografico in un archivio portabile.
 Il ripristino verifica SHA-256 e versione del codice, crea il backup della

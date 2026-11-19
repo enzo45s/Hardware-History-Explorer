@@ -26,13 +26,14 @@ def retrieve(db, question, eager, full):
         base_words = set(re.findall(r'\w+', (r['model_name'] + ' ' + r['manufacturer']).casefold())) | {'ram', 'rom', 'rev', 'kb', 'mb', 'firmware'}
         def relevant(scope):
             return bool((set(re.findall(r'\w+', (scope or '').casefold())) - base_words) & set(words))
-        configurations = sorted(r['configurations'], key=lambda cfg: not relevant(cfg.get('model_variant')))
+        configurations = sorted(r['display_configurations'], key=lambda cfg: not relevant(cfg.get('model_variant')))
         releases = sorted(r['releases'], key=lambda release: not relevant(release.get('model_variant')))
         claims.sort(key=lambda claim: not relevant(assertion_variant(db, claim)))
         item = {'id': r['id'], 'model': r['model_name'], 'manufacturer': r['manufacturer'], 'year': r['year'],
             'categories': r['categories'], 'description': (r.get('display_description', r['description']) or '')[:2000],
             'configurations': [{'name': v.get('display_name', v['variant_name']), 'specifications': v['specifications'][:12],
-                'model_variant': v.get('model_variant'), 'description': v.get('variant_description'),
+                'model_variant': v.get('model_variant'), 'description': v.get('variant_description') or v.get('display_description'),
+                'regional_variants': v.get('regional_variants', []),
                 'announcement_date': v.get('variant_announcement_date')} for v in configurations[:4]],
             'releases': releases[:5], 'sales': r['sales'][:5], 'reviews': r['reviews'][:5],
             'facts': [{**fact, 'statement': fact.get('display_statement', fact['statement'])} for fact in r['facts'][:5]], 'sources': r['sources'][:10],
