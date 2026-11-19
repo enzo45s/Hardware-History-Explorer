@@ -87,6 +87,11 @@ denominazioni societarie **NeXT / Next Software Inc**. Per Apple, il prefisso
 di linea **Macintosh PowerBook** può corrispondere al titolo **PowerBook**,
 conservando numero, Duo e suffissi come `c`: PowerBook 180c non diventa 180.
 Queste regole non rinominano computer o produttori nel database.
+Le ricerche usano inoltre il nome pubblico senza attributi tra parentesi
+tonde/quadre o suffissi video, per tutti i modelli. La pulizia delle schede
+esistenti si applica da **RAM e varianti**, come descritto in
+[CATALOG_QUALITY.md](CATALOG_QUALITY.md). Numeri e suffissi fuori dalle parentesi
+restano significativi: PDP-11/20 non diventa PDP-11, né 180c diventa 180.
 
 Due corrispondenze italiane sono documentate esplicitamente:
 

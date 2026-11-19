@@ -8,11 +8,12 @@ from fastapi import HTTPException
 from .commons import USER_AGENT, retry_seconds
 from .catalog_display import description_text
 from .importing.identity import provider_computer_key, manufacturer_base, MAKERS, MODELS, maker_key
+from .catalog_names import catalog_name
 
 API = 'https://it.wikipedia.org/w/api.php'
 LICENSE = 'https://creativecommons.org/licenses/by-sa/4.0/'
 MAX_RESPONSE = 2 * 1024 * 1024
-SEARCH_VERSION = 3
+SEARCH_VERSION = 4
 
 
 def maker_aliases(maker):
@@ -31,7 +32,7 @@ def maker_aliases(maker):
 
 
 def canonical_model(model, maker):
-    text = unicodedata.normalize('NFKC', model).strip()
+    text = catalog_name(unicodedata.normalize('NFKC', model).strip())
     if maker_key(maker_aliases(maker)[0]) == 'apple':
         # Catalog names use the Macintosh product line; Italian article titles
         # use PowerBook. Keep every numeric/color/Duo suffix intact.
@@ -64,7 +65,7 @@ def search_plan(model, maker):
     elif key == model_key('IBM', 'IBM PC 5150'):
         first = {'strategy': 'documented_title', 'titles': 'PC IBM', 'exintro': 1}
     else:
-        literal = re.sub(r'["\[\]{}|:]', ' ', model).strip()
+        literal = re.sub(r'["\[\]{}|:]', ' ', canonical).strip()
         first = {'strategy': 'literal', 'query': f'"{literal}" computer'}
     # BBC Model B has no Italian redirect, but its model-specific history is
     # documented in BBC Micro. The passage still has to identify the model.
@@ -108,7 +109,8 @@ def improved_retry(model, maker, result):
 
 
 def model_key(maker, model):
-    # Remove only article disambiguation, not hardware or regional qualifiers.
+    # Research uses the public model name; hardware variants remain in the
+    # catalog's configurations and original records, not in search queries.
     title = re.sub(r'\s*\((?:computer|informatica|home computer|personal computer)\)$', '', model, flags=re.I)
     title = canonical_model(title, maker)
     for alias in maker_aliases(maker):

@@ -90,7 +90,7 @@ def test_stale_preview_and_selected_group_validation(client):
     assert client.get('/api/computers').json()['total'] == 16
 
 
-@pytest.mark.parametrize('name', ['Macintosh 128K', 'Macintosh 512K', 'HP 85B', 'Atari 800XL', 'IBM System/360 Model 50', 'System (revision 2)', 'System (16 KB ROM)', 'System (16 KB)'])
+@pytest.mark.parametrize('name', ['Macintosh 128K', 'Macintosh 512K', 'HP 85B', 'Atari 800XL', 'IBM System/360 Model 50'])
 def test_meaningful_model_numbers_and_unknown_hardware_revisions_stay_distinct(name):
     assert variant_name('Apple', name) is None
 

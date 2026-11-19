@@ -55,6 +55,11 @@ equivalenti e mantenendo le differenze qualificate. Le configurazioni hardware
 distinte, le fonti, gli ID e gli originali restano conservati; il confronto e
 il contesto AI usano la stessa vista. Nessuna migrazione o reimportazione richiesta.
 Criteri e verifiche in `docs/TECHNICAL_SHEETS.md`.
+La pulizia dei nomi ora vale per ogni produttore/modello: parentesi tonde/quadre
+e suffissi video lasciano una scheda principale, con configurazioni e originali
+conservati. Include rinomine singole, applicazione in lotti oltre 100 gruppi,
+ricerche con nome pulito e prevenzione dei duplicati nelle nuove importazioni.
+Le viste pubbliche omettono PAL/NTSC e frequenze video regionali 50/60 Hz.
 
 Per lavorare su due PC, `tools/Transfer-HheArchive.ps1` esporta e ripristina
 database PostgreSQL completo e volume fotografico in un archivio portabile.

@@ -41,6 +41,26 @@ def remember(db, computer, canonical_id):
     return alias
 
 
+def remember_input(db, computer, record):
+    """The configured generic naming rule also applies to new imports.
+
+    Keep variant-specific fields and IDs scoped exactly as for a reviewed legacy
+    merge. Import claims remain pending; this does not verify historical data.
+    """
+    from ..admin import historical_date
+    maker, name = provider_computer_key('historical_prices', record['manufacturer'], record['model_name'])
+    day, precision = historical_date(record['announcement_date']) if record.get('announcement_date') else (None, None)
+    original = {'computer_id': computer.id, 'model_name': record['model_name'],
+        'manufacturer_name': record['manufacturer'], 'description': record.get('description'),
+        'announcement_date': day.isoformat() if day else None, 'announcement_precision': precision,
+        'configurations': [], 'configuration_names': {}, 'releases': [], 'sales': [], 'reviews': [], 'facts': [],
+        'naming_rule': 'catalog_attributes_v1'}
+    alias = ComputerAlias(manufacturer_key=maker, model_key=name, original_name=record['model_name'],
+        computer_id=computer.id, original=original)
+    db.add(alias); db.flush()
+    return alias
+
+
 def assertion_variant(db, claim):
     if db is None or claim.computer_id is None:
         return None

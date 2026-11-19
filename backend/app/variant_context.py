@@ -8,6 +8,7 @@ from .import_models import ComputerAlias
 from .history_sources import replaceable
 from .catalog_display import description_text
 from .importing.regional_names import regional_name
+from .catalog_names import catalog_name, video_only_variant
 
 
 def annotate(computer, data):
@@ -34,11 +35,13 @@ def annotate(computer, data):
                 config['variant_announcement_date'] = member['announcement_date'][:length]
         for release in data['releases']:
             if release['id'] in original.get('releases', []):
-                release['model_variant'] = regional_name(alias.original_name)
+                release['model_variant'] = catalog_name(alias.original_name) if video_only_variant(alias.original_name) else regional_name(alias.original_name)
+                release['display_model_variant'] = catalog_name(alias.original_name)
         for collection in ('sales', 'reviews', 'facts'):
             for original_row, row in zip(getattr(computer, collection), data[collection]):
                 if original_row.id in original.get(collection, []):
                     row['model_variant'] = regional_name(alias.original_name)
+                    row['display_model_variant'] = catalog_name(alias.original_name)
 
 
 def family_attribution(computer):

@@ -22,6 +22,9 @@ Ricarica la pagina, quindi:
    li aggiunge conservando descrizioni, configurazioni e quantità esistenti.
 3. Premi **Analizza varianti da accorpare**. Controlla i gruppi e deseleziona
    quelli che vuoi tenere separati, poi premi **Accorpa i gruppi selezionati**.
+   Sono incluse anche le singole schede da rinominare. Più di cento gruppi
+   vengono applicati automaticamente in lotti, aggiornando l'anteprima fra
+   un lotto e il successivo.
 4. Cerca il modello comune nel catalogo: le sigle precedenti continuano a
    funzionare nella ricerca e nei suggerimenti del confronto. Le configurazioni
    restano selezionabili e le offerte riportano la variante di riferimento.
@@ -73,8 +76,8 @@ non costituisce una verifica umana. Non occorrono chiavi AI né chiamate a pagam
 
 ## Quali varianti si accorpano
 
-Le regole sono esplicite e non modificano l'identità generale dell'ETL prima
-che l'operatore applichi un gruppo:
+Per l'archivio già popolato le regole vengono applicate esplicitamente dal
+pannello. Le nuove importazioni usano direttamente la regola dei nomi puliti:
 
 - **Commodore PET 2001**: 2001-4, 2001-8, B8/B16/B32 e N8/N16/N32 diventano
   configurazioni del PET 2001. RAM, sigle, tastiere e dati tecnici originali
@@ -84,13 +87,20 @@ che l'operatore applichi un gruppo:
 - **Apple IIc**: revisioni esplicite e variante UniDisk 3.5 dello stesso IIc.
   Apple IIc Plus resta distinto;
 - **BBC Micro Model B+**: dotazioni 64K e 128K, conservate nelle configurazioni;
-- qualificatori espliciti `(RAM 16 KB)` / `(32 KB RAM)` o `(BIOS 1.0)` /
-  `(ROM rev 2)` / `(firmware 3.0)`.
+- **tutti i qualificatori tra parentesi tonde o quadre**, indipendentemente
+  da produttore e modello, incluse parentesi adiacenti o annidate;
+- varianti **PAL/NTSC/SECAM e 50/60 Hz**, anche come suffisso senza parentesi;
+- **System-80 (50 Hz)/(60 Hz)** diventa System-80; le registrazioni
+  **PDP-11 [Q-BUS]/[Unibus]** con i codici M7195/M9301/M9312 diventano PDP-11.
+  I dettagli del bus e delle schede rimangono negli originali e nelle configurazioni.
 
 Non vengono eliminati numeri o suffissi arbitrari. Macintosh 128K e 512K,
 HP 85 e 85B, Atari 800XL e altri prodotti con denominazioni distinte non vengono
-assunti automaticamente come duplicati. Una generica «revision 2» senza
-indicazione di firmware resta separata: potrebbe identificare hardware diverso.
+assunti automaticamente come duplicati. Un qualificatore `(revision 2)` lascia
+invece il nome principale: le sue differenze hardware restano configurazioni
+della scheda comune. PDP-11/20 e PDP-11/40 restano modelli distinti, perché i
+numeri fuori dalle parentesi non vengono rimossi. I nomi Apple `][` e `//c`
+non sono interpretati come annotazioni tra parentesi.
 
 ## Conservazione e reimportazione
 
@@ -111,6 +121,14 @@ l'accorpamento. Le importazioni successive, anche da un'altra fonte, seguono
 questi alias e indirizzano i dati alla configurazione corretta. I nomi precedenti
 non rinominano la scheda comune. Sintesi tecniche generate da 1000bit non vengono
 ripetute come note aggiuntive del modello.
+
+La stessa regola generale vale sulle **nuove importazioni**: i nomi pubblici
+nascono puliti, mentre gli alias e gli originali mantengono gli attributi.
+Configurazioni, prezzi, vendite, recensioni e fatti rimangono associati alla
+variante corretta, senza usare i qualificatori nelle ricerche di foto o testi.
+Una rinomina singola conserva la descrizione già curata e la data, e registra
+uno snapshot verificabile. I nomi malformati o composti solo da parentesi non
+vengono trasformati in nomi vuoti.
 
 Le ricerche storiche e fotografiche e le sessioni 1000bit mantengono i riferimenti
 validi; una richiesta in corso su una scheda accorpata non può sovrascrivere il
@@ -139,6 +157,17 @@ regionali, modifiche concorrenti, ricerca storica in corso, migrazione e reset.
 La prova browser usa un database temporaneo separato e verifica recupero RAM,
 accorpamento PET, conservazione dei testi, ricerca con le sigle precedenti e
 layout 320/390 px.
+
+Con la pulizia generale dei nomi (19 novembre), sullo stesso corpus temporaneo
+sono stati elaborati 105 gruppi/nomi: **1.109 → 1.065 schede**, con tutte le
+**1.261 configurazioni** e **3.199 specifiche** conservate tramite gli stessi ID.
+Le **1.139 righe** reimportate risultano invariate. Il browser verifica anche
+105 gruppi in due lotti da 100 e 5, inclusi nomi non elencati dall'operatore e
+rinomine singole. Sono prove isolate, non modifiche al database locale.
+Una seconda prova con importazione nuova applica la regola direttamente ai
+cinque lotti: 1.073 schede, 1.261 configurazioni e 3.199 specifiche; il replay
+di 1.139 righe è invariato. La differenza rispetto alla pulizia completa è
+dovuta alle regole aggiuntive PET/BBC, che rimangono disponibili nel pannello.
 
 Eseguite le suite backend su SQLite e PostgreSQL, i 30 test frontend, la
 compilazione Vite e l'avvio Docker Compose con controlli di salute. Dopo gli

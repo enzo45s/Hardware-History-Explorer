@@ -77,10 +77,13 @@ le importazioni successive seguono gli alias approvati. Non viene attribuita
 una quantità di memoria quando manca una fonte utilizzabile.
 [Regole, caso HP 85 e istruzioni](docs/CATALOG_QUALITY.md).
 
-Le schede riuniscono inoltre dati complementari e profili PAL/NTSC in una
-**scheda tecnica unica**, con valori comuni senza ripetizioni e differenze
-qualificate nella stessa tabella. Le configurazioni hardware sostanziali e gli
-originali restano distinti. Il confronto usa la stessa presentazione.
+La pulizia vale per **tutto il catalogo**: attributi tra parentesi tonde/quadre
+e suffissi PAL/NTSC o 50/60 Hz lasciano il posto al nome principale. Il pannello
+gestisce sia duplicati sia singole schede da rinominare, anche in più lotti.
+Le nuove importazioni usano direttamente i nomi puliti e conservano gli attributi
+negli originali. Foto e descrizioni cercano il modello senza quei qualificatori.
+La **scheda tecnica unica** e il confronto omettono i dettagli video regionali;
+le configurazioni hardware sostanziali e i dati originali restano conservati.
 [Criteri e aggiornamento delle schede tecniche](docs/TECHNICAL_SHEETS.md).
 
 ## Aggiungere le fotografie

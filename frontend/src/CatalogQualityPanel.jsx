@@ -20,6 +20,20 @@ export default function CatalogQualityPanel({ onSaved }) {
     const data = await api('/admin/catalog-quality/variants');
     setVariants(data); setSelected(data.groups.map(group => group.target_id));
   }
+  async function applyVariants() {
+    const pending = new Set(selected);
+    let plan = variants, removed = 0, renamed = 0;
+    while (pending.size) {
+      const chunk = plan.groups.filter(group => pending.has(group.target_id)).slice(0, 100).map(group => group.target_id);
+      if (!chunk.length) throw new Error('Alcune schede sono cambiate: analizza nuovamente i nomi rimanenti.');
+      const result = await api('/admin/catalog-quality/variants/apply', { method: 'POST', body: JSON.stringify({ token: plan.token, target_ids: chunk }) });
+      removed += result.removed; renamed += result.renamed;
+      chunk.forEach(id => pending.delete(id));
+      plan = await api('/admin/catalog-quality/variants');
+      setVariants(plan); setSelected([...pending]); setRam(null); onSaved();
+      setMessage(`Accorpate ${removed} schede. Aggiornati ${renamed} nomi. Configurazioni e dati originali conservati.`);
+    }
+  }
   return <section className="imports">
     <h2>RAM e varianti dei modelli</h2>
     <section className="panel" aria-label="Controllo RAM">
@@ -40,19 +54,16 @@ export default function CatalogQualityPanel({ onSaved }) {
     </section>
     <section className="panel" aria-label="Accorpamento varianti">
       <h3>Una scheda, più configurazioni</h3>
-      <p>Riunisce i PET 2001 e i qualificatori espliciti di RAM o firmware. Le sigle B8/B16/B32, N8/N16/N32 e le differenze delle configurazioni restano consultabili. Numeri di modello, suffissi hardware e revisioni generiche non vengono eliminati.</p>
+      <p>Unifica i modelli con attributi tra parentesi, sigle tra parentesi quadre e varianti PAL/NTSC o 50/60 Hz. La regola vale per tutto il catalogo. I dati originali e le configurazioni hardware restano conservati.</p>
       <p>Foto, specifiche, fonti e prezzi sono conservati. I prezzi rimangono associati alla variante originale. Gli alias impediscono di ricreare le stesse schede nei successivi import.</p>
       <button disabled={busy} onClick={() => action(inspectVariants)}>Analizza varianti da accorpare</button>
       {variants && <>
-        <p>{variants.groups.length} gruppi proposti; {variants.removed} schede possono diventare configurazioni.</p>
+        <p>{variants.groups.length} nomi da sistemare; {variants.removed} schede duplicate da accorpare. Sono inclusi i nomi con attributi presenti in una sola scheda.</p>
         {variants.groups.map(group => <section key={group.target_id} className="panel">
           <label><input type="checkbox" disabled={busy} checked={selected.includes(group.target_id)} onChange={event => setSelected(ids => event.target.checked ? [...ids, group.target_id] : ids.filter(id => id !== group.target_id))} /> {group.manufacturer} · <b>{group.name}</b></label>
           <p>{group.reason}</p><ul>{group.variants.map(name => <li key={name}>{name}</li>)}</ul>
         </section>)}
-        {variants.groups.length > 0 && <button disabled={busy || !selected.length} onClick={() => action(async () => {
-          const result = await api('/admin/catalog-quality/variants/apply', { method: 'POST', body: JSON.stringify({ token: variants.token, target_ids: selected }) });
-          await inspectVariants(); setRam(null); onSaved(); setMessage(`Accorpate ${result.removed} schede. Configurazioni e dati originali conservati.`);
-        })}>Accorpa i gruppi selezionati</button>}
+        {variants.groups.length > 0 && <button disabled={busy || !selected.length} onClick={() => action(applyVariants)}>Accorpa i gruppi selezionati</button>}
       </>}
     </section>
     {error && <p role="alert" className="inline-error">{error}</p>}

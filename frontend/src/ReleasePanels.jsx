@@ -13,7 +13,7 @@ export default function ReleasePanels({ computer, renderSource }) {
         const source = commercializationSource(row);
         const countries = (row.price != null ? row.price_countries : row.countries)?.filter(country => country !== 'Europa');
         return <div key={row.id}>
-          {row.model_variant && <p className="muted">Configurazione: {row.model_variant}</p>}
+          {row.model_variant && <p className="muted">Configurazione: {row.display_model_variant ?? row.model_variant}</p>}
           {group.releases.length > 1 && countries?.length > 0 && <p className="muted">{countries.join(', ')}</p>}
           <p>{row.release_date || 'Data non disponibile'} · {price(row)}</p>
           {row.discontinuation_date && <p className="muted">Fine commercializzazione: {row.discontinuation_date}</p>}

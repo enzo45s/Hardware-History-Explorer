@@ -6,11 +6,11 @@ const {chromium}=require('playwright');
  const apiBase=process.env.HHE_QUALITY_API_URL||'http://127.0.0.1:18095';
  assert(['127.0.0.1','localhost'].includes(new URL(apiBase).hostname));
  const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||undefined,args:['--no-sandbox','--disable-dev-shm-usage']});
- const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[],batches=[];page.on('pageerror',e=>errors.push(e.message));
  try{
   const marker=await(await page.request.get(apiBase+'/__quality_fixture')).json();
   assert.equal(marker.fixture,'catalog-quality-synthetic');assert.equal(marker.isolated,true);
-  await page.route('**/api/**',async route=>{const u=new URL(route.request().url());const response=await route.fetch({url:new URL(u.pathname+u.search,apiBase).href});await route.fulfill({response});});
+  await page.route('**/api/**',async route=>{const u=new URL(route.request().url());if(u.pathname.endsWith('/catalog-quality/variants/apply'))batches.push(route.request().postDataJSON().target_ids.length);const response=await route.fetch({url:new URL(u.pathname+u.search,apiBase).href});await route.fulfill({response});});
   const meta=await(await page.request.get(apiBase+'/api/meta')).json();
   const maker=meta.manufacturers.find(m=>m.name==='Commodore');
   const ids=[];
@@ -58,9 +58,8 @@ const {chromium}=require('playwright');
   const technical=page.getByRole('region',{name:'Configurazione · Scheda tecnica',exact:true});await technical.waitFor();
   assert.equal(await page.getByRole('region',{name:/^Configurazione ·/}).count(),1);
   assert.equal(await technical.getByRole('row').filter({hasText:'CPU · Modello'}).count(),1);
-  assert.match(await technical.innerText(),/60 Hz \(NTSC\) \/ 50 Hz \(PAL\)/);
+  assert.doesNotMatch(await technical.innerText(),/PAL|NTSC|50 Hz|60 Hz/);
   assert.match(await technical.innerText(),/16 - 48Kb/);
-  assert.match(await technical.innerText(),/Varianti regionali: NTSC · PAL/);
   for(const width of [320,390]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
   await page.setViewportSize({width:1440,height:1000});
   const atariRaw=await(await page.request.get(apiBase+`/api/admin/computers/${atariId}`)).json();assert.equal(atariRaw.configurations.length,3);
@@ -70,8 +69,21 @@ const {chromium}=require('playwright');
   await page.getByRole('table',{name:'Confronto dei sistemi e delle configurazioni selezionate'}).waitFor();
   assert.equal(await page.getByRole('combobox',{name:'Configurazione di Synthetic Atari 400',exact:true}).count(),0);
   assert.equal(await page.getByRole('combobox',{name:'Configurazione di PET 2001',exact:true}).getByRole('option').count(),7);
-  assert.match(await page.locator('.comparison-results').innerText(),/60 Hz \(NTSC\) \/ 50 Hz \(PAL\)/);
+  assert.doesNotMatch(await page.locator('.comparison-results').innerText(),/PAL|NTSC|50 Hz|60 Hz/);
+  // General rule, including singleton names and more than one batch of 100.
+  for(const name of ['System-80 (50 Hz)','System-80 (60 Hz)','PDP-11 [Q-BUS] (M7195 - MXV11-B)','PDP-11 [Unibus](M9301-YA)','PDP-11 [Unibus](M9312)',...Array.from({length:103},(_,i)=>`Unlisted model ${i} (optional board)`)]){
+   const manufacturerId=name.startsWith('PDP-11')?meta.manufacturers.find(m=>m.name==='Digital Equipment Corporation').id:maker.id;
+   const r=await page.request.post(apiBase+'/api/computers',{data:{manufacturer_id:manufacturerId,model_name:name,configurations:[{variant_name:'Base',specifications:[{component_type:'CPU',property_name:'Modello',text_value:'Synthetic CPU'}]}]}});assert.equal(r.status(),201);
+  }
+  batches.length=0;await openQuality();await page.getByRole('button',{name:'Analizza varianti da accorpare',exact:true}).click();
+  await page.getByText('105 nomi da sistemare; 4 schede duplicate da accorpare.',{exact:false}).waitFor();
+  await page.getByRole('button',{name:'Accorpa i gruppi selezionati',exact:true}).click();
+  await page.getByRole('status').filter({hasText:'Aggiornati 105 nomi'}).waitFor();assert.deepEqual(batches,[100,5]);
+  const cleaned=await(await page.request.get(apiBase+'/api/computers?limit=500')).json();
+  assert.equal(cleaned.items.filter(c=>c.model_name==='System-80').length,1);assert.equal(cleaned.items.filter(c=>c.model_name==='PDP-11').length,1);
+  assert.equal(cleaned.items.filter(c=>c.model_name.startsWith('Unlisted model ')).length,103);
+  assert(cleaned.items.filter(c=>c.model_name.startsWith('Unlisted model ')).every(c=>!/[()[\]]/.test(c.model_name)));
   await openQuality();for(const width of [320,390]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
-  assert.deepEqual(errors,[]);console.log('PASS quality browser: sourced RAM, PET variants, one Atari technical sheet with scoped PAL/NTSC values, preserved originals and mobile.');
+  assert.deepEqual(errors,[]);console.log('PASS quality browser: sourced RAM, preserved hardware variants, plain names across all manufacturers, no regional-video noise, 105 cleanup groups in two batches and mobile.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

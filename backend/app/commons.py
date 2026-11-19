@@ -15,7 +15,9 @@ logger = logging.getLogger(__name__)
 
 
 def photo_query(manufacturer, model):
-    """Brand - model, removing only known brand prefixes from the model name."""
+    """Brand - public model name, without source/variant annotations."""
+    from .catalog_names import catalog_name
+    model = catalog_name(model)
     from .importing.identity import MAKERS, maker_key
     manufacturer = ' '.join((manufacturer or '').split())
     model = ' '.join((model or '').split())

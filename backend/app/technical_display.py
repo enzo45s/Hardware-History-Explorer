@@ -12,6 +12,7 @@ from .configuration_display import configuration_summaries
 from .geography import european_countries
 from .importing.regional_names import REGIONS
 from .importing.vocabulary import normalize_spec
+from .catalog_names import catalog_name, video_only_variant, video_attribute
 
 
 GENERIC = {'', 'base', 'standard', 'scheda tecnica', 'specifiche documentate',
@@ -29,6 +30,8 @@ def key(value):
 def profile(row, model):
     name = re.sub(r'^MAME \S+ — ', '', row['variant_name']).strip()
     name = name.removesuffix(' · documentazione MAME')
+    video = video_only_variant(name) or video_only_variant(row.get('model_variant', ''))
+    name = catalog_name(name)
     scope = ''
     supplement = key(name) in SUPPLEMENTS
     # A regional or television-standard label alone is not a hardware option.
@@ -39,15 +42,26 @@ def profile(row, model):
         remaining = name[len(model):].strip()
     qualifier = remaining.strip('() ')
     parts = [part.strip() for part in re.split(r'[,;/]', qualifier)]
-    if parts and all(key(p) in STANDARDS | REGIONS or european_countries(p, allow_codes=False) for p in parts):
-        scope = ', '.join(p.upper() if key(p) in STANDARDS else p for p in parts)
+    if parts and all(key(p) in STANDARDS | REGIONS or video_attribute(p) or european_countries(p, allow_codes=False) for p in parts):
+        video |= any(video_attribute(p) for p in parts)
+        scope = ', '.join(p for p in parts if not video_attribute(p))
         remaining = ''
     if key(remaining) in GENERIC:
         remaining = ''
     if row.get('display_region'):
         scope = row['display_region'] + (' · ' + scope if scope else '')
-    return {'family': row.get('model_variant') or key(remaining), 'label': remaining,
-            'scope': scope, 'supplement': supplement}
+    return {'family': key(catalog_name(row['model_variant'])) if row.get('model_variant') else key(remaining or model), 'label': remaining,
+            'scope': scope, 'supplement': supplement, 'video': video}
+
+
+def regional_video_spec(spec):
+    view, (component, _, prop) = fields(spec)
+    if key(component) not in ('video', 'display', 'monitor', 'schermo'):
+        return False
+    if video_attribute(view.get('text_value') or ''):
+        return True
+    return (prop == 'Frequenza di aggiornamento' and view.get('unit') == 'Hz'
+        and view.get('numeric_value') is not None and 45 <= view['numeric_value'] <= 65)
 
 
 def fields(spec):
@@ -79,7 +93,7 @@ def hardware(row, info):
             if substantial:
                 slot = (component, role, 'Capacità')
         # PAL/NTSC clock differences are shown as scoped values in one sheet.
-        if component == 'CPU' and prop == 'Frequenza' and not re.search(r'\b(?:PAL|NTSC|SECAM)\b', info['scope']):
+        if component == 'CPU' and prop == 'Frequenza' and not info['video']:
             substantial = True
         if substantial:
             result[slot].add(value_key(view))
@@ -101,7 +115,7 @@ def sheet(members, model, count):
     first = deepcopy(members[0][0])
     ids = sorted({cid for row, _ in members for cid in row.get('configuration_ids', [row['id']])})
     first['configuration_ids'], first['id'] = ids, ids[0]
-    label = next((row.get('model_variant') or info['label'] for row, info in members
+    label = next((catalog_name(row['model_variant']) if row.get('model_variant') else info['label'] for row, info in members
                   if row.get('model_variant') or info['label']), '')
     first['display_name'] = 'Scheda tecnica' if count == 1 else label or 'Configurazione'
     first.pop('display_region', None)
@@ -166,6 +180,8 @@ def sheet(members, model, count):
 
 def technical_sheets(configurations, model_name):
     rows = configuration_summaries(configurations, model_name)
+    for row in rows:
+        row['specifications'] = [s for s in row['specifications'] if not regional_video_spec(s)]
     groups, supplements = [], []
     for row in rows:
         info = profile(row, model_name)

@@ -41,20 +41,19 @@ def test_atari_one_sheet_repeated_cpu_once_scoped_clocks_and_complementary_specs
     rows = profiles(); before = deepcopy(rows)
     sheet, = technical_sheets(rows, 'Atari 400')
     assert sheet['display_name'] == 'Scheda tecnica' and sheet['configuration_ids'] == [1, 2, 3]
-    assert sheet['regional_variants'] == ['NTSC', 'PAL']
+    assert sheet['regional_variants'] == []
     assert rows == before and technical_sheets(list(reversed(rows)), 'Atari 400') == [sheet]
     cpu = [s for s in sheet['specifications'] if s['display']['property_name'] == 'Modello']
     assert len(cpu) == 1 and cpu[0]['text_value'] == '6502'
     assert cpu[0]['specification_ids'] == [10, 20, 30]
     assert [s['id'] for s in cpu[0]['sources']] == [10, 20, 30]
     clock = next(s for s in sheet['specifications'] if s['display']['property_name'] == 'Frequenza')
-    assert clock['numeric_value'] is None and clock['text_value'] == '1.79 MHz (NTSC) / 1.77 MHz (PAL)'
-    assert [(v['numeric_value'], v['scopes']) for v in clock['display_values']] == [(1.79, ['NTSC']), (1.77, ['PAL'])]
-    video = next(s for s in sheet['specifications'] if s['component_type'] == 'Video')
-    assert video['text_value'] == '60 Hz (NTSC) / 50 Hz (PAL)'
+    assert clock['numeric_value'] is None and clock['text_value'] == '1.79 MHz / 1.77 MHz'
+    assert [(v['numeric_value'], v['scopes']) for v in clock['display_values']] == [(1.79, []), (1.77, [])]
+    assert not any(s['component_type'] == 'Video' for s in sheet['specifications'])
     assert any(s['text_value'] == '16 - 48Kb' for s in sheet['specifications'])
     assert any(s['component_type'] == 'Porte' for s in sheet['specifications'])
-    assert {sid for s in sheet['specifications'] for sid in s['specification_ids']} == {s['id'] for c in rows for s in c['specifications']}
+    assert {sid for s in sheet['specifications'] for sid in s['specification_ids']} == {s['id'] for c in rows for s in c['specifications'] if s['component_type'] != 'Video'}
 
 
 def test_real_distributed_atari_records_merge_without_fabricating_missing_values():
@@ -102,7 +101,7 @@ def test_partial_video_values_do_not_become_a_fact_for_every_standard_and_roles_
             config(3, 'Scheda tecnica', [spec(3, 'RAM', 'Capacità massima', 48, 'KB'),
                 spec(4, 'RAM', 'Capacità', 16, 'KB'), spec(5, 'RAM', 'Capacità di riferimento', 16, 'KiB')])]
     sheet, = technical_sheets(rows, 'Synthetic')
-    assert sheet['specifications'][0]['text_value'] == '320 × 200 (NTSC)'
+    assert sheet['specifications'][0]['text_value'] == '320 × 200'
     assert len([s for s in sheet['specifications'] if s['component_type'] == 'RAM']) == 3
 
 
@@ -136,14 +135,15 @@ def test_api_compare_and_assistant_use_one_sheet_while_editor_and_database_keep_
     assert len(data['configurations']) == 3 and len(data['display_configurations']) == 1
     sheet = data['display_configurations'][0]
     assert sheet['configuration_ids'] == cfg_ids
-    assert {sid for s in sheet['specifications'] for sid in s['specification_ids']} == spec_ids
+    assert {sid for s in sheet['specifications'] for sid in s['specification_ids']} < spec_ids
     assert client.get('/api/compare?ids=1,2').json()[0]['display_configurations'] == [sheet]
     editor = client.get('/api/admin/computers/1').json()
     assert [c['id'] for c in editor['configurations']] == cfg_ids
+    assert {s['id'] for c in editor['configurations'] for s in c['specifications']} == spec_ids
     from app.assistant_context import retrieve
     from app.main import EAGER, full
     with SessionLocal() as db:
         context = retrieve(db, 'Atari 400', EAGER, full)
         item = next(r for r in context['computers'] if r['id'] == 1)
         assert len(item['configurations']) == 1 and item['configurations'][0]['name'] == 'Scheda tecnica'
-        assert any('NTSC' in (s['text_value'] or '') for s in item['configurations'][0]['specifications'])
+        assert all('NTSC' not in (s['text_value'] or '') for s in item['configurations'][0]['specifications'])

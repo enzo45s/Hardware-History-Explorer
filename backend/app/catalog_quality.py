@@ -20,6 +20,7 @@ from .importing.variant_names import variant_name
 from .importing.identity import maker_key, provider_computer_key
 from .importing.engine import stage, apply_job, identity_provider
 from .importing.vocabulary import normalize_spec, spec_values
+from .catalog_names import catalog_name
 
 RAM_BUNDLE = Path(__file__).parent / 'importing/data/ram-reviewed-v1.json'
 EAGER = (selectinload(Computer.manufacturer), selectinload(Computer.configurations).selectinload(Configuration.specifications))
@@ -74,6 +75,8 @@ def ram_preview(db):
                                   'value': value, 'source': citation})
     for record in json.loads(RAM_BUNDLE.read_text(encoding='utf-8'))['records']:
         for c in missing.values():
+            if catalog_name(c.model_name) != c.model_name:
+                continue  # A research alias does not attest a variant's RAM.
             if model_key(c.manufacturer.name, c.model_name) == model_key(record['manufacturer'], record['model_name']):
                 offer(c, record)
     # Recover only already-applied records, never silently apply staged/failed uploads.
@@ -107,16 +110,16 @@ def variant_preview(db):
                 items.append(c)
     plans = []
     for key, items in groups.items():
-        if len(items) < 2:
-            continue
         rule = descriptors[key]
+        if len(items) == 1 and items[0].model_name == rule['name']:
+            continue
         target = min(items, key=lambda c: (provider_computer_key('historical_prices', c.manufacturer.name, c.model_name) != provider_computer_key('historical_prices', c.manufacturer.name, rule['name']), c.id))
         sources = [c for c in items if c.id != target.id]
-        originals = [reconcile.prepare(db, 'computer', c.id, target.id, variants=True)[2] for c in sources]
+        originals = [reconcile.snapshot(db, 'computer', target, target)] + [reconcile.prepare(db, 'computer', c.id, target.id, variants=True)[2] for c in sources]
         plans.append({'target_id': target.id, 'name': rule['name'], 'manufacturer': target.manufacturer.name,
             'reason': rule['reason'], 'sources': [{'id': c.id, 'name': c.model_name} for c in sources],
             'variants': [c.model_name for c in items], 'token': digest(originals)})
-    return {'groups': plans, 'removed': sum(len(g['sources']) for g in plans),
+    return {'groups': plans, 'removed': sum(len(g['sources']) for g in plans), 'renamed': len(plans),
             'token': digest(plans)}
 
 
@@ -174,12 +177,20 @@ def create_quality_router(get_db):
         try:
             for group in groups:
                 target = db.get(Computer, group['target_id'])
+                old_name = target.model_name
+                generated = replaceable(old_name, target.manufacturer.name, target.description)
                 canonical_key = provider_computer_key('historical_prices', target.manufacturer.name, group['name'])
                 renamed = provider_computer_key('historical_prices', target.manufacturer.name, target.model_name) != canonical_key
                 members = [target] + [db.get(Computer, item['id']) for item in group['sources']]
                 for c in members:
                     if provider_computer_key('historical_prices', c.manufacturer.name, c.model_name) != canonical_key:
                         remember(db, c, target.id)
+                if not group['sources']:
+                    audit = CatalogReconciliation(entity='computer', source_id=target.id, target_id=target.id,
+                        note='Pulizia del nome principale; attributi e identificativi originali conservati.',
+                        snapshot={**reconcile.snapshot(db, 'computer', target, target),
+                                  'variant_consolidation': {'name': group['name']}})
+                    db.add(audit); db.flush(); audits.append(audit.id)
                 for item in group['sources']:
                     preview = reconcile.prepare(db, 'computer', item['id'], target.id, variants=True)[3]
                     result = reconcile.apply(db, 'computer', item['id'], target.id, preview['token'],
@@ -188,7 +199,9 @@ def create_quality_router(get_db):
                     audit.snapshot = {**audit.snapshot, 'variant_consolidation': {'name': group['name']}}
                     audits.append(audit.id)
                 target.model_name = group['name']
-                if renamed:
+                if old_name != target.model_name and not group['sources'] and generated and target.description:
+                    target.description = target.description.replace(old_name, target.model_name, 1)
+                if renamed and group['sources']:
                     # Variant-specific prose remains available in the variant context.
                     target.description = f'{target.model_name} è un calcolatore di {target.manufacturer.name}.'
                     target.announcement_date, target.announcement_precision = None, None
@@ -219,5 +232,5 @@ def create_quality_router(get_db):
             db.commit()
         except ValueError as exc:
             db.rollback(); raise HTTPException(409, str(exc)) from exc
-        return {'removed': sum(len(g['sources']) for g in groups), 'reconciliation_ids': audits}
+        return {'removed': sum(len(g['sources']) for g in groups), 'renamed': len(groups), 'reconciliation_ids': audits}
     return router

@@ -55,8 +55,10 @@ def test_numeric_family_passage_cannot_match_an_extra_suffix():
 
 def test_targeted_retry_suggestions_are_bounded_and_do_not_repeat_current_failures():
     old = {'search_version': 2, 'searches': [{**s, 'attempt': i} for i, s in enumerate(h.search_plan('PowerBook 180', 'Apple'), 1)], 'candidates': []}
-    assert h.improved_retry('Macintosh PowerBook 180', 'Apple', old)
     assert not h.improved_retry('PowerBook 180', 'Apple', old)
+    old['searches'][0]['query'] = '"Macintosh PowerBook 180" computer'
+    old['searches'][1]['query'] = 'Apple Macintosh PowerBook 180'
+    assert h.improved_retry('Macintosh PowerBook 180', 'Apple', old)
     assert h.improved_retry('Epson HX-20', 'Epson', {'search_version': 2, 'candidates': [{'title': 'Epson HX-20'}]})
     assert not h.improved_retry('Epson HX-20', 'Epson', {'search_version': h.SEARCH_VERSION, 'candidates': [{'title': 'Epson HX-20'}]})
 

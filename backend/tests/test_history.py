@@ -55,7 +55,8 @@ def test_matching_requires_exact_model_brand_history_and_unique_non_disambiguati
     assert history_sources.select_result('Synthetic History Two', 'IBM', payload(page()))['status'] == 'no_match'
     assert history_sources.select_result('Synthetic History One', 'IBM', payload(page(), page('Synthetic History One (computer)')))['status'] == 'ambiguous'
     assert history_sources.model_key('Apple', 'Apple II') != history_sources.model_key('Apple', 'Apple IIe')
-    assert history_sources.model_key('IBM', '5150 (Enhanced)') != history_sources.model_key('IBM', '5150')
+    assert history_sources.model_key('IBM', '5150 (Enhanced)') == history_sources.model_key('IBM', '5150')
+    assert history_sources.model_key('IBM', '5150 Enhanced') != history_sources.model_key('IBM', '5150')
     assert history_sources.model_key('HP', 'HP 85') == history_sources.model_key('Hewlett-Packard', 'Hewlett-Packard 85')
 
 def test_sourced_update_preserves_catalog_audit_pending_state_assistant_and_replay(client, monkeypatch, clock):
