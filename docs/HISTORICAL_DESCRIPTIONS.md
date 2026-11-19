@@ -19,7 +19,7 @@ docker compose -p hhe-import-test up --build -d --wait
 2. Apri **Amministrazione → Cenni storici**.
 3. Premi **Cerca cenni storici**. Il sistema esamina tutte le schede presenti
    all'avvio, conserva quelle già curate e cerca i testi mancanti.
-4. Lascia aperto il pannello: una richiesta per volta, con almeno due secondi
+4. Lascia aperto il pannello: una richiesta per volta, con almeno un secondo
    di intervallo e rispetto delle attese imposte dalla fonte. Puoi mettere in
    pausa o chiudere la pagina; tornando al pannello premi **Riprendi ricerca
    storica**. Il lavoro prosegue dallo stesso sistema.
@@ -60,7 +60,7 @@ Si prova subito il nome del modello senza virgolette né la parola obbligatoria
 infine la pagina completa (usando il titolo trovato nelle ricerche precedenti,
 quando disponibile). Numeri, numeri romani e sigle generiche come PC sono
 qualificati subito con la marca. I tentativi sono salvati separatamente e
-distanziati di almeno due secondi; per sistema sono previste al massimo tre
+distanziati di almeno un secondo; per sistema sono previste al massimo tre
 strategie (quattro per le eccezioni documentate HP 85 e IBM PC 5150), oltre
 agli eventuali ritentativi dopo errori di rete, interrompendosi appena trova un testo
 utilizzabile. Il pannello e il resoconto mostrano le query usate.
@@ -71,6 +71,18 @@ anche i suffissi societari finali Inc., Corporation, Ltd. e simili. Non si
 duplicano marchi già nel modello (`NeXTcube`, `Kaypro II`, `Atari 400`). Queste
 regole riguardano solo la ricerca: i nomi del catalogo non vengono modificati.
 La velocità migliora riducendo le richieste, senza aggirare le pause di Wikipedia.
+La pausa normale fra richieste è stata ridotta da due secondi a uno; il tempo
+della risposta di Wikipedia si aggiunge alla pausa. Gli errori di carico o rete
+e le attese indicate da `Retry-After` continuano a mettere in pausa la ricerca.
+
+Per ripartire dall'inizio senza aspettare la fine, premi **Metti in pausa** e,
+una volta terminata la richiesta in corso, **Ricomincia ricerca storica**.
+Il comando è disponibile anche dopo il completamento. Viene creata una nuova
+ricerca ordinata dall'inizio del catalogo, riprovando tutti i sistemi ancora
+con testo vuoto o preimpostato, compresi quelli prima saltati o senza risultato.
+Le descrizioni già ottenute o curate a mano vengono conservate e non ricercate
+nuovamente. La ricerca precedente resta archiviata con il suo resoconto, fonti
+e attribuzioni. Ricominciare non azzera una pausa richiesta da Wikipedia.
 
 Per aggiornare durante una ricerca: metterla in pausa, aggiornare il branch e
 ricostruire i container, quindi premere **Riprendi ricerca storica**. Gli indici

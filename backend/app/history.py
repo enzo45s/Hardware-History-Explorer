@@ -14,6 +14,8 @@ from . import history_sources
 from .commons import retry_seconds
 from .importing.engine import stage, attribute
 
+REQUEST_INTERVAL_SECONDS = 1
+
 
 def utc(value):
     from datetime import timezone
@@ -33,6 +35,24 @@ def get_job(db, job_id):
     if job is None:
         raise HTTPException(404, 'Ricerca storica non trovata')
     return job
+
+
+def new_job(db):
+    """Snapshot current eligible cards, retaining any source cooldown."""
+    # A request for an older report must not bypass a newer run's cooldown.
+    deadline = utc(db.scalar(select(func.max(HistoryJob.next_request_at))))
+    job = HistoryJob(active_key='italian', next_request_at=deadline)
+    db.add(job); db.flush()
+    pending = 0
+    for position, c in enumerate(db.scalars(select(Computer).options(selectinload(Computer.manufacturer)).order_by(Computer.id)), 1):
+        eligible = history_sources.replaceable(c.model_name, c.manufacturer.name, c.description)
+        db.add(HistoryItem(job_id=job.id, position=position, computer_id=c.id, model_name=c.model_name,
+            manufacturer=c.manufacturer.name, previous=c.description, status='pending' if eligible else 'preserved'))
+        pending += eligible
+    if not pending:
+        job.status, job.active_key = 'completed', None
+    db.commit()
+    return details(db, job)
 
 
 def item_data(item):
@@ -124,20 +144,22 @@ def create_history_router(get_db):
         active = db.scalar(select(HistoryJob).where(HistoryJob.active_key == 'italian'))
         if active:
             return details(db, active)
-        previous = db.scalar(select(HistoryJob).order_by(HistoryJob.id.desc()).limit(1))
-        deadline = utc(previous.next_request_at) if previous else None
-        job = HistoryJob(active_key='italian', next_request_at=deadline)
-        db.add(job); db.flush()
-        pending = 0
-        for position, c in enumerate(db.scalars(select(Computer).options(selectinload(Computer.manufacturer)).order_by(Computer.id)), 1):
-            eligible = history_sources.replaceable(c.model_name, c.manufacturer.name, c.description)
-            db.add(HistoryItem(job_id=job.id, position=position, computer_id=c.id, model_name=c.model_name,
-                manufacturer=c.manufacturer.name, previous=c.description, status='pending' if eligible else 'preserved'))
-            pending += eligible
-        if not pending:
-            job.status, job.active_key = 'completed', None
-        db.commit()
-        return details(db, job)
+        return new_job(db)
+
+    @router.post('/{job_id}/restart', status_code=201)
+    def restart(job_id: int, db: Session = Depends(get_db)):
+        catalog_lock(db)
+        get_job(db, job_id)
+        job = db.scalar(select(HistoryJob).where(HistoryJob.id == job_id).with_for_update().execution_options(populate_existing=True))
+        if job.status not in ('paused', 'completed') or (job.lease_token and utc(job.lease_until) > now()):
+            raise HTTPException(409, 'Metti in pausa e attendi la conclusione della richiesta prima di ricominciare.')
+        if db.scalar(select(HistoryJob.id).where(HistoryJob.active_key == 'italian', HistoryJob.id != job.id)):
+            raise HTTPException(409, 'È già attiva un’altra ricerca storica: riprendi quella coda.')
+        # Archive the run, not the evidence or descriptions. Releasing the
+        # unique active key and creating the new snapshot is one transaction.
+        job.status, job.active_key = 'archived', None
+        db.flush()
+        return new_job(db)
 
     @router.post('/{job_id}/pause')
     def pause(job_id: int, db: Session = Depends(get_db)):
@@ -255,7 +277,7 @@ def create_history_router(get_db):
         item = db.get(HistoryItem, item_id)
         computer = db.scalar(select(Computer).where(Computer.id == computer_id).with_for_update().execution_options(populate_existing=True)) if computer_id else None
         job.lease_token, job.lease_until = None, None
-        job.next_request_at = now() + timedelta(seconds=2)
+        job.next_request_at = now() + timedelta(seconds=REQUEST_INTERVAL_SECONDS)
         if failure:
             delay = retry_seconds((failure.headers or {}).get('Retry-After', '')) or 30
             job.next_request_at = now() + timedelta(seconds=max(2, delay))

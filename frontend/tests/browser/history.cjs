@@ -71,7 +71,21 @@ const { chromium } = require('playwright');
     await page.getByRole('heading', { name: 'Synthetic History Browser', level: 1, exact: true }).waitFor();
     assert.match(await page.locator('main').innerText(), /contesto storico sintetico/);
     assert.equal(await page.getByRole('link', { name: 'CC BY-SA 4.0', exact: true }).count(), 1);
+    await open();
+    const callsBeforeRestart = (await (await page.request.get(apiBase + '/__history_fixture')).json()).calls;
+    await page.getByRole('button', { name: 'Ricomincia ricerca storica', exact: true }).click();
+    await page.waitForFunction(oldId => {
+      const heading = document.querySelector('[aria-label="Avanzamento ricerca storica"] h3');
+      return heading && !heading.textContent.includes(`Ricerca #${oldId} ·`) && heading.textContent.includes('Completata');
+    }, snapshot.job.id);
+    const restarted = (await (await page.request.get(apiBase + '/api/admin/history')).json()).job;
+    assert.notEqual(restarted.id, snapshot.job.id);
+    assert.deepEqual(restarted.counts, { preserved: retried.items.length });
+    const archived = await (await page.request.get(apiBase + `/api/admin/history/${snapshot.job.id}/report`)).json();
+    assert.equal(archived.job.status, 'archived');
+    assert.deepEqual(archived.items, retried.items);
+    assert.deepEqual((await (await page.request.get(apiBase + '/__history_fixture')).json()).calls, callsBeforeRestart);
     assert.deepEqual(errors, []);
-    console.log('PASS history browser: durable fallback, pause/reload/resume, targeted legacy retry, full outcome counts, source attribution, preserved curated text and mobile.');
+    console.log('PASS history browser: durable fallback, pause/reload/resume, targeted legacy retry, restart preserving text and reports, source attribution and mobile.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

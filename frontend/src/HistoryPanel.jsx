@@ -21,12 +21,13 @@ export default function HistoryPanel({ onSaved }) {
     const cancel = latestRequest(signal => api('/admin/history', { signal }), setSnapshot, e => setError(e.message));
     return () => { mounted.current = false; active.current = false; cancel(); };
   }, []);
-  async function run({ retryUnresolved = false, onlyImproved = false } = {}) {
+  async function run({ retryUnresolved = false, onlyImproved = false, restart = false } = {}) {
     if (active.current || busy) return;
     active.current = true; setRunning(true); setBusy(true); setError('');
     try {
       let job = snapshot?.job;
-      if (retryUnresolved) job = await api(`/admin/history/${job.id}/retry-unresolved`, { method: 'POST',
+      if (restart) job = await api(`/admin/history/${job.id}/restart`, { method: 'POST' });
+      else if (retryUnresolved) job = await api(`/admin/history/${job.id}/retry-unresolved`, { method: 'POST',
         ...(onlyImproved ? { body: JSON.stringify({ only_improved: true }) } : {}) });
       else if (!job || ['completed', 'archived'].includes(job.status)) job = await api('/admin/history', { method: 'POST' });
       if (!mounted.current || !active.current) return;
@@ -100,10 +101,12 @@ export default function HistoryPanel({ onSaved }) {
     <p>Cerca il contesto storico dei sistemi su Wikipedia in italiano. Sostituisce le descrizioni vuote o preimpostate con testi documentati, conservando le descrizioni già curate.</p>
     <p>Nessuna chiave AI e nessun costo API. I casi senza un testo italiano adatto o con un abbinamento incerto vengono segnalati, senza inventare descrizioni. La presenza della fonte non equivale a una verifica umana.</p>
     <p>Se il nome esatto non basta, prova anche le parole chiave marca e modello e cerca i passaggi dedicati al modello nelle pagine della sua famiglia.</p>
-    <p className="muted">Una richiesta alla volta, con almeno due secondi di pausa. Lascia aperto questo pannello durante la ricerca; puoi chiuderlo e riprendere in seguito senza perdere i risultati. Le note, le fonti, i prezzi e le fotografie esistenti restano conservati.</p>
+    <p className="muted">Una richiesta alla volta, con un secondo di pausa; eventuali attese più lunghe richieste da Wikipedia restano rispettate. Lascia aperto questo pannello durante la ricerca; puoi chiuderlo e riprendere in seguito senza perdere i risultati. Le note, le fonti, i prezzi e le fotografie esistenti restano conservati.</p>
     {snapshot && <p>Descrizioni vuote o preimpostate da approfondire: <b>{snapshot.eligible}</b>.</p>}
     <div className="import-actions">
       {!running && <button disabled={busy || !snapshot} onClick={run}>{finished ? 'Cerca cenni storici' : 'Riprendi ricerca storica'}</button>}
+      {!running && job && ['paused', 'completed'].includes(job.status) &&
+        <button disabled={busy} onClick={() => run({ restart: true })}>Ricomincia ricerca storica</button>}
       {!running && job && ['paused', 'completed'].includes(job.status) && ((counts.no_match || 0) + (counts.search_error || 0) > 0) &&
         <button disabled={busy} onClick={() => run({ retryUnresolved: true })}>Riprova i sistemi senza testo</button>}
       {!running && job?.status === 'completed' && job.retry_suggested > 0 &&
@@ -112,6 +115,8 @@ export default function HistoryPanel({ onSaved }) {
       {job?.status === 'paused' && !running && <button disabled={busy || !job.current} onClick={() => action('skip')}>Salta il sistema corrente</button>}
       {job && <a className="source" href={`/api/admin/history/${job.id}/report`} download>Scarica resoconto completo</a>}
     </div>
+    {job && ['paused', 'completed'].includes(job.status) && !running &&
+      <p className="muted">Ricomincia dal primo sistema con descrizione vuota o preimpostata, conservando i testi già ottenuti e i resoconti precedenti.</p>}
     {error && <p className="inline-error" role="alert">{error}</p>}
     {job && <section className="panel" aria-label="Avanzamento ricerca storica">
       <h3>Ricerca #{job.id} · {running ? 'In corso' : labels[job.status]}</h3>

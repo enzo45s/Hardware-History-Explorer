@@ -68,6 +68,9 @@ sono conservate. La ricerca è riprendibile e mostra anche i sistemi senza una
 fonte italiana adatta. Non richiede chiavi AI né chiamate a pagamento.
 Le query privilegiano il nome del modello e marche brevi come Sun, NeXT e
 Kaypro, senza ripetere marchi già presenti o tentativi equivalenti.
+La pausa ordinaria è di un secondo; **Ricomincia ricerca storica**, disponibile
+a ricerca in pausa o completata, riparte dai testi ancora mancanti conservando
+descrizioni già curate e resoconti precedenti.
 [Istruzioni, criteri e limiti di copertura](docs/HISTORICAL_DESCRIPTIONS.md).
 
 ## Controllare RAM e varianti
