@@ -12,13 +12,15 @@ from .importing.identity import provider_computer_key, manufacturer_base, MAKERS
 API = 'https://it.wikipedia.org/w/api.php'
 LICENSE = 'https://creativecommons.org/licenses/by-sa/4.0/'
 MAX_RESPONSE = 2 * 1024 * 1024
-SEARCH_VERSION = 2
+SEARCH_VERSION = 3
 
 
 def maker_aliases(maker):
     """Research spellings only; never change catalog manufacturer identities."""
     compact = lambda value: re.sub(r'[^\w]', '', manufacturer_base(value))
-    groups = list(MAKERS.values()) + [
+    groups = [aliases for key, aliases in MAKERS.items() if key != 'dec'] + [
+        ('DEC', 'Digital Equipment Corporation', 'Digital Equipment'),
+        ('NeXT', 'NeXT Inc.', 'NeXT Computer Inc.', 'Next Software Inc', 'NeXT Software, Inc.'),
         ('HP', 'Hewlett-Packard', 'Hewlett Packard'),
         ('Acorn', 'Acorn Computers', 'Acorn Computers Ltd.'),
         ('Atari', 'Atari Inc.', 'Atari, Inc.', 'Atari Corporation'),
@@ -30,6 +32,10 @@ def maker_aliases(maker):
 
 def canonical_model(model, maker):
     text = unicodedata.normalize('NFKC', model).strip()
+    if maker_key(maker_aliases(maker)[0]) == 'apple':
+        # Catalog names use the Macintosh product line; Italian article titles
+        # use PowerBook. Keep every numeric/color/Duo suffix intact.
+        text = re.sub(r'^Macintosh\s+(?=PowerBook\b)', '', text, flags=re.I)
     spelling = lambda value: re.sub(r'[\s-]+', '', value).casefold()
     for aliases in MODELS.get(maker_key(maker_aliases(maker)[0]), ()):
         if spelling(text) in {spelling(a) for a in aliases}:
@@ -83,6 +89,24 @@ def replaceable(model, maker, value):
     return re.fullmatch(pattern, text) is not None
 
 
+def improved_retry(model, maker, result):
+    """A bounded retry for old rejected candidates or newly corrected names.
+
+    This is a suggestion to research again, never a claim that a page is usable.
+    A failed run with the current selector is not suggested repeatedly.
+    """
+    if result.get('search_version', 0) >= SEARCH_VERSION:
+        return False
+    if result.get('candidates'):
+        return True
+    searches = result.get('searches', [])
+    if len(searches) < 3:
+        return False
+    keys = ('strategy', 'query', 'titles', 'exintro')
+    clean = lambda search: {k: search[k] for k in keys if k in search}
+    return [clean(s) for s in searches[:3]] != [clean(s) for s in search_plan(model, maker)[:3]]
+
+
 def model_key(maker, model):
     # Remove only article disambiguation, not hardware or regional qualifiers.
     title = re.sub(r'\s*\((?:computer|informatica|home computer|personal computer)\)$', '', model, flags=re.I)
@@ -105,7 +129,7 @@ def intro(extract):
     if len(text) > 1500:
         ends = list(re.finditer(r'[.!?](?=\s|$)', text[:1501]))
         text = text[:ends[-1].end()] if ends else ''
-    return text if len(text) >= 180 and re.search(r'\b(?:computer|microcomputer|minicomputer|supercomputer|calcolator\w*|elaborator\w*|mainframe|workstation)\b', text, re.I) and re.search(
+    return text if len(text) >= 120 and re.search(r'\b(?:computer|microcomputer|minicomputer|supercomputer|calcolator\w*|elaborator\w*|mainframe|workstation)\b', text, re.I) and re.search(
         r'\b(?:19\d{2}|20\d{2}|svilupp\w*|progett\w*|commercial\w*|introdott\w*|presentat\w*|success\w*|diffus\w*|destinat\w*)\b', text, re.I) else None
 
 
@@ -168,6 +192,7 @@ def family_excerpt(model, maker, page, payload):
             patterns = [re.escape(aliases[0]) + r'\s*' + core, r'modell[oi]\s+' + core]
     expression = re.compile(r'(?<![\w+])(?:' + '|'.join(patterns) + r')(?![\w+])', re.I)
     fragment = redirect.get('tofragment', '') if redirect else ''
+    numeric_fragment = core.isdigit() and fragment and re.search(r'(?<!\w)' + re.escape(core) + r'(?!\w)', fragment)
     paragraph_matches, path = [], []
     in_fragment = not fragment
     for line in text.splitlines():
@@ -185,7 +210,7 @@ def family_excerpt(model, maker, page, payload):
         match = expression.search(paragraph)
         # Numeric model IDs are safe as bare numbers only within the exact
         # model redirect's section, whose heading also identifies that number.
-        if not match and core.isdigit() and fragment and re.search(r'(?<!\w)' + re.escape(core) + r'(?!\w)', fragment):
+        if not match and numeric_fragment:
             match = re.search(r'(?<!\w)' + re.escape(core) + r'(?!\w)', paragraph)
         if not match:
             continue
@@ -199,7 +224,8 @@ def family_excerpt(model, maker, page, payload):
     if len(excerpt) > 1500:
         ends = list(re.finditer(r'[.!?](?=\s|$)', excerpt[:1501]))
         excerpt = excerpt[:ends[-1].end()] if ends else ''
-    if len(excerpt) < 180 or not expression.search(excerpt):
+    identified = expression.search(excerpt) or (numeric_fragment and re.search(r'(?<!\w)' + re.escape(core) + r'(?!\w)', excerpt))
+    if len(excerpt) < 180 or not identified:
         return None
     return excerpt, fragment or selected[0][3]
 

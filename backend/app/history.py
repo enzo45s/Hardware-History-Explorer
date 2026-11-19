@@ -24,6 +24,10 @@ class SkipHistory(Input):
     item_id: int = Field(gt=0)
 
 
+class RetryHistory(Input):
+    only_improved: bool = False
+
+
 def get_job(db, job_id):
     job = db.get(HistoryJob, job_id)
     if job is None:
@@ -40,6 +44,7 @@ def item_data(item):
         'description': item.result.get('description'), 'url': item.result.get('url'),
         'candidates': item.result.get('candidates', []), 'import_job_id': item.import_job_id,
         'searches': item.result.get('searches', []),
+        'search_version': item.result.get('search_version', 0),
         'previous_runs': len(item.raw_payload.get('previous_runs', [])),
         'next_query': (pending_search.get('query') or item.result.get('full_title') or pending_search.get('titles')) if pending_search else None,
         'attempt': attempt + 1 if pending_search else None}
@@ -49,7 +54,18 @@ def details(db, job):
     counts = dict(db.execute(select(HistoryItem.status, func.count()).where(HistoryItem.job_id == job.id).group_by(HistoryItem.status)).all())
     current = db.scalar(select(HistoryItem).where(HistoryItem.job_id == job.id, HistoryItem.status == 'pending').order_by(HistoryItem.position).limit(1))
     recent = db.scalars(select(HistoryItem).where(HistoryItem.job_id == job.id, HistoryItem.status.not_in(['pending', 'preserved'])).order_by(HistoryItem.position.desc()).limit(10))
+    suggested = 0
+    if job.status == 'completed':
+        targets = db.execute(select(HistoryItem, Computer).join(Computer, HistoryItem.computer_id == Computer.id)
+            .where(HistoryItem.job_id == job.id, HistoryItem.status.in_(['no_match', 'search_error']))
+            .options(selectinload(Computer.manufacturer)))
+        suggested = sum(history_sources.improved_retry(item.model_name, item.manufacturer, item.result)
+            and (computer.model_name, computer.manufacturer.name, computer.description) ==
+                (item.model_name, item.manufacturer, item.previous)
+            and history_sources.replaceable(item.model_name, item.manufacturer, computer.description)
+            for item, computer in targets)
     return {'id': job.id, 'status': job.status, 'total': sum(counts.values()), 'counts': counts, 'error': job.error,
+        'retry_suggested': suggested,
         'current': item_data(current) if current and job.status in ('ready', 'paused') else None,
         'recent': [item_data(item) for item in recent],
         'next_request_at': utc(job.next_request_at).isoformat() if job.next_request_at else None,
@@ -157,15 +173,19 @@ def create_history_router(get_db):
         return details(db, job)
 
     @router.post('/{job_id}/retry-unresolved')
-    def retry_unresolved(job_id: int, db: Session = Depends(get_db)):
+    def retry_unresolved(job_id: int, data: RetryHistory | None = None, db: Session = Depends(get_db)):
         catalog_lock(db)
         get_job(db, job_id)
         job = db.scalar(select(HistoryJob).where(HistoryJob.id == job_id).with_for_update().execution_options(populate_existing=True))
         if job.status not in ('paused', 'completed') or (job.lease_token and utc(job.lease_until) > now()):
             raise HTTPException(409, 'Metti in pausa e attendi la conclusione della richiesta prima di riprovare.')
+        if data and data.only_improved and job.status != 'completed':
+            raise HTTPException(409, 'Completa la ricerca prima di avviare il ritentativo mirato.')
         if db.scalar(select(HistoryJob.id).where(HistoryJob.active_key == 'italian', HistoryJob.id != job.id)):
             raise HTTPException(409, 'È già attiva un’altra ricerca storica: riprendi quella coda.')
         for item in db.scalars(select(HistoryItem).where(HistoryItem.job_id == job.id, HistoryItem.status.in_(['no_match', 'search_error']))):
+            if data and data.only_improved and not history_sources.improved_retry(item.model_name, item.manufacturer, item.result):
+                continue
             computer = db.get(Computer, item.computer_id) if item.computer_id else None
             if not computer or (computer.model_name, computer.manufacturer.name, computer.description) != (item.model_name, item.manufacturer, item.previous):
                 continue

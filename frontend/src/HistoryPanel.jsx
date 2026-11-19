@@ -21,12 +21,13 @@ export default function HistoryPanel({ onSaved }) {
     const cancel = latestRequest(signal => api('/admin/history', { signal }), setSnapshot, e => setError(e.message));
     return () => { mounted.current = false; active.current = false; cancel(); };
   }, []);
-  async function run({ retryUnresolved = false } = {}) {
+  async function run({ retryUnresolved = false, onlyImproved = false } = {}) {
     if (active.current || busy) return;
     active.current = true; setRunning(true); setBusy(true); setError('');
     try {
       let job = snapshot?.job;
-      if (retryUnresolved) job = await api(`/admin/history/${job.id}/retry-unresolved`, { method: 'POST' });
+      if (retryUnresolved) job = await api(`/admin/history/${job.id}/retry-unresolved`, { method: 'POST',
+        ...(onlyImproved ? { body: JSON.stringify({ only_improved: true }) } : {}) });
       else if (!job || ['completed', 'archived'].includes(job.status)) job = await api('/admin/history', { method: 'POST' });
       if (!mounted.current || !active.current) return;
       job = await api(`/admin/history/${job.id}/resume`, { method: 'POST' });
@@ -105,6 +106,8 @@ export default function HistoryPanel({ onSaved }) {
       {!running && <button disabled={busy || !snapshot} onClick={run}>{finished ? 'Cerca cenni storici' : 'Riprendi ricerca storica'}</button>}
       {!running && job && ['paused', 'completed'].includes(job.status) && ((counts.no_match || 0) + (counts.search_error || 0) > 0) &&
         <button disabled={busy} onClick={() => run({ retryUnresolved: true })}>Riprova i sistemi senza testo</button>}
+      {!running && job?.status === 'completed' && job.retry_suggested > 0 &&
+        <button disabled={busy} onClick={() => run({ retryUnresolved: true, onlyImproved: true })}>Riprova gli abbinamenti migliorati ({job.retry_suggested})</button>}
       {running && <button disabled={busy} onClick={() => action('pause')}>Metti in pausa</button>}
       {job?.status === 'paused' && !running && <button disabled={busy || !job.current} onClick={() => action('skip')}>Salta il sistema corrente</button>}
       {job && <a className="source" href={`/api/admin/history/${job.id}/report`} download>Scarica resoconto completo</a>}
@@ -112,7 +115,7 @@ export default function HistoryPanel({ onSaved }) {
     {error && <p className="inline-error" role="alert">{error}</p>}
     {job && <section className="panel" aria-label="Avanzamento ricerca storica">
       <h3>Ricerca #{job.id} · {running ? 'In corso' : labels[job.status]}</h3>
-      <p>Elaborati {job.total - (counts.pending || 0)} di {job.total}. Descrizioni aggiornate: {counts.updated || 0}. Già curate: {counts.preserved || 0}. Senza testo adatto: {counts.no_match || 0}. Ambigue: {counts.ambiguous || 0}.</p>
+      <p>Elaborati {job.total - (counts.pending || 0)} di {job.total}. Descrizioni aggiornate: {counts.updated || 0}. Già curate: {counts.preserved || 0}. Senza testo adatto: {counts.no_match || 0}. Ambigue: {counts.ambiguous || 0}. Saltate: {counts.skipped || 0}. Modificate o rimosse: {counts.changed || 0}. Query rifiutate: {counts.search_error || 0}.</p>
       {job.current && <p>In attesa: <b>{job.current.manufacturer} · {job.current.model_name}</b></p>}
       {job.current?.next_query && <p className="muted">Tentativo {job.current.attempt} · Ricerca: {job.current.next_query}</p>}
       {job.error && <p className="inline-error" role="alert">{job.error}</p>}

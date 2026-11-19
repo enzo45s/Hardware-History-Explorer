@@ -33,6 +33,12 @@ docker compose -p hhe-import-test up --build -d --wait
    `no_match` e `search_error` ancora aggiornabili, mantenendo risultati già
    riusciti, ricerche precedenti e originali. Riparte anche se la ricerca era
    stata completata con la versione precedente del motore.
+   Dopo una ricerca completata, **Riprova gli abbinamenti migliorati (N)**
+   limita invece il ritentativo ai vecchi esiti con pagine candidate o con
+   nomi interessati dalle nuove regole. N è il numero di casi da riesaminare,
+   non di descrizioni garantite. Le schede già completate, curate, modificate
+   o saltate non vengono rimesse in coda. Un esito negativo del motore attuale
+   non viene riproposto continuamente da questo comando.
 6. **Fonti e verifica** apre il passaggio utilizzato, la licenza, il valore
    precedente e la revisione umana facoltativa. Il download dell'originale
    conserva la risposta JSON della fonte consultata.
@@ -63,7 +69,7 @@ incluse differenze nella punteggiatura societaria. Un codice numerico, ad esempi
 «400», non autorizza a sostituire la voce «Atari 400» con la pagina del numero.
 
 Sono richiesti un modello corrispondente, il produttore nel testo, un'introduzione
-sufficientemente estesa con informazioni storiche e una revisione identificata.
+di almeno 120 caratteri con informazioni storiche e una revisione identificata.
 Si normalizzano separatori, marchi e alias espliciti già riconosciuti dal catalogo.
 Le pagine di disambiguazione, i testi troppo brevi, le famiglie diverse dal
 modello e gli abbinamenti plurimi non vengono applicati automaticamente.
@@ -75,6 +81,12 @@ che identificano quel modello, preceduti da una frase di contesto della famiglia
 Il testo complessivo resta entro 1.500 caratteri e termina su una frase completa;
 non viene riscritto da un modello linguistico. Suffissi come XL, XE, c e +
 restano distinti. Non viene assegnata a ogni macchina l'intera storia della famiglia.
+
+Gli alias di ricerca riconoscono anche **Digital Equipment** per DEC e le
+denominazioni societarie **NeXT / Next Software Inc**. Per Apple, il prefisso
+di linea **Macintosh PowerBook** può corrispondere al titolo **PowerBook**,
+conservando numero, Duo e suffissi come `c`: PowerBook 180c non diventa 180.
+Queste regole non rinominano computer o produttori nel database.
 
 Due corrispondenze italiane sono documentate esplicitamente:
 
@@ -146,6 +158,38 @@ Le fixture `wikipedia-it-hp9800.json` (revisione 148020204) e
 consultate dell'API italiana; i testi appartengono ai collaboratori di Wikipedia
 e sono riutilizzati secondo CC BY-SA 4.0. I casi di errore di rete e l'API usata
 nella prova browser sono sintetici.
+
+## Diagnosi del resoconto e verifica del 19 novembre 2026
+
+Il resoconto ricevuto comprende 1.105 schede: 80 aggiornate, 101 conservate,
+922 senza testo e 2 saltate esplicitamente. Le due saltate sono Acorn R260 e
+Apple ][+. Il pannello ora mostra anche saltate, schede modificate/rimosse e
+query rifiutate, così il riepilogo rende conto di tutti gli esiti.
+
+Sono stati riprodotti falsi negativi su sei fonti italiane effettivamente
+consultate: **PDP-1**, **Epson HX-20**, **Olivetti M15**, **NeXTcube**, **Atari 800**
+e **Macintosh PowerBook 180**. Le cause erano grafie del produttore, il prefisso
+Macintosh, introduzioni brevi ma storicamente pertinenti e il controllo finale
+di un numero di modello già identificato dal redirect alla sezione di famiglia.
+I sei casi passano dopo le correzioni, con URL della revisione e licenza; questo
+non certifica le affermazioni storiche né modifica il catalogo locale.
+
+La selezione mirata sul report ricevuto propone **45 casi**, conservando i
+risultati già riusciti e gli esiti esclusi. Alcuni possono ancora non avere un
+testo utilizzabile: una pagina candidata non autorizza ad applicarla al modello.
+I dati di questo report non sono inclusi nel repository.
+
+I dieci ultimi esiti indicati dall'operatore sono stati controllati anche con
+query marca/modello sull'API italiana. Questi tentativi hanno restituito nessuna
+pagina oppure risultati estranei, senza una descrizione applicabile. Non è una
+dimostrazione dell'assenza di ogni possibile fonte italiana. La copertura resta
+limitata a Wikipedia italiana; non vengono introdotte traduzioni o chiamate AI.
+
+La fixture `wikipedia-it-history-recovery.json` conserva le sei risposte ufficiali
+consultate, con i rispettivi identificativi di revisione. Testi dei collaboratori
+di Wikipedia, licenza **CC BY-SA 4.0**, come le altre fixture di questa guida.
+Il browser usa invece dati sintetici per verificare il nuovo ritentativo,
+il conteggio degli esiti, la pausa/ripresa, la conservazione dei testi e il mobile.
 
 Con l'ampliamento della ricerca sono state consultate anche le voci italiane
 **PowerBook 180** (134995523), **BBC Micro** (149844331) e **Atari 8-bit**

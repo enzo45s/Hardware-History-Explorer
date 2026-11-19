@@ -36,6 +36,10 @@ famiglia collegate dal modello, con originali e attese persistenti per ogni
 tentativo. Gestisce i casi PowerBook 180, BBC Model B e Atari 130XE/400/800XL;
 un comando dedicato ritenta gli esiti senza testo conservando gli aggiornamenti
 già riusciti e lo storico delle ricerche precedenti.
+Il ritentativo mirato seleziona i vecchi candidati e i nomi interessati dagli
+alias corretti, conservando gli altri esiti. Recuperati nei controlli reali
+PDP-1, Epson HX-20, M15, NeXTcube, Atari 800 e Macintosh PowerBook 180;
+il pannello rende visibili anche saltate, modifiche e query rifiutate.
 
 Il pannello RAM e varianti recupera capacità documentate (incluso HP 85 da
 1000bit) e consolida le denominazioni di configurazione conservando dati,

@@ -39,12 +39,19 @@ const { chromium } = require('playwright');
     await page.getByRole('heading', { name: /Ricerca #\d+ · Completata/ }).waitFor();
     const panel = await page.getByRole('region', { name: 'Avanzamento ricerca storica' }).innerText();
     assert.match(panel, /Descrizioni aggiornate: 1/); assert.match(panel, /Senza testo adatto: 1/);
+    assert.match(panel, /Saltate: 0/); assert.match(panel, /Modificate o rimosse: 0/); assert.match(panel, /Query rifiutate: 0/);
     const snapshot = await (await page.request.get(apiBase + '/api/admin/history')).json();
     const report = await (await page.request.get(apiBase + `/api/admin/history/${snapshot.job.id}/report`)).json();
     assert.equal(report.items.find(item => item.model_name === 'Synthetic History Existing').status, 'preserved');
     const sourceCalls = (await (await page.request.get(apiBase + '/__history_fixture')).json()).calls;
     assert.deepEqual(sourceCalls, ['Synthetic History Browser', 'Synthetic History Browser', 'Synthetic History Browser', 'Synthetic History Missing']);
-    await page.getByRole('button', { name: 'Riprova i sistemi senza testo', exact: true }).click();
+    assert.equal(snapshot.job.retry_suggested, 1);
+    for (const width of [320, 390]) {
+      await page.setViewportSize({ width, height: 900 });
+      assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    }
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.getByRole('button', { name: 'Riprova gli abbinamenti migliorati (1)', exact: true }).click();
     await page.getByRole('region', { name: 'Avanzamento ricerca storica' }).filter({ hasText: 'Descrizioni aggiornate: 2' }).waitFor();
     const retried = await (await page.request.get(apiBase + `/api/admin/history/${snapshot.job.id}/report`)).json();
     assert.equal(retried.items.find(item => item.model_name === 'Synthetic History Missing').previous_runs, 1);
@@ -65,6 +72,6 @@ const { chromium } = require('playwright');
     assert.match(await page.locator('main').innerText(), /contesto storico sintetico/);
     assert.equal(await page.getByRole('link', { name: 'CC BY-SA 4.0', exact: true }).count(), 1);
     assert.deepEqual(errors, []);
-    console.log('PASS history browser: durable keyword fallback, pause/reload/resume, retry missing only, source attribution, curated preservation and mobile.');
+    console.log('PASS history browser: durable fallback, pause/reload/resume, targeted legacy retry, full outcome counts, source attribution, preserved curated text and mobile.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
