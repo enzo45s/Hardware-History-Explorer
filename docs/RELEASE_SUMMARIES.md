@@ -36,9 +36,14 @@ nella [politica delle fonti](SOURCE_POLICY.md).
   essere estesa a paesi differenti. Configurazioni sostanziali con un ambito
   distinto restano separate. Prezzi differenti o ripetuti nello stesso paese
   rimangono offerte distinte, ciascuna con il proprio identificativo.
-- Date, precisioni, valute e fine commercializzazione non devono essere in
-  conflitto. Fonti concordi sulla stessa data possono essere riunite; la
-  precisione non viene aumentata e il periodo non puo essere invertito.
+- Le precisioni compatibili vengono riunite: `1990`, `1990-10` e `1990-10-15`
+  indicano una stessa data con dettaglio crescente. La sintesi sceglie soltanto
+  una data effettivamente presente nelle fonti, senza inventare mese o giorno.
+  Le fonti dell'anno non vengono presentate come supporto del giorno esatto.
+  Una data regionale già associata a un prezzo conserva la propria precisione.
+- Date realmente discordanti, valute e fine commercializzazione non devono
+  essere in conflitto. Un intervallo non può essere invertito; una fine indicata
+  soltanto come anno o mese viene trattata come intervallo, senza creare un giorno.
 - I placeholder noti dei mercati non specificati, compreso quello AppleDB,
   vengono riconosciuti. **Globale** rimane un mercato esplicito distinto.
 
@@ -50,7 +55,9 @@ nella [politica delle fonti](SOURCE_POLICY.md).
 - Più aree geografiche mantengono prezzi e valute propri. La data generale resta
   del modello, senza certificare la disponibilità locale del sistema o un
   listino a quella data.
-- Anni/date differenti o precisioni differenti tra le registrazioni.
+- Anni, mesi o giorni discordanti. Una differenza nella sola precisione non
+  costituisce un conflitto: `1990` e `1990-10-15` sono compatibili, mentre
+  `1990-10-15` e `1990-10-16` rimangono distinti.
 - Un listino successivo senza data: non riceve l'anno di lancio del modello.
 - Informazioni prive di un abbinamento sicuro; se nessuna fonte indica il
   mercato, la scheda mostra **Mercato non documentato**.
@@ -135,3 +142,15 @@ e 22 riportano listini successivi senza data. Le 547 sintesi con data e prezzo
 non alterano importi, date, ID o collegamenti alle fonti. Il database temporaneo
 è stato eliminato; il nuovo Excel dell'utente non è stato allegato e non è stato
 verificato direttamente.
+
+La successiva regressione Macintosh LC riproduce i tre record segnalati:
+`1990`, `1990-10-15` e il prezzo statunitense `2499 USD`. La sintesi mostra
+**Stati Uniti · 1990-10-15 · 2499 USD**, usando soltanto AppleDB per sostenere
+la precisione giornaliera e la fonte del prezzo per l'importo. La prova con
+i record del dataset di base, l'arricchimento AppleDB e la riga dell'Excel
+precedentemente allegato conferma il risultato su SQLite temporaneo, senza
+alterare i tre record originali. Non è una verifica indipendente dei contenuti
+delle fonti. La stessa regola si applica a tutto il catalogo, anche alle date
+senza prezzo e alle offerte in più mercati. Verificati **747 test SQLite**
+(uno saltato), **144 test mirati PostgreSQL**, 31 test frontend e Chromium
+per commercializzazioni, prezzi ed Europa.

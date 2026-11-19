@@ -44,7 +44,6 @@ def test_same_documented_market_has_regional_date_scope_and_zero_price():
     [row(1, 'Stati Uniti', year='1982'), row(2, price=3298, currency='USD')],
     [row(1, year='1982'), row(2, 'Stati Uniti', price=3298, currency='USD', price_type='listino successivo')],
     [row(1, year='1982'), row(2, 'Stati Uniti', price=3298, currency='USD', end='1981')],
-    [row(1, year='1982'), row(2, 'Stati Uniti', year='1982-05', price=3298, currency='USD')],
     [row(1, year='1982', currency='EUR'), row(2, 'Stati Uniti', price=3298, currency='USD')],
     [row(1, 'Globale', year='1982'), row(2, 'Stati Uniti', price=3298, currency='USD')],
 ])
@@ -52,6 +51,64 @@ def test_ambiguous_or_conflicting_releases_remain_distinct(entries):
     result = release_summaries(entries)
     assert len(result) == len(entries) and not any(item['merged'] for item in result)
     assert sorted(identifier for item in result for identifier in item['release_ids']) == [row['id'] for row in entries]
+
+
+def test_reported_macintosh_lc_year_day_and_price_form_one_summary():
+    rows = [row(1, year='1990'), row(2, year='1990-10-15'),
+        row(3, 'Stati Uniti', price=2499, currency='USD', price_type='prezzo riportato')]
+    before = deepcopy(rows)
+    summary, = release_summaries(rows)
+    assert (summary['market'], summary['release_date'], summary['price'], summary['currency']) == ('Stati Uniti', '1990-10-15', 2499, 'USD')
+    assert summary['date_scope'] == 'model' and summary['release_ids'] == [1, 2, 3]
+    assert summary['field_sources']['release_date'] == [2]  # The year-only source never supports the day.
+    assert summary['field_sources']['price'] == [3] and summary['original_releases'] == before
+    assert rows == before
+    for ordering in permutations(rows):
+        assert release_summaries(ordering) == [summary]
+
+
+@pytest.mark.parametrize('dates,expected', [
+    (['1990', '1990-10'], '1990-10'),
+    (['1990', '1990-10', '1990-10-15'], '1990-10-15'),
+    (['2000', '2000-02', '2000-02-29'], '2000-02-29'),
+])
+def test_date_only_refinements_coalesce_without_inventing_precision(dates, expected):
+    rows = [row(i, year=value) for i, value in enumerate(dates, 1)]
+    summary, = release_summaries(rows)
+    assert summary['release_date'] == expected
+    assert summary['field_sources']['release_date'] == [len(dates)]
+    assert summary['original_releases'] == rows
+
+
+@pytest.mark.parametrize('dates', [
+    ['1990', '1991'], ['1990', '1990-10', '1990-11'],
+    ['1990', '1990-10', '1990-10-15', '1990-10-16'],
+])
+def test_actual_date_disagreements_do_not_pick_the_first_or_last_date(dates):
+    rows = [row(i, year=value) for i, value in enumerate(dates, 1)]
+    rows.append(row(len(rows) + 1, 'Stati Uniti', price=2499, currency='USD'))
+    expected = release_summaries(rows)
+    assert len(expected) == len(rows) and expected[-1]['release_date'] is None
+    for ordering in permutations(rows):
+        assert release_summaries(ordering) == expected
+
+
+def test_shared_precision_refinements_keep_unique_offer_ids_and_original_regional_precision():
+    rows = [row(1, year='1990'), row(2, year='1990-10-15'),
+        row(3, 'Stati Uniti', price=2499, currency='USD'), row(4, 'Giappone', price=200000, currency='JPY')]
+    summaries = release_summaries(rows)
+    assert [r['id'] for r in summaries] == [3, 4]
+    assert all(r['release_date'] == '1990-10-15' and r['field_sources']['release_date'] == [2] for r in summaries)
+    regional, = release_summaries([row(1, year='1990-10-15'), row(2, 'Stati Uniti', year='1990', price=2499, currency='USD')])
+    assert regional['release_date'] == '1990' and regional['date_scope'] == 'market'
+    assert regional['field_sources']['release_date'] == [2]
+
+
+def test_partial_discontinuation_date_can_contain_a_later_month_without_creating_a_day():
+    summary, = release_summaries([row(1, year='1990-10-15'), row(2, 'Stati Uniti', price=2499, currency='USD', end='1990')])
+    assert summary['release_date'] == '1990-10-15' and summary['discontinuation_date'] == '1990'
+    separate = release_summaries([row(1, year='1990-10-15'), row(2, 'Stati Uniti', price=2499, currency='USD', end='1990-10-14')])
+    assert len(separate) == 2
 
 
 @pytest.mark.parametrize('offers', [

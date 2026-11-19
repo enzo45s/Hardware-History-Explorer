@@ -5,6 +5,7 @@ place a model's independently sourced date beside compatible market offers,
 while retaining the original records and the date's geographical scope.
 """
 from collections import defaultdict
+from calendar import monthrange
 from copy import deepcopy
 from datetime import date
 import re
@@ -31,21 +32,63 @@ LAUNCH_TYPES = {'', 'launch', 'launch_price', 'lancio', 'prezzo di lancio', 'pre
                 'prezzo riportato', 'listino di lancio'}
 
 
+def refined_date(values):
+    """Use only a supplied date that refines every other supplied precision."""
+    values = {value for value in values if value}
+    if not values:
+        return None
+    precise = max(values, key=len)
+    return precise if all(precise == value or precise.startswith(value + '-') for value in values) else None
+
+
 def compatible(rows):
-    """No conflicting values, precision upgrades or backwards date ranges."""
+    """Allow consistent date refinements, never conflicting dates or ranges."""
     if len({row.get('model_variant') for row in rows}) > 1:
         return False
-    for field in (*DATES, 'currency'):
-        if len({row[field] for row in rows if row.get(field) is not None}) > 1:
+    if len({row['currency'] for row in rows if row.get('currency') is not None}) > 1:
+        return False
+    dates = {}
+    for field in DATES:
+        values = [row.get(field) for row in rows if row.get(field)]
+        dates[field] = refined_date(values)
+        if values and dates[field] is None:
             return False
-    dates = {field: next((row[field] for row in rows if row.get(field)), None) for field in DATES}
     if all(dates.values()):
-        def earliest(value):
+        def bound(value, upper=False):
             parts = [int(part) for part in value.split('-')]
-            return date(*(parts + [1] * (3 - len(parts))))
-        if earliest(dates['release_date']) > earliest(dates['discontinuation_date']):
+            year = parts[0]
+            month = parts[1] if len(parts) > 1 else 12 if upper else 1
+            day = parts[2] if len(parts) > 2 else monthrange(year, month)[1] if upper else 1
+            return date(year, month, day)
+        if bound(dates['release_date']) > bound(dates['discontinuation_date'], upper=True):
             return False
     return True
+
+
+def merge_date_evidence(target, additions, *, refine=False):
+    supporting = [target['row'], *(group['row'] for group in additions)]
+    for field in DATES:
+        if refine or target['row'].get(field) is None:
+            target['row'][field] = refined_date(row.get(field) for row in supporting)
+    for group in additions:
+        target['originals'].extend(deepcopy(group['originals']))
+
+
+def refine_date_groups(groups):
+    """Coalesce date-only precision variants only when the whole set agrees."""
+    contexts = defaultdict(list)
+    for group in groups:
+        row = group['row']
+        contexts[(row.get('model_variant'), market_key(row), row.get('currency'), row.get('price_type'))].append(group)
+    result = []
+    for repeated in contexts.values():
+        if not compatible([group['row'] for group in repeated]):
+            result.extend(repeated)
+            continue
+        target = repeated[0]
+        merge_date_evidence(target, repeated[1:], refine=True)
+        result.append(target)
+    return sorted(result, key=lambda group: group['row']['id'])
 
 
 def complete_launch_dates(dates, prices, consumed):
@@ -68,11 +111,8 @@ def complete_launch_dates(dates, prices, consumed):
             continue
         plans.append((target, candidates))
     for target, candidates in plans:
+        merge_date_evidence(target, candidates)
         for group in candidates:
-            for field in DATES:
-                if target['row'].get(field) is None:
-                    target['row'][field] = group['row'].get(field)
-            target['originals'].extend(deepcopy(group['originals']))
             consumed.add(group['row']['id'])
         # Shared date evidence can occur in several summaries. Use each
         # offer's own ID so React keys and API offer IDs remain unique.
@@ -106,6 +146,8 @@ def release_summaries(releases):
                 dates.append(group)
         else:
             others.append(group)
+
+    dates = refine_date_groups(dates)
 
     # Equal offers repeated across different European countries become one
     # regional offer. Multiple identical rows in one country remain ambiguous.
@@ -151,11 +193,8 @@ def release_summaries(releases):
         additions = plans.get(target['row']['id'], [])
         if not additions or not compatible([target['row'], *(group['row'] for group in additions)]):
             continue
+        merge_date_evidence(target, additions)
         for group in additions:
-            for field in DATES:
-                if target['row'].get(field) is None:
-                    target['row'][field] = group['row'].get(field)
-            target['originals'].extend(group['originals'])
             consumed.add(group['row']['id'])
 
     complete_launch_dates(dates, prices, consumed)

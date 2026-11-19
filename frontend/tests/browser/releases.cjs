@@ -22,13 +22,16 @@ const { chromium } = require('playwright');
     };
     const market = async name => meta.markets.find(row => row.name === name) ?? await post('/markets', { name });
     const unknown = await market('Non specificato dalla fonte');
+    const appleUnknown = await market('Non specificato dalla fonte (AppleDB)');
     const us = await market('Stati Uniti');
     const japan = await market('Giappone');
     const dated = await post('/sources', { title: 'Synthetic model-date source ' + suffix, url: 'https://example.org/synthetic-date' });
+    const precise = await post('/sources', { title: 'Synthetic precise model-date source ' + suffix, url: 'https://example.org/synthetic-day' });
     const priced = await post('/sources', { title: 'Synthetic regional-price source ' + suffix, url: 'https://example.org/synthetic-price' });
     const releases = [
-      { market_id: unknown.id, release_date: '1982', source_ids: [dated.id] },
-      { market_id: us.id, price: 3298, currency: 'USD', price_type: 'prezzo riportato', source_ids: [priced.id] }
+      { market_id: unknown.id, release_date: '1990', source_ids: [dated.id] },
+      { market_id: appleUnknown.id, release_date: '1990-10-15', source_ids: [precise.id] },
+      { market_id: us.id, price: 2499, currency: 'USD', price_type: 'prezzo riportato', source_ids: [priced.id] }
     ];
     id = (await post('/computers', { model_name: model, manufacturer_id: meta.manufacturers[0].id, releases })).id;
     // A base-dataset import still keeps its original technical provenance, but
@@ -37,7 +40,7 @@ const { chromium } = require('playwright');
       provider: 'manual', rights_confirmed: 'true', file: { name: 'synthetic-base.json', mimeType: 'application/json',
         buffer: Buffer.from(JSON.stringify([{ manufacturer: meta.manufacturers[0].name, model_name: model,
           source: { title: 'MAME synthetic base ' + suffix, url: 'https://github.com/mamedev/mame' },
-          releases: [{ market: unknown.name, release_date: '1982' }],
+          releases: [{ market: unknown.name, release_date: '1990' }],
           configurations: [{ variant_name: 'Synthetic base', specifications: [
             { component_type: 'CPU', property_name: 'Frequenza', numeric_value: 2, unit: 'MHz' }] }]
         }])) }
@@ -63,7 +66,7 @@ const { chromium } = require('playwright');
     await open();
     const summary = page.getByRole('region', { name: 'Commercializzazione · Stati Uniti', exact: true });
     assert.equal(await page.getByRole('region', { name: /^Commercializzazione ·/ }).count(), 1);
-    assert.match(await summary.innerText(), /1982 · 3298 USD/);
+    assert.match(await summary.innerText(), /1990-10-15 · 2499 USD/);
     assert.equal(await summary.locator('a:visible').count(), 1);
     assert.equal(await summary.locator('details').count(), 0);
     assert(await summary.getByRole('link', { name: 'Fonte: ' + priced.title, exact: true }).isVisible());
@@ -74,7 +77,8 @@ const { chromium } = require('playwright');
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     }
     const raw = await (await page.request.get(api('/admin/computers/' + id))).json();
-    assert.equal(raw.releases.length, 2); assert.equal(raw.releases[1].release_date, null);
+    assert.equal(raw.releases.length, 3);
+    assert.deepEqual(raw.releases.map(r => r.release_date), ['1990', '1990-10-15', null]);
     await page.getByRole('button', { name: 'Amministrazione', exact: true }).click();
     await page.getByRole('button', { name: 'Fonti', exact: true }).click();
     await page.getByRole('button', { name: 'Nuova fonte', exact: true }).waitFor();
@@ -86,8 +90,8 @@ const { chromium } = require('playwright');
     assert.equal(response.status(), 200, await response.text());
     await open();
     assert.equal(await page.getByRole('region', { name: /^Commercializzazione ·/ }).count(), 2);
-    assert.match(await page.getByRole('region', { name: 'Commercializzazione · Stati Uniti', exact: true }).innerText(), /1982 · 3298 USD/);
-    assert.match(await page.getByRole('region', { name: 'Commercializzazione · Giappone', exact: true }).innerText(), /1982 · 200000 JPY/);
+    assert.match(await page.getByRole('region', { name: 'Commercializzazione · Stati Uniti', exact: true }).innerText(), /1990-10-15 · 2499 USD/);
+    assert.match(await page.getByRole('region', { name: 'Commercializzazione · Giappone', exact: true }).innerText(), /1990-10-15 · 200000 JPY/);
     const normalized = await (await page.request.get(api('/computers/' + id))).json();
     assert.equal(new Set(normalized.display_releases.map(row => row.id)).size, 2);
     assert(normalized.display_releases.every(row => row.date_scope === 'model'));
@@ -95,14 +99,14 @@ const { chromium } = require('playwright');
     assert.doesNotMatch(await page.locator('main').innerText(), /Mercato non documentato|Provenienza dei dati accorpati/);
     response = await page.request.put(api('/computers/' + id), { data: {
       model_name: model, manufacturer_id: raw.manufacturer_id,
-      releases: [raw.releases[0], { ...raw.releases[1], price_type: 'listino successivo' }]
+      releases: [raw.releases[0], raw.releases[1], { ...raw.releases[2], price_type: 'listino successivo' }]
     } });
     assert.equal(response.status(), 200, await response.text());
     await open();
     assert.equal(await page.getByRole('region', { name: /^Commercializzazione ·/ }).count(), 2);
-    assert.match(await page.getByRole('region', { name: 'Commercializzazione · Stati Uniti', exact: true }).innerText(), /Data non disponibile · 3298 USD/);
+    assert.match(await page.getByRole('region', { name: 'Commercializzazione · Stati Uniti', exact: true }).innerText(), /Data non disponibile · 2499 USD/);
     assert.deepEqual(errors, []);
-    console.log('PASS releases: shared model date across markets, distinct prices, one price source, no provenance box, raw editor and technical evidence preserved, later lists undated, mobile 320/390px.');
+    console.log('PASS releases: reported LC year/day/price case, shared date across markets, distinct sources and raw precision preserved, later lists undated, mobile 320/390px.');
   } finally {
     if (id) await page.request.delete(api('/computers/' + id)).catch(() => {});
     await browser.close();
