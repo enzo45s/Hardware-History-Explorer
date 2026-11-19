@@ -1,4 +1,4 @@
-/* Synthetic workbook only; deletes only the three computers it creates. */
+/* Synthetic workbook and legacy context; deletes only the cards it creates. */
 const assert = require('node:assert/strict');
 const { chromium } = require('playwright');
 const fs = require('node:fs');
@@ -20,7 +20,7 @@ const { execFileSync } = require('node:child_process');
     const meta = await (await page.request.get(api('/meta'))).json();
     const maker = meta.manufacturers[0];
     const prefix = 'SyntheticPriceBrowser-' + Date.now();
-    for (const suffix of ['A', 'B', 'C']) {
+    for (const suffix of ['A', 'B', 'C', 'D']) {
       const response = await page.request.post(api('/computers'), { data: { model_name: prefix + '-' + suffix, manufacturer_id: maker.id } });
       assert.equal(response.status(), 201); ids.push((await response.json()).id);
     }
@@ -62,6 +62,33 @@ const { execFileSync } = require('node:child_process');
     await page.getByRole('button', { name: "Applica le righe pronte all'archivio", exact: true }).click();
     await page.locator('.import-detail h3').filter({ hasText: 'Completata' }).waitFor();
     assert.match(await page.locator('.import-detail').innerText(), /Invariata: 3/);
+    // Emulate an already-exported JSON from the old parser. It has audited
+    // worksheet fields and a note, but no structured Release yet.
+    const source = { title: 'Synthetic legacy price context', url: 'https://example.org/legacy-price-context', source_type: 'research_reference' };
+    const original = { 'Produttore': maker.name, 'Modello': prefix + '-D', 'Anno lancio': '1985',
+      'Prezzo al lancio': '249', 'Valuta': 'GBP', 'Mercato / Paese': 'Regno Unito',
+      'Stato ricerca': 'Prezzo di lancio verificato', 'Note': 'Prezzo pre-vendita £249; successivamente circa £180. Non prova la data di consegna.' };
+    const evidence = JSON.stringify({ adapter: 'historical-prices-v1', sheet: 'Prezzi per modello', original });
+    const statement = Object.entries(original).map(([key, value]) => `${key}: ${value}`).join('; ');
+    const legacy = [{ manufacturer: maker.name, model_name: prefix + '-D', source, evidence,
+      facts: [{ fact_type: 'Contesto del prezzo', statement, source, evidence }] }];
+    await page.getByLabel('Excel dei prezzi o dataset CSV/JSON', { exact: false }).setInputFiles({
+      name: 'synthetic-legacy-context.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(legacy)) });
+    await page.getByRole('button', { name: 'Prepara anteprima dal file', exact: true }).click();
+    await page.getByRole('button', { name: "Applica le righe pronte all'archivio", exact: true }).click();
+    const recovery = page.getByRole('region', { name: 'Recupero prezzi dalle note', exact: true });
+    await page.locator('.import-detail h3').filter({ hasText: 'Completata' }).waitFor();
+    const recoveryReport = await (await page.request.get(api('/admin/imports/price-context-recovery'))).json();
+    assert(recoveryReport.length > 0, 'Applying an audited legacy note must create a recovery report.');
+    await recovery.filter({ hasText: `Operazione #${recoveryReport[0].id}.` }).waitFor();
+    await recovery.getByRole('button', { name: 'Controlla prezzi recuperati', exact: true }).click();
+    await page.locator('.import-detail h3').filter({ hasText: 'Completata' }).waitFor();
+    const recovered = await (await page.request.get(api('/computers/' + ids[3]))).json();
+    assert.equal(recovered.releases.length, 1); assert.equal(recovered.releases[0].price, 249);
+    assert.equal(recovered.releases[0].currency, 'GBP'); assert.equal(recovered.releases[0].market, 'Regno Unito');
+    assert.equal(recovered.releases[0].release_date, null);
+    assert.equal(recovered.facts[0].statement, statement);
+    assert.equal(recoveryReport[0].verification_counts.verified || 0, 0);
     for (const width of [320, 390]) {
       await page.setViewportSize({ width, height: 900 });
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
@@ -76,7 +103,7 @@ const { execFileSync } = require('node:child_process');
     assert.doesNotMatch(shown, /Ricerca da verificare/i);
     assert.match(shown, /Synthetic configuration with monitor/);
     assert.deepEqual(errors, []);
-    console.log('PASS price browser: original Excel, price context without research badge, undated/later-list prices, unchanged replay, source preservation and mobile.');
+    console.log('PASS price browser: Excel, automatic legacy-note price recovery and audit, pending verification, unchanged replay, source preservation and mobile.');
   } finally {
     for (const id of ids) await page.request.delete(api('/computers/' + id)).catch(() => {});
     await browser.close();

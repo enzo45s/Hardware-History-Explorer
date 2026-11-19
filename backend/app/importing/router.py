@@ -97,6 +97,14 @@ def create_import_router(get_db):
     def providers():
         return PROVIDERS
 
+    @router.get('/price-context-recovery')
+    def price_context_recovery(db: Session = Depends(get_db)):
+        # Read only metadata first, not all archived Excel attachments.
+        ids = [identifier for identifier, options in db.execute(select(ImportJob.id, ImportJob.request_options)
+            .where(ImportJob.provider == 'historical_prices', ImportJob.status != 'archived').order_by(ImportJob.id.desc()))
+            if options.get('price_context_recovery')][:10]
+        return [job_data(db.get(ImportJob, identifier)) for identifier in ids]
+
     @router.get('/reconciliation/duplicates')
     def duplicates(db: Session = Depends(get_db)):
         return reconcile.duplicate_groups(db)

@@ -42,6 +42,7 @@ principale. Per gli aggiornamenti futuri, riporta lì i nuovi risultati.
 | Stato nel foglio | Trattamento |
 | --- | --- |
 | Prezzo con fonte | Importo, valuta e mercato; tipo `prezzo riportato` |
+| Prezzo di/al lancio verificato, documentato, confermato o con fonte | Stesso trattamento numerico, senza attribuire una verifica umana nell'app |
 | Listino d'epoca, non lancio | Importo separatamente qualificato come `listino successivo` |
 | Prezzo di famiglia/variante diversa, solo indicativo, base senza accessorio o indizio | Solo nota contestuale, senza prezzo numerico assegnato al modello |
 | Senza importo | Riga esclusa dal lotto |
@@ -73,6 +74,45 @@ La presenza di un URL o dell'etichetta **Alta** non verifica la cifra. Ogni
 asserzione nasce `pending`, senza consultazione automatica della pagina.
 Le citazioni sono di tipo `research_reference` e non ricevono automaticamente
 una data di consultazione. Gli URL non vengono aperti dal parser.
+
+## Recupero automatico dei prezzi già presenti nelle note
+
+Alcuni Excel successivi usano la dicitura **Prezzo di lancio verificato**:
+il vecchio parser non la riconosceva e conservava la riga soltanto in
+**Contesto del prezzo**. Ora le nuove importazioni riconoscono queste etichette.
+All'avvio dell'API viene inoltre eseguito un recupero dei dati già archiviati;
+i JSON canonici contenenti vecchie note Excel vengono recuperati anche subito
+dopo l'applicazione. Non occorre ricaricare l'Excel o svuotare il catalogo.
+
+Il recupero usa i campi originali della riga conservati nell'audit JSON:
+**Prezzo al lancio**, **Valuta**, **Mercato / Paese** e **Stato ricerca**.
+Non cerca numeri nel testo libero. Per Enterprise Sixty Four, i campi indicano
+249 GBP e Regno Unito: vengono aggiunti a Commercializzazione con la stessa
+fonte. Il Regno Unito viene presentato sotto Europa, secondo il raggruppamento
+geografico già previsto. Il riferimento a circa £180 nel giugno 1985 rimane
+una nota; la cautela sul prezzo annunciato e sulla data di consegna resta
+conservata. Nessuna data di consegna viene ricavata da quelle frasi o dall'anno
+del foglio. L'eventuale anno affiancato al prezzo è il contesto del modello
+già presente nel catalogo.
+
+Il recupero conserva note, file originali, fonti e precedenti asserzioni. Genera
+un nuovo lavoro d'importazione `recupero-prezzi-note.json`, in lotti di massimo
+100 righe, con riferimenti alle asserzioni originarie. Riavvii concorrenti o
+successivi non duplicano il recupero. Le operazioni archiviate dopo lo
+svuotamento non ripristinano dati eliminati.
+
+Un dato rifiutato, stimato, modificato manualmente, privo di fonte o dei campi
+originali non viene promosso automaticamente. Restano solo note anche gli
+importi di famiglia/variante diversa, le stime e i valori parziali. Un prezzo
+già presente e differente rimane conservato: viene registrata una proposta
+in conflitto. La dicitura «verificato» dell'Excel resta una dichiarazione della
+ricerca, non una verifica registrata nell'app; le nuove asserzioni sono `pending`.
+
+In **Amministrazione → Importazioni → Prezzi storici** compare
+**Controlla prezzi recuperati** per aprire il resoconto e le consuete **Fonti e
+verifiche**. Il riepilogo è disponibile anche con
+`GET /api/admin/imports/price-context-recovery`. Non vengono introdotte nuove
+tabelle o dipendenze, né richieste a siti o servizi AI.
 
 L'Excel originale viene conservato integralmente in Base64 nell'audit esistente,
 con SHA-256 e riga del foglio per ogni record. **Scarica originale conservato**

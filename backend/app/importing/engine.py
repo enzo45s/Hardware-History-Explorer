@@ -422,6 +422,10 @@ def apply_job(db, job_id, commit=True):
             row.error = str(exc)[:1000] if isinstance(exc, ValueError) else 'Errore di integrità: controlla dati e corrispondenze; riprova.'
     job.status = 'partial' if any(r.status in ('failed', 'invalid', 'ambiguous') for r in job.rows) else 'completed'
     db.commit() if commit else db.flush()
+    if (commit and job.provider == 'historical_prices' and not job.request_options.get('price_context_recovery')
+            and any(row.normalized and not row.normalized.get('releases') and row.normalized.get('facts') for row in job.rows)):
+        from .price_recovery import recover_price_contexts
+        recover_price_contexts(db, origin_job_id=job.id)
     return job
 
 

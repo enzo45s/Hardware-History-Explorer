@@ -10,7 +10,7 @@ import re
 import zipfile
 import xml.etree.ElementTree as ET
 
-from .normalize import MAX_BYTES, MAX_ROWS, Citation, Record
+from .normalize import MAX_BYTES, MAX_ROWS, Citation, Record, name_key
 
 NS = {'s': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
 REL = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'
@@ -19,6 +19,42 @@ FIELDS = ('ID', 'Produttore', 'Modello', 'Anno lancio', 'Prezzo al lancio', 'Val
           'Fonte URL', 'Affidabilità fonte', 'Stato ricerca', 'Note')
 PRICED = {'Prezzo con fonte': 'prezzo riportato', "Listino d'epoca, non lancio": 'listino successivo'}
 MARKETS = {'USA': 'Stati Uniti'}
+
+
+def price_kind(status):
+    """Declared research labels classify prices; they never verify a claim."""
+    if not isinstance(status, str):
+        return None
+    normalized = name_key(status).replace('’', "'")
+    known = {name_key(label): kind for label, kind in PRICED.items()}
+    if normalized in known:
+        return known[normalized]
+    if re.fullmatch(r'prezzo (?:di|al) lancio (?:verificato|documentato|confermato|con fonte)', normalized):
+        return 'prezzo riportato'
+    return None
+
+
+def release_from_fields(data, citation, evidence):
+    """Interpret the explicit price/currency/market cells, never prose numbers."""
+    kind = price_kind(data.get('Stato ricerca', ''))
+    if kind is None:
+        return None
+    try:
+        if not isinstance(data.get('Prezzo al lancio'), str):
+            raise ValueError('Importo testuale della cella richiesto')
+        amount = Decimal(data['Prezzo al lancio'])
+    except (InvalidOperation, TypeError, KeyError) as exc:
+        raise ValueError('Importo non numerico o separatori ambigui') from exc
+    if not amount.is_finite() or amount <= 0:
+        raise ValueError('Importo positivo e finito richiesto')
+    numeric = float(amount)
+    if not math.isfinite(numeric) or numeric <= 0:
+        raise ValueError('Importo fuori dall’intervallo numerico supportato')
+    currency, market = data.get('Valuta', ''), data.get('Mercato / Paese', '')
+    if not isinstance(currency, str) or not re.fullmatch(r'[A-Z]{3}', currency) or not isinstance(market, str) or not market.strip():
+        raise ValueError('Valuta ISO e mercato espliciti richiesti')
+    return {'market': MARKETS.get(market, market), 'price': numeric, 'currency': currency,
+            'price_type': kind, 'source': citation, 'evidence': evidence}
 
 
 def worksheet(raw):
@@ -112,22 +148,9 @@ def workbook_records(raw):
                 'manufacturer': data['Produttore'], 'model_name': data['Modello'], 'source': citation,
                 'evidence': evidence, 'facts': [{'fact_type': 'Contesto del prezzo',
                     'statement': 'Ricerca da verificare. ' + context, 'source': citation, 'evidence': evidence}]}
-            if status in PRICED:
-                try:
-                    amount = Decimal(data['Prezzo al lancio'])
-                except InvalidOperation as exc:
-                    raise ValueError('Importo non numerico o separatori ambigui') from exc
-                if not amount.is_finite() or amount <= 0:
-                    raise ValueError('Importo positivo e finito richiesto')
-                numeric = float(amount)
-                if not math.isfinite(numeric) or numeric <= 0:
-                    raise ValueError('Importo fuori dall’intervallo numerico supportato')
-                currency = data['Valuta']
-                if not re.fullmatch(r'[A-Z]{3}', currency) or not data['Mercato / Paese']:
-                    raise ValueError('Valuta ISO e mercato espliciti richiesti')
-                record['releases'] = [{'market': MARKETS.get(data['Mercato / Paese'], data['Mercato / Paese']),
-                    'price': numeric, 'currency': currency, 'price_type': PRICED[status],
-                    'source': citation, 'evidence': evidence}]
+            release = release_from_fields(data, citation, evidence)
+            if release:
+                record['releases'] = [release]
                 # The workbook's year is not necessarily the price or launch date.
                 # Keep it and configuration/tax context in the fact, not release_date.
             Record.model_validate(record)

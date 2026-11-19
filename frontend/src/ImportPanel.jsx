@@ -83,8 +83,14 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  const [priceRecoveries, setPriceRecoveries] = useState([]);
   useEffect(() => latestRequest(signal => api('/admin/imports/providers', { signal }),
     setProviders, e => setError(e.message)), []);
+  useEffect(() => {
+    if (provider !== 'historical_prices') return;
+    return latestRequest(signal => api('/admin/imports/price-context-recovery', { signal }),
+      setPriceRecoveries, e => setError(e.message));
+  }, [provider, bulkRevision]);
   async function open(id, nextOffset = 0) {
     setBusy(true); setError('');
     try { const detail = await api(`/admin/imports/${id}?offset=${nextOffset}`); setJob(detail); setOffset(nextOffset); }
@@ -117,6 +123,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
     await action(async () => { await api(`/admin/imports/claims/${id}/review`, { method: 'POST', body: JSON.stringify({ decision, note }) }); return { id: job.id }; }, true);
   }
   const selected = providers.find(p => p.id === provider);
+  const priceRecovery = priceRecoveries.find(job => job.verification_counts?.conflict || job.counts?.failed) || priceRecoveries[0];
   const singleImport = <>
       {provider === 'historical_descriptions' && <>
         <p>Carica il JSON delle descrizioni: un elenco di oggetti con manufacturer, model_name, description e source (title, url e source_type). Sono accettati anche elenchi racchiusi in records.</p>
@@ -126,6 +133,11 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
       {provider === 'historical_prices' && <>
         <p>Carica l'Excel con il foglio «Prezzi per modello», oppure un CSV/JSON canonico. Aggiorna soltanto i sistemi già presenti, abbinandoli per produttore e modello: gli ID del foglio non sono ID del catalogo.</p>
         <p className="muted">Gli URL e l'affidabilità dichiarata restano da verificare. Prezzi, valuta, mercato, configurazione e note vengono conservati; l'anno della ricerca non viene trasformato in una data di lancio. Le indicazioni riferite a famiglie o varianti diverse restano note.</p>
+        {priceRecovery && <section className="panel" aria-label="Recupero prezzi dalle note">
+          <p>Recupero automatico dei prezzi dalle note · Operazione #{priceRecovery.id}. {Object.entries(priceRecovery.counts).map(([key, value]) => `${status(key)}: ${value}`).join(' · ')}.</p>
+          <p>Conflitti da controllare: {priceRecovery.verification_counts?.conflict || 0}. Le note e le fonti originali restano conservate.</p>
+          <button type="button" disabled={busy} onClick={() => open(priceRecovery.id)}>Controlla prezzi recuperati</button>
+        </section>}
       </>}
       {provider === '1000bit' && <>
         <p>Carica una scheda HTML salvata dal browser, un JSON del raccoglitore oppure un dataset CSV/JSON. Controlla l'anteprima prima di applicare i dati.</p>
@@ -183,7 +195,9 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
           <p className="muted">Viene letto soltanto «Prezzi per modello», per evitare doppioni fra i fogli. Riporta qui eventuali nuovi risultati prima di importare un Excel aggiornato. URL e giudizi di affidabilità provengono dal file e restano da verificare.</p>
         </div>}
         {job.provider !== 'historical_descriptions' && job.data_coverage && <p>Record con fonte nel file: {job.data_coverage.records_with_source}. Prezzi presenti nel file: {job.data_coverage.prices}.
-          {!job.data_coverage.prices && ' Il dataset non contiene prezzi: il caricamento non ne aggiunge e conserva quelli già archiviati.'}</p>}
+          {!job.data_coverage.prices && (job.provider === 'historical_prices'
+            ? ' Il file contiene sole note: i campi originali delle righe Excel vengono recuperati automaticamente quando completi e compatibili.'
+            : ' Il dataset non contiene prezzi: il caricamento non ne aggiunge e conserva quelli già archiviati.')}</p>}
         <p>Asserzioni: {Object.entries(job.verification_counts || {}).map(([k, n]) => `${status(k)}: ${n}`).join(' · ') || 'non ancora applicate'}</p>
         {job.retry_of && <p>Nuovo tentativo dell'importazione #{job.retry_of}.</p>}
         <details><summary>Impronta del file</summary><code>{job.checksum}</code></details>

@@ -52,6 +52,8 @@ async def lifespan(app):
  Base.metadata.create_all(engine)
  photo_jobs.ensure_photo_schema(engine)
  with SessionLocal() as db: seed(db)
+ from .importing.price_recovery import recover_price_contexts
+ with SessionLocal() as db: recover_price_contexts(db)
  yield
 app=FastAPI(title='Hardware History Explorer API',version='1.1.0',lifespan=lifespan)
 app.mount('/media',MediaFiles(directory=str(UPLOAD_DIR)),name='media')

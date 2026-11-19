@@ -161,6 +161,10 @@ Le entità del catalogo sono affiancate dalle tabelle fotografiche, di importazi
   Prezzi e valute restano distinti; date regionali, originali e citazioni sono
   conservati. I listini successivi senza data non ricevono l'anno di lancio.
   [Regole ed esempi](docs/RELEASE_SUMMARIES.md).
+- Recupero automatico dei prezzi rimasti nelle note di vecchie importazioni
+  Excel, usando soltanto i campi originali completi e la fonte già associata.
+  Il recupero conserva note e dati esistenti e produce un resoconto verificabile.
+  [Regole del recupero prezzi](docs/HISTORICAL_PRICES.md#recupero-automatico-dei-prezzi-già-presenti-nelle-note).
 - Una citazione per offerta e nessun riquadro di provenienza;
   le fonti MAME e le autocitazioni HHE sono escluse dal catalogo, dal pannello
   Fonti e dal contesto AI. RetroFlops resta visibile solo se ancora collegato
