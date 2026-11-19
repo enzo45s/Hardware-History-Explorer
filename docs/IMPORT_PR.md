@@ -40,6 +40,11 @@ Il ritentativo mirato seleziona i vecchi candidati e i nomi interessati dagli
 alias corretti, conservando gli altri esiti. Recuperati nei controlli reali
 PDP-1, Epson HX-20, M15, NeXTcube, Atari 800 e Macintosh PowerBook 180;
 il pannello rende visibili anche saltate, modifiche e query rifiutate.
+Il filtro storico riconosce inoltre handheld PC, palmari e notebook: corretta
+la falsa esclusione della voce italiana Atari Portfolio, con controprova che
+mantiene esclusa la voce generica Portfolio. Titolo, produttore e revisione
+restano obbligatori; i vecchi esiti possono essere ritentati senza riscrivere
+i testi già riusciti.
 
 Il pannello RAM e varianti recupera capacità documentate (incluso HP 85 da
 1000bit) e consolida le denominazioni di configurazione conservando dati,

@@ -70,6 +70,11 @@ incluse differenze nella punteggiatura societaria. Un codice numerico, ad esempi
 
 Sono richiesti un modello corrispondente, il produttore nel testo, un'introduzione
 di almeno 120 caratteri con informazioni storiche e una revisione identificata.
+Il contesto informatico riconosce anche i termini handheld/pocket/tablet PC,
+palmare, palmtop, notebook, netbook, laptop e personal digital assistant. Non è
+necessario che la voce usi letteralmente la parola «computer». Una sigla PC
+isolata, però, non basta: modello, produttore, revisione e contesto storico
+rimangono obbligatori.
 Si normalizzano separatori, marchi e alias espliciti già riconosciuti dal catalogo.
 Le pagine di disambiguazione, i testi troppo brevi, le famiglie diverse dal
 modello e gli abbinamenti plurimi non vengono applicati automaticamente.
@@ -195,6 +200,24 @@ consultate, con i rispettivi identificativi di revisione. Testi dei collaborator
 di Wikipedia, licenza **CC BY-SA 4.0**, come le altre fixture di questa guida.
 Il browser usa invece dati sintetici per verificare il nuovo ritentativo,
 il conteggio degli esiti, la pausa/ripresa, la conservazione dei testi e il mobile.
+
+### Atari Portfolio e lessico dei portatili
+
+La voce italiana [Atari Portfolio, revisione 138561566](https://it.wikipedia.org/w/index.php?title=Atari_Portfolio&oldid=138561566)
+descrive il sistema come «handheld PC». Il vecchio filtro riconosceva titolo e
+produttore ma scartava il testo perché non riconosceva quel termine. Il nuovo
+vocabolario condiviso vale per introduzioni, pagine di famiglia e selezione
+del titolo da consultare integralmente. Non è una corrispondenza speciale
+che autorizza la voce generica [Portfolio, revisione 142119564](https://it.wikipedia.org/w/index.php?title=Portfolio&oldid=142119564).
+Le due risposte ufficiali, consultate il 19 novembre 2026, sono conservate in
+`wikipedia-it-atari-portfolio.json` e `wikipedia-it-portfolio-generic.json`;
+testi dei collaboratori di Wikipedia, licenza CC BY-SA 4.0.
+
+Se una ricerca è in corso, metterla in pausa prima di aggiornare il programma,
+poi riprenderla. I modelli già scartati non tornano in coda automaticamente:
+a lavoro completato usare **Riprova gli abbinamenti migliorati**. La nuova
+versione del filtro consente di riesaminare i vecchi candidati, conservando
+descrizioni riuscite e originali. Non vengono tradotti testi né usate API AI.
 
 Con l'ampliamento della ricerca sono state consultate anche le voci italiane
 **PowerBook 180** (134995523), **BBC Micro** (149844331) e **Atari 8-bit**

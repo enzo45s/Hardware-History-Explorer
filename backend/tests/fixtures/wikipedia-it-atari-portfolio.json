@@ -1,0 +1,19 @@
+{
+  "batchcomplete": true,
+  "query": {
+    "pages": [
+      {
+        "pageid": 2467046,
+        "ns": 0,
+        "title": "Atari Portfolio",
+        "extract": "L'Atari Portfolio è un handheld PC dell'Atari commercializzato a partire dal 1989. In particolare l'Atari Portfolio è stato il primo handheld PC disponibile in commercio a rientrare nella famiglia dei PC IBM compatibili. In Italia fu commercializzato con il nome Atari PCfolio.\n\n\n== Descrizione ==\nA livello tecnico l'Atari Portfolio è un XT compatibile MS-DOS, costruito utilizzando un processore 80C88 a 4,9152 MHz. Le sue dimensioni sono pari a quelle di una videocassetta VHS, mentre il peso è pari a poco più di 500 grammi.\nLa versione standard ha 128 kB di memoria RAM e 256 kB di ROM. Una parte della memoria RAM viene utilizzata come disco fisso, grazie ad una batteria tampone che evita la perdita dei dati. Ha uno schermo LCD monocromatico senza retroilluminazione, con la risoluzione di 240×64 pixel o 40 caratteri × 8 linee.\nViene venduto con i seguenti software pre-installati: \n\nsistema operativo DIP 2.11 (compatibile con MS-DOS e PC BIOS);\nelaboratore di testi;\nCalendario;\nfoglio di calcolo compatibile con la suite Lotus.\nPortfolio presenta sul lato destro una porta per schede di espansione, che non è però compatibile con PCMCIA. Ci sono moduli di espansione per porta parallela, seriale e MIDI. \nPresenta inoltre un connettore per inserire schede di memoria a stato solido da 64, 128 e 256 kB. L'alimentazione è fornita da tre pile stilo AA.\n\n\n== Atari Portfolio nei media ==\nL'Atari Portfolio appare nel film Terminator 2 - Il giorno del giudizio: viene utilizzato dal protagonista, il giovane John Connor, per aprire una porta di sicurezza utilizzante un sistema basato su smart card e per rubare da un Bancomat.\n\n\n== Bibliografia ==\nAndrea de Prisco, Atari PCfolio (JPG), in MCmicrocomputer, n. 91, Roma, Technimedia, dicembre 1989,  pp. 106-110, ISSN 1123-2714. Trascrizione del testo, su digitanto.it.\n\n\n== Altri progetti ==\n\n Wikimedia Commons contiene immagini o altri file su Atari Portfolio",
+        "revisions": [
+          {
+            "revid": 138561566,
+            "parentid": 137707933
+          }
+        ]
+      }
+    ]
+  }
+}

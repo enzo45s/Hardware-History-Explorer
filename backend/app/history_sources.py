@@ -13,7 +13,11 @@ from .catalog_names import catalog_name
 API = 'https://it.wikipedia.org/w/api.php'
 LICENSE = 'https://creativecommons.org/licenses/by-sa/4.0/'
 MAX_RESPONSE = 2 * 1024 * 1024
-SEARCH_VERSION = 4
+SEARCH_VERSION = 5
+COMPUTING_CONTEXT = re.compile(
+    r'\b(?:\w*computers?|calcolator\w*|elaborator\w*|mainframe|workstation|'
+    r'palmare|palmari|palmtop|notebook|netbook|subnotebook|laptop|'
+    r'(?:handheld|pocket|tablet|desktop|personal)\s+PC|personal\s+digital\s+assistant|organizzator\w*\s+elettronic\w*)\b', re.I)
 
 
 def maker_aliases(maker):
@@ -131,7 +135,7 @@ def intro(extract):
     if len(text) > 1500:
         ends = list(re.finditer(r'[.!?](?=\s|$)', text[:1501]))
         text = text[:ends[-1].end()] if ends else ''
-    return text if len(text) >= 120 and re.search(r'\b(?:computer|microcomputer|minicomputer|supercomputer|calcolator\w*|elaborator\w*|mainframe|workstation)\b', text, re.I) and re.search(
+    return text if len(text) >= 120 and COMPUTING_CONTEXT.search(text) and re.search(
         r'\b(?:19\d{2}|20\d{2}|svilupp\w*|progett\w*|commercial\w*|introdott\w*|presentat\w*|success\w*|diffus\w*|destinat\w*)\b', text, re.I) else None
 
 
@@ -175,7 +179,7 @@ def family_excerpt(model, maker, page, payload):
     """Quote model-specific passages only in an explicitly linked family page."""
     text = page.get('extract', '')
     lead = text.split('\n\n', 1)[0]
-    if not maker_in_text(maker, lead) or not re.search(r'\b(?:\w*computer|calcolator\w*)\b', lead, re.I):
+    if not maker_in_text(maker, lead) or not COMPUTING_CONTEXT.search(lead):
         return None
     aliases = maker_aliases(maker)
     core = model_key(maker, model)[1]
@@ -316,7 +320,7 @@ async def research(model, maker, *, attempt=0, full_title=None):
             lead = page.get('extract', '').split('\n\n', 1)[0]
             if (not page.get('missing') and 'disambiguation' not in page.get('pageprops', {})
                 and model_key(maker, page['title']) == model_key(maker, model)
-                and maker_in_text(maker, lead) and re.search(r'\b(?:\w*computer|calcolator\w*)\b', lead, re.I)):
+                and maker_in_text(maker, lead) and COMPUTING_CONTEXT.search(lead)):
                 result['full_title'] = page['title']
                 break
         if result['status'] in ('no_match', 'search_error') and attempt + 1 < len(plan):
