@@ -1,0 +1,291 @@
+import hashlib
+import csv
+from collections import Counter
+from typing import Literal
+from fastapi import APIRouter, Depends, File, Form, HTTPException, Query, UploadFile
+from pydantic import Field
+from sqlalchemy import select, func
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm import Session, object_session
+from ..admin import Input, catalog_lock
+from ..models import Computer
+from ..import_models import ImportJob, ImportRow, ImportClaim, CatalogReconciliation
+from .normalize import MAX_BYTES, parse_payload
+from .engine import stage, apply_job, review_claim, original_bytes
+from .providers import PROVIDERS, fetch_provider, upload_records
+from .presentation import claim_presentation
+from . import reconcile
+from ..source_policy import excluded_source_ids, is_visible_source
+
+
+def job_data(job):
+    counts = Counter(r.status for r in job.rows)
+    db = object_session(job)
+    verification = dict(db.execute(select(ImportClaim.status, func.count()).join(ImportRow, ImportClaim.row_id == ImportRow.id)
+        .where(ImportRow.job_id == job.id, ImportClaim.source_id.not_in(excluded_source_ids(db))).group_by(ImportClaim.status)).all()) if db else {}
+    records = [row.normalized for row in job.rows if row.normalized]
+    prices = sum(release.get('price') is not None for record in records for release in record.get('releases', []))
+    return {'id': job.id, 'provider': job.provider, 'filename': job.filename, 'checksum': job.checksum,
+            'format': job.format, 'status': job.status, 'error': job.error, 'retry_of': job.retry_of,
+            'created_at': job.created_at.isoformat(), 'total': len(job.rows), 'counts': dict(counts), 'verification_counts': verification,
+            'existing_only': bool(job.request_options.get('existing_only')),
+            'price_workbook_report': job.request_options.get('price_workbook_report'),
+            'data_coverage': {'records_with_source': sum(bool(record.get('source')) for record in records), 'prices': prices}}
+
+
+def claim_data(c):
+    from .catalog_aliases import assertion_variant
+    return {'id': c.id, 'computer_id': c.computer_id, 'entity': c.entity, 'target_id': c.target_id,
+            'field': c.field, 'value': c.value, 'previous': c.previous, 'status': c.status,
+            'estimated': c.estimated, 'evidence': c.evidence, 'review_note': c.review_note,
+            'model_variant': assertion_variant(object_session(c), c),
+            'reviewed_at': c.reviewed_at.isoformat() if c.reviewed_at else None,
+            'source': {'id': c.source.id, 'title': c.source.title, 'url': c.source.url}, 'display': claim_presentation(c)}
+
+
+class RemoteRequest(Input):
+    provider: Literal['wikidata', 'retroflops', '1000bit']
+    ids: list[str] = Field(default_factory=list, max_length=20)
+    urls: list[str] = Field(default_factory=list, max_length=5)
+    existing_only: bool | None = None
+
+
+class Mapping(Input):
+    computer_id: int = Field(gt=0)
+
+
+class Decision(Input):
+    decision: Literal['accept', 'reject']
+    note: str = Field(min_length=5, max_length=2000)
+
+
+class ReconciliationRequest(Input):
+    entity: Literal['computer', 'manufacturer']
+    source_id: int = Field(gt=0)
+    target_id: int = Field(gt=0)
+
+
+class ReconciliationApply(ReconciliationRequest):
+    token: str = Field(pattern=r'^[a-f0-9]{64}$')
+    note: str = Field(min_length=5, max_length=2000)
+
+
+def create_import_router(get_db):
+    router = APIRouter(prefix='/api/admin/imports', tags=['Importazioni locali'])
+
+    def job_or_404(db, job_id):
+        job = db.get(ImportJob, job_id)
+        if job is None:
+            raise HTTPException(404, 'Importazione non trovata')
+        return job
+
+    def remote_job(db, provider, options, retry_of=None):
+        try:
+            raw, records = fetch_provider(provider, options)
+            return stage(db, provider, provider + '.json', 'json', raw, records=records, options=options, retry_of=retry_of)
+        except Exception as exc:
+            db.rollback()
+            # Network errors never leak proxy credentials, response bodies or connection strings.
+            message = str(exc)[:1000] if isinstance(exc, ValueError) else 'Fonte non raggiungibile o risposta rifiutata. Verifica rete, policy e limiti del servizio; poi usa Riprova.'
+            job = ImportJob(provider=provider, filename=provider + '.json', format='json', checksum=hashlib.sha256(b'').hexdigest(), raw_payload='',
+                            status='failed', error=message, request_options=options, retry_of=retry_of)
+            db.add(job)
+            db.commit()
+            return job
+
+    @router.get('/providers')
+    def providers():
+        return PROVIDERS
+
+    @router.get('/price-context-recovery')
+    def price_context_recovery(db: Session = Depends(get_db)):
+        # Read only metadata first, not all archived Excel attachments.
+        ids = [identifier for identifier, options in db.execute(select(ImportJob.id, ImportJob.request_options)
+            .where(ImportJob.provider == 'historical_prices', ImportJob.status != 'archived').order_by(ImportJob.id.desc()))
+            if options.get('price_context_recovery')][:10]
+        return [job_data(db.get(ImportJob, identifier)) for identifier in ids]
+
+    @router.get('/reconciliation/duplicates')
+    def duplicates(db: Session = Depends(get_db)):
+        return reconcile.duplicate_groups(db)
+
+    @router.post('/reconciliation/preview')
+    def preview_reconciliation(data: ReconciliationRequest, db: Session = Depends(get_db)):
+        try:
+            return reconcile.prepare(db, data.entity, data.source_id, data.target_id)[3]
+        except ValueError as exc:
+            raise HTTPException(409, str(exc)) from exc
+
+    @router.post('/reconciliation/apply')
+    def apply_reconciliation(data: ReconciliationApply, db: Session = Depends(get_db)):
+        try:
+            return reconcile.apply(db, **data.model_dump())
+        except (ValueError, IntegrityError) as exc:
+            db.rollback()
+            raise HTTPException(409, str(exc) if isinstance(exc, ValueError) else 'Dati in conflitto: aggiorna l’anteprima prima di riprovare') from exc
+
+    @router.get('/reconciliation/history')
+    def reconciliation_history(db: Session = Depends(get_db), limit: int = Query(30, ge=1, le=100), offset: int = Query(0, ge=0)):
+        return [{'id': r.id, 'entity': r.entity, 'source_id': r.source_id, 'target_id': r.target_id, 'note': r.note,
+                 'created_at': r.created_at.isoformat()} for r in db.scalars(select(CatalogReconciliation)
+                     .order_by(CatalogReconciliation.id.desc()).offset(offset).limit(limit))]
+
+    @router.get('/reconciliation/history/{reconciliation_id}')
+    def reconciliation_original(reconciliation_id: int, db: Session = Depends(get_db)):
+        from fastapi.responses import JSONResponse
+        audit = db.get(CatalogReconciliation, reconciliation_id)
+        if audit is None:
+            raise HTTPException(404, 'Riconciliazione non trovata')
+        return JSONResponse(audit.snapshot, headers={'Content-Disposition': 'attachment; filename="reconciliation-original.json"',
+                                                     'X-Content-Type-Options': 'nosniff'})
+
+    @router.get('')
+    def jobs(limit: int = Query(30, ge=1, le=100), offset: int = Query(0, ge=0), db: Session = Depends(get_db)):
+        return [job_data(j) for j in db.scalars(select(ImportJob).order_by(ImportJob.id.desc()).offset(offset).limit(limit))]
+
+    @router.post('/upload', status_code=201)
+    def upload(file: UploadFile = File(...), provider: str = Form('manual'),
+               rights_confirmed: bool = Form(False), existing_only: bool | None = Form(None),
+               source_url: str | None = Form(None, max_length=800), db: Session = Depends(get_db)):
+        if provider not in {p['id'] for p in PROVIDERS}:
+            raise HTTPException(422, 'Fonte sconosciuta')
+        if not rights_confirmed:
+            raise HTTPException(422, 'Conferma di avere il diritto di importare il dataset')
+        try:
+            raw = file.file.read(MAX_BYTES + 1)
+        finally:
+            file.file.close()
+        if len(raw) > MAX_BYTES:
+            raise HTTPException(413, 'Massimo 8 MB')
+        filename = (file.filename or 'dataset').replace('\\', '/').split('/')[-1][:250]
+        format = filename.rsplit('.', 1)[-1].lower()
+        try:
+            price_report = None
+            if provider == 'historical_prices' and format == 'xlsx':
+                from .prices import workbook_records
+                records, price_report = workbook_records(raw)
+            else:
+                records = upload_records(provider, format, raw, source_url)
+            job = stage(db, provider, filename, format, raw, records=records,
+                        options={'upload': True, 'rights_confirmed': True, 'source_url': source_url,
+                                 **({'price_workbook_report': price_report} if price_report is not None else {}),
+                                 'existing_only': existing_only if existing_only is not None else provider == '1000bit'})
+        except (ValueError, TypeError, KeyError, RecursionError, csv.Error) as exc:
+            db.rollback()
+            raise HTTPException(422, 'Dataset non valido: ' + str(exc)[:2000]) from exc
+        return job_data(job)
+
+    @router.post('/remote', status_code=201)
+    def remote(data: RemoteRequest, db: Session = Depends(get_db)):
+        if data.provider == '1000bit':
+            from .bit1000 import sheet_url
+            try:
+                if not data.urls or data.ids:
+                    raise ValueError('Indica da 1 a 5 URL di schede 1000bit.')
+                urls = [sheet_url(url) for url in data.urls]
+            except ValueError as exc:
+                raise HTTPException(422, str(exc)) from exc
+        else:
+            if data.urls:
+                raise HTTPException(422, 'Gli URL delle schede sono disponibili solo per 1000bit.')
+            urls = []
+        return job_data(remote_job(db, data.provider, {'ids': data.ids, 'urls': urls,
+            'existing_only': data.existing_only if data.existing_only is not None else data.provider == '1000bit'}))
+
+    @router.get('/{job_id}')
+    def detail(job_id: int, offset: int = Query(0, ge=0), limit: int = Query(25, ge=1, le=100), db: Session = Depends(get_db)):
+        job = job_or_404(db, job_id)
+        hidden_sources = set(excluded_source_ids(db))
+        rows = db.scalars(select(ImportRow).where(ImportRow.job_id == job_id).order_by(ImportRow.position).offset(offset).limit(limit))
+        def computer_label(computer_id):
+            c = db.get(Computer, computer_id) if computer_id else None
+            return f'{c.manufacturer.name} · {c.model_name}' if c else None
+        def description_preview(row):
+            if job.provider == 'historical_descriptions':
+                from .descriptions import preview
+                return preview(db, row)
+            return None
+        return {**job_data(job), 'rows': [{'id': r.id, 'position': r.position, 'raw': r.raw, 'normalized': r.normalized,
+                  'status': r.status, 'error': r.error, 'computer_id': r.computer_id, 'candidates': r.candidates,
+                  'computer_label': computer_label(r.computer_id),
+                  'description_preview': description_preview(r),
+                  'candidate_labels': [computer_label(cid) or f'Voce rimossa (ID {cid})' for cid in r.candidates],
+                  'claims': [claim_data(c) for c in r.claims if c.source_id not in hidden_sources]} for r in rows]}
+
+    @router.get('/{job_id}/original')
+    def original(job_id: int, db: Session = Depends(get_db)):
+        from fastapi.responses import Response
+        job = job_or_404(db, job_id)
+        extension = 'json' if job.provider == 'historical_descriptions' else 'xlsx' if job.provider == 'historical_prices' and job.format == 'xlsx' else 'txt'
+        return Response(original_bytes(job), media_type='application/octet-stream',
+                        headers={'Content-Disposition': f'attachment; filename="import-original.{extension}"', 'X-Content-Type-Options': 'nosniff'})
+
+    @router.post('/{job_id}/apply')
+    def apply(job_id: int, db: Session = Depends(get_db)):
+        job_or_404(db, job_id)
+        try:
+            return job_data(apply_job(db, job_id))
+        except ValueError as exc:
+            db.rollback()
+            raise HTTPException(409, str(exc)) from exc
+
+    @router.post('/{job_id}/retry', status_code=201)
+    def retry(job_id: int, db: Session = Depends(get_db)):
+        previous = job_or_404(db, job_id)
+        options = previous.request_options
+        if options.get('managed_classification'):
+            raise HTTPException(409, 'La classificazione si gestisce da Amministrazione → Categorie. Aggiorna l’analisi da quel pannello.')
+        if options.get('managed_history'):
+            raise HTTPException(409, 'Questa ricerca si gestisce da Amministrazione → Cenni storici. Riprendi la coda o avvia una nuova ricerca da quel pannello.')
+        if not options.get('upload'):
+            return job_data(remote_job(db, previous.provider, options, retry_of=previous.id))
+        raw = original_bytes(previous)
+        if previous.provider == 'historical_prices' and previous.format == 'xlsx':
+            from .prices import workbook_records
+            records, report = workbook_records(raw)
+            options = {**options, 'price_workbook_report': report}
+        else:
+            records = upload_records(previous.provider, previous.format, raw, options.get('source_url'))
+        return job_data(stage(db, previous.provider, previous.filename, previous.format, raw, records=records,
+                              options=options, retry_of=previous.id))
+
+    @router.post('/{job_id}/rows/{row_id}/skip')
+    def skip(job_id: int, row_id: int, db: Session = Depends(get_db)):
+        job = job_or_404(db, job_id)
+        row = db.get(ImportRow, row_id)
+        if row is None or row.job_id != job_id:
+            raise HTTPException(404, 'Riga non trovata')
+        if job.status != 'ready':
+            raise HTTPException(409, 'Puoi escludere righe solo prima di applicare l’importazione')
+        row.status = 'skipped'
+        db.commit()
+        return {'status': 'skipped'}
+
+    @router.post('/{job_id}/rows/{row_id}/match')
+    def match(job_id: int, row_id: int, data: Mapping, db: Session = Depends(get_db)):
+        job = job_or_404(db, job_id)
+        row = db.get(ImportRow, row_id)
+        if row is None or row.job_id != job_id:
+            raise HTTPException(404, 'Riga non trovata')
+        if job.status != 'ready' or row.status not in ('ready', 'ambiguous'):
+            raise HTTPException(409, 'Crea una nuova anteprima con Riprova prima di cambiare la corrispondenza')
+        if db.get(Computer, data.computer_id) is None:
+            raise HTTPException(422, 'Calcolatore inesistente')
+        row.computer_id, row.status = data.computer_id, 'ready'
+        db.commit()
+        return {'status': 'ready', 'computer_id': row.computer_id}
+
+    @router.post('/claims/{claim_id}/review')
+    def review(claim_id: int, data: Decision, db: Session = Depends(get_db)):
+        catalog_lock(db)
+        c = db.scalar(select(ImportClaim).where(ImportClaim.id == claim_id).with_for_update())
+        if c is None or not is_visible_source(db,c.source):
+            raise HTTPException(404, 'Asserzione non trovata')
+        try:
+            review_claim(db, c, data.decision, data.note)
+        except (ValueError, IntegrityError) as exc:
+            db.rollback()
+            raise HTTPException(409, str(exc) if isinstance(exc, ValueError) else 'Decisione incompatibile con i vincoli: controlla i dati correlati') from exc
+        return claim_data(c)
+
+    return router

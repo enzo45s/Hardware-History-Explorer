@@ -1,0 +1,1425 @@
+{
+  "summary": {
+    "schema": "hhe-olivetti-enrichment-v1",
+    "import_mode": "existing_only",
+    "access_date": "2026-11-20",
+    "catalog_models": 81,
+    "html_sha256": "e39ec10a0a133d94abf154892d345a428173c3f466be514320d3c3683c53853f",
+    "models_with_data": 62,
+    "specifications": 513,
+    "verification": "pending; consultazione documentata, nessuna verifica storica automatica",
+    "scope": "Solo le denominazioni delle 81 schede nell’HTML fornito. Nessuna creazione di nuovi sistemi, prezzo, data di lancio, descrizione o categoria.",
+    "source_policy": "1000bit: autorizzazione già dichiarata dall’operatore; robots consultato e intervallo minimo 5 s. Wikipedia: API ufficiali. Brochure e manuali non redistribuiti."
+  },
+  "models": [
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Elea 9003",
+      "status": "dati_tecnici_trovati",
+      "specifications": 3,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_Elea_9003&oldid=153427862",
+        "https://www.1000bit.it/scheda.asp?id=1289"
+      ],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Elea 6001",
+      "status": "dati_tecnici_trovati",
+      "specifications": 2,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=1290"
+      ],
+      "missing_components": [
+        "CPU",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Elea 4001",
+      "status": "dati_tecnici_trovati",
+      "specifications": 1,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=1291"
+      ],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Programma 101",
+      "status": "dati_tecnici_trovati",
+      "specifications": 5,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_Programma_101&oldid=153417377",
+        "https://www.1000bit.it/scheda.asp?id=681"
+      ],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P102",
+      "status": "dati_tecnici_trovati",
+      "specifications": 3,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_Programma_102&oldid=149891990"
+      ],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P203",
+      "status": "dati_tecnici_trovati",
+      "specifications": 5,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_P203&oldid=145416592"
+      ],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P602",
+      "status": "dati_tecnici_trovati",
+      "specifications": 4,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_P602&oldid=143182063",
+        "https://www.1000bit.it/scheda.asp?id=644"
+      ],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P603",
+      "status": "dati_tecnici_trovati",
+      "specifications": 7,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_P603&oldid=153417355",
+        "https://www.1000bit.it/scheda.asp?id=2641"
+      ],
+      "missing_components": [
+        "RAM",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P652",
+      "status": "dati_tecnici_trovati",
+      "specifications": 7,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_P652&oldid=144464153",
+        "https://www.1000bit.it/scheda.asp?id=1407"
+      ],
+      "missing_components": [
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Audit 5",
+      "status": "dati_tecnici_trovati",
+      "specifications": 5,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=2043"
+      ],
+      "missing_components": [
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Audit 7",
+      "status": "dati_tecnici_trovati",
+      "specifications": 4,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=2045"
+      ],
+      "missing_components": [
+        "CPU",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P6060",
+      "status": "dati_tecnici_trovati",
+      "specifications": 12,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_P6060&oldid=149604510",
+        "https://www.1000bit.it/scheda.asp?id=191"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P6040",
+      "status": "dati_tecnici_trovati",
+      "specifications": 5,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=363"
+      ],
+      "missing_components": [
+        "Video"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P6040 SBS",
+      "status": "dati_tecnici_trovati",
+      "specifications": 3,
+      "configurations": 1,
+      "sources": [
+        "https://archive.org/details/olivettip6040sbsistruzioni"
+      ],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P6066",
+      "status": "dati_tecnici_trovati",
+      "specifications": 16,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_P6066&oldid=149891837",
+        "https://www.1000bit.it/scheda.asp?id=995"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 3030",
+      "status": "dati_tecnici_trovati",
+      "specifications": 3,
+      "configurations": 1,
+      "sources": [
+        "https://www.computinghistory.org.uk/det/34739/Olivetti-BCS-3030/"
+      ],
+      "missing_components": [
+        "RAM",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 2005",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 2010",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 2020",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 2025",
+      "status": "dati_tecnici_trovati",
+      "specifications": 6,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_BCS_2025&oldid=149263008",
+        "https://www.1000bit.it/scheda.asp?id=2525"
+      ],
+      "missing_components": [
+        "Storage"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 2030",
+      "status": "dati_tecnici_trovati",
+      "specifications": 5,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=2526"
+      ],
+      "missing_components": [
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 2035",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "S6000",
+      "status": "dati_tecnici_trovati",
+      "specifications": 6,
+      "configurations": 1,
+      "sources": [
+        "https://archive.org/details/olivettis6000"
+      ],
+      "missing_components": [
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Olivetti L1 M20",
+      "status": "dati_tecnici_trovati",
+      "specifications": 10,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_M20&oldid=149403419",
+        "https://www.1000bit.it/ad/bro/olivetti/olivettim20pc.pdf#page=2"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Olivetti L1 M40",
+      "status": "dati_tecnici_trovati",
+      "specifications": 4,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=1640"
+      ],
+      "missing_components": [
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M20 BC",
+      "status": "dati_tecnici_trovati",
+      "specifications": 11,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=50"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M20 ST",
+      "status": "dati_tecnici_trovati",
+      "specifications": 11,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=49"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M10",
+      "status": "dati_tecnici_trovati",
+      "specifications": 13,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_M10&oldid=142306389",
+        "https://www.1000bit.it/scheda.asp?id=48"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M24",
+      "status": "dati_tecnici_trovati",
+      "specifications": 13,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_M24&oldid=144611972",
+        "https://www.1000bit.it/scheda.asp?id=117"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M21",
+      "status": "dati_tecnici_trovati",
+      "specifications": 14,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_M21&oldid=149403420",
+        "https://www.1000bit.it/scheda.asp?id=257"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M19",
+      "status": "dati_tecnici_trovati",
+      "specifications": 10,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_M19&oldid=149264823",
+        "https://www.1000bit.it/scheda.asp?id=256"
+      ],
+      "missing_components": [
+        "Video"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M22",
+      "status": "dati_tecnici_trovati",
+      "specifications": 10,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=2136"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M24 SP",
+      "status": "dati_tecnici_trovati",
+      "specifications": 8,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=1829"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M28",
+      "status": "dati_tecnici_trovati",
+      "specifications": 4,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=558"
+      ],
+      "missing_components": [
+        "Video"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Olivetti L1 M44",
+      "status": "dati_tecnici_trovati",
+      "specifications": 5,
+      "configurations": 1,
+      "sources": [
+        "https://archive.org/details/m-34-m-44"
+      ],
+      "missing_components": [
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Prodest PC 128",
+      "status": "dati_tecnici_trovati",
+      "specifications": 13,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_Prodest_PC_128&oldid=151537004",
+        "https://www.1000bit.it/scheda.asp?id=63"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M240",
+      "status": "dati_tecnici_trovati",
+      "specifications": 6,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=258"
+      ],
+      "missing_components": [
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M280",
+      "status": "dati_tecnici_trovati",
+      "specifications": 13,
+      "configurations": 1,
+      "sources": [
+        "https://archive.org/details/olivettim280"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Prodest PC 1",
+      "status": "dati_tecnici_trovati",
+      "specifications": 9,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_Prodest_PC_1&oldid=149265347",
+        "https://www.1000bit.it/scheda.asp?id=259"
+      ],
+      "missing_components": [
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Prodest PC 128S",
+      "status": "dati_tecnici_trovati",
+      "specifications": 5,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_Prodest_PC_128_S&oldid=149386243",
+        "https://www.1000bit.it/scheda.asp?id=6"
+      ],
+      "missing_components": [
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M200",
+      "status": "dati_tecnici_trovati",
+      "specifications": 6,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=1960"
+      ],
+      "missing_components": [
+        "RAM"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M290",
+      "status": "dati_tecnici_trovati",
+      "specifications": 7,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=1428"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M111",
+      "status": "dati_tecnici_trovati",
+      "specifications": 10,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=329"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M211",
+      "status": "dati_tecnici_trovati",
+      "specifications": 1,
+      "configurations": 1,
+      "sources": [
+        "https://en.wikipedia.org/w/index.php?title=Olivetti_computers&oldid=1360173975"
+      ],
+      "missing_components": [
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M290S",
+      "status": "dati_tecnici_trovati",
+      "specifications": 10,
+      "configurations": 1,
+      "sources": [
+        "https://archive.org/details/olivettim290s"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M300",
+      "status": "dati_tecnici_trovati",
+      "specifications": 18,
+      "configurations": 2,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=1480",
+        "https://www.1000bit.it/scheda.asp?id=2242"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M380",
+      "status": "dati_tecnici_trovati",
+      "specifications": 22,
+      "configurations": 3,
+      "sources": [
+        "https://www.1000bit.it/ad/bro/olivetti/olivettinewsjuly1989no2.pdf#page=13",
+        "https://www.1000bit.it/scheda.asp?id=1890",
+        "https://www.1000bit.it/scheda.asp?id=395"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCS 286",
+      "status": "dati_tecnici_trovati",
+      "specifications": 8,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=1427"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCS 86",
+      "status": "dati_tecnici_trovati",
+      "specifications": 9,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=2120"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M316",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCS 386",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "A12",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "D33/C",
+      "status": "dati_tecnici_trovati",
+      "specifications": 16,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/ad/bro/olivetti/olivetti-laptopd33-c-de.pdf#page=4"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M700-10",
+      "status": "dati_tecnici_trovati",
+      "specifications": 1,
+      "configurations": 1,
+      "sources": [
+        "https://en.wikipedia.org/w/index.php?title=Olivetti_computers&oldid=1360173975"
+      ],
+      "missing_components": [
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Quaderno",
+      "status": "dati_tecnici_trovati",
+      "specifications": 6,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=126"
+      ],
+      "missing_components": [
+        "CPU"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCS 11",
+      "status": "dati_tecnici_trovati",
+      "specifications": 8,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=583"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Philos 44",
+      "status": "dati_tecnici_trovati",
+      "specifications": 11,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=2608"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Quaderno 33",
+      "status": "dati_tecnici_trovati",
+      "specifications": 10,
+      "configurations": 1,
+      "sources": [
+        "https://en.wikipedia.org/w/index.php?title=Olivetti_Quaderno&oldid=1374882243"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Echos 42",
+      "status": "dati_tecnici_trovati",
+      "specifications": 11,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=2085"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Echos 43 Color",
+      "status": "dati_tecnici_trovati",
+      "specifications": 11,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=2086"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Echos 20",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Envision 400",
+      "status": "dati_tecnici_trovati",
+      "specifications": 9,
+      "configurations": 1,
+      "sources": [
+        "https://en.wikipedia.org/w/index.php?title=Olivetti_Envision&oldid=1365822065"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Envision P75",
+      "status": "dati_tecnici_trovati",
+      "specifications": 9,
+      "configurations": 1,
+      "sources": [
+        "https://en.wikipedia.org/w/index.php?title=Olivetti_Envision&oldid=1365822065"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "CP486",
+      "status": "dati_tecnici_trovati",
+      "specifications": 3,
+      "configurations": 1,
+      "sources": [
+        "https://en.wikipedia.org/w/index.php?title=Olivetti_computers&oldid=1360173975"
+      ],
+      "missing_components": [
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Echos P75",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "LSX 5000",
+      "status": "dati_tecnici_trovati",
+      "specifications": 21,
+      "configurations": 3,
+      "sources": [
+        "https://www.1000bit.it/ad/bro/olivetti/olivetti-beforechoosinganyotherservercounttoten.pdf#page=2"
+      ],
+      "missing_components": [
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M15",
+      "status": "dati_tecnici_trovati",
+      "specifications": 19,
+      "configurations": 1,
+      "sources": [
+        "https://it.wikipedia.org/w/index.php?title=Olivetti_M15&oldid=149402907",
+        "https://www.1000bit.it/scheda.asp?id=255"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M15 Plus",
+      "status": "dati_tecnici_trovati",
+      "specifications": 10,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/ad/bro/olivetti/olivettim15en.pdf#page=4"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M28 SP",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M4 40 Modulo",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Notebook S20",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P500",
+      "status": "dati_tecnici_trovati",
+      "specifications": 2,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/ad/bro/olivetti/olivettinewsjuly1989no2.pdf#page=13"
+      ],
+      "missing_components": [
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCS 33",
+      "status": "dati_tecnici_trovati",
+      "specifications": 10,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=1941"
+      ],
+      "missing_components": []
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCS 42",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCS 44",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCX 386",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Philos 11",
+      "status": "dati_tecnici_trovati",
+      "specifications": 4,
+      "configurations": 1,
+      "sources": [
+        "https://www.1000bit.it/scheda.asp?id=596"
+      ],
+      "missing_components": [
+        "RAM",
+        "Storage"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Philos 20",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Philos 22",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Philos 33",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Philos 45 Color",
+      "status": "documentazione_tecnica_non_reperita",
+      "specifications": 0,
+      "configurations": 0,
+      "sources": [],
+      "missing_components": [
+        "CPU",
+        "RAM",
+        "Storage",
+        "Video",
+        "Sistema operativo"
+      ]
+    }
+  ],
+  "source_disagreements": [
+    {
+      "model": "Programma 101",
+      "variant": "Scheda tecnica",
+      "component": "Storage",
+      "property": "Dotazione",
+      "first_value": "Magnetic card recorder",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=681",
+      "other_value": "lettore/registratore di schede magnetiche 240x70 mm",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_Programma_101&oldid=153417377",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=681"
+    },
+    {
+      "model": "P6060",
+      "variant": "Scheda tecnica",
+      "component": "RAM",
+      "property": "Capacità riportata",
+      "first_value": "80Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=191",
+      "other_value": "8 KB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_P6060&oldid=149604510",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=191"
+    },
+    {
+      "model": "P6066",
+      "variant": "Scheda tecnica",
+      "component": "RAM",
+      "property": "Capacità riportata",
+      "first_value": "48-96Kb, 16Kb free",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=995",
+      "other_value": "48 KB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_P6066&oldid=149891837",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=995"
+    },
+    {
+      "model": "P6066",
+      "variant": "Scheda tecnica",
+      "component": "ROM",
+      "property": "Capacità riportata",
+      "first_value": "48Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=995",
+      "other_value": "Da 32 KB a 64 KB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_P6066&oldid=149891837",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=995"
+    },
+    {
+      "model": "P6066",
+      "variant": "Scheda tecnica",
+      "component": "Sistema operativo",
+      "property": "Nome",
+      "first_value": "Basic",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=995",
+      "other_value": "Proprietario con interprete BASIC",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_P6066&oldid=149891837",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=995"
+    },
+    {
+      "model": "P652",
+      "variant": "Scheda tecnica",
+      "component": "RAM",
+      "property": "Capacità riportata",
+      "first_value": "4-32Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=1407",
+      "other_value": "4 KB (estensibile a 32 KB)",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_P652&oldid=144464153",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=1407"
+    },
+    {
+      "model": "BCS 2025",
+      "variant": "Scheda tecnica",
+      "component": "CPU",
+      "property": "Modello",
+      "first_value": "Nec 8080",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=2525",
+      "other_value": "NEC µPD-8080",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_BCS_2025&oldid=149263008",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=2525"
+    },
+    {
+      "model": "BCS 2025",
+      "variant": "Scheda tecnica",
+      "component": "RAM",
+      "property": "Capacità riportata",
+      "first_value": "64Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=2525",
+      "other_value": "64 Kb",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_BCS_2025&oldid=149263008",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=2525"
+    },
+    {
+      "model": "M24",
+      "variant": "Scheda tecnica",
+      "component": "CPU",
+      "property": "Modello",
+      "first_value": "8086",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=117",
+      "other_value": "Intel 8086 a 8 MHz",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_M24&oldid=144611972",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=117"
+    },
+    {
+      "model": "M24",
+      "variant": "Scheda tecnica",
+      "component": "ROM",
+      "property": "Capacità riportata",
+      "first_value": "16Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=117",
+      "other_value": "16 KiB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_M24&oldid=144611972",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=117"
+    },
+    {
+      "model": "M24",
+      "variant": "Scheda tecnica",
+      "component": "RAM",
+      "property": "Capacità riportata",
+      "first_value": "128kb - 640kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=117",
+      "other_value": "128-640 KiB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_M24&oldid=144611972",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=117"
+    },
+    {
+      "model": "M24",
+      "variant": "Scheda tecnica",
+      "component": "Storage",
+      "property": "Dotazione",
+      "first_value": "Floppy 5,25\" 360Kb x 2, Hd 10Mb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=117",
+      "other_value": "1 o 2 FDD 5,25\" da 320/360KB o da 640/720KB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_M24&oldid=144611972",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=117"
+    },
+    {
+      "model": "M19",
+      "variant": "Scheda tecnica",
+      "component": "RAM",
+      "property": "Capacità riportata",
+      "first_value": "256 - 640Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=256",
+      "other_value": "256-640 KB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_M19&oldid=149264823",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=256"
+    },
+    {
+      "model": "M19",
+      "variant": "Scheda tecnica",
+      "component": "Storage",
+      "property": "Dotazione",
+      "first_value": "Floppy 5.25\" 320Kb, Hd 20Mb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=256",
+      "other_value": "1 o 2 FDD 5,25\" da 360 kB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_M19&oldid=149264823",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=256"
+    },
+    {
+      "model": "Prodest PC 128",
+      "variant": "Scheda tecnica",
+      "component": "CPU",
+      "property": "Modello",
+      "first_value": "6809E",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=63",
+      "other_value": "Motorola 6809E",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_Prodest_PC_128&oldid=151537004",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=63"
+    },
+    {
+      "model": "Prodest PC 128",
+      "variant": "Scheda tecnica",
+      "component": "ROM",
+      "property": "Capacità riportata",
+      "first_value": "64Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=63",
+      "other_value": "64 kiB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_Prodest_PC_128&oldid=151537004",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=63"
+    },
+    {
+      "model": "Prodest PC 128",
+      "variant": "Scheda tecnica",
+      "component": "RAM",
+      "property": "Capacità riportata",
+      "first_value": "128Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=63",
+      "other_value": "128 kiB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_Prodest_PC_128&oldid=151537004",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=63"
+    },
+    {
+      "model": "Prodest PC 1",
+      "variant": "Scheda tecnica",
+      "component": "CPU",
+      "property": "Modello",
+      "first_value": "NEC V40 - 4,77",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=259",
+      "other_value": "NEC V40",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_Prodest_PC_1&oldid=149265347",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=259"
+    },
+    {
+      "model": "Prodest PC 1",
+      "variant": "Scheda tecnica",
+      "component": "Storage",
+      "property": "Dotazione",
+      "first_value": "Floppy 3.5\" 720Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=259",
+      "other_value": "FDD 3,5\" da 720kB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_Prodest_PC_1&oldid=149265347",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=259"
+    },
+    {
+      "model": "Prodest PC 1",
+      "variant": "Scheda tecnica",
+      "component": "RAM",
+      "property": "Capacità riportata",
+      "first_value": "512 - 640Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=259",
+      "other_value": "512 kB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_Prodest_PC_1&oldid=149265347",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=259"
+    },
+    {
+      "model": "M21",
+      "variant": "Scheda tecnica",
+      "component": "Storage",
+      "property": "Dotazione",
+      "first_value": "Floppy 5.25\" 360Kb x 2, hd external 10Mb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=257",
+      "other_value": "1 o 2 FDD 5,25\" da 360/720 kB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_M21&oldid=149403420",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=257"
+    },
+    {
+      "model": "M21",
+      "variant": "Scheda tecnica",
+      "component": "ROM",
+      "property": "Capacità riportata",
+      "first_value": "16Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=257",
+      "other_value": "16 kB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_M21&oldid=149403420",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=257"
+    },
+    {
+      "model": "M15",
+      "variant": "Scheda tecnica",
+      "component": "CPU",
+      "property": "Modello",
+      "first_value": "80C88",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=255",
+      "other_value": "Intel 80C86",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_M15&oldid=149402907",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=255"
+    },
+    {
+      "model": "M15",
+      "variant": "Scheda tecnica",
+      "component": "Storage",
+      "property": "Dotazione",
+      "first_value": "Floppy 3.5\" 720Kb x 2",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=255",
+      "other_value": "2 FDD 3,5\" da 720 kB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_M15&oldid=149402907",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=255"
+    },
+    {
+      "model": "Prodest PC 128S",
+      "variant": "Scheda tecnica",
+      "component": "ROM",
+      "property": "Capacità riportata",
+      "first_value": "64Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=6",
+      "other_value": "64 kB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_Prodest_PC_128_S&oldid=149386243",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=6"
+    },
+    {
+      "model": "Prodest PC 128S",
+      "variant": "Scheda tecnica",
+      "component": "RAM",
+      "property": "Capacità riportata",
+      "first_value": "128Kb",
+      "first_source": "https://www.1000bit.it/scheda.asp?id=6",
+      "other_value": "128 kB",
+      "other_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_Prodest_PC_128_S&oldid=149386243",
+      "chosen_source": "https://www.1000bit.it/scheda.asp?id=6"
+    },
+    {
+      "model": "Olivetti L1 M20",
+      "variant": "Scheda tecnica",
+      "component": "Video",
+      "property": "Risoluzione",
+      "first_value": "512×256 (grafica), 80×25 o 64×16 (testuale)",
+      "first_source": "https://it.wikipedia.org/w/index.php?title=Olivetti_M20&oldid=149403419",
+      "other_value": "512 × 256 pixel",
+      "other_source": "https://www.1000bit.it/ad/bro/olivetti/olivettim20pc.pdf#page=2",
+      "chosen_source": "https://www.1000bit.it/ad/bro/olivetti/olivettim20pc.pdf#page=2"
+    }
+  ],
+  "limitations": [
+    "L’HTML contiene le copertine del catalogo, non le specifiche correnti: i conflitti con il database locale vanno controllati in anteprima.",
+    "Download di due manuali 1000bit riservato agli utenti registrati: non eseguito.",
+    "Voce italiana Echos P75 esclusa dai dati tecnici per contenuto anomalo (riferimento a USB/internet nella RAM) e assenza di supporto indipendente per i valori.",
+    "Le brochure su Echos P100/P120/P133, Echos 24/44/48 e Modulo M4-75/90 non descrivono i modelli omonimi di altre serie presenti nel catalogo: nessun trasferimento automatico delle dotazioni.",
+    "Programma 101, P102 e P203: memoria a registri non presentata come quantità di RAM convenzionale; Elea 9003: posizioni alfanumeriche non convertite in byte.",
+    "Le fonti consultate restano secondarie salvo brochure e manuali del produttore; informazioni discordanti e varianti sono riportate nel resoconto."
+  ]
+}

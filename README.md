@@ -2,6 +2,10 @@
 
 Web app per esplorare la storia dei calcolatori commerciali: timeline, catalogo, gallerie fotografiche, schede, confronti, statistiche e assistente AI basato sui dati archiviati.
 
+La navigazione fra sezioni, l'apertura/chiusura delle schede e il cambio di
+sezione amministrativa riportano la pagina in cima. Aggiornamenti dei dati e
+ricerche nella stessa vista conservano la posizione di lettura.
+
 ## Avvio con Docker
 
 1. Installa Docker Desktop / Docker Engine e Docker Compose.
@@ -12,6 +16,86 @@ Web app per esplorare la storia dei calcolatori commerciali: timeline, catalogo,
 6. Arresto: `docker compose down` (i dati e le fotografie caricate restano nei volumi Docker).
 
 Se stai **aggiornando la versione 1.0**, scompatta la nuova versione in una cartella e assicurati di avviare Compose dallo **stesso progetto/cartella**, così Docker può riutilizzare i precedenti volumi. Per backup e migrazione tra cartelle Compose usa un nome progetto stabile (`docker compose -p hardware-history-explorer ...`) e verifica i volumi. Non eseguire `docker compose down -v` perché elimina i volumi, incluse le immagini.
+
+## Trasferire l'archivio fra due computer (Windows e Mac)
+
+Con Docker Desktop avviato, dalla cartella del progetto in PowerShell:
+
+```powershell
+git pull --ff-only
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Transfer-HheArchive.ps1 -Mode Export -ProjectName hhe-import-test
+```
+
+Il file creato in **`backups\`** contiene l'intero database PostgreSQL e le foto
+caricate. Copialo sul secondo PC. Con la stessa versione Git del progetto:
+
+```powershell
+git pull --ff-only
+docker compose -p hhe-import-test up --build -d --wait
+powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\Transfer-HheArchive.ps1 -Mode Restore -ProjectName hhe-import-test -ArchivePath ".\backups\NOME-FILE.hhe-backup.tar.gz" -ConfirmRestore
+```
+
+Il ripristino **sostituisce l'archivio del secondo PC**, dopo averne creato
+automaticamente un backup `prima-del-ripristino-…` in `backups\`. Conserva prezzi,
+fonti, originali e stato delle importazioni. `.env` e chiavi API restano locali.
+Il nome progetto deve corrispondere all'istanza con i tuoi dati: controlla
+`docker compose ls -a`. [Guida completa, recupero e verifiche](docs/BACKUP_TRANSFER.md).
+
+Sul **Mac Intel con macOS Sonoma**, installa Docker Desktop per Intel e
+PowerShell 7 dal pacchetto ufficiale **`osx-x64.pkg`** indicato nella
+[guida Microsoft](https://learn.microsoft.com/powershell/scripting/install/install-powershell-on-macos).
+In alternativa, Homebrew usa la formula `brew install powershell`, senza
+`--cask`; su Intel puo richiedere la compilazione. Sonoma non figura piu
+nell'elenco attuale dei sistemi ufficialmente supportati da PowerShell:
+l'esecuzione nativa su questo sistema non e stata verificata qui. Nel Terminale,
+con la stessa revisione Git di Windows e il backup copiato in `backups/`:
+
+```bash
+docker compose -p hhe-import-test up --build -d --wait
+pwsh -NoProfile -File ./tools/Transfer-HheArchive.ps1 -Mode Restore -ProjectName hhe-import-test -ArchivePath "./backups/NOME-FILE.hhe-backup.tar.gz" -ConfirmRestore
+```
+
+Puoi trasferire il backup fra Windows e Mac senza convertirlo. Per esportare
+dal Mac usa lo stesso comando con `-Mode Export`, senza `-ArchivePath` e
+senza `-ConfirmRestore`.
+
+## Completare le introduzioni storiche
+
+Da **Amministrazione → Cenni storici → Cerca cenni storici** puoi cercare
+introduzioni documentate su Wikipedia in italiano per tutto il catalogo.
+Vengono sostituite solo le descrizioni vuote o preimpostate; quelle già curate
+sono conservate. La ricerca è riprendibile e mostra anche i sistemi senza una
+fonte italiana adatta. Non richiede chiavi AI né chiamate a pagamento.
+Le query privilegiano il nome del modello e marche brevi come Sun, NeXT e
+Kaypro, senza ripetere marchi già presenti o tentativi equivalenti.
+La pausa ordinaria è di un secondo; **Ricomincia ricerca storica**, disponibile
+a ricerca in pausa o completata, riparte dai testi ancora mancanti conservando
+descrizioni già curate e resoconti precedenti.
+[Istruzioni, criteri e limiti di copertura](docs/HISTORICAL_DESCRIPTIONS.md).
+
+Puoi anche caricare descrizioni preparate esternamente da **Amministrazione →
+Importazioni → Fonte dati → Descrizioni storiche (JSON)**. L'anteprima mostra
+testi, fonti e abbinamenti; aggiorna solo schede esistenti, completa i testi
+preimpostati e conserva quelli già curati salvo revisione esplicita dei conflitti.
+[Formato del JSON e istruzioni](docs/DESCRIPTION_IMPORT.md).
+
+## Controllare RAM e varianti
+
+In **Amministrazione → RAM e varianti** puoi recuperare i valori RAM disponibili
+da fonti documentate e riunire le varianti proposte in configurazioni di una
+scheda comune. Sigle precedenti, RAM, prezzi, foto e fonti restano conservati;
+le importazioni successive seguono gli alias approvati. Non viene attribuita
+una quantità di memoria quando manca una fonte utilizzabile.
+[Regole, caso HP 85 e istruzioni](docs/CATALOG_QUALITY.md).
+
+La pulizia vale per **tutto il catalogo**: attributi tra parentesi tonde/quadre
+e suffissi PAL/NTSC o 50/60 Hz lasciano il posto al nome principale. Il pannello
+gestisce sia duplicati sia singole schede da rinominare, anche in più lotti.
+Le nuove importazioni usano direttamente i nomi puliti e conservano gli attributi
+negli originali. Foto e descrizioni cercano il modello senza quei qualificatori.
+La **scheda tecnica unica** e il confronto omettono i dettagli video regionali;
+le configurazioni hardware sostanziali e i dati originali restano conservati.
+[Criteri e aggiornamento delle schede tecniche](docs/TECHNICAL_SHEETS.md).
 
 ## Aggiungere le fotografie
 
@@ -62,13 +146,30 @@ Apri **http://localhost:5173**. Vite inoltra `/api` e `/media` a FastAPI sulla p
 | `DELETE` | `/api/computers/{id}/images/{image_id}` | Elimina un'immagine |
 | `GET` | `/api/images/search?q=...` | Ricerca Wikimedia Commons |
 
-La struttura dati comprende ora **19 tabelle**: le 18 originali più `computer_images`. Il campo storico `computers.image_url` resta per compatibilità con database esistenti. I media vengono restituiti tramite `/media/<nome>.webp` e non sono inclusi nelle risposte testuali dell'assistente AI.
+Le entità del catalogo sono affiancate dalle tabelle fotografiche, di importazione, di ricerca e dagli alias approvati. Il campo storico `computers.image_url` resta per compatibilità con database esistenti. I media vengono restituiti tramite `/media/<nome>.webp` e non sono inclusi nelle risposte testuali dell'assistente AI.
 
 ## Altre funzionalità
 
 - Timeline ordinata per primo lancio commerciale, con precisione storica delle date.
 - Catalogo filtrabile per nome, produttore, categoria e anni.
 - Schede con specifiche, configurazioni, mercati, dati di vendita, recensioni, fatti e fonti.
+- Profili regionali europei identici riuniti in **Europa** nelle schede e nei
+  confronti; offerte europee raggruppate senza perdere date, prezzi, valute o
+  revisioni differenti. [Criteri geografici e verifica della build](docs/EUROPE_GROUPING.md).
+- Commercializzazioni normalizzate su tutto il catalogo: una data generale
+  univoca accompagna i prezzi compatibili anche con più mercati o più offerte.
+  Prezzi e valute restano distinti; date regionali, originali e citazioni sono
+  conservati. I listini successivi senza data non ricevono l'anno di lancio.
+  [Regole ed esempi](docs/RELEASE_SUMMARIES.md).
+- Recupero automatico dei prezzi rimasti nelle note di vecchie importazioni
+  Excel, usando soltanto i campi originali completi e la fonte già associata.
+  Il recupero conserva note e dati esistenti e produce un resoconto verificabile.
+  [Regole del recupero prezzi](docs/HISTORICAL_PRICES.md#recupero-automatico-dei-prezzi-già-presenti-nelle-note).
+- Una citazione per offerta e nessun riquadro di provenienza;
+  le fonti MAME e le autocitazioni HHE sono escluse dal catalogo, dal pannello
+  Fonti e dal contesto AI. RetroFlops resta visibile solo se ancora collegato
+  a dati del catalogo. Dati tecnici e originali interni delle importazioni restano
+  conservati. [Politica delle fonti](docs/SOURCE_POLICY.md).
 - Confronti tra 2–5 sistemi, analisi e distribuzioni statistiche.
 - Assistente AI opzionale: solo dati del database, nessun accesso arbitrario a SQL.
 
@@ -128,15 +229,114 @@ Le porte Docker sono limitate a localhost. L'app resta single-user, senza autent
 
 ## Pannello amministrativo
 
+La sezione **Amministrazione → Importazioni** permette di caricare CSV/JSON,
+preparare anteprime, controllare duplicati, applicare aggiornamenti incrementali,
+revisionare conflitti e fonti e ripetere tentativi falliti. Sono disponibili
+adattatori Wikidata e RetroFlops, oltre al caricamento manuale autorizzato.
+Originali e decisioni restano nello storico; nessun dato diventa verificato
+automaticamente. Non vengono importati automaticamente dataset o fotografie
+all'avvio.
+
+Vedi [la guida alle importazioni](docs/IMPORTING.md) per formati, migrazione,
+CLI, API e test, e [la valutazione delle fonti](docs/IMPORT_SOURCES.md) per
+licenze e blocchi effettivamente riscontrati. È incluso un campione reale Apple II
+con attribuzione RetroFlops, CC BY 4.0, e un [campione ampliato di 19 modelli](docs/examples/retroflops-computers-19.README.md)
+con CPU e misure tecniche corredate di fonte. La normalizzazione uniforma alias
+e unità esplicite senza riscrivere i dati originali; i conflitti mostrano i
+nomi proposti e attuali, separati dalla citazione bibliografica.
+Per alias già duplicati, citazioni tecniche e prezzi mancanti vedi
+[la guida alla riconciliazione](docs/RECONCILIATION.md): anteprima e scelta della
+scheda da mantenere, trasferimento dei dati e storico degli originali.
+Per ripartire con zero macchine usa **Svuota archivio per un nuovo import**:
+[guida, backup e ambito del reset](docs/ARCHIVE_RESET.md). Il reset richiede
+anteprima e conferma esplicita, conserva fonti e storico e impedisce che i
+dieci sistemi dimostrativi ricompaiano al riavvio.
+
+Per una prova più ampia è disponibile il [corpus MAME da 1.139 schede in cinque lotti](docs/datasets/mame-0276/README.md),
+con indice di copertura e originali. La provenienza di CPU, clock e RAM
+è registrata nelle fonti, distinta dalle specifiche storiche verificate. Non contiene prezzi
+né costituisce un catalogo commerciale completo: tutte le asserzioni restano da revisionare.
+
+Il pannello **Importazioni** mostra caricamento, anteprima ed esito del lotto
+corrente, con **Svuota archivio** in fondo. Le sezioni di storico, duplicati e
+manutenzione del catalogo non sono più esposte nell'interfaccia; i dati già
+registrati e l'audit restano conservati.
+Per 1000bit puoi [arricchire automaticamente tutto il catalogo](docs/1000BIT_BULK.md)
+con un solo avvio: visita dei collegamenti, abbinamenti conservativi e coda
+riprendibile. Il caricamento di singole schede resta facoltativo.
+L'abbinamento 1000bit usa insieme marca e modello, normalizzando paesi tra
+parentesi e spazi/trattini equivalenti: `Fujitsu (Japan) · FM 11 EX` corrisponde
+a `Fujitsu · FM-11 EX`. **Riprova le pagine non abbinate** permette di
+recuperare gli scarti precedenti conservando gli aggiornamenti già riusciti.
+
+Per una ricerca prezzi in Excel, scegli **Prezzi storici (Excel / CSV / JSON)**:
+legge il foglio **Prezzi per modello**, mostra l'anteprima e aggiorna solo
+sistemi esistenti. Conserva URL, mercato, valuta e contesto della configurazione;
+prezzi e affidabilità dichiarata restano da verificare. Non usa l'anno del
+foglio come data di lancio. Vedi [istruzioni e verifica del file prezzi](docs/HISTORICAL_PRICES.md).
+In **Amministrazione → Foto automatiche** puoi associare il primo risultato
+Wikimedia utilizzabile ai sistemi senza foto, senza conferme per singola immagine:
+[istruzioni, pausa/ripresa e correzione delle immagini](docs/AUTOMATIC_PHOTOS.md).
+Il comando **Ricomincia su tutti e sostituisci le copertine** crea una nuova
+coda sull'intero catalogo attuale, comprese le schede già fotografate. Una
+foto utilizzabile diventa la nuova copertina; la galleria e le foto prive di
+un risultato sostitutivo restano conservate.
+
+Le [categorie del catalogo](docs/CLASSIFICATION.md) vengono completate
+automaticamente all’avvio e dopo le importazioni, per le famiglie riconosciute.
+Le categorie specifiche già curate restano conservate; «Calcolatore» viene
+rimosso quando ridondante. In **Amministrazione → Categorie** trovi conteggi,
+proposte e sistemi da classificare manualmente. Non occorre svuotare il database.
+La precedente [rifinitura del catalogo](docs/CATALOG_REFINEMENT.md) resta
+documentata come riferimento tecnico; il relativo pannello è stato rimosso.
+
+Per le 81 schede Olivetti dell’HTML fornito è disponibile un
+[pacchetto tecnico documentato](docs/datasets/olivetti-2026-11/README.md):
+513 specifiche per 62 modelli, con resoconto delle lacune. Il JSON limita
+l’applicazione ai sistemi già presenti e conserva i valori discordanti
+finché non vengono revisionati.
+
+Le [etichette delle schede e dei confronti](docs/CATALOG_PRESENTATION.md) descrivono
+l'hardware; la provenienza del dataset resta nelle fonti e nell'audit, senza
+dover reimportare le schede esistenti.
+
+Sul pacchetto di base, 34 schede regionali vengono accorpate conservandone le
+configurazioni, con 1.105 sistemi risultanti. Lo snapshot aggiunge dati AppleDB
+e documentazione MAME, comprese cinque voci di prezzo IBM RT; la copertura
+storica resta parziale e gli originali delle fonti restano disponibili nell'audit.
+
 Dal menu **Amministrazione** puoi inserire e modificare calcolatori e fonti bibliografiche, aggiungere produttori/categorie/mercati e aggiornare commercializzazioni e specifiche tecniche. Le schede conservano fotografie e altri dati storici già archiviati. Le modifiche sono applicate con il pulsante Salva; il pannello segnala quelle non salvate.
+
+La sezione **Produttori** permette di aggiungere, modificare ed eliminare
+produttori, con paese, data di fondazione, sito e conteggio delle schede
+associate. Un produttore utilizzato richiede prima la riassegnazione dei
+calcolatori. In **Calcolatori**, **Elimina calcolatore** rimuove la scheda dopo
+conferma, aggiornando catalogo e confronti; fonti e storico delle importazioni
+restano conservati. I dettagli sono nella [guida amministrativa](docs/ADMIN.md).
 
 La gestione delle fotografie resta disponibile nella normale scheda del calcolatore, raggiungibile anche dal pannello. Non serve una migrazione aggiuntiva del database. Vedi [la guida del pannello](docs/ADMIN.md) per campi, date, fonti e API. Il pannello segue la modalità locale single-user del progetto.
 
 ### Problemi nella ricerca Wikimedia Commons
 
+La ricerca parte da **marca e modello separati da uno spazio**: per esempio
+`Apple Macintosh 128K` o `IBM PC 5150`, senza trattino separatore. I prefissi noti già presenti nel modello vengono rimossi
+per evitare ripetizioni della marca. Il testo resta modificabile, sia nelle
+ricerche singole sia nel modello corrente della coda automatica.
+Le vecchie query automatiche ancora in attesa vengono aggiornate alla ripresa,
+senza azzerare la coda, cambiare la modalità di sostituzione o modificare foto.
+Le ricerche personalizzate restano invariate; i trattini propri di nomi come
+System-80 e PDP-11 vengono conservati.
+
 La ricerca Commons è gratuita e non usa la chiave OpenAI. Il backend si identifica con lo User-Agent `HardwareHistoryExplorer/1.2 (https://github.com/enzo45s/Hardware-History-Explorer)`, richiede esplicitamente il formato JSON con pagine indicizzate e attende fino a 30 secondi per ciascuna fase della richiesta HTTP.
 
-Gli errori distinguono ora timeout (504), limitazione/sovraccarico Wikimedia (503, conservando `Retry-After` numerico), HTTP 403, problemi del proxy, certificati HTTPS e risposte inattese. Un risultato senza fotografie rimane una ricerca riuscita con elenco vuoto. Non disabilitare la verifica TLS: per una CA privata usa l'override proxy descritto sopra.
+Gli errori distinguono ora timeout (504), limitazione/sovraccarico Wikimedia (503, conservando `Retry-After` anche come data HTTP), ricerche non valide (422), HTTP 403, problemi del proxy, certificati HTTPS e risposte inattese. Un risultato senza fotografie rimane una ricerca riuscita con elenco vuoto. Non disabilitare la verifica TLS: per una CA privata usa l'override proxy descritto sopra.
+
+Se una miniatura causa l'errore API `urlparamnormal`, il backend ritenta una
+volta la stessa ricerca senza ridimensionamento, mantenendo i controlli su
+immagini, attribuzione e licenza. Nel pannello automatico puoi vedere il
+modello corrente, correggere il testo o saltare esplicitamente quella ricerca.
+Coda ed immagini già associate restano conservate; vedi la
+[guida alla ripresa e alle istanze Compose](docs/AUTOMATIC_PHOTOS.md#ripresa-di-unistanza-esistente).
 
 Dopo un aggiornamento, ricostruisci e ricrea i servizi con `docker compose up --build -d`. Puoi consultare `docker compose logs --tail=100 api`: i messaggi `Wikimedia search failed` indicano categoria e stato upstream senza includere testo della ricerca, risposte remote o credenziali del proxy.
 

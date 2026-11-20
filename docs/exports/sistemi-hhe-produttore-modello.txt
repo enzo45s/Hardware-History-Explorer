@@ -1,0 +1,1105 @@
+Acorn - A3010
+Acorn - A3020
+Acorn - A4
+Acorn - A4000
+Acorn - A5000
+Acorn - A5000 Alpha
+Acorn - ABC 110
+Acorn - ABC 210/Cambridge Workstation
+Acorn - ABC 310
+Acorn - Archimedes 305
+Acorn - Archimedes 310
+Acorn - Archimedes 410/1
+Acorn - Archimedes 420/1
+Acorn - Archimedes 440
+Acorn - Archimedes 440/1
+Acorn - Archimedes 540
+Acorn - Archimedes A7000
+Acorn - Archimedes A7000+
+Acorn - Atom
+Acorn - Atom with BBC Basic
+Acorn - Atom with Eprom Box
+Acorn - BBC A3000
+Acorn - BBC Master 128
+Acorn - BBC Master 512
+Acorn - BBC Master AIV
+Acorn - BBC Master Compact
+Acorn - BBC Master ET
+Acorn - BBC Master Turbo
+Acorn - BBC Micro Model A
+Acorn - BBC Micro Model B
+Acorn - BBC Micro Model B+ 128K
+Acorn - BBC Micro Model B+ 64K
+Acorn - Briefcase Communicator
+Acorn - Communicator
+Acorn - Econet X25 Gateway
+Acorn - Electron
+Acorn - J233 StrongARM Risc PC
+Acorn - M4
+Acorn - R140
+Acorn - R225
+Acorn - R260
+Acorn - Reuters APM
+Acorn - Risc PC 600
+Acorn - Risc PC 700
+Acorn - StrongARM Risc PC
+Acorn - System 1
+Acorn - System 2
+Acorn - System 3 (6502 CPU)
+Acorn - System 3 (6809 CPU)
+Acorn - System 4
+Acorn - System 5
+Acorn Computers / Slogger - Acorn Electron (64K Master RAM Board)
+Acorn Computers / Slogger - Acorn Electron (Stop Press 64i)
+AEG Olympia - Olystar 20F
+AEG Olympia - Olytext 30
+Albert Computers, Inc. - Albert
+Alex Zhabin - Pentagon 1024SL
+Alloy - EarthStation-I
+Amaterske RADIO - Mistrum
+Amstrad plc - Amstrad CPC464
+Amstrad plc - Amstrad CPC464+
+Amstrad plc - Amstrad CPC6128
+Amstrad plc - Amstrad CPC6128 (France, AZERTY Keyboard)
+Amstrad plc - Amstrad CPC6128+
+Amstrad plc - Amstrad CPC664
+Amstrad plc - Amstrad PC20
+Amstrad plc - Amstrad PC2086
+Amstrad plc - Amstrad PC3086
+Amstrad plc - Amstrad PC5086
+Amstrad plc - Amstrad PPC512
+Amstrad plc - Amstrad PPC640
+Amstrad plc - NC100
+Amstrad plc - NC150
+Amstrad plc - NC200
+Amstrad plc - PC1512 DD
+Amstrad plc - PC1512 HD10
+Amstrad plc - PC1512 HD20
+Amstrad plc - PC1512 SD
+Amstrad plc - PC1640 DD
+Amstrad plc - PC1640 HD20
+Amstrad plc - PC1640 HD30
+Amstrad plc - PC1640 SD
+Amstrad plc - PCW10
+Amstrad plc - PcW16
+Amstrad plc - PCW8256
+Amstrad plc - PCW8512
+Amstrad plc - PCW9256
+Amstrad plc - PCW9512
+Amstrad plc - PCW9512 (+)
+Amstrad plc - PenPad PDA 600
+Amstrad plc - ZX Spectrum +2
+Amstrad plc - ZX Spectrum +2a
+Amstrad plc - ZX Spectrum +3
+Apple - ///
+Apple - //c
+Apple - //c (rev 4)
+Apple - //c (UniDisk 3.5)
+Apple - //c Plus
+Apple - //e
+Apple - //e (enhanced)
+Apple - //e (Platinum)
+Apple - ][
+Apple - ][ J-Plus
+Apple - ][+
+Apple - I
+Apple - IIgs
+Apple - iMac (Bondi blue)
+Apple - Lisa
+Apple - Lisa2
+Apple - Lisa2/10
+Apple - Macintosh 128k
+Apple - Macintosh 512k
+Apple - Macintosh 512ke
+Apple - Macintosh Centris 610
+Apple - Macintosh Centris 650
+Apple - Macintosh Classic
+Apple - Macintosh Classic II
+Apple - Macintosh Color Classic
+Apple - Macintosh II
+Apple - Macintosh II (FDHD)
+Apple - Macintosh II (w/o 68851 MMU)
+Apple - Macintosh IIci
+Apple - Macintosh IIcx
+Apple - Macintosh IIfx
+Apple - Macintosh IIsi
+Apple - Macintosh IIvi
+Apple - Macintosh IIvx
+Apple - Macintosh IIx
+Apple - Macintosh LC
+Apple - Macintosh LC 520
+Apple - Macintosh LC 550
+Apple - Macintosh LC II
+Apple - Macintosh LC III
+Apple - Macintosh LC III+
+Apple - Macintosh LC/Performa 475
+Apple - Macintosh LC/Performa 575
+Apple - Macintosh LC/Performa 580
+Apple - Macintosh Plus
+Apple - Macintosh Portable
+Apple - Macintosh PowerBook 100
+Apple - Macintosh PowerBook 140
+Apple - Macintosh PowerBook 145
+Apple - Macintosh PowerBook 145B
+Apple - Macintosh PowerBook 160
+Apple - Macintosh PowerBook 165
+Apple - Macintosh PowerBook 165c
+Apple - Macintosh PowerBook 170
+Apple - Macintosh PowerBook 180
+Apple - Macintosh PowerBook 180c
+Apple - Macintosh PowerBook Duo 210
+Apple - Macintosh PowerBook Duo 230
+Apple - Macintosh PowerBook Duo 250
+Apple - Macintosh PowerBook Duo 270c
+Apple - Macintosh PowerBook Duo 280
+Apple - Macintosh PowerBook Duo 280c
+Apple - Macintosh Quadra 605
+Apple - Macintosh Quadra 610
+Apple - Macintosh Quadra 630
+Apple - Macintosh Quadra 650
+Apple - Macintosh Quadra 700
+Apple - Macintosh Quadra 800
+Apple - Macintosh Quadra 900
+Apple - Macintosh Quadra 950
+Apple - Macintosh SE
+Apple - Macintosh SE (FDHD)
+Apple - Macintosh SE/30
+Apple - Macintosh TV
+Apple - Macintosh XL
+Apple - Power Macintosh 6100/60
+Apple - Power Macintosh G3
+Arbiter Leisure - Arbiter Discmate A-02
+Arbiter Leisure - Arbiter Discmonitor A-01
+ASEM - AM 64
+ASEM S.p.A. - AM100
+Atari - 1200XL
+Atari - 130XE
+Atari - 400
+Atari - 600XL
+Atari - 65XE
+Atari - 800
+Atari - 800XE
+Atari - 800XL
+Atari - Falcon030
+Atari - MEGA ST
+Atari - MEGA STe
+Atari - PC1
+Atari - PC3
+Atari - Portfolio
+Atari - ST
+Atari - STe
+Atari - TT030
+Atari - XE Game System
+Autocue Ltd. - Autocue 1500 Teleprompter
+AUVA - VIP 800
+Basis - 108
+Bawareth - Perfect MSX1 (MSX1, Middle East)
+BEMZ - PEVM Byte
+Bondwell Holding - BW230 (PRO28 Series)
+bootleg (Unitron) - Mac 512
+bootleg (Unitron) - Unitron 1024
+British Telecom Business Systems - BT Merlin M2105
+British Telecom Business Systems - Merlin M1800 Tonto
+Cambridge Computers - Z88
+Cambridge Computers - Z88 (Turkish)
+Camputers - Lynx 128k
+Camputers - Lynx 48k
+Camputers - Lynx 96k
+Canon - V-10
+Canon - V-20
+Canon - V-20E
+Canon - V-20F
+Canon - V-20G
+Canon - V-20S
+Canon - V-25
+Canon - V-30F
+Canon - V-8
+Casio - MX-10
+Casio - MX-101
+Casio - MX-15
+Casio - PV-16
+Casio - PV-7
+China HKC - HKC 8800A
+Ciel - Expert 3 IDE
+Ciel - Expert 3 Turbo
+Codimex - CD-6809
+Columbia Data Products - MPC 1600
+Commodore - 116
+Commodore - 128
+Commodore - 128D
+Commodore - 128DCR
+Commodore - 16
+Commodore - 64
+Commodore - 64 / VIC-64S (Sweden/Finland)
+Commodore - 64C
+Commodore - 64G
+Commodore - Amiga 1000
+Commodore - Amiga 1200
+Commodore - Amiga 2000
+Commodore - Amiga 3000
+Commodore - Amiga 4000/030
+Commodore - Amiga 4000/040
+Commodore - Amiga 4000T
+Commodore - Amiga 500
+Commodore - Amiga 500 Plus
+Commodore - Amiga 600
+Commodore - B128
+Commodore - B128-80HP
+Commodore - B256
+Commodore - B256-80HP
+Commodore - B500
+Commodore - BX256-80HP
+Commodore - CBM 3008
+Commodore - CBM 3016
+Commodore - CBM 3032
+Commodore - CBM 3032B
+Commodore - CBM 4016
+Commodore - CBM 4032
+Commodore - CBM 4032 (Fat 40)
+Commodore - CBM 4032B
+Commodore - CBM 610
+Commodore - CBM 620
+Commodore - CBM 710
+Commodore - CBM 720
+Commodore - CBM 730
+Commodore - CBM 8032
+Commodore - CBM 8096
+Commodore - CBM 8296
+Commodore - CBM 8296 ExecuDesk
+Commodore - CBM 8296-D
+Commodore - CBM 8296-D GV?
+Commodore - CBM 8296GD
+Commodore - DX-64
+Commodore - Educator 64
+Commodore - MicroMainFrame 9000
+Commodore - P500
+Commodore - PC 10
+Commodore - PC-1
+Commodore - PC-10 III
+Commodore - PET 2001-4
+Commodore - PET 2001-8
+Commodore - PET 2001-B16
+Commodore - PET 2001-B32
+Commodore - PET 2001-B8
+Commodore - PET 2001-N16
+Commodore - PET 2001-N32
+Commodore - PET 2001-N8
+Commodore - PET 4016
+Commodore - PET 4032
+Commodore - PET 4032 (Fat 40)
+Commodore - PET 4032B
+Commodore - PET 64 / CBM 4064
+Commodore - PET 8032
+Commodore - Plus/4
+Commodore - SuperPET SP-9000
+Commodore - SX-64 / Executive 64
+Commodore - VIC-10 / Max Machine / UltiMax
+Commodore - VIC-1001
+Commodore - VIC-20
+Commodore - VIC-20 / VC-20
+Commodore - VIP-64 (Sweden/Finland)
+Compaq - Deskpro
+Compaq - Portable
+CompuAdd - 810
+ComputerTechnik/IBS - Space 84
+Comus Instruments Ltd. - Comus Daisy
+Corona Data Systems, Inc. - Cordata PPC-400
+Corona Data Systems, Inc. - Corona PPC-21
+Craft - II+
+Creon Enterprises - Power 3000
+Daewoo - CPC-330K KOBO
+Daewoo - CPC-88
+Daewoo - DPC-200E
+Daewoo - IQ-1000 DPC-100
+Daewoo - IQ-1000 DPC-180
+Daewoo - IQ-1000 DPC-200
+Daewoo - IQ-2000 CPC-300
+Daewoo - IQ-2000 CPC-300E
+Daewoo - X-II CPC-400
+Daewoo - X-II CPC-400S
+Daewoo - Zemmix CPC-50A
+Daewoo - Zemmix CPC-50B
+Daewoo - Zemmix CPC-51
+Daewoo - Zemmix CPC-61
+Daewoo - Zemmix CPG-120 Normal
+Data General - Data General/One
+Didaktik Skalica - Didaktik 90
+Didaktik Skalica - Didaktik Gama 87
+Didaktik Skalica - Didaktik Gama 88
+Didaktik Skalica - Didaktik Gama 89
+Didaktik Skalica - Didaktik Kompakt
+Didaktik Skalica - Didaktik M 91
+Didaktik Skalica - Didaktik M 92
+Didaktik Skalica - Didaktik M 93
+Digital Equipment Corporation - 2000 Model 300 AXP
+Digital Equipment Corporation - 2000 Model 500 AXP
+Digital Equipment Corporation - DECmate II (PC278)
+Digital Equipment Corporation - DECmate III (PC238)
+Digital Equipment Corporation - DECpc AXP 150
+Digital Equipment Corporation - DECstation 2100
+Digital Equipment Corporation - DECstation 3100
+Digital Equipment Corporation - DECstation 5000/133
+Digital Equipment Corporation - MicroVAX 3100 Model 10
+Digital Equipment Corporation - MicroVAX 3400
+Digital Equipment Corporation - MicroVAX 3500
+Digital Equipment Corporation - MicroVAX I
+Digital Equipment Corporation - MicroVAX II
+Digital Equipment Corporation - PDP-1
+Digital Equipment Corporation - PDP-11 [Q-BUS] (M7195 - MXV11-B)
+Digital Equipment Corporation - PDP-11 [Unibus](M9301-YA)
+Digital Equipment Corporation - PDP-11 [Unibus](M9312)
+Digital Equipment Corporation - Rainbow 100-A
+Digital Equipment Corporation - Rainbow 100-B
+Digital Equipment Corporation - Rainbow 190-B
+Digital Equipment Corporation - VAX-11/785
+Dragon Data Ltd - Dragon 32
+Dragon Data Ltd - Dragon 64
+Dragon Data Ltd / Compusense - Dragon 64 Plus
+Dragon Data Ltd / Tano Ltd - Tano Dragon 64
+DTK Group - PC-XT-Clones with DTK/ERSO-BIOS
+Dynacom - MX-1600
+EACA Computers Ltd - System-80 (50 Hz)
+EACA Computers Ltd - System-80 (60 Hz)
+EACA Computers Ltd - Video Genie EG3003
+Eagle - 1600
+Eagle - PC Spirit
+Eagle - PC-2
+Electromagnetica - JET
+Electronica - CIP-01
+Electronica - CIP-03
+Elwro - 800-3 Junior
+Epson - CM6032
+Epson - CM6127
+Epson - HX-20
+Epson - PC-286U
+Epson - PC-286VS
+Epson - PC-386M
+Epson - PC-486MU
+Epson - PC-486SE
+Epson - PX-4
+Epson - PX-4+
+Epson - PX-8
+Epson - QX-10
+Ericsson Information System - Ericsson Portable PC
+Eurohard S.A. - Dragon 200
+Eurohard S.A. - Dragon 200-E
+Eurohard S.A. - Dragon MSX-64
+Fenner - DPC-200
+Fenner - FPC-500
+Fenner - FPC-900
+Fenner - SPC-800
+Frael - Bruc 100-1
+Frael - Bruc 100-2
+Frael - King
+Franklin Computer - Franklin ACE 100
+Franklin Computer - Franklin ACE 1000
+Franklin Computer - Franklin ACE 2200
+Franklin Computer - Franklin ACE 500
+Fujitsu - FM-11 EX
+Fujitsu - FM-7
+Fujitsu - FM-77AV
+Fujitsu - FM-77AV40SX
+Fujitsu - FM-8
+Fujitsu - FM-NEW7
+Fujitsu - FM-Towns (Model 1 / 2)
+Fujitsu - FM-Towns (unknown, V03 L01 00 91/07/09)
+Fujitsu - FM-Towns II FreshTV
+Fujitsu - FM-Towns II HR
+Fujitsu - FM-Towns II MX
+Fujitsu - FM-Towns II SJ
+Fujitsu - FM-Towns II UX
+Fujitsu - FM-X
+G2 Systems - MasterPieCe 800 Series
+G2 Systems - MasterPieCe 900 Series
+G2 Systems - MasterPieCe 900GX Series
+Goldstar - FC-200
+Goldstar - FC-80U
+Goldstar - GFC-1080
+Goldstar - GFC-1080A
+Gradiente - Expert 1.3
+Gradiente - Expert 2.0
+Gradiente - Expert AC88+
+Gradiente - Expert DDPlus
+Gradiente - Expert DDX+
+Gradiente - Expert Plus
+Gradiente - Expert XP-800 (1.0)
+Gradiente - Expert XP-800 (1.1) / Expert GPC-1
+GTAC - Do-Do
+H/H Microcomputers - H/H Tiger
+Heath Company - H-88
+Heath Company - H-89
+Heath Company - H-89 with CDR Equipment
+Heath Company - H-89 with MMS Equipment
+Heath Company - Heathkit H8 Digital Computer
+Hewlett-Packard - 9835A
+Hewlett-Packard - 9835B
+Hewlett-Packard - 9845A
+Hewlett-Packard - 9845B
+Hewlett-Packard - 9845C
+Hewlett-Packard - 9845S
+Hewlett-Packard - 9845T
+Hewlett-Packard - HP 2100
+Hewlett-Packard - HP 95LX
+Hewlett-Packard - HP 9816
+Hewlett-Packard - HP 9816A
+Hewlett-Packard - HP 9825A
+Hewlett-Packard - HP 9825B
+Hewlett-Packard - HP 9825T
+Hewlett-Packard - HP 9826A
+Hewlett-Packard - HP 9831A
+Hewlett-Packard - HP 9836A
+Hewlett-Packard - HP 9836C
+Hewlett-Packard - HP9000/310
+Hewlett-Packard - HP9000/320
+Hewlett-Packard - HP9000/330
+Hewlett-Packard - HP9000/332
+Hewlett-Packard - HP9000/340
+Hewlett-Packard - HP9000/360
+Hewlett-Packard - HP9000/370
+Hewlett-Packard - HP9000/380
+Hewlett-Packard - HP9000/382
+Hewlett-Packard - Integral Personal Computer 9807A
+Hewlett-Packard - Integral Personal Computer 9808A
+Hewlett-Packard - Jornada 720
+Hiradastechnika Szovetkezet - HT-1080Z Series I
+Hiradastechnika Szovetkezet - HT-1080Z Series II
+Hiradastechnika Szovetkezet - HT-1080Z/64
+Hitachi - MB-H1
+Hitachi - MB-H1E
+Hitachi - MB-H2
+Hitachi - MB-H25
+Hitachi - MB-H3
+Hitachi - MB-H50
+Hitachi - MB-H70
+HP - 85
+HP - 86B
+HP - 86B Opt 001
+HP - 86B Opt 004
+Hyosung - Topstar 88T
+Hyundai - Super 16 T
+Hyundai - Super 16 TE
+IBM - 5100
+IBM - 5110
+IBM - 6580 Displaywriter
+IBM - Multistation 5550
+IBM - PC 5140 Convertible
+IBM - PC 5150
+IBM - PC 5155
+IBM - PC Jr
+IBM - PC JX
+IBM - PS/2 8530-H31 (Model 30/286)
+IBM - PS/2 8535-043 (Model 35SX)
+IBM - PS/2 8550-021 (Model 50)
+IBM - PS/2 8550-061 (Model 50Z)
+IBM - PS/2 8555-081 (Model 55SX)
+IBM - PS/2 8580-071 (Model 80)
+IBM - PS/2 8580-111 (Model 80)
+IBM - PS/2 Model 30-286
+IBM - RS/6000 Type 7009 Model C10 Server
+IBM - RT PC Model 010
+IBM - RT PC Model 015
+IBM - RT PC Model 020
+IBM - RT PC Model 025
+IBM - RT PC Model A25
+IBM - ThinkPad 600
+IBM - ThinkPad 600E
+IBM - ThinkPad 850
+IBM - XT 5160
+ICE-Felix - HC-2000
+ICE-Felix - HC-85
+ICE-Felix - HC-88
+ICE-Felix - HC-90
+ICE-Felix - HC-91
+ICE-Felix - HC-91+ (HC-128)
+ILCE / SEP - Micro-SEP 1600
+ILCE / SEP - Micro-Sep Model 3
+Intelligent Software / Enterprise Computers - Enterprise One Two Eight
+Intelligent Software / Enterprise Computers - Enterprise Sixty Four
+Intelligent Software / Hegener + Glaser - Mephisto PHC 64
+Investronica - Inves Spectrum 48K+
+ITCI - Cobra (ITCI)
+ITCI - Cobra 80K (ITCI)
+ITT Information Systems - ITT XTRA
+Ivasim - Ivel Ultra
+JUKO - NEST 8086 and V30
+JUKO - NEST 8088 and V20
+JVC - HC-7E / HC-7GB
+Kawai - KMC-5000
+Kaypro Corporation - Kaypro 1
+Kaypro Corporation - Kaypro 10
+Kaypro Corporation - Kaypro 16
+Kaypro Corporation - Kaypro 2/84
+Kaypro Corporation - Kaypro 2x
+Kaypro Corporation - Kaypro 4 plus88 - 4/83
+Kaypro Corporation - Kaypro 4/84
+Kaypro Corporation - Kaypro 4/84 plus88
+Kaypro Corporation - Kaypro 4x
+Kaypro Corporation - Kaypro New 2
+Kaypro Corporation - Kaypro Robie
+Kaypro Corporation - Omni II Logic Analyzer
+Kaypro Corporation - PC
+Komtek - Radionic R1001/Komtek 1
+Kondor and Kramis - Profi
+Kyocera - XT
+Lambda Electronics Ltd - Lambda 8300
+Lawrie T&M Ltd. - LTM Portable (B+)
+Lawrie T&M Ltd. - LTM Portable (Master)
+Leading Edge Hardware Products, Inc. - Model D
+Leading Edge Hardware Products, Inc. - Model M
+LNW Research - LNW-80
+Lobo Systems - MAX-80
+Matra & Hachette - Alice
+Matra & Hachette - Alice 32
+Matra & Hachette - Alice 90
+Memotech Ltd - MTX 500
+Memotech Ltd - MTX 512
+Memotech Ltd - RS 128
+Mera-Elzab - Meritum I (Model 1)
+Mera-Elzab - Meritum I (Model 2)
+Mera-Elzab - Meritum I (Model 2) (network)
+Micro Digital - TK 90X Color Computer
+Micro Digital - TK 95 Color Computer
+MicroART - ATM-Turbo (ATM-CP)
+MicroART - ATM-Turbo 2
+MicroART - ATM-Turbo 2+
+Microdigital - TK2000 Color Computer
+Microdigital - TK3000//e
+Microdigital - TK85
+Micromint - MPX-16
+Milmar - Laser //c
+MITS - Altair 680b
+MITS - Altair 8800bt
+Mitsubishi - ML-8000
+Mitsubishi - ML-F110
+Mitsubishi - ML-F120
+Mitsubishi - ML-F48
+Mitsubishi - ML-F80
+Mitsubishi - ML-FX1
+Mitsubishi - ML-G1
+Mitsubishi - ML-G10
+Mitsubishi - ML-G3
+Mitsubishi - ML-G30 Model 1
+Mitsubishi - ML-G30 Model 2
+Monotech - NuXT
+Monotech - NuXT v2
+Morrow Designs - Micro Decision MD-2
+Morrow Designs - Micro Decision MD-3
+Morrow Designs - MPZ80
+Morrow Designs - Tricep
+MOS Technology - KIM-1
+Multitech - Microprofessor II
+Multitech - Microprofessor III
+MY-COM - MPU-9088-VF
+Nanjing Computer Factory - Zi Jin I
+Nascom Microcomputers - Nascom 1
+Nascom Microcomputers - Nascom 2
+Nascom Microcomputers - Nascom 2 (CP/M)
+National - CF-1200
+National - CF-2000
+National - CF-2700
+National - CF-3000
+National - CF-3300
+National - FS-1300
+National - FS-4000
+National - FS-4000 (alt)
+National - FS-4500
+National - FS-4600F
+National - FS-4700F
+National - FS-5000F2
+National - FS-5500F1
+National - FS-5500F2
+NCR - PC4i
+NCR - PC6
+NEC - APC
+NEC - Bungo mini 5SX
+NEC - EWS4800/310
+NEC - PC-100
+NEC - PC-6001
+NEC - PC-6001A "NEC Trek"
+NEC - PC-6001mkII
+NEC - PC-6001mkIISR
+NEC - PC-6601
+NEC - PC-6601SR "Mr. PC"
+NEC - PC-8001
+NEC - PC-8001mkII
+NEC - PC-8001mkIISR
+NEC - PC-8401BD
+NEC - PC-8500
+NEC - PC-8801
+NEC - PC-8801FA
+NEC - PC-8801MA
+NEC - PC-8801MA2
+NEC - PC-8801MC
+NEC - PC-8801MH
+NEC - PC-8801mkII
+NEC - PC-8801mkIIFR
+NEC - PC-8801mkIIMR
+NEC - PC-8801mkIISR
+NEC - PC-88VA
+NEC - PC-88VA2
+NEC - PC-9801
+NEC - PC-9801BX2/U2 (98 FELLOW)
+NEC - PC-9801DX
+NEC - PC-9801F
+NEC - PC-9801FS
+NEC - PC-9801RS
+NEC - PC-9801RX
+NEC - PC-9801US
+NEC - PC-9801UX
+NEC - PC-9801VM
+NEC - PC-9801VX
+NEC - PC-9821 (98MULTi)
+NEC - PC-9821Ap2/U8W (98MATE A)
+NEC - PC-9821As (98MATE A)
+NEC - PC-9821Ce2 (98MULTi CanBe)
+NEC - PC-9821Cx3 (98MULTi CanBe)
+NEC - PC-9821Ne (98NOTE)
+NEC - PC-9821Nr15 (98NOTE Lavie)
+NEC - PC-9821Nr166 (98NOTE Lavie)
+NEC - PC-9821Nw150 (98NOTE Lavie)
+NEC - PC-9821Ra20 (98MATE R)
+NEC - PC-9821Ra266 (98MATE R)
+NEC - PC-9821Ra333 (98MATE R)
+NEC - PC-9821V13 (98MATE VALUESTAR)
+NEC - PC-9821V20 (98MATE VALUESTAR)
+NEC - PC-9821Xa16 (98MATE X)
+NEC - PC-9821Xs (98MATE X)
+NEC - PC-98HA (Handy98)
+NEC - PC-98LT
+NEC - PC-H98S model 8/U8
+NEC - TK-80BS
+NEMO - Kay 1024
+Next Software Inc - NeXT Computer
+Next Software Inc - NeXTcube
+Next Software Inc - NeXTcube Turbo
+Next Software Inc - NeXTcube Turbo Color
+Next Software Inc - NeXTstation
+Next Software Inc - NeXTstation (X15 variant)
+Next Software Inc - NeXTstation Color
+Next Software Inc - NeXTstation Turbo
+Next Software Inc - NeXTstation Turbo Color
+Nixdorf Computer AG - 8810/25 CPC - PC01
+Non-Linear Systems - Kaypro 10 - 1983
+Non-Linear Systems - Kaypro II - 2/83
+Non-Linear Systems - Kaypro IV - 4/83
+Novo Tempo / LZ Equipamentos - Color64
+NTS Computer Systems - DreamWriter 225
+Olivetti - L1 M20
+Olivetti - L1 M40
+Olivetti - L1 M44
+Olivetti - M15
+Olivetti - M21
+Olivetti - M24
+Olivetti - M240
+Olivetti - Prodest PC 1
+Olivetti - Prodest PC 128S
+Olivetti / Thomson - Prodest PC 128
+Olympia - PHC-2
+Olympia - PHC-28
+Omni Logic Inc. - Omni 4 Logic Analyzer
+Orel - BK-08
+Osborne - Executive
+Osborne - Osborne-1
+Osborne - Osborne-1 with SCREEN-PAC
+Osborne - Vixen
+Osborne/Nuevo - Osborne-1 (Nuevo Video)
+Panasonic - CF-2700
+Panasonic - FS-A1
+Panasonic - FS-A1F
+Panasonic - FS-A1FM
+Panasonic - FS-A1FX
+Panasonic - FS-A1GT (MSX Turbo-R, Japan)
+Panasonic - FS-A1MK2
+Panasonic - FS-A1ST (MSX Turbo-R, Japan)
+Panasonic - FS-A1WSX
+Panasonic - FS-A1WX
+Patisonic - Aleste 520EX
+Peters Plus, Ivan Mak - Sprinter Sp2000
+Philips - :YES
+Philips - NMS 8220
+Philips - NMS 8245
+Philips - NMS 8245F
+Philips - NMS 8250
+Philips - NMS 8250/16
+Philips - NMS 8250/19
+Philips - NMS 8255
+Philips - NMS 8255F
+Philips - NMS 8280
+Philips - NMS 8280F
+Philips - NMS 8280G
+Philips - NMS 9100
+Philips - NMS-801
+Philips - P2000M
+Philips - P2000T
+Philips - VG-5000
+Philips - VG-8000
+Philips - VG-8010 / VG-8010/00
+Philips - VG-8010F / VG-8010/19
+Philips - VG-8020/00
+Philips - VG-8020/19 / VG-8020F
+Philips - VG-8020/20
+Philips - VG-8230
+Philips - VG-8235
+Philips - VG-8235F
+Pioneer - PX-07 Palcom
+Pioneer - PX-07UK Palcom
+Pioneer - PX-V60
+Pioneer - UC-V102
+Polymax - Maxxi
+Pravetz - 82
+Pravetz - 8C
+Pravetz - 8D
+Pravetz - 8M
+Professional Data Computer - Clipper
+Prológica - CP-500 (PVIII REV.3)
+Prológica - CP400
+Prológica - CP400 Color II
+Ritas do Brasil Ltda - Ringo R-470
+Sakhr - AX-150
+Sakhr - AX-170
+Sakhr - AX-200 (MSX1, Arabic/English)
+Sakhr - AX-200M (MSX1, Arabic/English)
+Sakhr - AX-230
+Sakhr - AX-350
+Sakhr - AX-350 II
+Sakhr - AX-350 II F
+Sakhr - AX-370
+Sakhr - AX-500
+Samsung - Samtron 88S
+Samsung - SPC-800
+Sanyo - MBC-16
+Sanyo - MBC-16LT
+Sanyo - MBC-200
+Sanyo - MBC-55x
+Sanyo - MPC-10 / Wavy10
+Sanyo - MPC-100
+Sanyo - MPC-200
+Sanyo - MPC-200SP
+Sanyo - MPC-2300 (MSX2, USSR)
+Sanyo - MPC-2500FD (MSX2, USSR)
+Sanyo - MPC-25FD
+Sanyo - MPC-25FS
+Sanyo - MPC-27
+Sanyo - MPC-64
+Sanyo - PHC-20
+Sanyo - PHC-23 / Wavy23
+Sanyo - PHC-23JB / Wavy23
+Sanyo - PHC-25
+Sanyo - PHC-28L
+Sanyo - PHC-28S
+Sanyo - PHC-35J / Wavy35
+Sanyo - PHC-55FD2 / Wavy55FD2
+Sanyo - PHC-70FD / Wavy70FD
+Sanyo - PHC-70FD2 / Wavy70FD2
+Sanyo - PHC-77 / Wavy77
+Sanyo - SPC-400D
+Sanyo - SX-16
+Schetmash - Iskra 3104
+Schneider Rdf. AG - EURO PC
+Schneider Rdf. AG - EURO PC II
+Schneider Rdf. AG - EURO XT
+Scientific Micro Systems - SMS-1000
+Scopus/Spectrum - Spectrum ED
+Scorpion, Ltd. - Scorpion GMX
+Scorpion, Ltd. - Scorpion ZS-256 (Yellow PCB)
+Scorpion, Ltd. - Scorpion ZS-256 TURBO+
+Secoinsa - Serie 20
+Seiko - MAP-1010
+Sergey Kiselev - Micro 8088
+Sergey Kiselev - Sergey's XT
+Sergey Kiselev - Xi processor board
+Shaanxi Province Computer Factory - China Education Computer 2000
+Shaanxi Province Computer Factory - China Education Computer E
+Shaanxi Province Computer Factory - China Education Computer G
+Shaanxi Province Computer Factory - China Education Computer I
+Shaanxi Province Computer Factory - China Education Computer M
+Sharp - MZ-1500
+Sharp - MZ-2000
+Sharp - MZ-2200
+Sharp - MZ-2500
+Sharp - MZ-2520
+Sharp - MZ-3500
+Sharp - MZ-6500
+Sharp - MZ-700
+Sharp - MZ-800
+Sharp - MZ-80A
+Sharp - MZ-80B
+Sharp - MZ-80K
+Sharp - PC-7000
+Sharp - PC-E220
+Sharp - PC-G815
+Sharp - PC-G850V
+Sharp - Pocket Computer 1245
+Sharp - Pocket Computer 1250
+Sharp - Pocket Computer 1251
+Sharp - Pocket Computer 1255
+Sharp - Pocket Computer 1260
+Sharp - Pocket Computer 1261/1262
+Sharp - Pocket Computer 1350
+Sharp - Pocket Computer 1360
+Sharp - Pocket Computer 1401
+Sharp - Pocket Computer 1402
+Sharp - Pocket Computer 1403
+Sharp - Pocket Computer 1403H
+Sharp - Pocket Computer 1450
+Sharp - Pocket Computer 1500
+Sharp - X1 (CZ-800C)
+Sharp - X1 Turbo (CZ-850C)
+Sharp - X1 Turbo (CZ-862C)
+Sharp - X1 Twin (CZ-830C)
+Sharp - X68000
+Sharp - X68000 Super
+Sharp - X68000 XVI
+Sharp - X68030
+Sharp - Zaurus SL-5500 "Collie"
+Sharp - Zaurus SL-5600 / SL-B500 "Poodle"
+Sharp - Zaurus SL-C3000 "Akita"
+Sharp - Zaurus SL-C3000 "Spitz"
+Sharp - Zaurus SL-C500
+Sharp - Zaurus SL-C750 "Shepherd"
+Sharp - Zaurus SL-C760 "Husky"
+Sharp / Epcom - HB-8000 Hotbit
+Sharp / Epcom - HB-8000 Hotbit 1.3b
+Sharp / Epcom - HB-8000 Hotbit 1.3p
+Sharp / Epcom - HB-8000 Hotbit 2.0
+Siemens - Sicomp PC16-05
+Signal - Sintez 2
+Silicon Graphics - IRIS Indigo
+Silicon Graphics - IRIS Indigo R4000
+Silicon Graphics - IRIS Indigo R4400
+Silicon Graphics - Personal IRIS 4D/20
+Silicon Graphics - Personal IRIS 4D/25
+Silicon Graphics - Personal IRIS 4D/30
+Silicon Graphics - Personal IRIS 4D/35
+Silicon Graphics - Professional IRIS 4D/50
+Silicon Graphics - Professional IRIS 4D/70
+Silicon Graphics Inc - Crimson (R4000, 100MHz, Ver. 4.0.3)
+Silicon Graphics Inc - Indigo2 (R4400, 150MHz)
+Silicon Graphics Inc - Indy (R4600, 100MHz)
+Silicon Graphics Inc - Indy (R4600, 133MHz)
+Silicon Graphics Inc - Indy (R5000, 150MHz)
+Silicon Graphics Inc - IRIS 3130 (IP2)
+Silicon Graphics Inc - Octane (Version 6.5 Rev 4.9 05/22/03)
+Silicon Graphics Inc. - O2
+Sinclair - PC200 Professional Series
+Sinclair - QL
+Sinclair - QL (Greece)
+Sinclair - ZX Spectrum
+Sinclair - ZX Spectrum 128
+Sinclair - ZX-80
+Sinclair - ZX-81
+Sony - HB-10
+Sony - HB-101
+Sony - HB-101P
+Sony - HB-10P
+Sony - HB-201
+Sony - HB-201P
+Sony - HB-20P
+Sony - HB-501P
+Sony - HB-55
+Sony - HB-55D
+Sony - HB-55P
+Sony - HB-701FD
+Sony - HB-75
+Sony - HB-75D
+Sony - HB-75P
+Sony - HB-F1
+Sony - HB-F1II
+Sony - HB-F1XD
+Sony - HB-F1XDJ
+Sony - HB-F1XV
+Sony - HB-F5
+Sony - HB-F500
+Sony - HB-F500 2nd version
+Sony - HB-F500F
+Sony - HB-F500P
+Sony - HB-F700D
+Sony - HB-F700F
+Sony - HB-F700P
+Sony - HB-F700S
+Sony - HB-F900
+Sony - HB-F900 (alt)
+Sony - HB-F9P
+Sony - HB-F9S
+Sony - HB-G900AP
+Sony - HB-G900P
+Sony - NET WORK STATION NWS-5000X
+Sony - NWS-1580
+Sony - NWS-3260
+Sony - NWS-3410
+Sony - NWS-3720
+Sony - NWS-3860
+Sony - NWS-831
+Sony - SMC-777
+Sord - m.5
+SpecNext Ltd., Victor Trucco, Fabio Belavenuto - ZX Spectrum Next: TBBlue
+Spectravideo - SVI-318
+Spectravideo - SVI-328
+Spectravideo - SVI-728
+Spectravideo - SVI-738
+Spectravideo - SVI-738 (MSX1, Poland)
+Spectrum Eletronica (SCOPUS) - Micro Engenho
+Sun Microsystems - SPARCstation 1 (Sun 4/60)
+Sun Microsystems - SPARCstation 1+ (Sun 4/65)
+Sun Microsystems - SPARCstation 10 (Sun S10)
+Sun Microsystems - SPARCstation 2 (Sun 4/75)
+Sun Microsystems - SPARCstation 20
+Sun Microsystems - SPARCstation ELC (Sun 4/25)
+Sun Microsystems - SPARCstation IPC (Sun 4/40)
+Sun Microsystems - SPARCstation IPX (Sun 4/50)
+Sun Microsystems - SPARCstation SLC (Sun 4/20)
+Sun Microsystems - Sun 2/120
+Sun Microsystems - Sun 2/50
+Sun Microsystems - Sun 3/110
+Sun Microsystems - Sun 3/260/280
+Sun Microsystems - Sun 3/460/470/480
+Sun Microsystems - Sun 3/50
+Sun Microsystems - Sun 3/60
+Sun Microsystems - Sun 3/75/140/150/160/180
+Sun Microsystems - Sun 3/80
+Sun Microsystems - Sun 3/E
+Sun Microsystems - Sun 4/110
+Sun Microsystems - Sun 4/3x0
+Sun Microsystems - Sun 4/4x0
+Sun Microsystems - Sun-1
+Sun Microsystems - Ultra 45
+Talent - DPC-200 (MSX1, Argentina, international keyboard)
+Talent - DPC-200 (MSX1, Argentina, Spanish keyboard)
+Talent - DPC-200A (MSX1, Argentina)
+Talent - TPC-310 (MSX2, Argentina)
+Talent - TPP-311 (MSX2, Argentina)
+Talent - TPS-312 (MSX2, Argentina)
+Tandy - 1000 HX
+Tandy - 1000 RL
+Tandy - 1000 SL/2
+Tandy - 1000 SX
+Tandy - 1000 TL
+Tandy - 1000 TL/2
+Tandy - 1000 TX
+Tandy - 2000
+Tandy - 2000HD
+Tandy - Color Computer 1/2
+Tandy - Color Computer 2B
+Tandy - Color Computer 3
+Tandy - Deluxe Color Computer
+Tandy - MC-10
+Tandy - TRS-80 Model 16
+Tandy - TRS-80 Model 4
+Tandy - TRS-80 Model 4P
+Tandy - TRS-80 Model I (Level I Basic)
+Tandy - TRS-80 Model I (Level II Basic)
+Tandy - TRS-80 Model II
+Tandy - TRS-80 Model III
+Tandy - TRS-80 Pocket Computer PC-3
+Tangerine - Micron
+Tangerine - Microtan 65
+Tangerine - Microtan 6809 System
+Tangerine - Oric Atmos
+Tangerine - Oric Telestrat
+Tangerine - Oric-1
+Tangerine/ETI - Space Invasion (ETI)
+Tantel - AlphaTantel
+Tatung - Einstein 256
+Tatung - Einstein TC-01
+Terco AB - Terco 4426 CNC Programming station
+Tesa Etikett - Etikettendrucker 6240
+Thomson - MO5
+Thomson - MO5 NR
+Thomson - MO5E
+Thomson - MO6
+Thomson - T9000
+Thomson - TO7
+Thomson - TO7/70
+Thomson - TO8
+Thomson - TO8D
+Thomson - TO9
+Thomson - TO9+
+Thomson SIMIV - TO16
+Timex of Portugal - TC-2048
+Timex Sinclair - 1000
+Timex Sinclair - 1500
+Timex Sinclair - TS-2068
+Tinsley Medical Instruments - Henson CFA 3000 (B+)
+Tinsley Medical Instruments - Henson CFA 3000 (Master)
+Torch Computers - Torch CF240
+Torch Computers - Torch CH240
+Torch Computers - Torch Model 301
+Torch Computers - Torch Model 725
+Toshiba - FS-TM1
+Toshiba - HX-10AA
+Toshiba - HX-10D
+Toshiba - HX-10DP
+Toshiba - HX-10E
+Toshiba - HX-10F
+Toshiba - HX-10S
+Toshiba - HX-10SA
+Toshiba - HX-20
+Toshiba - HX-20E
+Toshiba - HX-20I
+Toshiba - HX-21
+Toshiba - HX-21F
+Toshiba - HX-22
+Toshiba - HX-22I
+Toshiba - HX-23
+Toshiba - HX-23F
+Toshiba - HX-32
+Toshiba - HX-33 w/HX-R702
+Toshiba - HX-34 w/HX-R703
+Toshiba - HX-51I
+Toshiba - Pasopia 1600
+Toshiba - Pasopia 7 PA7007 (Raster)
+Toshiba - Pasopia 7 PA7007 with PA7170 (LCD)
+Toshiba - Personal Computer Pasopia PA7010
+Toshiba - T1000
+Triumph-Adler - Alphatronic P10
+Triumph-Adler - Alphatronic P50
+Triumph-Adler - TA 1700-PC
+Unipolbrit - UK-2086 ver. 1.2
+Unitron Eletronica - Unitron AP II (in Brazilian Portuguese)
+Unitron Eletronica - Unitron AP II (in English)
+Unitron Eletronica - Unitron AP II+ (Teclado Inteligente)
+Vendex - HeadStart Plus
+Victor - HC-5
+Victor - HC-6
+Victor - HC-7
+Victor - HC-80
+Victor - HC-90
+Victor - HC-90A
+Victor - HC-95
+Victor - HC-95A
+Victor - VPC II
+Victor do Brasil - Elppa II+
+Video Technology - Laser 128
+Video Technology - Laser 128 (original hardware)
+Video Technology - Laser 128ex (version 4.5)
+Video Technology - Laser 128ex2 (version 6.1)
+Vladimir Drozdov - Pentagon 128K
+VTech - Laser Turbo XT
+VTech - Laser XT/3
+Yamaha - CX5F w/SFG01
+Yamaha - CX5F w/SFG05
+Yamaha - CX5M-128
+Yamaha - CX5MIIB
+Yamaha - CX5MU
+Yamaha - CX7/128
+Yamaha - CX7M/128
+Yamaha - SX-100
+Yamaha - YIS-503 III R (MSX2)
+Yamaha - YIS303
+Yamaha - YIS503
+Yamaha - YIS503F
+Yamaha - YIS503II
+Yamaha - YIS503IIR (MSX1)
+Yamaha - YIS604/128
+Yamaha - YIS805/128
+Yamaha - YIS805/128R2 (MSX2)
+Yamaha - YIS805/256
+Yashica - YC-64
+Yeno - MX64
+Your Computer - PC8300
+Zenith Data Systems - SuperSport
+Zenith Data Systems - Z-100
+Zenith Data Systems - Z-150 Series
+Zenith Data Systems - Z-160 Series
+Zenith Data Systems - Z-180 Series
+Zenith Data Systems - Z-90

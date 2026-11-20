@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "manufacturer": "HP",
+      "model_name": "HP 85",
+      "source": {
+        "title": "1000bit — HP 85",
+        "url": "https://www.1000bit.it/scheda.asp?id=118",
+        "publisher": "1000bit",
+        "source_type": "website",
+        "access_date": "2026-11-18",
+        "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta."
+      },
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità riportata",
+              "text_value": "16 - 32Kb",
+              "source": {
+                "title": "1000bit — HP 85",
+                "url": "https://www.1000bit.it/scheda.asp?id=118",
+                "publisher": "1000bit",
+                "source_type": "website",
+                "access_date": "2026-11-18",
+                "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta."
+              },
+              "evidence": "{\"adapter\": \"1000bit-sheet-v1\", \"sha256\": \"79d9a8e9e45f2fe94554e5571ca8875fb13ed3bf50e3aa77de9f7f3c477da7fa\", \"url\": \"https://www.1000bit.it/scheda.asp?id=118\", \"field\": \"ram\", \"value\": \"16 - 32Kb\"}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "contexts": {
+    "PET 2001": {
+      "description": "Il PET 2001 appartiene alla prima generazione di personal computer Commodore progettati da Chuck Peddle. Fu tra i sistemi del 1977 venduti già assemblati, con monitor, tastiera e registratore a cassette integrati. La gamma offrì diverse quantità di RAM; le versioni successive adottarono tastiere tradizionali più grandi e unità a cassette esterne.",
+      "source": {
+        "title": "Wikipedia in italiano · Commodore PET",
+        "url": "https://it.wikipedia.org/w/index.php?title=Commodore_PET&oldid=153297211",
+        "publisher": "Wikipedia",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "access_date": "2026-11-18",
+        "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "evidence": "Progettati da Chuck Peddle. I tre principali concorrenti PET, Apple II e TRS-80 vennero in seguito soprannominati la trinità del 1977. Il PET 2001 incorporava tastiera, monitor e registratore. Nei modelli successivi la tastiera in gomma fu sostituita da una tastiera completa e il registratore integrato dal datassette esterno C2N."
+    }
+  }
+}

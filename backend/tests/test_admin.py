@@ -175,3 +175,140 @@ def test_unknown_dates_and_omitted_relationships_are_preserved(client):
     assert after['model_name'] == 'Nome rivisto'
     for field in ('categories', 'configurations', 'releases', 'sources'):
         assert after[field] == before[field]
+
+
+def test_manufacturer_crud_updates_catalog_without_changing_computers(client):
+    data = {'name': '  Example   Computers ', 'country': 'Italia', 'founded': '1982-05-01', 'website': 'https://example.org'}
+    result = client.post('/api/manufacturers', json=data)
+    assert result.status_code == 201, result.text
+    manufacturer = result.json(); mid = manufacturer['id']
+    assert manufacturer['name'] == 'Example Computers' and manufacturer['computer_count'] == 0
+    assert manufacturer['founded'] == '1982-05-01' and manufacturer['website'] == 'https://example.org/'
+    assert client.get(f'/api/manufacturers/{mid}').json() == manufacturer
+    assert manufacturer in client.get('/api/manufacturers').json()
+    computer = client.post('/api/computers', json={'model_name': 'Synthetic workstation', 'manufacturer_id': mid}).json()
+    before = client.get(f"/api/computers/{computer['id']}").json()
+    assert client.put(f'/api/manufacturers/{mid}', json={'name': 'Example Systems'}).status_code == 200
+    renamed = client.get(f'/api/manufacturers/{mid}').json()
+    assert renamed['country'] == 'Italia' and renamed['founded'] == '1982-05-01' and renamed['computer_count'] == 1
+    public = client.get(f"/api/computers/{computer['id']}").json()
+    assert public['id'] == before['id'] and public['manufacturer_id'] == mid
+    assert public['manufacturer'] == 'Example Systems' and public['configurations'] == before['configurations']
+    assert 'Example Systems' in [row['name'] for row in client.get('/api/meta').json()['manufacturers']]
+    assert client.delete(f'/api/manufacturers/{mid}').status_code == 409
+    assert client.get(f"/api/computers/{computer['id']}").status_code == 200
+    assert client.put(f"/api/computers/{computer['id']}", json={'model_name': computer['model_name'], 'manufacturer_id': 1}).status_code == 200
+    assert client.delete(f'/api/manufacturers/{mid}').status_code == 204
+    assert client.get(f'/api/manufacturers/{mid}').status_code == 404
+    assert mid not in [row['id'] for row in client.get('/api/meta').json()['manufacturers']]
+
+
+@pytest.mark.parametrize('data', [
+    {'name': ' '}, {'name': 'X' * 161}, {'name': 'Example', 'country': 'X' * 101},
+    {'name': 'Example', 'founded': '1980'}, {'name': 'Example', 'founded': '1980-02-30'},
+    {'name': 'Example', 'founded': 0}, {'name': 'Example', 'founded': '0'},
+    {'name': 'Example', 'website': 'javascript:alert(1)'},
+    {'name': 'Example', 'website': 'https://user:secret@example.org'},
+])
+def test_invalid_manufacturer_data_never_partially_updates(client, data):
+    previous = client.get('/api/manufacturers/1').json()
+    assert client.put('/api/manufacturers/1', json=data).status_code == 422
+    assert client.get('/api/manufacturers/1').json() == previous
+
+
+def test_manufacturer_duplicate_names_counts_and_missing_records(client):
+    assert client.post('/api/manufacturers', json={'name': ' ibm '}).status_code == 409
+    assert client.post('/api/manufacturers', json={'name': 'ＩＢＭ'}).status_code == 409
+    assert client.put('/api/manufacturers/1', json={'name': 'Apple'}).status_code == 409
+    assert client.get('/api/manufacturers/1').json()['name'] == 'IBM'
+    listings = client.get('/api/manufacturers').json()
+    assert sum(row['computer_count'] for row in listings) == 10
+    assert next(row['computer_count'] for row in listings if row['id'] == 1) == 2
+    for method in ('get', 'delete'):
+        assert getattr(client, method)('/api/manufacturers/99999').status_code == 404
+    assert client.put('/api/manufacturers/99999', json={'name': 'Missing'}).status_code == 404
+    assert client.delete('/api/computers/99999').status_code == 404
+
+
+def test_delete_computer_removes_children_but_preserves_sources_and_audit(client):
+    from sqlalchemy import select, func
+    from app.models import Computer, ComputerImage, Configuration, Release, Specification, Source
+    from app.import_models import ImportJob, ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation
+    from app.importing.bulk1000bit import BulkJob, BulkTarget
+    from app.main import UPLOAD_DIR
+    sid = source(client)['id']
+    with SessionLocal() as db:
+        c = db.get(Computer, 1); c.sources.append(db.get(Source, sid))
+        specs = [spec.id for cfg in c.configurations for spec in cfg.specifications]
+        cfgs = [cfg.id for cfg in c.configurations]
+        db.add_all([Fact(computer_id=1, fact_type='note', statement='Archived note'),
+            Sale(computer_id=1, market_id=1, units_sold=1),
+            Review(computer_id=1, publication='Synthetic review', score=4, max_score=5),
+            ComputerImage(computer_id=1, local_filename='retained.webp', is_primary=True)])
+        imported = ImportJob(provider='manual', filename='fixture.json', format='json', checksum='0' * 64, raw_payload='[]')
+        db.add(imported); db.flush()
+        row = ImportRow(job_id=imported.id, position=1, raw={'original': True}, normalized={}, computer_id=1, candidates=[1], status='ready')
+        candidate = ImportRow(job_id=imported.id, position=2, raw={}, normalized={}, candidates=[1, 2], status='ambiguous')
+        db.add_all([row, candidate]); db.flush()
+        claim = ImportClaim(row_id=row.id, computer_id=1, source_id=sid, entity='Computer', target_id=1,
+            field='description', value={'value': 'New'}, previous={'value': 'Old'}, status='conflict')
+        db.add_all([claim, ExternalIdentity(provider='synthetic', external_id='original', computer_id=1)])
+        bulk = BulkJob(active_key='1000bit'); db.add(bulk); db.flush()
+        target = BulkTarget(job_id=bulk.id, original_id=1, computer_id=1, model_name=c.model_name, manufacturer=c.manufacturer.name)
+        db.add(target); db.commit()
+        rid, candidate_id, claim_id, target_id = row.id, candidate.id, claim.id, target.id
+    (UPLOAD_DIR / 'retained.webp').write_bytes(b'original preserved for audit')
+    photo_job = client.post('/api/admin/photos/restart', json={'expected_job_id': None}).json()
+    unrelated = client.get('/api/computers/2').json()
+    response = client.delete('/api/computers/1')
+    assert response.status_code == 204, response.text
+    assert client.get('/api/computers/1').status_code == 404
+    assert client.get('/api/admin/computers/1').status_code == 404
+    assert client.get('/api/analytics').json()['total'] == 9
+    assert client.get('/api/computers/2').json() == unrelated
+    assert client.get(f'/api/sources/{sid}').status_code == 200
+    assert (UPLOAD_DIR / 'retained.webp').exists()
+    state = client.get('/api/admin/photos').json()['job']
+    assert state['id'] == photo_job['id'] and state['counts'] == {'pending': 9, 'skipped': 1}
+    assert client.post(f'/api/admin/imports/claims/{claim_id}/review', json={'decision': 'accept', 'note': 'Cannot review removed target'}).status_code == 409
+    with SessionLocal() as db:
+        for model in (ComputerImage, Configuration, Release, Fact, Sale, Review, ExternalIdentity):
+            assert db.scalar(select(func.count()).select_from(model).where(model.computer_id == 1)) == 0
+        assert not db.scalars(select(Specification).where(Specification.id.in_(specs))).all()
+        assert not db.scalars(select(Configuration).where(Configuration.id.in_(cfgs))).all()
+        assert db.get(ImportClaim, claim_id).computer_id is None
+        assert db.get(ImportRow, rid).status == 'skipped' and db.get(ImportRow, rid).computer_id is None
+        assert db.get(ImportRow, candidate_id).candidates == [2]
+        assert db.get(BulkTarget, target_id).computer_id is None and db.get(BulkTarget, target_id).status == 'removed'
+        audit = db.scalar(select(CatalogReconciliation).where(CatalogReconciliation.entity == 'computer_delete'))
+        assert audit.snapshot['computer'][0]['id'] == 1 and audit.snapshot['computer_images'][0]['local_filename'] == 'retained.webp'
+        assert audit.snapshot['import_rows'][0]['raw'] == {'original': True}
+
+
+def test_deleting_last_computer_stays_empty_after_restart_and_finishes_photo_queue(client):
+    from app import main
+    from app.models import Computer
+    from sqlalchemy import select
+    with SessionLocal() as db:
+        for computer in db.scalars(select(Computer).where(Computer.id != 1)).all(): db.delete(computer)
+        db.commit()
+    jid = client.post('/api/admin/photos').json()['id']
+    assert client.delete('/api/computers/1').status_code == 204
+    job = client.get('/api/admin/photos').json()['job']
+    assert job['id'] == jid and job['status'] == 'completed' and job['counts'] == {'skipped': 1}
+    with SessionLocal() as db: main.seed(db)
+    assert client.get('/api/computers').json()['total'] == 0
+
+
+def test_deletion_during_photo_request_never_saves_a_late_image(client, monkeypatch):
+    import asyncio
+    from app import main
+    job = client.post('/api/admin/photos').json()
+    async def search(query, limit):
+        response = await asyncio.to_thread(client.delete, '/api/computers/1')
+        assert response.status_code == 204
+        return {}
+    monkeypatch.setattr(main, 'search_pages', search)
+    result = client.post(f"/api/admin/photos/{job['id']}/step").json()
+    assert result['counts'] == {'pending': 9, 'skipped': 1}
+    assert client.get('/api/computers/1/images').status_code == 404

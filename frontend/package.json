@@ -7,15 +7,28 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "test:browser": "node tests/browser/imports.cjs",
+    "test:browser:categories": "node tests/browser/categories.cjs",
+    "test:browser:prices": "node tests/browser/prices.cjs",
+    "test:browser:releases": "node tests/browser/releases.cjs",
+    "test:browser:sources": "node tests/browser/sources.cjs",
+    "test:browser:europe": "node tests/browser/europe.cjs",
+    "test:browser:history": "node tests/browser/history.cjs",
+    "test:browser:descriptions": "node tests/browser/descriptions.cjs",
+    "test:browser:quality": "node tests/browser/quality.cjs",
+    "test:browser:admin": "node tests/browser/admin.cjs",
+    "test:browser:bulk": "node tests/browser/bulk1000bit.cjs",
+    "test:browser:reset": "node tests/browser/reset.cjs"
   },
   "dependencies": {
+    "lucide-react": "^0.468.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "recharts": "^2.15.0",
-    "lucide-react": "^0.468.0"
+    "recharts": "^2.15.0"
   },
   "devDependencies": {
+    "playwright": "^1.65.0",
     "vite": "^6.0.0"
   }
 }

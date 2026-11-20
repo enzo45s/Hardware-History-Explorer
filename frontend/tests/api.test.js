@@ -64,3 +64,8 @@ test('validation errors explain rejected input', async t => {
   t.mock.method(globalThis, 'fetch', async () => Response.json({ detail: [{ msg: 'Year out of range' }] }, { status: 422 }));
   await assert.rejects(api('/computers?year_from=-1'), /Year out of range/);
 });
+
+test('retryable API errors retain status and Retry-After for photo queue recovery', async t => {
+  t.mock.method(globalThis, 'fetch', async () => Response.json({ detail: 'Queue busy' }, { status: 429, headers: { 'Retry-After': '2' } }));
+  await assert.rejects(api('/admin/photos/1/step'), error => error.status === 429 && error.retryAfter === '2' && error.message === 'Queue busy');
+});
