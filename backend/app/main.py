@@ -54,6 +54,8 @@ async def lifespan(app):
  with SessionLocal() as db: seed(db)
  from .importing.price_recovery import recover_price_contexts
  with SessionLocal() as db: recover_price_contexts(db)
+ from .importing.classification import normalize_categories
+ with SessionLocal() as db: normalize_categories(db)
  yield
 app=FastAPI(title='Hardware History Explorer API',version='1.1.0',lifespan=lifespan)
 app.mount('/media',MediaFiles(directory=str(UPLOAD_DIR)),name='media')

@@ -1,7 +1,6 @@
 """Explicit editorial taxonomy, never an automatic historical verification."""
 import hashlib
 import json
-import re
 from collections import Counter
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
@@ -10,11 +9,13 @@ from sqlalchemy.orm import Session, selectinload
 from ..models import Category, Computer
 from ..import_models import ImportJob, ImportRow, ImportClaim
 from .engine import reference, source
-from .identity import maker_key
+from .classification_rules import family_category, description_category
+from ..admin import catalog_lock
+from .normalize import name_key
 
-VERSION = 'hhe-editorial-categories-v1'
+VERSION = 'hhe-editorial-categories-v2'
 TAXONOMY = ('Home computer', 'Personal computer', 'Workstation', 'Minicomputer', 'Mainframe',
-            'Microcomputer', 'Portable', 'Supercomputer')
+            'Microcomputer', 'Portable', 'Supercomputer', 'Server')
 # Specific families only: maker alone, date, CPU and RAM are not classifications.
 RULES = (
     ('apple', r'^(?:Macintosh PowerBook|Macintosh Portable)', 'Portable'),
@@ -47,33 +48,106 @@ RULES = (
 )
 
 
-def classify(manufacturer, model, urls=()):
-    maker = maker_key(manufacturer)
-    for rule_maker, pattern, category in RULES:
-        if maker == rule_maker and re.search(pattern, model, re.I):
-            return category, f'{rule_maker}: {pattern}'
-    if any('/src/mame/msx/' in (url or '') for url in urls):
-        return 'Home computer', 'Famiglia MSX identificata dalla provenienza del driver ufficiale'
-    return None
+def classify_details(manufacturer, model, urls=(), description=''):
+    family = family_category(manufacturer, model, urls, RULES)
+    declared = description_category(manufacturer, model, description)
+    # A precise family is more useful than a broad "personal computer" phrase.
+    # Specific, incompatible roles need operator review instead of a guess.
+    if family and declared and family['category'] != declared['category']:
+        broad = {'Personal computer', 'Microcomputer'}
+        if declared['category'] in broad:
+            return family
+        if family['category'] in broad:
+            return declared
+        return None
+    return family or declared
 
 
-def prepare(db):
-    proposals, unresolved = [], 0
-    rows = db.scalars(select(Computer).options(selectinload(Computer.manufacturer), selectinload(Computer.categories),
-                     selectinload(Computer.sources)).order_by(Computer.id)).all()
+def classify(manufacturer, model, urls=(), description=''):
+    decision = classify_details(manufacturer, model, urls, description)
+    return (decision['category'], decision['rule']) if decision else None
+
+
+def generic(name):
+    return name_key(name) == 'calcolatore'
+
+
+def prepare(db, computer_ids=None):
+    proposals, unresolved, cleanup = [], [], []
+    query = select(Computer).options(selectinload(Computer.manufacturer), selectinload(Computer.categories),
+                     selectinload(Computer.sources)).order_by(Computer.id)
+    if computer_ids is not None:
+        query = query.where(Computer.id.in_(computer_ids))
+    rows = db.scalars(query).all()
     for c in rows:
-        if any(cat.name != 'Calcolatore' for cat in c.categories):
+        specific = [cat.name for cat in c.categories if not generic(cat.name)]
+        if specific:
+            if any(generic(cat.name) for cat in c.categories):
+                cleanup.append({'id': c.id, 'manufacturer': c.manufacturer.name, 'model_name': c.model_name,
+                    'categories': sorted(specific), 'previous': sorted(cat.name for cat in c.categories)})
             continue  # Preserve every existing specific/manual classification.
         urls = [s.url for s in c.sources]
-        match = classify(c.manufacturer.name, c.model_name, urls)
-        if match is None:
-            unresolved += 1; continue
-        category, rule = match
+        decision = classify_details(c.manufacturer.name, c.model_name, urls, c.description or '')
+        if decision is None:
+            unresolved.append({'id': c.id, 'manufacturer': c.manufacturer.name, 'model_name': c.model_name})
+            continue
         proposals.append({'id': c.id, 'manufacturer': c.manufacturer.name, 'model_name': c.model_name,
-                          'category': category, 'rule': rule, 'previous': sorted(cat.name for cat in c.categories)})
-    raw = json.dumps({'version': VERSION, 'proposals': proposals}, ensure_ascii=False, sort_keys=True).encode()
-    return {'token': hashlib.sha256(raw).hexdigest(), 'version': VERSION, 'total': len(proposals), 'unresolved': unresolved,
+                          **decision, 'previous': sorted(cat.name for cat in c.categories)})
+    raw = json.dumps({'version': VERSION, 'proposals': proposals, 'cleanup': cleanup}, ensure_ascii=False, sort_keys=True).encode()
+    return {'token': hashlib.sha256(raw).hexdigest(), 'version': VERSION, 'total': len(proposals), 'unresolved': len(unresolved),
+            'catalog_total': len(rows), 'generic_only': len(proposals) + len(unresolved),
+            'cleanup_count': len(cleanup), 'cleanup': cleanup, 'unresolved_records': unresolved,
+            'current_categories': dict(Counter(cat.name for c in rows for cat in c.categories if not generic(cat.name))),
             'by_category': dict(Counter(p['category'] for p in proposals)), 'proposals': proposals}
+
+
+def apply_plan(db, preview, limit=1000):
+    selected = preview['proposals'][:limit]
+    cleanup = preview['cleanup'][:max(0, limit - len(selected))]
+    if not selected and not cleanup:
+        return {'updated': 0, 'cleaned': 0, 'job_id': None, 'unresolved': preview['unresolved']}
+    citation_data = {'title': 'HHE · Classificazione editoriale v2', 'publisher': 'Hardware History Explorer', 'source_type': 'editorial_rule'}
+    records = [{'manufacturer': p['manufacturer'], 'model_name': p['model_name'],
+        'categories': [p['category']] if 'category' in p else p['categories'], 'source': citation_data,
+        'evidence': f"Classificazione editoriale da verificare. Regola {VERSION}: {p.get('rule', 'Rimozione etichetta generica ridondante')}. Categorie precedenti: {p['previous']}."}
+        for p in [*selected, *cleanup]]
+    raw = json.dumps(records, ensure_ascii=False)
+    job = ImportJob(provider='manual', filename=VERSION + '.json', format='json', checksum=hashlib.sha256(raw.encode()).hexdigest(),
+        raw_payload=raw, status='completed', request_options={'classification_version': VERSION, 'managed_classification': True})
+    db.add(job); db.flush()
+    for name in TAXONOMY:
+        reference(db, Category, name)
+    citation = source(db, citation_data)
+    for position, (proposal, record) in enumerate(zip([*selected, *cleanup], records), 1):
+        c = db.get(Computer, proposal['id'])
+        row = ImportRow(job_id=job.id, position=position, raw=record, normalized=record, computer_id=c.id, status='updated', candidates=[c.id])
+        db.add(row); db.flush()
+        c.categories = [cat for cat in c.categories if not generic(cat.name)]
+        if 'category' in proposal:
+            cat = reference(db, Category, proposal['category'])
+            if cat not in c.categories:
+                c.categories.append(cat)
+            if citation not in c.sources:
+                c.sources.append(citation)
+            db.add(ImportClaim(row_id=row.id, computer_id=c.id, source_id=citation.id, entity='Computer', target_id=c.id,
+                field='category', value={'value': cat.id}, previous={'value': None}, status='pending', estimated=False, evidence=record['evidence']))
+    db.flush()
+    return {'updated': len(selected), 'cleaned': len(cleanup), 'job_id': job.id, 'unresolved': preview['unresolved']}
+
+
+def normalize_categories(db, computer_ids=None):
+    """Backfill generic entries only; preserve every specific operator category."""
+    catalog_lock(db)
+    total, cleaned, jobs = 0, 0, []
+    while True:
+        plan = prepare(db, computer_ids)
+        result = apply_plan(db, plan)
+        total += result['updated']; cleaned += result['cleaned']
+        if result['job_id'] is None:
+            break
+        jobs.append(result['job_id'])
+    db.commit()
+    return {'updated': total, 'cleaned': cleaned, 'job_ids': jobs, 'unresolved': plan['unresolved']}
 
 
 class Apply(BaseModel):
@@ -97,30 +171,8 @@ def create_classification_router(get_db):
         preview = prepare(db)
         if data.token != preview['token']:
             raise HTTPException(409, 'Le schede sono cambiate: aggiorna l’anteprima delle categorie.')
-        if not preview['total']:
-            return {'updated': 0, 'job_id': None, 'unresolved': preview['unresolved']}
-        # One bounded audit job per click; additional candidates remain for the next preview.
-        selected = preview['proposals'][:1000]
-        records = [{'manufacturer': p['manufacturer'], 'model_name': p['model_name'], 'categories': [p['category']],
-            'source': {'title': 'HHE · Classificazione editoriale v1', 'publisher': 'Hardware History Explorer', 'source_type': 'editorial_rule'},
-            'evidence': f"Classificazione editoriale da verificare, non attestazione MAME. Regola {VERSION}: {p['rule']}. Categorie precedenti: {p['previous']}."}
-            for p in selected]
-        raw = json.dumps(records, ensure_ascii=False)
-        job = ImportJob(provider='manual', filename=VERSION + '.json', format='json', checksum=hashlib.sha256(raw.encode()).hexdigest(),
-                        raw_payload=raw, status='completed', request_options={'upload': True, 'classification_version': VERSION})
-        db.add(job); db.flush()
-        for name in TAXONOMY:
-            reference(db, Category, name)
-        citation = source(db, records[0]['source'])
-        for position, (proposal, record) in enumerate(zip(selected, records), 1):
-            c = db.get(Computer, proposal['id']); cat = reference(db, Category, proposal['category'])
-            row = ImportRow(job_id=job.id, position=position, raw=record, normalized=record, computer_id=c.id, status='updated', candidates=[c.id])
-            db.add(row); db.flush()
-            c.categories.append(cat)
-            if citation not in c.sources: c.sources.append(citation)
-            db.add(ImportClaim(row_id=row.id, computer_id=c.id, source_id=citation.id, entity='Computer', target_id=c.id,
-                field='category', value={'value': cat.id}, previous={'value': None}, status='pending', estimated=False, evidence=record['evidence']))
+        result = apply_plan(db, preview)
         db.commit()
-        return {'updated': len(selected), 'job_id': job.id, 'unresolved': preview['unresolved']}
+        return result
 
     return router

@@ -68,6 +68,11 @@ jobs:
         env:
           HHE_BASE_URL: http://127.0.0.1:8080/
         run: npm run test:browser
+      - name: Browser catalog categories and manual review
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:categories
       - name: Browser historical price workbook
         working-directory: frontend
         env:

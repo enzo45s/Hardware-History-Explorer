@@ -283,6 +283,8 @@ def import_record(db, job, row):
     model_name = c.model_name if alias or job.provider == 'historical_prices' or provider_computer_key(job.provider, c.manufacturer.name, c.model_name) == provider_computer_key(job.provider, data['manufacturer'], data['model_name']) else data['model_name']
     record_fields(c, {**data, 'model_name': model_name, 'manufacturer_id': maker.id}, ('model_name', 'manufacturer_id', 'description', 'announcement_date'))
     for name in data.get('categories', []):
+        if name_key(name) == 'calcolatore' and any(name_key(cat.name) != 'calcolatore' for cat in c.categories):
+            continue  # Reimports must not restore a redundant generic label.
         cat = reference(db, Category, name)
         if cat not in c.categories:
             c.categories.append(cat)
@@ -426,6 +428,12 @@ def apply_job(db, job_id, commit=True):
             and any(row.normalized and not row.normalized.get('releases') and row.normalized.get('facts') for row in job.rows)):
         from .price_recovery import recover_price_contexts
         recover_price_contexts(db, origin_job_id=job.id)
+    if commit and not job.request_options.get('classification_version'):
+        identifiers = {row.computer_id for row in job.rows if row.computer_id is not None
+                       and row.status in ('imported', 'updated', 'unchanged')}
+        if identifiers:
+            from .classification import normalize_categories
+            normalize_categories(db, identifiers)
     return job
 
 

@@ -282,9 +282,13 @@ coda sull'intero catalogo attuale, comprese le schede già fotografate. Una
 foto utilizzabile diventa la nuova copertina; la galleria e le foto prive di
 un risultato sostitutivo restano conservate.
 
-Le regole di [classificazione](docs/CLASSIFICATION.md) e di
-[rifinitura del catalogo](docs/CATALOG_REFINEMENT.md) già utilizzate restano
-documentate come riferimento tecnico; i relativi pannelli sono stati rimossi.
+Le [categorie del catalogo](docs/CLASSIFICATION.md) vengono completate
+automaticamente all’avvio e dopo le importazioni, per le famiglie riconosciute.
+Le categorie specifiche già curate restano conservate; «Calcolatore» viene
+rimosso quando ridondante. In **Amministrazione → Categorie** trovi conteggi,
+proposte e sistemi da classificare manualmente. Non occorre svuotare il database.
+La precedente [rifinitura del catalogo](docs/CATALOG_REFINEMENT.md) resta
+documentata come riferimento tecnico; il relativo pannello è stato rimosso.
 
 Le [etichette delle schede e dei confronti](docs/CATALOG_PRESENTATION.md) descrivono
 l'hardware; la provenienza del dataset resta nelle fonti e nell'audit, senza

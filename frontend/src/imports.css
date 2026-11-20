@@ -29,3 +29,7 @@
 .archive-maintenance button{max-width:100%;white-space:normal;overflow-wrap:anywhere;margin:8px 8px 8px 0}
 .archive-maintenance .archive-reset-button{border-color:var(--theme-warning-border,#bc6c27)}
 .import-description-text { white-space: pre-wrap; overflow-wrap: anywhere; }
+.classification-panel { min-width: 0; overflow-wrap: anywhere; }
+.classification-panel li { margin-block: .7rem; }
+.classification-panel li p { margin-block: .35rem; }
+.classification-panel button { max-width: 100%; white-space: normal; }

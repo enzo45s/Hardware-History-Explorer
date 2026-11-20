@@ -7,6 +7,7 @@ import ImportPanel from './ImportPanel.jsx';
 import PhotoPanel from './PhotoPanel.jsx';
 import HistoryPanel from './HistoryPanel.jsx';
 import CatalogQualityPanel from './CatalogQualityPanel.jsx';
+import ClassificationPanel from './ClassificationPanel.jsx';
 
 function Field({ label, value, onChange, wide = false, multiline = false, ...props }) {
   const Tag = multiline ? 'textarea' : 'input';
@@ -197,6 +198,15 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onD
     } catch (e) { setError(e.message); }
     finally { setBusy(false); }
   }
+  async function editClassifiedComputer(id) {
+    if (!discard()) return;
+    setBusy(true); setError(''); setMessage('');
+    try {
+      const record = await api('/admin/computers/' + id + '?readable=true');
+      setSection('computers'); setDraft(computerDraft(record)); setDirty(false); setQuery('');
+    } catch (e) { setError(e.message); }
+    finally { setBusy(false); }
+  }
   async function remove() {
     if (!draft?.id || busy || !['computers', 'manufacturers'].includes(section)) return;
     const saved = (section === 'computers' ? records : manufacturers).find(record => record.id === draft.id);
@@ -225,6 +235,7 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onD
     <div className="admin-tabs" aria-label="Sezioni amministrative">
       <button disabled={busy} className={section === 'computers' ? 'active' : ''} onClick={() => chooseSection('computers')}><Monitor size={17} />Calcolatori</button>
       <button disabled={busy} className={section === 'manufacturers' ? 'active' : ''} onClick={() => chooseSection('manufacturers')}><Factory size={17} />Produttori</button>
+      <button disabled={busy} className={section === 'classification' ? 'active' : ''} onClick={() => chooseSection('classification')}>Categorie</button>
       <button disabled={busy} className={section === 'sources' ? 'active' : ''} onClick={() => chooseSection('sources')}><BookOpen size={17} />Fonti</button>
       <button disabled={busy} className={section === 'imports' ? 'active' : ''} onClick={() => chooseSection('imports')}>Importazioni</button>
       <button disabled={busy} className={section === 'photos' ? 'active' : ''} onClick={() => chooseSection('photos')}>Foto automatiche</button>
@@ -233,7 +244,7 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onD
     </div>
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
-    {section === 'quality' ? <CatalogQualityPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'history' ? <HistoryPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'photos' ? <PhotoPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }}
+    {section === 'classification' ? <ClassificationPanel onEditComputer={editClassifiedComputer} onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'quality' ? <CatalogQualityPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'history' ? <HistoryPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'photos' ? <PhotoPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }}
       onArchiveReset={() => { setDraft(null); setDirty(false); setQuery(''); setMessage(''); onArchiveReset(); reload().catch(e => setError(e.message)); }} /> : <div className="admin-layout"><aside className="panel admin-list">
       <button className="admin-primary" disabled={busy || loading} onClick={create}><Plus size={16} />{entity.create}</button>
       <label className="admin-field"><span>Cerca {entity.plural}</span><input value={query} onChange={e => setQuery(e.target.value)} /></label>
