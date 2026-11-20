@@ -298,3 +298,22 @@ HHE_BASE_URL=http://127.0.0.1:8080/ npm run test:browser
 È supportato `CHROMIUM_PATH` per un Chromium già installato. La CI esegue
 SQLite, PostgreSQL, frontend, build, Compose e browser. I test sintetici non
 sono dati storici pubblicati.
+# Pacchetti di arricchimento senza creazione di sistemi
+
+Un CSV/JSON normale continua a consentire l’inserimento di nuovi calcolatori.
+Per un JSON destinato esclusivamente ad arricchire un archivio esistente,
+il contenitore può dichiarare:
+
+```json
+{
+  "_metadata": { "import_mode": "existing_only" },
+  "records": []
+}
+```
+
+`records` deve contenere da 1 a 1000 record nel formato canonico; l’elenco vuoto
+qui mostra solo la struttura e non è un file importabile. Il motore applica
+il vincolo anche dal caricamento generico e lo conserva nei ritentativi.
+I record senza un abbinamento a una scheda esistente vengono esclusi, senza
+ricreare sistemi eliminati. Il vincolo può solo restringere l’importazione;
+non disattiva le limitazioni obbligatorie degli altri adattatori.

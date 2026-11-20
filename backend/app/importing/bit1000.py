@@ -116,7 +116,9 @@ def decode_html(raw, content_type=''):
 
 
 def present(value):
-    return bool(value and value.strip().casefold() not in ('-', '–', '—', '?', 'n/a', 'n.d.', 'nd', 'unknown', 'sconosciuto'))
+    label = value.strip().strip('-–—').strip().casefold() if value else ''
+    return bool(label and label not in ('?', 'n/a', 'n.d.', 'nd', 'unknown', 'sconosciuto',
+                                       'not assigned', 'not available', 'not known', 'non disponibile'))
 
 
 def price_value(value):
@@ -179,10 +181,14 @@ def html_record(raw, source_url=None, content_type='', accessed_at=None):
     def fact(label, value):
         facts.append({'fact_type': label, 'statement': f'{label}: {value}', 'source': citation, 'evidence': evidence(label, value)})
 
-    cpu = fields.get('cpu', '')
+    # Some sheets render an empty clock as "- Mhz", even with no CPU.
+    # Retain an actual model, but never import the clock placeholder as one.
+    cpu = re.sub(r'\s*[-–—]\s*(?:[GMk]?Hz)\s*$', '', fields.get('cpu', ''), flags=re.I).strip()
     if present(cpu):
         match = re.fullmatch(r'(.+?)\s+[-–—]\s+(\d+(?:[.,]\d+)?)\s*(GHz|MHz|kHz|Hz)', cpu, re.I)
-        spec('CPU', 'Modello', match[1] if match else cpu, 'CPU')
+        cpu_model = match[1] if match else cpu
+        prop = 'Architettura' if re.fullmatch(r'\d+\s*[- ]?\s*bit', cpu_model, re.I) else 'Modello'
+        spec('CPU', prop, cpu_model, 'CPU')
         if match:
             unit = {'ghz': 'GHz', 'mhz': 'MHz', 'khz': 'kHz', 'hz': 'Hz'}[match[3].casefold()]
             spec('CPU', 'Frequenza', cpu, 'CPU', numeric_value=float(match[2].replace(',', '.')), unit=unit)

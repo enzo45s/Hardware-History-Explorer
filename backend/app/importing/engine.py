@@ -79,6 +79,13 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
     # reject these before storing raw rows in PostgreSQL's strict JSON type.
     json.dumps(records, allow_nan=False)
     options = dict(options or {})
+    if format == 'json' and provider in ('manual', '1000bit'):
+        payload = json.loads(raw.decode('utf-8-sig'))
+        metadata = payload.get('_metadata') if isinstance(payload, dict) else None
+        if isinstance(metadata, dict) and metadata.get('import_mode') == 'existing_only':
+            # An enrichment package can restrict application even when uploaded
+            # through the generic file picker. Retry inherits the same guard.
+            options['existing_only'] = True
     if provider in ('historical_prices', 'historical_descriptions'):
         options['existing_only'] = True
     options.pop('raw_payload_encoding', None)

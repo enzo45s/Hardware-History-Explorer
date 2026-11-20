@@ -65,6 +65,29 @@ def test_import_idempotence_sources_and_integration(client):
     assert client.get('/api/computers').json()['total'] == before + 1
 
 
+def test_existing_only_package_metadata_prevents_recreating_deleted_computers(client):
+    first = upload(client, [record()]).json()['id']; apply(client, first)
+    c_id = detail(client, first)['rows'][0]['computer_id']
+    payload = {'_metadata': {'import_mode': 'existing_only'}, 'records': [record()]}
+    def stage_package():
+        response = client.post('/api/admin/imports/upload', files={'file': ('enrichment.json', json.dumps(payload), 'application/json')},
+            data={'rights_confirmed': 'true', 'provider': 'manual', 'existing_only': 'false'})
+        assert response.status_code == 201, response.text
+        assert response.json()['existing_only'] is True
+        return response.json()['id']
+    job = stage_package()
+    assert apply(client, job)['counts'] == {'unchanged': 1}
+    assert client.delete(f'/api/computers/{c_id}').status_code == 204
+    before = client.get('/api/computers').json()['total']
+    job = stage_package()
+    assert apply(client, job)['counts'] == {'skipped': 1}
+    retry = client.post(f'/api/admin/imports/{job}/retry')
+    assert retry.status_code == 201, retry.text
+    assert retry.json()['existing_only'] is True
+    assert apply(client, retry.json()['id'])['counts'] == {'skipped': 1}
+    assert client.get('/api/computers').json()['total'] == before
+
+
 def test_conflict_is_not_overwritten_and_human_can_resolve_with_audit(client):
     first = upload(client, [record()]).json()['id']; apply(client, first)
     changed = record(); changed['configurations'][0]['specifications'][0] = {'component_type': 'RAM', 'property_name': 'Capacity', 'numeric_value': 8, 'unit': 'KB', 'estimated': True}

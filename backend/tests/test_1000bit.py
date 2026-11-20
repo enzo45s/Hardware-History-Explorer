@@ -66,6 +66,21 @@ def test_actual_amiga_sheet_preserves_uncertainty_and_does_not_invent_prices_or_
     assert all(s.source.url == URL and hashlib.sha256(HTML).hexdigest() in s.evidence for s in specs.values())
 
 
+@pytest.mark.parametrize('value,expected', [(' - Mhz', None), ('N/A - MHz', None), ('- Not assigned -', None), ('MOS Micro 8 - Mhz', 'MOS Micro 8')])
+def test_cpu_without_clock_does_not_import_a_placeholder(value, expected):
+    raw = HTML.replace(b'68EC020 - 14.4 Mhz', value.encode())
+    assert raw != HTML
+    record = html_record(raw)
+    cpus = [s for c in record.get('configurations', []) for s in c['specifications'] if s['component_type'] == 'CPU']
+    assert [s['text_value'] for s in cpus] == ([] if expected is None else [expected])
+
+
+def test_cpu_bit_width_is_an_architecture_not_an_invented_processor_model():
+    record = html_record(HTML.replace(b'68EC020 - 14.4 Mhz', b'4 bit'))
+    cpus = [s for c in record['configurations'] for s in c['specifications'] if s['component_type'] == 'CPU']
+    assert [(s['property_name'], s['text_value']) for s in cpus] == [('Architettura', '4 bit')]
+
+
 def test_preview_enrichment_replay_retry_and_citations_work_without_duplicate_models(client):
     cid = existing_amiga()
     before = client.get('/api/computers').json()['total']
