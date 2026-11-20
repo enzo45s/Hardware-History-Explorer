@@ -290,6 +290,12 @@ proposte e sistemi da classificare manualmente. Non occorre svuotare il database
 La precedente [rifinitura del catalogo](docs/CATALOG_REFINEMENT.md) resta
 documentata come riferimento tecnico; il relativo pannello è stato rimosso.
 
+Per le 81 schede Olivetti dell’HTML fornito è disponibile un
+[pacchetto tecnico documentato](docs/datasets/olivetti-2026-11/README.md):
+513 specifiche per 62 modelli, con resoconto delle lacune. Il JSON limita
+l’applicazione ai sistemi già presenti e conserva i valori discordanti
+finché non vengono revisionati.
+
 Le [etichette delle schede e dei confronti](docs/CATALOG_PRESENTATION.md) descrivono
 l'hardware; la provenienza del dataset resta nelle fonti e nell'audit, senza
 dover reimportare le schede esistenti.
