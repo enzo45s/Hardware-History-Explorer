@@ -68,6 +68,8 @@ def unit_name(value):
     value = value.strip()
     if not value:
         return None
+    if value == 'mHz':
+        return value  # Millihertz are not megahertz.
     aliases = {'kb': 'KB', 'kbyte': 'KB', 'kbytes': 'KB', 'kib': 'KiB', 'mb': 'MB',
                'mib': 'MiB', 'gb': 'GB', 'gib': 'GiB', 'mhz': 'MHz', 'khz': 'kHz',
                'ghz': 'GHz', 'hz': 'Hz', 'bytes': 'B', 'byte': 'B', 'bits': 'bit'}

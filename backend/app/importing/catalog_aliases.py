@@ -2,12 +2,17 @@
 from sqlalchemy import select
 from ..models import Computer
 from ..import_models import ComputerAlias
-from .identity import provider_computer_key
+from .identity import provider_computer_key, maker_alias_keys, manufacturer_base
+from .normalize import name_key
 
 
 def alias_for(db, manufacturer, model, computer_id=None):
     maker, name = provider_computer_key('historical_prices', manufacturer, model)
-    alias = db.scalar(select(ComputerAlias).where(ComputerAlias.manufacturer_key == maker, ComputerAlias.model_key == name))
+    candidates = db.scalars(select(ComputerAlias).where(ComputerAlias.manufacturer_key.in_(maker_alias_keys(maker)), ComputerAlias.model_key == name).order_by(ComputerAlias.id)).all()
+    if len({a.computer_id for a in candidates}) > 1:
+        raise ValueError('Nome precedente ambiguo dopo la normalizzazione del produttore: controlla gli abbinamenti.')
+    original_key = name_key(manufacturer_base(manufacturer))
+    alias = min(candidates, key=lambda a:(a.manufacturer_key != original_key, a.manufacturer_key != maker, a.id)) if candidates else None
     if alias is None or (computer_id is not None and alias.computer_id != computer_id):
         return None
     computer = db.get(Computer, alias.computer_id)

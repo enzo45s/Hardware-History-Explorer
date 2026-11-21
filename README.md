@@ -6,6 +6,11 @@ La navigazione fra sezioni, l'apertura/chiusura delle schede e il cambio di
 sezione amministrativa riportano la pagina in cima. Aggiornamenti dei dati e
 ricerche nella stessa vista conservano la posizione di lettura.
 
+La [revisione del catalogo e delle unità](docs/CATALOG_REVISION.md) permette
+di esaminare il database locale e applicare normalizzazioni con anteprima,
+controllo delle modifiche e conservazione degli originali. La scheda tecnica
+mostra una sola volta capacità RAM equivalenti, mantenendo tutte le fonti.
+
 ## Avvio con Docker
 
 1. Installa Docker Desktop / Docker Engine e Docker Compose.

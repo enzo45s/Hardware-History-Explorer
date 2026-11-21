@@ -12,6 +12,8 @@ MAKERS = {
     'ibm': ('IBM', 'International Business Machines', 'International Business Machines Corporation'),
     'commodore': ('Commodore', 'Commodore Business Machines', 'Commodore Business Machines, Inc.', 'Commodore Business Machines (USA)'),
     'dec': ('DEC', 'Digital Equipment Corporation'),
+    'hp': ('HP', 'Hewlett-Packard', 'Hewlett Packard', 'Hewlett-Packard Company'),
+    'asem': ('ASEM', 'ASEM S.p.A.'),
 }
 MANUFACTURERS = {name_key(alias): key for key, aliases in MAKERS.items() for alias in aliases}
 MODELS = {
@@ -25,6 +27,11 @@ MODELS = {
 def maker_key(name):
     normalized = name_key(name)
     return MANUFACTURERS.get(normalized, normalized)
+
+
+def maker_alias_keys(name):
+    canonical = maker_key(name)
+    return tuple(dict.fromkeys((canonical, *(name_key(v) for v in MAKERS.get(canonical, ())))))
 
 
 def model_key(manufacturer, name):

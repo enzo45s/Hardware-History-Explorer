@@ -111,6 +111,40 @@ def text_value(value):
     return text + (' ' + value['unit'] if value.get('unit') else '')
 
 
+def distinct_capacities(specs):
+    """Collapse equal capacity statements, preserving IDs and every citation.
+
+    Only different labels with one exact scalar and identical scope qualify.
+    Two equal physical RAM banks, maxima, ranges and named roles stay distinct.
+    """
+    labels={'Capacità','Capacità riportata','Capacità di riferimento','Opzioni di memoria'}
+    groups=defaultdict(list)
+    for spec in specs:
+        view=spec.get('normalized',spec)
+        prop=view['property_name']
+        values=spec.get('display_values',[])
+        if (view['component_type'] not in ('RAM','ROM','Memoria') or prop not in labels
+            or view.get('numeric_value') is None or len(values)!=1):continue
+        identity=(view['component_type'],key(view.get('component_name')),value_key(view),tuple(values[0].get('scopes',[])))
+        groups[identity].append(spec)
+    removed=set()
+    for candidates in groups.values():
+        names=[s.get('normalized',s)['property_name'] for s in candidates]
+        if len(candidates)<2 or len(set(names))!=len(names):continue
+        priority={'Capacità':0,'Capacità riportata':1,'Capacità di riferimento':2,'Opzioni di memoria':3}
+        target=min(candidates,key=lambda s:priority[s['normalized']['property_name']])
+        for other in candidates:
+            if other is target:continue
+            removed.add(id(other))
+            target['specification_ids']=sorted(set(target['specification_ids']+other['specification_ids']))
+            sources={s['id']:s for s in target['sources']+other['sources']}
+            target['sources']=[sources[i] for i in sorted(sources)]
+            value=target['display_values'][0]
+            value['specification_ids']=target['specification_ids']
+            value['sources']=target['sources']
+    return [s for s in specs if id(s) not in removed]
+
+
 def sheet(members, model, count):
     first = deepcopy(members[0][0])
     ids = sorted({cid for row, _ in members for cid in row.get('configuration_ids', [row['id']])})
@@ -174,7 +208,7 @@ def sheet(members, model, count):
         sources = {s['id']: s for value in values for s in value['sources']}
         spec['sources'] = [sources[sid] for sid in sorted(sources)]
         specs.append(spec)
-    first['specifications'] = specs
+    first['specifications'] = distinct_capacities(specs)
     return first
 
 

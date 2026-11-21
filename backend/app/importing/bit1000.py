@@ -185,13 +185,14 @@ def html_record(raw, source_url=None, content_type='', accessed_at=None):
     # Retain an actual model, but never import the clock placeholder as one.
     cpu = re.sub(r'\s*[-–—]\s*(?:[GMk]?Hz)\s*$', '', fields.get('cpu', ''), flags=re.I).strip()
     if present(cpu):
-        match = re.fullmatch(r'(.+?)\s+[-–—]\s+(\d+(?:[.,]\d+)?)\s*(GHz|MHz|kHz|Hz)', cpu, re.I)
-        cpu_model = match[1] if match else cpu
+        from ..measurement_cleanup import split_cpu
+        parts = split_cpu(cpu)
+        cpu_model = parts[0] if parts else cpu
         prop = 'Architettura' if re.fullmatch(r'\d+\s*[- ]?\s*bit', cpu_model, re.I) else 'Modello'
         spec('CPU', prop, cpu_model, 'CPU')
-        if match:
-            unit = {'ghz': 'GHz', 'mhz': 'MHz', 'khz': 'kHz', 'hz': 'Hz'}[match[3].casefold()]
-            spec('CPU', 'Frequenza', cpu, 'CPU', numeric_value=float(match[2].replace(',', '.')), unit=unit)
+        if parts:
+            quantity = {k:v for k,v in parts[1].items() if k != 'property_name' and v is not None}
+            spec('CPU', parts[1]['property_name'], cpu, 'CPU', **quantity)
     mappings = {'ram': ('RAM', 'Capacità riportata'), 'rom': ('ROM', 'Capacità riportata'),
                 'tipo': ('Sistema', 'Formato'), 'sistema operativo': ('Sistema operativo', 'Nome'),
                 'testo (col. x righe)': ('Video', 'Modalità testo'), 'grafica': ('Video', 'Grafica'),
