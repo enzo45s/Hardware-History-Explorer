@@ -86,6 +86,8 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
             # An enrichment package can restrict application even when uploaded
             # through the generic file picker. Retry inherits the same guard.
             options['existing_only'] = True
+        if isinstance(metadata, dict) and metadata.get('enrichment_mode') == 'missing_ram_only':
+            options.update(existing_only=True, missing_ram_only=True)
     if provider in ('historical_prices', 'historical_descriptions'):
         options['existing_only'] = True
     options.pop('raw_payload_encoding', None)
@@ -119,6 +121,9 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
                 data = normalize_record(original)
             else:
                 data = Record.model_validate(original).model_dump(mode='json', exclude_none=True)
+            if options.get('missing_ram_only'):
+                from ..ram_research import validate_enrichment
+                validate_enrichment(data)
             candidates, ambiguous = catalog_candidates(db, data, provider, description_index)
             row.normalized = data
             row.candidates = candidates
@@ -217,6 +222,12 @@ def import_record(db, job, row):
         return
     if c is None and candidates:
         c = db.get(Computer, candidates[0])
+    if job.request_options.get('missing_ram_only'):
+        from ..ram_research import validate_enrichment, has_documented_ram
+        validate_enrichment(data)
+        if c is None or has_documented_ram(c):
+            row.status, row.error = 'skipped', 'Quantità RAM già documentata o sistema rimosso: nessuna modifica.'
+            return
     created = c is None
     maker = c.manufacturer if c is not None and (job.provider == 'historical_prices' or provider_maker_key(job.provider, c.manufacturer.name) == provider_maker_key(job.provider, data['manufacturer'])) else reference(db, Manufacturer, data['manufacturer'], provider=job.provider)
     if created:
@@ -435,7 +446,7 @@ def apply_job(db, job_id, commit=True):
             and any(row.normalized and not row.normalized.get('releases') and row.normalized.get('facts') for row in job.rows)):
         from .price_recovery import recover_price_contexts
         recover_price_contexts(db, origin_job_id=job.id)
-    if commit and not job.request_options.get('classification_version'):
+    if commit and not job.request_options.get('classification_version') and not job.request_options.get('missing_ram_only'):
         identifiers = {row.computer_id for row in job.rows if row.computer_id is not None
                        and row.status in ('imported', 'updated', 'unchanged')}
         if identifiers:

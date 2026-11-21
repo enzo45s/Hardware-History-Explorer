@@ -189,6 +189,7 @@ export default function ImportPanel({ onSaved, onArchiveReset = onSaved }) {
         {job.error && <p className="inline-error">{job.error}</p>}
         <p>Totale: {job.total} righe. {Object.entries(job.counts).map(([k, n]) => `${status(k)}: ${n}`).join(' · ')}</p>
         {job.existing_only && <p className="muted">Solo aggiornamenti a calcolatori esistenti. Nessuna nuova scheda verrà creata.</p>}
+        {job.missing_ram_only && <p className="muted">Solo RAM mancante. I sistemi con una quantità RAM già documentata saranno saltati, anche se aggiorni la scheda dopo questa anteprima.</p>}
         {job.price_workbook_report && <div className="panel" role="region" aria-label="Controllo Excel dei prezzi">
           <p>Excel: {job.price_workbook_report.models} sistemi; {job.price_workbook_report.without_price} senza importo esclusi. Prezzi numerici: {job.price_workbook_report.price_records}; sole note: {job.price_workbook_report.context_only_records}.</p>
           <p>Righe con colonne fonte riallineate: {job.price_workbook_report.source_columns_repaired}. Righe non valide: {job.price_workbook_report.invalid_records}.</p>

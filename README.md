@@ -11,6 +11,11 @@ di esaminare il database locale e applicare normalizzazioni con anteprima,
 controllo delle modifiche e conservazione degli originali. La scheda tecnica
 mostra una sola volta capacità RAM equivalenti, mantenendo tutte le fonti.
 
+Il [pacchetto RAM mancante](docs/datasets/ram-2026-11/README.md) aggiunge
+quantità documentate per 147 sistemi della copia di catalogo esaminata.
+L’importazione aggiorna solo schede esistenti ancora prive di una quantità
+RAM, conserva i dati già presenti e include fonti e resoconto dei casi residui.
+
 ## Avvio con Docker
 
 1. Installa Docker Desktop / Docker Engine e Docker Compose.

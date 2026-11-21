@@ -1,0 +1,1991 @@
+[
+  {
+    "title": "1000bit — System 3",
+    "url": "https://www.1000bit.it/scheda.asp?id=461",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Acorn",
+        "model_name": "Acorn System 3"
+      }
+    ],
+    "sha256": "29f3954c0d96af6b51d37b64e25d619e6cfdac6e3aad89d3d8954340051d8684"
+  },
+  {
+    "title": "Wikipedia · Acorn A7000",
+    "url": "https://en.wikipedia.org/w/index.php?title=Acorn_A7000&oldid=1374924968",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Acorn",
+        "model_name": "Archimedes A7000"
+      },
+      {
+        "manufacturer": "Acorn",
+        "model_name": "Archimedes A7000+"
+      }
+    ],
+    "sha256": "57794697c75f3948738a0d1c115029c26c562cb33471a3769fcdf0a2446611d8",
+    "revision": 1374924968,
+    "timestamp": "2026-09-14T21:45:39Z"
+  },
+  {
+    "title": "Wikipedia · PenPad",
+    "url": "https://en.wikipedia.org/w/index.php?title=PenPad&oldid=1367816833",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Amstrad",
+        "model_name": "PenPad PDA 600"
+      }
+    ],
+    "sha256": "5874320a99bcdc40dedbf2ef04dec789fbcc0ffd10cffe0142c0b93f804d79de",
+    "revision": 1367816833,
+    "timestamp": "2026-08-05T10:20:31Z"
+  },
+  {
+    "title": "Wikipedia · Apple Lisa",
+    "url": "https://en.wikipedia.org/w/index.php?title=Apple_Lisa&oldid=1386653842",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Apple",
+        "model_name": "Lisa"
+      },
+      {
+        "manufacturer": "Apple",
+        "model_name": "Lisa2"
+      },
+      {
+        "manufacturer": "Apple",
+        "model_name": "Lisa2/10"
+      }
+    ],
+    "sha256": "f83eb59bd6931a9c987218e4a0f3bf9c7158ca123a1248efc5264f53b9efc7b8",
+    "revision": 1386653842,
+    "timestamp": "2026-11-19T19:22:50Z"
+  },
+  {
+    "title": "Wikipedia · Macintosh XL",
+    "url": "https://en.wikipedia.org/w/index.php?title=Macintosh_XL&oldid=1366068250",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Apple",
+        "model_name": "Macintosh XL"
+      }
+    ],
+    "sha256": "f5f9061d11bf42a0cb41dc27e7d8a3d4d8bbdb25c13a82ace3b487bef5fc7115",
+    "revision": 1366068250,
+    "timestamp": "2026-07-26T02:39:32Z"
+  },
+  {
+    "title": "Wikipedia · Atari XEGS",
+    "url": "https://en.wikipedia.org/w/index.php?title=Atari_XEGS&oldid=1383793263",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Atari",
+        "model_name": "Atari XE Game System"
+      }
+    ],
+    "sha256": "f1c02b84c70178ae5c4a4508136be7d8ad3b6517a986eed4a6b890af7dde61a8",
+    "revision": 1383793263,
+    "timestamp": "2026-11-04T22:22:19Z"
+  },
+  {
+    "title": "Wikipedia · Amiga 4000",
+    "url": "https://en.wikipedia.org/w/index.php?title=Amiga_4000&oldid=1346189070",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Commodore",
+        "model_name": "Amiga 4000/030"
+      },
+      {
+        "manufacturer": "Commodore",
+        "model_name": "Amiga 4000/040"
+      }
+    ],
+    "sha256": "1de90b516cba2578cd3fb7a19156353e8fb31758fddbe9891fe3799618920007",
+    "revision": 1346189070,
+    "timestamp": "2026-03-30T12:29:55Z"
+  },
+  {
+    "title": "1000bit — CPC-330K KOBO",
+    "url": "https://www.1000bit.it/scheda.asp?id=1608",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "CPC-330K KOBO"
+      }
+    ],
+    "sha256": "72aa857ebf5974cf5f7cba7743da0eadf019621064f8b04c8261e231ac291234"
+  },
+  {
+    "title": "Wikipedia · DECstation",
+    "url": "https://en.wikipedia.org/w/index.php?title=DECstation&oldid=1374947512",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Digital Equipment Corporation",
+        "model_name": "DECstation 2100"
+      },
+      {
+        "manufacturer": "Digital Equipment Corporation",
+        "model_name": "DECstation 3100"
+      },
+      {
+        "manufacturer": "Digital Equipment Corporation",
+        "model_name": "DECstation 5000/133"
+      }
+    ],
+    "sha256": "d8a8165696a63c604f6e0a06ef0f47e45472f540411b63b01f4a8e1613eb1197",
+    "revision": 1374947512,
+    "timestamp": "2026-09-15T00:29:25Z"
+  },
+  {
+    "title": "Wikipedia · MicroVAX",
+    "url": "https://en.wikipedia.org/w/index.php?title=MicroVAX&oldid=1299169220",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Digital Equipment Corporation",
+        "model_name": "MicroVAX 3500"
+      },
+      {
+        "manufacturer": "Digital Equipment Corporation",
+        "model_name": "MicroVAX II"
+      }
+    ],
+    "sha256": "e8ad922b25bfe0e826050ad0fa3050d6c34a90c50bbf8d2c7ad0e707547b3e90",
+    "revision": 1299169220,
+    "timestamp": "2025-07-06T22:34:10Z"
+  },
+  {
+    "title": "Wikipedia · PDP-1",
+    "url": "https://en.wikipedia.org/w/index.php?title=PDP-1&oldid=1363873880",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Digital Equipment Corporation",
+        "model_name": "PDP-1"
+      }
+    ],
+    "sha256": "35f6ed461c7dcbd8bdce4760766280c3bbc55ceb1bc5b6bf3e311605f0846c7e",
+    "revision": 1363873880,
+    "timestamp": "2026-07-13T00:58:52Z"
+  },
+  {
+    "title": "1000bit — Video Genie - EG3003",
+    "url": "https://www.1000bit.it/scheda.asp?id=694",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "EACA Computers",
+        "model_name": "Video Genie EG3003"
+      }
+    ],
+    "sha256": "4a99e65d8b6d1af565ca71663e9ef975b47fb2f97eb948d399fa59b14c58ab9b"
+  },
+  {
+    "title": "Wikipedia · Dragon MSX",
+    "url": "https://en.wikipedia.org/w/index.php?title=Dragon_MSX&oldid=1335972196",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Eurohard",
+        "model_name": "Dragon MSX-64"
+      }
+    ],
+    "sha256": "83f76bc97bb5cd49b0af5de21de84411225809b42dd7f1d70b8b8597dec9497e",
+    "revision": 1335972196,
+    "timestamp": "2026-02-01T06:02:46Z"
+  },
+  {
+    "title": "Wikipedia · FM-7",
+    "url": "https://en.wikipedia.org/w/index.php?title=FM-7&oldid=1381721335",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Fujitsu",
+        "model_name": "FM-7"
+      },
+      {
+        "manufacturer": "Fujitsu",
+        "model_name": "FM-77AV"
+      },
+      {
+        "manufacturer": "Fujitsu",
+        "model_name": "FM-77AV40SX"
+      }
+    ],
+    "sha256": "fd4699cf3c799b700f217e24f3797549ad156015a283447e30346747278c3537",
+    "revision": 1381721335,
+    "timestamp": "2026-10-24T10:14:46Z"
+  },
+  {
+    "title": "Wikipedia · FM-8",
+    "url": "https://en.wikipedia.org/w/index.php?title=FM-8&oldid=1381020625",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Fujitsu",
+        "model_name": "FM-8"
+      }
+    ],
+    "sha256": "875578fd5ae47e33757c234e2b2a7799f4fca79bd3c371428107dbc6a3297d2d",
+    "revision": 1381020625,
+    "timestamp": "2026-10-19T14:07:39Z"
+  },
+  {
+    "title": "Wikipedia · Heathkit H8",
+    "url": "https://en.wikipedia.org/w/index.php?title=Heathkit_H8&oldid=1384345372",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Heath Company",
+        "model_name": "Heathkit H8 Digital Computer"
+      }
+    ],
+    "sha256": "4b1cebab21af16a8a9dcdda10366b337aa7d99307a37b01964da0af993cad781",
+    "revision": 1384345372,
+    "timestamp": "2026-11-07T20:52:18Z"
+  },
+  {
+    "title": "1000bit — HP 9835A",
+    "url": "https://www.1000bit.it/scheda.asp?id=1104",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "HP",
+        "model_name": "9835A"
+      }
+    ],
+    "sha256": "5a9595f78c3ceb74bf0f6c98e6b74768d9ccfbd45c621eff08d9ad6e614436b9"
+  },
+  {
+    "title": "Wikipedia · HP 9845",
+    "url": "https://en.wikipedia.org/w/index.php?title=HP_9845&oldid=1362441520",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "HP",
+        "model_name": "9845A"
+      },
+      {
+        "manufacturer": "HP",
+        "model_name": "9845S"
+      }
+    ],
+    "sha256": "787ede6d5f59c8b9586964c17e2c7de558e52906136e778e21475e46ea35c116",
+    "revision": 1362441520,
+    "timestamp": "2026-07-03T23:36:48Z"
+  },
+  {
+    "title": "1000bit — MB-H1E",
+    "url": "https://www.1000bit.it/scheda.asp?id=1621",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Hitachi",
+        "model_name": "MB-H1E"
+      }
+    ],
+    "sha256": "53aedbcebfdd4a021af1863c0cb41ca1190317693e005b0a96404fa99ed1fe94"
+  },
+  {
+    "title": "1000bit — MB-H2",
+    "url": "https://www.1000bit.it/scheda.asp?id=1622",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Hitachi",
+        "model_name": "MB-H2"
+      }
+    ],
+    "sha256": "bbf9ea9e9cf29e533bf5025351a1caf2b55bc9bff9281f49df7c61424da5b9cd"
+  },
+  {
+    "title": "1000bit — MB-H25",
+    "url": "https://www.1000bit.it/scheda.asp?id=1626",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Hitachi",
+        "model_name": "MB-H25"
+      }
+    ],
+    "sha256": "f4fe5cdb337cb5f08bdf82b4e2ee3e191fe5350ae9b5770d2c25fe597e077ac6"
+  },
+  {
+    "title": "1000bit — MB-H3",
+    "url": "https://www.1000bit.it/scheda.asp?id=1623",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Hitachi",
+        "model_name": "MB-H3"
+      }
+    ],
+    "sha256": "560d16b90c130cef56bc63a1419300c98bf26489d9aa4672daca0cb5723b1203"
+  },
+  {
+    "title": "1000bit — MB-H50",
+    "url": "https://www.1000bit.it/scheda.asp?id=1627",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Hitachi",
+        "model_name": "MB-H50"
+      }
+    ],
+    "sha256": "05023663081197638ec3f1b3cc94188cde16953271c43014b24990337efa3f6e"
+  },
+  {
+    "title": "1000bit — MB-H70",
+    "url": "https://www.1000bit.it/scheda.asp?id=1624",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Hitachi",
+        "model_name": "MB-H70"
+      }
+    ],
+    "sha256": "e1462d8aa7777954155a048ea3dd17dec903fbf097eb58dbea8303bc5037a3ec"
+  },
+  {
+    "title": "Wikipedia · IBM 5100",
+    "url": "https://en.wikipedia.org/w/index.php?title=IBM_5100&oldid=1382095874",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "IBM",
+        "model_name": "IBM 5100"
+      }
+    ],
+    "sha256": "2ee63e2bc2ee7a1fd7a92fb16296d1e40715c3afd864655098966e371fa1638c",
+    "revision": 1382095874,
+    "timestamp": "2026-10-26T15:54:55Z"
+  },
+  {
+    "title": "Wikipedia · IBM 5110",
+    "url": "https://en.wikipedia.org/w/index.php?title=IBM_5110&oldid=1374135310",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "IBM",
+        "model_name": "IBM 5110"
+      }
+    ],
+    "sha256": "402a0cc992165d5bc15174346901a2db5f223a4daba94194886679a4734a6248",
+    "revision": 1374135310,
+    "timestamp": "2026-09-10T02:02:21Z"
+  },
+  {
+    "title": "Wikipedia · IBM 5550",
+    "url": "https://en.wikipedia.org/w/index.php?title=IBM_5550&oldid=1384377988",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "IBM",
+        "model_name": "Multistation 5550"
+      }
+    ],
+    "sha256": "11a8ccf5b04cd8e7415b6acdbb208efbe5c40482acf028b6b521de6d3d465a54",
+    "revision": 1384377988,
+    "timestamp": "2026-11-07T23:46:26Z"
+  },
+  {
+    "title": "Wikipedia · ThinkPad 600",
+    "url": "https://en.wikipedia.org/w/index.php?title=ThinkPad_600&oldid=1373757221",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "IBM",
+        "model_name": "ThinkPad 600"
+      },
+      {
+        "manufacturer": "IBM",
+        "model_name": "ThinkPad 600E"
+      }
+    ],
+    "sha256": "afd065e4434b4197d30072051a25a6c9d7b9e0a8d8254dca2d876d774fd38c52",
+    "revision": 1373757221,
+    "timestamp": "2026-09-07T19:29:34Z"
+  },
+  {
+    "title": "Kaypro Technical Manual 1484-D, dicembre 1984, § 3.6",
+    "url": "https://archive.org/details/bitsavers_kaypro1484ualDec84_5330214",
+    "publisher": "Kaypro Corporation",
+    "source_type": "manual",
+    "access_date": "2026-11-21",
+    "models": [
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro 10"
+      },
+      {
+        "manufacturer": "Non-Linear Systems",
+        "model_name": "Kaypro 10 - 1983"
+      }
+    ],
+    "ocr_sha256": "42e5abb5f51a86ae51e99160cffa1219cb8bb55d05fb51be4b02cabb7f77fe3c"
+  },
+  {
+    "title": "Kaypro Technical Manual 1484-D, dicembre 1984, § 3.2",
+    "url": "https://archive.org/details/bitsavers_kaypro1484ualDec84_5330214",
+    "publisher": "Kaypro Corporation",
+    "source_type": "manual",
+    "access_date": "2026-11-21",
+    "models": [
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro 2/84"
+      },
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro 2x"
+      }
+    ],
+    "ocr_sha256": "42e5abb5f51a86ae51e99160cffa1219cb8bb55d05fb51be4b02cabb7f77fe3c"
+  },
+  {
+    "title": "Kaypro Technical Manual 1484-D, dicembre 1984, § 3.4",
+    "url": "https://archive.org/details/bitsavers_kaypro1484ualDec84_5330214",
+    "publisher": "Kaypro Corporation",
+    "source_type": "manual",
+    "access_date": "2026-11-21",
+    "models": [
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro 4/84"
+      }
+    ],
+    "ocr_sha256": "42e5abb5f51a86ae51e99160cffa1219cb8bb55d05fb51be4b02cabb7f77fe3c"
+  },
+  {
+    "title": "Kaypro Technical Manual 1484-D, dicembre 1984, § 3.5",
+    "url": "https://archive.org/details/bitsavers_kaypro1484ualDec84_5330214",
+    "publisher": "Kaypro Corporation",
+    "source_type": "manual",
+    "access_date": "2026-11-21",
+    "models": [
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro 4x"
+      }
+    ],
+    "ocr_sha256": "42e5abb5f51a86ae51e99160cffa1219cb8bb55d05fb51be4b02cabb7f77fe3c"
+  },
+  {
+    "title": "Kaypro Technical Manual 1484-D, dicembre 1984, § 3.7",
+    "url": "https://archive.org/details/bitsavers_kaypro1484ualDec84_5330214",
+    "publisher": "Kaypro Corporation",
+    "source_type": "manual",
+    "access_date": "2026-11-21",
+    "models": [
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro Robie"
+      }
+    ],
+    "ocr_sha256": "42e5abb5f51a86ae51e99160cffa1219cb8bb55d05fb51be4b02cabb7f77fe3c"
+  },
+  {
+    "title": "Wikipedia · LNW-80",
+    "url": "https://en.wikipedia.org/w/index.php?title=LNW-80&oldid=1362298153",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "LNW Research",
+        "model_name": "LNW-80"
+      }
+    ],
+    "sha256": "6d9d45bbd4e3b44539a2e9a9a1290b55be3d5b942e2a839ff16f06f8504d1f9d",
+    "revision": 1362298153,
+    "timestamp": "2026-07-03T01:22:01Z"
+  },
+  {
+    "title": "Wikipedia · Max-80",
+    "url": "https://en.wikipedia.org/w/index.php?title=Max-80&oldid=1384736999",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Lobo Systems",
+        "model_name": "MAX-80"
+      }
+    ],
+    "sha256": "c2ed23818430d8c4bf19e766d6f258965e65292efd8ffb4a0ca561141a58e40e",
+    "revision": 1384736999,
+    "timestamp": "2026-11-09T22:02:33Z"
+  },
+  {
+    "title": "Wikipedia · Mera-Elzab Meritum",
+    "url": "https://en.wikipedia.org/w/index.php?title=Mera-Elzab_Meritum&oldid=1370096099",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Mera-Elzab",
+        "model_name": "Meritum I"
+      }
+    ],
+    "sha256": "c79ce5440c96bc02dbb95b3d79a04a095e091977434fa44551c7960e399a8fbe",
+    "revision": 1370096099,
+    "timestamp": "2026-08-19T02:34:32Z"
+  },
+  {
+    "title": "1000bit — Altair 680b",
+    "url": "https://www.1000bit.it/scheda.asp?id=2445",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "MITS",
+        "model_name": "Altair 680b"
+      }
+    ],
+    "sha256": "0d027c2b959b9213b0e0132ab13c7f05392c984f504f6b71f57eb8e09dfda3ce"
+  },
+  {
+    "title": "1000bit — Tricep",
+    "url": "https://www.1000bit.it/scheda.asp?id=2286",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Morrow Designs",
+        "model_name": "Tricep"
+      }
+    ],
+    "sha256": "d1122fd9bde0c400dae2a8992596248a2f7020166fa46a405819e586e277788a"
+  },
+  {
+    "title": "Wikipedia · APC series",
+    "url": "https://en.wikipedia.org/w/index.php?title=APC_series&oldid=1385196814",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "NEC",
+        "model_name": "APC"
+      }
+    ],
+    "sha256": "bfec2db086b1f26ec1264d5d01eb4e4e4a851aee412d27bc2f15ef3a87ac7337",
+    "revision": 1385196814,
+    "timestamp": "2026-11-12T08:43:02Z"
+  },
+  {
+    "title": "Wikipedia · NEC PC-100",
+    "url": "https://en.wikipedia.org/w/index.php?title=NEC_PC-100&oldid=1356466934",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-100"
+      }
+    ],
+    "sha256": "17cfc72fe79ac08eb302d4ed8c1d2ed6c8321cb40065bee0bd6bf623b9dd9d92",
+    "revision": 1356466934,
+    "timestamp": "2026-05-27T23:13:39Z"
+  },
+  {
+    "title": "Wikipedia · PC-6000 series",
+    "url": "https://en.wikipedia.org/w/index.php?title=PC-6000_series&oldid=1357010388",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-6001"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-6001mkII"
+      }
+    ],
+    "sha256": "57456bc4d0f587c7bf2b13bb3933a00b718fb58ff668226f64d3173a598da6a9",
+    "revision": 1357010388,
+    "timestamp": "2026-05-31T06:28:06Z"
+  },
+  {
+    "title": "1000bit — PC-6001 mkII SR",
+    "url": "https://www.1000bit.it/scheda.asp?id=772",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-6001mkIISR"
+      }
+    ],
+    "sha256": "2b92cb0e3ca79628ec92748bec8e527c246933a98dc3c6e4baf534001b0cbf28"
+  },
+  {
+    "title": "1000bit — PC-6601",
+    "url": "https://www.1000bit.it/scheda.asp?id=770",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-6601"
+      }
+    ],
+    "sha256": "4237409326591bd6bc90e91d5c9421677f7fed7dc2c97d9c218b13f37c048fba"
+  },
+  {
+    "title": "1000bit — PC-8500",
+    "url": "https://www.1000bit.it/scheda.asp?id=1109",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8500"
+      }
+    ],
+    "sha256": "1c133bf38059e07c3d2efa8b525ae1b6ccc1b4b6198fe46ceb230217adafc36a"
+  },
+  {
+    "title": "Wikipedia · PC-8800 series",
+    "url": "https://en.wikipedia.org/w/index.php?title=PC-8800_series&oldid=1376225543",
+    "publisher": "Wikipedia",
+    "author": "Collaboratori di Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801FA"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MA"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MA2"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MC"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MH"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801mkII"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801mkIIFR"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801mkIIMR"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801mkIISR"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-88VA"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-88VA2"
+      }
+    ],
+    "sha256": "8554813441f454403a194167250be538b685f5c8609a5c4808bbc5c13e8369b1",
+    "revision": 1376225543
+  },
+  {
+    "title": "1000bit — Tk-80BS",
+    "url": "https://www.1000bit.it/scheda.asp?id=1261",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "NEC",
+        "model_name": "TK-80BS"
+      }
+    ],
+    "sha256": "d8c7fdcdfd7ad9990826f5fda9e1312e38f1d3cb93080f2e1d1e03d8ee2e0ece"
+  },
+  {
+    "title": "Wikipedia · NeXT Computer",
+    "url": "https://en.wikipedia.org/w/index.php?title=NeXT_Computer&oldid=1374178440",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXT Computer"
+      }
+    ],
+    "sha256": "d4bc257e8da231caa0be75d98f8e632851a622e8469c6c220a72983aa2ce91cb",
+    "revision": 1374178440,
+    "timestamp": "2026-09-10T08:46:59Z"
+  },
+  {
+    "title": "Wikipedia · NeXTcube",
+    "url": "https://en.wikipedia.org/w/index.php?title=NeXTcube&oldid=1382945620",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXTcube"
+      }
+    ],
+    "sha256": "877d8193b063d72cf03f7eb1750326c6efa7587405915ff453706a0e20d00b8d",
+    "revision": 1382945620,
+    "timestamp": "2026-10-31T03:33:30Z"
+  },
+  {
+    "title": "Wikipedia · NeXTcube Turbo",
+    "url": "https://en.wikipedia.org/w/index.php?title=NeXTcube_Turbo&oldid=1353073802",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXTcube Turbo"
+      }
+    ],
+    "sha256": "45df6bc135d89b76bee6db41f9fd1bfd311ae92fd1e4ddfd3b6c502f3a8005bd",
+    "revision": 1353073802,
+    "timestamp": "2026-05-08T00:43:54Z"
+  },
+  {
+    "title": "Wikipedia · NeXTstation",
+    "url": "https://en.wikipedia.org/w/index.php?title=NeXTstation&oldid=1353073665",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXTstation"
+      },
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXTstation Turbo"
+      },
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXTstation Turbo Color"
+      }
+    ],
+    "sha256": "cd3850591e7fbf46730c08df7021e4df845b0075c7a6a867b6c1c35998a5d0d8",
+    "revision": 1353073665,
+    "timestamp": "2026-05-08T00:42:46Z"
+  },
+  {
+    "title": "NeXT · 1991 Specifications, archivio Simson Garfinkel",
+    "url": "https://simson.net/ref/NeXT/specifications.htm",
+    "publisher": "Archivio Simson Garfinkel",
+    "source_type": "technical_reference",
+    "access_date": "2026-11-21",
+    "models": [
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXTstation Color"
+      }
+    ],
+    "sha256": "3521546cb7c250afdf89c5577f8c30ad9afab912baec6841b9051f9b64645511"
+  },
+  {
+    "title": "Kaypro Technical Manual 1484-D, dicembre 1984, § 3.1",
+    "url": "https://archive.org/details/bitsavers_kaypro1484ualDec84_5330214",
+    "publisher": "Kaypro Corporation",
+    "source_type": "manual",
+    "access_date": "2026-11-21",
+    "models": [
+      {
+        "manufacturer": "Non-Linear Systems",
+        "model_name": "Kaypro II - 2/83"
+      }
+    ],
+    "ocr_sha256": "42e5abb5f51a86ae51e99160cffa1219cb8bb55d05fb51be4b02cabb7f77fe3c"
+  },
+  {
+    "title": "Kaypro Technical Manual 1484-D, dicembre 1984, § 3.3",
+    "url": "https://archive.org/details/bitsavers_kaypro1484ualDec84_5330214",
+    "publisher": "Kaypro Corporation",
+    "source_type": "manual",
+    "access_date": "2026-11-21",
+    "models": [
+      {
+        "manufacturer": "Non-Linear Systems",
+        "model_name": "Kaypro IV - 4/83"
+      }
+    ],
+    "ocr_sha256": "42e5abb5f51a86ae51e99160cffa1219cb8bb55d05fb51be4b02cabb7f77fe3c"
+  },
+  {
+    "title": "1000bit — CF-2700",
+    "url": "https://www.1000bit.it/scheda.asp?id=1090",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Panasonic",
+        "model_name": "CF-2700"
+      }
+    ],
+    "sha256": "fe7f035313dee4efac3fb2280fb86d96bbba187067daf0c67b7f137846f05726"
+  },
+  {
+    "title": "1000bit — FS-A1",
+    "url": "https://www.1000bit.it/scheda.asp?id=1469",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Panasonic",
+        "model_name": "FS-A1"
+      }
+    ],
+    "sha256": "a27c55cd494c694e2f5c546b56950f314c1794939ad748d7ff08839023cb8651"
+  },
+  {
+    "title": "1000bit — FS-A1 F",
+    "url": "https://www.1000bit.it/scheda.asp?id=1762",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Panasonic",
+        "model_name": "FS-A1F"
+      }
+    ],
+    "sha256": "127816a417ebad6ed77c765f5e4b52824c34f240d2e32f4d899b7920f664e329"
+  },
+  {
+    "title": "1000bit — FS-A1 FM",
+    "url": "https://www.1000bit.it/scheda.asp?id=1763",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Panasonic",
+        "model_name": "FS-A1FM"
+      }
+    ],
+    "sha256": "53b009205746b8d92e78b78aa947ed63145a31150aabad588fac71874a5a6099"
+  },
+  {
+    "title": "1000bit — FS-A1 FX",
+    "url": "https://www.1000bit.it/scheda.asp?id=1471",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Panasonic",
+        "model_name": "FS-A1FX"
+      }
+    ],
+    "sha256": "0c8d29afd2b63f928ed5ff3cb1b5432117ef8d3a461065293c53bf620fdd45fa"
+  },
+  {
+    "title": "Wikipedia · MSXturboR",
+    "url": "https://ja.wikipedia.org/w/index.php?title=MSXturboR&oldid=104286389",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Panasonic",
+        "model_name": "FS-A1GT"
+      },
+      {
+        "manufacturer": "Panasonic",
+        "model_name": "FS-A1ST"
+      }
+    ],
+    "sha256": "b3cc43bd9f911364e355690301f8e64947ef16caf4e356a1f778281dee8a14b5",
+    "revision": 104286389,
+    "timestamp": "2025-03-29T00:24:16Z"
+  },
+  {
+    "title": "1000bit — FS-A1 WSX",
+    "url": "https://www.1000bit.it/scheda.asp?id=1470",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Panasonic",
+        "model_name": "FS-A1WSX"
+      }
+    ],
+    "sha256": "6942c621e1c6371434ef4067b5bfbaa5045054cc0e449e66e5eafa0d7094634c"
+  },
+  {
+    "title": "1000bit — FS-A1 WX",
+    "url": "https://www.1000bit.it/scheda.asp?id=1764",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Panasonic",
+        "model_name": "FS-A1WX"
+      }
+    ],
+    "sha256": "7cb87a77cdf190ab78b41ff4f7646e6074e90f5f9e3973dca20e6353cf78a560"
+  },
+  {
+    "title": "Wikipedia · Philips :YES",
+    "url": "https://en.wikipedia.org/w/index.php?title=Philips_%3AYES&oldid=1335977743",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Philips",
+        "model_name": ":YES"
+      }
+    ],
+    "sha256": "5d8a61e6e421fdd1ec3281bd0b1a11b078b661851c50f0db47a79d417fc19614",
+    "revision": 1335977743,
+    "timestamp": "2026-02-01T06:46:10Z"
+  },
+  {
+    "title": "1000bit — NMS 8245",
+    "url": "https://www.1000bit.it/scheda.asp?id=343",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Philips",
+        "model_name": "NMS 8245"
+      }
+    ],
+    "sha256": "24a31e4c48e21934d729b44250216a5873d1642c41561825929355620c7e0352"
+  },
+  {
+    "title": "1000bit — NMS 8250",
+    "url": "https://www.1000bit.it/scheda.asp?id=57",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Philips",
+        "model_name": "NMS 8250"
+      }
+    ],
+    "sha256": "fd180dada218f1146d69593b11be3c4c758cf685de9bc5054b45e716feb80c76"
+  },
+  {
+    "title": "1000bit — NMS 8255",
+    "url": "https://www.1000bit.it/scheda.asp?id=1730",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Philips",
+        "model_name": "NMS 8255"
+      }
+    ],
+    "sha256": "24c0f536088f235dcce97f9c1d7dc44dcaed4e26646c47066ba5433eca83ce14"
+  },
+  {
+    "title": "1000bit — NMS 8280",
+    "url": "https://www.1000bit.it/scheda.asp?id=339",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Philips",
+        "model_name": "NMS 8280"
+      }
+    ],
+    "sha256": "475ad396b22d132816614f41ad49fd9d14d6c253165d1e5b213d8d344ede5c20"
+  },
+  {
+    "title": "1000bit — NMS 801",
+    "url": "https://www.1000bit.it/scheda.asp?id=1467",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Philips",
+        "model_name": "NMS-801"
+      }
+    ],
+    "sha256": "2704283eb86b61995b7331bfd944ab6780a10639a29a3f4fb86088949366cb09"
+  },
+  {
+    "title": "1000bit — VG-8000",
+    "url": "https://www.1000bit.it/scheda.asp?id=740",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Philips",
+        "model_name": "VG-8000"
+      }
+    ],
+    "sha256": "6e61f65af678f30b89d562c33c7a5999d8daeb208167d4f7351d9046fe67a564"
+  },
+  {
+    "title": "1000bit — VG-8230",
+    "url": "https://www.1000bit.it/scheda.asp?id=1495",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Philips",
+        "model_name": "VG-8230"
+      }
+    ],
+    "sha256": "ea31e65498604e6b7365e982c72d7a7b044a261b0c872500b814964609b85cb8"
+  },
+  {
+    "title": "1000bit — VG-8235",
+    "url": "https://www.1000bit.it/scheda.asp?id=330",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Philips",
+        "model_name": "VG-8235"
+      }
+    ],
+    "sha256": "dee09b8ff50ccfce8e7f0eb9c1f773af58c36547146f6a945aad3d75bbdddc61"
+  },
+  {
+    "title": "1000bit — CP 500",
+    "url": "https://www.1000bit.it/scheda.asp?id=1579",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Prológica",
+        "model_name": "CP-500"
+      }
+    ],
+    "sha256": "18d4efc4ffd519ae5e9026d8f92d418c6654163ad2bbc38231171398a69ac3d6"
+  },
+  {
+    "title": "1000bit — MPC-100",
+    "url": "https://www.1000bit.it/scheda.asp?id=589",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Sanyo",
+        "model_name": "MPC-100"
+      }
+    ],
+    "sha256": "dd63e7edd64a7ef7e9f1586d54bceadbc2588f6460186815c81579385fd5b8c4"
+  },
+  {
+    "title": "1000bit — MPC-200",
+    "url": "https://www.1000bit.it/scheda.asp?id=1457",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Sanyo",
+        "model_name": "MPC-200"
+      }
+    ],
+    "sha256": "a58586d690c19aeca4ca0f2322637e029c376798931e909a2beecf784d51d4ff"
+  },
+  {
+    "title": "1000bit — MPC-64",
+    "url": "https://www.1000bit.it/scheda.asp?id=1699",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Sanyo",
+        "model_name": "MPC-64"
+      }
+    ],
+    "sha256": "8323d2c804cf00163e0452a067d90c61b9b57ca0c6ca7cd7f72e9aaf3f8ea215"
+  },
+  {
+    "title": "1000bit — PHC-20",
+    "url": "https://www.1000bit.it/scheda.asp?id=1712",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Sanyo",
+        "model_name": "PHC-20"
+      }
+    ],
+    "sha256": "808aa65d96d2d46f851dca0678580824943eab29fb7e974b71db3bb0d7b61a7c"
+  },
+  {
+    "title": "Wikipedia · Sanyo PHC-25",
+    "url": "https://en.wikipedia.org/w/index.php?title=Sanyo_PHC-25&oldid=1360897722",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Sanyo",
+        "model_name": "PHC-25"
+      }
+    ],
+    "sha256": "dd6c3493034486b5c49c1103356b95cdf00e3ebf11878b8522d9b9c438fea1d2",
+    "revision": 1360897722,
+    "timestamp": "2026-06-24T10:03:13Z"
+  },
+  {
+    "title": "1000bit — PC 1245",
+    "url": "https://www.1000bit.it/scheda.asp?id=647",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Sharp",
+        "model_name": "Pocket Computer 1245"
+      }
+    ],
+    "sha256": "ae7c6ba3aaf43c086a4a5412908d08720167125f5f44e2913449482509e9a510"
+  },
+  {
+    "title": "Wikipedia · Sharp PC-1251",
+    "url": "https://en.wikipedia.org/w/index.php?title=Sharp_PC-1251&oldid=1369556391",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Sharp",
+        "model_name": "Pocket Computer 1251"
+      }
+    ],
+    "sha256": "1823a27a785b3721a7ff78347c9cfb8fd70e0c7cef53fa22b29eab0edc19c983",
+    "revision": 1369556391,
+    "timestamp": "2026-08-15T18:09:26Z"
+  },
+  {
+    "title": "Wikipedia · Sharp PC-1401",
+    "url": "https://en.wikipedia.org/w/index.php?title=Sharp_PC-1401&oldid=1362555978",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Sharp",
+        "model_name": "Pocket Computer 1401"
+      }
+    ],
+    "sha256": "d1c6ebb830979b6341d0287366a659c42beb369ee4112868ca3249ad6edd8165",
+    "revision": 1362555978,
+    "timestamp": "2026-07-04T19:20:48Z"
+  },
+  {
+    "title": "1000bit — PC 1402",
+    "url": "https://www.1000bit.it/scheda.asp?id=653",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Sharp",
+        "model_name": "Pocket Computer 1402"
+      }
+    ],
+    "sha256": "4df6779cf3ac87d7b3812735f4d093525df1522d060d3c64edef5ed4d76d6886"
+  },
+  {
+    "title": "Wikipedia · Sharp PC-1403",
+    "url": "https://en.wikipedia.org/w/index.php?title=Sharp_PC-1403&oldid=1353090271",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Sharp",
+        "model_name": "Pocket Computer 1403"
+      },
+      {
+        "manufacturer": "Sharp",
+        "model_name": "Pocket Computer 1403H"
+      }
+    ],
+    "sha256": "b1a73c33f527e7eb1abc2e14cf623ccd47de4d1a4f1d37aa0fd17ad8c11ec618",
+    "revision": 1353090271,
+    "timestamp": "2026-05-08T03:13:50Z"
+  },
+  {
+    "title": "Wikipedia · Sharp PC-1500",
+    "url": "https://en.wikipedia.org/w/index.php?title=Sharp_PC-1500&oldid=1370926310",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Sharp",
+        "model_name": "Pocket Computer 1500"
+      }
+    ],
+    "sha256": "9308fb2424c0d9f151c1eec36d112f1d152ae0ad8fc5069827b636967104ddf1",
+    "revision": 1370926310,
+    "timestamp": "2026-08-23T19:33:06Z"
+  },
+  {
+    "title": "Wikipedia · Sharp X1",
+    "url": "https://en.wikipedia.org/w/index.php?title=Sharp_X1&oldid=1379499540",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Sharp",
+        "model_name": "X1"
+      }
+    ],
+    "sha256": "c44cd27afb6cf0bec41f41ac2e909c0b349531dab9846928c169d52fadb8a1fc",
+    "revision": 1379499540,
+    "timestamp": "2026-10-10T10:16:55Z"
+  },
+  {
+    "title": "1000bit — X1 Turbo",
+    "url": "https://www.1000bit.it/scheda.asp?id=1744",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Sharp",
+        "model_name": "X1 Turbo"
+      }
+    ],
+    "sha256": "de6ab2066e799081fbcc74a6d9e9bfd315066a94fb0d8d59a7e2678331a7522a"
+  },
+  {
+    "title": "1000bit — X1 Twin",
+    "url": "https://www.1000bit.it/scheda.asp?id=1748",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Sharp",
+        "model_name": "X1 Twin"
+      }
+    ],
+    "sha256": "02f2ef73e9bf689b39a687a7ac456ebe7a75aeae9878117944d328eee2d38e9c"
+  },
+  {
+    "title": "Wikipedia · Sharp Zaurus",
+    "url": "https://en.wikipedia.org/w/index.php?title=Sharp_Zaurus&oldid=1381798173",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Sharp",
+        "model_name": "Zaurus SL-5500 \"Collie\""
+      }
+    ],
+    "sha256": "1e9c60d004b0403539fddcf52da08129c67fe95958652782d46d071df24fdb12",
+    "revision": 1381798173,
+    "timestamp": "2026-10-24T21:37:38Z"
+  },
+  {
+    "title": "Wikipedia · SGI Indigo",
+    "url": "https://en.wikipedia.org/w/index.php?title=SGI_Indigo&oldid=1382279001",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "IRIS Indigo"
+      },
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "IRIS Indigo R4000"
+      },
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "IRIS Indigo R4400"
+      }
+    ],
+    "sha256": "ccc97ad185959d3990ac77c2a6f5dc4654cb1d44bf2a4018d5dfd253539edfe8",
+    "revision": 1382279001,
+    "timestamp": "2026-10-27T19:17:58Z"
+  },
+  {
+    "title": "1000bit — Personal Iris 4D/20",
+    "url": "https://www.1000bit.it/scheda.asp?id=405",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "Personal IRIS 4D/20"
+      }
+    ],
+    "sha256": "0b7f06d21bd443bf6531b8f53499b68d619273ddfc8cdcda8aa12d04382fe3b4"
+  },
+  {
+    "title": "1000bit — Personal Iris 4D/25",
+    "url": "https://www.1000bit.it/scheda.asp?id=406",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "Personal IRIS 4D/25"
+      }
+    ],
+    "sha256": "79539d88f9bb3c72b84e24976533cd31e987b116e39f8cc7f9307b6be3113fab"
+  },
+  {
+    "title": "1000bit — Personal Iris 4D/30",
+    "url": "https://www.1000bit.it/scheda.asp?id=407",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "Personal IRIS 4D/30"
+      }
+    ],
+    "sha256": "e273e8090834bc4102bdf4d9a677a96ef3f5a8cef8e98f1f8d00efccc4bea97a"
+  },
+  {
+    "title": "1000bit — Personal Iris 4D/35",
+    "url": "https://www.1000bit.it/scheda.asp?id=408",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "Personal IRIS 4D/35"
+      }
+    ],
+    "sha256": "95f9a70123b353302cab968af3f92820666ffacb85b586cd4b0d21c397ee8bda"
+  },
+  {
+    "title": "Wikipedia · SGI Crimson",
+    "url": "https://en.wikipedia.org/w/index.php?title=SGI_Crimson&oldid=1369613893",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "Crimson"
+      }
+    ],
+    "sha256": "3e734d6edbc56637a11e486386e8a1a4d67f97d94fb678e3b856d93649ca5a1f",
+    "revision": 1369613893,
+    "timestamp": "2026-08-16T01:54:22Z"
+  },
+  {
+    "title": "Wikipedia · SGI Indigo2",
+    "url": "https://en.wikipedia.org/w/index.php?title=SGI_Indigo2&oldid=1360626995",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "Indigo2"
+      }
+    ],
+    "sha256": "795c1f607e112f88d33ef2ce186543987253a030e5ae57bfc1afca0f6b0fd000",
+    "revision": 1360626995,
+    "timestamp": "2026-06-22T17:25:28Z"
+  },
+  {
+    "title": "Wikipedia · SGI Indy",
+    "url": "https://en.wikipedia.org/w/index.php?title=SGI_Indy&oldid=1366427643",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "Indy"
+      }
+    ],
+    "sha256": "914da67e84523f2ecb0c6a51df6b6168da4be9e1ff6faa575abe18a20343b0a9",
+    "revision": 1366427643,
+    "timestamp": "2026-07-28T00:01:57Z"
+  },
+  {
+    "title": "Wikipedia · SGI Octane",
+    "url": "https://en.wikipedia.org/w/index.php?title=SGI_Octane&oldid=1353897163",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "Octane"
+      }
+    ],
+    "sha256": "a0a9cf46090e0c340d9e8242453df2e71f7d329199aa3fbdc021ba4df6205c29",
+    "revision": 1353897163,
+    "timestamp": "2026-05-13T01:58:05Z"
+  },
+  {
+    "title": "Wikipedia · SGI O2",
+    "url": "https://en.wikipedia.org/w/index.php?title=SGI_O2&oldid=1335979160",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "O2"
+      }
+    ],
+    "sha256": "ed4735ab4957bae1c3bcac5b44592f0b7cb2ee1f34b33ef90d49a68a07bdcec3",
+    "revision": 1335979160,
+    "timestamp": "2026-02-01T06:55:41Z"
+  },
+  {
+    "title": "Wikipedia · Sord M5",
+    "url": "https://en.wikipedia.org/w/index.php?title=Sord_M5&oldid=1336096389",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Sord",
+        "model_name": "m.5"
+      }
+    ],
+    "sha256": "6d4e5db28972a27e598fe0168588441abb3d11c5379a0369e6cf4e7d66d97d67",
+    "revision": 1336096389,
+    "timestamp": "2026-02-01T22:45:06Z"
+  },
+  {
+    "title": "Wikipedia · SVI-728",
+    "url": "https://en.wikipedia.org/w/index.php?title=SVI-728&oldid=1370100168",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Spectravideo",
+        "model_name": "SVI-728"
+      }
+    ],
+    "sha256": "507c2f1624b75f5d0c5a5432936a68830882e60c3150b7cda580f13688a53410",
+    "revision": 1370100168,
+    "timestamp": "2026-08-19T03:03:07Z"
+  },
+  {
+    "title": "Wikipedia · SVI-738",
+    "url": "https://en.wikipedia.org/w/index.php?title=SVI-738&oldid=1370100070",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Spectravideo",
+        "model_name": "SVI-738"
+      }
+    ],
+    "sha256": "b0791f1e9c1d11d747fad37089f556025cd24ddb49221d9646ae57ed1d3bb27c",
+    "revision": 1370100070,
+    "timestamp": "2026-08-19T03:02:13Z"
+  },
+  {
+    "title": "Wikipedia · Sun-3",
+    "url": "https://en.wikipedia.org/w/index.php?title=Sun-3&oldid=1376338499",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Sun Microsystems",
+        "model_name": "Sun 3/460/470/480"
+      }
+    ],
+    "sha256": "00d1febb50f3ec95784876b1741833702bc8f4704b84ad0246a9128eb72d11a5",
+    "revision": 1376338499,
+    "timestamp": "2026-09-23T15:06:15Z"
+  },
+  {
+    "title": "Wikipedia · Sun Ultra",
+    "url": "https://en.wikipedia.org/w/index.php?title=Sun_Ultra&oldid=1354697815",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Sun Microsystems",
+        "model_name": "Ultra 45"
+      }
+    ],
+    "sha256": "828b629a3c2f54e380d0b48f3aca5fcb6495a879065b092271e46a6b6cf6d691",
+    "revision": 1354697815,
+    "timestamp": "2026-05-17T21:16:45Z"
+  },
+  {
+    "title": "1000bit — TRS80 Model I",
+    "url": "https://www.1000bit.it/scheda.asp?id=110",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Tandy",
+        "model_name": "TRS-80 Model I"
+      }
+    ],
+    "sha256": "963cb3ef8d2d91fd28f3d0ed60312d687984e801f2b526fe8851afa291120c6e"
+  },
+  {
+    "title": "1000bit — TRS80 Model III",
+    "url": "https://www.1000bit.it/scheda.asp?id=112",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Tandy",
+        "model_name": "TRS-80 Model III"
+      }
+    ],
+    "sha256": "973145e04a94af66500ecf1dbb791652525c1609a0d437d2bb680aaf79769f8a"
+  },
+  {
+    "title": "Wikipedia · Tangerine Microtan 65",
+    "url": "https://en.wikipedia.org/w/index.php?title=Tangerine_Microtan_65&oldid=1386184699",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Tangerine",
+        "model_name": "Microtan 65"
+      }
+    ],
+    "sha256": "10e64b40c3cf231c683dec8f1073cf02d67dbc66f4fa3c07c08cbc77a3d758f4",
+    "revision": 1386184699,
+    "timestamp": "2026-11-17T04:24:05Z"
+  },
+  {
+    "title": "Wikipedia · Oric (computer)",
+    "url": "https://en.wikipedia.org/w/index.php?title=Oric_%28computer%29&oldid=1386181021",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Tangerine",
+        "model_name": "Oric Atmos"
+      },
+      {
+        "manufacturer": "Tangerine",
+        "model_name": "Oric Telestrat"
+      },
+      {
+        "manufacturer": "Tangerine",
+        "model_name": "Oric-1"
+      }
+    ],
+    "sha256": "d50db944cd3e2f82d21bbc80285c0cd3776ebe8b3ca991c7942229687e6f5247",
+    "revision": 1386181021,
+    "timestamp": "2026-11-17T03:52:09Z"
+  },
+  {
+    "title": "1000bit — HC-5",
+    "url": "https://www.1000bit.it/scheda.asp?id=1900",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Victor",
+        "model_name": "HC-5"
+      }
+    ],
+    "sha256": "7dc10820909ce6797325adf9c41ffa58c1b369672ab13804c136d51289ad0177"
+  },
+  {
+    "title": "1000bit — HC-6",
+    "url": "https://www.1000bit.it/scheda.asp?id=1630",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Victor",
+        "model_name": "HC-6"
+      }
+    ],
+    "sha256": "e8ca2fd3e9c6ed0fc7f056e456f5f8a96fc542b5e26833558aa57fbbafdf0522"
+  },
+  {
+    "title": "1000bit — HC-7",
+    "url": "https://www.1000bit.it/scheda.asp?id=1632",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Victor",
+        "model_name": "HC-7"
+      }
+    ],
+    "sha256": "b5a55c2060d9d6cca552d111b0a2f892f504f2d0fda9ad4f64141fd7222f0be4"
+  },
+  {
+    "title": "1000bit — HC-80",
+    "url": "https://www.1000bit.it/scheda.asp?id=1775",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Victor",
+        "model_name": "HC-80"
+      }
+    ],
+    "sha256": "ba99d37055f354626bce4ccb349b832bf90ffa3ee0b05a9c0378284a2bdfc20f"
+  },
+  {
+    "title": "1000bit — HC-90",
+    "url": "https://www.1000bit.it/scheda.asp?id=1776",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Victor",
+        "model_name": "HC-90"
+      }
+    ],
+    "sha256": "b4cee300269ca1a80c18cff8787a93771450c024782ee184381b1133416a3591"
+  },
+  {
+    "title": "1000bit — HC-95",
+    "url": "https://www.1000bit.it/scheda.asp?id=1777",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Victor",
+        "model_name": "HC-95"
+      }
+    ],
+    "sha256": "920b13dcbb2b596c6142c42d38485eee1e1fe9d6cd36852805c393dbe3ec829d"
+  },
+  {
+    "title": "1000bit — YIS-503 IIIR",
+    "url": "https://www.1000bit.it/scheda.asp?id=1665",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Yamaha",
+        "model_name": "YIS-503 III R"
+      }
+    ],
+    "sha256": "7602247403abd9b939edef897065d51e2709db56e8daf49e3562ba0ff27c0279"
+  },
+  {
+    "title": "1000bit — YIS-503 IIR",
+    "url": "https://www.1000bit.it/scheda.asp?id=1648",
+    "publisher": "1000bit",
+    "source_type": "website",
+    "access_date": "2026-11-15",
+    "license": "Recupero autorizzato dall’operatore; nessuna licenza aperta presunta.",
+    "models": [
+      {
+        "manufacturer": "Yamaha",
+        "model_name": "YIS503IIR"
+      }
+    ],
+    "sha256": "eab50a614b04a1aa4f31f193aa0dc21452df8046fcb0b42c48e7e07ba8c56444"
+  },
+  {
+    "title": "Wikipedia · Zenith Z-100",
+    "url": "https://en.wikipedia.org/w/index.php?title=Zenith_Z-100&oldid=1346430245",
+    "author": "Collaboratori di Wikipedia",
+    "publisher": "Wikipedia",
+    "source_type": "encyclopedia",
+    "access_date": "2026-11-21",
+    "license": "CC BY-SA 4.0 · https://creativecommons.org/licenses/by-sa/4.0/",
+    "models": [
+      {
+        "manufacturer": "Zenith Data Systems",
+        "model_name": "Z-100"
+      }
+    ],
+    "sha256": "4866006b1fe518ba667b027565d9c194ac6c29523f7351495abd175cca16e1e6",
+    "revision": 1346430245,
+    "timestamp": "2026-03-31T20:01:01Z"
+  }
+]

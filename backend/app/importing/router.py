@@ -29,6 +29,7 @@ def job_data(job):
             'format': job.format, 'status': job.status, 'error': job.error, 'retry_of': job.retry_of,
             'created_at': job.created_at.isoformat(), 'total': len(job.rows), 'counts': dict(counts), 'verification_counts': verification,
             'existing_only': bool(job.request_options.get('existing_only')),
+            'missing_ram_only': bool(job.request_options.get('missing_ram_only')),
             'price_workbook_report': job.request_options.get('price_workbook_report'),
             'data_coverage': {'records_with_source': sum(bool(record.get('source')) for record in records), 'prices': prices}}
 
