@@ -16,6 +16,10 @@ quantità documentate per 147 sistemi della copia di catalogo esaminata.
 L’importazione aggiorna solo schede esistenti ancora prive di una quantità
 RAM, conserva i dati già presenti e include fonti e resoconto dei casi residui.
 
+La [verifica documentata delle unità](docs/UNIT_REVIEW.md) permette di
+chiarire notazioni ambigue mediante prove specifiche, con anteprima e audit.
+Il primo set copre 147 specifiche su 101 sistemi e conserva i casi ancora incerti.
+
 ## Avvio con Docker
 
 1. Installa Docker Desktop / Docker Engine e Docker Compose.

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { api } from './api.js';
 
-const entityLabel = entity => entity === 'computer' ? 'Calcolatore' : 'Produttore';
+const entityLabel = entity => ({ computer: 'Calcolatore', manufacturer: 'Produttore', normalization: 'Normalizzazione', unit_review: 'Unità di misura' }[entity] || 'Revisione');
 const countLabels = { configurations: 'configurazioni', specifications: 'specifiche', releases: 'commercializzazioni',
   computer_images: 'fotografie', sources: 'fonti', computers: 'calcolatori' };
 const fieldLabels = { model_name: 'Nome', name: 'Nome', description: 'Descrizione', announcement_date: 'Annuncio',
@@ -63,7 +63,7 @@ export default function DuplicatePanel({ onSaved }) {
       })}>Applica la riconciliazione controllata</button>
     </section>}
     {!!history.length && <details><summary>Storico delle riconciliazioni</summary>{history.map(item => <p key={item.id}>
-      {entityLabel(item.entity)}: ID {item.source_id} → {item.target_id}. {item.note} · <a href={`/api/admin/imports/reconciliation/history/${item.id}`} download>Scarica originali</a>
+      {entityLabel(item.entity)}{['computer', 'manufacturer'].includes(item.entity) ? `: ID ${item.source_id} → ${item.target_id}.` : ':'} {item.note} · <a href={`/api/admin/imports/reconciliation/history/${item.id}`} download>Scarica originali</a>
     </p>)}</details>}
   </section>;
 }
