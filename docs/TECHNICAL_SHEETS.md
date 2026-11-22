@@ -56,7 +56,7 @@ rimangono disponibili nelle API, nell’editor e nell’audit. Non serve una
 migrazione, una nuova importazione o una revisione delle unità per applicare
 questa presentazione ai dati già presenti.
 
-Verifiche: 42 test frontend superati, compilazione React e Docker; prova browser
+Verifiche: 43 test frontend superati, compilazione React e Docker; prova browser
 di confronto e scheda con alias RAM, opzioni adiacenti, scelta indipendente
 delle configurazioni, dati/fonti originali conservati e layout a 320/390 px.
 Sulla copia fornita dei 1.133 sistemi, il confronto conserva al massimo due

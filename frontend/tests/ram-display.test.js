@@ -96,3 +96,9 @@ test('RAM options stay next to RAM even when supplied only by a later comparison
   assert.deepEqual(comparisonRows([first, second]).map(([id]) => id), [key('Capacità'), key('Opzioni di memoria'), JSON.stringify(['CPU', 'Modello'])]);
   assert.deepEqual(comparisonRows([]), []);
 });
+
+test('text ranges keep separately declared units and contradictory units are not silently replaced', () => {
+  assert.equal(compare([spec(1, 'Capacità riportata', '16 - 32', 'KiB')]).get(key('Capacità')).text, '16 - 32 KB');
+  assert.equal(compare([spec(1, 'Capacità riportata', '4', 'MiB'), spec(2, 'Capacità', 4096, 'KiB')]).get(key('Capacità')).text, '4 MB');
+  assert.equal(compare([spec(1, 'Capacità riportata', '64 KiB', 'MiB')]).get(key('Capacità')).text, '64 KB (unità dichiarata: MB)');
+});

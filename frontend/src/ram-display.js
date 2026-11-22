@@ -11,9 +11,10 @@ const roleName = value => /^(?:ram|mainram|system ram|memoria principale)$/i.tes
 // Legacy KB and lower-case Kb are NOT interpreted as binary quantities here.
 function entry(view, qualifier = '') {
   let number = view.numeric_value, unit = clean(view.unit), text = clean(view.text_value);
+  if (number == null && unit && /^\d+$/.test(text)) { number = Number(text); text = ''; }
   if (number == null) {
     const scalar = text.match(/^(\d+(?:[.,]\d+)?)\s*(B|KiB|MiB|GiB|KB|kB|MB|GB|Kb|kb|Mb|mb|Gb|gb)$/);
-    if (scalar) { number = Number(scalar[1].replace(',', '.')); unit = scalar[2]; text = ''; }
+    if (scalar && (!unit || unit === scalar[2])) { number = Number(scalar[1].replace(',', '.')); unit = scalar[2]; text = ''; }
   }
   if (number != null && !Number.isFinite(number)) return null;
   if (number == null && !text) return null;
@@ -24,7 +25,12 @@ function entry(view, qualifier = '') {
     const scale = bytes === 0 ? ['KB', 1024] : [['GB', 1073741824], ['MB', 1048576], ['KB', 1024], ['B', 1]].find(([, factor]) => bytes % factor === 0);
     [shownUnit, shownNumber] = [scale[0], bytes / scale[1]];
   }
-  const shownText = number == null ? text.replace(/\b(KiB|MiB|GiB)\b/g, token => ({ KiB: 'KB', MiB: 'MB', GiB: 'GB' }[token])) : '';
+  let shownText = number == null ? text.replace(/\b(KiB|MiB|GiB)\b/g, token => ({ KiB: 'KB', MiB: 'MB', GiB: 'GB' }[token])) : '';
+  if (number == null && unit) {
+    const inline = text.match(/\b(?:B|KiB|MiB|GiB|KB|kB|MB|GB|Kb|kb|Mb|mb|Gb|gb)\b/g) || [];
+    if (!inline.length) shownText += ' ' + shownUnit;
+    else if (inline.some(value => value !== unit)) shownText += ` (unità dichiarata: ${shownUnit})`;
+  }
   return { number, unit, text, role, qualifier, bytes,
     shownNumber, shownUnit, shownText,
     identity: JSON.stringify([role.toLowerCase(), qualifier, bytes != null && Number.isSafeInteger(bytes) ? ['bytes', bytes] : [number, unit, text]]) };
