@@ -125,7 +125,19 @@ const {chromium}=require('playwright');
   assert.equal(cleaned.items.filter(c=>c.model_name==='System-80').length,1);assert.equal(cleaned.items.filter(c=>c.model_name==='PDP-11').length,1);
   assert.equal(cleaned.items.filter(c=>c.model_name.startsWith('Unlisted model ')).length,103);
   assert(cleaned.items.filter(c=>c.model_name.startsWith('Unlisted model ')).every(c=>!/[()[\]]/.test(c.model_name)));
-  await openQuality();for(const width of [320,390]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
-  assert.deepEqual(errors,[]);console.log('PASS quality browser: sourced RAM, one RAM field with adjacent options, readable units, preserved sources/raw records, independent configuration selection, hardware variants, no regional-video noise, 105 cleanup groups and mobile.');
+  await openQuality();
+  await page.getByRole('button',{name:'Analizza pulizia fisica',exact:true}).click();
+  await page.getByRole('button',{name:'Applica pulizia alle tabelle principali',exact:true}).click();
+  await page.getByRole('status').filter({hasText:'Pulizia fisica completata'}).waitFor();
+  const physical=await(await page.request.get(apiBase+'/api/admin/catalog-quality/physical')).json();
+  assert.equal(physical.enabled,true);assert.equal(physical.summary.affected_computers,0);
+  const primary=await(await page.request.get(apiBase+`/api/admin/computers/${atariId}`)).json();assert.equal(primary.configurations.length,1);
+  const state=await(await page.request.get(apiBase+'/api/admin/catalog-quality/consolidated')).json();assert.equal(state.storage,'primary_tables');assert.equal(state.pending,0);
+  for(const c of ramComputers){
+   const raw=await(await page.request.get(apiBase+`/api/admin/computers/${c.id}`)).json();
+   for(const cfg of raw.configurations){const memory=cfg.specifications.filter(s=>s.component_type==='RAM');assert(memory.length<=2);assert(memory.every(s=>['Capacità','Opzioni di memoria'].includes(s.property_name)));}
+  }
+  for(const width of [320,390]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
+  assert.deepEqual(errors,[]);console.log('PASS quality browser: sourced RAM, one RAM field with adjacent options, preserved sources, independent hardware variants, 105 cleanup groups, physical cleanup of primary tables with repeat unchanged, no parallel catalog copy, mobile.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

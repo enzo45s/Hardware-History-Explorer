@@ -19,6 +19,8 @@ def annotate(computer, data):
     for alias in db.scalars(select(ComputerAlias).where(ComputerAlias.computer_id == computer.id).order_by(ComputerAlias.id)):
         original = alias.original
         for config in data['configurations']:
+            if config.get('catalog_clean'):
+                continue
             if config['id'] not in original.get('configurations', []):
                 continue
             variant_label = regional_name(alias.original_name)
@@ -34,6 +36,8 @@ def annotate(computer, data):
                 length = {'year': 4, 'month': 7}.get(member.get('announcement_precision'), 10)
                 config['variant_announcement_date'] = member['announcement_date'][:length]
         for release in data['releases']:
+            if release.get('catalog_clean'):
+                continue
             if release['id'] in original.get('releases', []):
                 release['model_variant'] = catalog_name(alias.original_name) if video_only_variant(alias.original_name) else regional_name(alias.original_name)
                 release['display_model_variant'] = catalog_name(alias.original_name)

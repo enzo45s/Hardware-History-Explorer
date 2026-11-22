@@ -173,7 +173,7 @@ def source(db, citation, accessed=True):
     return found
 
 
-def attribute(db, row, target, field, incoming, citation, evidence=None, estimated=False, *, accessed=True):
+def attribute(db, row, target, field, incoming, citation, evidence=None, estimated=False, *, accessed=True, catalog_cleaned=False):
     """Keep differing values staged as claims; fill only genuinely missing fields."""
     if incoming is None:
         return False
@@ -192,6 +192,10 @@ def attribute(db, row, target, field, incoming, citation, evidence=None, estimat
     old_precision = getattr(target, precision_field) if precision_field else None
     missing = previous is None or (field=='description' and isinstance(previous,str) and not previous.strip())
     conflict = not missing and (previous != incoming or (precision_field and old_precision != precision))
+    if isinstance(target,Release) and catalog_cleaned:
+        from ..catalog_cleanup import represented_release_field
+        if represented_release_field(db,target,field,{'value':incoming,**({'precision':precision} if precision_field else {})}):
+            conflict=False
     changed = missing
     if changed:
         setattr(target, field, value)
@@ -229,6 +233,8 @@ def import_record(db, job, row):
             row.status, row.error = 'skipped', 'Quantità RAM già documentata o sistema rimosso: nessuna modifica.'
             return
     created = c is None
+    from ..catalog_cleanup import physical_mode, incoming_configuration, incoming_specification, incoming_release
+    cleaned = physical_mode(db)
     maker = c.manufacturer if c is not None and (job.provider == 'historical_prices' or provider_maker_key(job.provider, c.manufacturer.name) == provider_maker_key(job.provider, data['manufacturer'])) else reference(db, Manufacturer, data['manufacturer'], provider=job.provider)
     if created:
         c = Computer(manufacturer=maker, model_name=catalog_name(data['model_name']))
@@ -274,7 +280,7 @@ def import_record(db, job, row):
         estimate = values.get('estimated', False) or (parent or {}).get('estimated', False) or root_estimate
         evidence = values.get('evidence') or (parent or {}).get('evidence') or data.get('evidence')
         for field in fields:
-            changed = attribute(db, row, target, field, values.get(field), citation, evidence, estimate) or changed
+            changed = attribute(db, row, target, field, values.get(field), citation, evidence, estimate, catalog_cleaned=cleaned) or changed
 
     def bundle(target, entry, field):
         nonlocal changed
@@ -314,6 +320,8 @@ def import_record(db, job, row):
             evidence=data.get('evidence')))
     for cfg in data.get('configurations', []):
         reconciled = reconciled_configuration(db, c.id, identity_provider(job.provider, data), data.get('external_id'), cfg['variant_name'])
+        if cleaned and reconciled is None:
+            reconciled = incoming_configuration(db,c.id,cfg['variant_name'],alias)
         pool = [v for v in c.configurations if v.id in alias.original.get('configurations', [])] if alias else [v for v in c.configurations if v.id not in reserved['configurations']]
         matches = [reconciled] if reconciled else [v for v in pool if name_key(alias.original.get('configuration_names', {}).get(str(v.id), v.variant_name) if alias else v.variant_name) == name_key(cfg['variant_name'])]
         if len(matches) > 1:
@@ -328,7 +336,14 @@ def import_record(db, job, row):
         scoped_names[str(variant.id)] = cfg['variant_name']
         record_fields(variant, {**cfg, 'variant_name': variant.variant_name} if reconciled or alias else cfg, ('variant_name', 'description'))
         for spec in cfg.get('specifications', []):
-            matches = matching_specs(variant.specifications, spec)
+            if cleaned:
+                from ..technical_display import regional_video_spec
+                if regional_video_spec(spec):
+                    continue  # Original upload retains discarded TV-profile metadata.
+            canonical = incoming_specification(db,c.id,variant,spec) if cleaned else None
+            from ..catalog_cleanup import promotes_reference
+            promote = cleaned and promotes_reference(variant,spec)
+            matches = [] if promote else [canonical] if canonical is not None else matching_specs(variant.specifications, spec)
             if not matches:
                 from ..unit_review import reviewed_import_target
                 reviewed = reviewed_import_target(db, variant.specifications, spec,
@@ -347,8 +362,10 @@ def import_record(db, job, row):
                     changed = True
                 old = {k: getattr(target, k) for k in ('numeric_value', 'text_value', 'unit')}
                 val = {k: spec.get(k) for k in old}
+                from ..catalog_cleanup import represented_quantity
+                same_quantity=quantity_equal(target,val,old) or (cleaned and represented_quantity(db,target,val))
                 db.add(ImportClaim(row_id=row.id, computer_id=c.id, source_id=s.id, entity='Specification', target_id=target.id,
-                    field='quantity', value=val, previous=old, status='pending' if quantity_equal(target, val, old) else 'conflict',
+                    field='quantity', value=val, previous=old, status='pending' if same_quantity else 'conflict',
                     estimated=spec.get('estimated', False) or cfg.get('estimated', False) or root_estimate,
                     evidence='\n'.join(x for x in (spec.get('evidence') or cfg.get('evidence') or data.get('evidence'),
                         ('Licenza: ' + s_citation['license']) if s_citation.get('license') else None) if x) or None))
@@ -375,6 +392,8 @@ def import_record(db, job, row):
                 existing = [r for r in existing if r.market_id == market.id]
                 original_release = reconciled_release(db,c.id,identity_provider(job.provider,data),data.get('external_id'),
                     market.id,serialize(historical_date(entry.get('release_date'))[0])) if model is Release else None
+                if cleaned and model is Release and original_release is None:
+                    original_release = incoming_release(db,c.id,market,entry)
                 # An undated price must not inherit a launch date from another
                 # source merely because the catalog has one release in this market.
                 if model is Release and original_release is None and entry.get('price') is not None and not entry.get('release_date'):
@@ -480,10 +499,15 @@ def review_claim(db, claim, decision, note):
             if claim.field in DATE_PRECISION:
                 current['precision'] = getattr(target, DATE_PRECISION[claim.field])
             expected = claim.previous if claim.status == 'conflict' else claim.value
-            same = quantity_equal(target, current, expected) if claim.field == 'quantity' else current == expected
+            from ..catalog_cleanup import represented_quantity, represented_release_field
+            represented = ((claim.field=='quantity' and represented_quantity(db,target,claim.value)) or
+                (isinstance(target,Release) and represented_release_field(db,target,claim.field,claim.value)))
+            same = (quantity_equal(target, current, expected) if claim.field == 'quantity' else current == expected) or represented
             if not same:
                 raise ValueError('Il dato è cambiato dopo l’importazione: riesamina con una nuova anteprima')
-            if claim.field in BUNDLES:
+            if represented:
+                pass  # Verify the archived supporting assertion, not replace the whole fact.
+            elif claim.field in BUNDLES:
                 for field, value in claim.value.items():
                     setattr(target, field, value)
             else:

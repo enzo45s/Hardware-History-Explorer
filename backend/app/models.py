@@ -52,6 +52,7 @@ class Configuration(Base):
  computer_id:Mapped[int]=mapped_column(ForeignKey('computers.id',ondelete='CASCADE'))
  variant_name:Mapped[str]=mapped_column(String(140))
  description:Mapped[str|None]=mapped_column(Text)
+ catalog_details:Mapped[dict]=mapped_column(JSON,default=dict,server_default='{}')
  computer=relationship('Computer',back_populates='configurations')
  specifications=relationship('Specification',back_populates='configuration',cascade='all,delete-orphan')
 class Specification(Base):
@@ -65,6 +66,7 @@ class Specification(Base):
  numeric_value:Mapped[float|None]=mapped_column(Float)
  text_value:Mapped[str|None]=mapped_column(Text)
  unit:Mapped[str|None]=mapped_column(String(30))
+ catalog_details:Mapped[dict]=mapped_column(JSON,default=dict,server_default='{}')
  configuration=relationship('Configuration',back_populates='specifications')
  sources=relationship('Source',secondary=spec_source)
 class Market(Base):
@@ -86,6 +88,7 @@ class Release(Base):
  price:Mapped[float|None]=mapped_column(Float)
  currency:Mapped[str|None]=mapped_column(String(3))
  price_type:Mapped[str|None]=mapped_column(String(30))
+ catalog_details:Mapped[dict]=mapped_column(JSON,default=dict,server_default='{}')
  computer=relationship('Computer',back_populates='releases')
  market=relationship('Market')
  sources=relationship('Source',secondary=release_source)

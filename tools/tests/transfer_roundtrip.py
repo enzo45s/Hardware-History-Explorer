@@ -33,8 +33,12 @@ from app.import_models import ImportJob, ImportRow, ImportClaim
 from app.photo_jobs import PhotoJob
 from app.importing.bulk1000bit import BulkJob
 from app.catalog_store import refresh_pending
+from app.catalog_cleanup import prepare as cleanup_preview, apply as cleanup_apply
 from PIL import Image
 with SessionLocal() as db:
+    # Cover a physically cleaned source and a legacy/cache-mode destination,
+    # including restoration of the destination's safety backup.
+    cleanup_apply(db, cleanup_preview(db))
     computer = db.query(Computer).first()
     source = Source(title="Synthetic backup test: prezzo, citta, 日本", url="https://example.org/backup-test")
     db.add(source)

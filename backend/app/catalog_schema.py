@@ -1,11 +1,11 @@
 """Additive, repeatable SQLite/PostgreSQL migration and precise invalidation.
 
-Only derived catalog tables and our own triggers are created. Historical rows,
-keys, source links and existing verification decisions are never rewritten.
+Creates derived tables, qualification columns and our own triggers. The schema
+migration does not perform physical cleanup or change historical field values.
 """
 import hashlib
 from pathlib import Path
-from sqlalchemy import text
+from sqlalchemy import text, inspect, select, event
 from .models import (CatalogSnapshot, CatalogDirty, CatalogMetric,
                      catalog_metric_assertions, catalog_metric_sources)
 
@@ -14,7 +14,7 @@ TABLES = [CatalogSnapshot.__table__, CatalogDirty.__table__, CatalogMetric.__tab
 # A rule change must rebuild persisted facts even when original rows did not
 # change. Hash the resolver and its vocabulary, not a deployment timestamp.
 _ROOT = Path(__file__).parent
-_RULES = ('catalog_memory.py', 'catalog_store.py', 'technical_display.py', 'release_display.py',
+_RULES = ('catalog_memory.py', 'catalog_store.py', 'catalog_cleanup.py', 'technical_display.py', 'release_display.py',
           'configuration_display.py', 'catalog_display.py', 'variant_context.py', 'source_policy.py',
           'importing/vocabulary.py', 'importing/regional_names.py', 'importing/identity.py',
           'importing/normalize.py', 'ram_values.py', 'history_sources.py', 'geography.py', 'catalog_names.py')
@@ -25,9 +25,18 @@ def ensure_schema(engine):
     if engine.dialect.name not in ('sqlite', 'postgresql'):
         raise ValueError('Il catalogo consolidato richiede SQLite o PostgreSQL.')
     from .models import Base
+    if engine.dialect.name=='sqlite' and not getattr(engine,'_hhe_catalog_foreign_keys',False):
+        @event.listens_for(engine,'connect')
+        def enable_fk(connection,_):
+            connection.execute('PRAGMA foreign_keys=ON')
+        engine._hhe_catalog_foreign_keys=True
     with engine.begin() as conn:
+        if engine.dialect.name=='sqlite':conn.exec_driver_sql('PRAGMA foreign_keys=ON')
         if engine.dialect.name == 'postgresql':
             conn.execute(text('SELECT pg_advisory_xact_lock(68484931)'))
+        for table in ('configurations', 'specifications', 'releases'):
+            if 'catalog_details' not in {c['name'] for c in inspect(conn).get_columns(table)}:
+                conn.exec_driver_sql(f"ALTER TABLE {table} ADD COLUMN catalog_details JSON NOT NULL DEFAULT '{{}}'")
         Base.metadata.create_all(conn, tables=TABLES)
         # Each expression is a SELECT of existing computers. On cascading
         # deletion of a computer, children cannot resurrect its queue entry.
@@ -63,6 +72,9 @@ def ensure_schema(engine):
                         BEGIN {sql} RETURN {'OLD' if operation == 'DELETE' else 'NEW'}; END $$''')
                     conn.exec_driver_sql(f'DROP TRIGGER IF EXISTS {name} ON {table}')
                     conn.exec_driver_sql(f'CREATE TRIGGER {name} {timing} {operation} ON {table} FOR EACH ROW EXECUTE FUNCTION {name}_fn()')
+        from .import_models import CatalogReconciliation
+        if conn.execute(select(CatalogReconciliation.id).where(CatalogReconciliation.entity=='physical_cleanup').limit(1)).first():
+            return
         conn.execute(text('''INSERT INTO catalog_dirty(computer_id,generation)
             SELECT c.id,1 FROM computers c LEFT JOIN catalog_snapshots s ON s.computer_id=c.id
             WHERE s.computer_id IS NULL OR s.version<>:version

@@ -190,6 +190,19 @@ def prepare(db):
             unquantified.append({'id': spec.id, 'computer_id': computer.id, 'model': computer.model_name,
                 'reason': 'Annotazione attuale conservata; nessuna nuova prova applicabile.',
                 'original': prior.get(spec.id, [{}])[0].get('before'), 'annotation': spec.text_value})
+        details=spec.catalog_details or {}
+        if (details.get('clean')
+                and any('annotazione sulla memoria' in note.lower() for note in details.get('notes',[]))
+                and spec.id not in {r['id'] for r in unquantified}):
+            note='\n'.join(details.get('notes',[]))
+            unquantified.append({'id':spec.id,'computer_id':computer.id,'model':computer.model_name,
+                'reason':'Quantità non documentata; indicazioni originali conservate nell’audit della pulizia.',
+                'original':None,'annotation':note or spec.text_value})
+        if (details.get('clean') and details.get('resolution_state')!='unknown' and spec.property_name!=ANNOTATION
+                and re.search(r'non (?:documentat|determinat|quantificat)',spec.text_value or '',re.I)
+                and spec.id not in {r['id'] for r in partial}):
+            partial.append({'id':spec.id,'computer_id':computer.id,'model':computer.model_name,
+                'value':spec.text_value,'reason':'Indicazione parziale conservata dopo la pulizia fisica.'})
     clarified = {row['id'] for row in changes if not still_ambiguous(row['after'])}
     identities = {s.id: (s, cfg, c, m) for s, cfg, c, m in specs}
     memory_review = [row for row in base['review'] if row.get('id') in identities

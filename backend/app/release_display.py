@@ -217,6 +217,8 @@ def release_summaries(releases):
         summary['original_markets'] = list(dict.fromkeys(row['market'] for row in originals))
         summary['date_scope'] = 'model' if (market_key(summary) and summary.get('release_date') and not any(
             market_key(row) == market_key(summary) and row.get('release_date') == summary['release_date'] for row in originals)) else 'market'
+        if any(row.get('date_scope') == 'model' for row in originals):
+            summary['date_scope'] = 'model'
         # Preserve which source supports each field, not merely the union of URLs.
         summary['field_sources'] = {
             field: sorted({source['id'] for row in originals if row.get(field) is not None and row.get(field) == summary.get(field) for source in row['sources']})

@@ -271,10 +271,14 @@ def apply_computer(db, c, data):
         for entry in data.configurations:
             cfg = configs.get(entry.id) or Configuration()
             cfg.variant_name, cfg.description = entry.variant_name, entry.description
+            if (cfg.catalog_details or {}).get('catalog_clean'):
+                cfg.catalog_details={**cfg.catalog_details,'display_name':entry.variant_name}
             specs = {s.id: s for s in cfg.specifications}
             children = []
             for value in entry.specifications:
                 s = specs.get(value.id) or Specification()
+                if any(getattr(s,field,None)!=getattr(value,field) for field in ('component_type','component_name','property_name','numeric_value','text_value','unit')):
+                    s.catalog_details={}
                 for field in ('component_type', 'component_name', 'property_name', 'numeric_value', 'text_value', 'unit'):
                     setattr(s, field, getattr(value, field))
                 if value.source_ids is not None:

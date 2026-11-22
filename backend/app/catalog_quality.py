@@ -138,6 +138,25 @@ class Consolidate(Token):
 def create_quality_router(get_db):
     router = APIRouter(prefix='/api/admin/catalog-quality', tags=['RAM e configurazioni'])
 
+    @router.get('/physical')
+    def physical_preview(db: Session = Depends(get_db)):
+        from .catalog_cleanup import prepare,physical_mode
+        try:plan=prepare(db)
+        except ValueError as exc:raise HTTPException(409,str(exc)) from exc
+        return {'token':plan['token'],'summary':plan['summary'],'enabled':physical_mode(db),
+            'models':[{'id':r['computer_id'],'name':r['model']} for r in plan['changes']]}
+
+    @router.post('/physical/apply')
+    def physical_apply(data: Token,db: Session = Depends(get_db)):
+        from .catalog_cleanup import prepare,apply
+        catalog_lock(db)
+        plan=prepare(db)
+        if data.token!=plan['token']:
+            raise HTTPException(409,'Il catalogo è cambiato: aggiorna l’anteprima della pulizia.')
+        try:return apply(db,plan,locked=True)
+        except ValueError as exc:
+            db.rollback();raise HTTPException(409,str(exc)) from exc
+
     @router.get('/consolidated')
     def consolidated_status(db: Session = Depends(get_db)):
         from .catalog_store import status

@@ -6,6 +6,7 @@ import './imports.css';
 export default function CatalogQualityPanel({ onSaved }) {
   const [ram, setRam] = useState(null);
   const [catalog, setCatalog] = useState(null);
+  const [physical, setPhysical] = useState(null);
   const [variants, setVariants] = useState(null);
   const [selected, setSelected] = useState([]);
   const [busy, setBusy] = useState(false);
@@ -38,9 +39,23 @@ export default function CatalogQualityPanel({ onSaved }) {
   }
   return <section className="imports">
     <h2>RAM e varianti dei modelli</h2>
+    <section className="panel" aria-label="Pulizia fisica dell’archivio">
+      <h3>Pulizia fisica dell’archivio</h3>
+      <p>Accorpa i dati direttamente nelle tabelle principali: profili equivalenti, specifiche ripetute, RAM e commercializzazioni complementari. Conserva configurazioni hardware diverse, fonti e audit degli originali accorpati.</p>
+      <button disabled={busy} onClick={() => action(async () => setPhysical(await api('/admin/catalog-quality/physical')))}>Analizza pulizia fisica</button>
+      {physical && <>
+        <p>{physical.summary.affected_computers} sistemi da aggiornare. Righe da accorpare: {physical.summary.configurations_removed} configurazioni, {physical.summary.specifications_removed} specifiche, {physical.summary.releases_removed} commercializzazioni.</p>
+        {physical.enabled && <p>Le tabelle principali sono la fonte del catalogo pulito. Le nuove modifiche vengono normalizzate automaticamente.</p>}
+        {(!physical.enabled || physical.summary.affected_computers > 0) && <button disabled={busy} onClick={() => action(async () => {
+          await api('/admin/catalog-quality/physical/apply', { method: 'POST', body: JSON.stringify({ token: physical.token }) });
+          setPhysical(await api('/admin/catalog-quality/physical')); setCatalog(null); onSaved();
+          setMessage('Pulizia fisica completata. Gli originali accorpati sono conservati nell’audit.');
+        })}>Applica pulizia alle tabelle principali</button>}
+      </>}
+    </section>
     <section className="panel" aria-label="Dati consolidati del catalogo">
       <h3>Dati consolidati del catalogo</h3>
-      <p>Schede, confronti e assistente condividono gli stessi dati consolidati, salvati nel database. Le specifiche originali e le loro fonti restano disponibili nell’editor.</p>
+      <p>Schede, confronti e assistente condividono i dati del catalogo. Fonti e provenienza delle importazioni restano tracciabili nell’archivio.</p>
       <button disabled={busy} onClick={() => action(async () => setCatalog(await api('/admin/catalog-quality/consolidated')))}>Controlla dati consolidati</button>
       {catalog && <>
         <p>{catalog.snapshots} di {catalog.computers} sistemi consolidati. {catalog.metrics} dati tecnici. In aggiornamento: {catalog.pending}.</p>

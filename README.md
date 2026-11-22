@@ -28,7 +28,13 @@ opzioni ed espansioni. Le diverse etichette delle fonti non creano più
 caratteristiche separate. Le quantità RAM sono mostrate in KB/MB/GB;
 originali, fonti e unità interne restano conservati.
 
-I [dati consolidati del catalogo](docs/CATALOG_CONSOLIDATION.md) sono salvati
+La [pulizia fisica del catalogo](docs/PHYSICAL_CATALOG_CLEANUP.md) accorpa
+configurazioni, specifiche e commercializzazioni direttamente nelle tabelle
+principali. Dopo l'applicazione, gli originali accorpati restano nell'audit
+e la precedente copia consolidata non viene più mantenuta. Si avvia da
+Amministrazione → RAM e varianti → Pulizia fisica dell’archivio.
+
+Il precedente livello di [dati consolidati del catalogo](docs/CATALOG_CONSOLIDATION.md) è salvato
 nel database e condivisi da schede, confronto e assistente. All'avvio l'API
 esegue la migrazione additiva e il popolamento; modifiche e importazioni
 aggiornano i sistemi interessati. Gli originali rimangono separati e tracciabili.

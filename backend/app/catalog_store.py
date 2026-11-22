@@ -1,8 +1,10 @@
-"""Persist consolidated catalog facts; retain source assertions unchanged.
+"""Shared catalog resolver and maintenance of legacy or physically clean data.
 
 The queue is maintained by database triggers, not frontend behavior. API
 maintenance drains it before/after requests and at startup. CLI/SQL imports
 remain safe: a dirty snapshot is never returned as current, even before drain.
+After physical cleanup the primary tables are authoritative, snapshot copies
+stay empty, and maintenance normalizes only the changed primary rows.
 """
 import argparse
 from copy import deepcopy
@@ -51,20 +53,32 @@ def sources(items):
 
 def specification_data(spec):
     normalized = normalize_spec(spec_values(spec))
-    return {'id': spec.id, **spec_values(spec), 'normalized': normalized,
+    result = {'id': spec.id, **spec_values(spec), 'normalized': normalized,
             'display': specification_display(normalized), 'sources': sources(spec.sources)}
+    details = spec.catalog_details or {}
+    if details.get('clean'):
+        result['catalog_clean'] = True
+        if normalized['component_type'] == 'RAM':
+            from .catalog_memory import entry, memory_text
+            item = entry({**normalized, **result['display']})
+            entries=[item] if item and details['resolution_state'] != 'unknown' else []
+            result.update(catalog_metric=details['metric'], resolution_state=details['resolution_state'],
+                          memory_values=entries,
+                          memory_notes=details.get('notes', []), specification_ids=[spec.id])
+            result['normalized']={**normalized,'numeric_value':None,'text_value':memory_text(entries) or 'Non documentata','unit':None}
+    return result
 
 
 def raw_payload(computer):
     displays = configuration_displays(computer.configurations, computer.model_name)
     payload = {'configurations': [{'id': c.id, 'variant_name': c.variant_name,
-                  'description': c.description, **displays[c.id],
+                  'description': c.description, **displays[c.id], **(c.catalog_details or {}),
                   'specifications': [specification_data(s) for s in sorted(c.specifications, key=lambda s: s.id)]}
                   for c in sorted(computer.configurations, key=lambda c: c.id)],
                'releases': [{'id': r.id, 'market': r.market.name,
                   'release_date': datefmt(r.release_date, r.release_precision),
                   'discontinuation_date': datefmt(r.discontinuation_date, r.discontinuation_precision),
-                  'price': r.price, 'currency': r.currency, 'price_type': r.price_type, 'sources': sources(r.sources)}
+                  'price': r.price, 'currency': r.currency, 'price_type': r.price_type, 'sources': sources(r.sources), **(r.catalog_details or {})}
                   for r in sorted(computer.releases, key=lambda r: r.id)]}
     annotate(computer, payload)
     db = object_session(computer)
@@ -102,6 +116,11 @@ def resolved(computer, payload=None):
     payload = raw_payload(computer) if payload is None else payload
     checksum = fingerprint(computer, payload)
     db = object_session(computer)
+    if db is not None:
+        from .catalog_cleanup import physical_mode
+        if physical_mode(db):
+            return consolidate(payload, computer.model_name), {'version': VERSION, 'input_sha256': checksum,
+                'persisted': True, 'storage': 'primary_tables', 'rebuilt_at': None}
     snapshot = None
     if db is not None and inspect(db.connection()).has_table('catalog_snapshots'):
         # Check the fingerprint as well as the queue: snapshots restored from
@@ -178,6 +197,9 @@ def refresh_pending(db, *, commit=True, force=False, locked=False):
     """
     if db.scalar(select(CatalogDirty.computer_id).limit(1)) is None:
         return {'updated': 0, 'processed': 0}
+    from .catalog_cleanup import physical_mode, refresh_clean
+    if physical_mode(db):
+        return refresh_clean(db, commit=commit, locked=locked)
     from .admin import catalog_lock
     if not locked:
         catalog_lock(db)
@@ -202,7 +224,13 @@ def refresh_pending(db, *, commit=True, force=False, locked=False):
 
 
 def status(db):
-    return {'version': VERSION, 'computers': db.scalar(select(func.count()).select_from(Computer)),
+    from .catalog_cleanup import physical_mode
+    count = db.scalar(select(func.count()).select_from(Computer))
+    if physical_mode(db):
+        return {'version': VERSION, 'computers': count, 'snapshots': count,
+            'metrics': db.scalar(select(func.count()).select_from(Specification)),
+            'pending': db.scalar(select(func.count()).select_from(CatalogDirty)), 'storage': 'primary_tables'}
+    return {'version': VERSION, 'computers': count,
             'snapshots': db.scalar(select(func.count()).select_from(CatalogSnapshot)),
             'metrics': db.scalar(select(func.count()).select_from(CatalogMetric)),
             'pending': db.scalar(select(func.count()).select_from(CatalogDirty))}

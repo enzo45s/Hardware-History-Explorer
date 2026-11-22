@@ -222,7 +222,8 @@ def reconciled_configuration(db, computer_id, provider, external_id, variant_nam
     candidates=[cfg for cfg in original['configurations'] if cfg['computer_id']==owner and name_key(cfg['variant_name'])==name_key(variant_name)]
     if len(candidates)>1:raise ValueError('Configurazioni originali ambigue: controlla la riconciliazione')
     if candidates:
-        config=db.get(Configuration,candidates[0]['id'])
+        from ..catalog_cleanup import redirect
+        config=db.get(Configuration,redirect(db,computer_id,'Configuration',candidates[0]['id']))
         if config is None or config.computer_id!=computer_id:
             raise ValueError('Configurazione riconciliata non più disponibile: controlla scheda e corrispondenza')
         return config
@@ -235,7 +236,8 @@ def reconciled_release(db,computer_id,provider,external_id,market_id,release_dat
     candidates=[r for r in original['releases'] if r['computer_id']==owner and r['market_id']==market_id and r['release_date']==release_date]
     if len(candidates)>1:raise ValueError('Commercializzazioni originali ambigue: controlla la riconciliazione')
     if candidates:
-        release=db.get(Release,candidates[0]['id'])
+        from ..catalog_cleanup import redirect
+        release=db.get(Release,redirect(db,computer_id,'Release',candidates[0]['id']))
         if release is None or release.computer_id!=computer_id:
             raise ValueError('Commercializzazione riconciliata non più disponibile: controlla scheda e corrispondenza')
         return release

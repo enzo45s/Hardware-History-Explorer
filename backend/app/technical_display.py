@@ -213,6 +213,13 @@ def sheet(members, model, count):
 
 
 def technical_sheets(configurations, model_name):
+    if configurations and all(c.get('catalog_clean') and all(s.get('catalog_clean') for s in c['specifications']) for c in configurations):
+        rows = deepcopy(configurations)
+        for row in rows:
+            row['configuration_ids'] = row.get('configuration_ids', [row['id']])
+            for spec in row['specifications']:
+                spec['specification_ids'] = [spec['id']]
+        return rows
     rows = configuration_summaries(configurations, model_name)
     for row in rows:
         row['specifications'] = [s for s in row['specifications'] if not regional_video_spec(s)]

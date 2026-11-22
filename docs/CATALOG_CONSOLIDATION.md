@@ -1,5 +1,10 @@
 # Dati consolidati del catalogo
 
+**Aggiornamento:** è disponibile la [pulizia fisica](PHYSICAL_CATALOG_CLEANUP.md),
+che accorpa i dati nelle tabelle principali. Dopo la sua applicazione, il livello
+di snapshot e metriche descritto qui viene svuotato e non è più alimentato.
+Questa guida descrive il funzionamento precedente alla pulizia.
+
 Il database conserva due livelli distinti: le specifiche e le commercializzazioni
 originali con le loro fonti, e i dati consolidati utilizzati da schede pubbliche,
 confronto e assistente. La RAM principale e le opzioni sono ora risolte dal

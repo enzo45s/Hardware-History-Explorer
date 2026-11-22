@@ -133,6 +133,8 @@ def memory_specifications(specifications):
     memory = [s for s in specifications if view(s)['component_type'] == 'RAM']
     if not memory:
         return deepcopy(specifications)
+    if all(s.get('catalog_clean') for s in memory) and any(s.get('catalog_metric') == 'ram.capacity' for s in memory):
+        return deepcopy(specifications)
     capacities, references, options, notes, main_sources, option_sources = [], [], [], [], [], []
 
     def add(target, value, original, sources):
@@ -141,6 +143,14 @@ def memory_specifications(specifications):
 
     for original in memory:
         values = view(original); prop = values['property_name']; name = clean(prop).lower()
+        if original.get('catalog_clean'):
+            notes.extend(original.get('memory_notes', []))
+            if original.get('resolution_state') == 'reference':
+                add(references, entry(values), original, main_sources)
+                continue
+            if original.get('resolution_state') == 'unknown':
+                main_sources.append(original)
+                continue
         if name in BASE:
             add(capacities, entry(values), original, main_sources)
         elif name in REFERENCE:
