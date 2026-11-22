@@ -146,3 +146,7 @@ PostgreSQL saltati; suite PostgreSQL completa con 898 test superati, seguita
 da 104 test mirati sull'ultima versione, inclusa la deduplicazione delle
 quantità equivalenti anche nel campo SQL numerico. Superati 44 test frontend,
 compilazione React, Docker Compose e browser qualità su catalogo sintetico.
+Superati anche gli otto test degli strumenti di backup. La prova completa di
+trasferimento tramite PowerShell richiede `pwsh`, assente nell'ambiente cloud
+di questa verifica: il relativo test è predisposto nella CI e ora consolida
+la propria fixture prima del confronto integrale del database ripristinato.

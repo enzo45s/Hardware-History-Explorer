@@ -32,6 +32,7 @@ from app.models import Computer, ComputerImage, Release, Source
 from app.import_models import ImportJob, ImportRow, ImportClaim
 from app.photo_jobs import PhotoJob
 from app.importing.bulk1000bit import BulkJob
+from app.catalog_store import refresh_pending
 from PIL import Image
 with SessionLocal() as db:
     computer = db.query(Computer).first()
@@ -56,6 +57,10 @@ with SessionLocal() as db:
     db.add(ComputerImage(computer_id=computer.id, local_filename="transfer-fixture.webp",
         caption="Synthetic uploaded photograph", is_primary=True))
     db.commit()
+    # The fixture writes through a separate CLI process. Settle its derived
+    # catalog before taking the byte-for-byte reference; normal API startup
+    # also drains this queue after an offline import/restore.
+    refresh_pending(db)
 Image.new("RGB", (23, 17), (11, 88, 22)).save(UPLOAD_DIR / "transfer-fixture.webp", format="WEBP")
 '''
 
