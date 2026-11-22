@@ -256,7 +256,12 @@ def apply_computer(db, c, data):
             r = releases.get(entry.id) or Release()
             for field in ('market_id', 'price', 'currency', 'price_type'):
                 setattr(r, field, getattr(entry, field))
-            r.release_date, r.release_precision = historical_date(entry.release_date)
+            release_date, release_precision = historical_date(entry.release_date)
+            if (r.release_date,r.release_precision)!=(release_date,release_precision):
+                r.catalog_details={k:v for k,v in (r.catalog_details or {}).items() if k not in {
+                    'date_evidence','date_sources','reference_dates','reference_note','commercialization_notes','date_scope'}}
+                r.catalog_details={**r.catalog_details,'date_manual':True}
+            r.release_date, r.release_precision = release_date, release_precision
             r.discontinuation_date, r.discontinuation_precision = historical_date(entry.discontinuation_date)
             if entry.source_ids is not None:
                 r.sources = references(db, Source, entry.source_ids)

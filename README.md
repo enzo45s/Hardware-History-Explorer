@@ -34,6 +34,11 @@ principali. Dopo l'applicazione, gli originali accorpati restano nell'audit
 e la precedente copia consolidata non viene più mantenuta. Si avvia da
 Amministrazione → RAM e varianti → Pulizia fisica dell’archivio.
 
+La [normalizzazione della commercializzazione](docs/RELEASE_SUMMARIES.md) distingue
+le date documentate dagli anni di riferimento delle varianti e accorpa date e
+prezzi compatibili. Negli archivi già puliti, un aggiornamento delle regole
+riesamina automaticamente tutte le schede nelle tabelle principali all'avvio.
+
 Il precedente livello di [dati consolidati del catalogo](docs/CATALOG_CONSOLIDATION.md) è salvato
 nel database e condivisi da schede, confronto e assistente. All'avvio l'API
 esegue la migrazione additiva e il popolamento; modifiche e importazioni

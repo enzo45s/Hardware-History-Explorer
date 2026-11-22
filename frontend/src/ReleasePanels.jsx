@@ -16,6 +16,8 @@ export default function ReleasePanels({ computer, renderSource }) {
           {row.model_variant && <p className="muted">Configurazione: {row.display_model_variant ?? row.model_variant}</p>}
           {group.releases.length > 1 && countries?.length > 0 && <p className="muted">{countries.join(', ')}</p>}
           <p><span title={row.date_scope === 'model' ? 'Data di lancio del modello; la disponibilità in questo mercato non è datata dalla fonte del prezzo.' : undefined}>{row.release_date || 'Data non disponibile'}</span> · {price(row)}</p>
+          {row.date_scope === 'reference' && <p className="muted">{row.reference_note || 'Anno di riferimento; data di lancio non documentata.'}</p>}
+          {row.commercialization_notes?.map(note => <p className="muted" key={note}>{note}</p>)}
           {row.discontinuation_date && <p className="muted">Fine commercializzazione: {row.discontinuation_date}</p>}
           {row.price_type && <p className="muted">Tipo di prezzo: {row.price_type}</p>}
           {source && renderSource(source)}

@@ -17,7 +17,8 @@ _ROOT = Path(__file__).parent
 _RULES = ('catalog_memory.py', 'catalog_store.py', 'catalog_cleanup.py', 'technical_display.py', 'release_display.py',
           'configuration_display.py', 'catalog_display.py', 'variant_context.py', 'source_policy.py',
           'importing/vocabulary.py', 'importing/regional_names.py', 'importing/identity.py',
-          'importing/normalize.py', 'ram_values.py', 'history_sources.py', 'geography.py', 'catalog_names.py')
+          'importing/normalize.py', 'ram_values.py', 'history_sources.py', 'geography.py', 'catalog_names.py',
+          'commercial_dates.py','importing/data/commercial-dates-v1.json')
 VERSION = 'hhe-catalog-v1.' + hashlib.sha256(b''.join((_ROOT / p).read_bytes() for p in _RULES)).hexdigest()[:16]
 
 
@@ -74,6 +75,13 @@ def ensure_schema(engine):
                     conn.exec_driver_sql(f'CREATE TRIGGER {name} {timing} {operation} ON {table} FOR EACH ROW EXECUTE FUNCTION {name}_fn()')
         from .import_models import CatalogReconciliation
         if conn.execute(select(CatalogReconciliation.id).where(CatalogReconciliation.entity=='physical_cleanup').limit(1)).first():
+            marker=conn.execute(select(CatalogReconciliation.snapshot).where(CatalogReconciliation.entity=='catalog_rules').order_by(CatalogReconciliation.id.desc()).limit(1)).scalar()
+            if not marker or marker.get('version')!=VERSION:
+                conn.execute(text('''INSERT INTO catalog_dirty(computer_id,generation)
+                    SELECT id,1 FROM computers WHERE true ON CONFLICT(computer_id)
+                    DO UPDATE SET generation=catalog_dirty.generation+1'''))
+                conn.execute(CatalogReconciliation.__table__.insert().values(entity='catalog_rules',source_id=0,target_id=0,
+                    note='Aggiornamento globale delle regole del catalogo: sistemi accodati alla normalizzazione.',snapshot={'version':VERSION}))
             return
         conn.execute(text('''INSERT INTO catalog_dirty(computer_id,generation)
             SELECT c.id,1 FROM computers c LEFT JOIN catalog_snapshots s ON s.computer_id=c.id

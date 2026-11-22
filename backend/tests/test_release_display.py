@@ -34,6 +34,72 @@ def test_requested_example_preserves_originals_and_field_provenance():
     assert [s['id'] for s in summary['sources']] == [1, 2]
 
 
+def reference(identifier,year,base=False,**extra):
+    return {**row(identifier,year=year), 'date_evidence':{'kind':'reference','base':base,'source_ids':[identifier]},**extra}
+
+
+def test_bbc_base_and_regional_years_do_not_block_the_documented_launch_price():
+    original=[reference(1,'1981',True),reference(2,'1982'),reference(3,'1984'),reference(4,'1983'),
+        {**row(5,'Regno Unito',price=399,currency='GBP',price_type='prezzo riportato'),
+         'documented_launch':{'date':'1981-12','source_id':5,'note':'Lancio nel dicembre 1981; consegne rinviate al 1982.'}}]
+    before=deepcopy(original)
+    expected,=release_summaries(original)
+    assert (expected['market'],expected['release_date'],expected['price'])==('Europa','1981-12',399)
+    assert expected['release_ids']==[1,2,3,4,5] and expected['field_sources']['release_date']==[5]
+    assert expected['date_scope']=='model' and expected['date_evidence']['kind']=='documented_launch'
+    assert expected['original_releases']==before and original==before
+    assert all('non documentata' not in n for n in expected.get('commercialization_notes',[]))
+    for order in permutations(original):assert release_summaries(order)==[expected]
+
+
+def test_base_reference_is_used_instead_of_guessing_the_oldest_variant_year():
+    result,=release_summaries([reference(1,'1985',True),reference(2,'1982'),row(3,'Stati Uniti',price=100,currency='USD')])
+    assert result['release_date']=='1985' and result['date_scope']=='reference'
+    assert result['reference_dates']==['1982','1985']
+    assert result['field_sources']['release_date']==[1]
+
+
+def test_missing_base_uses_an_explicit_reference_not_a_claimed_launch_date():
+    result,=release_summaries([reference(1,'1986'),reference(2,'1989'),reference(3,'1987'),row(4,'Francia',price=100,currency='FRF')])
+    assert result['release_date']=='1986' and result['date_scope']=='reference'
+    assert 'Primo anno registrato' in result['reference_note']
+
+
+def test_reference_variants_do_not_override_a_documented_date_or_a_later_list():
+    refs=[reference(1,'1982',True),reference(2,'1984')]
+    result=release_summaries([*refs,row(3,'Stati Uniti',year='1990',price=100,currency='USD')])
+    assert any(r['release_date']=='1990' and r['price']==100 for r in result)
+    assert any(r['date_scope']=='reference' and r['release_date']=='1982' for r in result)
+    result=release_summaries([*refs,row(3,'Stati Uniti',price=100,currency='USD',price_type='listino successivo')])
+    assert next(r for r in result if r['price'] is not None)['release_date'] is None
+
+
+def test_different_priced_hardware_variants_keep_their_own_reference_dates():
+    result=release_summaries([{**reference(1,'1982',True),'model_variant':'16K'},
+        {**reference(2,'1984',True),'model_variant':'64K'},
+        {**row(3,'Regno Unito',price=100,currency='GBP'),'model_variant':'16K'},
+        {**row(4,'Regno Unito',price=200,currency='GBP'),'model_variant':'64K'}])
+    assert {(r['model_variant'],r['release_date'],r['price']) for r in result}=={('16K','1982',100),('64K','1984',200)}
+
+
+def test_new_variant_year_does_not_recreate_a_card_beside_a_documented_launch():
+    price={**row(1,'Europa',year='1981-12',price=399,currency='GBP'),
+        'date_evidence':{'kind':'documented_launch','source_ids':[1]},'date_scope':'model'}
+    result,=release_summaries([price,reference(2,'1984')])
+    assert result['release_date']=='1981-12' and result['price']==399 and result['release_ids']==[1,2]
+
+
+def test_reference_context_can_be_recomputed_without_changing_prices():
+    price={**row(1,'Stati Uniti',year='1983',price=100,currency='USD'),
+        'date_evidence':{'kind':'reference','base':False,'source_ids':[1]},'date_scope':'reference'}
+    result,=release_summaries([price,reference(2,'1981',True)])
+    assert result['release_date']=='1981' and result['price']==100 and result['date_scope']=='reference'
+    assert result['release_ids']==[1,2]
+    result,=release_summaries([price,row(2,year='1982')])
+    assert result['release_date']=='1982' and result['date_scope']=='model'
+    assert 'reference_note' not in result
+
+
 def test_same_documented_market_has_regional_date_scope_and_zero_price():
     summary, = release_summaries([row(1, 'Stati Uniti', year='1982'), row(2, 'Stati Uniti', price=0, currency='USD')])
     assert summary['date_scope'] == 'market' and summary['price'] == 0
@@ -231,3 +297,11 @@ def test_api_editor_comparison_and_assistant_preserve_undated_original(client):
         assert model['releases'][0]['original_releases'][1]['release_date'] is None
         saved = db.scalars(select(Release).where(Release.computer_id == 1).order_by(Release.id)).all()
         assert [release.id for release in saved] == ids and saved[1].release_date is None
+
+
+def test_documented_source_wins_over_equal_reference_year_regardless_of_ids():
+    for ref_id,doc_id in [(1,2),(2,1)]:
+        result,=release_summaries([reference(ref_id,'1982',True),row(doc_id,year='1982'),row(3,'Stati Uniti',price=100,currency='USD')])
+        assert result['date_scope']=='model' and result['release_date']=='1982'
+        assert 'reference_note' not in result
+        assert result['field_sources']['release_date']==[doc_id]

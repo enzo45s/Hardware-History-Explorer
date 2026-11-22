@@ -71,7 +71,10 @@ def test_legacy_enterprise_context_is_recovered_once_with_source_and_original_no
     after = client.get(f'/api/computers/{cid}').json()
     summary, = after['display_releases']
     assert (summary['market'], summary['release_date'], summary['price'], summary['currency']) == ('Europa', '1985', 249, 'GBP')
-    assert summary['price_countries'] == ['Regno Unito'] and summary['date_scope'] == 'model'
+    assert summary['price_countries'] == ['Regno Unito'] and summary['date_scope'] == 'reference'
+    # The fixture's year has no citation. Recovering a sourced price must not
+    # retroactively make that independent year a documented launch date.
+    assert summary['field_sources']['release_date'] == []
     assert after['facts'] == before['facts'] and '£180' in after['facts'][0]['statement']
     price = next(r for r in after['releases'] if r['price'] is not None)
     assert price['price'] == 249 and price['release_date'] is None

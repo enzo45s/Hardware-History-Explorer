@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "reviewed_on": "2026-11-22",
+  "records": [
+    {
+      "id": "cch-bbc-model-b-launch",
+      "manufacturer": "Acorn",
+      "model_name": "BBC Micro Model B",
+      "url": "https://www.computinghistory.org.uk/det/5853/Acorn-releases-the-BBC-Micro/",
+      "price": 399,
+      "currency": "GBP",
+      "launch_date": "1981-12",
+      "note": "Lancio nel dicembre 1981; la fonte segnala consegne rinviate al 1982.",
+      "evidence": "La pagina del Centre for Computing History documenta il lancio nel dicembre 1981, il Model B con 32K a 399 sterline e le consegne ritardate fino al 1982. Si conserva la precisione del mese, senza dedurre una data di consegna."
+    },
+    {
+      "id": "cch-bbc-model-a-launch",
+      "manufacturer": "Acorn",
+      "model_name": "BBC Micro Model A",
+      "url": "https://www.computinghistory.org.uk/det/5853/Acorn-releases-the-BBC-Micro/",
+      "price": 299,
+      "currency": "GBP",
+      "launch_date": "1981-12",
+      "note": "Lancio nel dicembre 1981; la fonte segnala consegne rinviate al 1982.",
+      "evidence": "La stessa pagina distingue il Model A con 16K a 299 sterline. La data riguarda il lancio, non la consegna."
+    }
+  ]
+}

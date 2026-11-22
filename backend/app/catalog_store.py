@@ -81,6 +81,8 @@ def raw_payload(computer):
                   'price': r.price, 'currency': r.currency, 'price_type': r.price_type, 'sources': sources(r.sources), **(r.catalog_details or {})}
                   for r in sorted(computer.releases, key=lambda r: r.id)]}
     annotate(computer, payload)
+    from .commercial_dates import annotate as date_context
+    date_context(computer,payload)
     db = object_session(computer)
     if db is not None:
         from .models import spec_source

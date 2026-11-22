@@ -154,3 +154,72 @@ delle fonti. La stessa regola si applica a tutto il catalogo, anche alle date
 senza prezzo e alle offerte in più mercati. Verificati **747 test SQLite**
 (uno saltato), **144 test mirati PostgreSQL**, 31 test frontend e Chromium
 per commercializzazioni, prezzi ed Europa.
+
+## Date del modello e anni delle varianti (22 novembre 2026)
+
+Gli anni registrati dal dataset di base per revisioni e varianti regionali non
+sono offerte commerciali indipendenti. Il normalizzatore li conserva nell'audit
+ed evita di mostrare una scheda senza prezzo per ciascun anno. Preferisce il
+riferimento del modello base; se manca, presenta il primo anno registrato come
+**riferimento**, senza dichiararlo una data di lancio verificata. Date realmente
+documentate discordanti, prezzi di listini successivi e configurazioni con
+prezzi diversi rimangono distinti. Non si deduce il paese dalla valuta.
+
+La provenienza della data viene ricostruita anche dagli audit delle pulizie
+precedenti: una fonte del solo anno non sostiene automaticamente il mese o il
+giorno. Il normalizzatore mantiene separati i riferimenti dei campi data e prezzo.
+Modificare manualmente una data elimina le qualificazioni derivate precedenti.
+
+Il piccolo repertorio `backend/app/importing/data/commercial-dates-v1.json`
+contiene fatti controllati, applicabili solo con identità marca/modello, URL,
+importo e valuta corrispondenti. Per BBC Micro Model B la pagina del Centre for
+Computing History riporta lancio nel **dicembre 1981**, prezzo **399 GBP** e
+consegne rinviate al **1982**:
+<https://www.computinghistory.org.uk/det/5853/Acorn-releases-the-BBC-Micro/>.
+Il mese di lancio non diventa una data di consegna. Non vengono creati prezzi
+nuovi, chiamati servizi esterni all'avvio o promossi stati di verifica umana.
+
+Dopo la pulizia fisica, un cambio di versione delle regole accoda automaticamente
+**tutti** i sistemi alla normalizzazione delle tabelle principali, in una
+transazione con audit. La coda si svuota solo a operazione riuscita; ripetere
+l'avvio con la stessa versione non ripete la migrazione. Per archivi non ancora
+puliti rimane disponibile l'anteprima/applicazione in amministrazione, descritta
+in [Pulizia fisica](PHYSICAL_CATALOG_CLEANUP.md).
+
+### Verifica sull'intero dump dell'utente
+
+Prova eseguita su una copia isolata PostgreSQL del dump del 22 novembre 2026
+(14:48:35, ora italiana), già sottoposta alla pulizia fisica precedente.
+Il database locale sul Mac non è stato raggiunto o modificato.
+
+| Controllo | Prima | Dopo |
+| --- | ---: | ---: |
+| Sistemi | 1.133 | 1.133 |
+| Configurazioni | 1.166 | 1.166 |
+| Specifiche | 6.988 | 6.988 |
+| Commercializzazioni attive | 1.183 | 1.135 |
+| Record con prezzo | 625 | 625 |
+| Fonti conservate | 7.435 | 7.435 |
+| Foto associate | 605 | 605 |
+
+La migrazione ha aggiornato dati e qualificazioni di 1.045 schede, accorpando
+48 righe commerciali. Tutti i 625 importi e valute originali corrispondono ai
+rispettivi record finali, seguendo gli identificativi archiviati. Nessuna
+chiave esterna orfana. Una seconda analisi su tutti i sistemi dà **zero modifiche**.
+Dodici reimportazioni reali (manuale, 1000bit e prezzi storici), provate in
+transazioni poi annullate, non aumentano sistemi, configurazioni, specifiche o
+commercializzazioni.
+
+Nel BBC Micro Model B le cinque righe diventano una sola riga nelle tabelle
+principali: **Europa · 1981-12 · 399 GBP**, con una fonte pubblica e la nota
+sulle consegne del 1982. Chromium conferma il risultato su desktop e a
+320/390 px, senza errori JavaScript. Restano **30 modelli** con anno del modello
+e prezzi di **listini successivi senza data**: non vengono accoppiati attribuendo
+erroneamente il prezzo all'anno di lancio. Questi casi richiedono la data del
+listino, non un ulteriore accorpamento automatico.
+
+Verifiche: suite completa SQLite **921 test superati, due saltati**; ulteriori
+regressioni mirate sulla versione finale **87 test SQLite e 87 test PostgreSQL superati**. Frontend:
+**44 test superati**, build React e test Chromium delle commercializzazioni
+riusciti. Docker Compose avviato correttamente. Rimangono l'avviso Vite sulla
+dimensione del bundle e la deprecazione Starlette/httpx già esistente.

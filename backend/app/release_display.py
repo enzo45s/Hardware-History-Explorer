@@ -1,8 +1,8 @@
-"""Conservative commercial-release summaries; never rewrite historical evidence.
+"""Commercial offers with explicit date scope and field-level provenance.
 
-An undated price is still undated in storage and in the raw API. This view can
-place a model's independently sourced date beside compatible market offers,
-while retaining the original records and the date's geographical scope.
+Legacy catalogs retain separate assertions. Physical cleanup persists the same
+summaries in primary tables and archives originals; both modes use these rules.
+Reference variant years never become independently verified launch dates.
 """
 from collections import defaultdict
 from calendar import monthrange
@@ -67,11 +67,76 @@ def compatible(rows):
 
 def merge_date_evidence(target, additions, *, refine=False):
     supporting = [target['row'], *(group['row'] for group in additions)]
+    previous_date=target['row'].get('release_date')
     for field in DATES:
         if refine or target['row'].get(field) is None:
             target['row'][field] = refined_date(row.get(field) for row in supporting)
+    if not previous_date or previous_date!=target['row'].get('release_date'):
+        evidence=[g['row'].get('date_evidence', {'kind':'documented','source_ids':[s['id'] for s in g['row'].get('sources',[])]}) for g in additions if g['row'].get('release_date')==target['row'].get('release_date')]
+        evidence=[v for v in evidence if v]
+        if evidence:
+            target['row']['date_evidence']={'kind':'reference' if all(v['kind']=='reference' for v in evidence) else 'documented',
+                'source_ids':sorted({i for v in evidence for i in v.get('source_ids',[])})}
+            if target['row']['date_evidence']['kind']=='reference':
+                target['row']['date_evidence']['base']=any(v.get('base') for v in evidence)
+                target['row']['reference_note']=next((g['row']['reference_note'] for g in additions if g['row'].get('reference_note')), 'Anno di riferimento del modello; data di lancio non documentata.')
+            else:target['row'].pop('reference_note',None)
+    notes=list(target['row'].get('commercialization_notes',[]))
+    references=set(target['row'].get('reference_dates',[]))
     for group in additions:
+        notes.extend(group['row'].get('commercialization_notes',[]))
+        references.update(group['row'].get('reference_dates',[]))
         target['originals'].extend(deepcopy(group['originals']))
+    if notes:target['row']['commercialization_notes']=list(dict.fromkeys(notes))
+    if references:target['row']['reference_dates']=sorted(references)
+
+
+def reference_date_groups(dates, prices):
+    """Retire reference variant years as context, rather than extra offers.
+
+    Prefer a registration of the actual base model; otherwise explicitly label
+    the first recorded reference year. Documented date disagreements remain
+    disagreements. No market or actual launch date is inferred here.
+    """
+    scoped_offers=any(p['row'].get('model_variant') for p in prices)
+    scopes=defaultdict(list);result=[]
+    for group in dates:
+        row=group['row']
+        if (row.get('date_evidence',{}).get('kind')=='reference' and row.get('release_date')
+                and not row.get('discontinuation_date') and not market_key(row)):
+            scopes[row.get('model_variant') if scoped_offers else None].append(group)
+        else:result.append(group)
+    for scope,groups in scopes.items():
+        launches=[p for p in prices if p['row'].get('model_variant')==scope
+            and p['row'].get('date_evidence',{}).get('kind')=='documented_launch']
+        if launches:
+            target=launches[0]
+            refs=set(target['row'].get('reference_dates',[]))
+            for group in groups:
+                refs.add(group['row']['release_date']);refs.update(group['row'].get('reference_dates',[]))
+                target['originals'].extend(deepcopy(group['originals']))
+            target['row']['reference_dates']=sorted(refs)
+            continue
+        documented=[g for g in result if g['row'].get('model_variant')==scope and not market_key(g['row']) and g['row'].get('release_date')]
+        if documented and compatible([g['row'] for g in documented]):
+            target=documented[0]
+        else:
+            base=[g for g in groups if g['row']['date_evidence'].get('base')]
+            candidates=base or groups
+            date_value=refined_date(g['row']['release_date'] for g in candidates)
+            target=min((g for g in candidates if date_value is None or g['row']['release_date']==date_value),key=lambda g:(g['row']['release_date'],g['row']['id']))
+            target['row']['date_scope']='reference'
+            if scope is None:
+                target['row'].pop('model_variant',None);target['row'].pop('display_model_variant',None)
+            note='Anno di riferimento del modello; data di lancio non documentata.' if base else 'Primo anno registrato nei dati disponibili; data di lancio non documentata.'
+            target['row']['reference_note']=note
+            result.append(target)
+        refs=set(target['row'].get('reference_dates',[]))
+        for group in groups:
+            refs.add(group['row']['release_date']);refs.update(group['row'].get('reference_dates',[]))
+            if group is not target:target['originals'].extend(deepcopy(group['originals']))
+        target['row']['reference_dates']=sorted(refs)
+    return sorted(result,key=lambda g:g['row']['id'])
 
 
 def refine_date_groups(groups):
@@ -134,20 +199,36 @@ def release_summaries(releases):
     dates, prices, others = [], [], []
     duplicates = {}
     for row in rows:
-        group = {'row': row, 'originals': [deepcopy(row)]}
+        original=deepcopy(row)
+        proof=row.get('documented_launch')
+        if proof:
+            row['release_date']=proof['date']
+            row['date_evidence']={'kind':'documented_launch','source_ids':[proof['source_id']]}
+            row['commercialization_notes']=list(dict.fromkeys([*row.get('commercialization_notes',[]),proof['note']]))
+            row.pop('reference_note',None)
+        group = {'row': row, 'originals': [original]}
         if row.get('price') is not None:
+            if row.get('release_date') and row.get('date_evidence',{}).get('kind')=='reference' and key(row.get('price_type')) in LAUNCH_TYPES:
+                context=deepcopy(row)
+                context.update(price=None,currency=None,price_type=None,market='Mercato non documentato')
+                # Context is not a second offer. Never merge priced originals.
+                dates.append({'row':context,'originals':[]})
+                row['release_date']=None
             prices.append(group)
         elif any(row.get(field) for field in DATES):
             signature = (row.get('model_variant'), market_key(row), *(row.get(field) for field in DATES), row.get('currency'), row.get('price_type'))
             if signature in duplicates:
-                duplicates[signature]['originals'].append(deepcopy(row))
+                previous=duplicates[signature]
+                previous['originals'].append(deepcopy(row))
+                if previous['row'].get('date_evidence',{}).get('kind')=='reference' and row.get('date_evidence',{}).get('kind')!='reference':
+                    previous['row']=row
             else:
                 duplicates[signature] = group
                 dates.append(group)
         else:
             others.append(group)
 
-    dates = refine_date_groups(dates)
+    dates = refine_date_groups(reference_date_groups(dates,prices))
 
     # Equal offers repeated across different European countries become one
     # regional offer. Multiple identical rows in one country remain ambiguous.
@@ -219,12 +300,19 @@ def release_summaries(releases):
             market_key(row) == market_key(summary) and row.get('release_date') == summary['release_date'] for row in originals)) else 'market'
         if any(row.get('date_scope') == 'model' for row in originals):
             summary['date_scope'] = 'model'
+        if summary.get('date_evidence',{}).get('kind')=='reference':
+            summary['date_scope']='reference'
+        else:
+            summary.pop('reference_note',None)
+            if summary.get('date_evidence',{}).get('kind')=='documented_launch':summary['date_scope']='model'
         # Preserve which source supports each field, not merely the union of URLs.
         summary['field_sources'] = {
             field: sorted({source['id'] for row in originals if row.get(field) is not None and row.get(field) == summary.get(field) for source in row['sources']})
             for field in ('market', *DATES, 'price', 'currency', 'price_type')
         }
         summary['field_sources']['market'] = sorted({source['id'] for row in originals if market_key(row) for source in row['sources']})
+        if summary.get('date_evidence'):
+            summary['field_sources']['release_date']=summary['date_evidence'].get('source_ids',[])
         sources = {source['id']: source for row in originals for source in row['sources']}
         summary['sources'] = [sources[identifier] for identifier in sorted(sources)]
         result.append(summary)

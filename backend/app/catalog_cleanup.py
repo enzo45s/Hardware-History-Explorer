@@ -154,8 +154,10 @@ def computer_plan(db, computer):
         target = row['id'] if row['id'] in candidates else min(candidates)
         used_releases.add(target)
         details = {'catalog_clean':True}
-        for key in ('model_variant','display_model_variant','date_scope'):
+        for key in ('model_variant','display_model_variant','date_scope','date_evidence','reference_dates','reference_note','commercialization_notes','date_manual'):
             if row.get(key):details[key]=row[key]
+        if row.get('field_sources',{}).get('release_date'):
+            details['date_sources']=row['field_sources']['release_date']
         releases.append({'id':target,'market':row['market'],
             **{k:row.get(k) for k in ('release_date','discontinuation_date','price','currency','price_type')},
             'catalog_details':details,'original_ids':row['release_ids']})
@@ -169,7 +171,13 @@ def computer_plan(db, computer):
     after_specs = [{k:r[k] for k in ('id','configuration_id',*SPEC_FIELDS,'catalog_details')} for r in specs]
     # Release dates have explicit precision in storage, represented by strings
     # of corresponding length here. Include scopes and market names in equality.
-    old_releases = [{k:v for k,v in r.items() if k!='sources'} for r in raw['releases']]
+    # Compare with stored values, not enriched date context generated for a
+    # read. A missing stored date must remain a real physical update.
+    from .catalog_store import datefmt
+    old_releases = [{'id':r.id,'market':r.market.name,
+        'release_date':datefmt(r.release_date,r.release_precision),
+        'discontinuation_date':datefmt(r.discontinuation_date,r.discontinuation_precision),
+        'price':r.price,'currency':r.currency,'price_type':r.price_type,**(r.catalog_details or {})} for r in sorted(computer.releases,key=lambda r:r.id)]
     new_releases = [{'id':r['id'], **{k:r[k] for k in ('market','release_date','discontinuation_date','price','currency','price_type')},**r['catalog_details']} for r in releases]
     dirty = (sorted(before_configs,key=lambda r:r['id']) != sorted(after_configs,key=lambda r:r['id']) or
              sorted(before_specs,key=lambda r:r['id']) != sorted(after_specs,key=lambda r:r['id']) or old_releases != new_releases)
@@ -247,6 +255,12 @@ def write_computer(db, plan):
         db.execute(update(Release).where(Release.id==row['id']).values(**fields))
         db.execute(delete(release_source).where(release_source.c.target_id==row['id']))
         links=merged_links(original['release_sources'],row['original_ids'],row['id'])
+        existing={r['source_id'] for r in links}
+        allowed={r['source_id'] for r in original['release_sources']}
+        for sid in row['catalog_details'].get('date_sources',[]):
+            if sid in allowed and sid not in existing:
+                links.append({'source_id':sid,'target_id':row['id'],'verification_status':'pending',
+                    'evidence':'Fonte del contesto cronologico del modello; non prova autonoma del prezzo o della disponibilità nel mercato.'})
         if links:db.execute(release_source.insert(),links)
     db.execute(delete(Release).where(Release.computer_id==cid,Release.id.not_in([r['id'] for r in plan['releases']])))
     for alias in db.scalars(select(ComputerAlias).where(ComputerAlias.computer_id==cid)):
@@ -393,12 +407,12 @@ def represented_release_field(db,target,field,incoming):
     from .catalog_store import digest
     fields=('market_id','release_date','release_precision','discontinuation_date','discontinuation_precision','price','currency','price_type')
     current=digest({k:serial(getattr(target,k)) for k in fields})
-    for row in history(db,target.computer_id):
-        recorded=row.get('release_fingerprints',{})
-        if recorded.get(str(target.id),recorded.get(target.id))!=current:continue
+    events=list(history(db,target.computer_id))
+    if not any(event.get('release_fingerprints',{}).get(str(target.id),event.get('release_fingerprints',{}).get(target.id))==current for event in events):return False
+    for row in events:
         for old in row['original']['releases']:
             mapped=row['redirects']['Release'].get(str(old['id']),row['redirects']['Release'].get(old['id']))
-            if mapped!=target.id:continue
+            if mapped is None or mapped!=target.id and redirect(db,target.computer_id,'Release',old['id'])!=target.id:continue
             expected={'value':old[field]}
             if field.endswith('_date'):expected['precision']=old[field.replace('_date','_precision')]
             if incoming==expected:return True

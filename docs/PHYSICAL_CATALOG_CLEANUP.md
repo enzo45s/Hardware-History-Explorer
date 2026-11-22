@@ -135,3 +135,13 @@ conservazione delle configurazioni e layout a 320/390 pixel. La copia effettiva
 Il roundtrip PowerShell completo è predisposto in CI con una sorgente pulita
 e una destinazione nella modalità precedente; `pwsh` non è presente nel cloud
 locale. Il dump non include i file delle immagini caricate sul Mac.
+
+## Aggiornamenti successivi delle regole
+
+Una volta attivata la pulizia fisica, l'avvio di una nuova versione delle regole
+normalizza automaticamente tutte le schede nelle tabelle principali. Non è
+necessario reimportare il database. La migrazione registra la versione e gli
+originali modificati nell'audit; se fallisce, la transazione viene annullata e la
+coda resta disponibile per il tentativo successivo. Mantenere un backup recente
+prima di aggiornare. Le regole delle date delle varianti e dei prezzi sono
+spiegate in [Commercializzazione](RELEASE_SUMMARIES.md).
