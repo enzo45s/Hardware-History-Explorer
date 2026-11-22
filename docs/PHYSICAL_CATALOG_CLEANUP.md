@@ -19,7 +19,7 @@ Aggiornare il branch e i servizi del progetto Compose esistente:
 ```bash
 git switch feat/historical-data-import
 git pull --ff-only
-docker compose -p hhe-import-test up --build -d --wait
+docker compose -p hhe-import-test up --build -d --wait --wait-timeout 900
 ```
 
 Prima dell'applicazione conservare un backup completo recente. Aprire
@@ -145,3 +145,8 @@ originali modificati nell'audit; se fallisce, la transazione viene annullata e l
 coda resta disponibile per il tentativo successivo. Mantenere un backup recente
 prima di aggiornare. Le regole delle date delle varianti e dei prezzi sono
 spiegate in [Commercializzazione](RELEASE_SUMMARIES.md).
+
+Il primo avvio dopo un aggiornamento può richiedere alcuni minuti per il
+riesame completo. L'health check concede dieci minuti alla fase iniziale e
+segnala subito l'API pronta quando l'operazione termina; gli avvii ordinari
+non devono attendere questa durata.
