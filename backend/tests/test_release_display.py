@@ -305,3 +305,56 @@ def test_documented_source_wins_over_equal_reference_year_regardless_of_ids():
         assert result['date_scope']=='model' and result['release_date']=='1982'
         assert 'reference_note' not in result
         assert result['field_sources']['release_date']==[doc_id]
+
+
+def test_same_cited_a3000_offer_with_and_without_year_is_one_offer():
+    citation={'id':6085,'title':'Ricerca prezzi — Acorn BBC A3000','url':'https://en.wikipedia.org/wiki/Acorn_Archimedes'}
+    for dated_id,undated_id in [(1179,1723),(1723,1179)]:
+        rows=[{**row(dated_id,'Europa',year='1989',price=649,currency='GBP',price_type='prezzo riportato'),'sources':[citation]},
+            {**row(undated_id,'Europa',price=649,currency='GBP',price_type='prezzo riportato'),'sources':[citation]}]
+        before=deepcopy(rows)
+        summary,=release_summaries(rows)
+        assert (summary['market'],summary['release_date'],summary['price'],summary['currency'])==('Europa','1989',649,'GBP')
+        assert summary['id']==1179 and summary['release_ids']==[1179,1723]
+        assert summary['sources']==[citation] and summary['field_sources']['release_date']==[6085]
+        assert rows==before
+        for order in permutations(rows):assert release_summaries(order)==[summary]
+
+
+def test_duplicate_prices_are_collapsed_before_shared_date_matching():
+    citation={'id':10,'title':'Synthetic price reference','url':'https://example.org/offer'}
+    rows=[row(1,year='1989'),*[{**row(i,'Stati Uniti',price=649,currency='USD'),'sources':[citation]} for i in [2,3]]]
+    summary,=release_summaries(rows)
+    assert summary['release_date']=='1989' and summary['release_ids']==[1,2,3]
+
+
+@pytest.mark.parametrize('change',[
+    {'release_date':'1990'}, {'currency':'USD'}, {'price':699}, {'price_type':'listino successivo'},
+    {'model_variant':'4 MB'}, {'market':'Stati Uniti'}, {'sources':[]},
+    {'sources':[{'id':11,'title':'Different evidence','url':'https://example.org/other'}]},
+])
+def test_matching_price_citation_never_overrides_distinct_offer_fields(change):
+    citation={'id':10,'title':'Synthetic offer','url':'https://example.org/offer'}
+    original={**row(1,'Europa',year='1989',price=649,currency='GBP',price_type='prezzo riportato'),'sources':[citation]}
+    other={**original,'id':2,'release_date':None,**change}
+    assert len(release_summaries([original,other]))==2
+
+
+def test_conflicting_dated_prices_do_not_capture_an_ambiguous_undated_duplicate():
+    citation={'id':10,'title':'Synthetic offer','url':'https://example.org/offer'}
+    rows=[{**row(i,'Europa',year=y,price=649,currency='GBP'),'sources':[citation]} for i,y in [(1,'1989'),(2,'1990'),(3,None)]]
+    for order in permutations(rows):assert len(release_summaries(order))==3
+
+
+def test_same_sourced_offer_prefers_documented_date_to_an_old_reference_year():
+    citation={'id':6530,'title':'Sinclair QL price research','url':'https://retrodelights.co.uk/retro-game-prices-1980s/'}
+    rows=[{**row(900,'Europa',year='1985',price=399,currency='GBP',price_type='prezzo riportato'),
+        'sources':[citation],'date_scope':'reference','reference_dates':['1985'],
+        'date_evidence':{'kind':'reference','base':True,'source_ids':[4736]}},
+        {**row(1617,'Europa',year='1984',price=399,currency='GBP',price_type='prezzo riportato'),
+        'sources':[citation],'date_evidence':{'kind':'documented','source_ids':[6530]}}]
+    result,=release_summaries(rows)
+    assert result['release_date']=='1984' and result['date_scope']=='market'
+    assert result['release_ids']==[900,1617] and result['reference_dates']==['1985']
+    assert result['field_sources']['release_date']==[6530]
+    assert result['original_releases']==rows

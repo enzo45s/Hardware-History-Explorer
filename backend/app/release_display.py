@@ -184,11 +184,38 @@ def complete_launch_dates(dates, prices, consumed):
         target['summary_id'] = target['row']['id']
 
 
+def coalesce_repeated_offers(groups):
+    """Same cited offer, with complementary date precision, is one record.
+
+    Equal prices alone are insufficient. Require the same nonempty citation
+    set, market, hardware variant, currency and price type. If the dates in a
+    group disagree, no undated row is assigned arbitrarily to either date.
+    """
+    repeated=defaultdict(list);result=[]
+    for group in groups:
+        row=group['row']
+        citations=tuple(sorted((s['id'],s.get('url') or '') for s in row['sources']))
+        if not citations or not row.get('currency'):
+            result.append(group);continue
+        signature=(row.get('model_variant'),market_key(row),row['price'],row['currency'],row.get('price_type'),citations)
+        repeated[signature].append(group)
+    for candidates in repeated.values():
+        if not compatible([g['row'] for g in candidates]):
+            result.extend(candidates);continue
+        # Prefer the supplied, most precise date and its qualifications, even
+        # when the undated duplicate has the lowest database identifier.
+        target=max(candidates,key=lambda g:(len(g['row'].get('release_date') or ''),
+            len(g['row'].get('discontinuation_date') or ''),-g['row']['id']))
+        merge_date_evidence(target,[g for g in candidates if g is not target],refine=True)
+        result.append(target)
+    return sorted(result,key=lambda g:g['row']['id'])
+
+
 def release_summaries(releases):
     """Only complementary date/price records with a unique match are combined.
 
-    Never merge two prices from the same country (they may describe different
-    configurations) or assign a price of unknown geography to a country. Shared
+    Equal amounts with different citations or hardware scopes remain distinct.
+    Never assign a price of unknown geography to a country. Shared
     dates add context to offers, preserving their original geographical scope.
     """
     rows = sorted(deepcopy(releases), key=lambda row: row['id'])
@@ -228,6 +255,19 @@ def release_summaries(releases):
         else:
             others.append(group)
 
+    prices = coalesce_repeated_offers(prices)
+    # A virtual reference year belongs to its priced original. If that same
+    # offer now has a documented date after deduplication, retain the old year
+    # as context on the offer, rather than creating a card with no originals.
+    dated_offers={old['id']:group for group in prices if group['row'].get('release_date') for old in group['originals']}
+    remaining_dates=[]
+    for group in dates:
+        owner=dated_offers.get(group['row']['id']) if not group['originals'] else None
+        if owner is None:
+            remaining_dates.append(group);continue
+        owner['row']['reference_dates']=sorted({*owner['row'].get('reference_dates',[]),
+            *group['row'].get('reference_dates',[]),group['row']['release_date']})
+    dates=remaining_dates
     dates = refine_date_groups(reference_date_groups(dates,prices))
 
     # Equal offers repeated across different European countries become one

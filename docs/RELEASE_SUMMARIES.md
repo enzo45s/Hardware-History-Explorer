@@ -223,3 +223,39 @@ regressioni mirate sulla versione finale **87 test SQLite e 87 test PostgreSQL s
 **44 test superati**, build React e test Chromium delle commercializzazioni
 riusciti. Docker Compose avviato correttamente. Rimangono l'avviso Vite sulla
 dimensione del bundle e la deprecazione Starlette/httpx già esistente.
+
+### Offerte ripetute con la stessa fonte: BBC A3000
+
+Un'offerta con `1989 · 649 GBP` e una con `Data non disponibile · 649 GBP`,
+entrambe sostenute dalla stessa citazione, sono ora un solo record. La regola
+si applica a tutti i modelli e richiede la stessa combinazione di mercato,
+configurazione, importo, valuta, tipo di prezzo e insieme non vuoto di citazioni.
+La data più precisa deve essere compatibile con tutte le date documentate;
+fonti o configurazioni diverse e date discordanti non vengono equiparate.
+La deduplicazione precede l'associazione del contesto cronologico, evitando
+che due copie dello stesso prezzo rendano ambiguo un anno del modello.
+
+Per l'A3000 la copia del database contieneva proprio due righe con la fonte
+`Ricerca prezzi — Acorn BBC A3000`, URL
+<https://en.wikipedia.org/wiki/Acorn_Archimedes>. Entrambe diventano
+**Europa · 1989 · 649 GBP**, con una sola citazione, nelle tabelle principali,
+nell'API e nell'interfaccia. Nessuna nuova attestazione storica è stata
+ricercata o dichiarata verificata.
+
+La verifica dell'intera copia PostgreSQL (1.133 sistemi) accorpa due coppie,
+A3000 e Sinclair QL: le commercializzazioni passano da 1.135 a 1.133, con
+623 offerte con prezzo. Tutti i 625 importi e valute dei record precedenti
+sono ancora rappresentati seguendo gli identificativi archiviati. Nel QL
+la data documentata dell'offerta prevale sul precedente anno di riferimento,
+che resta nell'audit e nel contesto cronologico interno. Sistemi,
+configurazioni, specifiche, fonti e foto non cambiano; nessuna chiave esterna
+orfana e seconda analisi con zero modifiche. I test coprono anche
+l'importazione ripetuta del prezzo senza data e i casi che devono restare
+distinti.
+
+Verifiche della correzione: **132 test SQLite superati, uno saltato; 133 test
+PostgreSQL superati**. Chromium conferma l'A3000 sulla copia effettiva, una sola
+riga con anno/prezzo e una fonte, viewport 320/390 px e nessun errore JavaScript;
+passa anche la regressione browser delle commercializzazioni. Build e health
+check Compose riusciti. Il database sul Mac richiede l'aggiornamento del branch;
+questa prova ha usato esclusivamente copie isolate del dump.

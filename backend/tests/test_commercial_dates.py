@@ -83,3 +83,32 @@ def test_base_role_survives_removal_of_a_former_variant_label(client):
         db.commit();apply(db,prepare(db))
         assert c.releases[0].catalog_details['date_evidence']['base']
         assert prepare(db)['summary']['affected_computers']==0
+
+
+def test_repeated_a3000_price_is_physically_merged_and_reimport_follows_redirects(client):
+    import json
+    from app.importing.engine import stage,apply_job
+    with SessionLocal() as db:
+        c=db.get(Computer,1);c.model_name='BBC A3000';c.manufacturer=Manufacturer(name='Acorn')
+        c.releases.clear();db.flush()
+        market=Market(name='Europa')
+        citation=Source(title='Ricerca prezzi — Acorn BBC A3000',url='https://en.wikipedia.org/wiki/Acorn_Archimedes')
+        c.releases=[Release(market=market,release_date=d,release_precision='year' if d else None,
+            price=649,currency='GBP',price_type='prezzo riportato',sources=[citation]) for d in [date(1989,1,1),None]]
+        db.commit();old_ids=[r.id for r in c.releases]
+    assert len(client.get('/api/computers/1').json()['display_releases'])==1
+    with SessionLocal() as db:
+        apply(db,prepare(db));c=db.get(Computer,1)
+        assert len(c.releases)==1 and c.releases[0].release_date==date(1989,1,1)
+        assert c.releases[0].price==649 and len(c.releases[0].sources)==1
+        assert prepare(db)['summary']['affected_computers']==0
+        from app.catalog_cleanup import redirect
+        assert {redirect(db,1,'Release',i) for i in old_ids}=={c.releases[0].id}
+        citation=c.releases[0].sources[0]
+        record={'manufacturer':'Acorn','model_name':'BBC A3000','source':{'title':citation.title,'url':citation.url},
+            'releases':[{'market':'Europa','price':649,'currency':'GBP','price_type':'prezzo riportato'}]}
+        job=stage(db,'manual','repeat-price.json','json',json.dumps([record]).encode());apply_job(db,job.id)
+        refresh_pending(db)
+        assert len(db.get(Computer,1).releases)==1
+    actual=client.get('/api/computers/1').json()
+    assert len(actual['releases'])==len(actual['display_releases'])==1
