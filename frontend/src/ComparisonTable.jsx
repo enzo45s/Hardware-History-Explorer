@@ -1,6 +1,7 @@
 import React, { useEffect, useId, useState } from 'react';
 import { api, latestRequest } from './api.js';
 import { comparisonSpecifications, comparisonRows, selectedConfiguration } from './comparison-specs.js';
+import { visibleMemoryNotes } from './ram-display.js';
 import { displayDescription, displayConfigurationName, displayConfigurations } from './catalog-display.js';
 import './comparison-table.css';
 
@@ -40,7 +41,7 @@ export default function ComparisonTable({ ids, configurations, onConfigurationCh
         {[...rows].map(([key, label]) => <tr key={key}><th scope="row">{label}</th>{data.map((computer, index) => {
           const value = specifications[index].get(key);
           return <td key={computer.id}><span className="comparison-spec-value">{value?.text ?? '—'}</span>
-            {value?.notes?.map(note => <small className="comparison-partial" key={note}>{note}</small>)}
+            {visibleMemoryNotes(value?.notes).map(note => <small className="comparison-partial" key={note}>{note}</small>)}
             {value?.partial && <small className="comparison-partial">Dato presente in {value.coverage} di {value.total} configurazioni</small>}
           </td>;
         })}</tr>)}

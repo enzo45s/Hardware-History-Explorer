@@ -7,6 +7,10 @@ const aliases = new Map([['Opzioni RAM emulatore (MAME)', 'Opzioni di memoria'],
 const clean = value => String(value ?? '').trim().replace(/\s+/g, ' ');
 const roleName = value => /^(?:ram|mainram|system ram|memoria principale)$/i.test(clean(value)) ? '' : clean(value);
 
+// Keep the stored qualification while omitting this repeated reader-facing note.
+export const visibleMemoryNotes = notes => (notes ?? []).filter(note =>
+  !/^valore di riferimento\s*[;,]\s*dotazione di base non documentata\.?$/i.test(clean(note)));
+
 // KB/MB/GB are the reader's historical labels for already explicit IEC values.
 // Legacy KB and lower-case Kb are NOT interpreted as binary quantities here.
 function entry(view, qualifier = '') {

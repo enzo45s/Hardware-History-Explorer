@@ -17,7 +17,7 @@ import ReleasePanels from './ReleasePanels.jsx';
 import { comparisonSummary } from './comparison-api.js';
 import { computerSources } from './computer-sources.js';
 import { displaySpecification, displayDescription, displayConfigurationName, displayConfigurations } from './catalog-display.js';
-import { memorySpecifications } from './ram-display.js';
+import { memorySpecifications, visibleMemoryNotes } from './ram-display.js';
 
 const nav = [
   ['timeline', 'Timeline', Clock3], ['catalog', 'Catalogo', Database],
@@ -213,7 +213,7 @@ function ComputerDetail({ computer, onClose, onChanged }) {
     <div className="section-title">Configurazioni e specifiche</div>
     {displayConfigurations(computer).map(c => <section className="panel" key={c.id} aria-label={'Configurazione · ' + displayConfigurationName(c)}><h3>{displayConfigurationName(c)}</h3>{c.regional_variants?.length > 0 && <p className="muted">Varianti regionali: {c.regional_variants.join(' · ')}</p>}{c.variant_description && <p>{c.variant_description}</p>}{c.variant_announcement_date && <p className="muted">Annuncio della configurazione: {c.variant_announcement_date}</p>}{displayDescription(c) && <p className="muted">{displayDescription(c)}</p>}<table><tbody>{memorySpecifications(c.specifications).map(s => {
       const view = displaySpecification(s);
-      return <tr key={s.id}><td>{s.memory_values && view.property_name === 'Capacità' ? 'RAM' : view.component_type + ' · ' + view.property_name}</td><td><strong title={s.memory_values ? undefined : 'Valore registrato: ' + (s.numeric_value ?? s.text_value) + (s.unit ? ' ' + s.unit : '')}>{view.numeric_value ?? view.text_value} {view.unit || ''}</strong>{s.memory_notes?.map(note => <small className="memory-note" key={note}>{note}</small>)}{s.sources?.map(source => <Source key={source.id} s={source} compact />)}</td></tr>;
+      return <tr key={s.id}><td>{s.memory_values && view.property_name === 'Capacità' ? 'RAM' : view.component_type + ' · ' + view.property_name}</td><td><strong title={s.memory_values ? undefined : 'Valore registrato: ' + (s.numeric_value ?? s.text_value) + (s.unit ? ' ' + s.unit : '')}>{view.numeric_value ?? view.text_value} {view.unit || ''}</strong>{visibleMemoryNotes(s.memory_notes).map(note => <small className="memory-note" key={note}>{note}</small>)}{s.sources?.map(source => <Source key={source.id} s={source} compact />)}</td></tr>;
     })}</tbody></table></section>)}
     <div className="section-title">Commercializzazione</div>
     <ReleasePanels computer={computer} renderSource={source => <Source key={source.id} s={source} compact />} />
