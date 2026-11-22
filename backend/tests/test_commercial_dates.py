@@ -36,8 +36,11 @@ def test_real_source_roles_and_documented_price_work_in_api_and_primary_tables(c
 
 
 def test_rule_upgrade_requeues_all_cleaned_systems_once(client):
+    from app.import_models import CatalogReconciliation
     with SessionLocal() as db:
         bbc(db);apply(db,prepare(db))
+        marker=db.scalar(select(CatalogReconciliation).where(CatalogReconciliation.entity=='catalog_rules').order_by(CatalogReconciliation.id.desc()))
+        marker.snapshot={'version':'older-rules'};db.commit()
         total=db.scalar(select(func.count()).select_from(Computer))
     ensure_schema(engine)
     with SessionLocal() as db:

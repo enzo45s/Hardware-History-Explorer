@@ -150,3 +150,37 @@ Il primo avvio dopo un aggiornamento può richiedere alcuni minuti per il
 riesame completo. L'health check concede dieci minuti alla fase iniziale e
 segnala subito l'API pronta quando l'operazione termina; gli avvii ordinari
 non devono attendere questa durata.
+
+### API in avvio e frontend non avviato
+
+Durante la transazione iniziale Uvicorn non accetta ancora connessioni:
+`Waiting for application startup` e `Connection refused` nell'health check
+possono indicare una normalizzazione ancora in corso. I log mostrano ora la
+fase e l'avanzamento ogni 50 sistemi, fino a `database pronto`:
+
+```bash
+docker compose -p hhe-import-test logs -f --tail=60 api
+```
+
+Se il primo `up` si è interrotto ma l'API ha poi terminato l'avvio, completare
+l'avvio del frontend senza ricompilare:
+
+```bash
+docker compose -p hhe-import-test up -d --wait --wait-timeout 900 web
+```
+
+Una normalizzazione limitata alle commercializzazioni evita ora di riscrivere
+configurazioni, specifiche e collegamenti alle fonti rimasti identici. La
+pulizia esplicita registra anche la versione delle regole applicate: riavvio,
+backup e ripristino della stessa versione non riaccodano inutilmente l'intero
+catalogo e non aggiungono un evento di migrazione al solo riavvio.
+
+Verifica della correzione di avvio: 49 test SQLite superati (uno specifico
+PostgreSQL saltato), 50 test PostgreSQL e otto test degli archivi superati;
+build e health check Compose riusciti. Su una nuova copia del dump con 1.133
+schede, l'avvio completo con normalizzazione è durato 23,64 secondi nel cloud
+(misura non trasferibile al Mac). Tutte le righe principali e i collegamenti
+alle fonti coincidono con il risultato della normalizzazione precedente. Un
+secondo avvio completo conserva gli hash di tutte le tabelle e le sequenze.
+Il test copre anche la versione delle regole che causava un falso cambiamento
+dello snapshot dopo l'esportazione nel test CI del trasferimento.

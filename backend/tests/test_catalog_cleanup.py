@@ -214,3 +214,32 @@ def test_sqlite_cli_engine_cascades_retired_source_links(tmp_path):
         assert db.scalar(select(func.count()).select_from(spec_source))==0
         assert db.execute(text('PRAGMA foreign_key_check')).all()==[]
     other.dispose()
+
+
+def test_current_rule_cleanup_survives_schema_restart_without_changing_rows(client):
+    from app.models import Base
+    from app.catalog_schema import ensure_schema
+    def snapshot():
+        with engine.connect() as conn:
+            return {table.name:sorted(repr(r) for r in conn.execute(select(table))) for table in Base.metadata.sorted_tables}
+    with SessionLocal() as db:
+        fixture(db);apply(db,prepare(db))
+    before=snapshot()
+    ensure_schema(engine)
+    assert snapshot()==before
+
+
+def test_release_only_normalization_does_not_rewrite_unchanged_technical_tables(client):
+    from sqlalchemy import event
+    statements=[]
+    def capture(conn,cursor,statement,parameters,context,executemany):statements.append(statement.lower())
+    with SessionLocal() as db:
+        cid=fixture(db);apply(db,prepare(db));c=db.get(Computer,cid)
+        c.releases.append(Release(market=Market(name='Unknown'),release_date=date(1982,1,1),release_precision='year'))
+        db.commit()
+        event.listen(engine,'before_cursor_execute',capture)
+        try:assert refresh_pending(db)['updated']==1
+        finally:event.remove(engine,'before_cursor_execute',capture)
+        assert len(db.get(Computer,cid).releases)==1
+    for statement in statements:
+        assert not statement.startswith(('update configurations ','update specifications ','delete from specification_sources','insert into specification_sources'))

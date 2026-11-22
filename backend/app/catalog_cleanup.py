@@ -10,6 +10,7 @@ from copy import deepcopy
 from datetime import date, datetime
 from decimal import Decimal
 import json
+import logging
 import os
 import re
 from pathlib import Path
@@ -21,6 +22,7 @@ from .import_models import CatalogReconciliation, ComputerAlias, ImportClaim, Ar
 from .admin import historical_date, catalog_lock
 
 VERSION = 'hhe-physical-catalog-v1'
+logger = logging.getLogger('uvicorn.error')
 SPEC_FIELDS = ('component_type','component_name','property_name','numeric_value','text_value','unit')
 
 
@@ -217,6 +219,13 @@ def merged_links(rows, originals, target):
     return result
 
 
+def replace_links(db, table, original, target, links):
+    before=sorted((r for r in original if r['target_id']==target),key=lambda r:r['source_id'])
+    if before==sorted(links,key=lambda r:r['source_id']):return
+    db.execute(delete(table).where(table.c.target_id==target))
+    if links:db.execute(table.insert(),links)
+
+
 def write_computer(db, plan):
     cid=plan['computer_id'];original=plan['original']
     cfg_map={old:r['id'] for r in plan['configurations'] for old in r['original_ids']}
@@ -231,18 +240,28 @@ def write_computer(db, plan):
             if new!=claim.target_id:
                 claim_targets.append({'id':claim.id,'entity':entity,'target_id':claim.target_id})
                 claim.target_id=new
-    for cfg in original['configurations']:
-        db.execute(update(Configuration).where(Configuration.id==cfg['id']).values(variant_name=f'__physical_{cid}_{cfg["id"]}'))
+    old_configs={r['id']:r for r in original['configurations']}
+    rename=any(old_configs[r['id']]['variant_name']!=r['variant_name'] for r in plan['configurations'])
+    if rename:
+        for cfg in original['configurations']:
+            db.execute(update(Configuration).where(Configuration.id==cfg['id']).values(variant_name=f'__physical_{cid}_{cfg["id"]}'))
     for row in plan['configurations']:
-        db.execute(update(Configuration).where(Configuration.id==row['id']).values(**{k:row[k] for k in ('variant_name','description','catalog_details')}))
+        fields={k:row[k] for k in ('variant_name','description','catalog_details')}
+        if rename or any(old_configs[row['id']][k]!=v for k,v in fields.items()):
+            db.execute(update(Configuration).where(Configuration.id==row['id']).values(**fields))
+    old_specs={r['id']:r for r in original['specifications']}
     for row in plan['specifications']:
-        db.execute(update(Specification).where(Specification.id==row['id']).values(**{k:row[k] for k in ('configuration_id',*SPEC_FIELDS,'catalog_details')}))
-        db.execute(delete(spec_source).where(spec_source.c.target_id==row['id']))
+        fields={k:row[k] for k in ('configuration_id',*SPEC_FIELDS,'catalog_details')}
+        if any(old_specs[row['id']][k]!=v for k,v in fields.items()):
+            db.execute(update(Specification).where(Specification.id==row['id']).values(**fields))
         links=merged_links(original['specification_sources'],row['original_ids'],row['id'])
-        if links:db.execute(spec_source.insert(),links)
-    db.execute(delete(Specification).where(Specification.configuration_id.in_([r['id'] for r in original['configurations']]),Specification.id.not_in([r['id'] for r in plan['specifications']])))
-    db.execute(delete(Configuration).where(Configuration.computer_id==cid,Configuration.id.not_in([r['id'] for r in plan['configurations']])))
+        replace_links(db,spec_source,original['specification_sources'],row['id'],links)
+    removed_specs=set(old_specs)-{r['id'] for r in plan['specifications']}
+    removed_configs=set(old_configs)-{r['id'] for r in plan['configurations']}
+    if removed_specs:db.execute(delete(Specification).where(Specification.id.in_(removed_specs)))
+    if removed_configs:db.execute(delete(Configuration).where(Configuration.id.in_(removed_configs)))
     release_fingerprints={}
+    old_releases={r['id']:r for r in original['releases']}
     from .catalog_store import digest
     for row in plan['releases']:
         market=db.scalar(select(Market).where(Market.name==row['market']))
@@ -252,8 +271,8 @@ def write_computer(db, plan):
         for name in ('release','discontinuation'):
             fields[name+'_date'],fields[name+'_precision']=historical_date(row[name+'_date'])
         release_fingerprints[row['id']]=digest({k:serial(v) for k,v in fields.items() if k!='catalog_details'})
-        db.execute(update(Release).where(Release.id==row['id']).values(**fields))
-        db.execute(delete(release_source).where(release_source.c.target_id==row['id']))
+        if any(old_releases[row['id']][k]!=serial(v) for k,v in fields.items()):
+            db.execute(update(Release).where(Release.id==row['id']).values(**fields))
         links=merged_links(original['release_sources'],row['original_ids'],row['id'])
         existing={r['source_id'] for r in links}
         allowed={r['source_id'] for r in original['release_sources']}
@@ -261,13 +280,14 @@ def write_computer(db, plan):
             if sid in allowed and sid not in existing:
                 links.append({'source_id':sid,'target_id':row['id'],'verification_status':'pending',
                     'evidence':'Fonte del contesto cronologico del modello; non prova autonoma del prezzo o della disponibilità nel mercato.'})
-        if links:db.execute(release_source.insert(),links)
-    db.execute(delete(Release).where(Release.computer_id==cid,Release.id.not_in([r['id'] for r in plan['releases']])))
+        replace_links(db,release_source,original['release_sources'],row['id'],links)
+    removed_releases=set(old_releases)-{r['id'] for r in plan['releases']}
+    if removed_releases:db.execute(delete(Release).where(Release.id.in_(removed_releases)))
     for alias in db.scalars(select(ComputerAlias).where(ComputerAlias.computer_id==cid)):
         value=deepcopy(alias.original)
         for key,mapping in (('configurations',cfg_map),('releases',release_map)):
             value[key]=list(dict.fromkeys(mapping.get(i,i) for i in value.get(key,[])))
-        alias.original=value
+        if alias.original!=value:alias.original=value
     db.flush()
     from .catalog_store import digest
     fingerprints={r['id']:digest({k:r[k] for k in SPEC_FIELDS}) for r in plan['specifications']}
@@ -289,6 +309,12 @@ def apply(db, plan, *, commit=True, locked=False, enable=True):
         db.add(audit);db.flush();aid=audit.id
     else:aid=None
     db.execute(delete(CatalogSnapshot));db.execute(delete(CatalogDirty))
+    if enable:
+        from .catalog_schema import VERSION as rules_version
+        marker=db.scalar(select(CatalogReconciliation).where(CatalogReconciliation.entity=='catalog_rules').order_by(CatalogReconciliation.id.desc()).limit(1))
+        if marker is None or marker.snapshot.get('version')!=rules_version:
+            db.add(CatalogReconciliation(entity='catalog_rules',source_id=0,target_id=0,
+                note='Pulizia fisica completata con le regole correnti.',snapshot={'version':rules_version}))
     if commit:db.commit()
     return {**current['summary'],'audit_id':aid,'storage':'primary_tables'}
 
@@ -302,14 +328,19 @@ def refresh_clean(db, *,commit=True,locked=False):
     from .catalog_store import EAGER
     archives=[]
     # Re-queueing caused by our own writes is cleared in this same transaction.
-    for c in db.scalars(select(Computer).where(Computer.id.in_(ids)).options(*EAGER).execution_options(populate_existing=True)):
+    logger.info('Normalizzazione catalogo: avvio su %s sistemi.',len(ids))
+    for index,c in enumerate(db.scalars(select(Computer).where(Computer.id.in_(ids)).options(*EAGER).execution_options(populate_existing=True)),1):
         row=computer_plan(db,c)
         if row['changed']:archives.append(write_computer(db,row))
+        if index%50==0 or index==len(ids):
+            logger.info('Normalizzazione catalogo: elaborati %s/%s; modificati %s. Transazione in corso.',index,len(ids),len(archives))
     if archives:
         db.add(CatalogReconciliation(entity='physical_cleanup',source_id=0,target_id=0,
             note='Pulizia incrementale dei dati modificati.',snapshot={'version':VERSION,'computers':archives}))
     db.execute(delete(CatalogDirty).where(CatalogDirty.computer_id.in_(ids)))
-    if commit:db.commit()
+    if commit:
+        db.commit()
+        logger.info('Normalizzazione catalogo: completata e salvata (%s sistemi).',len(ids))
     return {'updated':len(archives),'processed':len(ids)}
 
 

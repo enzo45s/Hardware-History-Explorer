@@ -1,4 +1,4 @@
-import os, json, uuid, html
+import os, json, uuid, html, logging
 from pathlib import Path
 from io import BytesIO
 from html.parser import HTMLParser
@@ -51,15 +51,20 @@ class MediaFiles(StaticFiles):
   return response
 @asynccontextmanager
 async def lifespan(app):
+ log=logging.getLogger('uvicorn.error')
+ log.info('Avvio HHE: verifica schema database.')
  Base.metadata.create_all(engine)
  photo_jobs.ensure_photo_schema(engine)
  ensure_catalog_schema(engine)
  with SessionLocal() as db: seed(db)
+ log.info('Avvio HHE: recupero dei prezzi e controllo delle categorie.')
  from .importing.price_recovery import recover_price_contexts
  with SessionLocal() as db: recover_price_contexts(db)
  from .importing.classification import normalize_categories
  with SessionLocal() as db: normalize_categories(db)
+ log.info('Avvio HHE: normalizzazione del catalogo; attendere il completamento prima di riavviare.')
  with SessionLocal() as db: refresh_pending(db)
+ log.info('Avvio HHE: database pronto.')
  yield
 app=FastAPI(title='Hardware History Explorer API',version='1.1.0',lifespan=lifespan)
 app.mount('/media',MediaFiles(directory=str(UPLOAD_DIR)),name='media')
