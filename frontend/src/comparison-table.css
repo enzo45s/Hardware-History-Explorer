@@ -12,4 +12,5 @@
 .comparison-partial{display:block;font-size:10px;line-height:1.6;color:var(--theme-text-muted, #8995a9);margin-top:6px;max-width:250px}
 .comparison-caption{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .comparison-table-error p{color:var(--theme-danger-text, #a44d47)}
+.memory-note{display:block;margin-top:6px;font-size:11px;line-height:1.6;color:var(--theme-text-muted, #7c8aa3);overflow-wrap:anywhere}
 .comparison-table-error button{border:1px solid var(--theme-border, #d6e1f3);background:var(--theme-surface-soft, #f1f5ff);color:var(--theme-text-secondary, #506cb7);border-radius:7px;padding:9px 13px;font-size:12px}

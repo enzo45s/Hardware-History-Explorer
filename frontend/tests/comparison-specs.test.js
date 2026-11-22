@@ -81,7 +81,7 @@ test('repeated properties inside one configuration do not overwrite values or in
   assert.equal(value.partial, false);
 });
 
-test('readable aliases align CPU rows while keeping values, units and RAM roles distinct', () => {
+test('readable aliases align CPU rows and put RAM bounds in memory options', () => {
   const computer = { configurations: [{ id: 1, specifications: [
     { ...spec('CPU', 'Modello emulato (MAME)', null, '6502'), display: { component_type: 'CPU', property_name: 'Modello' } },
     { ...spec('CPU', 'Modello riportato (Wikidata)', null, '65C02'), display: { component_type: 'CPU', property_name: 'Modello' } },
@@ -92,7 +92,7 @@ test('readable aliases align CPU rows while keeping values, units and RAM roles 
   const result = comparisonSpecifications(computer);
   assert.equal(result.size, 3);
   assert.deepEqual(new Set(result.get(key('CPU', 'Modello')).text.split(' / ')), new Set(['6502', '65C02']));
-  assert.equal(result.get(key('RAM', 'Capacità di riferimento')).text, '640 KiB');
-  assert.equal(result.get(key('RAM', 'Capacità minima riportata')).text, '16 KB');
+  assert.equal(result.get(key('RAM', 'Capacità')).text, '640 KB');
+  assert.equal(result.get(key('RAM', 'Opzioni di memoria')).text, 'Minima: 16 KB');
   assert.equal(JSON.stringify(computer), before);
 });

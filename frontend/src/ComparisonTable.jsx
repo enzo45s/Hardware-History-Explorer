@@ -1,6 +1,6 @@
 import React, { useEffect, useId, useState } from 'react';
 import { api, latestRequest } from './api.js';
-import { comparisonSpecifications, selectedConfiguration } from './comparison-specs.js';
+import { comparisonSpecifications, comparisonRows, selectedConfiguration } from './comparison-specs.js';
 import { displayDescription, displayConfigurationName, displayConfigurations } from './catalog-display.js';
 import './comparison-table.css';
 
@@ -16,7 +16,7 @@ export default function ComparisonTable({ ids, configurations, onConfigurationCh
   if (response.error) return <div className="panel comparison-table-error"><p role="alert">{response.error}</p><button onClick={() => setAttempt(value => value + 1)}>Riprova confronto</button></div>;
   const data = response.data;
   const specifications = data.map(computer => comparisonSpecifications(computer, configurations[computer.id]));
-  const rows = new Map(specifications.flatMap(specs => [...specs].map(([key, spec]) => [key, spec.label])));
+  const rows = comparisonRows(specifications);
   const aggregated = data.some(computer => displayConfigurations(computer).length > 1 && !selectedConfiguration(computer, configurations[computer.id]));
   return <section className="comparison-results">
     {aggregated && <p className="comparison-variant-help" role="note">I valori raggruppati appartengono a configurazioni diverse. Scegli una variante per confrontare una combinazione precisa; i dati mancanti non vengono dedotti dalle altre configurazioni.</p>}
@@ -40,6 +40,7 @@ export default function ComparisonTable({ ids, configurations, onConfigurationCh
         {[...rows].map(([key, label]) => <tr key={key}><th scope="row">{label}</th>{data.map((computer, index) => {
           const value = specifications[index].get(key);
           return <td key={computer.id}><span className="comparison-spec-value">{value?.text ?? '—'}</span>
+            {value?.notes?.map(note => <small className="comparison-partial" key={note}>{note}</small>)}
             {value?.partial && <small className="comparison-partial">Dato presente in {value.coverage} di {value.total} configurazioni</small>}
           </td>;
         })}</tr>)}

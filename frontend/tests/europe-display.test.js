@@ -26,7 +26,7 @@ test('comparison uses consolidated profiles and preserves selections of old regi
   assert.equal(selectedConfiguration(computer, '2').display_name, 'Europa');
   assert.equal(selectedConfiguration(computer, '999'), null);
   const key = JSON.stringify(['RAM', 'Capacità']);
-  assert.equal(comparisonSpecifications(computer, '2').get(key).text, '64 KiB');
+  assert.equal(comparisonSpecifications(computer, '2').get(key).text, '64 KB');
   assert.equal(comparisonSpecifications(computer).get(key).total, 2);
   assert.equal(comparisonSpecifications(computer).get(key).coverage, 1);
   assert.deepEqual(displayConfigurations({ configurations: [] }), []);

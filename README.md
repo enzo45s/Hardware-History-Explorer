@@ -22,6 +22,12 @@ La seconda revisione tratta le 394 voci residue: 365 chiarimenti, 20 correzioni
 e 9 indicazioni conservate come annotazioni non quantificabili, distinte dai
 sei dati parziali. Include anche le 147 regole della prima revisione.
 
+Nel [confronto e nelle schede tecniche](docs/TECHNICAL_SHEETS.md#ram-un-campo-principale-e-una-riga-per-le-opzioni)
+la memoria compare in una riga **RAM**, con al massimo una seconda riga per
+opzioni ed espansioni. Le diverse etichette delle fonti non creano più
+caratteristiche separate. Le quantità RAM sono mostrate in KB/MB/GB;
+originali, fonti e unità interne restano conservati.
+
 ## Avvio con Docker
 
 1. Installa Docker Desktop / Docker Engine e Docker Compose.

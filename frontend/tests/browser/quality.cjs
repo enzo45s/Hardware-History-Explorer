@@ -70,6 +70,44 @@ const {chromium}=require('playwright');
   assert.equal(await page.getByRole('combobox',{name:'Configurazione di Synthetic Atari 400',exact:true}).count(),0);
   assert.equal(await page.getByRole('combobox',{name:'Configurazione di PET 2001',exact:true}).getByRole('option').count(),7);
   assert.doesNotMatch(await page.locator('.comparison-results').innerText(),/PAL|NTSC|50 Hz|60 Hz/);
+  // Reader RAM projection: two consistent rows, source evidence and variants intact.
+  const ramSourceResponse=await page.request.post(apiBase+'/api/sources',{data:{title:'Synthetic RAM documentation',url:'https://example.org/ram-display',source_type:'manual'}});
+  assert.equal(ramSourceResponse.status(),201);const ramSource=(await ramSourceResponse.json()).id;
+  const ramSpec=(property,amount)=>({component_type:'RAM',property_name:property,numeric_value:amount,unit:'MiB',source_ids:[ramSource]});
+  const ramComputers=[];
+  for(const [name,configs] of [
+   ['Synthetic RAM A',[{variant_name:'Base',specifications:[ramSpec('Capacità',4),ramSpec('Capacità di riferimento',4),ramSpec('Capacità massima riportata',8),{component_type:'RAM',property_name:'Opzioni di memoria',text_value:'4096 KiB / 8192 KiB',source_ids:[ramSource]}]},{variant_name:'Espansa',specifications:[ramSpec('Capacità',8),ramSpec('Capacità massima riportata',16)]}]],
+   ['Synthetic RAM B',[{variant_name:'Base',specifications:[ramSpec('Capacità riportata',4),ramSpec('Capacità di riferimento',8),ramSpec('Limite hardware riportato',16)]}]]]){
+    const response=await page.request.post(apiBase+'/api/computers',{data:{manufacturer_id:maker.id,model_name:name,description:'Contesto sintetico conservato.',configurations:configs}});
+    assert.equal(response.status(),201);const id=(await response.json()).id;
+    ramComputers.push(await(await page.request.get(apiBase+`/api/admin/computers/${id}`)).json());
+  }
+  for(const name of ['Synthetic Atari 400','PET 2001'])await page.getByRole('button',{name:`Rimuovi ${name} dal confronto`,exact:true}).click();
+  for(const name of ['Synthetic RAM A','Synthetic RAM B']){await picker.fill(name);await page.getByRole('listbox',{name:'Sistemi trovati'}).getByRole('option').filter({hasText:name}).click();}
+  const ramTable=page.getByRole('table',{name:'Confronto dei sistemi e delle configurazioni selezionate'});
+  const ramRow=ramTable.getByRole('row').filter({has:page.getByRole('rowheader',{name:'RAM',exact:true})});
+  const optionsRow=ramTable.getByRole('row').filter({has:page.getByRole('rowheader',{name:'RAM · Opzioni di memoria',exact:true})});
+  await ramRow.getByRole('cell').nth(0).getByText('4 / 8 MB',{exact:true}).waitFor();
+  assert.equal(await ramRow.count(),1);assert.equal(await optionsRow.count(),1);
+  const ramHeaders=await ramTable.getByRole('rowheader').allTextContents();
+  assert.equal(ramHeaders.indexOf('RAM · Opzioni di memoria'),ramHeaders.indexOf('RAM')+1);
+  assert.equal(await ramRow.getByRole('cell').nth(1).locator('.comparison-spec-value').innerText(),'4 MB');
+  assert.match(await ramRow.getByRole('cell').nth(1).innerText(),/Altri valori di riferimento: 8 MB/);
+  assert.doesNotMatch(await ramTable.innerText(),/RAM · Capacità/);
+  const ramA=await(await page.request.get(apiBase+`/api/computers/${ramComputers[0].id}`)).json();
+  const baseConfig=ramA.display_configurations.find(c=>c.configuration_ids.includes(ramComputers[0].configurations[0].id));
+  await page.getByRole('combobox',{name:'Configurazione di Synthetic RAM A',exact:true}).selectOption(String(baseConfig.id));
+  await ramRow.getByRole('cell').nth(0).getByText('4 MB',{exact:true}).waitFor();
+  assert.equal(await optionsRow.getByRole('cell').nth(0).locator('.comparison-spec-value').innerText(),'4 / 8 MB; Massima: 8 MB');
+  for(const width of [320,390]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
+  await page.setViewportSize({width:1440,height:1000});
+  await page.getByRole('button',{name:'Catalogo',exact:true}).click();await page.getByPlaceholder('Cerca un sistema…',{exact:true}).fill('Synthetic RAM B');
+  await page.locator('.catalog-card').filter({has:page.getByRole('heading',{name:'Synthetic RAM B',exact:true})}).getByRole('button',{name:'Dettagli',exact:true}).click();
+  await page.getByRole('heading',{name:'Synthetic RAM B',level:1,exact:true}).waitFor();
+  const ramSheet=page.getByRole('region',{name:/^Configurazione ·/});
+  assert.equal((await ramSheet.locator('tr').allTextContents()).filter(text=>text.startsWith('RAM')).length,2);
+  assert.doesNotMatch(await ramSheet.innerText(),/Capacità riportata|Capacità di riferimento|KiB/);
+  for(const original of ramComputers){assert.deepEqual(await(await page.request.get(apiBase+`/api/admin/computers/${original.id}`)).json(),original);}
   // General rule, including singleton names and more than one batch of 100.
   for(const name of ['System-80 (50 Hz)','System-80 (60 Hz)','PDP-11 [Q-BUS] (M7195 - MXV11-B)','PDP-11 [Unibus](M9301-YA)','PDP-11 [Unibus](M9312)',...Array.from({length:103},(_,i)=>`Unlisted model ${i} (optional board)`)]){
    const manufacturerId=name.startsWith('PDP-11')?meta.manufacturers.find(m=>m.name==='Digital Equipment Corporation').id:maker.id;
@@ -84,6 +122,6 @@ const {chromium}=require('playwright');
   assert.equal(cleaned.items.filter(c=>c.model_name.startsWith('Unlisted model ')).length,103);
   assert(cleaned.items.filter(c=>c.model_name.startsWith('Unlisted model ')).every(c=>!/[()[\]]/.test(c.model_name)));
   await openQuality();for(const width of [320,390]){await page.setViewportSize({width,height:900});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
-  assert.deepEqual(errors,[]);console.log('PASS quality browser: sourced RAM, preserved hardware variants, plain names across all manufacturers, no regional-video noise, 105 cleanup groups in two batches and mobile.');
+  assert.deepEqual(errors,[]);console.log('PASS quality browser: sourced RAM, one RAM field with adjacent options, readable units, preserved sources/raw records, independent configuration selection, hardware variants, no regional-video noise, 105 cleanup groups and mobile.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

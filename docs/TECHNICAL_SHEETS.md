@@ -24,6 +24,45 @@ La ricerca delle descrizioni può continuare sul proprio archivio; il riavvio
 Docker la interrompe temporaneamente, quindi riaprire il pannello e riprenderla
 se risulta in pausa.
 
+## RAM: un campo principale e una riga per le opzioni
+
+Nel confronto e nelle schede pubbliche, **RAM** riunisce le diciture
+«Capacità», «Capacità riportata», «Dotazioni riportate» e, quando mancano
+quantità documentate, il valore di riferimento. Le etichette delle fonti
+non generano più righe diverse fra i sistemi confrontati.
+
+La riga facoltativa **RAM · Opzioni di memoria**, subito sotto, raccoglie
+le scelte disponibili, le espansioni e i limiti minimi/massimi, con la
+relativa qualificazione. Un massimo non diventa la RAM installata. Se
+esistono solo limiti o annotazioni, la riga principale indica «Non documentata».
+
+Valori equivalenti espressi in unità esatte vengono riuniti. La RAM viene
+mostrata con le diciture storiche KB/MB/GB: per esempio 4096 KiB diventa
+4 MB nella vista. I valori interni non cambiano. KB/MB originari ambigui,
+bit e parole non sono equiparati arbitrariamente a quantità IEC.
+
+Una quantità documentata ha precedenza sul valore di riferimento. Un
+riferimento differente resta una nota nella stessa cella, con le sue fonti;
+non viene inventata un’opzione di memoria per riconciliarlo. Se le quantità
+documentate sono discordanti, la cella conserva entrambe e segnala la
+differenza. Gli attributi RAM e le indicazioni non quantificabili rimangono
+note collegate alla riga, senza moltiplicare le caratteristiche da confrontare.
+Memoria video e banchi nominati conservano il proprio ambito e non vengono sommati.
+
+La selezione di una configurazione limita quantità e opzioni a quella
+configurazione. La vista «Tutte le configurazioni» mantiene i valori distinti
+e segnala la copertura parziale. Originali, proprietà, unità, ID e fonti
+rimangono disponibili nelle API, nell’editor e nell’audit. Non serve una
+migrazione, una nuova importazione o una revisione delle unità per applicare
+questa presentazione ai dati già presenti.
+
+Verifiche: 42 test frontend superati, compilazione React e Docker; prova browser
+di confronto e scheda con alias RAM, opzioni adiacenti, scelta indipendente
+delle configurazioni, dati/fonti originali conservati e layout a 320/390 px.
+Sulla copia fornita dei 1.133 sistemi, il confronto conserva al massimo due
+righe RAM per sistema e tutte le fonti/ID; le 902 schede con campi RAM passano
+da 1.428 a 1.369 righe. Il database sul Mac non è modificato da remoto.
+
 ## Differenze che restano visibili
 
 - Quantità RAM, processori/architetture, memorie di massa e tastiere differenti
@@ -42,8 +81,9 @@ se risulta in pausa.
   tra i **Dati generali del sistema**, senza copiare il dato in tutte le varianti.
 - Valori discordanti non vengono cancellati o risolti automaticamente. Il
   riepilogo conserva le alternative, le fonti e gli ID delle specifiche originali.
-- RAM di riferimento, RAM documentata, capacità massima e opzioni non diventano
-  un'unica dotazione di base; unità ambigue non vengono interpretate arbitrariamente.
+- Il riepilogo RAM distingue quantità, limiti, opzioni e note nella presentazione
+  descritta sopra; non attesta una dotazione di base dalla sola presenza di un
+  riferimento e non interpreta arbitrariamente unità ambigue.
 - Processori secondari e componenti ripetuti mantengono i rispettivi ruoli.
 
 Catalogo, confronto e contesto dell'assistente utilizzano la medesima vista.
