@@ -227,6 +227,7 @@ def test_api_editor_comparison_and_assistant_preserve_undated_original(client):
     with SessionLocal() as db:
         context = retrieve(db, model_name, EAGER, full)
         model = next(row for row in context['computers'] if row['id'] == 1)
-        assert len(model['releases']) == 2 and model['releases'][1]['release_date'] is None
+        assert model['releases'] == data['display_releases']
+        assert model['releases'][0]['original_releases'][1]['release_date'] is None
         saved = db.scalars(select(Release).where(Release.computer_id == 1).order_by(Release.id)).all()
         assert [release.id for release in saved] == ids and saved[1].release_date is None

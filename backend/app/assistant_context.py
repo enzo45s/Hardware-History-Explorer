@@ -27,10 +27,11 @@ def retrieve(db, question, eager, full):
         def relevant(scope):
             return bool((set(re.findall(r'\w+', (scope or '').casefold())) - base_words) & set(words))
         configurations = sorted(r['display_configurations'], key=lambda cfg: not relevant(cfg.get('model_variant')))
-        releases = sorted(r['releases'], key=lambda release: not relevant(release.get('model_variant')))
+        releases = sorted(r.get('display_releases', r['releases']), key=lambda release: not relevant(release.get('model_variant')))
         claims.sort(key=lambda claim: not relevant(assertion_variant(db, claim)))
         item = {'id': r['id'], 'model': r['model_name'], 'manufacturer': r['manufacturer'], 'year': r['year'],
             'categories': r['categories'], 'description': (r.get('display_description', r['description']) or '')[:2000],
+            'catalog_version': r.get('catalog_data', {}).get('version'),
             'configurations': [{'name': v.get('display_name', v['variant_name']), 'specifications': v['specifications'][:12],
                 'model_variant': v.get('model_variant'), 'description': v.get('variant_description') or v.get('display_description'),
                 'regional_variants': v.get('regional_variants', []),

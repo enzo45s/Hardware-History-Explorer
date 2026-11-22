@@ -8,6 +8,18 @@ const spec = (id, property, value, unit = null, role = null) => ({ id, component
   text_value: typeof value === 'string' ? value : null, unit, sources: [{ id, title: `Documento ${id}` }] });
 const compare = specs => comparisonSpecifications({ configurations: [{ id: 1, specifications: specs }] });
 
+test('persisted backend resolutions are used verbatim and configuration selection uses server cells', () => {
+  const row = { ...spec('ram-Capacità', 'Capacità', '4 MB'), catalog_metric: 'ram.capacity',
+    memory_values: [], memory_notes: ['Decisione del catalogo'], specification_ids: [11, 12] };
+  assert.equal(memorySpecifications([row])[0], row);
+  const computer = { display_configurations: [{ id: 7, configuration_ids: [7, 8], specifications: [row] }],
+    catalog_data: { comparison: { all: [{ key: key('Capacità'), label: 'RAM', text: '4 / 8 MB', notes: ['Ambito generale'] }],
+      configurations: { 7: [{ key: key('Capacità'), label: 'RAM', text: '4 MB', notes: ['Ambito selezionato'] }] } } } };
+  assert.equal(comparisonSpecifications(computer).get(key('Capacità')).text, '4 / 8 MB');
+  const selected = comparisonSpecifications(computer, '8').get(key('Capacità'));
+  assert.equal(selected.text, '4 MB'); assert.deepEqual(selected.notes, ['Ambito selezionato']);
+});
+
 test('installed, reported and reference values share one RAM field and preserve every citation', () => {
   const original = [spec(1, 'Capacità', 4096, 'KiB'), spec(2, 'Capacità riportata', '4 MiB'), spec(3, 'Capacità di riferimento', 4, 'MiB'), spec(4, 'Opzioni di memoria', 4096, 'KiB')];
   const before = structuredClone(original), rows = memorySpecifications(original);

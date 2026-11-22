@@ -28,6 +28,12 @@ opzioni ed espansioni. Le diverse etichette delle fonti non creano più
 caratteristiche separate. Le quantità RAM sono mostrate in KB/MB/GB;
 originali, fonti e unità interne restano conservati.
 
+I [dati consolidati del catalogo](docs/CATALOG_CONSOLIDATION.md) sono salvati
+nel database e condivisi da schede, confronto e assistente. All'avvio l'API
+esegue la migrazione additiva e il popolamento; modifiche e importazioni
+aggiornano i sistemi interessati. Gli originali rimangono separati e tracciabili.
+Lo stato è consultabile in Amministrazione → RAM e varianti.
+
 ## Avvio con Docker
 
 1. Installa Docker Desktop / Docker Engine e Docker Compose.

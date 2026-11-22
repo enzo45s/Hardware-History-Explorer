@@ -17,6 +17,9 @@ docker compose -p hhe-import-test up --build -d --wait
 Ricaricare la pagina e aprire la scheda del sistema. Non occorre ripetere
 importazioni, svuotare l'archivio o avviare un accorpamento amministrativo.
 La nuova presentazione si applica ai dati già presenti e alle importazioni future.
+Le risoluzioni sono ora [salvate nel catalogo consolidato](CATALOG_CONSOLIDATION.md)
+e condivise dal backend con confronto e assistente. Il primo avvio della nuova
+API crea e popola questo livello derivato, senza riscrivere le specifiche originali.
 Per ripulire anche i **nomi del catalogo**, aprire **Amministrazione → RAM e
 varianti → Analizza varianti da accorpare → Accorpa i gruppi selezionati**.
 L'operazione unisce i duplicati e rinomina anche le schede isolate con attributi.
@@ -56,7 +59,7 @@ rimangono disponibili nelle API, nell’editor e nell’audit. Non serve una
 migrazione, una nuova importazione o una revisione delle unità per applicare
 questa presentazione ai dati già presenti.
 
-Verifiche: 43 test frontend superati, compilazione React e Docker; prova browser
+Verifiche: 44 test frontend superati, compilazione React e Docker; prova browser
 di confronto e scheda con alias RAM, opzioni adiacenti, scelta indipendente
 delle configurazioni, dati/fonti originali conservati e layout a 320/390 px.
 Sulla copia fornita dei 1.133 sistemi, il confronto conserva al massimo due
@@ -93,7 +96,9 @@ che li contiene. Il confronto non eredita dati da altre configurazioni hardware.
 
 ## Conservazione e verifica
 
-La vista tecnica è una proiezione di lettura e non modifica i dati salvati.
+La vista tecnica deriva da risoluzioni persistenti rigenerabili; non modifica
+le specifiche originali salvate. Le API controllano impronta e versione delle
+regole e ricalcolano un risultato aggiornato quando lo snapshot non è attuale.
 L'accorpamento/rinomina dei nomi è un'operazione separata del pannello, che
 conserva snapshot e alias. Gli originali rimangono nell'editor, nelle asserzioni
 e nelle importazioni, così aggiornamenti incrementali e revisione delle fonti

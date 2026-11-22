@@ -10,6 +10,11 @@ export function selectedConfiguration(computer, requested) {
 
 export function comparisonSpecifications(computer, requested = 'all') {
   const chosen = selectedConfiguration(computer, requested);
+  const canonical = computer.catalog_data?.comparison;
+  if (canonical) {
+    const rows = chosen ? canonical.configurations[String(chosen.id)] : canonical.all;
+    if (rows) return new Map(rows.map(({ key, ...value }) => [key, value]));
+  }
   const configurations = chosen ? [chosen] : displayConfigurations(computer);
   const groups = new Map();
   configurations.forEach((config, index) => {

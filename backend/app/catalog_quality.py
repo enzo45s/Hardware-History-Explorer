@@ -138,6 +138,16 @@ class Consolidate(Token):
 def create_quality_router(get_db):
     router = APIRouter(prefix='/api/admin/catalog-quality', tags=['RAM e configurazioni'])
 
+    @router.get('/consolidated')
+    def consolidated_status(db: Session = Depends(get_db)):
+        from .catalog_store import status
+        return status(db)
+
+    @router.post('/consolidated/rebuild')
+    def consolidated_rebuild(db: Session = Depends(get_db)):
+        from .catalog_store import rebuild, status
+        return {**rebuild(db), **status(db)}
+
     @router.get('/units')
     def units(db: Session = Depends(get_db)):
         from .unit_review import prepare

@@ -18,6 +18,8 @@ from .history_models import HistoryJob, HistoryItem
 from .importing.bulk1000bit import BulkJob, BulkTarget
 
 CATALOG = (Manufacturer, Category, Market, Computer, Configuration, Specification, Release, Sale, Review, Fact, ComputerImage)
+from .catalog_schema import TABLES as CATALOG_TABLES
+DERIVED = {table.name for table in CATALOG_TABLES}
 
 
 def serial(value):
@@ -28,6 +30,10 @@ def fingerprint(db):
     # Include values, not just counts: an edit after preview must invalidate it.
     digest = hashlib.sha256()
     for table in sorted(Base.metadata.tables.values(), key=lambda t: t.name):
+        # Derived, rebuildable catalog facts must not invalidate a destructive
+        # action's preview merely because maintenance refreshed a timestamp.
+        if table.name in DERIVED:
+            continue
         digest.update(table.name.encode())
         for row in db.execute(select(table).order_by(*table.primary_key.columns)):
             digest.update(json.dumps({k: serial(v) for k, v in row._mapping.items()},
@@ -46,7 +52,7 @@ def counts(db):
 def catalog_snapshot(db):
     # Original uploads stay in import_jobs; only their prior state is copied.
     # Bibliography is retained live and included for standalone readability.
-    preserved = {'import_jobs', 'catalog_reconciliations', 'archive_resets'}
+    preserved = {'import_jobs', 'catalog_reconciliations', 'archive_resets'} | DERIVED
     snapshot = {table.name: [{k: serial(v) for k, v in row._mapping.items()}
                             for row in db.execute(select(table).order_by(*table.primary_key.columns))]
                 for table in Base.metadata.sorted_tables if table.name not in preserved}

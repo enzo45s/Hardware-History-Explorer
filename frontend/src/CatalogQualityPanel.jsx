@@ -5,6 +5,7 @@ import './imports.css';
 
 export default function CatalogQualityPanel({ onSaved }) {
   const [ram, setRam] = useState(null);
+  const [catalog, setCatalog] = useState(null);
   const [variants, setVariants] = useState(null);
   const [selected, setSelected] = useState([]);
   const [busy, setBusy] = useState(false);
@@ -37,6 +38,18 @@ export default function CatalogQualityPanel({ onSaved }) {
   }
   return <section className="imports">
     <h2>RAM e varianti dei modelli</h2>
+    <section className="panel" aria-label="Dati consolidati del catalogo">
+      <h3>Dati consolidati del catalogo</h3>
+      <p>Schede, confronti e assistente condividono gli stessi dati consolidati, salvati nel database. Le specifiche originali e le loro fonti restano disponibili nell’editor.</p>
+      <button disabled={busy} onClick={() => action(async () => setCatalog(await api('/admin/catalog-quality/consolidated')))}>Controlla dati consolidati</button>
+      {catalog && <>
+        <p>{catalog.snapshots} di {catalog.computers} sistemi consolidati. {catalog.metrics} dati tecnici. In aggiornamento: {catalog.pending}.</p>
+        <button disabled={busy} onClick={() => action(async () => {
+          const data = await api('/admin/catalog-quality/consolidated/rebuild', { method: 'POST' });
+          setCatalog(data); onSaved(); setMessage(`Dati consolidati ricostruiti per ${data.processed} sistemi. Originali conservati.`);
+        })}>Ricostruisci dati consolidati</button>
+      </>}
+    </section>
     <UnitReviewPanel onSaved={onSaved} />
     <section className="panel" aria-label="Controllo RAM">
       <h3>Quantità di memoria mancanti</h3>

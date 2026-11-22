@@ -26,6 +26,8 @@ from .catalog_display import description_text, configuration_displays, specifica
 from .release_display import release_summaries
 from .technical_display import technical_sheets
 from .source_policy import excluded_source_ids, is_internal_source, is_visible_source
+from .catalog_store import raw_payload, resolved, refresh_pending, specification_data
+from .catalog_schema import ensure_schema as ensure_catalog_schema
 
 UPLOAD_DIR=Path(os.getenv('UPLOAD_DIR',str(Path(__file__).resolve().parents[1] / 'uploads')))
 UPLOAD_DIR.mkdir(parents=True,exist_ok=True)
@@ -51,16 +53,34 @@ class MediaFiles(StaticFiles):
 async def lifespan(app):
  Base.metadata.create_all(engine)
  photo_jobs.ensure_photo_schema(engine)
+ ensure_catalog_schema(engine)
  with SessionLocal() as db: seed(db)
  from .importing.price_recovery import recover_price_contexts
  with SessionLocal() as db: recover_price_contexts(db)
  from .importing.classification import normalize_categories
  with SessionLocal() as db: normalize_categories(db)
+ with SessionLocal() as db: refresh_pending(db)
  yield
 app=FastAPI(title='Hardware History Explorer API',version='1.1.0',lifespan=lifespan)
 app.mount('/media',MediaFiles(directory=str(UPLOAD_DIR)),name='media')
 app.add_middleware(CORSMiddleware,allow_origins=os.getenv('CORS_ORIGINS','http://localhost:5173,http://localhost:8080').split(','),allow_methods=['*'],allow_headers=['*'])
 def get_db():
+ with SessionLocal() as db:
+  refresh_pending(db)
+  try:
+   yield db
+  except BaseException:
+   db.rollback()
+   raise
+  else:
+   # End the route's read transaction before draining background/committed
+   # changes. Routes retain their existing explicit commit/rollback behavior.
+   db.rollback()
+   refresh_pending(db)
+
+def get_lookup_db():
+ # Autocomplete needs only names and dates. Keep its single indexed query
+ # independent of background catalog consolidation.
  with SessionLocal() as db:yield db
 
 def datefmt(d,precision):
@@ -84,18 +104,16 @@ def overview(c):
  return {'id':c.id,'model_name':c.model_name,'manufacturer':c.manufacturer.name,'manufacturer_id':c.manufacturer_id,'categories':[x.name for x in sorted(c.categories,key=lambda cat:(cat.name=='Calcolatore',cat.name))],'year':r.release_date.year if r else None,'first_release':datefmt(r.release_date,r.release_precision) if r else None,'description':c.description,'display_description':description_text(c.description),'image_url':cover,'image_count':len(images)}
 def src(s):return {'id':s.id,'title':s.title,'url':s.url,'author':s.author,'publisher':s.publisher,'source_type':s.source_type,'publication_date':s.publication_date.isoformat() if s.publication_date else None,'access_date':s.access_date.isoformat() if s.access_date else None}
 def source_list(items):return [src(s) for s in items if not is_internal_source(s)]
-def specification_data(s):
- # Keep the public raw fields backward compatible; views use this additive DTO.
- normalized=normalize_spec(spec_values(s))
- return {'id':s.id,**spec_values(s),'normalized':normalized,'display':specification_display(normalized),'sources':source_list(s.sources)}
 def full(c):
  o=overview(c)
  o['photo_search_query']=photo_query(c.manufacturer.name,c.model_name)
  displays=configuration_displays(c.configurations,c.model_name)
  o.update({'images':[image_data(i) for i in computer_images(c)],'announcement_date':datefmt(c.announcement_date,c.announcement_precision),'configurations':[{'id':v.id,'variant_name':v.variant_name,'description':v.description,**displays[v.id],'specifications':[specification_data(s) for s in v.specifications]} for v in c.configurations],'releases':[{'id':r.id,'market':r.market.name,'release_date':datefmt(r.release_date,r.release_precision),'discontinuation_date':datefmt(r.discontinuation_date,r.discontinuation_precision),'price':r.price,'currency':r.currency,'price_type':r.price_type,'sources':source_list(r.sources)} for r in c.releases],'sales':[{'market':s.market.name,'units_sold':s.units_sold,'metric_type':s.metric_type,'estimated':s.estimated,'sources':source_list(s.sources)} for s in c.sales],'reviews':[{'publication':r.publication,'score':r.score,'max_score':r.max_score,'summary':r.summary,'sources':source_list(r.sources)} for r in c.reviews],'facts':[{'id':f.id,'type':f.fact_type,'statement':f.statement,'display_statement':fact_statement(f.fact_type,f.statement),'sources':source_list(f.sources)} for f in c.facts],'sources':source_list(c.sources)})
  variant_context(c,o)
- o['display_releases']=release_summaries(o['releases'])
- o['display_configurations']=technical_sheets(o['configurations'],c.model_name)
+ consolidated, metadata = resolved(c)
+ o['display_releases']=consolidated['releases']
+ o['display_configurations']=consolidated['configurations']
+ o['catalog_data']={**metadata,'comparison':consolidated['comparison']}
  o['description_attribution']=history_attribution(c) or family_attribution(c)
  return o
 EAGER=(selectinload(Computer.images),selectinload(Computer.manufacturer),selectinload(Computer.categories),selectinload(Computer.releases).selectinload(Release.market),selectinload(Computer.releases).selectinload(Release.sources),selectinload(Computer.configurations).selectinload(Configuration.specifications).selectinload(Specification.sources),selectinload(Computer.sales).selectinload(Sale.market),selectinload(Computer.sales).selectinload(Sale.sources),selectinload(Computer.reviews).selectinload(Review.sources),selectinload(Computer.facts).selectinload(Fact.sources),selectinload(Computer.sources))
@@ -130,7 +148,7 @@ def computers(q:str='',manufacturer_id:Optional[int]=None,category_id:Optional[i
  return {'total':total,'items':items}
 @app.get('/api/computers/suggestions')
 def computer_suggestions(q:str=Query(min_length=1,max_length=180),limit:int=Query(8,ge=1,le=10),
-                         exclude_ids:list[PositiveInt]=Query(default=[],max_length=5),db:Session=Depends(get_db)):
+                         exclude_ids:list[PositiveInt]=Query(default=[],max_length=5),db:Session=Depends(get_lookup_db)):
  q=q.strip()
  if not q:return {'items':[],'has_more':False}
  first_release=select(func.min(Release.release_date)).where(Release.computer_id==Computer.id).correlate(Computer).scalar_subquery()

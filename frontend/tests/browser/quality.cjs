@@ -26,6 +26,8 @@ const {chromium}=require('playwright');
   await page.goto(base);
   async function openQuality(){await page.getByRole('button',{name:'Amministrazione',exact:true}).click();await page.getByRole('button',{name:'RAM e varianti',exact:true}).click();}
   await openQuality();await page.getByRole('button',{name:'Controlla RAM mancanti',exact:true}).click();
+  await page.getByRole('button',{name:'Controlla dati consolidati',exact:true}).click();
+  await page.getByRole('region',{name:'Dati consolidati del catalogo',exact:true}).getByText(/In aggiornamento: 0/).waitFor();
   await page.getByRole('button',{name:'Completa RAM documentata',exact:true}).click();
   await page.getByRole('status').filter({hasText:'RAM aggiunta a 1 sistemi'}).waitFor();
   const hpData=await(await page.request.get(apiBase+`/api/computers/${hp}`)).json();
@@ -95,6 +97,8 @@ const {chromium}=require('playwright');
   assert.match(await ramRow.getByRole('cell').nth(1).innerText(),/Altri valori di riferimento: 8 MB/);
   assert.doesNotMatch(await ramTable.innerText(),/RAM · Capacità/);
   const ramA=await(await page.request.get(apiBase+`/api/computers/${ramComputers[0].id}`)).json();
+  assert.equal(ramA.catalog_data.persisted,true);
+  assert(ramA.display_configurations.every(c=>c.specifications.filter(s=>s.component_type==='RAM').every(s=>s.catalog_metric)));
   const baseConfig=ramA.display_configurations.find(c=>c.configuration_ids.includes(ramComputers[0].configurations[0].id));
   await page.getByRole('combobox',{name:'Configurazione di Synthetic RAM A',exact:true}).selectOption(String(baseConfig.id));
   await ramRow.getByRole('cell').nth(0).getByText('4 MB',{exact:true}).waitFor();

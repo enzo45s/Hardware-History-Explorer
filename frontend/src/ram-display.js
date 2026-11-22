@@ -75,6 +75,9 @@ function covered(reference, capacities) {
 export function memorySpecifications(specifications) {
   const memory = specifications.filter(spec => displaySpecification(spec).component_type === 'RAM');
   if (!memory.length) return specifications;
+  // Current APIs return persisted backend resolutions. Keep the legacy resolver
+  // only for older servers and imported/offline fixtures.
+  if (memory.every(spec => spec.catalog_metric)) return specifications;
   const capacities = [], references = [], options = [], notes = [];
   const mainSources = [], optionSources = [];
   const add = (list, value, original, sources) => { if (value) { list.push(value); sources.push(original); } };

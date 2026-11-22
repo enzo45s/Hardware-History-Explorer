@@ -1,5 +1,6 @@
 from datetime import date, datetime, timezone
-from sqlalchemy import String, Integer, Float, Boolean, Date, DateTime, ForeignKey, Text, UniqueConstraint, CheckConstraint, Table, Column
+from decimal import Decimal
+from sqlalchemy import String, Integer, Float, Boolean, Date, DateTime, ForeignKey, Text, UniqueConstraint, CheckConstraint, Table, Column, JSON, Numeric
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 class Base(DeclarativeBase): pass
@@ -151,3 +152,48 @@ class ComputerImage(Base):
  display_order:Mapped[int]=mapped_column(Integer,nullable=False,default=0)
  created_at:Mapped[datetime]=mapped_column(DateTime(timezone=True),default=lambda:datetime.now(timezone.utc),nullable=False)
  computer=relationship('Computer',back_populates='images')
+
+
+class CatalogSnapshot(Base):
+ """Rebuildable catalog facts, separate from source assertions and their audit."""
+ __tablename__='catalog_snapshots'
+ computer_id:Mapped[int]=mapped_column(ForeignKey('computers.id',ondelete='CASCADE'),primary_key=True)
+ version:Mapped[str]=mapped_column(String(60))
+ input_sha256:Mapped[str]=mapped_column(String(64))
+ payload:Mapped[dict]=mapped_column(JSON)
+ rebuilt_at:Mapped[datetime]=mapped_column(DateTime(timezone=True),default=lambda:datetime.now(timezone.utc))
+
+
+class CatalogDirty(Base):
+ """Database triggers enqueue changed systems, including external SQL writes."""
+ __tablename__='catalog_dirty'
+ computer_id:Mapped[int]=mapped_column(ForeignKey('computers.id',ondelete='CASCADE'),primary_key=True)
+ generation:Mapped[int]=mapped_column(Integer,nullable=False,default=1,server_default='1')
+
+
+class CatalogMetric(Base):
+ """SQL-queryable consolidated metric, scoped to one substantial configuration."""
+ __tablename__='catalog_metrics'
+ key:Mapped[str]=mapped_column(String(64),primary_key=True)
+ computer_id:Mapped[int]=mapped_column(ForeignKey('catalog_snapshots.computer_id',ondelete='CASCADE'),index=True)
+ sheet_id:Mapped[int]=mapped_column(Integer)
+ metric:Mapped[str]=mapped_column(String(600),index=True)
+ component_type:Mapped[str]=mapped_column(String(80))
+ component_name:Mapped[str|None]=mapped_column(String(160))
+ property_name:Mapped[str]=mapped_column(String(400))
+ numeric_value:Mapped[Decimal|None]=mapped_column(Numeric)
+ text_value:Mapped[str|None]=mapped_column(Text)
+ unit:Mapped[str|None]=mapped_column(String(30))
+ resolution_state:Mapped[str]=mapped_column(String(30))
+ verification_status:Mapped[str]=mapped_column(String(30))
+ quantities:Mapped[list]=mapped_column(JSON)
+ notes:Mapped[list]=mapped_column(JSON)
+ configuration_ids:Mapped[list]=mapped_column(JSON)
+
+
+catalog_metric_assertions=Table('catalog_metric_assertions',Base.metadata,
+ Column('metric_key',ForeignKey('catalog_metrics.key',ondelete='CASCADE'),primary_key=True),
+ Column('specification_id',ForeignKey('specifications.id',ondelete='CASCADE'),primary_key=True))
+catalog_metric_sources=Table('catalog_metric_sources',Base.metadata,
+ Column('metric_key',ForeignKey('catalog_metrics.key',ondelete='CASCADE'),primary_key=True),
+ Column('source_id',ForeignKey('sources.id',ondelete='CASCADE'),primary_key=True))

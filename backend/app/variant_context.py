@@ -38,6 +38,8 @@ def annotate(computer, data):
                 release['model_variant'] = catalog_name(alias.original_name) if video_only_variant(alias.original_name) else regional_name(alias.original_name)
                 release['display_model_variant'] = catalog_name(alias.original_name)
         for collection in ('sales', 'reviews', 'facts'):
+            if collection not in data:
+                continue
             for original_row, row in zip(getattr(computer, collection), data[collection]):
                 if original_row.id in original.get(collection, []):
                     row['model_variant'] = regional_name(alias.original_name)
