@@ -62,6 +62,10 @@ def ram_preview(db):
                 citation = spec.get('source') or incoming.get('source') or record['source']
                 if not capacity(spec) or is_internal_source(citation):
                     continue
+                if config:
+                    from .unit_review import reviewed_import_target
+                    if reviewed_import_target(db, config.specifications, spec, citation) is not None:
+                        continue
                 root = records.setdefault(c.id, {'manufacturer': c.manufacturer.name, 'model_name': c.model_name,
                     'source': citation, 'configurations': []})
                 name = config.variant_name if config else incoming['variant_name']
@@ -133,6 +137,31 @@ class Consolidate(Token):
 
 def create_quality_router(get_db):
     router = APIRouter(prefix='/api/admin/catalog-quality', tags=['RAM e configurazioni'])
+
+    @router.get('/units')
+    def units(db: Session = Depends(get_db)):
+        from .unit_review import prepare
+        plan = prepare(db)
+        return {**{key: plan[key] for key in ('version', 'token', 'summary', 'remaining', 'unquantified', 'partially_quantified')},
+                'changes': [{**{key: row[key] for key in ('id', 'model', 'action', 'before', 'after', 'interpretation')},
+                    'sources': [proof['source'] for proof in row['proofs'] if not is_internal_source(proof['source'])]}
+                    for row in plan['changes']]}
+
+    @router.get('/units/report')
+    def units_report(db: Session = Depends(get_db)):
+        from fastapi.responses import Response
+        from .unit_review import prepare
+        return Response(json.dumps(prepare(db), ensure_ascii=False, indent=2), media_type='application/json',
+                        headers={'Content-Disposition': 'attachment; filename="hhe-unita.json"'})
+
+    @router.post('/units/apply')
+    def units_apply(data: Token, db: Session = Depends(get_db)):
+        from .unit_review import apply, VERSION
+        try:
+            return apply(db, {'version': VERSION, 'token': data.token})
+        except ValueError as exc:
+            db.rollback()
+            raise HTTPException(409, str(exc)) from exc
 
     @router.get('/ram')
     def memory(db: Session = Depends(get_db)):

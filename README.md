@@ -16,9 +16,11 @@ quantità documentate per 147 sistemi della copia di catalogo esaminata.
 L’importazione aggiorna solo schede esistenti ancora prive di una quantità
 RAM, conserva i dati già presenti e include fonti e resoconto dei casi residui.
 
-La [verifica documentata delle unità](docs/UNIT_REVIEW.md) permette di
-chiarire notazioni ambigue mediante prove specifiche, con anteprima e audit.
-Il primo set copre 147 specifiche su 101 sistemi e conserva i casi ancora incerti.
+La [revisione delle unità di memoria](docs/UNIT_REVIEW_CLOSEOUT.md) è disponibile
+in Amministrazione → RAM e varianti, con anteprima, fonti, resoconto e audit.
+La seconda revisione tratta le 394 voci residue: 365 chiarimenti, 20 correzioni
+e 9 indicazioni conservate come annotazioni non quantificabili, distinte dai
+sei dati parziali. Include anche le 147 regole della prima revisione.
 
 ## Avvio con Docker
 

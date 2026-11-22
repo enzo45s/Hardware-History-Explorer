@@ -17,6 +17,7 @@
     "test:browser:history": "node tests/browser/history.cjs",
     "test:browser:descriptions": "node tests/browser/descriptions.cjs",
     "test:browser:quality": "node tests/browser/quality.cjs",
+    "test:browser:units": "node tests/browser/units.cjs",
     "test:browser:admin": "node tests/browser/admin.cjs",
     "test:browser:bulk": "node tests/browser/bulk1000bit.cjs",
     "test:browser:reset": "node tests/browser/reset.cjs"

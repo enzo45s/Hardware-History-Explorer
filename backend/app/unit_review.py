@@ -21,11 +21,13 @@ from .models import Computer, Configuration, Manufacturer, Source, Specification
 from .importing.engine import source as import_source
 from .importing.identity import computer_key
 from .importing.normalize import Citation, Spec
-from .importing.vocabulary import spec_values
+from .importing.vocabulary import spec_values, SPEC_FIELDS
 from .measurement_cleanup import normalize_measurement
 
-VERSION = 'hhe-unit-review-v1'
-DATA = Path(__file__).parent / 'importing/data/unit-proofs-v1.json'
+VERSION = 'hhe-unit-review-v2'
+LEGACY_DATA = Path(__file__).parent / 'importing/data/unit-proofs-v1.json'
+DATA = Path(__file__).parent / 'importing/data/unit-proofs-v2.json'
+ANNOTATION = 'Annotazione sulla memoria'
 TOKEN = re.compile(r'(?<=\d)\s*([kKmMgG])(?:[bB])?\b')
 IEC = {'K': 'KiB', 'M': 'MiB', 'G': 'GiB'}
 
@@ -55,9 +57,40 @@ def clarify(values, prefixes):
     return normalize_measurement(result)
 
 
+def resolution(rule):
+    action = rule.get('action', 'clarify')
+    if action == 'clarify':
+        return clarify(rule['before'], rule['prefixes'])
+    if action not in ('correct', 'annotate') or not rule.get('interpretation'):
+        raise ValueError('Decisione documentale non valida.')
+    before, after = rule['before'], rule['after']
+    if before['component_type'] not in ('RAM', 'ROM', 'Memoria', 'Cache') or after['component_type'] != before['component_type']:
+        raise ValueError('La decisione riguarda solo lo stesso tipo di memoria.')
+    if after['component_name'] != before['component_name'] or still_ambiguous(after):
+        raise ValueError('La decisione deve preservare il componente e chiarire la notazione.')
+    if action == 'annotate':
+        if after['numeric_value'] is not None or after['unit'] is not None or after['property_name'] != ANNOTATION:
+            raise ValueError('Un’annotazione non può diventare una capacità numerica.')
+    elif after['property_name'] != before['property_name'] or normalize_measurement(after) != after:
+        raise ValueError('La correzione deve mantenere l’ambito e usare unità standard.')
+    Spec.model_validate(after)
+    return after
+
+
 def load_proofs():
     raw = DATA.read_bytes()
     payload = json.loads(raw)
+    if payload.get('extends'):
+        if payload['extends'] != LEGACY_DATA.name:
+            raise ValueError('Set di prove di base non valido.')
+        legacy_raw = LEGACY_DATA.read_bytes()
+        legacy = json.loads(legacy_raw)
+        if set(legacy['proofs']) & set(payload['proofs']):
+            raise ValueError('Identificativo della prova duplicato.')
+        payload = {**payload, 'proofs': {**legacy['proofs'], **payload['proofs']},
+                   'rules': legacy['rules'] + payload['rules']}
+        payload.pop('extends')  # The returned object is a materialized proof set.
+        raw = legacy_raw + b'\0' + raw
     proofs = payload['proofs']
     seen = set()
     for rule in payload['rules']:
@@ -69,9 +102,10 @@ def load_proofs():
         for identifier in rule['proof_ids']:
             proof = proofs[identifier]
             Citation.model_validate(proof['source'])
-            if proof['basis'] not in ('explicit_iec', 'binary_definition', 'byte_count', 'address_map') or not proof['quotes'] or not proof['reason']:
+            if proof['basis'] not in ('explicit_iec', 'binary_definition', 'byte_count', 'address_map',
+                                      'semiconductor_convention', 'unquantifiable_source', 'native_organization') or not proof['quotes'] or not proof['reason']:
                 raise ValueError('Prova della scala mancante.')
-        result = clarify(rule['before'], rule['prefixes'])
+        result = resolution(rule)
         if result != rule['after']:
             raise ValueError('La trasformazione non coincide con il risultato documentato nella regola.')
         Spec.model_validate(result)
@@ -95,14 +129,40 @@ def prepare(db):
         identity = (computer_key(maker.name, computer.model_name), cfg.variant_name)
         by_identity.setdefault(identity, []).append((spec, computer))
         by_config.setdefault(cfg.id, []).append(spec_values(spec))
-    changes = []; selected = set(); unavailable = []; already_resolved = []
+    annotated = {s.id: s for s, _, _, _ in specs if s.property_name == ANNOTATION}
+    prior = {}
+    if annotated:
+        for audit in db.scalars(select(CatalogReconciliation).where(CatalogReconciliation.entity == 'unit_review')
+                                .order_by(CatalogReconciliation.id.desc())):
+            for row in (audit.snapshot or {}).get('changes', []):
+                target = annotated.get(row['id'])
+                if target is not None and row.get('action') == 'annotate' and spec_values(target) == row['after']:
+                    prior.setdefault(target.id, []).append(row)
+
+    def original_annotation(spec, rule):
+        return any(row['before'] == rule['before'] and row.get('original_source_url') == rule['original_source_url']
+                   for row in prior.get(spec.id, []))
+
+    changes = []; selected = set(); unavailable = []; already_resolved = []; unquantified = []; partial = []
     for rule in payload['rules']:
         identity = (computer_key(rule['manufacturer'], rule['model_name']), rule['configuration'])
         candidates = [(s, c) for s, c in by_identity.get(identity, [])
                       if rule['original_source_url'] in links.get(s.id, set())
                       and all(expected in by_config[s.configuration_id] for expected in rule.get('context_specs', []))]
-        matches = [(s, c) for s, c in candidates if spec_values(s) == rule['before']]
-        after = clarify(rule['before'], rule['prefixes'])
+        matches = [(s, c) for s, c in candidates if spec_values(s) == rule['before']
+                   or (rule.get('action') != 'annotate' and original_annotation(s, rule))]
+        after = resolution(rule)
+        if rule.get('action') == 'annotate':
+            for spec, computer in candidates:
+                if spec_values(spec) in (rule['before'], after) or original_annotation(spec, rule):
+                    unquantified.append({'id': spec.id, 'computer_id': computer.id, 'model': computer.model_name,
+                        'reason': rule['interpretation'], 'original': rule['before'],
+                        'annotation': spec.text_value if spec.property_name == ANNOTATION else after['text_value']})
+        elif re.search(r'non (?:documentat|determinat|quantificat)', after.get('text_value') or ''):
+            for spec, computer in candidates:
+                if spec_values(spec) in (rule['before'], after) or original_annotation(spec, rule):
+                    partial.append({'id': spec.id, 'computer_id': computer.id, 'model': computer.model_name,
+                                    'value': after['text_value'], 'reason': rule.get('interpretation')})
         for spec, computer in matches:
             if spec.id in selected:
                 raise ValueError('Più regole propongono modifiche alla stessa specifica.')
@@ -110,13 +170,26 @@ def prepare(db):
                 continue
             selected.add(spec.id)
             changes.append({'id': spec.id, 'computer_id': computer.id, 'model': computer.model_name,
-                'rule_id': rule['id'], 'before': rule['before'], 'after': after,
+                'action': rule.get('action', 'clarify'),
+                'original_source_url': rule['original_source_url'],
+                'rule_id': rule['id'], 'before': spec_values(spec), 'after': after,
+                'original_assertion': rule['before'],
                 'interpretation': rule.get('interpretation'), 'origin_context': rule.get('origin_context'),
                 'proofs': [payload['proofs'][i] for i in rule['proof_ids']]})
         if not matches and any(spec_values(s) == after for s, _ in candidates):
             already_resolved.append(rule['id'])
         elif not matches:
             unavailable.append(rule['id'])
+    # Older decisions or manual annotations must stay visible even if no rule
+    # in the current proof set targets them. A proposed completion supersedes
+    # its annotation only in the projected result, never by hiding a lacuna.
+    visible_annotations = {row['id'] for row in unquantified}
+    completing = {row['id'] for row in changes if row['after']['property_name'] != ANNOTATION}
+    for spec, cfg, computer, maker in specs:
+        if spec.id in annotated and spec.id not in visible_annotations | completing:
+            unquantified.append({'id': spec.id, 'computer_id': computer.id, 'model': computer.model_name,
+                'reason': 'Annotazione attuale conservata; nessuna nuova prova applicabile.',
+                'original': prior.get(spec.id, [{}])[0].get('before'), 'annotation': spec.text_value})
     clarified = {row['id'] for row in changes if not still_ambiguous(row['after'])}
     identities = {s.id: (s, cfg, c, m) for s, cfg, c, m in specs}
     memory_review = [row for row in base['review'] if row.get('id') in identities
@@ -131,9 +204,41 @@ def prepare(db):
     return {'version': VERSION, 'token': token, 'proof_set_sha256': checksum,
         'summary': {'memory_entries_requiring_review': len(memory_review),
                     'documented_corrections': len(changes), 'affected_computers': len({r['computer_id'] for r in changes}),
-                    'remaining_entries': len(remaining), 'already_resolved_rules': len(already_resolved)},
+                    'remaining_entries': len(remaining), 'already_resolved_rules': len(already_resolved),
+                    'units_clarified': sum(r['action'] == 'clarify' for r in changes),
+                    'quantities_corrected': sum(r['action'] == 'correct' for r in changes),
+                    'annotations_proposed': sum(r['action'] == 'annotate' for r in changes),
+                    'unquantified_entries': len(unquantified), 'partially_quantified_entries': len(partial)},
         'changes': changes, 'remaining': remaining, 'rules_already_resolved': already_resolved,
+        'unquantified': unquantified,
+        'partially_quantified': partial,
         'rules_not_matching_current_values': unavailable}
+
+
+def reviewed_import_target(db, specifications, incoming, citation):
+    """An unchanged, withdrawn assertion must not recreate a capacity on reimport.
+
+    Restrict this to exact audited originals, their source URL and a currently
+    unchanged annotation in the same configuration. A genuinely new source or
+    a human-edited value is outside the guard and follows normal conflict rules.
+    """
+    candidates = {s.id: s for s in specifications if s.property_name == ANNOTATION}
+    if not candidates:
+        return None
+    values = Spec.model_validate(normalize_measurement({k: incoming.get(k) for k in SPEC_FIELDS})).model_dump(include=set(SPEC_FIELDS))
+    audits = db.scalars(select(CatalogReconciliation).where(CatalogReconciliation.entity == 'unit_review')
+                       .order_by(CatalogReconciliation.id.desc()))
+    for audit in audits:
+        for row in (audit.snapshot or {}).get('changes', []):
+            target = candidates.get(row['id'])
+            if (target is None or row.get('action') != 'annotate'
+                or row.get('original_source_url') != citation.get('url')
+                or spec_values(target) != row['after']):
+                continue
+            before = Spec.model_validate(normalize_measurement(row['before'])).model_dump(include=set(SPEC_FIELDS))
+            if before == values:
+                return target
+    return None
 
 
 def apply(db, plan):
@@ -167,7 +272,7 @@ def apply(db, plan):
                 db.execute(spec_source.insert().values(target_id=spec.id, source_id=src.id, evidence=evidence, verification_status='pending'))
             linked.append({'specification_id': spec.id, 'source_id': src.id})
     audit = CatalogReconciliation(entity='unit_review', source_id=0, target_id=0,
-        note='Scala delle unità chiarita mediante prove documentali; quantità, configurazioni e verifica storica non elevate automaticamente.',
+        note='Revisione documentata della memoria: unità, correzioni puntuali e indicazioni non quantificabili. Stati di verifica storica conservati.',
         snapshot={'version': VERSION, 'token': current['token'], 'proof_set_sha256': current['proof_set_sha256'],
                   'changes': current['changes'], 'previous_source_links': before_links, 'proof_links': linked})
     db.add(audit); db.flush(); identifier = audit.id; db.commit()

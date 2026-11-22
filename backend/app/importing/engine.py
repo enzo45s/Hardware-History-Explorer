@@ -329,6 +329,12 @@ def import_record(db, job, row):
         record_fields(variant, {**cfg, 'variant_name': variant.variant_name} if reconciled or alias else cfg, ('variant_name', 'description'))
         for spec in cfg.get('specifications', []):
             matches = matching_specs(variant.specifications, spec)
+            if not matches:
+                from ..unit_review import reviewed_import_target
+                reviewed = reviewed_import_target(db, variant.specifications, spec,
+                    spec.get('source') or cfg.get('source') or root_source)
+                if reviewed is not None:
+                    matches = [reviewed]
             if len(matches) > 1:
                 raise ValueError('Specifiche ripetute: scegli configurazioni distinte prima di importare')
             if matches:

@@ -1,5 +1,9 @@
 # Verifica documentata delle unità di memoria — 21 novembre 2026
 
+Aggiornamento: la [seconda revisione del 22 novembre](UNIT_REVIEW_CLOSEOUT.md)
+tratta anche le 394 voci residue e aggiunge il controllo nel pannello amministrativo.
+Questa pagina conserva il resoconto del primo passaggio e la procedura CLI.
+
 La revisione ordinaria conserva `Kb`, `KB` e `MB` quando la scala è incerta.
 Questa procedura aggiunge **prove documentali per casi specifici** e permette
 di applicare le relative correzioni con anteprima e audit. Non parte

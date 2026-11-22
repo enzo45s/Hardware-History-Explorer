@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { api } from './api.js';
+import UnitReviewPanel from './UnitReviewPanel.jsx';
 import './imports.css';
 
 export default function CatalogQualityPanel({ onSaved }) {
@@ -36,6 +37,7 @@ export default function CatalogQualityPanel({ onSaved }) {
   }
   return <section className="imports">
     <h2>RAM e varianti dei modelli</h2>
+    <UnitReviewPanel onSaved={onSaved} />
     <section className="panel" aria-label="Controllo RAM">
       <h3>Quantità di memoria mancanti</h3>
       <p>Controlla le quantità RAM presenti e recupera i dati disponibili da fonti documentate o da importazioni già applicate. Opzioni, limiti massimi, intervalli e unità ambigue restano distinti dalla dotazione di base.</p>

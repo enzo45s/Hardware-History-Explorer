@@ -41,7 +41,8 @@ def documented_ram(values):
         text = re.split(r'\s*[+,;]\s*', text)[0]
         if re.search(r'\b(?:VRAM|ROM)\b', text, re.I):
             return False
-    return bool(QUANTITY.search(text))
+    native = re.search(r'\d[\d.,]*\s+(?:posizioni\s+di\s+memoria|unità\s+da\s+\d+\s+bit)\b', text)
+    return bool(QUANTITY.search(text) or native)
 
 
 def has_documented_ram(computer):
