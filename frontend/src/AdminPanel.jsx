@@ -57,6 +57,11 @@ function ManufacturerEditor({ draft, setDraft, sources }) {
       <Field label="Sito web" type="url" maxLength={500} placeholder="https://…" value={draft.website} onChange={v => set('website', v)} />
     </div>
       <Field label="Profilo storico in italiano" multiline wide rows={7} maxLength={20000} value={draft.description} onChange={v => set('description', v)} />
+    <div className="admin-grid">
+      <Field label="Attribuzione del testo" maxLength={350} value={draft.description_author} onChange={v => set('description_author', v)} />
+      <Field label="Fonte del testo" type="url" maxLength={800} value={draft.description_source_url} onChange={v => set('description_source_url', v)} />
+      <Field label="Licenza del testo" type="url" maxLength={800} value={draft.description_license_url} onChange={v => set('description_license_url', v)} />
+    </div>
     <p className="muted">Inserisci solo le informazioni documentate. Le date accettano anche il solo anno; lascia vuote quelle sconosciute.</p>
     <h3>Logo e attribuzione</h3><div className="admin-grid">
       <Field label="URL del logo" type="url" wide maxLength={800} placeholder="https://…" value={draft.logo_url} onChange={v => set('logo_url', v)} />
@@ -176,6 +181,27 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onD
   }
   function receive([computers, bibliography, metadata, makers]) { setRecords(computers); setSources(bibliography); setMeta(metadata); setManufacturers(makers); setLoading(false); }
   async function reload() { receive(await loadData()); }
+  async function enrichManufacturers() {
+    if (busy || !discard()) return;
+    setBusy(true); setError(''); setMessage('');
+    try {
+      const result = await api('/admin/manufacturers/enrichment/apply', { method: 'POST' });
+      setDraft(null); setDirty(false); onSaved();
+      setMessage(`Profili aggiornati: ${result.updated}. Descrizioni presenti: ${result.coverage.description} di ${result.coverage.total}; loghi: ${result.coverage.logo_url}.`);
+      await reload();
+    } catch (e) { setError(e.message); }
+    finally { setBusy(false); }
+  }
+  async function downloadManufacturerReport() {
+    setBusy(true); setError('');
+    try {
+      const report = await api('/admin/manufacturers/enrichment/report');
+      const url = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2) + '\n'], { type: 'application/json' }));
+      const link = document.createElement('a'); link.href = url; link.download = 'profili-produttori.json'; link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch (e) { setError(e.message); }
+    finally { setBusy(false); }
+  }
   useEffect(() => latestRequest(loadData, receive, e => { setError(e.message); setLoading(false); }), []);
   useEffect(() => { onDirtyChange(dirty); }, [dirty, onDirtyChange]);
   useEffect(() => {
@@ -261,6 +287,11 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onD
     </div>
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
+    {section === 'manufacturers' && <section className="panel" aria-label="Completamento produttori"><h2>Profili documentati</h2>
+      <p>Completa i campi vuoti con i dati e i loghi della raccolta documentata. I valori già presenti vengono conservati; il resoconto elenca le informazioni ancora mancanti e le fonti consultate.</p>
+      <div className="admin-save-bar"><button disabled={busy || loading} onClick={enrichManufacturers}>Completa profili documentati</button>
+        <button disabled={busy || loading} onClick={downloadManufacturerReport}>Scarica resoconto produttori</button></div>
+    </section>}
     {section === 'classification' ? <ClassificationPanel onEditComputer={editClassifiedComputer} onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'quality' ? <CatalogQualityPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'history' ? <HistoryPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'photos' ? <PhotoPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }}
       onArchiveReset={() => { setDraft(null); setDirty(false); setQuery(''); setMessage(''); onArchiveReset(); reload().catch(e => setError(e.message)); }} /> : <div className="admin-layout"><aside className="panel admin-list">
       <button className="admin-primary" disabled={busy || loading} onClick={create}><Plus size={16} />{entity.create}</button>

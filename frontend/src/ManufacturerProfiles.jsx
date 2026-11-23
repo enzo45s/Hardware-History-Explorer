@@ -39,8 +39,9 @@ export default function ManufacturerProfiles({ id, onOpen, onBack, onOpenCompute
     return <>
       <button className="back" onClick={onBack}><ArrowLeft size={16} />Tutti i produttori</button>
       <div className="manufacturer-heading"><ManufacturerLogo manufacturer={profile} large /><div><div className="eyebrow">STORIA DEI PRODUTTORI</div><h1>{profile.name}</h1><p className="lead">{profile.computer_count} sistemi nell’archivio{years(profile.catalog_year_range) ? ' · ' + years(profile.catalog_year_range) : ''}</p></div></div>
-      <div className="manufacturer-profile-grid"><section className="panel manufacturer-story" aria-label="Profilo dell’azienda"><h2>L’azienda</h2>
+      <div className="manufacturer-profile-grid"><section className="panel manufacturer-story" aria-label="Profilo dell’azienda"><h2>Profilo storico</h2>
         {profile.description ? <p className="manufacturer-description">{profile.description}</p> : <p className="muted">Il profilo storico è ancora da completare. Qui puoi già esplorare i sistemi presenti nell’archivio.</p>}
+        {profile.description_author && <p className="muted">Testo basato su {httpUrl(profile.description_source_url) ? <a href={httpUrl(profile.description_source_url)} target="_blank" rel="noopener noreferrer">{profile.description_author}</a> : profile.description_author}{httpUrl(profile.description_license_url) && <> · <a href={httpUrl(profile.description_license_url)} target="_blank" rel="noopener noreferrer">Licenza del testo</a></>}</p>}
         {!!facts.length && <dl className="manufacturer-facts">{facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}
         {httpUrl(profile.website) && <a className="source" href={httpUrl(profile.website)} target="_blank" rel="noopener noreferrer">Sito web <ExternalLink size={14} /></a>}
       </section><section className="panel manufacturer-attribution" aria-label="Fonti del produttore"><h2>Fonti</h2>
@@ -65,7 +66,7 @@ export default function ManufacturerProfiles({ id, onOpen, onBack, onOpenCompute
     {!loading && !visible.length && <p className="empty">Nessun produttore corrisponde alla ricerca.</p>}
     <div className="manufacturer-grid">{visible.map(m => <article className="panel manufacturer-card" key={m.id}><ManufacturerLogo manufacturer={m} /><h2>{m.name}</h2>
       {(m.country || m.founded) && <p className="muted">{[m.country, m.founded && 'Dal ' + m.founded].filter(Boolean).join(' · ')}</p>}
-      {m.description && <p className="manufacturer-card-intro">{m.description}</p>}<div className="card-foot"><span>{m.computer_count} sistemi</span><button onClick={() => onOpen(m.id)} aria-label={'Esplora ' + m.name}>Esplora <ChevronRight size={15} /></button></div>
+      {m.description && <p className="manufacturer-card-intro">{m.description}</p>}{m.description_author && <small className="muted">{httpUrl(m.description_source_url) ? <a href={httpUrl(m.description_source_url)} target="_blank" rel="noopener noreferrer">{m.description_author}</a> : m.description_author}{httpUrl(m.description_license_url) && <> · <a href={httpUrl(m.description_license_url)} target="_blank" rel="noopener noreferrer">Licenza</a></>}</small>}<div className="card-foot"><span>{m.computer_count} sistemi</span><button onClick={() => onOpen(m.id)} aria-label={'Esplora ' + m.name}>Esplora <ChevronRight size={15} /></button></div>
     </article>)}</div>
   </>;
 }

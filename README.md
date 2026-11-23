@@ -6,6 +6,12 @@ La sezione [Produttori](docs/MANUFACTURERS.md) permette di esplorare le aziende
 con logo, profilo storico, fonti e sistemi censiti. Le schede sono collegate
 ai computer e si arricchiscono da Amministrazione → Produttori.
 
+È inclusa una [raccolta documentata dei profili](docs/MANUFACTURER_RESEARCH.md):
+148 descrizioni italiane e 84 loghi per i 184 nomi esaminati, oltre ai dati
+aziendali disponibili. Al primo avvio vengono completati solo i campi vuoti;
+non servono chiavi API né una reimportazione del catalogo. In **Amministrazione
+→ Produttori** puoi riapplicare la raccolta e scaricare il resoconto delle lacune.
+
 La navigazione fra sezioni, l'apertura/chiusura delle schede e il cambio di
 sezione amministrativa riportano la pagina in cima. Aggiornamenti dei dati e
 ricerche nella stessa vista conservano la posizione di lettura.

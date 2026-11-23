@@ -4,7 +4,7 @@ import { computerDraft, computerPayload, newComputer, newManufacturer, manufactu
 
 test('manufacturer payload keeps known metadata and excludes counts and IDs', () => {
   assert.deepEqual(manufacturerPayload({ ...newManufacturer(), name: ' Example ', id: 1, computer_count: 42 }),
-    { name: 'Example', country: null, founded: null, website: null, legal_name: null, description: null, headquarters: null, founders: null,
+    { name: 'Example', country: null, founded: null, website: null, legal_name: null, description: null, description_author: null, description_source_url: null, description_license_url: null, headquarters: null, founders: null,
       ceased: null, logo_url: null, logo_author: null, logo_license: null, logo_license_url: null, logo_source_url: null, source_ids: [] });
   assert.deepEqual(manufacturerPayload({ name: ' Example ', country: ' Italia ', founded: '1980-02-03', website: ' https://example.org ' }),
     { name: 'Example', country: 'Italia', founded: '1980-02-03', website: 'https://example.org' });
@@ -90,11 +90,13 @@ test('readable editor labels round trip raw import keys until explicitly edited'
 
 test('company profile payload preserves partial dates, citations and logo attribution without API-only fields', () => {
   const draft = { ...newManufacturer(), name: ' Azienda ', founded: '1980', ceased: '1995-06',
-    description: ' Storia italiana ', source_ids: [12], sources: [{ id: 12 }], catalog_year_range: [1981, 1990],
+    description: ' Storia italiana ', description_author: ' Collaboratori sintetici ', description_source_url: ' https://example.org/revision ', description_license_url: ' https://example.org/terms ', source_ids: [12], sources: [{ id: 12 }], catalog_year_range: [1981, 1990],
     logo_url: ' https://example.org/logo.png ', logo_license: ' Condizioni ', legal_name: ' Azienda S.p.A. ' };
   const before = structuredClone(draft), payload = manufacturerPayload(draft);
   assert.equal(payload.founded, '1980'); assert.equal(payload.ceased, '1995-06');
   assert.equal(payload.description, 'Storia italiana'); assert.equal(payload.legal_name, 'Azienda S.p.A.');
+  assert.equal(payload.description_author, 'Collaboratori sintetici'); assert.equal(payload.description_source_url, 'https://example.org/revision');
+  assert.equal(payload.description_license_url, 'https://example.org/terms');
   assert.equal(payload.logo_url, 'https://example.org/logo.png'); assert.deepEqual(payload.source_ids, [12]);
   assert(!Object.hasOwn(payload, 'sources') && !Object.hasOwn(payload, 'catalog_year_range'));
   assert.deepEqual(draft, before);
