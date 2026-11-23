@@ -17,6 +17,7 @@ services:
       DATABASE_URL: postgresql+psycopg://history:history_dev@db:5432/hardware_history
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4.1-mini}
+      HHE_MANUFACTURER_ENRICHMENT_AUTO: ${HHE_MANUFACTURER_ENRICHMENT_AUTO:-1}
       CORS_ORIGINS: http://localhost:5173,http://localhost:8080
       UPLOAD_DIR: /code/uploads
     volumes:

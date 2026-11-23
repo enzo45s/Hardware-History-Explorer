@@ -138,6 +138,9 @@ class ManufacturerInput(Input):
     website: str | None = Field(default=None, max_length=500)
     legal_name: str | None = Field(default=None,max_length=250)
     description: str | None = Field(default=None,max_length=20000)
+    description_author: str | None = Field(default=None,max_length=350)
+    description_source_url: str | None = Field(default=None,max_length=800)
+    description_license_url: str | None = Field(default=None,max_length=800)
     headquarters: str | None = Field(default=None,max_length=250)
     founders: str | None = Field(default=None,max_length=500)
     logo_url: str | None = Field(default=None,max_length=800)
@@ -158,7 +161,7 @@ class ManufacturerInput(Input):
         historical_date(value)
         return value
 
-    @field_validator('website','logo_url','logo_source_url','logo_license_url', mode='before')
+    @field_validator('website','logo_url','logo_source_url','logo_license_url','description_source_url','description_license_url', mode='before')
     @classmethod
     def valid_website(cls, value):
         if value is None:
@@ -179,6 +182,10 @@ def apply_manufacturer(db,item,data):
         upper=date(end.year,12,31) if precision=='year' else date(end.year,end.month,monthrange(end.year,end.month)[1]) if precision=='month' else end
         if start>upper:raise HTTPException(422,'La cessazione precede la fondazione.')
     citation=references(db,Source,data.source_ids) if data.source_ids is not None else None
+    if 'description' in data.model_fields_set and data.description!=item.description:
+        # A manual rewrite must not retain credits for the previous text.
+        for field in ('description_author','description_source_url','description_license_url'):
+            if field not in data.model_fields_set:setattr(item,field,None)
     for field in data.model_fields_set-{'source_ids',*DATE_FIELDS}:setattr(item,field,getattr(data,field))
     for field in DATE_FIELDS:
         if field in data.model_fields_set:

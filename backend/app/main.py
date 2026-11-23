@@ -59,6 +59,11 @@ async def lifespan(app):
  photo_jobs.ensure_photo_schema(engine)
  ensure_catalog_schema(engine)
  with SessionLocal() as db: seed(db)
+ if os.getenv('HHE_MANUFACTURER_ENRICHMENT_AUTO','1')!='0':
+  from .manufacturer_enrichment import apply_enrichment
+  with SessionLocal() as db:
+   report=apply_enrichment(db)
+   log.info('Profili produttori: aggiornati %s; pacchetto %s.',report['updated'],report['version'])
  log.info('Avvio HHE: recupero dei prezzi e controllo delle categorie.')
  from .importing.price_recovery import recover_price_contexts
  with SessionLocal() as db: recover_price_contexts(db)
@@ -404,6 +409,8 @@ async def assistant(data:Question,db:Session=Depends(get_db)):
 
 from .admin import create_admin_router
 app.include_router(create_admin_router(get_db))
+from .manufacturer_enrichment import create_router as create_manufacturer_enrichment_router
+app.include_router(create_manufacturer_enrichment_router(get_db))
 from .importing.router import create_import_router
 app.include_router(create_import_router(get_db))
 from .archive import create_archive_router

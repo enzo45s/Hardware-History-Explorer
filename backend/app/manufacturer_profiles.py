@@ -3,7 +3,7 @@ from sqlalchemy import inspect,text
 from .models import Manufacturer
 from .source_policy import is_internal_source
 
-PROFILE_FIELDS=('legal_name','description','headquarters','founders','logo_url','logo_author','logo_license','logo_license_url','logo_source_url')
+PROFILE_FIELDS=('legal_name','description','description_author','description_source_url','description_license_url','headquarters','founders','logo_url','logo_author','logo_license','logo_license_url','logo_source_url')
 DATE_FIELDS=('founded','ceased')
 
 

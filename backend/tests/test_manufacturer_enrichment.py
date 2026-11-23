@@ -1,0 +1,125 @@
+import json
+from datetime import date
+
+import pytest
+from sqlalchemy import select, func
+
+from app.main import SessionLocal
+from app.models import Manufacturer, Source, manufacturer_source, Computer
+from app.import_models import CatalogReconciliation
+from app.manufacturer_enrichment import apply_enrichment, load_package, AUDIT_ENTITY
+from fastapi import HTTPException
+
+
+def package(tmp_path, fields=None, names=None):
+    fields = fields or {'description': 'Testo italiano sintetico.', 'founded': '1980',
+                        'logo_url': 'https://example.org/logo.png', 'logo_author': 'Autore sintetico',
+                        'description_author': 'Autore del testo sintetico'}
+    citation = {'title': 'Synthetic company documentation', 'url': 'https://example.org/history', 'publisher': 'Synthetic publisher'}
+    record = {'manufacturer_names': names or ['Synthetic Maker'], 'fields': fields,
+              'field_sources': {field: [citation['url']] for field in fields}, 'sources': [citation]}
+    path = tmp_path / 'manufacturers.json'
+    path.write_text(json.dumps({'version': 'synthetic-v1', 'researched_on': '2026-11-23', 'records': [record]}))
+    return path
+
+
+def test_missing_only_exact_identity_sources_audit_and_repeat(tmp_path):
+    path = package(tmp_path)
+    with SessionLocal() as db:
+        maker = Manufacturer(name='Synthetic Maker', country='Italia')
+        other = Manufacturer(name='Synthetic Maker Subsidiary')
+        db.add_all([maker, other]); db.commit(); mid = maker.id
+        report = apply_enrichment(db, path=path)
+        assert report['updated'] == 1 and report['matched'] == 1
+        assert report['unmatched'] == [{'id': other.id, 'name': other.name}]
+        db.refresh(maker)
+        assert maker.country == 'Italia' and maker.founded == date(1980, 1, 1)
+        assert maker.founded_precision == 'year' and other.description is None
+        assert db.scalar(select(func.count()).select_from(Manufacturer)) == 2
+        link = db.execute(select(manufacturer_source)).mappings().one()
+        assert link['verification_status'] == 'pending'
+        assert 'description' in json.loads(link['evidence'])['fields']
+        audit = db.scalar(select(CatalogReconciliation).where(CatalogReconciliation.entity == AUDIT_ENTITY))
+        assert audit.snapshot['changes'][0]['before']['description'] is None
+        assert audit.snapshot['changes'][0]['applied']['logo_author'] == 'Autore sintetico'
+        db.commit()
+        assert apply_enrichment(db, path=path)['already_applied']
+        assert apply_enrichment(db, path=path, explicit=True)['updated'] == 0
+        assert db.scalar(select(func.count()).select_from(Source)) == 1
+        assert db.scalar(select(func.count()).select_from(Computer)) == 0
+        maker.description = None; db.commit()
+        assert apply_enrichment(db, path=path)['already_applied']
+        db.refresh(maker); assert maker.description is None
+        assert apply_enrichment(db, path=path, explicit=True)['updated'] == 1
+        db.refresh(maker); assert maker.id == mid and maker.description
+
+
+def test_existing_text_logo_and_dates_are_protected_without_false_credits(tmp_path):
+    path = package(tmp_path)
+    with SessionLocal() as db:
+        maker = Manufacturer(name='Synthetic Maker', description='Testo curato a mano.', logo_url='https://example.org/manual.png',
+                             founded=date(1979, 5, 3))
+        db.add(maker); db.commit()
+        result = apply_enrichment(db, path=path)
+        assert result['updated'] == 0
+        db.refresh(maker)
+        assert maker.description == 'Testo curato a mano.' and maker.logo_url.endswith('manual.png')
+        assert maker.description_author is None and maker.logo_author is None
+        assert maker.founded == date(1979, 5, 3) and maker.sources == []
+
+
+def test_existing_date_conflict_preserves_curated_date_and_imports_other_fields(tmp_path):
+    path = package(tmp_path, {'founded': '1980', 'country': 'Italia'})
+    with SessionLocal() as db:
+        maker = Manufacturer(name='Synthetic Maker', ceased=date(1979, 1, 1), ceased_precision='year')
+        db.add(maker); db.commit()
+        result = apply_enrichment(db, path=path)
+        assert result['updated'] == 1 and result['conflicts'][0]['fields'] == {'founded': '1980'}
+        db.refresh(maker)
+        assert maker.country == 'Italia' and maker.founded is None and maker.ceased.year == 1979
+
+
+@pytest.mark.parametrize('change', ['missing_source', 'bad_url', 'duplicate_identity', 'invalid_chronology'])
+def test_invalid_package_does_not_change_records(tmp_path, change):
+    path = package(tmp_path); data = json.loads(path.read_text())
+    if change == 'missing_source': data['records'][0]['field_sources'] = {}
+    if change == 'bad_url': data['records'][0]['fields']['logo_url'] = 'file:///tmp/logo'
+    if change == 'duplicate_identity': data['records'].append(data['records'][0])
+    if change == 'invalid_chronology':
+        data['records'][0]['fields']['ceased'] = '1970'
+        data['records'][0]['field_sources']['ceased'] = ['https://example.org/history']
+    path.write_text(json.dumps(data))
+    with SessionLocal() as db:
+        db.add(Manufacturer(name='Synthetic Maker')); db.commit()
+        with pytest.raises((ValueError, HTTPException)): apply_enrichment(db, path=path)
+        db.rollback()
+        assert db.scalar(select(Manufacturer)).description is None
+        assert db.scalar(select(func.count()).select_from(Source)) == 0
+        assert db.scalar(select(func.count()).select_from(CatalogReconciliation)) == 0
+
+
+def test_bundled_research_is_cited_and_avoids_known_namesakes():
+    data, checksum = load_package()
+    assert len(checksum) == 64 and len(data['records']) == 184
+    rows = {r['manufacturer_names'][0]: r for r in data['records']}
+    assert rows['Unitron Eletronica']['fields']['country'] == 'Brasile'
+    assert not any('id=404' in s['url'] for s in rows['Unitron Eletronica']['sources'])
+    assert rows['Daewoo']['fields']['founded'] == '1971'
+    assert 'winia' not in rows['Daewoo']['fields'].get('logo_url', '').lower()
+    assert 'founded' not in rows['National']['fields']  # Brand and parent company dates differ.
+    assert 'founded' not in rows['Tesa Etikett']['fields']
+    assert not rows['Alex Zhabin']['fields']  # No fabricated biography from unrelated namesakes.
+
+
+def test_report_apply_endpoints_and_manual_rewrite_credit_reset(client):
+    maker = client.post('/api/manufacturers', json={'name': 'Acorn'}).json()
+    response = client.post('/api/admin/manufacturers/enrichment/apply')
+    assert response.status_code == 200, response.text
+    profile = client.get(f"/api/manufacturers/{maker['id']}/profile").json()
+    assert profile['description'] and profile['description_author'] and profile['sources']
+    report = client.get('/api/admin/manufacturers/enrichment/report').json()
+    assert report['total'] > 0 and next(m for m in report['manufacturers'] if m['id'] == maker['id'])['research']
+    assert client.put(f"/api/manufacturers/{maker['id']}", json={'name': 'Acorn', 'description': 'Testo riveduto a mano.'}).status_code == 200
+    profile = client.get(f"/api/manufacturers/{maker['id']}").json()
+    assert profile['description_author'] is None and profile['description_source_url'] is None
+    assert profile['sources']
