@@ -84,4 +84,3 @@ def model_key(maker, model):
         maker = 'HP'
         title = re.sub(r'^Hewlett[ -]Packard\b', 'HP', title, flags=re.I)
     return provider_computer_key('historical_prices', maker, title)
-

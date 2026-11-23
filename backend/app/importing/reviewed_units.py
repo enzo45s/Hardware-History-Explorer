@@ -31,4 +31,3 @@ def reviewed_import_target(db, specifications, incoming, citation):
             if before == values:
                 return target
     return None
-
