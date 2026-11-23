@@ -770,12 +770,6 @@
           "license": "CC BY-SA 4.0"
         },
         {
-          "title": "1000bit — Atari",
-          "url": "https://www.1000bit.it/database2.asp?id=5",
-          "publisher": "1000bit",
-          "source_type": "company_reference"
-        },
-        {
           "title": "Wikimedia Commons — File:Atari Official 2012 Logo.svg",
           "url": "https://commons.wikimedia.org/wiki/File:Atari_Official_2012_Logo.svg",
           "publisher": "Wikimedia Commons",
@@ -2222,13 +2216,6 @@
       },
       "sources": [
         {
-          "title": "Wikidata — DTK Computer (Q110516957)",
-          "url": "https://www.wikidata.org/w/index.php?title=Q110516957&oldid=2482536715",
-          "publisher": "Wikimedia Foundation",
-          "source_type": "company_reference",
-          "license": "CC0 1.0"
-        },
-        {
           "title": "Wikipedia — DTK Computer (en)",
           "url": "https://en.wikipedia.org/w/index.php?oldid=1384607853",
           "author": "Collaboratori di Wikipedia",
@@ -2779,7 +2766,8 @@
           "https://www.wikidata.org/w/index.php?title=Q10269187&oldid=2561506018"
         ],
         "description": [
-          "https://pt.wikipedia.org/w/index.php?oldid=68822581"
+          "https://pt.wikipedia.org/w/index.php?oldid=68822581",
+          "https://www.msx.org/wiki/Category:Dynacom"
         ],
         "description_author": [
           "https://pt.wikipedia.org/w/index.php?oldid=68822581"
@@ -2818,6 +2806,12 @@
           "publisher": "Wikimedia Foundation",
           "source_type": "company_reference",
           "license": "CC BY-SA 4.0"
+        },
+        {
+          "title": "MSX Resource Center — Dynacom",
+          "url": "https://www.msx.org/wiki/Category:Dynacom",
+          "publisher": "MSX Resource Center",
+          "source_type": "company_reference"
         },
         {
           "title": "Wikimedia Commons — File:Dynacom.svg",
@@ -3399,36 +3393,22 @@
       ],
       "fields": {
         "description": "Fenner fu soprattutto un distributore italiano di prodotti MSX rimarchiati. Il catalogo comprendeva computer, joystick, monitor e periferiche, mostrando come lo standard permettesse di adattare e commercializzare hardware di altri costruttori su mercati locali.",
-        "description_author": "Collaboratori di Wikipedia · sintesi italiana",
-        "description_source_url": "https://it.wikipedia.org/w/index.php?oldid=153314447",
-        "description_license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
         "country": "Italia"
       },
       "field_sources": {
         "description": [
-          "https://it.wikipedia.org/w/index.php?oldid=153314447"
-        ],
-        "description_author": [
-          "https://it.wikipedia.org/w/index.php?oldid=153314447"
-        ],
-        "description_source_url": [
-          "https://it.wikipedia.org/w/index.php?oldid=153314447"
-        ],
-        "description_license_url": [
-          "https://it.wikipedia.org/w/index.php?oldid=153314447"
+          "https://www.msx.org/wiki/Category:Fenner"
         ],
         "country": [
-          "https://it.wikipedia.org/w/index.php?oldid=153314447"
+          "https://www.msx.org/wiki/Category:Fenner"
         ]
       },
       "sources": [
         {
-          "title": "Wikipedia — MSX (it)",
-          "url": "https://it.wikipedia.org/w/index.php?oldid=153314447",
-          "author": "Collaboratori di Wikipedia",
-          "publisher": "Wikimedia Foundation",
-          "source_type": "company_reference",
-          "license": "CC BY-SA 4.0"
+          "title": "MSX Resource Center — Fenner",
+          "url": "https://www.msx.org/wiki/Category:Fenner",
+          "publisher": "MSX Resource Center",
+          "source_type": "company_reference"
         }
       ],
       "research": {
@@ -3876,7 +3856,8 @@
           "https://www.wikidata.org/w/index.php?title=Q1530796&oldid=2549128690"
         ],
         "description": [
-          "https://en.wikipedia.org/w/index.php?oldid=1371533948"
+          "https://en.wikipedia.org/w/index.php?oldid=1371533948",
+          "https://www.msx.org/wiki/Category:Gradiente"
         ],
         "description_author": [
           "https://en.wikipedia.org/w/index.php?oldid=1371533948"
@@ -3915,6 +3896,12 @@
           "publisher": "Wikimedia Foundation",
           "source_type": "company_reference",
           "license": "CC BY-SA 4.0"
+        },
+        {
+          "title": "MSX Resource Center — Gradiente",
+          "url": "https://www.msx.org/wiki/Category:Gradiente",
+          "publisher": "MSX Resource Center",
+          "source_type": "company_reference"
         },
         {
           "title": "Wikimedia Commons — File:Logo Gradiente.svg",
@@ -4737,7 +4724,7 @@
         "Intelligent Software / Hegener + Glaser"
       ],
       "fields": {
-        "description": "Hegener & Glaser è ricordata soprattutto per i computer scacchistici Mephisto, proposti anche in sistemi modulari. La denominazione collega questa attività a Intelligent Software e al contesto dei computer domestici Enterprise commercializzati con altri marchi.",
+        "description": "Hegener & Glaser è ricordata soprattutto per i computer scacchistici Mephisto. La gamma comprendeva dispositivi modulari con unità di calcolo e programmi differenti: un settore specializzato dell’informatica personale, rivolto al gioco e allo studio degli scacchi.",
         "description_author": "Collaboratori di Wikipedia · sintesi italiana",
         "description_source_url": "https://en.wikipedia.org/w/index.php?oldid=1383265878",
         "description_license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -8339,7 +8326,8 @@
           "https://www.wikidata.org/w/index.php?title=Q7402957&oldid=2402067376"
         ],
         "description": [
-          "https://en.wikipedia.org/w/index.php?oldid=1380041701"
+          "https://en.wikipedia.org/w/index.php?oldid=1380041701",
+          "https://www.msx.org/wiki/Category:Sakhr/Al_Alamiah"
         ],
         "description_author": [
           "https://en.wikipedia.org/w/index.php?oldid=1380041701"
@@ -8366,6 +8354,12 @@
           "publisher": "Wikimedia Foundation",
           "source_type": "company_reference",
           "license": "CC BY-SA 4.0"
+        },
+        {
+          "title": "MSX Resource Center — Sakhr",
+          "url": "https://www.msx.org/wiki/Category:Sakhr/Al_Alamiah",
+          "publisher": "MSX Resource Center",
+          "source_type": "company_reference"
         }
       ],
       "research": {
@@ -8905,13 +8899,6 @@
       },
       "sources": [
         {
-          "title": "Wikidata — Secoinsa (Q141544405)",
-          "url": "https://www.wikidata.org/w/index.php?title=Q141544405&oldid=2548877623",
-          "publisher": "Wikimedia Foundation",
-          "source_type": "company_reference",
-          "license": "CC0 1.0"
-        },
-        {
           "title": "Wikipedia — Fujitsu (es)",
           "url": "https://es.wikipedia.org/w/index.php?oldid=170895716",
           "author": "Collaboratori di Wikipedia",
@@ -9186,36 +9173,22 @@
       ],
       "fields": {
         "description": "In Brasile il marchio Sharp fu utilizzato da un’impresa locale, mentre Epcom operò come sua controllata nel settore informatico. La produzione di computer MSX iniziò nel 1985 con la famiglia Hotbit: una vicenda distinta da quella della società giapponese Sharp.",
-        "description_author": "Collaboratori di Wikipedia · sintesi italiana",
-        "description_source_url": "https://it.wikipedia.org/w/index.php?oldid=153314447",
-        "description_license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
         "country": "Brasile"
       },
       "field_sources": {
         "description": [
-          "https://it.wikipedia.org/w/index.php?oldid=153314447"
-        ],
-        "description_author": [
-          "https://it.wikipedia.org/w/index.php?oldid=153314447"
-        ],
-        "description_source_url": [
-          "https://it.wikipedia.org/w/index.php?oldid=153314447"
-        ],
-        "description_license_url": [
-          "https://it.wikipedia.org/w/index.php?oldid=153314447"
+          "https://www.msx.org/wiki/Category:Sharp_(Epcom)"
         ],
         "country": [
-          "https://it.wikipedia.org/w/index.php?oldid=153314447"
+          "https://www.msx.org/wiki/Category:Sharp_(Epcom)"
         ]
       },
       "sources": [
         {
-          "title": "Wikipedia — MSX (it)",
-          "url": "https://it.wikipedia.org/w/index.php?oldid=153314447",
-          "author": "Collaboratori di Wikipedia",
-          "publisher": "Wikimedia Foundation",
-          "source_type": "company_reference",
-          "license": "CC BY-SA 4.0"
+          "title": "MSX Resource Center — Sharp (Epcom)",
+          "url": "https://www.msx.org/wiki/Category:Sharp_(Epcom)",
+          "publisher": "MSX Resource Center",
+          "source_type": "company_reference"
         }
       ],
       "research": {
@@ -10032,14 +10005,14 @@
       },
       "field_sources": {
         "description": [
-          "https://www.1000bit.it/database2.asp?id=408"
+          "https://www.msx.org/wiki/Category:Telem%C3%A1tica/Talent"
         ]
       },
       "sources": [
         {
-          "title": "1000bit — Telematica (Talent)",
-          "url": "https://www.1000bit.it/database2.asp?id=408",
-          "publisher": "1000bit",
+          "title": "MSX Resource Center — Talent",
+          "url": "https://www.msx.org/wiki/Category:Telem%C3%A1tica/Talent",
+          "publisher": "MSX Resource Center",
           "source_type": "company_reference"
         }
       ],
@@ -11606,7 +11579,7 @@
       },
       "field_sources": {
         "description": [
-          "https://www.1000bit.it/database2.asp?id=122"
+          "https://www.msx.org/wiki/Category:Yeno"
         ],
         "logo_url": [
           "https://www.1000bit.it/database2.asp?id=122"
@@ -11624,6 +11597,12 @@
           "url": "https://www.1000bit.it/database2.asp?id=122",
           "publisher": "1000bit",
           "source_type": "company_logo"
+        },
+        {
+          "title": "MSX Resource Center — Yeno",
+          "url": "https://www.msx.org/wiki/Category:Yeno",
+          "publisher": "MSX Resource Center",
+          "source_type": "company_reference"
         }
       ],
       "research": {

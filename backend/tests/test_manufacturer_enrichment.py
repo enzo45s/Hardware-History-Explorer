@@ -109,6 +109,10 @@ def test_bundled_research_is_cited_and_avoids_known_namesakes():
     assert 'founded' not in rows['National']['fields']  # Brand and parent company dates differ.
     assert 'founded' not in rows['Tesa Etikett']['fields']
     assert not rows['Alex Zhabin']['fields']  # No fabricated biography from unrelated namesakes.
+    for name, suffix in [('Fenner', 'Fenner'), ('Sharp / Epcom', 'Sharp_(Epcom)')]:
+        assert rows[name]['field_sources']['description'] == ['https://www.msx.org/wiki/Category:' + suffix]
+        assert 'description_author' not in rows[name]['fields']  # These summaries do not derive from Wikipedia.
+    assert 'https://www.msx.org/wiki/Category:Sakhr/Al_Alamiah' in rows['Sakhr']['field_sources']['description']
 
 
 def test_report_apply_endpoints_and_manual_rewrite_credit_reset(client):

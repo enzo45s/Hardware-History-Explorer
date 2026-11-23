@@ -97,7 +97,7 @@ può essere eliminato.
 
 Sulla copia isolata del dump: **184 produttori e 1.133 sistemi**, tutti i profili
 API consultabili. La raccolta ha aggiornato **148 profili**, aggiungendo
-**148 descrizioni italiane, 84 loghi e 305 fonti**. Le informazioni già presenti
+**148 descrizioni italiane, 84 loghi e 310 fonti**. Le informazioni già presenti
 e tutte le fonti preesistenti sono rimaste identiche. Hash delle tabelle dei
 sistemi, configurazioni, specifiche, commercializzazioni, foto e relativi
 collegamenti invariati; nessun accesso al database sul Mac. Il secondo avvio
