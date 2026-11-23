@@ -8,7 +8,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, field_validator, model_validator
 from sqlalchemy import delete, func, select, text, update
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 
 from .models import Category, Computer, Configuration, Manufacturer, Market, Release, Source, Specification
 
@@ -133,22 +133,32 @@ class ReferenceInput(Input):
 class ManufacturerInput(Input):
     name: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=160)]
     country: str | None = Field(default=None, max_length=100)
-    founded: date | None = None
+    founded: str | None = None
+    ceased: str | None = None
     website: str | None = Field(default=None, max_length=500)
+    legal_name: str | None = Field(default=None,max_length=250)
+    description: str | None = Field(default=None,max_length=20000)
+    headquarters: str | None = Field(default=None,max_length=250)
+    founders: str | None = Field(default=None,max_length=500)
+    logo_url: str | None = Field(default=None,max_length=800)
+    logo_author: str | None = Field(default=None,max_length=350)
+    logo_license: str | None = Field(default=None,max_length=160)
+    logo_license_url: str | None = Field(default=None,max_length=800)
+    logo_source_url: str | None = Field(default=None,max_length=800)
+    source_ids: IDs | None = None
 
     @field_validator('name')
     @classmethod
     def clean_name(cls, value):
         return ' '.join(value.split())
 
-    @field_validator('founded', mode='before')
+    @field_validator('founded','ceased')
     @classmethod
-    def full_founding_date(cls, value):
-        if value is not None and (not isinstance(value, str) or [len(part) for part in value.split('-')] != [4, 2, 2]):
-            raise ValueError('La data di fondazione richiede AAAA-MM-GG; lascia vuoto se non conosci la data completa')
+    def historical_company_date(cls, value):
+        historical_date(value)
         return value
 
-    @field_validator('website', mode='before')
+    @field_validator('website','logo_url','logo_source_url','logo_license_url', mode='before')
     @classmethod
     def valid_website(cls, value):
         if value is None:
@@ -157,6 +167,23 @@ class ManufacturerInput(Input):
         if url.username is not None or url.password is not None:
             raise ValueError('URL HTTP(S) senza credenziali richiesto')
         return str(url)
+
+
+def apply_manufacturer(db,item,data):
+    from .manufacturer_profiles import DATE_FIELDS,date_label
+    dates={field:historical_date(getattr(data,field) if field in data.model_fields_set else
+        date_label(getattr(item,field),getattr(item,field+'_precision'))) for field in DATE_FIELDS}
+    start=dates['founded'][0];end,precision=dates['ceased']
+    if start and end:
+        from calendar import monthrange
+        upper=date(end.year,12,31) if precision=='year' else date(end.year,end.month,monthrange(end.year,end.month)[1]) if precision=='month' else end
+        if start>upper:raise HTTPException(422,'La cessazione precede la fondazione.')
+    citation=references(db,Source,data.source_ids) if data.source_ids is not None else None
+    for field in data.model_fields_set-{'source_ids',*DATE_FIELDS}:setattr(item,field,getattr(data,field))
+    for field in DATE_FIELDS:
+        if field in data.model_fields_set:
+            setattr(item,field,dates[field][0]);setattr(item,field+'_precision',dates[field][1])
+    if citation is not None:item.sources=citation
 
 
 def catalog_lock(db):
@@ -170,9 +197,9 @@ def catalog_lock(db):
 def manufacturer_data(db, item, count=None):
     if count is None:
         count = db.scalar(select(func.count()).select_from(Computer).where(Computer.manufacturer_id == item.id))
+    from .manufacturer_profiles import profile_data
     return {'id': item.id, 'name': item.name, 'country': item.country,
-            'founded': item.founded.isoformat() if item.founded else None,
-            'website': item.website, 'computer_count': count}
+            'website': item.website, 'computer_count': count, **profile_data(item)}
 
 
 def references(db, model, ids):
@@ -368,7 +395,7 @@ def create_admin_router(get_db):
 
     @router.get('/manufacturers')
     def list_manufacturers(db: Session = Depends(get_db)):
-        rows = db.execute(select(Manufacturer, func.count(Computer.id)).outerjoin(Computer, Computer.manufacturer_id == Manufacturer.id)
+        rows = db.execute(select(Manufacturer, func.count(Computer.id)).options(selectinload(Manufacturer.sources)).outerjoin(Computer, Computer.manufacturer_id == Manufacturer.id)
             .group_by(Manufacturer.id).order_by(func.lower(Manufacturer.name), Manufacturer.id))
         return [manufacturer_data(db, item, count) for item, count in rows]
 
@@ -377,7 +404,15 @@ def create_admin_router(get_db):
         item = db.get(Manufacturer, manufacturer_id)
         if item is None:
             raise HTTPException(404, 'Produttore non trovato')
-        return manufacturer_data(db, item)
+        return manufacturer_data(db,item)
+
+    @router.get('/manufacturers/{manufacturer_id}/profile')
+    def manufacturer_profile(manufacturer_id: int, db: Session = Depends(get_db)):
+        result=get_manufacturer(manufacturer_id,db)
+        first=select(Release.computer_id,func.min(Release.release_date).label('date')).group_by(Release.computer_id).subquery()
+        period=db.execute(select(func.min(first.c.date),func.max(first.c.date)).join(Computer,Computer.id==first.c.computer_id).where(Computer.manufacturer_id==manufacturer_id)).one()
+        result['catalog_year_range']=[value.year for value in period] if all(period) else None
+        return result
 
     def unique_manufacturer(db, data, excluding=None):
         def key(name):
@@ -389,7 +424,8 @@ def create_admin_router(get_db):
     def create_manufacturer(data: ManufacturerInput, db: Session = Depends(get_db)):
         catalog_lock(db)
         unique_manufacturer(db, data)
-        item = Manufacturer(**data.model_dump())
+        item = Manufacturer()
+        apply_manufacturer(db,item,data)
         db.add(item); commit(db)
         return manufacturer_data(db, item)
 
@@ -400,8 +436,7 @@ def create_admin_router(get_db):
         if item is None:
             raise HTTPException(404, 'Produttore non trovato')
         unique_manufacturer(db, data, excluding=manufacturer_id)
-        for field in data.model_fields_set:
-            setattr(item, field, getattr(data, field))
+        apply_manufacturer(db,item,data)
         commit(db)
         return manufacturer_data(db, item)
 

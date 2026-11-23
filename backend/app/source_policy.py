@@ -11,7 +11,7 @@ import unicodedata
 from urllib.parse import urlsplit
 
 from sqlalchemy import select, union
-from .models import (Source, computer_source, spec_source, release_source,
+from .models import (Source, computer_source, manufacturer_source, spec_source, release_source,
                      sale_source, review_source, fact_source)
 
 
@@ -81,7 +81,7 @@ def is_internal_source(source):
 
 def current_source_ids(db):
     """Operational use means a current catalog link, not an old import/audit row."""
-    links = (computer_source, spec_source, release_source, sale_source, review_source, fact_source)
+    links = (computer_source, manufacturer_source, spec_source, release_source, sale_source, review_source, fact_source)
     return set(db.scalars(union(*(select(table.c.source_id) for table in links))))
 
 

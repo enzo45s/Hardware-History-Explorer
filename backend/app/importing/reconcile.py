@@ -5,7 +5,7 @@ from datetime import date, datetime
 from collections import defaultdict
 from sqlalchemy import select, text, func
 from ..models import (Computer, Manufacturer, Configuration, Specification, Release, Sale, Review, Fact,
-                      ComputerImage, Source, computer_source, computer_category, spec_source,
+                      ComputerImage, Source, computer_source, manufacturer_source, computer_category, spec_source,
                       release_source, sale_source, review_source, fact_source)
 from ..import_models import ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation, ArchiveReset, ComputerAlias
 from .identity import computer_key, maker_key
@@ -28,6 +28,7 @@ def snapshot(db, entity, source, target):
     ids = [source.id, target.id]
     result = {entity: rows(db, type(source).__table__, type(source).id.in_(ids))}
     if entity == 'manufacturer':
+        result['manufacturer_sources']=rows(db,manufacturer_source,manufacturer_source.c.target_id.in_(ids))
         result['computers'] = rows(db, Computer.__table__, Computer.manufacturer_id.in_(ids))
         result['claims'] = [r for r in rows(db, ImportClaim.__table__, ImportClaim.field == 'manufacturer_id')
                             if any(r[key].get('value') in ids for key in ('value', 'previous'))]
@@ -84,6 +85,9 @@ def prepare(db, entity, source_id, target_id, lock=False, variants=False):
     original = snapshot(db, entity, source, target)
     token = hashlib.sha256(json.dumps(original, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
     fields = ('model_name', 'description', 'announcement_date', 'announcement_precision', 'image_url') if entity == 'computer' else ('name', 'country', 'founded', 'website')
+    if entity=='manufacturer':
+        from ..manufacturer_profiles import PROFILE_FIELDS
+        fields=(*fields,*PROFILE_FIELDS,'founded_precision','ceased','ceased_precision')
     differences = [{'field': field, 'source': value(getattr(source, field)), 'target': value(getattr(target, field))}
                    for field in fields if getattr(source, field) != getattr(target, field)]
     counts = ({key: len(original[key]) for key in ('configurations', 'specifications', 'releases', 'computer_images', 'sources')}
@@ -161,9 +165,18 @@ def apply(db, entity, source_id, target_id, token, note, commit=True, variants=F
             if claim.entity == 'Computer' and claim.target_id == source_id:
                 claim.target_id = target_id
     else:
-        for field in ('country', 'founded', 'website'):
+        from ..manufacturer_profiles import PROFILE_FIELDS,DATE_FIELDS
+        for field in ('country','website',*PROFILE_FIELDS):
             if getattr(target, field) is None:
                 setattr(target, field, getattr(source, field))
+        for field in DATE_FIELDS:
+            if getattr(target,field) is None:
+                setattr(target,field,getattr(source,field))
+                setattr(target,field+'_precision',getattr(source,field+'_precision'))
+        existing={link['source_id'] for link in original['manufacturer_sources'] if link['target_id']==target_id}
+        for link in original['manufacturer_sources']:
+            if link['target_id']==source_id and link['source_id'] not in existing:
+                db.execute(manufacturer_source.insert().values(**{**link,'target_id':target_id}))
         for computer in db.scalars(select(Computer).where(Computer.manufacturer_id == source_id)):
             computer.manufacturer = target
         for claim in db.scalars(select(ImportClaim).where(ImportClaim.field == 'manufacturer_id')):

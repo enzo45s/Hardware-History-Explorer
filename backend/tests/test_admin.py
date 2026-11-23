@@ -205,7 +205,7 @@ def test_manufacturer_crud_updates_catalog_without_changing_computers(client):
 
 @pytest.mark.parametrize('data', [
     {'name': ' '}, {'name': 'X' * 161}, {'name': 'Example', 'country': 'X' * 101},
-    {'name': 'Example', 'founded': '1980'}, {'name': 'Example', 'founded': '1980-02-30'},
+    {'name': 'Example', 'founded': '1980-13'}, {'name': 'Example', 'founded': '1980-02-30'},
     {'name': 'Example', 'founded': 0}, {'name': 'Example', 'founded': '0'},
     {'name': 'Example', 'website': 'javascript:alert(1)'},
     {'name': 'Example', 'website': 'https://user:secret@example.org'},

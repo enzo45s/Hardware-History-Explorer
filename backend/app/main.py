@@ -54,6 +54,8 @@ async def lifespan(app):
  log=logging.getLogger('uvicorn.error')
  log.info('Avvio HHE: verifica schema database.')
  Base.metadata.create_all(engine)
+ from .manufacturer_profiles import ensure_schema as ensure_manufacturer_schema
+ ensure_manufacturer_schema(engine)
  photo_jobs.ensure_photo_schema(engine)
  ensure_catalog_schema(engine)
  with SessionLocal() as db: seed(db)
