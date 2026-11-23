@@ -73,7 +73,10 @@ def apply(db):
 def _apply(db):
     catalog_lock(db);data,checksum=load()
     if any(a.snapshot.get('checksum')==checksum for a in db.scalars(select(CatalogReconciliation).where(CatalogReconciliation.entity==ENTITY))):
-        db.rollback();return {'already_applied':True,'created':0,'updated':0}
+        from .ibm_ps_dates import apply as apply_dates
+        dates=apply_dates(db,commit=False,locked=True)
+        db.commit()
+        return {'already_applied':True,'created':0,'updated':0,'dates':dates}
     index=groups(db,data);report={'version':data['version'],'created':0,'updated':0,'renamed':0,'merged':0,
         'corrected':0,'descriptions_updated':0,'curated_descriptions_preserved':0,'protected':[],'skipped':[]}
     changes=[];names=[];attributions=[];eligible={};equal_configs=[]
@@ -174,15 +177,23 @@ def _apply(db):
     db.add(CatalogReconciliation(entity=ENTITY,source_id=0,target_id=0,note='Ricerca e nomi commerciali IBM PS; applicazione esplicita, nessuna verifica storica automatica.',
         snapshot={**report,'checksum':checksum,'changes':changes,'names':names,'equal_configurations':equal_configs,'description_attributions':attributions}))
     db.flush()
+    from .ibm_ps_dates import apply as apply_dates
+    report['dates']=apply_dates(db,commit=False,locked=True)
     refresh_pending(db,commit=False,locked=True);db.commit()
     db.info.pop('retained_description_attributions',None)
     return report
 
 
 def main():
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--apply',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--apply',action='store_true')
+    parser.add_argument('--dates-only',action='store_true',help='Aggiorna soltanto la cronologia delle schede già presenti.')
+    args=parser.parse_args()
     from ..main import SessionLocal
-    with SessionLocal() as db:result=apply(db) if args.apply else preview(db)
+    with SessionLocal() as db:
+        if args.dates_only:
+            from .ibm_ps_dates import apply as apply_dates, preview as preview_dates
+            result=apply_dates(db) if args.apply else preview_dates(db)
+        else:result=apply(db) if args.apply else preview(db)
     print(json.dumps(result,ensure_ascii=False,indent=2))
 
 
