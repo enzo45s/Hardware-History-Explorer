@@ -5,7 +5,7 @@ from pathlib import Path
 from sqlalchemy import select
 from sqlalchemy.orm import object_session
 from .import_models import ComputerAlias
-from .history_sources import replaceable
+from .catalog_identity import replaceable
 from .catalog_display import description_text
 from .importing.regional_names import regional_name
 from .catalog_names import catalog_name, video_only_variant
@@ -51,7 +51,7 @@ def annotate(computer, data):
 
 
 def family_attribution(computer):
-    context = json.loads((Path(__file__).parent / 'importing/data/ram-reviewed-v1.json').read_text(encoding='utf-8')).get('contexts', {}).get(computer.model_name)
+    context = json.loads((Path(__file__).parent / 'importing/data/description-contexts.json').read_text(encoding='utf-8')).get(computer.model_name)
     if context and context['description'] == computer.description and any(s.url == context['source']['url'] for s in computer.sources):
         return {'title': 'Commodore PET', 'url': context['source']['url'],
             'license_url': 'https://creativecommons.org/licenses/by-sa/4.0/', 'method': 'sintesi editoriale da passaggi italiani'}

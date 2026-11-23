@@ -16,21 +16,10 @@ La navigazione fra sezioni, l'apertura/chiusura delle schede e il cambio di
 sezione amministrativa riportano la pagina in cima. Aggiornamenti dei dati e
 ricerche nella stessa vista conservano la posizione di lettura.
 
-La [revisione del catalogo e delle unità](docs/CATALOG_REVISION.md) permette
-di esaminare il database locale e applicare normalizzazioni con anteprima,
-controllo delle modifiche e conservazione degli originali. La scheda tecnica
-mostra una sola volta capacità RAM equivalenti, mantenendo tutte le fonti.
-
 Il [pacchetto RAM mancante](docs/datasets/ram-2026-11/README.md) aggiunge
 quantità documentate per 147 sistemi della copia di catalogo esaminata.
 L’importazione aggiorna solo schede esistenti ancora prive di una quantità
 RAM, conserva i dati già presenti e include fonti e resoconto dei casi residui.
-
-La [revisione delle unità di memoria](docs/UNIT_REVIEW_CLOSEOUT.md) è disponibile
-in Amministrazione → RAM e varianti, con anteprima, fonti, resoconto e audit.
-La seconda revisione tratta le 394 voci residue: 365 chiarimenti, 20 correzioni
-e 9 indicazioni conservate come annotazioni non quantificabili, distinte dai
-sei dati parziali. Include anche le 147 regole della prima revisione.
 
 Nel [confronto e nelle schede tecniche](docs/TECHNICAL_SHEETS.md#ram-un-campo-principale-e-una-riga-per-le-opzioni)
 la memoria compare in una riga **RAM**, con al massimo una seconda riga per
@@ -41,8 +30,8 @@ originali, fonti e unità interne restano conservati.
 La [pulizia fisica del catalogo](docs/PHYSICAL_CATALOG_CLEANUP.md) accorpa
 configurazioni, specifiche e commercializzazioni direttamente nelle tabelle
 principali. Dopo l'applicazione, gli originali accorpati restano nell'audit
-e la precedente copia consolidata non viene più mantenuta. Si avvia da
-Amministrazione → RAM e varianti → Pulizia fisica dell’archivio.
+e la precedente copia consolidata non viene più mantenuta. La normalizzazione
+necessaria alle modifiche e alle importazioni rimane automatica.
 
 La [normalizzazione della commercializzazione](docs/RELEASE_SUMMARIES.md) distingue
 le date documentate dagli anni di riferimento delle varianti e accorpa date e
@@ -53,7 +42,7 @@ Il precedente livello di [dati consolidati del catalogo](docs/CATALOG_CONSOLIDAT
 nel database e condivisi da schede, confronto e assistente. All'avvio l'API
 esegue la migrazione additiva e il popolamento; modifiche e importazioni
 aggiornano i sistemi interessati. Gli originali rimangono separati e tracciabili.
-Lo stato è consultabile in Amministrazione → RAM e varianti.
+Gli strumenti amministrativi di manutenzione una tantum sono stati ritirati.
 
 ## Avvio con Docker
 
@@ -108,43 +97,13 @@ Puoi trasferire il backup fra Windows e Mac senza convertirlo. Per esportare
 dal Mac usa lo stesso comando con `-Mode Export`, senza `-ArchivePath` e
 senza `-ConfirmRestore`.
 
-## Completare le introduzioni storiche
+## Importare le introduzioni storiche
 
-Da **Amministrazione → Cenni storici → Cerca cenni storici** puoi cercare
-introduzioni documentate su Wikipedia in italiano per tutto il catalogo.
-Vengono sostituite solo le descrizioni vuote o preimpostate; quelle già curate
-sono conservate. La ricerca è riprendibile e mostra anche i sistemi senza una
-fonte italiana adatta. Non richiede chiavi AI né chiamate a pagamento.
-Le query privilegiano il nome del modello e marche brevi come Sun, NeXT e
-Kaypro, senza ripetere marchi già presenti o tentativi equivalenti.
-La pausa ordinaria è di un secondo; **Ricomincia ricerca storica**, disponibile
-a ricerca in pausa o completata, riparte dai testi ancora mancanti conservando
-descrizioni già curate e resoconti precedenti.
-[Istruzioni, criteri e limiti di copertura](docs/HISTORICAL_DESCRIPTIONS.md).
-
-Puoi anche caricare descrizioni preparate esternamente da **Amministrazione →
+Puoi caricare descrizioni preparate esternamente da **Amministrazione →
 Importazioni → Fonte dati → Descrizioni storiche (JSON)**. L'anteprima mostra
 testi, fonti e abbinamenti; aggiorna solo schede esistenti, completa i testi
 preimpostati e conserva quelli già curati salvo revisione esplicita dei conflitti.
 [Formato del JSON e istruzioni](docs/DESCRIPTION_IMPORT.md).
-
-## Controllare RAM e varianti
-
-In **Amministrazione → RAM e varianti** puoi recuperare i valori RAM disponibili
-da fonti documentate e riunire le varianti proposte in configurazioni di una
-scheda comune. Sigle precedenti, RAM, prezzi, foto e fonti restano conservati;
-le importazioni successive seguono gli alias approvati. Non viene attribuita
-una quantità di memoria quando manca una fonte utilizzabile.
-[Regole, caso HP 85 e istruzioni](docs/CATALOG_QUALITY.md).
-
-La pulizia vale per **tutto il catalogo**: attributi tra parentesi tonde/quadre
-e suffissi PAL/NTSC o 50/60 Hz lasciano il posto al nome principale. Il pannello
-gestisce sia duplicati sia singole schede da rinominare, anche in più lotti.
-Le nuove importazioni usano direttamente i nomi puliti e conservano gli attributi
-negli originali. Foto e descrizioni cercano il modello senza quei qualificatori.
-La **scheda tecnica unica** e il confronto omettono i dettagli video regionali;
-le configurazioni hardware sostanziali e i dati originali restano conservati.
-[Criteri e aggiornamento delle schede tecniche](docs/TECHNICAL_SHEETS.md).
 
 ## Aggiungere le fotografie
 
@@ -438,3 +397,17 @@ La scelta viene salvata nel browser per l'indirizzo dell'app (`localStorage`, ch
 Il file pubblico `theme.js`, caricato prima dell'interfaccia React, applica la preferenza iniziale per evitare un lampo chiaro. I colori dei componenti usano variabili semantiche `--theme-*` con fallback ai colori chiari originali; la palette scura e i token dei grafici si trovano in `frontend/src/theme.css`. I grafici usano variabili CSS anche negli elementi SVG e nei tooltip. Non sono necessarie modifiche al database, credenziali o migrazioni.
 
 Verifiche: 21 test frontend superati; build Docker/frontend e prove Chromium su avvio prima di React, modalità automatiche/manuali, ripristino dopo ricarica, eventi tra schede, storage bloccato, filtri e bozze conservati, grafici/tooltip, fotografie e viewport da 320 e 390 px. Verificato contrasto di almeno 4,5:1 su corpo del testo, input e pulsanti principali nel tema scuro; non si tratta di una certificazione di accessibilità dell'intera applicazione.
+
+## Ritiro degli strumenti di popolamento
+
+Gli strumenti **Cenni storici** e **RAM e varianti** sono stati rimossi da
+interfaccia, API e processi dedicati. Non sono più disponibili la ricerca
+Wikipedia automatica e i comandi manuali di revisione RAM/unità, accorpamento
+varianti o ricostruzione del catalogo. Le normali importazioni e le regole
+condivise per schede, confronti e normalizzazione rimangono disponibili.
+
+All’avvio una migrazione transazionale e ripetibile elimina fisicamente le
+vecchie tabelle di coda, trasferendo nell’audit le attribuzioni necessarie ai
+testi già acquisiti. Descrizioni, RAM, configurazioni, fonti, prezzi, fotografie
+e originali delle importazioni restano conservati.
+[Dettagli del ritiro e aggiornamento](docs/ADMIN_TOOLS_RETIREMENT.md).

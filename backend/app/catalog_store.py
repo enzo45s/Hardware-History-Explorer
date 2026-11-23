@@ -6,13 +6,11 @@ remain safe: a dirty snapshot is never returned as current, even before drain.
 After physical cleanup the primary tables are authoritative, snapshot copies
 stay empty, and maintenance normalizes only the changed primary rows.
 """
-import argparse
 from copy import deepcopy
 from datetime import datetime, timezone
 from decimal import Decimal
 import hashlib
 import json
-import os
 from sqlalchemy import select, delete, func, inspect, text
 from sqlalchemy.orm import Session, object_session, selectinload
 from .models import (Computer, Configuration, Specification, Release, CatalogSnapshot,
@@ -247,23 +245,3 @@ def rebuild(db):
         SELECT id,1 FROM computers WHERE true ON CONFLICT(computer_id)
         DO UPDATE SET generation=catalog_dirty.generation+1'''))
     return refresh_pending(db, force=True, locked=True)
-
-
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['status', 'rebuild'])
-    args = parser.parse_args()
-    url = os.getenv('DATABASE_URL')
-    if not url:
-        parser.error('DATABASE_URL deve indicare esplicitamente il database.')
-    from sqlalchemy import create_engine
-    engine = create_engine(url)
-    if args.command == 'rebuild':
-        ensure_schema(engine)
-    with Session(engine) as db:
-        result = rebuild(db) if args.command == 'rebuild' else {}
-        print(json.dumps({**result, **status(db)}, ensure_ascii=False))
-
-
-if __name__ == '__main__':
-    main()

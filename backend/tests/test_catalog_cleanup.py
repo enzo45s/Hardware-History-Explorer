@@ -172,16 +172,6 @@ def test_review_old_market_does_not_restore_unknown_market_on_merged_offer(clien
         assert release.market.name=='Stati Uniti' and release.price==3298
 
 
-def test_unquantified_claim_stays_visible_even_with_a_reference_capacity(client):
-    from app.unit_review import prepare as units
-    with SessionLocal() as db:
-        c=db.get(Computer,1);c.configurations.clear();db.flush()
-        c.configurations=[Configuration(variant_name='Base',specifications=[
-            Specification(component_type='RAM',property_name='Capacità di riferimento',numeric_value=16,unit='KiB'),
-            Specification(component_type='RAM',property_name='Annotazione sulla memoria',text_value='Capacità non quantificata nella fonte originale.')])]
-        db.commit();before=units(db)['summary']['unquantified_entries']
-        apply(db,prepare(db))
-        assert units(db)['summary']['unquantified_entries']==before
 
 
 def test_additive_columns_migrate_existing_rows_and_foreign_keys(client):
@@ -243,3 +233,16 @@ def test_release_only_normalization_does_not_rewrite_unchanged_technical_tables(
         assert len(db.get(Computer,cid).releases)==1
     for statement in statements:
         assert not statement.startswith(('update configurations ','update specifications ','delete from specification_sources','insert into specification_sources'))
+
+
+def test_unquantified_claim_stays_visible_even_with_a_reference_capacity(client):
+    import json
+    with SessionLocal() as db:
+        c=db.get(Computer,1);c.configurations.clear();db.flush()
+        note='Capacità non quantificata nella fonte originale.'
+        c.configurations=[Configuration(variant_name='Base',specifications=[
+            Specification(component_type='RAM',property_name='Capacità di riferimento',numeric_value=16,unit='KiB'),
+            Specification(component_type='RAM',property_name='Annotazione sulla memoria',text_value=note)])]
+        db.commit();apply(db,prepare(db))
+        retained=[{'text':s.text_value,'details':s.catalog_details} for cfg in db.get(Computer,1).configurations for s in cfg.specifications]
+        assert note in json.dumps(retained,ensure_ascii=False)

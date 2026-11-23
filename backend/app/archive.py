@@ -14,7 +14,6 @@ from .models import (Base, Computer, Manufacturer, Category, Market, Configurati
                      Release, Sale, Review, Fact, ComputerImage, Source)
 from .import_models import ImportJob, ImportRow, ImportClaim, ExternalIdentity, CatalogReconciliation, ArchiveReset
 from .photo_jobs import PhotoJob
-from .history_models import HistoryJob, HistoryItem
 from .importing.bulk1000bit import BulkJob, BulkTarget
 
 CATALOG = (Manufacturer, Category, Market, Computer, Configuration, Specification, Release, Sale, Review, Fact, ComputerImage)
@@ -88,8 +87,6 @@ def reset_catalog(db, data):
     db.execute(update(ImportRow).values(computer_id=None, candidates=[]))
     db.execute(update(ImportClaim).values(computer_id=None))
     db.execute(update(PhotoJob).values(status='archived', active_key=None, lease_token=None, lease_until=None))
-    db.execute(update(HistoryJob).values(status='archived', active_key=None, lease_token=None, lease_until=None))
-    db.execute(update(HistoryItem).where(HistoryItem.status == 'pending').values(status='changed', error='Archivio svuotato.'))
     db.execute(update(BulkJob).values(status='archived', active_key=None, lease_token=None, lease_until=None))
     db.execute(update(BulkTarget).values(status='removed'))
     db.execute(delete(ExternalIdentity))

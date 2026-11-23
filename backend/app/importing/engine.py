@@ -36,7 +36,7 @@ def identity_provider(provider, data):
 def catalog_candidates(db, data, provider, description_index=None):
     if provider == 'historical_descriptions':
         from .descriptions import candidate_index
-        from ..history_sources import model_key
+        from ..catalog_identity import model_key
         index = description_index if description_index is not None else candidate_index(db)
         candidates = index.get(model_key(data['manufacturer'], data['model_name']), [])
         return candidates, len(candidates) > 1
@@ -122,7 +122,7 @@ def stage(db, provider, filename, format, raw, records=None, options=None, retry
             else:
                 data = Record.model_validate(original).model_dump(mode='json', exclude_none=True)
             if options.get('missing_ram_only'):
-                from ..ram_research import validate_enrichment
+                from .ram_enrichment import validate_enrichment
                 validate_enrichment(data)
             candidates, ambiguous = catalog_candidates(db, data, provider, description_index)
             row.normalized = data
@@ -227,7 +227,7 @@ def import_record(db, job, row):
     if c is None and candidates:
         c = db.get(Computer, candidates[0])
     if job.request_options.get('missing_ram_only'):
-        from ..ram_research import validate_enrichment, has_documented_ram
+        from .ram_enrichment import validate_enrichment, has_documented_ram
         validate_enrichment(data)
         if c is None or has_documented_ram(c):
             row.status, row.error = 'skipped', 'Quantità RAM già documentata o sistema rimosso: nessuna modifica.'
@@ -345,7 +345,7 @@ def import_record(db, job, row):
             promote = cleaned and promotes_reference(variant,spec)
             matches = [] if promote else [canonical] if canonical is not None else matching_specs(variant.specifications, spec)
             if not matches:
-                from ..unit_review import reviewed_import_target
+                from .reviewed_units import reviewed_import_target
                 reviewed = reviewed_import_target(db, variant.specifications, spec,
                     spec.get('source') or cfg.get('source') or root_source)
                 if reviewed is not None:

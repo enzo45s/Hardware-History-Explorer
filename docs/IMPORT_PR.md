@@ -24,35 +24,8 @@ Originali, identificativi e importazioni restano invariati. HTML senza cache e
 `build-info.json` permettono di verificare il frontend effettivamente distribuito;
 criteri, aggiornamento forzato e verifiche in `docs/EUROPE_GROUPING.md`.
 
-Il pannello Cenni storici ricerca descrizioni italiane da Wikipedia e completa
-i testi vuoti o generati, conservando quelli curati. Coda persistente, pausa,
-attese della fonte, controllo su modifiche concorrenti, originali, citazioni e
-asserzioni pending; nessuna chiamata AI a pagamento. Prova reale isolata:
-10 descrizioni aggiornate su 11 sistemi, un caso senza abbinamento idoneo.
-Copertura non garantita per l'intero catalogo; istruzioni e criteri in
-`docs/HISTORICAL_DESCRIPTIONS.md`.
-La ricerca riprova con parole chiave marca/modello e consulta le sezioni di
-famiglia collegate dal modello, con originali e attese persistenti per ogni
-tentativo. Gestisce i casi PowerBook 180, BBC Model B e Atari 130XE/400/800XL;
-un comando dedicato ritenta gli esiti senza testo conservando gli aggiornamenti
-già riusciti e lo storico delle ricerche precedenti.
-Il ritentativo mirato seleziona i vecchi candidati e i nomi interessati dagli
-alias corretti, conservando gli altri esiti. Recuperati nei controlli reali
-PDP-1, Epson HX-20, M15, NeXTcube, Atari 800 e Macintosh PowerBook 180;
-il pannello rende visibili anche saltate, modifiche e query rifiutate.
-Il filtro storico riconosce inoltre handheld PC, palmari e notebook: corretta
-la falsa esclusione della voce italiana Atari Portfolio, con controprova che
-mantiene esclusa la voce generica Portfolio. Titolo, produttore e revisione
-restano obbligatori; i vecchi esiti possono essere ritentati senza riscrivere
-i testi già riusciti.
-
-Il pannello RAM e varianti recupera capacità documentate (incluso HP 85 da
-1000bit) e consolida le denominazioni di configurazione conservando dati,
-prezzi e testi per variante. Alias approvati evitano la ricreazione di schede
-da importazioni successive; ricerca e assistente mantengono accessibili le
-sigle precedenti. Il parser 1000bit riconosce anche le etichette inglesi.
-Sul corpus completo: 1.109 → 1.099 schede, 1.261 configurazioni e 3.199 specifiche
-conservate; 1.139 righe reimportate invariate. Dettagli in `docs/CATALOG_QUALITY.md`.
+Gli strumenti di popolamento una tantum sono stati ritirati; dati acquisiti,
+fonti e attribuzioni restano conservati. Dettagli in `docs/ADMIN_TOOLS_RETIREMENT.md`.
 
 Le viste tecniche riuniscono profili regionali e fonti complementari (per esempio
 PAL/NTSC e scheda 1000bit dell'Atari 400) in una tabella, deduplicando i dati

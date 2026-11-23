@@ -5,8 +5,6 @@ import { newComputer, newSource, newManufacturer, computerDraft, computerPayload
 import './admin.css';
 import ImportPanel from './ImportPanel.jsx';
 import PhotoPanel from './PhotoPanel.jsx';
-import HistoryPanel from './HistoryPanel.jsx';
-import CatalogQualityPanel from './CatalogQualityPanel.jsx';
 import ClassificationPanel from './ClassificationPanel.jsx';
 import { ManufacturerLogo } from './ManufacturerProfiles.jsx';
 
@@ -282,8 +280,6 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onD
       <button disabled={busy} className={section === 'sources' ? 'active' : ''} onClick={() => chooseSection('sources')}><BookOpen size={17} />Fonti</button>
       <button disabled={busy} className={section === 'imports' ? 'active' : ''} onClick={() => chooseSection('imports')}>Importazioni</button>
       <button disabled={busy} className={section === 'photos' ? 'active' : ''} onClick={() => chooseSection('photos')}>Foto automatiche</button>
-      <button disabled={busy} className={section === 'history' ? 'active' : ''} onClick={() => chooseSection('history')}>Cenni storici</button>
-      <button disabled={busy} className={section === 'quality' ? 'active' : ''} onClick={() => chooseSection('quality')}>RAM e varianti</button>
     </div>
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
@@ -292,7 +288,7 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onD
       <div className="admin-save-bar"><button disabled={busy || loading} onClick={enrichManufacturers}>Completa profili documentati</button>
         <button disabled={busy || loading} onClick={downloadManufacturerReport}>Scarica resoconto produttori</button></div>
     </section>}
-    {section === 'classification' ? <ClassificationPanel onEditComputer={editClassifiedComputer} onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'quality' ? <CatalogQualityPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'history' ? <HistoryPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'photos' ? <PhotoPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }}
+    {section === 'classification' ? <ClassificationPanel onEditComputer={editClassifiedComputer} onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'photos' ? <PhotoPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }}
       onArchiveReset={() => { setDraft(null); setDirty(false); setQuery(''); setMessage(''); onArchiveReset(); reload().catch(e => setError(e.message)); }} /> : <div className="admin-layout"><aside className="panel admin-list">
       <button className="admin-primary" disabled={busy || loading} onClick={create}><Plus size={16} />{entity.create}</button>
       <label className="admin-field"><span>Cerca {entity.plural}</span><input value={query} onChange={e => setQuery(e.target.value)} /></label>

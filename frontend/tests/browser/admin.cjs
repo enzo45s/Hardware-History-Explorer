@@ -24,6 +24,8 @@ const { chromium } = require('playwright');
     await page.goto(base, { waitUntil: 'domcontentloaded' });
     const baseline = (await (await page.request.get(api('/computers'))).json()).total;
     await page.getByRole('button', { name: 'Amministrazione', exact: true }).click();
+    assert.equal(await page.getByRole('button', { name: 'Cenni storici', exact: true }).count(), 0);
+    assert.equal(await page.getByRole('button', { name: 'RAM e varianti', exact: true }).count(), 0);
     await page.getByRole('button', { name: 'Produttori', exact: true }).click();
     await page.getByRole('button', { name: 'Nuovo produttore', exact: true }).click();
     await page.getByLabel('Nome del produttore', { exact: true }).fill(initialName);

@@ -236,8 +236,8 @@ def create_import_router(get_db):
         options = previous.request_options
         if options.get('managed_classification'):
             raise HTTPException(409, 'La classificazione si gestisce da Amministrazione → Categorie. Aggiorna l’analisi da quel pannello.')
-        if options.get('managed_history'):
-            raise HTTPException(409, 'Questa ricerca si gestisce da Amministrazione → Cenni storici. Riprendi la coda o avvia una nuova ricerca da quel pannello.')
+        if options.get('retired_feature'):
+            raise HTTPException(410, 'Questo strumento è stato rimosso. I dati importati e le fonti restano conservati; il lotto non può essere rieseguito.')
         if not options.get('upload'):
             return job_data(remote_job(db, previous.provider, options, retry_of=previous.id))
         raw = original_bytes(previous)

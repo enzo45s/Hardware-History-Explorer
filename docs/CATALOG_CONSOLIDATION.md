@@ -28,26 +28,8 @@ Il primo avvio esegue il popolamento; i successivi aggiornano solo i sistemi
 invalidati o le risoluzioni prodotte da regole cambiate. Le ricerche in corso
 possono richiedere la ripresa dopo il riavvio dei container.
 
-In **Amministrazione → RAM e varianti → Dati consolidati del catalogo**, premere
-**Controlla dati consolidati**. Il numero dei sistemi consolidati deve coincidere
-con il catalogo; normalmente «In aggiornamento» è zero. **Ricostruisci dati
-consolidati** rigenera solo il livello derivato, conservando originali e audit.
-
-Lo stato può essere letto anche dal Terminale:
-
-```bash
-docker compose -p hhe-import-test exec api python -m app.catalog_store status
-```
-
-Per una ricostruzione esplicita, ad esempio dopo modifiche con strumenti esterni:
-
-```bash
-docker compose -p hhe-import-test exec api python -m app.catalog_store rebuild
-```
-
-Fuori Docker i comandi richiedono `DATABASE_URL` esplicito. La sola migrazione
-è disponibile come `python -m migrations.catalog_store`; il comando `rebuild`
-esegue anche la migrazione se necessaria. `status` richiede uno schema già aggiornato.
+I comandi manuali di controllo e ricostruzione sono stati ritirati. Il livello
+condiviso resta gestito automaticamente dall’API e dai trigger del database.
 
 ## Tabelle e interrogazione
 

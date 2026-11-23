@@ -5,13 +5,11 @@ complementary releases are combined; substantial variants stay separate.
 Removed representations and old identifiers are archived in reconciliation
 history, and reimports follow redirects instead of recreating retired rows.
 """
-import argparse
 from copy import deepcopy
 from datetime import date, datetime
 from decimal import Decimal
 import json
 import logging
-import os
 import re
 from pathlib import Path
 from sqlalchemy import select, delete, update, func
@@ -462,25 +460,3 @@ def incoming_release(db,cid,market,entry):
             if entry.get('price') is not None and (old['price'],old['currency'])!=(entry['price'],entry.get('currency')):continue
             candidates.add(redirect(db,cid,'Release',old['id']))
     return db.get(Release,min(candidates)) if len(candidates)==1 else None
-
-
-def main():
-    parser=argparse.ArgumentParser(description=__doc__)
-    commands=parser.add_subparsers(dest='command',required=True)
-    p=commands.add_parser('preview');p.add_argument('--output',type=Path,required=True)
-    p=commands.add_parser('apply');p.add_argument('--plan',type=Path,required=True)
-    args=parser.parse_args()
-    url=os.getenv('DATABASE_URL')
-    if not url:parser.error('DATABASE_URL richiesto.')
-    from sqlalchemy import create_engine
-    from .catalog_schema import ensure_schema
-    engine=create_engine(url);ensure_schema(engine)
-    with Session(engine) as db:
-        if args.command=='preview':
-            data=prepare(db)
-            with args.output.open('x',encoding='utf-8') as f:json.dump(data,f,ensure_ascii=False,indent=2)
-            print(json.dumps(data['summary'],ensure_ascii=False))
-        else:print(json.dumps(apply(db,json.loads(args.plan.read_text(encoding='utf-8'))),ensure_ascii=False))
-
-
-if __name__=='__main__':main()

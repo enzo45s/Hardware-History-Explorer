@@ -8,7 +8,7 @@ from app.main import SessionLocal
 from app.models import Computer, Manufacturer, Configuration, Specification
 from app.import_models import ImportClaim, ImportRow
 from app.importing.normalize import Record
-from app.ram_research import documented_ram, validate_enrichment, coverage
+from app.importing.ram_enrichment import documented_ram, validate_enrichment, has_documented_ram
 
 PACKAGE = Path(__file__).resolve().parents[2] / 'docs/datasets/ram-2026-11/ram-mancante.json'
 
@@ -114,7 +114,7 @@ def test_ram_added_between_preview_and_apply_is_preserved_including_ambiguous_un
         assert len(c.configurations) == 1
         s = c.configurations[0].specifications[0]
         assert (s.numeric_value, s.unit) == (512, 'Kb')
-        assert coverage(db)['without_documented_ram'] >= 0
+        assert has_documented_ram(c)
 
 
 def test_ram_package_cannot_import_other_fields(client):

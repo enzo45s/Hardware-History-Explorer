@@ -39,9 +39,7 @@ def snapshot(db, entity, source, target):
     for model, field in tables:
         result[model.__tablename__] = rows(db, model.__table__, getattr(model, field).in_(ids))
     result['commons_photo_items'] = rows(db, PhotoItem.__table__, PhotoItem.computer_id.in_(ids))
-    from ..history_models import HistoryItem
     from .bulk1000bit import BulkTarget
-    result['history_research_items'] = rows(db, HistoryItem.__table__, HistoryItem.computer_id.in_(ids))
     result['bit1000_bulk_targets'] = rows(db, BulkTarget.__table__, BulkTarget.computer_id.in_(ids))
     result['computer_aliases'] = rows(db, ComputerAlias.__table__, ComputerAlias.computer_id.in_(ids))
     config_ids = [r['id'] for r in result['configurations']]
@@ -143,12 +141,7 @@ def apply(db, entity, source_id, target_id, token, note, commit=True, variants=F
             identity.computer_id = target_id
         for alias in db.scalars(select(ComputerAlias).where(ComputerAlias.computer_id == source_id)):
             alias.computer_id = target_id
-        from ..history_models import HistoryItem
         from .bulk1000bit import BulkTarget
-        for item in db.scalars(select(HistoryItem).where(HistoryItem.computer_id == source_id)):
-            item.computer_id = target_id
-            if item.status == 'pending':
-                item.status, item.error = 'changed', 'Scheda accorpata in un altro modello; dati della ricerca conservati.'
         for item in db.scalars(select(BulkTarget).where(BulkTarget.computer_id == source_id)):
             item.computer_id = target_id
             item.model_name, item.manufacturer = target.model_name, target.manufacturer.name

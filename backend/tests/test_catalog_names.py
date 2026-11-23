@@ -7,7 +7,6 @@ from unittest.mock import patch
 from sqlalchemy import select
 from app.catalog_names import catalog_name
 from app.commons import photo_query
-from app.history_sources import search_plan
 from app.importing.variant_names import variant_name
 from app.importing.engine import stage, apply_job
 from app.main import SessionLocal
@@ -53,69 +52,18 @@ def import_records(data, *, legacy=False):
         return [(r.computer_id,r.status) for r in job.rows]
 
 
-def apply(client, plan):
-    response=client.post('/api/admin/catalog-quality/variants/apply',json={'token':plan['token'],'target_ids':[g['target_id'] for g in plan['groups']]})
-    assert response.status_code==200,response.text
-    return response.json()
 
 
-def test_all_models_are_cleaned_not_just_examples_and_reimport_preserves_every_original(client):
-    existing=client.get('/api/computers',params={'q':'PDP-11'}).json()['items']
-    data=records(); imported=import_records(data,legacy=True)
-    originals=[client.get(f'/api/computers/{item["id"]}').json() for item in existing]+[client.get(f'/api/computers/{cid}').json() for cid,_ in imported]
-    plan=client.get('/api/admin/catalog-quality/variants').json()
-    assert {g['name'] for g in plan['groups']} == {'System-80','PDP-11','Desktop','Solo'}
-    result=apply(client,plan)
-    assert result['removed']==5 and result['renamed']==4
-    configs={c['id'] for o in originals for c in o['configurations']}
-    specs={s['id'] for o in originals for c in o['configurations'] for s in c['specifications']}
-    after=[]
-    for name in ['System-80','PDP-11','Desktop','Solo']:
-        items=client.get('/api/computers',params={'q':name}).json()['items']
-        assert len(items)==1 and items[0]['model_name']==name
-        after.append(client.get(f'/api/computers/{items[0]["id"]}').json())
-    assert {c['id'] for o in after for c in o['configurations']} == configs
-    assert {s['id'] for o in after for c in o['configurations'] for s in c['specifications']} == specs
-    assert len(after[2]['display_configurations'])==2  # the actual two CPUs stay distinct
-    assert after[3]['description']==data[-1]['description']  # rename only keeps curated text
-    assert all(status=='unchanged' for _,status in import_records(data))
-    assert client.get('/api/admin/catalog-quality/variants').json()['groups']==[]
 
 
-def test_single_name_cleanup_rejects_stale_preview_and_keeps_an_audit(client):
-    cid=import_records(records()[-1:],legacy=True)[0][0]
-    preview=client.get('/api/admin/catalog-quality/variants').json()
-    with SessionLocal() as db:
-        db.get(Computer,cid).description='Updated manually';db.commit()
-    response=client.post('/api/admin/catalog-quality/variants/apply',json={'token':preview['token'],'target_ids':[cid]})
-    assert response.status_code==409
-    apply(client,client.get('/api/admin/catalog-quality/variants').json())
-    with SessionLocal() as db:
-        audit=db.scalar(select(CatalogReconciliation))
-        assert audit.source_id==audit.target_id==cid
-        assert audit.snapshot['computer'][0]['model_name']=='Solo (optional board)'
-        assert db.get(Computer,cid).description=='Updated manually'
 
 
-@pytest.mark.parametrize('qualifier', ['optional board', 'France'])
-def test_single_renamed_placeholder_remains_eligible_for_research(client, qualifier):
-    from app.history_sources import replaceable
-    record=records()[-1]
-    record['model_name']=f'Solo ({qualifier})'
-    record['description']=f'{record["model_name"]} è un calcolatore di {record["manufacturer"]}.'
-    cid=import_records([record],legacy=True)[0][0]
-    apply(client,client.get('/api/admin/catalog-quality/variants').json())
-    result=client.get(f'/api/computers/{cid}').json()
-    assert replaceable(result['model_name'],result['manufacturer'],result['description'])
 
 
 def test_searches_for_any_model_use_the_plain_name_even_before_local_cleanup():
     for maker,name in [(r['manufacturer'],r['model_name']) for r in records()]:
         clean=catalog_name(name)
         assert '(' not in photo_query(maker,name) and '[' not in photo_query(maker,name)
-        for step in search_plan(name,maker):
-            query=step.get('query',step.get('titles',''))
-            assert '(' not in query and '[' not in query
         assert variant_name(maker,name)['name']==clean
 
 

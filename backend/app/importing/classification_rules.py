@@ -4,7 +4,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 from ..catalog_display import description_text
-from ..history_sources import maker_aliases, model_names, model_key
+from ..catalog_identity import maker_aliases, model_names, model_key
 from .identity import maker_key, manufacturer_base
 
 

@@ -91,8 +91,8 @@ Il dump originale e i relativi identificativi interni non sono pubblicati.
   documentati nella sezione Memoria, non diventano falsa RAM convenzionale.
 - `Kb`, `KB` e `KiB` non sono scambiati. Le notazioni storiche ambigue di
   1000bit restano come riportate; la presenza di una quantità non implica
-  che sia stata verificata la scala binaria. Vale quanto descritto nella
-  [revisione delle unità](../../CATALOG_REVISION.md).
+  che sia stata verificata la scala binaria. Le quantità conservano la
+  notazione documentata dalla fonte.
 - Non si estende il dato di un modello a suffissi regionali, modelli vicini
   o revisioni solo perché il nome è simile. Le formulazioni alternative sono
   elencate nel resoconto senza generare righe ripetute nella scheda.
@@ -113,21 +113,6 @@ documentate possono riguardare espansioni o revisioni successive: sono
 conservati l’ambito e la fonte selezionata. Il resoconto non dichiara che
 nessuna fonte esista per i 261 casi residui, ma che non è stata acquisita
 un’evidenza utilizzabile in questa ricerca.
-
-## Rilevare le lacune del proprio database
-
-Il seguente comando legge il database senza modificarlo e crea una lista
-aggiornata di marca e modello. L’output richiede un nome di file nuovo:
-
-```sh
-mkdir -p backups
-docker compose -p hhe-import-test exec -T api python -m app.ram_research --output /tmp/hhe-ram-mancante.json
-docker compose -p hhe-import-test cp api:/tmp/hhe-ram-mancante.json ./backups/hhe-ram-mancante.json
-```
-
-Il rilevamento considera capacità, intervalli, opzioni e limiti espliciti;
-non interpreta `1M/4M` senza unità né un numero di slot come quantità RAM.
-Un massimo documentato non garantisce di conoscere la dotazione standard.
 
 ## Verifiche sulla copia del dump
 

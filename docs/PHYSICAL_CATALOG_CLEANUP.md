@@ -22,28 +22,9 @@ git pull --ff-only
 docker compose -p hhe-import-test up --build -d --wait --wait-timeout 900
 ```
 
-Prima dell'applicazione conservare un backup completo recente. Aprire
-**Amministrazione → RAM e varianti → Pulizia fisica dell’archivio**:
-
-1. Premere **Analizza pulizia fisica** per leggere i conteggi effettivi.
-2. Premere **Applica pulizia alle tabelle principali**.
-3. Ripetere l'analisi: deve indicare zero sistemi da aggiornare.
-
-L'applicazione ricontrolla i dati sotto lock e rifiuta un'anteprima diventata
-obsoleta. La trasformazione e l'audit sono nella stessa transazione; un errore
-annulla l'intera operazione. Non bisogna svuotare l'archivio o reimportare il dump.
-Il database sul Mac non è raggiungibile direttamente dall'ambiente cloud.
-
-In alternativa, nel contenitore API:
-
-```bash
-docker compose -p hhe-import-test exec api python -m app.catalog_cleanup preview --output /tmp/hhe-pulizia.json
-docker compose -p hhe-import-test exec api python -m app.catalog_cleanup apply --plan /tmp/hhe-pulizia.json
-```
-
-Il file di anteprima contiene dati originali privati: conservarlo fuori da Git.
-Il comando non sovrascrive un file esistente; usare un nome nuovo nelle analisi
-successive. Dopo un aggiornamento delle regole va preparata una nuova anteprima.
+Gli strumenti manuali di analisi/applicazione e la relativa CLI sono stati
+ritirati. Sugli archivi già normalizzati, le regole condivise continuano a
+operare automaticamente durante aggiornamenti e importazioni.
 
 ## Regole
 

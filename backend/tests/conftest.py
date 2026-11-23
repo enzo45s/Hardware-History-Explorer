@@ -15,7 +15,11 @@ os.environ['UPLOAD_DIR'] = str(Path(_test_files.name) / 'uploads')
 os.environ['HHE_MANUFACTURER_ENRICHMENT_AUTO'] = '0'  # Tests use only their explicit synthetic evidence.
 
 from app.main import Base, app, engine, UPLOAD_DIR  # noqa: E402
+from migrations.retire_admin_tools import migrate as retire_admin_tools
 from fastapi.testclient import TestClient  # noqa: E402
+
+# Reusable isolated PostgreSQL test databases may still have the old queue FKs.
+retire_admin_tools(engine)
 
 
 @pytest.fixture(autouse=True)

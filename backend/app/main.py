@@ -18,7 +18,7 @@ from .seed import seed
 from . import import_models
 from .import_models import ComputerAlias
 from . import photo_jobs
-from .history import create_history_router, attribution as history_attribution
+from .description_attribution import attribution as description_attribution
 from .variant_context import annotate as variant_context, family_attribution
 from .importing.vocabulary import normalize_spec, spec_values
 from .commons import photo_query, search_pages
@@ -54,6 +54,8 @@ async def lifespan(app):
  log=logging.getLogger('uvicorn.error')
  log.info('Avvio HHE: verifica schema database.')
  Base.metadata.create_all(engine)
+ from migrations.retire_admin_tools import migrate as retire_admin_tools
+ retire_admin_tools(engine)
  from .manufacturer_profiles import ensure_schema as ensure_manufacturer_schema
  ensure_manufacturer_schema(engine)
  photo_jobs.ensure_photo_schema(engine)
@@ -126,7 +128,7 @@ def full(c):
  o['display_releases']=consolidated['releases']
  o['display_configurations']=consolidated['configurations']
  o['catalog_data']={**metadata,'comparison':consolidated['comparison']}
- o['description_attribution']=history_attribution(c) or family_attribution(c)
+ o['description_attribution']=description_attribution(c) or family_attribution(c)
  return o
 EAGER=(selectinload(Computer.images),selectinload(Computer.manufacturer),selectinload(Computer.categories),selectinload(Computer.releases).selectinload(Release.market),selectinload(Computer.releases).selectinload(Release.sources),selectinload(Computer.configurations).selectinload(Configuration.specifications).selectinload(Specification.sources),selectinload(Computer.sales).selectinload(Sale.market),selectinload(Computer.sales).selectinload(Sale.sources),selectinload(Computer.reviews).selectinload(Review.sources),selectinload(Computer.facts).selectinload(Fact.sources),selectinload(Computer.sources))
 @app.get('/api/health')
@@ -416,9 +418,6 @@ app.include_router(create_import_router(get_db))
 from .archive import create_archive_router
 app.include_router(create_archive_router(get_db))
 app.include_router(photo_jobs.create_photo_router(get_db,search_commons))
-app.include_router(create_history_router(get_db))
-from .catalog_quality import create_quality_router
-app.include_router(create_quality_router(get_db))
 from .importing.classification import create_classification_router
 app.include_router(create_classification_router(get_db))
 from .importing.regional import create_regional_router

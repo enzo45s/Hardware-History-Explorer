@@ -17,7 +17,7 @@ _ROOT = Path(__file__).parent
 _RULES = ('catalog_memory.py', 'catalog_store.py', 'catalog_cleanup.py', 'technical_display.py', 'release_display.py',
           'configuration_display.py', 'catalog_display.py', 'variant_context.py', 'source_policy.py',
           'importing/vocabulary.py', 'importing/regional_names.py', 'importing/identity.py',
-          'importing/normalize.py', 'ram_values.py', 'history_sources.py', 'geography.py', 'catalog_names.py',
+          'importing/normalize.py', 'ram_values.py', 'catalog_identity.py', 'geography.py', 'catalog_names.py',
           'commercial_dates.py','importing/data/commercial-dates-v1.json')
 VERSION = 'hhe-catalog-v1.' + hashlib.sha256(b''.join((_ROOT / p).read_bytes() for p in _RULES)).hexdigest()[:16]
 

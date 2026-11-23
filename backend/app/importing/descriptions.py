@@ -7,7 +7,7 @@ from sqlalchemy.orm import selectinload
 from ..admin import Input
 from ..models import Computer
 from ..import_models import ComputerAlias, ImportClaim
-from .. import history_sources
+from .. import catalog_identity
 from .normalize import Citation, Record
 
 
@@ -37,14 +37,14 @@ def candidate_index(db):
     index = defaultdict(list)
     computers = {c.id: c for c in db.scalars(select(Computer).options(selectinload(Computer.manufacturer)))}
     for computer in computers.values():
-        index[history_sources.model_key(computer.manufacturer.name, computer.model_name)].append(computer.id)
+        index[catalog_identity.model_key(computer.manufacturer.name, computer.model_name)].append(computer.id)
     for alias in db.scalars(select(ComputerAlias)):
         computer = computers.get(alias.computer_id)
         if not computer:
             continue
         maker = alias.original.get('manufacturer_name') or alias.manufacturer_key
-        key = history_sources.model_key(maker, alias.original_name)
-        if key[0] == history_sources.model_key(computer.manufacturer.name, computer.model_name)[0] and computer.id not in index[key]:
+        key = catalog_identity.model_key(maker, alias.original_name)
+        if key[0] == catalog_identity.model_key(computer.manufacturer.name, computer.model_name)[0] and computer.id not in index[key]:
             index[key].append(computer.id)
     return index
 
@@ -57,7 +57,7 @@ def preview(db, row):
         action = 'ambiguous' if row.status == 'ambiguous' else 'unmatched'
     elif computer.description == row.normalized['description']:
         action = 'unchanged'
-    elif history_sources.replaceable(computer.model_name, computer.manufacturer.name, computer.description):
+    elif catalog_identity.replaceable(computer.model_name, computer.manufacturer.name, computer.description):
         action = 'replace_template' if (computer.description or '').strip() else 'fill'
     else:
         action = 'conflict'
@@ -74,7 +74,7 @@ def apply_row(db, row):
         return
     incoming = row.normalized['description']
     previous = computer.description
-    replace = history_sources.replaceable(computer.model_name, computer.manufacturer.name, previous)
+    replace = catalog_identity.replaceable(computer.model_name, computer.manufacturer.name, previous)
     evidence = '\n'.join(filter(None, [
         'Testo e fonte forniti nel JSON dall’operatore; contenuto e corrispondenza alla fonte non verificati automaticamente.',
         row.normalized.get('evidence'),

@@ -1,17 +1,10 @@
-"""Read-only RAM coverage audit and guards for sourced, missing-only enrichment."""
-import argparse
-import json
+"""Validation guards for user-supplied RAM-only import packages."""
 import math
-import os
-from pathlib import Path
 import re
 
-from sqlalchemy import create_engine, select
-from sqlalchemy.orm import Session, selectinload
 
-from .models import Computer, Configuration
-from .importing.vocabulary import normalize_spec, spec_values
-from .catalog_display import specification_display
+from .vocabulary import normalize_spec, spec_values
+from ..catalog_display import specification_display
 
 MODE = 'missing_ram_only'
 UNITS = {'B', 'KB', 'kB', 'KiB', 'MB', 'MiB', 'GB', 'GiB',
@@ -60,33 +53,3 @@ def validate_enrichment(data):
         raise ValueError('Ogni quantità RAM richiede una fonte e un’evidenza; ROM e VRAM sono escluse.')
     if any(cfg.get('description') for cfg in data.get('configurations', [])):
         raise ValueError('Il pacchetto RAM non modifica le descrizioni delle configurazioni.')
-
-
-def coverage(db):
-    rows = db.scalars(select(Computer).order_by(Computer.id).options(
-        selectinload(Computer.manufacturer),
-        selectinload(Computer.configurations).selectinload(Configuration.specifications))).all()
-    missing = [{'manufacturer': c.manufacturer.name, 'model_name': c.model_name}
-               for c in rows if not has_documented_ram(c)]
-    return {'computers': len(rows), 'with_documented_ram': len(rows) - len(missing),
-            'without_documented_ram': len(missing), 'missing': missing}
-
-
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, required=True)
-    args = parser.parse_args()
-    url = os.getenv('DATABASE_URL')
-    if not url:
-        parser.error('DATABASE_URL deve indicare esplicitamente il database.')
-    engine = create_engine(url)
-    with Session(engine) as db:
-        result = coverage(db)
-        with args.output.open('x', encoding='utf-8') as out:
-            json.dump(result, out, ensure_ascii=False, indent=2)
-        print(json.dumps({key: value for key, value in result.items() if key != 'missing'}))
-    engine.dispose()
-
-
-if __name__ == '__main__':
-    main()

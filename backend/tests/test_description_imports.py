@@ -216,19 +216,3 @@ def test_hundred_records_build_one_matching_index_and_share_one_source(client, m
     assert apply(client, job)['counts'] == {'updated': 100}
     with SessionLocal() as db:
         assert db.scalar(select(func.count()).select_from(Source).where(Source.url == entry()['source']['url'])) == 1
-
-
-def test_imported_text_wins_over_an_automatic_request_already_in_flight(client, monkeypatch):
-    from app import history_sources
-    from test_history import target, page, payload
-    research_job = target(client)
-    imported = upload(client, [entry(model_name='Synthetic History One')])
-    async def research(model, maker):
-        result = await asyncio.to_thread(client.post, f'/api/admin/imports/{imported["id"]}/apply')
-        assert result.status_code == 200 and result.json()['counts'] == {'updated': 1}
-        raw = payload(page())
-        return history_sources.select_result(model, maker, raw), raw
-    monkeypatch.setattr(history_sources, 'research', research)
-    outcome = client.post(f'/api/admin/history/{research_job["id"]}/step').json()
-    assert outcome['counts']['changed'] == 1 and 'updated' not in outcome['counts']
-    assert client.get('/api/computers/1').json()['description'] == TEXT
