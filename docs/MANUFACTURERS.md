@@ -108,8 +108,8 @@ sintetici su un'istanza locale di prova e li elimina al termine. Controlla
 modifica amministrativa, date parziali, fonti, attribuzioni, logo, ricerca, filtri,
 collegamenti azienda/sistemi, temi chiaro/scuro e viewport 320/390 px.
 
-Verifica del 23 novembre 2026: **956 test SQLite superati, due saltati;
-19 test mirati PostgreSQL e 45 test frontend superati**. La suite include
+Verifica del 23 novembre 2026: **958 test SQLite superati, due saltati;
+30 test mirati PostgreSQL e 45 test frontend superati**. La suite include
 protezione dei campi manuali, atomicità, citazioni, cronologie discordanti,
 nomi omonimi, applicazioni ripetute e conservazione delle cancellazioni manuali.
 Build React, build e health Docker Compose superati. Chromium ha verificato

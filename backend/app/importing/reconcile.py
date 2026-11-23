@@ -166,7 +166,14 @@ def apply(db, entity, source_id, target_id, token, note, commit=True, variants=F
                 claim.target_id = target_id
     else:
         from ..manufacturer_profiles import PROFILE_FIELDS,DATE_FIELDS
+        credits={field:base for base,fields in {
+            'description':('description_author','description_source_url','description_license_url'),
+            'logo_url':('logo_author','logo_license','logo_license_url','logo_source_url'),
+        }.items() for field in fields}
         for field in ('country','website',*PROFILE_FIELDS):
+            base=credits.get(field)
+            if base and (not getattr(source,base) or getattr(target,base)!=getattr(source,base)):
+                continue
             if getattr(target, field) is None:
                 setattr(target, field, getattr(source, field))
         for field in DATE_FIELDS:

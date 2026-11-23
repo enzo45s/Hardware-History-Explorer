@@ -123,3 +123,27 @@ def test_report_apply_endpoints_and_manual_rewrite_credit_reset(client):
     profile = client.get(f"/api/manufacturers/{maker['id']}").json()
     assert profile['description_author'] is None and profile['description_source_url'] is None
     assert profile['sources']
+
+
+@pytest.mark.parametrize('curated', [True, False])
+def test_merge_keeps_attribution_bound_to_its_text_and_logo(curated):
+    from app.importing.reconcile import prepare, apply
+    with SessionLocal() as db:
+        source = Manufacturer(name='Apple Computer', description='Testo documentato sintetico.',
+                              description_author='Autore sintetico', description_source_url='https://example.org/text',
+                              logo_url='https://example.org/source.png', logo_author='Autore del logo sintetico')
+        target = Manufacturer(name='Apple', description='Testo curato.' if curated else None,
+                              logo_url='https://example.org/curated.png' if curated else None)
+        db.add_all([source, target]); db.commit(); target_id = target.id; source_id = source.id
+        _, _, _, preview = prepare(db, 'manufacturer', source.id, target.id)
+        apply(db, 'manufacturer', source.id, target.id, preview['token'], 'Revisione sintetica')
+        db.refresh(target)
+        assert target.id == target_id
+        if curated:
+            assert target.description == 'Testo curato.' and target.logo_url.endswith('curated.png')
+            assert target.description_author is None and target.logo_author is None
+        else:
+            assert target.description == 'Testo documentato sintetico.' and target.description_author == 'Autore sintetico'
+            assert target.logo_url.endswith('source.png') and target.logo_author == 'Autore del logo sintetico'
+        audit = db.scalars(select(CatalogReconciliation).where(CatalogReconciliation.entity == 'manufacturer')).one()
+        assert next(m for m in audit.snapshot['manufacturer'] if m['id'] == source_id)['description_author'] == 'Autore sintetico'
