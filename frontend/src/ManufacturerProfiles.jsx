@@ -1,6 +1,7 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { ArrowLeft, ChevronRight, ExternalLink, Factory, Search, BookOpen } from 'lucide-react';
 import { api, allComputers, latestRequest } from './api.js';
+import ComputerCard from './ComputerCard.jsx';
 import './manufacturers.css';
 
 const httpUrl = value => { try { const u = new URL(value); return ['http:', 'https:'].includes(u.protocol) && !u.username && !u.password ? u.href : null; } catch { return null; } };
@@ -52,7 +53,7 @@ export default function ManufacturerProfiles({ id, onOpen, onBack, onOpenCompute
         </div>}
       </section></div>
       <div className="section-title">Sistemi nell’archivio <span>{computers.length} sistemi</span></div><p className="muted">Ordinati per prima commercializzazione. Il catalogo censito può rappresentare solo una parte della produzione dell’azienda.</p>
-      {computers.length ? <div className="catalog-grid">{computers.map(c => <article className="catalog-card" key={c.id}><Cover src={c.image_url} name={c.model_name} year={c.year} className="catalog-photo" /><span className="tag">{c.first_release || 'Data non disponibile'}</span><h3>{c.model_name}</h3>{c.categories.length > 0 && <p>{c.categories.join(' · ')}</p>}<div className="card-foot"><button onClick={() => onOpenComputer(c.id)}>Dettagli <ChevronRight size={15} /></button></div></article>)}</div> : <p className="empty">Non ci sono ancora sistemi associati a questo produttore.</p>}
+      {computers.length ? <div className="catalog-grid">{computers.map(c => <ComputerCard key={c.id} computer={c} Cover={Cover} onOpen={onOpenComputer} />)}</div> : <p className="empty">Non ci sono ancora sistemi associati a questo produttore.</p>}
     </>;
   }
   const countries = [...new Set(manufacturers.map(m => m.country).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'it'));

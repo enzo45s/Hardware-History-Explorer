@@ -430,3 +430,19 @@ Dopo l’aggiornamento dei container: `docker compose -p hhe-import-test exec ap
 Senza `--apply` mostra un’anteprima di sola lettura; l’importazione è esplicita,
 transazionale e ripetibile senza duplicati.
 [Mappature, fonti e limiti](docs/datasets/ibm-ps-2026-11/README.md).
+
+## Anteprime dei sistemi
+
+Il catalogo e l’elenco dei sistemi nella pagina di un produttore usano lo stesso
+riquadro compatto: immagine, categoria, titolo, produttore/data e due righe di
+descrizione. Titoli lunghi e testi estesi vengono troncati; l’altezza rimane
+uniforme anche quando mancano fotografia o descrizione. **Dettagli** apre la
+scheda con il testo completo. Il confronto e il collegamento al produttore
+rimangono disponibili nel catalogo.
+
+La griglia si adatta alla larghezza dello schermo e usa gli stessi caratteri e
+dimensioni nei temi chiaro e scuro. Le anteprime condivise sono implementate in
+`frontend/src/ComputerCard.jsx` e `frontend/src/computer-card.css`; non richiedono
+migrazioni o importazioni. Il test browser dei produttori verifica entrambe le
+viste, altezze e pulsanti allineati, testo corto/lungo/mancante, immagini,
+apertura della descrizione integrale e viewport 320/390/768/1440 px nei due temi.

@@ -62,11 +62,9 @@ h1 em{color:var(--theme-accent, #5d7de8);font-style:normal}
 .card-foot span{display:flex;align-items:center;color:var(--theme-accent, #5c76d8);font-weight:700;font-size:11px}
 .card-foot button,.back{border:0;background:var(--theme-surface-soft, #f1f4ff);color:var(--theme-accent, #5570cc);padding:9px 12px;border-radius:7px;font-size:11px;font-weight:700;display:inline-flex;gap:5px;align-items:center}
 .card-foot button.added,.compare-picks .chosen{background:var(--theme-success-bg, #e1f5ec);color:var(--theme-success-text, #23805a)}
-.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
-.catalog-card{padding:23px}
+.catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:17px}
 .catalog-symbol{height:90px;background:var(--theme-surface-soft, #f1f4fc);border-radius:8px;display:flex;align-items:center;justify-content:center;gap:20px;color:var(--theme-accent, #8ca0d9);margin-bottom:18px}
 .catalog-symbol span{font:700 27px 'Space Grotesk',sans-serif;color:var(--theme-text-muted, #bac6e4)}
-.catalog-card>p:not(.muted){min-height:68px;margin-top:10px}
 .muted{color:var(--theme-text-muted, #98a3b5)!important;font-size:12px;line-height:1.7}
 .charts{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .panel{padding:25px;margin-bottom:15px}
@@ -93,7 +91,7 @@ h1 em{color:var(--theme-accent, #5d7de8);font-style:normal}
 .answer{background:var(--theme-surface-soft, #f4f6ff);border-radius:10px;padding:23px;color:var(--theme-text-secondary, #3c4c6b);line-height:1.8;font-size:14px;white-space:pre-wrap;margin-bottom:20px}
 .error{background:var(--theme-danger-bg, #fff0ee);padding:12px 20px;border-radius:8px;margin-bottom:20px;color:var(--theme-danger-text, #a64b42)}
 .error button{float:right;border:0;background:none}
-@media(max-width:1100px){.catalog-grid{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1100px){
 .content{padding:35px 25px}
 .stats{grid-template-columns:repeat(2,1fr)}
 .charts{grid-template-columns:1fr}
@@ -126,8 +124,6 @@ header{height:50px;padding:0 20px}
 .system-placeholder{height:100%;width:100%;min-height:90px;display:flex;align-items:center;justify-content:center;gap:15px;color:var(--theme-accent, #8ca0d9);background:linear-gradient(135deg,var(--theme-surface-soft, #e8edfc),var(--theme-surface-soft, #f5f7fb))}
 
 .system-placeholder span{font:700 25px 'Space Grotesk',sans-serif;color:var(--theme-text-muted, #b7c4e1)}
-
-.catalog-photo{height:164px;margin-bottom:18px}
 
 .time-content{display:flex;gap:22px;align-items:center;margin-top:14px}
 
