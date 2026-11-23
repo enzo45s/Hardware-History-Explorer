@@ -411,3 +411,12 @@ vecchie tabelle di coda, trasferendo nell’audit le attribuzioni necessarie ai
 testi già acquisiti. Descrizioni, RAM, configurazioni, fonti, prezzi, fotografie
 e originali delle importazioni restano conservati.
 [Dettagli del ritiro e aggiornamento](docs/ADMIN_TOOLS_RETIREMENT.md).
+
+## Arricchimento Digital / DEC
+
+È disponibile un pacchetto documentato per 19 schede DEC esistenti e per i nuovi
+VAX-11/780, VAX-11/750 e GIGI (VK100): descrizioni italiane, specifiche e rettifiche
+puntuali con citazioni. Dopo l’aggiornamento dei container, applicarlo al database
+locale con `docker compose -p hhe-import-test exec api python -m app.importing.dec_research --apply`.
+Senza `--apply` il comando mostra solo un’anteprima; lo stesso pacchetto non si
+applica due volte. [Fonti, limiti, test e istruzioni](docs/datasets/dec-2026-11/README.md).

@@ -11,7 +11,7 @@ MAKERS = {
     'apple': ('Apple', 'Apple Computer', 'Apple Computer Inc.', 'Apple Computer, Inc.', 'Apple Inc.'),
     'ibm': ('IBM', 'International Business Machines', 'International Business Machines Corporation'),
     'commodore': ('Commodore', 'Commodore Business Machines', 'Commodore Business Machines, Inc.', 'Commodore Business Machines (USA)'),
-    'dec': ('DEC', 'Digital Equipment Corporation'),
+    'dec': ('DEC', 'Digital Equipment Corporation', 'Digital Equipment Corp.', 'Digital Equipment', 'Digital'),
     'hp': ('HP', 'Hewlett-Packard', 'Hewlett Packard', 'Hewlett-Packard Company'),
     'asem': ('ASEM', 'ASEM S.p.A.'),
 }
@@ -21,6 +21,8 @@ MODELS = {
               ('Apple III', 'Apple ///'), ('Macintosh 128K', 'Apple Macintosh 128K')),
     'ibm': (('IBM PC 5150', 'IBM Personal Computer 5150', 'IBM Personal Computer Model 5150', 'PC 5150'),),
     'commodore': (('Commodore 64', 'C64'),),
+    'dec': tuple((f'VAX-11/{n}', f'VAX 11/{n}', f'VAX11/{n}', f'VAX 11-{n}', f'DEC VAX-11/{n}')
+                 for n in ('750','780','785')) + (('GIGI','VK100','VK-100','VK 100','DEC GIGI'),),
 }
 
 

@@ -14,7 +14,7 @@ def attribution(computer):
         cache = {}
         cutoff = db.scalar(select(ArchiveReset.reconciliation_cutoff).order_by(ArchiveReset.id.desc()).limit(1)) or 0
         for snapshot in db.scalars(select(CatalogReconciliation.snapshot).where(
-                CatalogReconciliation.entity == 'admin_retirement', CatalogReconciliation.id > cutoff).order_by(CatalogReconciliation.id)):
+                CatalogReconciliation.entity.in_(['admin_retirement','dec_research']), CatalogReconciliation.id > cutoff).order_by(CatalogReconciliation.id)):
             for item in snapshot.get('description_attributions', []):
                 cache.setdefault(item['description_sha256'], []).append(item)
         db.info['retained_description_attributions'] = cache
