@@ -20,11 +20,11 @@ const {chromium}=require('playwright');
     title:title.clientHeight,titleLine:parseFloat(getComputedStyle(title).lineHeight),
     photo:card.querySelector('.catalog-photo').getBoundingClientRect().height};
   }));
-  assert(dimensions.every(d=>d.height<=360&&Math.abs(d.height-dimensions[0].height)<1));
+  assert(dimensions.every(d=>d.height<=460&&Math.abs(d.height-dimensions[0].height)<1));
   assert(dimensions.every(d=>Math.abs(d.footer-dimensions[0].footer)<1
-   &&d.description>0&&d.description<=2*d.descriptionLine+1&&d.description===dimensions[0].description
+   &&d.description>2*d.descriptionLine&&d.description<=4*d.descriptionLine+1&&d.description===dimensions[0].description
    &&d.title>0&&d.title<=2*d.titleLine+1&&d.title===dimensions[0].title
-   &&d.photo>0&&d.photo<150&&d.photo===dimensions[0].photo));
+   &&d.photo>=150&&d.photo<200&&d.photo===dimensions[0].photo));
   const long=page.locator('.catalog-card').filter({has:page.getByRole('heading',{name:model+'B',exact:true})}).locator('.catalog-card-description');
   assert(await long.evaluate(node=>node.scrollHeight>node.clientHeight),'Long descriptions must be clipped in previews.');
   assert.equal(await long.getAttribute('title'),null,'The full description belongs in the detail page.');

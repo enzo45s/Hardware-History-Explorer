@@ -1,13 +1,13 @@
 /* Shared, bounded previews in the catalog and public company profiles. */
 .catalog-card {
   display: grid;
-  grid-template-rows: 104px 20px 44px 18px 40px 34px;
+  grid-template-rows: 160px 20px 44px 18px 80px 34px;
   gap: 8px;
-  height: 334px;
+  height: 430px;
   min-width: 0;
   padding: 16px;
 }
-.catalog-card .catalog-photo {height: 104px; min-height: 0; margin: 0}
+.catalog-card .catalog-photo {height: 160px; min-height: 0; margin: 0}
 .catalog-card > .tag {justify-self: start; max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 3px 7px; line-height: 14px}
 .catalog-card .catalog-card-title {
   margin: 0;
@@ -26,11 +26,11 @@
 .catalog-card-date {flex-shrink: 0; margin-left: auto}
 .catalog-card .catalog-card-description {
   margin: 0;
-  height: 40px;
+  height: 80px;
   min-height: 0;
   line-height: 20px;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   overflow-wrap: anywhere;

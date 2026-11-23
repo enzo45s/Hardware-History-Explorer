@@ -434,8 +434,8 @@ transazionale e ripetibile senza duplicati.
 ## Anteprime dei sistemi
 
 Il catalogo e l’elenco dei sistemi nella pagina di un produttore usano lo stesso
-riquadro compatto: immagine, categoria, titolo, produttore/data e due righe di
-descrizione. Titoli lunghi e testi estesi vengono troncati; l’altezza rimane
+riquadro uniforme: immagine ingrandita, categoria, titolo, produttore/data e
+quattro righe di descrizione. Titoli lunghi e testi estesi vengono troncati; l’altezza rimane
 uniforme anche quando mancano fotografia o descrizione. **Dettagli** apre la
 scheda con il testo completo. Il confronto e il collegamento al produttore
 rimangono disponibili nel catalogo.
