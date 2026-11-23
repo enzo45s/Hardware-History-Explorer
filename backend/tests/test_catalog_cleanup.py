@@ -11,6 +11,32 @@ from app.catalog_store import refresh_pending,status
 from app.importing.engine import stage,apply_job
 
 
+def test_canonical_import_enriches_a_current_sheet_reserved_by_old_aliases(client):
+    from app.import_models import ComputerAlias
+    from app.importing.identity import provider_computer_key
+    with SessionLocal() as db:
+        c=db.get(Computer,1);c.model_name='Current canonical model'
+        c.configurations=[Configuration(variant_name='NTSC',specifications=[
+            Specification(component_type='CPU',property_name='Modello',text_value='6502')])]
+        db.flush()
+        maker,name=provider_computer_key('historical_prices',c.manufacturer.name,'Former model')
+        db.add(ComputerAlias(manufacturer_key=maker,model_key=name,original_name='Former model',computer_id=c.id,
+            original={'configurations':[c.configurations[0].id],'configuration_names':{str(c.configurations[0].id):'NTSC'}}))
+        db.commit();apply(db,prepare(db));db.refresh(c)
+        assert len(c.configurations)==1 and c.configurations[0].variant_name=='Scheda tecnica'
+        record={'manufacturer':c.manufacturer.name,'model_name':c.model_name,
+            'source':{'title':'New technical manual','url':'https://example.org/canonical-technical'},
+            'configurations':[{'variant_name':'Scheda tecnica','specifications':[
+                {'component_type':'CPU','property_name':'Architettura','text_value':'8 bit'}]}]}
+        import json
+        job=stage(db,'manual','canonical.json','json',json.dumps([record]).encode())
+        apply_job(db,job.id)
+        assert job.status=='completed', [(r.status,r.error) for r in job.rows]
+        db.refresh(c)
+        assert len(c.configurations)==1
+        assert any(s.property_name=='Architettura' and s.text_value=='8 bit' for s in c.configurations[0].specifications)
+
+
 def fixture(db):
     c=db.get(Computer,1);c.model_name='Synthetic clean computer'
     c.configurations.clear();c.releases.clear();db.flush()

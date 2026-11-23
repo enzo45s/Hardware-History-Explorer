@@ -375,7 +375,15 @@ def incoming_configuration(db,cid,name,alias=None):
         for identifier,value in names.items():
             if name_key(value)==name_key(name):candidates.add(redirect(db,cid,'Configuration',identifier))
     if len(candidates)>1:raise ValueError('Configurazione storica ambigua dopo la pulizia; seleziona la variante.')
-    return db.get(Configuration,next(iter(candidates))) if candidates else None
+    historical = db.get(Configuration,next(iter(candidates))) if candidates else None
+    if historical is not None or alias:
+        return historical
+    # A canonical sheet may also be reserved by aliases of retired variants.
+    # A new source using its current exact name must enrich that sheet instead
+    # of attempting to insert another row with the same unique name. Former
+    # variant names still follow their historical scopes above.
+    return db.scalar(select(Configuration).where(Configuration.computer_id==cid,
+                                                 Configuration.variant_name==name))
 
 
 def incoming_specification(db,cid,cfg,incoming):
