@@ -22,11 +22,14 @@ export function newComputer() {
 export function newSource() {
   return { title: '', author: '', publisher: '', url: '', source_type: 'website', publication_date: '', access_date: '' };
 }
+export const manufacturerProfileFields = ['legal_name', 'description', 'headquarters', 'founders', 'ceased', 'logo_url', 'logo_author', 'logo_license', 'logo_license_url', 'logo_source_url'];
 export function newManufacturer() {
-  return { name: '', country: '', founded: '', website: '' };
+  return { name: '', country: '', founded: '', website: '', ...Object.fromEntries(manufacturerProfileFields.map(key => [key, ''])), source_ids: [] };
 }
 export function manufacturerPayload(draft) {
-  return { name: draft.name.trim(), country: optional(draft.country), founded: optional(draft.founded), website: optional(draft.website) };
+  return { name: draft.name.trim(), country: optional(draft.country), founded: optional(draft.founded), website: optional(draft.website),
+    ...Object.fromEntries(manufacturerProfileFields.filter(key => Object.hasOwn(draft, key)).map(key => [key, optional(draft[key])])),
+    ...(draft.source_ids !== undefined ? { source_ids: draft.source_ids } : {}) };
 }
 export function computerDraft(computer) {
   return { ...readable(computer, { description: computer.display_description }), configurations: computer.configurations.map(cfg => ({

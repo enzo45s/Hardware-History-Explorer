@@ -103,6 +103,11 @@ jobs:
         env:
           HHE_BASE_URL: http://127.0.0.1:8080/
         run: npm run test:browser:admin
+      - name: Browser public manufacturer profiles
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:manufacturers
       - name: Browser reset on disposable Compose database
         working-directory: frontend
         env:

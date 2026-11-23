@@ -45,8 +45,9 @@ dopo il riavvio: i dati dimostrativi non vengono ricreati.
 
 Apri **Produttori → Nuovo produttore** oppure scegli un elemento dell'elenco.
 Il nome è obbligatorio; paese, data di fondazione e sito HTTP(S) sono facoltativi.
-La data di fondazione richiede `AAAA-MM-GG`, coerentemente con la tabella
-esistente: lascia vuoto se conosci soltanto l'anno, senza inventare un giorno.
+Fondazione e cessazione accettano `AAAA`, `AAAA-MM` oppure `AAAA-MM-GG`,
+con precisione conservata. Il profilo include descrizione, sede, fondatori,
+logo e fonti: vedi [Produttori](MANUFACTURERS.md).
 Gli URL non possono contenere credenziali. I nomi duplicati sono rifiutati
 anche se differiscono soltanto per maiuscole, spazi o forme Unicode equivalenti.
 
@@ -87,10 +88,12 @@ La GET pubblica `/api/computers/{id}` conserva la struttura della scheda. Le ris
 
 La PUT riceve nome, produttore e i dati del modulo. Le liste `category_ids`, `source_ids`, `releases` e `configurations` omesse non sostituiscono le relazioni esistenti; una lista vuota ne richiede esplicitamente lo svuotamento. Le liste annidate del modulo sono complete e mantengono gli ID delle righe esistenti. ID appartenenti ad altri calcolatori o configurazioni sono rifiutati. Dati e riferimenti vengono validati prima dell'applicazione; un errore impedisce salvataggi parziali.
 
-Per i produttori, POST/PUT ricevono `name`, `country`, `founded`, `website`.
+Per i produttori, POST/PUT ricevono `name`, `country`, `founded`, `website`
+e i [campi del profilo aziendale](MANUFACTURERS.md).
 La PUT preserva i campi facoltativi omessi; `null` ne richiede lo svuotamento.
 Le DELETE riuscite restituiscono 204, gli ID inesistenti 404. Non sono
-necessarie nuove tabelle o migrazioni per queste funzioni.
+necessarie operazioni manuali sui dati: le colonne del profilo e i collegamenti
+alle fonti vengono aggiunti automaticamente all'avvio dell'API.
 
 Il pannello usa la modalità locale single-user già prevista dal progetto, senza login separato. Le porte Docker rimangono limitate a localhost. Un'eventuale esposizione remota richiede un sistema di autenticazione e autorizzazione.
 

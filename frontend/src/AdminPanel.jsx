@@ -8,6 +8,7 @@ import PhotoPanel from './PhotoPanel.jsx';
 import HistoryPanel from './HistoryPanel.jsx';
 import CatalogQualityPanel from './CatalogQualityPanel.jsx';
 import ClassificationPanel from './ClassificationPanel.jsx';
+import { ManufacturerLogo } from './ManufacturerProfiles.jsx';
 
 function Field({ label, value, onChange, wide = false, multiline = false, ...props }) {
   const Tag = multiline ? 'textarea' : 'input';
@@ -41,16 +42,32 @@ function ReferenceCreator({ label, path, onCreated }) {
   </div>{error && <p className="inline-error" role="alert">{error}</p>}</div>;
 }
 
-function ManufacturerEditor({ draft, setDraft }) {
+function ManufacturerEditor({ draft, setDraft, sources }) {
+  const [sourceQuery, setSourceQuery] = useState('');
   const set = (key, value) => setDraft({ ...draft, [key]: value });
   return <>
     <div className="admin-grid">
       <Field label="Nome del produttore" required maxLength={160} value={draft.name} onChange={v => set('name', v)} />
       <Field label="Paese" maxLength={100} value={draft.country} onChange={v => set('country', v)} />
-      <Field label="Data di fondazione" type="date" value={draft.founded} onChange={v => set('founded', v)} />
+      <Field label="Denominazione storica" maxLength={250} value={draft.legal_name} onChange={v => set('legal_name', v)} />
+      <Field label="Sede storica" maxLength={250} value={draft.headquarters} onChange={v => set('headquarters', v)} />
+      <Field label="Fondatori" maxLength={500} value={draft.founders} onChange={v => set('founders', v)} />
+      <Field label="Data di fondazione" placeholder="AAAA, AAAA-MM o AAAA-MM-GG" value={draft.founded} onChange={v => set('founded', v)} />
+      <Field label="Data di cessazione" placeholder="Lascia vuoto se sconosciuta o ancora attiva" value={draft.ceased} onChange={v => set('ceased', v)} />
       <Field label="Sito web" type="url" maxLength={500} placeholder="https://…" value={draft.website} onChange={v => set('website', v)} />
     </div>
-    <p className="muted">Paese, data e sito sono facoltativi. Lascia vuote le informazioni sconosciute; la data richiede giorno, mese e anno.</p>
+      <Field label="Profilo storico in italiano" multiline wide rows={7} maxLength={20000} value={draft.description} onChange={v => set('description', v)} />
+    <p className="muted">Inserisci solo le informazioni documentate. Le date accettano anche il solo anno; lascia vuote quelle sconosciute.</p>
+    <h3>Logo e attribuzione</h3><div className="admin-grid">
+      <Field label="URL del logo" type="url" wide maxLength={800} placeholder="https://…" value={draft.logo_url} onChange={v => set('logo_url', v)} />
+      <Field label="Autore del logo" maxLength={350} value={draft.logo_author} onChange={v => set('logo_author', v)} />
+      <Field label="Licenza o condizioni del logo" maxLength={160} value={draft.logo_license} onChange={v => set('logo_license', v)} />
+      <Field label="Fonte del logo" type="url" maxLength={800} value={draft.logo_source_url} onChange={v => set('logo_source_url', v)} />
+      <Field label="URL delle condizioni del logo" type="url" maxLength={800} value={draft.logo_license_url} onChange={v => set('logo_license_url', v)} />
+    </div>{draft.logo_url && <ManufacturerLogo manufacturer={draft} />}
+    <h3>Fonti del profilo</h3><Field label="Cerca una fonte aziendale" value={sourceQuery} onChange={setSourceQuery} />
+    <Choices label="Fonti aziendali" options={sources.filter(s => (draft.source_ids || []).includes(s.id) || sourceQuery && s.title.toLocaleLowerCase().includes(sourceQuery.toLocaleLowerCase())).slice(0, 60)} value={draft.source_ids || []} onChange={v => set('source_ids', v)} />
+    <p className="muted">Le fonti si creano nella sezione Fonti e possono essere associate a più schede. Il logo deve avere condizioni d’uso compatibili; non viene ricolorato dal tema.</p>
     {draft.id && <p className="muted">Calcolatori collegati: <b>{draft.computer_count}</b>.
       {draft.computer_count > 0 && ' Per eliminare questo produttore, riassegna prima i suoi calcolatori a un altro produttore oppure elimina le schede che non servono.'}</p>}
   </>;
@@ -259,7 +276,7 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onD
       {!draft ? <div className="admin-empty"><Pencil size={30} /><h3>Scegli un elemento oppure creane uno nuovo</h3><p>Le modifiche vengono applicate solo quando premi Salva.</p></div> : <form onSubmit={save}>
         <fieldset className="admin-form-fields" disabled={busy}>
           <div className="admin-section"><h2>{draft.id ? 'Modifica ' : 'Nuovo '}{entity.singular}</h2>{dirty && <span className="admin-unsaved">Modifiche non salvate</span>}</div>
-          {section === 'computers' ? <ComputerEditor draft={draft} setDraft={change} meta={meta} sources={sources} reload={reload} onReferenceChange={onSaved} /> : section === 'manufacturers' ? <ManufacturerEditor draft={draft} setDraft={change} /> : <SourceEditor draft={draft} setDraft={change} />}
+          {section === 'computers' ? <ComputerEditor draft={draft} setDraft={change} meta={meta} sources={sources} reload={reload} onReferenceChange={onSaved} /> : section === 'manufacturers' ? <ManufacturerEditor draft={draft} setDraft={change} sources={sources} /> : <SourceEditor draft={draft} setDraft={change} />}
           <div className="admin-save-bar"><button type="submit" className="admin-primary"><Save size={16} />{busy ? 'Salvataggio…' : 'Salva ' + entity.singular}</button>
             <button type="button" onClick={() => { if (discard()) { setDraft(null); setDirty(false); setError(''); setMessage(''); } }}><X size={16} />Annulla</button>
             {section === 'computers' && draft.id && !dirty && <button type="button" onClick={() => onOpenComputer(draft.id)}><ExternalLink size={16} />Apri scheda e fotografie</button>}

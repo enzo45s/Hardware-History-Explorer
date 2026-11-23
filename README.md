@@ -2,6 +2,10 @@
 
 Web app per esplorare la storia dei calcolatori commerciali: timeline, catalogo, gallerie fotografiche, schede, confronti, statistiche e assistente AI basato sui dati archiviati.
 
+La sezione [Produttori](docs/MANUFACTURERS.md) permette di esplorare le aziende
+con logo, profilo storico, fonti e sistemi censiti. Le schede sono collegate
+ai computer e si arricchiscono da Amministrazione → Produttori.
+
 La navigazione fra sezioni, l'apertura/chiusura delle schede e il cambio di
 sezione amministrativa riportano la pagina in cima. Aggiornamenti dei dati e
 ricerche nella stessa vista conservano la posizione di lettura.
