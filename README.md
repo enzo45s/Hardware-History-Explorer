@@ -420,3 +420,13 @@ puntuali con citazioni. Dopo l’aggiornamento dei container, applicarlo al data
 locale con `docker compose -p hhe-import-test exec api python -m app.importing.dec_research --apply`.
 Senza `--apply` il comando mostra solo un’anteprima; lo stesso pacchetto non si
 applica due volte. [Fonti, limiti, test e istruzioni](docs/datasets/dec-2026-11/README.md).
+
+## Nomi commerciali e schede IBM PS
+
+Il pacchetto IBM rinomina i codici PS/2 nei nomi commerciali, conserva i codici come
+alias con gli allestimenti originali e arricchisce le caratteristiche. Aggiunge
+quattro famiglie PS/1 e quattro notebook PS/2 Note / PS/note se assenti.
+Dopo l’aggiornamento dei container: `docker compose -p hhe-import-test exec api python -m app.importing.ibm_ps_research --apply`.
+Senza `--apply` mostra un’anteprima di sola lettura; l’importazione è esplicita,
+transazionale e ripetibile senza duplicati.
+[Mappature, fonti e limiti](docs/datasets/ibm-ps-2026-11/README.md).

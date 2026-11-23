@@ -25,6 +25,19 @@ MODELS = {
                  for n in ('750','780','785')) + (('GIGI','VK100','VK-100','VK 100','DEC GIGI'),),
 }
 
+# Commercial spelling aliases only. Machine type/model codes deliberately stay
+# separate: their ComputerAlias records retain hardware and price scopes.
+from .ibm_ps_names import FAMILIES as IBM_PS_FAMILIES
+MODELS['ibm'] += tuple((name, 'IBM '+name) for name in IBM_PS_FAMILIES)
+MODELS['ibm'] += tuple((name, 'IBM '+name) for name in (
+    'PS/1 Model 2011', 'PS/1 Model 2121', 'PS/1 Model 2133', 'PS/1 Model 2168',
+    'PS/2 Note N33 SX', 'PS/2 Note N51 SX', 'PS/note 182', 'PS/note 425'))
+MODELS['ibm'] += (('PS/note 425', 'ThinkPad 350', 'IBM ThinkPad 350'),)
+MODELS['ibm'] += tuple((f'PS/1 Model {code}', f'PS/1 {code}', f'IBM PS/1 {code}')
+                      for code in ('2011','2121','2133','2168'))
+MODELS['ibm'] += tuple((f'PS/2 Note {code} SX', f'PS/2 Model {code} SX', f'IBM PS/2 Model {code} SX',
+                       f'PS/2 Note {code}SX', f'IBM PS/2 Note {code}SX') for code in ('N33','N51'))
+
 
 def maker_key(name):
     normalized = name_key(name)

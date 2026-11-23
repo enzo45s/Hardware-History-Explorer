@@ -1,0 +1,86 @@
+{
+  "before_computers": 1136,
+  "after_computers": 1142,
+  "renamed": 8,
+  "merged": 2,
+  "new_models": 8,
+  "researched_models": 14,
+  "technical_assertions": 143,
+  "exact_assertions_corrected": 24,
+  "descriptions_updated": 13,
+  "curated_descriptions_preserved": 1,
+  "unchanged_other_computers": 1128,
+  "existing_releases_and_prices_preserved": 1136,
+  "photographs_preserved": 605,
+  "original_import_payloads_preserved": 3049,
+  "retained_commercial_card_id": 560,
+  "model80_card_id": 558,
+  "scope": "Separate PostgreSQL clone; no remote write to Mac.",
+  "package_sha256": "ebad22be86271bff7977524bf08142839a1454d1b336ddb13f31b373c5633cea",
+  "checks": {
+    "sqlite": {
+      "passed": 839,
+      "skipped": 2
+    },
+    "postgresql": {
+      "passed": 43,
+      "groups": [
+        41,
+        2
+      ],
+      "includes_both_sqlite_skips": true
+    },
+    "latest_spelling_alias_and_dec_regressions": 29,
+    "frontend_tests": 45,
+    "react_build": "passed; pre-existing bundle-size warning",
+    "docker_compose": "build/start/health passed",
+    "browser": "14 IBM PS cards, old-code search, two Model80 configurations and prices, PS1 2011 data and citations, 390px layout passed",
+    "second_apply": "already_applied; zero changes"
+  },
+  "used_sources": {
+    "sales1989": {
+      "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+      "document_sha256": "09a53605f8d373301dfb0523961b3b7f647df392c18a6d86e8d82a0df6e9eef3"
+    },
+    "model35": {
+      "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+      "document_sha256": "8027c18c95d64c5fce473b5dbfc612533a39cdb750ccd9d1dfcbcd2e149b2a4b"
+    },
+    "tpvol1": {
+      "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+      "document_sha256": "692ccb21cc0e8c76c141970081eb67470a17ebafffa4dbe04f634c17782d9bcc"
+    },
+    "ca16": {
+      "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+      "document_sha256": "b6441e30ef0b03402970bc506daaf2d8ab046b6b08d8030dffe657b93ef9c314"
+    },
+    "c586": {
+      "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+      "document_sha256": "55e3d9333d08ac66cfb6fbd7d36b12207913ac82d07edc59da90c5ff5dba2362"
+    },
+    "a8ce": {
+      "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+      "document_sha256": "190118adf496a5d8ab028294cc2bae73ed5641b33c0a4fdcb95835cb64a09d85"
+    },
+    "ps1tips": {
+      "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/bcaa.htm",
+      "document_sha256": "3db35d02c0627ead35c9d6dc2b9e017e995c90f6cab99bee795928beab3392d7"
+    },
+    "wiki1": {
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1374694288"
+    },
+    "wiki2": {
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538"
+    },
+    "wikinote": {
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470"
+    }
+  },
+  "limitations": [
+    "Documenti IBM e fonti enciclopediche consultati selettivamente; nessuna redistribuzione di manuali o immagini.",
+    "Alcune pagine Ardent Tool hanno restituito 403 e il PS/1 Reference Book 404: non usate né aggirate.",
+    "PS/note 182: RAM e frequenza non sufficientemente documentate; lasciate sconosciute.",
+    "Anni di lancio 2121, 2133 e 2168 non inventati a partire dalle date di aggiornamento dei documenti di supporto.",
+    "Prezzi e fotografie esistenti conservati. Le offerte dei due Model 80 restano distinte e collegate agli originali."
+  ]
+}

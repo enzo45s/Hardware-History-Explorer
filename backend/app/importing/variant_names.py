@@ -7,6 +7,12 @@ from ..catalog_names import catalog_name, video_only_variant
 
 def variant_name(manufacturer, name):
     text = regional_name(catalog_name(name))
+    if maker_key(manufacturer) == 'ibm':
+        from .ibm_ps_names import commercial_name
+        canonical = commercial_name(text)
+        if canonical and canonical != text:
+            return {'name': canonical, 'kind': 'product_configurations',
+                'reason': 'Nome commerciale IBM; codice macchina e dotazione conservati nelle configurazioni e negli alias.'}
     if maker_key(manufacturer) == 'commodore':
         match = re.fullmatch(r'(?:Commodore\s+)?PET\s*2001(?:\s*-?\s*(?:[BN]\s*-?\s*(?:8|16|32)|[48]))?', text, re.I)
         if match:
