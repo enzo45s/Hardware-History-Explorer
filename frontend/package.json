@@ -18,7 +18,8 @@
     "test:browser:admin": "node tests/browser/admin.cjs",
     "test:browser:bulk": "node tests/browser/bulk1000bit.cjs",
     "test:browser:reset": "node tests/browser/reset.cjs",
-    "test:browser:manufacturers": "node tests/browser/manufacturers.cjs"
+    "test:browser:manufacturers": "node tests/browser/manufacturers.cjs",
+    "test:browser:home": "node tests/browser/home.cjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

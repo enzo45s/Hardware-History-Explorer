@@ -497,3 +497,20 @@ contenuti già curati. Dopo aggiornamento del branch e ricostruzione dell’API:
 `docker compose -p hhe-import-test exec api python -m app.manufacturer_enrichment --package app/importing/data/manufacturers-deep-2026-11-v1.json`.
 Il comando applica il pacchetto; ripeterlo non duplica fonti o sostituisce
 valori esistenti. [Fonti, diritti, lacune e istruzioni per il Mac](docs/datasets/manufacturers-deep-2026-11/README.md).
+
+## Pagina di benvenuto: museo digitale
+
+HHE si apre su **Benvenuto**, con una macchina in vetrina, percorsi verso catalogo,
+timeline e produttori, sistemi selezionati e conteggi letti dal database locale.
+La barra laterale continua a raggiungere tutte le sezioni; **Benvenuto** riapre
+la home. I collegamenti aprono le schede reali e i periodi della timeline.
+
+L’aggiornamento richiede soltanto la ricostruzione di API e frontend, senza import
+o migrazioni del database:
+
+```bash
+git pull --ff-only
+docker compose -p hhe-import-test up -d --build --wait --wait-timeout 900
+```
+
+[Selezione dei sistemi, navigazione, fotografie e verifiche](docs/HOME_PAGE.md).

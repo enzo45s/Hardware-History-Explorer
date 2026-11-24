@@ -1,0 +1,151 @@
+/* Museum entrance only: existing sidebar, screens and shared fonts are retained. */
+.home-page {color: var(--theme-text-primary, #33445b)}
+.home-page h2, .home-page h3 {font-family: 'Space Grotesk', sans-serif; color: var(--theme-text-strong, #17243b); margin: 0; letter-spacing: -.7px; line-height: 1.3}
+.home-page h2 {font-size: 26px}
+.home-page h3 {font-size: 18px}
+.home-page p {margin: 0}
+.home-page button {font: inherit; cursor: pointer; appearance: none}
+.home-page .eyebrow {display: flex; gap: 9px; align-items: center; margin: 0; font-size: 10px; letter-spacing: 1.8px}
+.home-dot {width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex-shrink: 0}
+.home-hero {display: grid; grid-template-columns: 1fr 1.03fr; gap: 30px; align-items: center}
+.home-hero h1 {font-size: clamp(42px, 4.1vw, 66px); letter-spacing: -2.8px; line-height: 1.07; margin: 21px 0}
+.home-intro {max-width: 405px; font-size: 14px; line-height: 1.85; color: var(--theme-text-secondary, #68768c)}
+.home-actions {display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 27px}
+.home-page .home-button {display: inline-flex; align-items: center; justify-content: center; gap: 11px; padding: 12px 15px; border: 1px solid var(--theme-border, #e2e7ef); border-radius: 7px; background: var(--theme-surface, white); color: var(--theme-text-strong, #17243b); font-size: 11px; font-weight: 700; line-height: 1.5}
+.home-page .home-button.primary {background: var(--theme-accent, #5976df); border-color: var(--theme-accent, #5976df); color: var(--theme-on-accent, white)}
+.home-button:hover, .home-path:hover, .home-exhibit:hover {transform: translateY(-2px)}
+.home-button, .home-path, .home-exhibit {transition: transform .18s, border-color .18s}
+.home-page .home-micro-note {display: flex; gap: 8px; align-items: center; font-size: 10px; color: var(--theme-text-muted, #7c8aa0); margin-top: 22px; line-height: 1.7}
+.home-micro-note svg {flex-shrink: 0}
+.home-featured {min-width: 0}
+.home-showcase {border: 1px solid var(--theme-border, #e2e7ef); background: var(--theme-surface, white); border-radius: 12px; overflow: hidden; box-shadow: 0 13px 38px var(--theme-shadow, #14213b0a)}
+.home-showcase-image {position: relative; height: 265px; background: #fff; overflow: hidden}
+.home-museum-label {position: absolute; z-index: 2; top: 17px; left: 20px; right: 80px; font-size: 9px; letter-spacing: 1.5px; font-weight: 600; color: #68768c; overflow: hidden; text-overflow: ellipsis; white-space: nowrap}
+.home-exhibit-year {position: absolute; z-index: 2; right: 20px; top: 12px; color: #68768c; font: 600 19px/1.4 'Space Grotesk', sans-serif; letter-spacing: -.5px}
+.home-showcase-image .home-hero-cover {position: relative; height: 100%; border-radius: 0; background: transparent; padding: 37px 15px 20px}
+.home-hero-cover img {width: 100%; height: 100%; object-fit: contain; background: white}
+.home-showcase-caption {display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--theme-border, #e2e7ef); padding: 18px 21px; min-width: 0}
+.home-showcase-caption>div {min-width: 0}
+.home-showcase-caption h2 {font-size: 19px; overflow-wrap: anywhere}
+.home-showcase-caption p {font-size: 10px; color: var(--theme-text-muted, #68768c); margin-top: 5px}
+.home-showcase-caption button {display: grid; place-items: center; width: 35px; height: 35px; border: 1px solid var(--theme-border, #e2e7ef); border-radius: 50%; background: transparent; color: var(--theme-accent, #5976df); flex-shrink: 0}
+.home-showcase-caption button:hover {background: var(--theme-accent-soft, #edf1ff)}
+.home-page .home-photo-credit {font-size: 9px; color: var(--theme-text-muted, #68768c); text-align: right; line-height: 1.6; margin-top: 7px; overflow-wrap: anywhere}
+.home-photo-credit a, .home-text-credit a {color: inherit; text-underline-offset: 2px}
+.home-empty-showcase {padding: 36px 25px; min-height: 300px; display: flex; flex-direction: column; justify-content: center; gap: 18px; border: 1px dashed var(--theme-border, #d4dcec); border-radius: 12px; color: var(--theme-text-muted, #68768c)}
+.home-empty-showcase h2 {font-size: 24px}
+.home-empty-showcase p {font-size: 13px; line-height: 1.8}
+.home-stats {display: flex; align-items: center; gap: 0; border-top: 1px solid var(--theme-border, #e2e7ef); border-bottom: 1px solid var(--theme-border, #e2e7ef); padding: 21px 0; margin-top: 34px}
+.home-stat {display: flex; gap: 12px; align-items: center; flex: 1; min-width: 0}
+.home-stat:not(:first-child) {padding-left: 26px; border-left: 1px solid var(--theme-border, #e2e7ef)}
+.home-stat strong {font: 500 29px/1.2 'Space Grotesk', sans-serif; letter-spacing: -1px; color: var(--theme-text-strong, #17243b)}
+.home-stat span {font-size: 10px; color: var(--theme-text-muted, #68768c); line-height: 1.7}
+.home-source-stat {gap: 10px}
+.home-source-stat svg {color: var(--theme-accent, #5976df); flex-shrink: 0}
+.home-source-stat b {display: block; color: var(--theme-text-primary, #33445b); font-size: 11px; font-weight: 600}
+.home-paths-section {margin-top: 35px}
+.home-section-heading {display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 21px}
+.home-section-heading .eyebrow, .home-makers .eyebrow {font-size: 8px; margin-bottom: 8px}
+.home-section-heading p:not(.eyebrow), .home-makers p:not(.eyebrow) {font-size: 11px; color: var(--theme-text-muted, #68768c); line-height: 1.8}
+.home-paths {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px}
+.home-page .home-path {display: flex; flex-direction: column; text-align: left; border: 1px solid var(--theme-border, #e2e7ef); border-radius: 9px; background: var(--theme-surface, white); padding: 20px; min-height: 190px}
+.home-path:hover, .home-exhibit:hover {border-color: var(--theme-border-active, #a8b9ee)}
+.home-path-top {display: flex; width: 100%; justify-content: space-between; align-items: center; color: var(--theme-accent, #5976df); margin-bottom: 17px}
+.home-path-top span {font-size: 9px; color: var(--theme-text-muted, #68768c); letter-spacing: 1px}
+.home-path h3 {font-size: 17px; margin-bottom: 7px}
+.home-path p {font-size: 11px; color: var(--theme-text-muted, #68768c); line-height: 1.75; margin-bottom: 16px}
+.home-path-foot {display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; font-size: 10px; font-weight: 600; color: var(--theme-accent, #5976df)}
+.home-path-foot svg {flex-shrink: 0}
+.home-collection {margin-top: 39px}
+.home-page .home-link {display: inline-flex; align-items: center; gap: 8px; border: 0; background: transparent; padding: 0; color: var(--theme-accent, #5976df); font-size: 11px; font-weight: 600; line-height: 1.6; text-align: left}
+.home-link:hover {text-decoration: underline; text-underline-offset: 4px}
+.home-link svg {flex-shrink: 0}
+.home-exhibits {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px}
+.home-exhibit {display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--theme-border, #e2e7ef); border-radius: 9px; background: var(--theme-surface, white)}
+.home-exhibit-image {position: relative; background: white; height: 160px}
+.home-exhibit-image .home-card-cover {height: 100%; background: white; border-radius: 0; padding: 13px}
+.home-card-cover img {object-fit: contain; background: white}
+.home-page .home-date {position: absolute; left: 12px; top: 12px; background: #f6f7faef; color: #34445c; border: 1px solid #e4e7eb; border-radius: 4px; padding: 4px 7px; font-size: 9px; line-height: 1.4}
+.home-exhibit-info {display: flex; flex-direction: column; flex: 1; padding: 17px 18px}
+.home-category {color: var(--theme-accent, #5976df); font-size: 8px; letter-spacing: 1.2px; font-weight: 700; text-transform: uppercase; margin-bottom: 7px!important}
+.home-exhibit h3 {font-size: 17px; overflow-wrap: anywhere}
+.home-page .home-card-caption {margin-top: 8px; font-size: 11px; line-height: 1.7; color: var(--theme-text-muted, #68768c); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden}
+.home-page .home-text-credit {font-size: 9px; line-height: 1.6; color: var(--theme-text-muted, #68768c); margin-top: 8px; overflow-wrap: anywhere}
+.home-page .home-exhibit-open {display: flex; justify-content: space-between; align-items: center; gap: 9px; margin-top: auto; padding: 17px 0 0; border: 0; background: transparent; color: var(--theme-accent, #5976df); font-size: 10px; font-weight: 600; text-align: left}
+.home-exhibit-open svg {flex-shrink: 0}
+.home-timeline {padding: 27px 29px; margin-top: 36px; border: 1px solid var(--theme-border, #e2e7ef); border-radius: 10px; background: var(--theme-surface, white)}
+.home-timeline h2 {font-size: 23px}
+.home-timeline .home-section-heading p:not(.eyebrow) {margin-top: 7px}
+.home-eras {display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 26px}
+.home-page .home-era {position: relative; background: transparent; border: 0; border-top: 2px solid var(--theme-border, #e2e7ef); padding: 16px 0 0; text-align: left}
+.home-era:before {content: ''; position: absolute; width: 7px; height: 7px; background: var(--theme-accent, #5976df); border-radius: 50%; left: 0; top: -4px}
+.home-era strong {font: 600 20px/1.4 'Space Grotesk', sans-serif; color: var(--theme-accent, #5976df); letter-spacing: -.5px; display: block}
+.home-era span {display: block; font-size: 11px; line-height: 1.7; color: var(--theme-text-muted, #68768c); margin-top: 6px}
+.home-era:hover strong {text-decoration: underline; text-underline-offset: 4px}
+.home-makers {display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 32px; padding-bottom: 25px; border-bottom: 1px solid var(--theme-border, #e2e7ef)}
+.home-makers h2 {font-size: 23px}
+.home-makers p:not(.eyebrow) {margin-top: 9px; max-width: 420px}
+.home-maker-names {display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 9px; max-width: 400px}
+.home-page .home-maker-names button:not(.home-link) {font-size: 11px; line-height: 1.6; color: var(--theme-text-secondary, #68768c); border: 1px solid var(--theme-border, #e2e7ef); background: var(--theme-surface, white); padding: 7px 11px; border-radius: 5px}
+.home-maker-names button:hover {border-color: var(--theme-border-active, #a8b9ee)}
+.home-maker-names button {max-width: 100%; overflow-wrap: anywhere}
+.home-maker-names .home-link {margin-top: 4px}
+.home-tools {display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 25px}
+.home-tools p {font-size: 11px; color: var(--theme-text-muted, #68768c)}
+.home-tools>div {display: flex; gap: 23px}
+.home-footer {display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; font-size: 10px; color: var(--theme-text-muted, #68768c); border-top: 1px solid var(--theme-border, #e2e7ef); margin-top: 26px; padding-top: 18px}
+@media(max-width:1100px) {
+  .home-hero {gap: 22px}
+  .home-hero h1 {font-size: 46px; letter-spacing: -2px}
+  .home-intro {font-size: 12px}
+  .home-page .home-button {font-size: 10px; padding: 11px 12px}
+  .home-showcase-image {height: 235px}
+  .home-stat:not(:first-child) {padding-left: 15px}
+  .home-stat {gap: 8px}
+  .home-stat strong {font-size: 25px}
+  .home-paths {gap: 11px}
+  .home-page .home-path {padding: 16px}
+  .home-path h3 {font-size: 16px}
+  .home-section-heading>p {display: none}
+}
+@media(max-width:900px) {
+  .home-hero {grid-template-columns: 1fr}
+  .home-featured {max-width: 560px; width: 100%}
+  .home-intro {font-size: 14px; max-width: 500px}
+  .home-paths {grid-template-columns: 1fr}
+  .home-page .home-path {min-height: 0}
+  .home-path p {max-width: none}
+  .home-exhibits {grid-template-columns: 1fr}
+  .home-exhibit {display: grid; grid-template-columns: minmax(110px, 35%) minmax(0, 1fr)}
+  .home-exhibit-image {height: 100%; min-height: 170px}
+  .home-eras {grid-template-columns: 1fr 1fr}
+  .home-makers {align-items: flex-start; flex-direction: column; gap: 18px}
+  .home-maker-names {justify-content: flex-start}
+  .home-stats {flex-wrap: wrap; row-gap: 18px}
+  .home-stat {flex-basis: 50%}
+  .home-source-stat {flex-basis: 100%; border-left: 0!important; border-top: 1px solid var(--theme-border, #e2e7ef); padding: 15px 0 0!important}
+  .home-tools {flex-direction: column; align-items: flex-start; gap: 15px}
+}
+@media(max-width:700px) {
+  .home-hero h1 {font-size: clamp(40px, 12vw, 53px); letter-spacing: -2.2px}
+  .home-page .home-button {font-size: 11px; padding: 12px 13px}
+  .home-actions {gap: 9px; margin-top: 22px}
+  .home-page .eyebrow {font-size: 9px; letter-spacing: 1.5px}
+  .home-page h2 {font-size: 24px}
+  .home-showcase-caption h2 {font-size: 19px}
+  .home-stat strong {font-size: 29px}
+  .home-stats {margin-top: 25px}
+  .home-section-heading {align-items: center}
+  .home-section-heading .eyebrow, .home-makers .eyebrow {font-size: 8px}
+  .home-path h3 {font-size: 18px}
+  .home-page .home-path {padding: 18px}
+  .home-collection {margin-top: 31px}
+  .home-section-heading>.home-link {font-size: 10px; max-width: 110px}
+  .home-timeline {padding: 22px 19px; margin-top: 28px}
+  .home-timeline .home-section-heading {align-items: flex-start; flex-direction: column}
+  .home-era strong {font-size: 19px}
+  .home-tools>div {flex-wrap: wrap; gap: 14px}
+}
+@media(prefers-reduced-motion:reduce) {
+  .home-button, .home-path, .home-exhibit {transition: none}
+}

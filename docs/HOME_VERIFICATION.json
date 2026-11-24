@@ -1,0 +1,180 @@
+{
+  "database": "isolated PostgreSQL clone",
+  "all_tables_preserved": true,
+  "tables": {
+    "archive_resets": {
+      "rows": 2,
+      "hash": "8b2755a718ce6309bf58a79757818b6a"
+    },
+    "bit1000_bulk_targets": {
+      "rows": 3315,
+      "hash": "99dc280f8ccf22613fe412dab28593a5"
+    },
+    "bit1000_bulk_jobs": {
+      "rows": 3,
+      "hash": "3ddad7af7539b2dfa58b048ecc129a27"
+    },
+    "catalog_reconciliations": {
+      "rows": 297,
+      "hash": "a288f610cce2c075f6c6ef7fcab8c87a"
+    },
+    "computer_images": {
+      "rows": 620,
+      "hash": "eca59c54223e98fe729fa387f87e5766"
+    },
+    "computer_aliases": {
+      "rows": 140,
+      "hash": "13c3e572b9f326a06a5e5137b03d2873"
+    },
+    "categories": {
+      "rows": 13,
+      "hash": "efe88d3f85471ff805cf0ddd45950c8c"
+    },
+    "commons_photo_jobs": {
+      "rows": 6,
+      "hash": "dd27236f63681d255f3742e8eb4df2b0"
+    },
+    "bit1000_bulk_pages": {
+      "rows": 7696,
+      "hash": "3c72e91a4aac45e2754294dd4668da99"
+    },
+    "commons_photo_items": {
+      "rows": 5203,
+      "hash": "59d5b736e143940eb321425334603ad7"
+    },
+    "computer_sources": {
+      "rows": 5140,
+      "hash": "4f6bf2bd7a99401148847838fbe55c0c"
+    },
+    "fact_sources": {
+      "rows": 959,
+      "hash": "fb2622b3f40a4b722bb067f7ef8e5bbb"
+    },
+    "facts": {
+      "rows": 959,
+      "hash": "bce621784056078ecf6dcedc9a689263"
+    },
+    "configurations": {
+      "rows": 1190,
+      "hash": "c24a0abd2621b01fbbab46a28e103409"
+    },
+    "computers": {
+      "rows": 1152,
+      "hash": "dfc0f919d057474b73efee99aa60e479"
+    },
+    "import_rows": {
+      "rows": 10976,
+      "hash": "3facf9654186d20f1021fae9a70ae650"
+    },
+    "import_identities": {
+      "rows": 2616,
+      "hash": "ce87bd3148687ad90e59bbd34c7746c7"
+    },
+    "markets": {
+      "rows": 19,
+      "hash": "158805930d71092de1c7ad855e857412"
+    },
+    "import_jobs": {
+      "rows": 3055,
+      "hash": "7a6d424a82a7d60cb7fe12ff2f2bc9cd"
+    },
+    "import_claims": {
+      "rows": 72969,
+      "hash": "15c6e419971b86d5f912af3fc15d79c5"
+    },
+    "release_sources": {
+      "rows": 1842,
+      "hash": "cf348613e703f9aef65fd18995f3d033"
+    },
+    "review_sources": {
+      "rows": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "releases": {
+      "rows": 1162,
+      "hash": "565671e359639c595d6ba6ba3c66cc70"
+    },
+    "sales": {
+      "rows": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "specification_sources": {
+      "rows": 9711,
+      "hash": "71241a32a222170f3a60d8aad846b245"
+    },
+    "reviews": {
+      "rows": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "specifications": {
+      "rows": 7456,
+      "hash": "b55ca07801b570c89485d7b5ec0e24a2"
+    },
+    "sale_sources": {
+      "rows": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "computer_category": {
+      "rows": 1152,
+      "hash": "b9d1487d41cd129263b0c6bda8348689"
+    },
+    "sources": {
+      "rows": 7866,
+      "hash": "6b2cc27d1f1400c7c4848eefb7d300ab"
+    },
+    "catalog_snapshots": {
+      "rows": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "catalog_dirty": {
+      "rows": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "catalog_metrics": {
+      "rows": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "catalog_metric_assertions": {
+      "rows": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "catalog_metric_sources": {
+      "rows": 0,
+      "hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "manufacturer_sources": {
+      "rows": 377,
+      "hash": "905dc33eb9af8622fea721d2f1ab236b"
+    },
+    "manufacturers": {
+      "rows": 187,
+      "hash": "fb7fd840ffec3085490cf49d3e09c59c"
+    }
+  },
+  "home_systems": 1152,
+  "home_manufacturers": 187,
+  "local_mac_database_updated": false,
+  "validation": {
+    "sqlite_full_passed": 886,
+    "sqlite_postgresql_only_skipped": 2,
+    "postgresql_passed": 49,
+    "frontend_passed": 45,
+    "docker_build_and_health": "passed",
+    "browser_home_navigation": "passed",
+    "responsive_widths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "late_detail_response_ignored": true,
+    "unsaved_admin_cancel_and_confirm": true,
+    "filters_and_comparison_preserved": true,
+    "home_empty_and_error_retry": true,
+    "image_method": "Navigation test uses synthetic SVGs; separate visual review uses original bytes downloaded from exact cover URLs and current fonts."
+  }
+}

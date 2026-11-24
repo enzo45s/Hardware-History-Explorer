@@ -137,6 +137,15 @@ def health():return {'status':'ok'}
 def meta(db:Session=Depends(get_db)):
  return {'manufacturers':[{'id':x.id,'name':x.name} for x in db.scalars(select(Manufacturer).order_by(Manufacturer.name))],'categories':[{'id':x.id,'name':x.name} for x in db.scalars(select(Category).order_by(Category.name))],'markets':[{'id':x.id,'name':x.name} for x in db.scalars(select(Market).order_by(Market.name))]}
 OVERVIEW_EAGER=(selectinload(Computer.images),selectinload(Computer.manufacturer),selectinload(Computer.categories),selectinload(Computer.releases))
+@app.get('/api/home')
+def home(db:Session=Depends(get_db)):
+ from .home import home_data
+ def serialize(c):
+  images=computer_images(c)
+  return {**overview(c),'cover':image_data(images[0]) if images else None,
+          'description_attribution':description_attribution(c) or family_attribution(c)}
+ return home_data(db,serialize,(*OVERVIEW_EAGER,selectinload(Computer.sources)))
+
 @app.get('/api/computers')
 def computers(q:str='',manufacturer_id:Optional[int]=None,category_id:Optional[int]=None,
               year_from:Optional[int]=Query(None,ge=1,le=9999),year_to:Optional[int]=Query(None,ge=1,le=9999),

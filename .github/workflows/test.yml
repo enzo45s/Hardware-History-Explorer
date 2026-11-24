@@ -64,6 +64,11 @@ jobs:
         run: python tools/tests/transfer_roundtrip.py
       - working-directory: frontend
         run: npx playwright install --with-deps chromium
+      - name: Browser museum home and existing navigation
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:home
       - working-directory: frontend
         env:
           HHE_BASE_URL: http://127.0.0.1:8080/

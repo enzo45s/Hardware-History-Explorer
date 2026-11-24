@@ -1,9 +1,9 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   Search, Clock3, Database, BarChart3, GitCompareArrows, Bot, ChevronRight, ArrowLeft,
   ExternalLink, Monitor, BookOpen, Image as ImageIcon, Upload, Link as LinkIcon,
-  Star, Trash2, Plus, X, RefreshCw, Camera, Info, Check, Images, Pencil, Factory
+  Star, Trash2, Plus, X, RefreshCw, Camera, Info, Check, Images, Pencil, Factory, House
 } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import './style.css';
@@ -12,6 +12,7 @@ import BrandLogo from './BrandLogo.jsx';
 import { api, allComputers, latestRequest } from './api.js';
 import AdminPanel from './AdminPanel.jsx';
 import ManufacturerProfiles from './ManufacturerProfiles.jsx';
+import HomePage from './HomePage.jsx';
 import ComputerCard from './ComputerCard.jsx';
 import ComparisonPicker from './ComparisonPicker.jsx';
 import ComparisonTable from './ComparisonTable.jsx';
@@ -22,6 +23,7 @@ import { displaySpecification, displayDescription, displayConfigurationName, dis
 import { memorySpecifications, visibleMemoryNotes } from './ram-display.js';
 
 const nav = [
+  ['home', 'Benvenuto', House],
   ['timeline', 'Timeline', Clock3], ['catalog', 'Catalogo', Database], ['manufacturers', 'Produttori', Factory],
   ['analysis', 'Analisi', BarChart3], ['compare', 'Confronta', GitCompareArrows],
   ['assistant', 'Assistente AI', Bot], ['admin', 'Amministrazione', Pencil]
@@ -226,7 +228,8 @@ function ComputerDetail({ computer, onClose, onChanged, onOpenManufacturer }) {
 }
 
 function App() {
-  const [tab, setTab] = useState('timeline');
+  const detailRequest = useRef(0);
+  const [tab, setTab] = useState('home');
   const [manufacturerId, setManufacturerId] = useState(null);
   const [revision, setRevision] = useState(0);
   const [adminDirty, setAdminDirty] = useState(false);
@@ -255,7 +258,10 @@ function App() {
     const params = new URLSearchParams(Object.entries(filters).filter(([, v]) => v !== ''));
     return latestRequest(signal => allComputers(params, signal), rows => { setItems(rows); setError(''); }, e => setError(e.message));
   }, [filters, revision, tab]);
-  useEffect(() => { api('/analytics').then(setAnalytics).catch(() => {}); }, [revision]);
+  useEffect(() => {
+    if (tab !== 'timeline' && tab !== 'analysis') return;
+    return latestRequest(signal => api('/analytics', { signal }), setAnalytics, () => {});
+  }, [revision, tab]);
   // Refresh stored labels after administrative edits without loading the archive for the picker.
   useEffect(() => {
     if (!compare.length) return;
@@ -264,12 +270,26 @@ function App() {
   }, [revision]);
   async function refreshComputer() {
     if (!selected) return;
+    const request = detailRequest.current;
     const [updated, listing] = await Promise.all([api('/computers/' + selected.id), allComputers()]);
+    if (request !== detailRequest.current) return;
     setSelected(updated);
     setItems(previous => previous.map(old => listing.find(c => c.id === old.id) || old));
   }
-  const openComputer = async id => { try { setSelected(await api('/computers/' + id)); } catch (e) { setError(e.message); } };
-  const openManufacturer = id => { setSelected(null); setManufacturerId(id); setTab('manufacturers'); };
+  const openComputer = async id => {
+    const request = ++detailRequest.current;
+    try { const computer = await api('/computers/' + id); if (request === detailRequest.current) setSelected(computer); }
+    catch (e) { if (request === detailRequest.current) setError(e.message); }
+  };
+  const closeComputer = () => { detailRequest.current += 1; setSelected(null); };
+  const openManufacturer = id => { closeComputer(); setManufacturerId(id); setTab('manufacturers'); };
+  const navigate = (id, period = null) => {
+    if (id === tab && !selected && manufacturerId == null && !period) { detailRequest.current += 1; return; }
+    if (tab === 'admin' && adminDirty && !window.confirm('Ci sono modifiche non salvate. Vuoi abbandonarle?')) return;
+    detailRequest.current += 1;
+    setAdminDirty(false); setTab(id); setSelected(null); setManufacturerId(null);
+    if (period) setFilters({ q: '', category_id: '', manufacturer_id: '', year_from: period.year_from, year_to: period.year_to });
+  };
   const toggle = computer => setCompare(a => a.some(c => c.id === computer.id) ? a.filter(c => c.id !== computer.id) : a.length < 5 ? [...a, comparisonSummary(computer)] : a);
   const ask = async e => {
     e.preventDefault(); setLoading(true); setAnswer('');
@@ -280,11 +300,12 @@ function App() {
   return <div className="shell"><aside className="sidebar">
     <BrandLogo />
     <div className="side-label">ESPLORA</div>
-    <nav>{nav.map(([id, label, Icon]) => <button key={id} aria-label={id === 'manufacturers' ? 'Esplora produttori' : undefined} onClick={() => { if (id === tab && !selected && manufacturerId == null) return; if (tab === 'admin' && adminDirty && !window.confirm('Ci sono modifiche non salvate. Vuoi abbandonarle?')) return; setAdminDirty(false); setTab(id); setSelected(null); setManufacturerId(null); }} className={tab === id ? 'active' : ''}><Icon size={18} />{label}{id === 'compare' && compare.length > 0 ? <small>{compare.length}</small> : null}</button>)}</nav>
-    <div className="side-bottom"><div className="status-dot" />Archivio dimostrativo<br /><span>Versione 1.1 · Single-user</span></div>
+    <nav aria-label="Navigazione principale">{nav.map(([id, label, Icon]) => <button key={id} aria-label={id === 'manufacturers' ? 'Esplora produttori' : undefined} onClick={() => navigate(id)} className={tab === id ? 'active' : ''} aria-current={tab === id ? 'page' : undefined}><Icon size={18} />{label}{id === 'compare' && compare.length > 0 ? <small>{compare.length}</small> : null}</button>)}</nav>
+    <div className="side-bottom"><div className="status-dot" />Archivio storico<br /><span>Versione 1.1 · Single-user</span></div>
   </aside><main><header><div className="breadcrumb">ARCHIVIO DIGITALE <ChevronRight size={14} /> {nav.find(x => x[0] === tab)?.[1].toUpperCase()}</div><div className="header-actions"><ThemeSwitcher /><div className="header-right"><span className="header-tagline">STORIA DELL'INFORMATICA</span><span className="avatar">H</span></div></div></header>
-    <div className="content">{error && <div className="error">{error} <button onClick={() => setError('')}>×</button></div>}
-      {selected ? <ComputerDetail computer={selected} onClose={() => setSelected(null)} onChanged={refreshComputer} onOpenManufacturer={openManufacturer} /> : <>
+    <div className={'content' + (tab === 'home' && !selected ? ' home-content' : '')}>{error && <div className="error">{error} <button onClick={() => setError('')}>×</button></div>}
+      {selected ? <ComputerDetail computer={selected} onClose={closeComputer} onChanged={refreshComputer} onOpenManufacturer={openManufacturer} /> : <>
+        {tab === 'home' && <HomePage revision={revision} manufacturers={meta.manufacturers} onNavigate={navigate} onOpenComputer={openComputer} onOpenManufacturer={openManufacturer} Cover={SystemCover} />}
         {tab === 'admin' && <AdminPanel onSaved={() => setRevision(v => v + 1)} onDirtyChange={setAdminDirty} onOpenComputer={openComputer}
           onDeleted={({ type, id }) => {
             if (type === 'computers') {
