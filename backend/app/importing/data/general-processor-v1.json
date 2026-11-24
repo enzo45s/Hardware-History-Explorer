@@ -1,0 +1,2113 @@
+{
+  "version": "general-processor-2026-11-v1",
+  "researched_on": "2026-11-24",
+  "manufacturer_profile": {
+    "manufacturer_names": [
+      "General Processor"
+    ],
+    "fields": {
+      "legal_name": "General Processor S.r.l.",
+      "country": "Italia",
+      "headquarters": "Firenze; successivamente Badia a Settimo (area fiorentina)",
+      "founded": "1977",
+      "ceased": "1985",
+      "founders": "Gianni Becattini, Stefano Giusti, Franco Pirri",
+      "description": "General Processor fu un’azienda fiorentina fondata nel 1977 da Gianni Becattini, Stefano Giusti e Franco Pirri, dopo l’esperienza Micropi e Child 8. Dai sistemi modulari per appassionati passò al Modello T e alla linea professionale GPS, con CP/M e poi CP/M-86. Il Museo del Calcolatore di Prato colloca la chiusura nel 1985; altre ricostruzioni indicano circa 1984. La produzione testimonia la prima industria italiana dei microcomputer e la successiva trasformazione del mercato verso i PC IBM compatibili. Il G5 di Becattini, talvolta accostato a GP negli archivi, era commercializzato in kit da SUMUS.",
+      "logo_url": "https://www.1000bit.it/logos/gp.png",
+      "logo_author": "Marchio General Processor · archivio 1000bit",
+      "logo_license": "Marchio storico; diritti dei rispettivi titolari — uso per studio e ricerca",
+      "logo_license_url": "https://www.1000bit.it/database2.asp?id=95",
+      "logo_source_url": "https://www.1000bit.it/database2.asp?id=95"
+    },
+    "field_sources": {
+      "legal_name": [
+        "https://archive.org/details/gpmodellotdepliant",
+        "https://www.1000bit.it/ad/images/other/gps4_ad.jpg"
+      ],
+      "country": [
+        "https://www.computerhistory.it/storia/aziende/general-processor"
+      ],
+      "headquarters": [
+        "https://archive.org/details/gpmodellotdepliant",
+        "https://www.1000bit.it/ad/images/other/gps4_ad.jpg"
+      ],
+      "founded": [
+        "https://www.apuliaretrocomputing.it/wordpress/2021/03/08/modello-t-general-processor-di-firenze/",
+        "https://www.storiainformatica.it/computers/informatica-italiana?view=article&id=372:general-processor-pionieri-dellhome-computing-made-in-italy"
+      ],
+      "ceased": [
+        "https://www.museodelcalcolatore.it/singolo.php?cod=266",
+        "https://www.computerhistory.it/storia/aziende/general-processor"
+      ],
+      "founders": [
+        "https://www.apuliaretrocomputing.it/wordpress/2021/03/08/modello-t-general-processor-di-firenze/",
+        "https://www.storiainformatica.it/computers/informatica-italiana?view=article&id=372:general-processor-pionieri-dellhome-computing-made-in-italy"
+      ],
+      "description": [
+        "https://www.computerhistory.it/storia/aziende/general-processor",
+        "https://www.computerhistory.it/computer/becattini/g5"
+      ],
+      "logo_url": [
+        "https://www.1000bit.it/database2.asp?id=95"
+      ],
+      "logo_author": [
+        "https://www.1000bit.it/database2.asp?id=95"
+      ],
+      "logo_license": [
+        "https://www.1000bit.it/database2.asp?id=95"
+      ],
+      "logo_license_url": [
+        "https://www.1000bit.it/database2.asp?id=95"
+      ],
+      "logo_source_url": [
+        "https://www.1000bit.it/database2.asp?id=95"
+      ]
+    },
+    "sources": [
+      {
+        "title": "General Processor — depliant Modello T",
+        "url": "https://archive.org/details/gpmodellotdepliant",
+        "author": "General Processor",
+        "publisher": "General Processor; copia Internet Archive",
+        "source_type": "brochure",
+        "access_date": "2026-11-24"
+      },
+      {
+        "title": "General Processor — pubblicità GPS4, archivio 1000bit",
+        "url": "https://www.1000bit.it/ad/images/other/gps4_ad.jpg",
+        "author": "General Processor",
+        "publisher": "General Processor; copia 1000bit",
+        "source_type": "advertisement",
+        "access_date": "2026-11-24"
+      },
+      {
+        "title": "1000bit — General Processor (Italia)",
+        "url": "https://www.1000bit.it/database2.asp?id=95",
+        "publisher": "1000bit",
+        "source_type": "collection",
+        "access_date": "2026-11-24"
+      },
+      {
+        "title": "Alessandro Liberalato — Modello T e General Processor",
+        "url": "https://www.apuliaretrocomputing.it/wordpress/2021/03/08/modello-t-general-processor-di-firenze/",
+        "author": "Alessandro Liberalato",
+        "publisher": "Apulia Retrocomputing",
+        "source_type": "historical_article",
+        "access_date": "2026-11-24"
+      },
+      {
+        "title": "Luigi Serrantoni — storia General Processor",
+        "url": "https://www.computerhistory.it/storia/aziende/general-processor",
+        "author": "Luigi Serrantoni",
+        "publisher": "ComputerHistory.it",
+        "source_type": "historical_article",
+        "access_date": "2026-11-24"
+      },
+      {
+        "title": "Museo del Calcolatore di Prato — General Processor GPS5",
+        "url": "https://www.museodelcalcolatore.it/singolo.php?cod=266",
+        "publisher": "Museo del Calcolatore Laura Tellini",
+        "source_type": "museum_catalog",
+        "access_date": "2026-11-24"
+      },
+      {
+        "title": "General Processor — storia dell’azienda",
+        "url": "https://www.storiainformatica.it/computers/informatica-italiana?view=article&id=372:general-processor-pionieri-dellhome-computing-made-in-italy",
+        "publisher": "StoriaInformatica.it",
+        "source_type": "historical_article",
+        "access_date": "2026-11-24"
+      },
+      {
+        "title": "Luigi Serrantoni — G5 di Becattini e distribuzione SUMUS",
+        "url": "https://www.computerhistory.it/computer/becattini/g5",
+        "author": "Luigi Serrantoni",
+        "publisher": "ComputerHistory.it",
+        "source_type": "historical_article",
+        "access_date": "2026-11-24"
+      }
+    ],
+    "research": {
+      "status": "documented_partial",
+      "notes": [
+        "Il1976di1000bit riguarda l’esperienzaMicropi; scelta la fondazioneGP1977confermata da due ricostruzioni.",
+        "Cessazione1985secondoMuseoPrato; circar1984nellealtrefonti: discrepanza conservata nel testo.",
+        "Il logo1000bit è un marchio, non una licenza libera. Autorizzazione al recupero da1000bit già fornita dall’utente; utilizzo locale per studio e ricerca."
+      ]
+    }
+  },
+  "records": [
+    {
+      "manufacturer": "General Processor",
+      "model_name": "Child 8",
+      "source": {
+        "title": "ComputerHistory.it — Child 8",
+        "url": "https://www.computerhistory.it/computer/general-processor/child-8",
+        "author": "Luigi Serrantoni",
+        "publisher": "ComputerHistory.it",
+        "source_type": "historical_article",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Ricerca selettiva: dati e limiti specificati nelle citazioni individuali.",
+      "description": "Il Child 8 nacque nel 1976 dal lavoro di Gianni Becattini, pubblicato su CQ Elettronica, e fu distribuito prima da Micropi e poi da General Processor. Basato sul Fairchild F8, offriva agli appassionati una piattaforma modulare per imparare a usare i microprocessori. La versione Child 8/BS, documentata nel Kit 8, disponeva di RAM, monitor residente e collegamenti per terminali ed espansioni: un percorso dall’elettronica amatoriale verso il microcomputer personale.",
+      "categories": [
+        "Microcomputer"
+      ],
+      "configurations": [
+        {
+          "variant_name": "Child 8/BS — Kit 8",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "component_name": null,
+              "property_name": "Modello",
+              "numeric_value": null,
+              "text_value": "Fairchild F8",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Modello: Fairchild F8 ."
+            },
+            {
+              "component_type": "RAM",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 1,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Capacità: 1 KB."
+            },
+            {
+              "component_type": "ROM",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 1,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Capacità: 1 KB."
+            },
+            {
+              "component_type": "ROM",
+              "component_name": null,
+              "property_name": "Firmware",
+              "numeric_value": null,
+              "text_value": "Fair-Bug / DEBUG Fairchild",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Firmware: Fair-Bug / DEBUG Fairchild ."
+            },
+            {
+              "component_type": "ROM",
+              "component_name": null,
+              "property_name": "Opzioni",
+              "numeric_value": null,
+              "text_value": "Scheda PROMB fino a 4 KB",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Opzioni: Scheda PROMB fino a 4 KB ."
+            },
+            {
+              "component_type": "Sistema",
+              "component_name": null,
+              "property_name": "Spazio di indirizzamento",
+              "numeric_value": 64,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8: 64 K totali di memoria; non una RAM di base da 64 KB."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "I/O parallelo",
+              "numeric_value": null,
+              "text_value": "32 linee bidirezionali",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: I/O parallelo: 32 linee bidirezionali ."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Terminale",
+              "numeric_value": null,
+              "text_value": "Interfaccia 20 mA oppure RS-232C",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Terminale: Interfaccia 20 mA oppure RS-232C ."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Nastro perforato",
+              "numeric_value": null,
+              "text_value": "Collegamento diretto a lettore ottico",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Nastro perforato: Collegamento diretto a lettore ottico ."
+            },
+            {
+              "component_type": "Bus",
+              "component_name": null,
+              "property_name": "Connessione",
+              "numeric_value": null,
+              "text_value": "44 contatti; passo 3,96 mm",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Connessione: 44 contatti; passo 3,96 mm ."
+            },
+            {
+              "component_type": "Bus",
+              "component_name": null,
+              "property_name": "Espansione",
+              "numeric_value": null,
+              "text_value": "Bus 5SB per cinque schede CHILD",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Espansione: Bus 5SB per cinque schede CHILD ."
+            },
+            {
+              "component_type": "Chassis",
+              "component_name": null,
+              "property_name": "Dimensioni schede",
+              "numeric_value": null,
+              "text_value": "226 × 249 mm",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Dimensioni schede: 226 × 249 mm ."
+            },
+            {
+              "component_type": "Alimentazione",
+              "component_name": null,
+              "property_name": "Ingresso",
+              "numeric_value": null,
+              "text_value": "16 V CC filtrati, non regolati",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Ingresso: 16 V CC filtrati, non regolati ."
+            },
+            {
+              "component_type": "Console",
+              "component_name": null,
+              "property_name": "Terminale opzionale",
+              "numeric_value": null,
+              "text_value": "7SPC con otto display esadecimali e 19 tasti",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Kit 8, Principali caratteristiche: Terminale opzionale: 7SPC con otto display esadecimali e 19 tasti ."
+            },
+            {
+              "component_type": "CPU",
+              "component_name": null,
+              "property_name": "Clock configurabile",
+              "numeric_value": null,
+              "text_value": "Oscillatore RC o quarzo opzionale",
+              "unit": null,
+              "source": {
+                "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+                "url": "https://archive.org/details/kit8manuale",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Nota complementare Child 8/BS vers. 0.2: due modi di clock, RC oppure cristallo. Non viene importata una frequenza fissa non attestata."
+            }
+          ],
+          "source": {
+            "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+            "url": "https://archive.org/details/kit8manuale",
+            "author": "General Processor",
+            "publisher": "General Processor; copia Internet Archive",
+            "source_type": "manual",
+            "access_date": "2026-11-24"
+          },
+          "description": "Scheda Child 8/BS e accessori descritti nel manuale Kit 8; terminale e schede di espansione sono opzioni."
+        }
+      ],
+      "releases": [
+        {
+          "market": "Mercato non documentato",
+          "release_date": "1976",
+          "source": {
+            "title": "ComputerHistory.it — Child 8",
+            "url": "https://www.computerhistory.it/computer/general-processor/child-8",
+            "author": "Luigi Serrantoni",
+            "publisher": "ComputerHistory.it",
+            "source_type": "historical_article",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Anno del modello documentato dalla fonte; precisione all’anno."
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Cronologia",
+          "statement": "I prototipi del 1975 e la pubblicazione del 1976 precedono la costituzione di General Processor. Il 1976 indica la presentazione del progetto, non una vendita General Processor già avvenuta.",
+          "source": {
+            "title": "ComputerHistory.it — Child 8",
+            "url": "https://www.computerhistory.it/computer/general-processor/child-8",
+            "author": "Luigi Serrantoni",
+            "publisher": "ComputerHistory.it",
+            "source_type": "historical_article",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Storia del progetto e passaggio Micropi–General Processor; non usare1975come data di lancio."
+        },
+        {
+          "fact_type": "Allestimento documentato",
+          "statement": "Il Kit 8 comprende scheda CPU Child 8/BS, scheda PROMB e bus 5SB; le espansioni e il terminale 7SPC non diventano macchine distinte.",
+          "source": {
+            "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+            "url": "https://archive.org/details/kit8manuale",
+            "author": "General Processor",
+            "publisher": "General Processor; copia Internet Archive",
+            "source_type": "manual",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Manuale Kit 8:componenti e accessori del kit."
+        }
+      ]
+    },
+    {
+      "manufacturer": "General Processor",
+      "model_name": "Child Z",
+      "source": {
+        "title": "Luigi Serrantoni — storia General Processor",
+        "url": "https://www.computerhistory.it/storia/aziende/general-processor",
+        "author": "Luigi Serrantoni",
+        "publisher": "ComputerHistory.it",
+        "source_type": "historical_article",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Ricerca selettiva: dati e limiti specificati nelle citazioni individuali.",
+      "description": "Presentato da General Processor nel 1977, il Child Z proseguiva l’impostazione modulare del Child 8 adottando il processore Z80. La console a display LED permetteva di lavorare senza una costosa telescrivente. Il manuale del Sistema /05 del marzo 1979 documenta un allestimento più completo con video, tastiera alfanumerica, cassette e BASIC: le specifiche della configurazione qui censita si riferiscono a quel sistema, non alla sola scheda CPU.",
+      "categories": [
+        "Microcomputer"
+      ],
+      "configurations": [
+        {
+          "variant_name": "Sistema /05 (manuale marzo 1979)",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "component_name": null,
+              "property_name": "Modello",
+              "numeric_value": null,
+              "text_value": "Z80 (Zilog/Mostek)",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Modello: Z80 (Zilog/Mostek) ."
+            },
+            {
+              "component_type": "RAM",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 16,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Configurazione minima Sistema /05: 16K RAM di sistema; 2K video e 3K EPROM sono separati."
+            },
+            {
+              "component_type": "Memoria video",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 2,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Capacità: 2 KB."
+            },
+            {
+              "component_type": "ROM",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 3,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Capacità: 3 KB."
+            },
+            {
+              "component_type": "Sistema",
+              "component_name": null,
+              "property_name": "Spazio di indirizzamento",
+              "numeric_value": 64,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale: fino a 64K complessivi RAM/ROM/EPROM/PROM. Non è un limite documentato di sola RAM."
+            },
+            {
+              "component_type": "Memoria",
+              "component_name": null,
+              "property_name": "Tempo di accesso",
+              "numeric_value": 350,
+              "text_value": null,
+              "unit": "ns",
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Tempo di accesso: 350 ns."
+            },
+            {
+              "component_type": "Console",
+              "component_name": null,
+              "property_name": "Display",
+              "numeric_value": null,
+              "text_value": "Sei cifre a LED",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Display: Sei cifre a LED ."
+            },
+            {
+              "component_type": "Console",
+              "component_name": null,
+              "property_name": "Controlli",
+              "numeric_value": null,
+              "text_value": "11 deviatori, RESET, accensione ed esclusione tempo reale",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Controlli: 11 deviatori, RESET, accensione ed esclusione tempo reale ."
+            },
+            {
+              "component_type": "Console",
+              "component_name": null,
+              "property_name": "Indicatori",
+              "numeric_value": null,
+              "text_value": "RUN, TIME, PAUSE, HALT, FUNCT.",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Indicatori: RUN, TIME, PAUSE, HALT, FUNCT. ."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Modalità testo",
+              "numeric_value": null,
+              "text_value": "64 × 16 caratteri",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Modalità testo: 64 × 16 caratteri ."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Matrice del carattere",
+              "numeric_value": null,
+              "text_value": "8 × 13 punti",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Matrice del carattere: 8 × 13 punti ."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Colori documentati",
+              "numeric_value": null,
+              "text_value": "15 livelli per carattere e sfondo nel terminale del Sistema /05",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Colori documentati: 15 livelli per carattere e sfondo nel terminale del Sistema /05 ."
+            },
+            {
+              "component_type": "Tastiera",
+              "component_name": null,
+              "property_name": "Tipo",
+              "numeric_value": null,
+              "text_value": "ASR-37 con sezione alfanumerica, cursore e tastierino numerico",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Tipo: ASR-37 con sezione alfanumerica, cursore e tastierino numerico ."
+            },
+            {
+              "component_type": "Tastiera",
+              "component_name": null,
+              "property_name": "Buffer",
+              "numeric_value": 255,
+              "text_value": null,
+              "unit": "caratteri",
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Buffer: 255 caratteri."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Registratore",
+              "numeric_value": null,
+              "text_value": "Due unità a cassette con controllo motore",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Registratore: Due unità a cassette con controllo motore ."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Capacità cassetta",
+              "numeric_value": null,
+              "text_value": "360 KB su cassetta C40",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Capacità cassetta: 360 KB su cassetta C40 ."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Protocollo",
+              "numeric_value": null,
+              "text_value": "TRI-BIT con correzione automatica di errore",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Protocollo: TRI-BIT con correzione automatica di errore ."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Velocità linea",
+              "numeric_value": 2400,
+              "text_value": null,
+              "unit": "baud",
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale: circa 2400 baud; trasferimento dati effettivo pari a un terzo per la codifica TRI-BIT, quindi non2400byte/s."
+            },
+            {
+              "component_type": "Software",
+              "component_name": null,
+              "property_name": "Ambiente",
+              "numeric_value": null,
+              "text_value": "Child BASIC ed Extended BASIC",
+              "unit": null,
+              "source": {
+                "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+                "url": "https://archive.org/details/childzsistema05",
+                "author": "Gianni Becattini",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale Sistema /05, caratteristiche tecniche pp.128–130: Ambiente: Child BASIC ed Extended BASIC ."
+            }
+          ],
+          "source": {
+            "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+            "url": "https://archive.org/details/childzsistema05",
+            "author": "Gianni Becattini",
+            "publisher": "General Processor; copia Internet Archive",
+            "source_type": "manual",
+            "access_date": "2026-11-24"
+          },
+          "description": "Allestimento Sistema /05 del manuale del marzo 1979; non la sola scheda CPU del 1977."
+        }
+      ],
+      "releases": [
+        {
+          "market": "Mercato non documentato",
+          "release_date": "1977",
+          "source": {
+            "title": "Luigi Serrantoni — storia General Processor",
+            "url": "https://www.computerhistory.it/storia/aziende/general-processor",
+            "author": "Luigi Serrantoni",
+            "publisher": "ComputerHistory.it",
+            "source_type": "historical_article",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Anno del modello documentato dalla fonte; precisione all’anno."
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Allestimento documentato",
+          "statement": "I 16 KB RAM, 2 KB video e 3 KB EPROM descrivono il Sistema /05 del manuale 1979. Il massimo indirizzabile di 64 KB include memorie di tipi diversi e non è assunto come RAM installata.",
+          "source": {
+            "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+            "url": "https://archive.org/details/childzsistema05",
+            "author": "Gianni Becattini",
+            "publisher": "General Processor; copia Internet Archive",
+            "source_type": "manual",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Tabella tecnica delSistema/05; data1979delmanuale non sostituisce la presentazione1977."
+        },
+        {
+          "fact_type": "Velocità di registrazione",
+          "statement": "La linea delle cassette opera a circa 2400 baud; il protocollo TRI-BIT porta il trasferimento effettivo a un terzo del baud rate.",
+          "source": {
+            "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+            "url": "https://archive.org/details/childzsistema05",
+            "author": "Gianni Becattini",
+            "publisher": "General Processor; copia Internet Archive",
+            "source_type": "manual",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "TabellaUnitàacassette:nonconfonderebaud,bit/sebyte/s."
+        }
+      ]
+    },
+    {
+      "manufacturer": "General Processor",
+      "model_name": "Modello T",
+      "source": {
+        "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+        "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+        "author": "Luigi Serrantoni",
+        "publisher": "ComputerHistory.it",
+        "source_type": "historical_article",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Ricerca selettiva: dati e limiti specificati nelle citazioni individuali.",
+      "description": "Il Modello T segnò nel 1979 il passaggio di General Processor dai sistemi per hobbisti al computer professionale. Integrava monitor e tastiera in un mobile con finiture in legno e usava lo Z80 con due bus modulari, separati per memoria/video e periferiche. Le versioni a disco impiegavano CP/M, mentre il modello base poteva lavorare in BASIC da cassetta. La gamma comprendeva configurazioni T/05, T/08, T/10 e T/20; la successiva versione MKIII adottò tastiera separata, 64 KB di RAM e un diverso terminale video.",
+      "categories": [
+        "Personal computer"
+      ],
+      "configurations": [
+        {
+          "variant_name": "Modello T originale",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "component_name": null,
+              "property_name": "Modello",
+              "numeric_value": null,
+              "text_value": "Zilog Z80",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Modello: Zilog Z80 ."
+            },
+            {
+              "component_type": "RAM",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 16,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Capacità: 16 KB."
+            },
+            {
+              "component_type": "RAM",
+              "component_name": null,
+              "property_name": "Opzioni di memoria",
+              "numeric_value": null,
+              "text_value": "32 KB oppure 48 KB; espansioni da 16 KB",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Opzioni di memoria: 32 KB oppure 48 KB; espansioni da 16 KB ."
+            },
+            {
+              "component_type": "Memoria",
+              "component_name": null,
+              "property_name": "Tempo di accesso",
+              "numeric_value": 250,
+              "text_value": null,
+              "unit": "ns",
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Tempo di accesso: 250 ns."
+            },
+            {
+              "component_type": "ROM",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 4,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Capacità: 4 KB."
+            },
+            {
+              "component_type": "Memoria video",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 1,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Capacità: 1 KB."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Modalità testo",
+              "numeric_value": null,
+              "text_value": "64 × 16 caratteri",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Modalità testo: 64 × 16 caratteri ."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Matrice del carattere",
+              "numeric_value": null,
+              "text_value": "8 × 13 punti",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Matrice del carattere: 8 × 13 punti ."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Set caratteri",
+              "numeric_value": 128,
+              "text_value": null,
+              "unit": "caratteri",
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Set caratteri: 128 caratteri."
+            },
+            {
+              "component_type": "Tastiera",
+              "component_name": null,
+              "property_name": "Tipo",
+              "numeric_value": null,
+              "text_value": "Capacitiva, 76 tasti, tastierino numerico e cursori",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Tipo: Capacitiva, 76 tasti, tastierino numerico e cursori ."
+            },
+            {
+              "component_type": "Chassis",
+              "component_name": null,
+              "property_name": "Costruzione",
+              "numeric_value": null,
+              "text_value": "Contenitore metallico con parti e finiture in legno",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Costruzione: Contenitore metallico con parti e finiture in legno ."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Cassette",
+              "numeric_value": null,
+              "text_value": "TRI-BIT con correzione automatica; circa 800 bit/s",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Cassette: TRI-BIT con correzione automatica; circa 800 bit/s ."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Minifloppy",
+              "numeric_value": null,
+              "text_value": "Fino a tre unità; 80/160/280/640 KB per unità nel depliant",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Minifloppy: Fino a tre unità; 80/160/280/640 KB per unità nel depliant ."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Floppy standard",
+              "numeric_value": null,
+              "text_value": "Fino a quattro unità a doppia faccia, 512 KB per unità",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Floppy standard: Fino a quattro unità a doppia faccia, 512 KB per unità ."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Hard disk",
+              "numeric_value": null,
+              "text_value": "Opzioni da 10 a 29 MB",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Hard disk: Opzioni da 10 a 29 MB ."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Parallela",
+              "numeric_value": null,
+              "text_value": "TPIO, due porte bidirezionali",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Parallela: TPIO, due porte bidirezionali ."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Seriale",
+              "numeric_value": null,
+              "text_value": "TSER programmabile: TTL, 20 mA, RS-232C",
+              "unit": null,
+              "source": {
+                "title": "General Processor — depliant Modello T",
+                "url": "https://archive.org/details/gpmodellotdepliant",
+                "author": "General Processor",
+                "publisher": "General Processor; copia Internet Archive",
+                "source_type": "brochure",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Depliant originale Modello T, Dati tecnici: Seriale: TSER programmabile: TTL, 20 mA, RS-232C ."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Opzione successiva",
+              "numeric_value": null,
+              "text_value": "80 × 24 caratteri dal 1980",
+              "unit": null,
+              "source": {
+                "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+                "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+                "author": "Luigi Serrantoni",
+                "publisher": "ComputerHistory.it",
+                "source_type": "historical_article",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Articolo: opzione80×24 introdotta a metà1980; non coincide con80×25 della versioneMKIII."
+            },
+            {
+              "component_type": "Software",
+              "component_name": null,
+              "property_name": "Sistema operativo",
+              "numeric_value": null,
+              "text_value": "CP/M sulle configurazioni a disco; BASIC da cassetta sulla base",
+              "unit": null,
+              "source": {
+                "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+                "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+                "author": "Luigi Serrantoni",
+                "publisher": "ComputerHistory.it",
+                "source_type": "historical_article",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "ComputerHistory, Modello T: CP/M sulle versioni a disco e Mini-BASIC/Extended BASIC su cassette per la configurazione base."
+            },
+            {
+              "component_type": "Bus",
+              "component_name": null,
+              "property_name": "Architettura",
+              "numeric_value": null,
+              "text_value": "Due bus separati per memoria/video e I/O",
+              "unit": null,
+              "source": {
+                "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+                "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+                "author": "Luigi Serrantoni",
+                "publisher": "ComputerHistory.it",
+                "source_type": "historical_article",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Ricostruzione e testimonianza di Franco Pirri riportata nell’articolo."
+            }
+          ],
+          "source": {
+            "title": "General Processor — depliant Modello T",
+            "url": "https://archive.org/details/gpmodellotdepliant",
+            "author": "General Processor",
+            "publisher": "General Processor; copia Internet Archive",
+            "source_type": "brochure",
+            "access_date": "2026-11-24"
+          },
+          "description": "Unità base da 16 KB, espandibile a 32/48 KB; i pacchetti T/05, T/08, T/10 e T/20 differiscono per le periferiche."
+        },
+        {
+          "variant_name": "Modello T MKIII",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "component_name": null,
+              "property_name": "Modello",
+              "numeric_value": null,
+              "text_value": "Zilog Z80",
+              "unit": null,
+              "source": {
+                "title": "1000bit — Model T MKIII",
+                "url": "https://www.1000bit.it/scheda.asp?id=1528",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Scheda 1000bit: CPU Z80; clock non riportato."
+            },
+            {
+              "component_type": "RAM",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 64,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "1000bit — Model T MKIII",
+                "url": "https://www.1000bit.it/scheda.asp?id=1528",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Scheda 1000bit MKIII: 64Kb nella voceRAM; conservata la quantità storica inKB, senza trasformazioni decimali."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Modalità testo",
+              "numeric_value": null,
+              "text_value": "80 × 25 caratteri",
+              "unit": null,
+              "source": {
+                "title": "1000bit — Model T MKIII",
+                "url": "https://www.1000bit.it/scheda.asp?id=1528",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Scheda 1000bit MKIII:80×25."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Opzioni",
+              "numeric_value": null,
+              "text_value": "Floppy 5,25 e 8 pollici; hard disk 5 o10 MB",
+              "unit": null,
+              "source": {
+                "title": "1000bit — Model T MKIII",
+                "url": "https://www.1000bit.it/scheda.asp?id=1528",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Le capacità sono opzioni riportate, non una dotazione unica."
+            },
+            {
+              "component_type": "Software",
+              "component_name": null,
+              "property_name": "Sistema operativo",
+              "numeric_value": null,
+              "text_value": "CP/M",
+              "unit": null,
+              "source": {
+                "title": "1000bit — Model T MKIII",
+                "url": "https://www.1000bit.it/scheda.asp?id=1528",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Scheda 1000bit MKIII:CP/M."
+            },
+            {
+              "component_type": "Tastiera",
+              "component_name": null,
+              "property_name": "Costruzione",
+              "numeric_value": null,
+              "text_value": "Separata dall’unità centrale e dal monitor",
+              "unit": null,
+              "source": {
+                "title": "Luigi Serrantoni — storia General Processor",
+                "url": "https://www.computerhistory.it/storia/aziende/general-processor",
+                "author": "Luigi Serrantoni",
+                "publisher": "ComputerHistory.it",
+                "source_type": "historical_article",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "StoriaGP: il ModelT MKIII aveva tastiera separata."
+            }
+          ],
+          "source": {
+            "title": "1000bit — Model T MKIII",
+            "url": "https://www.1000bit.it/scheda.asp?id=1528",
+            "publisher": "1000bit",
+            "source_type": "collection",
+            "access_date": "2026-11-24"
+          },
+          "description": "Versione con tastiera separata, 64 KB e terminale 80 × 25, documentata nel 1981."
+        }
+      ],
+      "releases": [
+        {
+          "market": "Italia",
+          "release_date": "1979",
+          "source": {
+            "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+            "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+            "author": "Luigi Serrantoni",
+            "publisher": "ComputerHistory.it",
+            "source_type": "historical_article",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Unità centrale base, listino ottobre 1979, IVA esclusa.",
+          "price": 1731000,
+          "currency": "ITL",
+          "price_type": "Listino, IVA esclusa"
+        },
+        {
+          "market": "Italia",
+          "release_date": "1979",
+          "source": {
+            "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+            "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+            "author": "Luigi Serrantoni",
+            "publisher": "ComputerHistory.it",
+            "source_type": "historical_article",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "T/05 con cassette, listino ottobre 1979, IVA esclusa.",
+          "price": 2212000,
+          "currency": "ITL",
+          "price_type": "Listino, IVA esclusa"
+        },
+        {
+          "market": "Italia",
+          "release_date": "1979",
+          "source": {
+            "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+            "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+            "author": "Luigi Serrantoni",
+            "publisher": "ComputerHistory.it",
+            "source_type": "historical_article",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "T/08 con minidischi, prezzo da, listino ottobre 1979, IVA esclusa.",
+          "price": 3289000,
+          "currency": "ITL",
+          "price_type": "Listino, IVA esclusa"
+        },
+        {
+          "market": "Italia",
+          "release_date": "1979",
+          "source": {
+            "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+            "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+            "author": "Luigi Serrantoni",
+            "publisher": "ComputerHistory.it",
+            "source_type": "historical_article",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "T/10 con floppy da 8 pollici, prezzo da, listino ottobre 1979, IVA esclusa.",
+          "price": 4572000,
+          "currency": "ITL",
+          "price_type": "Listino, IVA esclusa"
+        },
+        {
+          "market": "Italia",
+          "release_date": "1979",
+          "source": {
+            "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+            "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+            "author": "Luigi Serrantoni",
+            "publisher": "ComputerHistory.it",
+            "source_type": "historical_article",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "T/20 con disco rigido, prezzo da, listino ottobre 1979, IVA esclusa.",
+          "price": 8722000,
+          "currency": "ITL",
+          "price_type": "Listino, IVA esclusa"
+        },
+        {
+          "market": "Mercato non documentato",
+          "release_date": "1981",
+          "source": {
+            "title": "1000bit — Model T MKIII",
+            "url": "https://www.1000bit.it/scheda.asp?id=1528",
+            "publisher": "1000bit",
+            "source_type": "collection",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Anno del modello documentato dalla fonte; precisione all’anno."
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Listino documentato",
+          "statement": "Il listino di ottobre 1979 indica prezzi in lire italiane, IVA esclusa: unità base 1.731.000; T/05 2.212.000; T/08 da 3.289.000; T/10 da 4.572.000; T/20 da 8.722.000. La data del listino non è una data esatta del primo lancio.",
+          "source": {
+            "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+            "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+            "author": "Luigi Serrantoni",
+            "publisher": "ComputerHistory.it",
+            "source_type": "historical_article",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Listinoottobre 1979conconfigurazionidistinte; prezzi non convertiti in euro."
+        },
+        {
+          "fact_type": "Dotazioni dei pacchetti",
+          "statement": "I pacchetti predefiniti descritti dalla fonte comprendevano 32 KB RAM, interfaccia cassette, monitor verde e amplificatore audio. La sola unità base del depliant parte da16 KB, espandibili a32o48 KB.",
+          "source": {
+            "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+            "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+            "author": "Luigi Serrantoni",
+            "publisher": "ComputerHistory.it",
+            "source_type": "historical_article",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Distinguere prezzo della base e dotazioni dei pacchetti: niente duplicati per la sola quantitàRAM."
+        },
+        {
+          "fact_type": "Evoluzione MKIII",
+          "statement": "Il MKIII è documentato nel 1981 con64 KB e tastiera separata; è una configurazione distinta nella stessa scheda della famiglia Modello T. Le sigle T/05,/08,/10,/20 indicano invece i pacchetti di periferiche.",
+          "source": {
+            "title": "1000bit — Model T MKIII",
+            "url": "https://www.1000bit.it/scheda.asp?id=1528",
+            "publisher": "1000bit",
+            "source_type": "collection",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Data e dati MKIII da1000bit; tastiera separata dalla storiaComputerHistory.it."
+        },
+        {
+          "fact_type": "Cronologia",
+          "statement": "Il manuale originale di settembre1979 e il listino ottobre 1979 documentano il prodotto prima del 1980 indicato nella scheda secondaria1000bit.",
+          "source": {
+            "title": "General Processor — depliant Modello T",
+            "url": "https://archive.org/details/gpmodellotdepliant",
+            "author": "General Processor",
+            "publisher": "General Processor; copia Internet Archive",
+            "source_type": "brochure",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "L’anno1979 deriva dalla documentazione d’epoca e dalle ricostruzioni museali, non dall’anno di scansione."
+        }
+      ]
+    },
+    {
+      "manufacturer": "General Processor",
+      "model_name": "GPS4",
+      "source": {
+        "title": "Wikimedia Commons — pubblicità GPS-4, MCmicrocomputer 19, maggio 1983",
+        "url": "https://commons.wikimedia.org/wiki/File:Gp_gps4_ad_mc19_mag83.jpg",
+        "author": "G.becattini",
+        "publisher": "Wikimedia Commons",
+        "source_type": "advertisement",
+        "access_date": "2026-11-24",
+        "license": "CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0/"
+      },
+      "evidence": "Ricerca selettiva: dati e limiti specificati nelle citazioni individuali.",
+      "description": "Il GPS4 appartiene alla gamma professionale sviluppata da General Processor dopo il Modello T. La pubblicità del periodo, documentata anche nel maggio 1983, presenta un sistema modulare per aziende e studi, con tastiera separata, periferiche a disco e possibilità di servire più postazioni. Il costruttore lo proponeva anche come terminale intelligente di elaboratori maggiori. Le fonti consultate descrivono impieghi e archiviazione, ma non consentono di fissarne con affidabilità CPU, frequenza e RAM.",
+      "categories": [
+        "Personal computer"
+      ],
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Floppy documentato",
+              "numeric_value": null,
+              "text_value": "800 KB",
+              "unit": null,
+              "source": {
+                "title": "General Processor — pubblicità GPS4, archivio 1000bit",
+                "url": "https://www.1000bit.it/ad/images/other/gps4_ad.jpg",
+                "author": "General Processor",
+                "publisher": "General Processor; copia 1000bit",
+                "source_type": "advertisement",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Pubblicità1000bit:floppy disk da800Kbyte."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Hard disk documentato",
+              "numeric_value": null,
+              "text_value": "20 MB",
+              "unit": null,
+              "source": {
+                "title": "General Processor — pubblicità GPS4, archivio 1000bit",
+                "url": "https://www.1000bit.it/ad/images/other/gps4_ad.jpg",
+                "author": "General Processor",
+                "publisher": "General Processor; copia 1000bit",
+                "source_type": "advertisement",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Pubblicità1000bit:dischi rigidi da20Mbyte."
+            },
+            {
+              "component_type": "Sistema",
+              "component_name": null,
+              "property_name": "Postazioni",
+              "numeric_value": null,
+              "text_value": "Più posti di lavoro; numero non specificato",
+              "unit": null,
+              "source": {
+                "title": "General Processor — pubblicità GPS4, archivio 1000bit",
+                "url": "https://www.1000bit.it/ad/images/other/gps4_ad.jpg",
+                "author": "General Processor",
+                "publisher": "General Processor; copia 1000bit",
+                "source_type": "advertisement",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Pubblicità: supporto di più posti di lavoro, senza numero o memoriaCPU."
+            },
+            {
+              "component_type": "Sistema",
+              "component_name": null,
+              "property_name": "Terminale",
+              "numeric_value": null,
+              "text_value": "Utilizzabile come terminale intelligente di un elaboratore maggiore",
+              "unit": null,
+              "source": {
+                "title": "General Processor — pubblicità GPS4, archivio 1000bit",
+                "url": "https://www.1000bit.it/ad/images/other/gps4_ad.jpg",
+                "author": "General Processor",
+                "publisher": "General Processor; copia 1000bit",
+                "source_type": "advertisement",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Pubblicità: il GPS4 può trasformarsi in terminale intelligente di grossi elaboratori."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Periferiche citate",
+              "numeric_value": null,
+              "text_value": "Plotter e digitalizzatori",
+              "unit": null,
+              "source": {
+                "title": "General Processor — pubblicità GPS4, archivio 1000bit",
+                "url": "https://www.1000bit.it/ad/images/other/gps4_ad.jpg",
+                "author": "General Processor",
+                "publisher": "General Processor; copia 1000bit",
+                "source_type": "advertisement",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Pubblicità: collegamento a plotter,digitalizzatori e altre periferiche."
+            },
+            {
+              "component_type": "Tastiera",
+              "component_name": null,
+              "property_name": "Costruzione",
+              "numeric_value": null,
+              "text_value": "Separata dallo schermo",
+              "unit": null,
+              "source": {
+                "title": "General Processor — pubblicità GPS4, archivio 1000bit",
+                "url": "https://www.1000bit.it/ad/images/other/gps4_ad.jpg",
+                "author": "General Processor",
+                "publisher": "General Processor; copia 1000bit",
+                "source_type": "advertisement",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Pubblicità: tastiera separata dallo schermo."
+            }
+          ],
+          "source": {
+            "title": "General Processor — pubblicità GPS4, archivio 1000bit",
+            "url": "https://www.1000bit.it/ad/images/other/gps4_ad.jpg",
+            "author": "General Processor",
+            "publisher": "General Processor; copia 1000bit",
+            "source_type": "advertisement",
+            "access_date": "2026-11-24"
+          }
+        }
+      ],
+      "releases": [
+        {
+          "market": "Mercato non documentato",
+          "release_date": "1983",
+          "source": {
+            "title": "Wikimedia Commons — pubblicità GPS-4, MCmicrocomputer 19, maggio 1983",
+            "url": "https://commons.wikimedia.org/wiki/File:Gp_gps4_ad_mc19_mag83.jpg",
+            "author": "G.becattini",
+            "publisher": "Wikimedia Commons",
+            "source_type": "advertisement",
+            "access_date": "2026-11-24",
+            "license": "CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0/"
+          },
+          "evidence": "Anno del modello documentato dalla fonte; precisione all’anno."
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Cronologia documentata",
+          "statement": "Il sistema è attestato nella pubblicità di MCmicrocomputer n.19, maggio 1983. Non è stata accertata la data del primo lancio.",
+          "source": {
+            "title": "Wikimedia Commons — pubblicità GPS-4, MCmicrocomputer 19, maggio 1983",
+            "url": "https://commons.wikimedia.org/wiki/File:Gp_gps4_ad_mc19_mag83.jpg",
+            "author": "G.becattini",
+            "publisher": "Wikimedia Commons",
+            "source_type": "advertisement",
+            "access_date": "2026-11-24",
+            "license": "CC BY-SA 3.0 — https://creativecommons.org/licenses/by-sa/3.0/"
+          },
+          "evidence": "FileCommons pubblicitario; la data di caricamento2013non è una data del computer."
+        },
+        {
+          "fact_type": "Dati mancanti",
+          "statement": "CPU, frequenza, RAM e sistema operativo non sono indicati nelle fonti tecniche consultate. Non sono ricavati dal numero4 della sigla né copiati dalGPS5.",
+          "source": {
+            "title": "General Processor — pubblicità GPS4, archivio 1000bit",
+            "url": "https://www.1000bit.it/ad/images/other/gps4_ad.jpg",
+            "author": "General Processor",
+            "publisher": "General Processor; copia 1000bit",
+            "source_type": "advertisement",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Inserzione e scheda1000bit non forniscono tali valori."
+        }
+      ]
+    },
+    {
+      "manufacturer": "General Processor",
+      "model_name": "GPS5",
+      "source": {
+        "title": "Museo del Calcolatore di Prato — General Processor GPS5",
+        "url": "https://www.museodelcalcolatore.it/singolo.php?cod=266",
+        "publisher": "Museo del Calcolatore Laura Tellini",
+        "source_type": "museum_catalog",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Ricerca selettiva: dati e limiti specificati nelle citazioni individuali.",
+      "description": "Il GPS5 rappresenta l’ultima fase dei computer professionali General Processor. Il Museo del Calcolatore di Prato ne documenta la produzione nel 1985: usa un Intel 80186, 128 KB di RAM e CP/M-86, con gestione di fino a cinque utenti. La pubblicità lo proponeva per amministrazione aziendale, controllo industriale e applicazioni tecnico-scientifiche. La sua collocazione nel mondo CP/M lo distingue dall’affermazione degli IBM PC e dei compatibili MS-DOS che stava trasformando il mercato.",
+      "categories": [
+        "Personal computer"
+      ],
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "component_name": null,
+              "property_name": "Modello",
+              "numeric_value": null,
+              "text_value": "Intel 80186",
+              "unit": null,
+              "source": {
+                "title": "Museo del Calcolatore di Prato — General Processor GPS5",
+                "url": "https://www.museodelcalcolatore.it/singolo.php?cod=266",
+                "publisher": "Museo del Calcolatore Laura Tellini",
+                "source_type": "museum_catalog",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Museo di Prato, schedaGPS5:cpuIntel80186."
+            },
+            {
+              "component_type": "CPU",
+              "component_name": null,
+              "property_name": "Architettura",
+              "numeric_value": null,
+              "text_value": "16 bit",
+              "unit": null,
+              "source": {
+                "title": "Museo del Calcolatore di Prato — General Processor GPS5",
+                "url": "https://www.museodelcalcolatore.it/singolo.php?cod=266",
+                "publisher": "Museo del Calcolatore Laura Tellini",
+                "source_type": "museum_catalog",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Descrizione museale:80186 a16bit."
+            },
+            {
+              "component_type": "RAM",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 128,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "Museo del Calcolatore di Prato — General Processor GPS5",
+                "url": "https://www.museodelcalcolatore.it/singolo.php?cod=266",
+                "publisher": "Museo del Calcolatore Laura Tellini",
+                "source_type": "museum_catalog",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Dati tecnici del Museo:128 KB."
+            },
+            {
+              "component_type": "RAM",
+              "component_name": null,
+              "property_name": "Opzioni di memoria",
+              "numeric_value": null,
+              "text_value": "Espansione fino a 512 KB riportata da 1000bit",
+              "unit": null,
+              "source": {
+                "title": "1000bit — GPS5",
+                "url": "https://www.1000bit.it/scheda.asp?id=171",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "VoceRAM:128kb–512kb; non512KBcome dotazione di base."
+            },
+            {
+              "component_type": "Software",
+              "component_name": null,
+              "property_name": "Sistema operativo",
+              "numeric_value": null,
+              "text_value": "CP/M-86; Concurrent CP/M-86 riportato da 1000bit",
+              "unit": null,
+              "source": {
+                "title": "1000bit — GPS5",
+                "url": "https://www.1000bit.it/scheda.asp?id=171",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Museo:CP/M86, multiutenza; varianteConcurrent nella scheda1000bit."
+            },
+            {
+              "component_type": "Sistema",
+              "component_name": null,
+              "property_name": "Utenti simultanei",
+              "numeric_value": 5,
+              "text_value": null,
+              "unit": null,
+              "source": {
+                "title": "Museo del Calcolatore di Prato — General Processor GPS5",
+                "url": "https://www.museodelcalcolatore.it/singolo.php?cod=266",
+                "publisher": "Museo del Calcolatore Laura Tellini",
+                "source_type": "museum_catalog",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Museo e pubblicitàGPS5: fino a 5postazioni."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Modalità testo",
+              "numeric_value": null,
+              "text_value": "80 × 24 caratteri",
+              "unit": null,
+              "source": {
+                "title": "1000bit — GPS5",
+                "url": "https://www.1000bit.it/scheda.asp?id=171",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Scheda 1000bit:80×24."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Risoluzioni riportate",
+              "numeric_value": null,
+              "text_value": "640 × 200 / 640 × 400, 16 colori",
+              "unit": null,
+              "source": {
+                "title": "1000bit — GPS5",
+                "url": "https://www.1000bit.it/scheda.asp?id=171",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Scheda 1000bit:640×200–400,16colours; dati secondari non verificati automaticamente."
+            },
+            {
+              "component_type": "Audio",
+              "component_name": null,
+              "property_name": "Estensione riportata",
+              "numeric_value": null,
+              "text_value": "Sei ottave",
+              "unit": null,
+              "source": {
+                "title": "1000bit — GPS5",
+                "url": "https://www.1000bit.it/scheda.asp?id=171",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Scheda 1000bit:6ottave."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Floppy riportati",
+              "numeric_value": null,
+              "text_value": "5,25 pollici 400 KB; 8 pollici 1380 KB",
+              "unit": null,
+              "source": {
+                "title": "1000bit — GPS5",
+                "url": "https://www.1000bit.it/scheda.asp?id=171",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Capacità riportate nell’archivio: opzioni, non configurazione obbligatoria."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Hard disk riportati",
+              "numeric_value": null,
+              "text_value": "10 / 22 / 40 / 60 / 120 MB",
+              "unit": null,
+              "source": {
+                "title": "1000bit — GPS5",
+                "url": "https://www.1000bit.it/scheda.asp?id=171",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Elenco di opzioni dell’archivio, non attribuite tutte al lancio1985."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Seriale",
+              "numeric_value": null,
+              "text_value": "RS-232C",
+              "unit": null,
+              "source": {
+                "title": "1000bit — GPS5",
+                "url": "https://www.1000bit.it/scheda.asp?id=171",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Scheda 1000bit:RS232C."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Parallela",
+              "numeric_value": null,
+              "text_value": "Due Centronics",
+              "unit": null,
+              "source": {
+                "title": "1000bit — GPS5",
+                "url": "https://www.1000bit.it/scheda.asp?id=171",
+                "publisher": "1000bit",
+                "source_type": "collection",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "VoceParallel port:2Centronics; non interpretato il carattere finale5come numero delleporte."
+            }
+          ],
+          "source": {
+            "title": "Museo del Calcolatore di Prato — General Processor GPS5",
+            "url": "https://www.museodelcalcolatore.it/singolo.php?cod=266",
+            "publisher": "Museo del Calcolatore Laura Tellini",
+            "source_type": "museum_catalog",
+            "access_date": "2026-11-24"
+          }
+        }
+      ],
+      "releases": [
+        {
+          "market": "Mercato non documentato",
+          "release_date": "1985",
+          "source": {
+            "title": "Museo del Calcolatore di Prato — General Processor GPS5",
+            "url": "https://www.museodelcalcolatore.it/singolo.php?cod=266",
+            "publisher": "Museo del Calcolatore Laura Tellini",
+            "source_type": "museum_catalog",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Anno del modello documentato dalla fonte; precisione all’anno."
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Cronologia documentata",
+          "statement": "Il1985 è l’anno di produzione riportato dal Museo del Calcolatore di Prato, non una data esatta di prima vendita.",
+          "source": {
+            "title": "Museo del Calcolatore di Prato — General Processor GPS5",
+            "url": "https://www.museodelcalcolatore.it/singolo.php?cod=266",
+            "publisher": "Museo del Calcolatore Laura Tellini",
+            "source_type": "museum_catalog",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Anno produzione1985;la scheda1000bit non specifica un inizio."
+        },
+        {
+          "fact_type": "Prezzo",
+          "statement": "La voce1000bit riporta3594Euro, ma senza un listino storico in lire a supporto. Quel valore non viene importato come prezzo del 1985.",
+          "source": {
+            "title": "1000bit — GPS5",
+            "url": "https://www.1000bit.it/scheda.asp?id=171",
+            "publisher": "1000bit",
+            "source_type": "collection",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Escluso un valore in valuta successiva al periodo; prezzo storico lasciato non documentato."
+        }
+      ]
+    }
+  ],
+  "photos": {
+    "Modello T": [
+      {
+        "image_url": "https://www.1000bit.it/lista/g/general_processor/gp_mt.jpg",
+        "caption": "Modello T con unità a dischetti esterna, archivio 1000bit.",
+        "author": null,
+        "license_name": "Diritti riservati — studio e ricerca (1000bit)",
+        "license_url": "https://www.1000bit.it/scheda.asp?id=576",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=576"
+      },
+      {
+        "image_url": "https://www.1000bit.it/lista/g/general_processor/modellotmkiii.jpg",
+        "caption": "Versione Modello T MKIII con tastiera separata, archivio 1000bit.",
+        "author": null,
+        "license_name": "Diritti riservati — studio e ricerca (1000bit)",
+        "license_url": "https://www.1000bit.it/scheda.asp?id=1528",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=1528"
+      }
+    ],
+    "GPS4": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Gp_gps4_ad_mc19_mag83.jpg",
+        "caption": "Pubblicità General Processor GPS-4, MCmicrocomputer19, maggio 1983. FonteCommons.",
+        "author": "G.becattini",
+        "license_name": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Gp_gps4_ad_mc19_mag83.jpg"
+      }
+    ],
+    "GPS5": [
+      {
+        "image_url": "https://www.1000bit.it/lista/g/general_processor/img-20181102-wa0008.jpg",
+        "caption": "Esemplare GPS5, archivio 1000bit; autore della fotografia non indicato.",
+        "author": null,
+        "license_name": "Diritti riservati — studio e ricerca (1000bit)",
+        "license_url": "https://www.1000bit.it/scheda.asp?id=171",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=171"
+      }
+    ]
+  },
+  "release_notes": {
+    "Child 8": [
+      {
+        "variant": null,
+        "date_kind": "reference",
+        "note": "Presentazione del progetto nel 1976, prima diGeneral Processor; prima venditaGP non datata."
+      }
+    ],
+    "Child Z": [
+      {
+        "variant": null,
+        "date_kind": "documented_launch",
+        "note": ""
+      }
+    ],
+    "Modello T": [
+      {
+        "variant": "Unità centrale base",
+        "date_kind": "documented_launch",
+        "note": "Unità centrale base. Listino ottobre 1979, IVA esclusa. Il 1979 è l’anno del modello, non il giorno della vendita.",
+        "price_reference": "1979-10"
+      },
+      {
+        "variant": "T/05 — cassette, 32 KB",
+        "date_kind": "documented_launch",
+        "note": "T/05 — cassette, 32 KB. Listino ottobre 1979, IVA esclusa. Il 1979 è l’anno del modello, non il giorno della vendita.",
+        "price_reference": "1979-10"
+      },
+      {
+        "variant": "T/08 — minidischi, 32 KB",
+        "date_kind": "documented_launch",
+        "note": "T/08 — minidischi, 32 KB. Listino ottobre 1979, IVA esclusa; prezzo a partire da. Il 1979 è l’anno del modello, non il giorno della vendita.",
+        "price_reference": "1979-10"
+      },
+      {
+        "variant": "T/10 — floppy da 8 pollici, 32 KB",
+        "date_kind": "documented_launch",
+        "note": "T/10 — floppy da 8 pollici, 32 KB. Listino ottobre 1979, IVA esclusa; prezzo a partire da. Il 1979 è l’anno del modello, non il giorno della vendita.",
+        "price_reference": "1979-10"
+      },
+      {
+        "variant": "T/20 — disco rigido, 32 KB",
+        "date_kind": "documented_launch",
+        "note": "T/20 — disco rigido, 32 KB. Listino ottobre 1979, IVA esclusa; prezzo a partire da. Il 1979 è l’anno del modello, non il giorno della vendita.",
+        "price_reference": "1979-10"
+      },
+      {
+        "variant": "Modello T MKIII",
+        "date_kind": "documented_launch",
+        "note": ""
+      }
+    ],
+    "GPS4": [
+      {
+        "variant": null,
+        "date_kind": "reference",
+        "note": "Attestato nella pubblicità di maggio 1983; data del primo lancio non accertata."
+      }
+    ],
+    "GPS5": [
+      {
+        "variant": null,
+        "date_kind": "reference",
+        "note": "Anno di produzione riportato dal Museo di Prato; prima vendita non datata."
+      }
+    ]
+  },
+  "model_t_aliases": {
+    "Modello T originale": [
+      "Model T"
+    ],
+    "Modello T MKIII": [
+      "Model T MKIII",
+      "Modello T MKIII"
+    ]
+  },
+  "research": {
+    "commercial_names": [
+      "Child 8",
+      "Child Z",
+      "Modello T",
+      "Modello T MKIII",
+      "GPS4",
+      "GPS5"
+    ],
+    "native_cards": 5,
+    "g5_attribution": {
+      "source": "https://www.computerhistory.it/computer/becattini/g5",
+      "note": "1000bit lo raggruppa sottoGP; la ricostruzione specifica documenta la vendita daSUMUS, dittaBecattini. Non aggiunto come prodottoGP."
+    },
+    "missing": [
+      "Frequenze CPU non documentate: non dedotte dal solo tipo di processore.",
+      "GPS4: CPU, RAM e sistema operativo non accertati.",
+      "Child8 eChildZ: fotografie con condizioni sufficienti non acquisite; nessuna immagine estranea assegnata."
+    ],
+    "reuse_notes": [
+      "Documenti e fotografie1000bit: uso per studio/ricerca, permesso al recupero già fornito; nessuna licenza libera presunta.",
+      "PubblicitàGPS4Commons: CC BY-SA3.0, autoreG.becattini; non la data di caricamento2013.",
+      "RobotsComputerhistory vieta/images: nessuna immagine scaricata da quei percorsi. Manuali e depliant acquisiti tramite le esportazioni autorizzateInternetArchive.",
+      "Nessun PDF, ROM, logo o fotografia redistribuito nel repository.",
+      "Risultato di ricercaDuckDuckGo202conchallenge: non aggirato, non usato comefonte; Google429non ritentato."
+    ],
+    "source_hashes": {
+      "gpmodellotdepliant.txt": "21e41a91cc53c3a1b1f889743f4643ae8d6f9ab9e8f83872f0281896ea231b83",
+      "1000-gps4.txt": "c77b846a5e83b028ed804c4f475e72a2358f7fd1441c63ea4f877a2660d174ee",
+      "prato-gps5.txt": "03851ac8a71a45114ad162239bb6062394e75b33bd788fb1cd0439ed8fb0e5f5",
+      "childz-text.txt": "815611241c0cbfd2706d7b412b33455980c10921fbced438370655cf4ea665db",
+      "1000-mkiii.txt": "766458e536359038af9c80e21173d9368b66fcc5ab513c1a3ba27071bc9697f8",
+      "child8.txt": "30395cbae2fcc06f5baf2a44eb15cfaa012270e1c69cc59ca623f940941bc382",
+      "modelt.txt": "84c7aee64125d1848fad3761d67393abb98b5cc9d98374d8b81c79ac36edc13c",
+      "kit8manuale.txt": "5c4042a51cac298f3a067e6eca868ee1566be9d607c731120da9a8df0271331f",
+      "company.txt": "c18a2cf0cb3003d401655e8786abf7de317a402b152d42769ad216ea036a1cc1",
+      "1000-gps5.txt": "c55900292a04c296e414d400991735ec76ea3c57f3765e3b874343e60aec8a36"
+    }
+  }
+}

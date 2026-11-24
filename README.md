@@ -445,6 +445,15 @@ Dopo l’aggiornamento dei container:
 Senza `--apply` mostra un’anteprima; non crea nuovi sistemi né modifica le offerte.
 [Fonti, fotografie, condizioni d’uso e verifica](docs/datasets/earthstation-mistrum-2026-11/README.md).
 
+## General Processor
+
+Profilo aziendale fiorentino con logo, storia e fonti, più Child 8, Child Z,
+Modello T (originale e MKIII nella stessa scheda), GPS4 e GPS5: 79 specifiche,
+fotografie attribuite e cinque prezzi documentati in lire italiane.
+Dopo aver aggiornato i container:
+`docker compose -p hhe-import-test exec api python -m app.importing.general_processor --apply`.
+Senza `--apply`: anteprima. [Fonti, limiti e verifica](docs/datasets/general-processor-2026-11/README.md).
+
 ## Anteprime dei sistemi
 
 Il catalogo e l’elenco dei sistemi nella pagina di un produttore usano lo stesso

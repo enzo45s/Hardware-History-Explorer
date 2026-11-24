@@ -14,6 +14,8 @@ MAKERS = {
     'dec': ('DEC', 'Digital Equipment Corporation', 'Digital Equipment Corp.', 'Digital Equipment', 'Digital'),
     'hp': ('HP', 'Hewlett-Packard', 'Hewlett Packard', 'Hewlett-Packard Company'),
     'asem': ('ASEM', 'ASEM S.p.A.'),
+    'general processor': ('General Processor', 'General Processor Srl', 'General Processor S.r.l.',
+                          'General Processor (Italy)', 'General Processor (Italia)', 'GeneralProcessor'),
 }
 MANUFACTURERS = {name_key(alias): key for key, aliases in MAKERS.items() for alias in aliases}
 MODELS = {
@@ -23,6 +25,10 @@ MODELS = {
     'commodore': (('Commodore 64', 'C64'),),
     'dec': tuple((f'VAX-11/{n}', f'VAX 11/{n}', f'VAX11/{n}', f'VAX 11-{n}', f'DEC VAX-11/{n}')
                  for n in ('750','780','785')) + (('GIGI','VK100','VK-100','VK 100','DEC GIGI'),),
+    'general processor': (('Child 8', 'Child8', 'General Processor Child 8'),
+                          ('Child Z', 'ChildZ', 'General Processor Child Z'),
+                          ('GPS4', 'GPS-4', 'GPS/4', 'General Processor GPS4'),
+                          ('GPS5', 'GPS-5', 'GPS/5', 'General Processor GPS5')),
 }
 
 # Commercial spelling aliases only. Machine type/model codes deliberately stay
