@@ -161,3 +161,43 @@ logo dall’URL Commons quando visualizza la scheda.
 aggiornato un produttore, aggiunta una sola fonte, conservati gli altri 183
 profili, tutti i 1.142 sistemi e le 605 fotografie. I 22 test sui profili
 produttori passano sia su SQLite sia su PostgreSQL.
+
+## Supplemento logo Unitron Eletrônica (24 novembre 2026)
+
+Il [file Commons indicato dall’utente](https://commons.wikimedia.org/wiki/File:Logo_retr%C3%B2_Unitron_Eletr%C3%B4nica.png)
+è disponibile nel pacchetto circoscritto
+[`manufacturer-unitron-logo-v1.json`](../backend/app/importing/data/manufacturer-unitron-logo-v1.json).
+Aggiorna soltanto i cinque campi mancanti del logo di **Unitron Eletronica**
+(anche nella grafia **Unitron Eletrônica**); non riapplica gli altri profili,
+non modifica storia e sistemi e non si abbina alla Unitron tedesca o alla
+scheda separata `bootleg (Unitron)`.
+
+Commons, revisione **1305896637**, dichiara una **ricostruzione digitale** da
+una fotografia del logo originale sul retro di un computer Unitron. Autore
+indicato: **ChatGPT, Vincenzo Colacicco**; caricamento **Enzo45s**, 24 novembre
+2026; licenza **CC0 1.0**, con template `PD-algorithm`. Le dichiarazioni sono
+conservate nella fonte e nell’audit, senza attribuire la realizzazione del
+file alla società storica o dedurne date aziendali. La fonte resta `pending`.
+Il PNG originale HTTPS è collegato senza tracking e non viene redistribuito
+nel repository. Il riquadro del logo ha sfondo bianco anche nel tema scuro,
+per rendere leggibile il marchio nero trasparente.
+
+Dopo aggiornamento del branch e ricostruzione dei container:
+
+```bash
+docker compose -p hhe-import-test exec api python -m app.manufacturer_enrichment --package app/importing/data/manufacturer-unitron-logo-v1.json
+```
+
+Il comando applica il supplemento al database locale. Ripeterlo non duplica
+la fonte; un logo già inserito manualmente viene conservato. Non occorrono
+chiavi API o richieste di rete durante l’importazione. Il browser recupera
+il logo dall’URL Commons quando apre la scheda.
+
+[Verifica su copia PostgreSQL](datasets/unitron-logo-2026-11/verification.json):
+un produttore aggiornato in cinque campi e una fonte aggiunta; gli altri 184
+produttori, i 1.147 computer, le 611 foto e i dati storici/ETL precedenti
+rimangono intatti. Una seconda applicazione aggiorna zero campi e non duplica
+la fonte. I **24 test dei profili** passano su SQLite e PostgreSQL, inclusi
+gli abbinamenti nelle due grafie, gli omonimi e i metadati nell’API. File PNG
+originale scaricato via HTTPS e ispezionato; nessuna nuova prova browser o
+compilazione frontend, perché componenti e stile non sono stati modificati.

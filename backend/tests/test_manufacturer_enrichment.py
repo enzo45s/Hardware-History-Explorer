@@ -156,6 +156,48 @@ def test_albert_commons_logo_preserves_profile_and_records_image_provenance(clie
     assert len(profile['sources']) == 2
 
 
+@pytest.mark.parametrize('name', ['Unitron Eletronica', 'Unitron Eletrônica'])
+def test_unitron_commons_logo_keeps_history_credits_and_distinct_namesakes(client, name):
+    path = PACKAGE.with_name('manufacturer-unitron-logo-v1.json')
+    data, _ = load_package(path)
+    record = data['records'][0]
+    assert len(data['records']) == 1 and set(record['fields']) == {
+        'logo_url', 'logo_author', 'logo_license', 'logo_license_url', 'logo_source_url'}
+    assert record['research']['commons_revision'] == 1305896637
+    assert 'Digitally reconstructed' in record['research']['credit']
+    with SessionLocal() as db:
+        history = Source(title='Synthetic Unitron history', url='https://example.org/unitron-history')
+        maker = Manufacturer(name=name, country='Brasile', description='Storia aziendale curata.', sources=[history])
+        german = Manufacturer(name='Unitron', country='Germania')
+        project = Manufacturer(name='bootleg (Unitron)')
+        computer = Computer(manufacturer=maker, model_name='Synthetic existing Unitron model')
+        db.add_all([maker, german, project, computer]); db.commit(); mid = maker.id
+        result = apply_enrichment(db, path=path, explicit=True)
+        assert result['updated'] == result['matched'] == 1
+        db.refresh(maker)
+        assert maker.description == 'Storia aziendale curata.' and maker.country == 'Brasile'
+        assert maker.founded is None and maker.ceased is None
+        assert maker.logo_url == record['fields']['logo_url'] and '?' not in maker.logo_url
+        assert maker.logo_author == 'ChatGPT, Vincenzo Colacicco'
+        assert maker.logo_license_url == 'https://creativecommons.org/publicdomain/zero/1.0/'
+        assert len(maker.sources) == 2 and history in maker.sources
+        assert german.logo_url is None and project.logo_url is None
+        assert computer.manufacturer_id == mid
+        link = db.execute(select(manufacturer_source).where(manufacturer_source.c.target_id == mid,
+                          manufacturer_source.c.source_id != history.id)).mappings().one()
+        assert link['verification_status'] == 'pending'
+        assert set(json.loads(link['evidence'])['fields']) == set(record['fields'])
+        audit = db.scalars(select(CatalogReconciliation).where(CatalogReconciliation.entity == AUDIT_ENTITY)).one()
+        assert audit.snapshot['changes'][0]['research']['uploader'] == 'Enzo45s'
+        count = db.scalar(select(func.count()).select_from(Source)); db.commit()
+        assert apply_enrichment(db, path=path, explicit=True)['updated'] == 0
+        assert db.scalar(select(func.count()).select_from(Source)) == count
+    profile = client.get(f'/api/manufacturers/{mid}/profile').json()
+    assert profile['logo_source_url'] == record['fields']['logo_source_url']
+    assert profile['logo_author'] == record['fields']['logo_author']
+    assert profile['computer_count'] == 1 and len(profile['sources']) == 2
+
+
 def test_report_apply_endpoints_and_manual_rewrite_credit_reset(client):
     maker = client.post('/api/manufacturers', json={'name': 'Acorn'}).json()
     response = client.post('/api/admin/manufacturers/enrichment/apply')
