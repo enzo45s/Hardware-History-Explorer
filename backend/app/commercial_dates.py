@@ -38,10 +38,17 @@ def evidence(computer, release, history):
     supporting=[source_map[i] for i in ids if i in source_map]
     if not supporting:
         return {'kind':'reference','base':False,'source_ids':[]}
+    previous=details.get('date_evidence',{})
+    # An external citation may support a catalogue/list-price reference year,
+    # not a launch. Keep an explicit qualified role while its evidence still
+    # points to these sources; an external URL alone must not upgrade it.
+    if (previous.get('kind')=='reference' and details.get('date_scope')=='reference'
+            and details.get('reference_note')
+            and sorted(previous.get('source_ids',[]))==sorted(s.id for s in supporting)):
+        return {**previous,'source_ids':sorted(s.id for s in supporting)}
     if any(not is_mame_source(s) for s in supporting):
         return {'kind':'documented_launch' if details.get('date_evidence',{}).get('kind')=='documented_launch' else 'documented','source_ids':sorted(s.id for s in supporting)}
     expected=details.get('model_variant') or computer.model_name
-    previous=details.get('date_evidence',{})
     # A merged regional profile may no longer carry its former model_variant
     # name. Preserve the established role while its supporting IDs agree.
     base=bool(previous.get('base') and sorted(previous.get('source_ids',[]))==sorted(s.id for s in supporting))

@@ -463,6 +463,16 @@ Dopo aver aggiornato i container:
 `docker compose -p hhe-import-test exec api python -m app.importing.microcomputer_research --apply`.
 Senza `--apply`: anteprima. [Fonti, prezzi, limiti e istruzioni](docs/datasets/microcomputers-2026-11/README.md).
 
+## Revisione Sun: anni e fotografie
+
+Il supplemento recupera gli anni dichiarati nei contesti di prezzo delle schede
+Sun, distingue riferimenti e lanci documentati, corregge vecchi anni non verificati
+e aggiunge immagini selezionate anche da fonti esterne a Commons. Prezzi, testi,
+specifiche e copertine manuali restano conservati; le lacune fotografiche sono
+esplicitate. Dopo aggiornamento dei container:
+`docker compose -p hhe-import-test exec api python -m app.importing.sun_research --apply`.
+Senza `--apply`: anteprima. [Fonti, limiti e verifica](docs/datasets/sun-2026-11/README.md).
+
 ## Anteprime dei sistemi
 
 Il catalogo e l’elenco dei sistemi nella pagina di un produttore usano lo stesso
