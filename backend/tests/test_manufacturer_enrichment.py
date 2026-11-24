@@ -7,7 +7,7 @@ from sqlalchemy import select, func
 from app.main import SessionLocal
 from app.models import Manufacturer, Source, manufacturer_source, Computer
 from app.import_models import CatalogReconciliation
-from app.manufacturer_enrichment import apply_enrichment, load_package, AUDIT_ENTITY
+from app.manufacturer_enrichment import apply_enrichment, load_package, AUDIT_ENTITY, PACKAGE
 from fastapi import HTTPException
 
 
@@ -113,6 +113,47 @@ def test_bundled_research_is_cited_and_avoids_known_namesakes():
         assert rows[name]['field_sources']['description'] == ['https://www.msx.org/wiki/Category:' + suffix]
         assert 'description_author' not in rows[name]['fields']  # These summaries do not derive from Wikipedia.
     assert 'https://www.msx.org/wiki/Category:Sakhr/Al_Alamiah' in rows['Sakhr']['field_sources']['description']
+
+
+def test_albert_commons_logo_preserves_profile_and_records_image_provenance(client):
+    path = PACKAGE.with_name('manufacturer-albert-logo-v1.json')
+    package_data, _ = load_package(path)
+    record = package_data['records'][0]
+    assert len(package_data['records']) == 1
+    assert record['research']['commons_revision'] == 1305857945
+    assert record['research']['credit'] == "Took from the box shown in system's pictures."
+    with SessionLocal() as db:
+        historical = Source(title='Synthetic existing history', url='https://example.org/albert-history')
+        maker = Manufacturer(name='Albert Computers, Inc.', description='Testo aziendale curato.',
+                             country='Stati Uniti', sources=[historical])
+        other = Manufacturer(name='Unrelated synthetic maker', logo_url='https://example.org/curated.png')
+        db.add_all([maker, other]); db.commit(); mid = maker.id
+        result = apply_enrichment(db, path=path, explicit=True)
+        assert result['updated'] == 1 and set(result['fields_updated']) == set(record['fields'])
+        db.refresh(maker)
+        assert maker.description == 'Testo aziendale curato.' and maker.country == 'Stati Uniti'
+        assert maker.founded is None  # Upload time does not become company history.
+        assert maker.logo_author == 'ChatGPT, Vincenzo Colacicco'
+        assert maker.logo_license_url == 'https://creativecommons.org/publicdomain/zero/1.0/'
+        assert maker.logo_url.endswith('/1/13/Albert_Computers_Inc._Logo.png') and '?' not in maker.logo_url
+        assert maker.logo_source_url == 'https://commons.wikimedia.org/wiki/File:Albert_Computers_Inc._Logo.png'
+        assert historical in maker.sources and len(maker.sources) == 2
+        assert other.logo_url == 'https://example.org/curated.png'
+        link = db.execute(select(manufacturer_source).where(manufacturer_source.c.target_id == mid,
+                          manufacturer_source.c.source_id != historical.id)).mappings().one()
+        assert link['verification_status'] == 'pending'
+        assert set(json.loads(link['evidence'])['fields']) == set(record['fields'])
+        audit = db.scalars(select(CatalogReconciliation).where(CatalogReconciliation.entity == AUDIT_ENTITY)
+                           .order_by(CatalogReconciliation.id.desc())).first()
+        assert audit.snapshot['changes'][0]['research']['uploader'] == 'Enzo45s'
+        source_count = db.scalar(select(func.count()).select_from(Source))
+        db.commit()
+        assert apply_enrichment(db, path=path, explicit=True)['updated'] == 0
+        assert db.scalar(select(func.count()).select_from(Source)) == source_count
+    profile = client.get(f'/api/manufacturers/{mid}/profile').json()
+    assert profile['logo_source_url'] == record['fields']['logo_source_url']
+    assert profile['logo_author'] == record['fields']['logo_author']
+    assert len(profile['sources']) == 2
 
 
 def test_report_apply_endpoints_and_manual_rewrite_credit_reset(client):

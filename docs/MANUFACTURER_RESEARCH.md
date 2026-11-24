@@ -125,3 +125,39 @@ pacchetto.
 - Vendex
 - Victor do Brasil
 - Vladimir Drozdov
+
+## Supplemento logo Albert Computers (24 novembre 2026)
+
+Il file indicato dall’utente,
+[Albert Computers Inc. Logo.png](https://commons.wikimedia.org/wiki/File:Albert_Computers_Inc._Logo.png),
+è disponibile nel pacchetto circoscritto
+[`manufacturer-albert-logo-v1.json`](../backend/app/importing/data/manufacturer-albert-logo-v1.json).
+Non riapplica la raccolta generale né modifica descrizioni, dati aziendali e
+fonti storiche esistenti. Aggiorna solo i campi mancanti del logo Albert.
+
+Commons dichiara autore **ChatGPT, Vincenzo Colacicco**, provenienza «Took from
+the box shown in system's pictures.», licenza **CC0 1.0** e template
+`PD-algorithm`. Il caricamento è dell’utente Enzo45s, 24 novembre 2026.
+Queste attribuzioni sono conservate senza presentare l’immagine come un file
+originale realizzato dalla società storica. L’URL del logo, la pagina Commons
+e il collegamento alla licenza sono nel profilo; revisione **1305857945**,
+provenienza dichiarata e metadati sono nell’audit. Nessuna data aziendale è
+dedotta dal caricamento. La nuova associazione bibliografica resta `pending`.
+
+Dopo aver aggiornato il branch e ricostruito i container, applicare sul proprio
+database, dalla cartella del progetto:
+
+```bash
+docker compose -p hhe-import-test exec api python -m app.manufacturer_enrichment --package app/importing/data/manufacturer-albert-logo-v1.json
+```
+
+Il comando applica il pacchetto: non è un’anteprima. La ripetizione non duplica
+le fonti e non sostituisce un logo già inserito a mano. Non richiede API a
+pagamento o richieste di rete durante l’importazione; il browser carica il
+logo dall’URL Commons quando visualizza la scheda.
+
+
+[Verifica su copia PostgreSQL](datasets/albert-logo-2026-11/verification.json):
+aggiornato un produttore, aggiunta una sola fonte, conservati gli altri 183
+profili, tutti i 1.142 sistemi e le 605 fotografie. I 22 test sui profili
+produttori passano sia su SQLite sia su PostgreSQL.
