@@ -23,8 +23,8 @@ export default function HomePage({ revision, manufacturers, onNavigate, onOpenCo
     setError(''); setData(null);
     return latestRequest(signal => api('/home', { signal }), result => setData(result), e => setError(e.message));
   }, [revision, attempt]);
-  const featured = data?.featured || [], hero = featured[0], cover = hero?.cover;
-  const display = [...featured].sort((a, b) => (a.year ?? Infinity) - (b.year ?? Infinity) || a.id - b.id);
+  const featured = data?.featured || [], hero = data?.spotlight, cover = hero?.cover;
+  const display = featured;
   // Existing identities only; these are direct profile links, not a synthetic roster.
   const preferred = ['olivetti', 'apple', 'ibm', 'commodore', 'digital equipment corporation', 'sun microsystems'];
   const makers = [...manufacturers].sort((a, b) => {

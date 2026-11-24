@@ -30,18 +30,24 @@ indietro dopo che ha scelto un’altra sezione.
 
 ## Contenuti dal database
 
-`GET /api/home` restituisce conteggi aggregati e al massimo tre sistemi.
+`GET /api/home` restituisce conteggi aggregati, un sistema in `spotlight`
+per la vetrina e al massimo tre schede distinte in `featured` per la collezione.
 Non carica l’intero catalogo nel browser, non applica pacchetti di dati e
 non crea contenuti dimostrativi. Le analisi complete vengono richieste solo
 nelle sezioni che le mostrano.
 
-La selezione editoriale preferisce Commodore 64, Programma 101 e IBM PC 5150,
-quando marca e modello corrispondono a record effettivamente presenti. Non
+La vetrina preferisce il **Commodore 64**; **Macchine che raccontano** presenta,
+nell’ordine, **Programma 101, Apple II e IBM PC 5150**, quando marca e modello
+corrispondono a record effettivamente presenti. È riconosciuta anche la grafia
+storica **Apple ][**, mantenendo il nome presente nel catalogo. Non
 usa ID fissi, non accorpa modelli e non introduce regole di deduplicazione.
+La macchina in vetrina non viene ripetuta nelle tre schede sottostanti.
 Quando un sistema manca o viene cancellato, il posto è occupato da un altro
 record dell’archivio: prima quelli con foto, poi per prima commercializzazione
 e ID. Le tre schede sono distinte; gli archivi piccoli non vengono riempiti
-con dati inventati. Le schede sotto la vetrina sono ordinate per anno.
+con dati inventati. Se il C64 manca, viene scelto per la vetrina un altro
+modello esterno alla selezione, quando disponibile; negli archivi molto piccoli
+le schede rimangono comunque distinte.
 
 Conteggi e sistemi si ricaricano dopo le modifiche amministrative e quando
 si torna alla home. Un archivio vuoto mostra un invito a iniziare; errori
@@ -80,7 +86,7 @@ non introduce colonne, tabelle o migrazioni. La build API è necessaria per il
 nuovo endpoint, oltre a quella del frontend. Il database del Mac non viene
 raggiunto o aggiornato dall’ambiente cloud.
 
-## Verifiche
+## Verifiche iniziali
 
 - Suite backend SQLite: **886 test passati**, due test specifici PostgreSQL
   saltati. I quattro test home coprono archivio vuoto/piccolo, omonimi, ID
@@ -108,3 +114,15 @@ esterne dal Chromium cloud. Rimangono gli avvisi preesistenti sulla dimensione
 del bundle Vite e sulla deprecazione Starlette/httpx nei test.
 
 Il flusso browser home è incluso nella CI prima dei controlli delle importazioni.
+
+### Rifinitura della selezione e dell’allineamento
+
+La vetrina e le tre schede hanno selezioni indipendenti e conservano i collegamenti
+ai record e alle fonti reali. I pulsanti dei periodi sono allineati in alto:
+un diverso numero di righe nelle didascalie non sposta più i titoli. Sui layout
+stretti si allineano i periodi appartenenti alla stessa riga.
+
+Per questa rifinitura passano **8 test home/API su SQLite e PostgreSQL**,
+**45 test frontend**, la compilazione React e il flusso browser della home, incluso
+l’allineamento geometrico dei titoli e dei pulsanti nei due temi alle larghezze
+320/390/768/1440 px. Non è necessario importare o modificare dati del database.

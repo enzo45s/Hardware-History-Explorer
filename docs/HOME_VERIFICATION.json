@@ -176,5 +176,42 @@
     "filters_and_comparison_preserved": true,
     "home_empty_and_error_retry": true,
     "image_method": "Navigation test uses synthetic SVGs; separate visual review uses original bytes downloaded from exact cover URLs and current fonts."
+  },
+  "selection_refinement": {
+    "spotlight": {
+      "id": 329,
+      "model_name": "Commodore 64"
+    },
+    "collection": [
+      {
+        "id": 1176,
+        "model_name": "Programma 101"
+      },
+      {
+        "id": 152,
+        "model_name": "Apple ]["
+      },
+      {
+        "id": 549,
+        "model_name": "IBM PC 5150"
+      }
+    ],
+    "showcase_not_repeated": true,
+    "tests_sqlite_home_api_passed": 8,
+    "tests_postgresql_home_api_passed": 8,
+    "tests_frontend_passed": 45,
+    "react_build": "passed",
+    "docker_build_and_health": "passed",
+    "home_browser_navigation_and_era_top_alignment": "passed",
+    "alignment_widths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "themes": [
+      "light",
+      "dark"
+    ]
   }
 }

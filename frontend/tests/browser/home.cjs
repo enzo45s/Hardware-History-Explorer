@@ -13,7 +13,7 @@ const { chromium } = require('playwright');
     const response = await page.request.get(new URL('/api/home', base).href);
     assert.equal(response.status(), 200); const home = await response.json();
     // Network-independent photo rendering uses explicitly synthetic fixtures.
-    for (const computer of home.featured) if (computer.image_url) {
+    for (const computer of [home.spotlight, ...home.featured].filter(Boolean)) if (computer.image_url) {
       const url = new URL(computer.image_url, base).href;
       await page.route(u => u.href === url, route => route.fulfill({ contentType: 'image/svg+xml',
         body: '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="250"><rect width="500" height="250" fill="#dae5d8"/><text x="120" y="135" font-size="32">TEST PHOTO</text></svg>' }));
@@ -30,6 +30,8 @@ const { chromium } = require('playwright');
       home.summary.systems.toLocaleString('it-IT'));
     assert.equal(await page.locator('.home-stat strong').nth(1).innerText(), home.summary.manufacturers.toLocaleString('it-IT'));
     assert.equal(await page.locator('.home-exhibit').count(), home.featured.length);
+    assert.deepEqual(await page.locator('.home-exhibit h3').allInnerTexts(), home.featured.map(c => c.model_name));
+    if (home.spotlight) assert(!home.featured.some(c => c.id === home.spotlight.id));
     for (const [selector, heading] of [
       [() => page.getByRole('button', { name: 'Entra nel catalogo', exact: true }), 'Catalogo sistemi'],
       [() => page.getByRole('button', { name: 'Percorri la timeline', exact: true }), 'La storia dei calcolatori.'],
@@ -55,13 +57,16 @@ const { chromium } = require('playwright');
       await page.getByRole('heading', { name: heading.replace('dell’', "dell'"), exact: true, level: 1 }).waitFor();
     }
     await welcome();
-    if (home.featured.length) {
-      const model = home.featured[0];
+    if (home.spotlight) {
+      const model = home.spotlight;
       await page.getByRole('button', { name: 'Scopri ' + model.model_name, exact: true }).click();
       await page.getByRole('heading', { name: model.model_name, exact: true, level: 1 }).waitFor();
       await page.getByRole('button', { name: "Torna all'esplorazione", exact: true }).click();
-      await page.getByRole('button', { name: 'Scopri la storia di ' + model.model_name, exact: true }).click();
-      await page.getByRole('heading', { name: model.model_name, exact: true, level: 1 }).waitFor();
+      if (home.featured.length) {
+        const card = home.featured[0];
+        await page.getByRole('button', { name: 'Scopri la storia di ' + card.model_name, exact: true }).click();
+        await page.getByRole('heading', { name: card.model_name, exact: true, level: 1 }).waitFor();
+      }
       await welcome();
       // A late detail response must not pull the user out of another section.
       let release, started;
@@ -117,6 +122,16 @@ const { chromium } = require('playwright');
       for (const width of [320, 390, 768, 1440]) {
         await page.setViewportSize({ width, height: 1000 });
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Home overflows at ' + width);
+        const eras = await page.locator('.home-era').evaluateAll(nodes => nodes.map(node => ({
+          top: node.getBoundingClientRect().top,
+          height: node.getBoundingClientRect().height,
+          label: node.querySelector('strong').getBoundingClientRect().top,
+        })));
+        for (const era of eras) {
+          const peers = eras.filter(other => Math.abs(other.top - era.top) < 1);
+          assert(peers.every(other => Math.abs(other.label - era.label) < 1 && Math.abs(other.height - era.height) < 1),
+            'Era labels must align at the top of each row: ' + JSON.stringify(eras));
+        }
       }
       const current = await page.locator('h1').evaluate(e => {
         const s = getComputedStyle(e); return [s.fontFamily, s.fontSize, s.fontWeight];
@@ -132,7 +147,7 @@ const { chromium } = require('playwright');
     await page.waitForFunction(() => !document.querySelector('[role=alert]'));
     await page.unroute('**/api/home');
     await page.route('**/api/home', route => route.fulfill({ contentType: 'application/json',
-      body: JSON.stringify({ summary: { systems: 0, manufacturers: 0 }, featured: [] }) }));
+      body: JSON.stringify({ summary: { systems: 0, manufacturers: 0 }, spotlight: null, featured: [] }) }));
     await page.reload(); await page.getByRole('heading', { name: 'La collezione comincia da qui.', exact: true }).waitFor();
     assert.equal(await page.locator('.home-showcase').count(), 0);
     assert.equal(await page.locator('.home-exhibit').count(), 0);

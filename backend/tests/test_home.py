@@ -19,21 +19,21 @@ def client(monkeypatch):
 
 def test_empty_home_does_not_create_demo_records(client):
     assert client.get('/api/home').json() == {
-        'summary': {'systems': 0, 'manufacturers': 0}, 'featured': []}
+        'summary': {'systems': 0, 'manufacturers': 0}, 'spotlight': None, 'featured': []}
     with SessionLocal() as db:
         db.add(Manufacturer(name='Synthetic maker without systems')); db.commit()
     assert client.get('/api/home').json() == {
-        'summary': {'systems': 0, 'manufacturers': 1}, 'featured': []}
+        'summary': {'systems': 0, 'manufacturers': 1}, 'spotlight': None, 'featured': []}
 
 
 def test_real_ids_curated_covers_partial_dates_and_sourced_text_are_preserved(client):
     with SessionLocal() as db:
-        makers = [Manufacturer(name=name) for name in ('Unrelated namesake', 'Commodore', 'Olivetti', 'IBM')]
+        makers = [Manufacturer(name=name) for name in ('Unrelated namesake', 'Commodore', 'Olivetti', 'Apple', 'IBM')]
         db.add_all(makers)
         market = Market(name='Synthetic test market'); db.add(market)
         wrong = [Computer(model_name='Commodore 64', manufacturer=makers[0]) for _ in range(15)]
         rows = [Computer(model_name=model, manufacturer=maker, description='Synthetic sourced introduction.')
-                for model, maker in zip(('Commodore 64', 'Programma 101', 'IBM PC 5150'), makers[1:])]
+                for model, maker in zip(('Commodore 64', 'Programma 101', 'Apple ][', 'IBM PC 5150'), makers[1:])]
         db.add_all([*wrong, *rows]); db.flush()
         source = Source(title='Synthetic text source', url='https://example.org/history')
         rows[0].sources.append(source)
@@ -56,14 +56,15 @@ def test_real_ids_curated_covers_partial_dates_and_sourced_text_are_preserved(cl
                   for table in (Computer, Manufacturer, ComputerImage, Release, Source)}
     response = client.get('/api/home'); assert response.status_code == 200
     home = response.json()
-    assert home['summary'] == {'systems': 18, 'manufacturers': 4}
-    assert [c['id'] for c in home['featured']] == ids
-    assert home['featured'][0]['image_url'] == 'https://example.org/thumb.jpg'
-    assert home['featured'][0]['cover']['url'] == 'https://example.org/curated.jpg'
-    assert home['featured'][0]['cover']['author'] == 'Synthetic photographer'
-    assert home['featured'][0]['cover']['license_url'] == 'https://example.org/terms'
-    assert home['featured'][0]['description_attribution']['url'] == 'https://example.org/history'
-    assert home['featured'][1]['first_release'] == '1965-10'
+    assert home['summary'] == {'systems': 19, 'manufacturers': 5}
+    assert home['spotlight']['id'] == ids[0]
+    assert [c['id'] for c in home['featured']] == ids[1:]
+    assert home['spotlight']['image_url'] == 'https://example.org/thumb.jpg'
+    assert home['spotlight']['cover']['url'] == 'https://example.org/curated.jpg'
+    assert home['spotlight']['cover']['author'] == 'Synthetic photographer'
+    assert home['spotlight']['cover']['license_url'] == 'https://example.org/terms'
+    assert home['spotlight']['description_attribution']['url'] == 'https://example.org/history'
+    assert home['featured'][0]['first_release'] == '1965-10'
     assert home['featured'][2]['year'] is None and home['featured'][2]['cover'] is None
     assert all(client.get(f'/api/computers/{id}').status_code == 200 for id in ids)
     with SessionLocal() as db:
@@ -80,7 +81,8 @@ def test_missing_or_deleted_editorial_choices_use_bounded_actual_archive(client)
         db.commit(); first = rows[-1].id
     home = client.get('/api/home').json()
     assert home['summary'] == {'systems': 20, 'manufacturers': 1}
-    assert len(home['featured']) == 3 and home['featured'][0]['id'] == first
+    assert len(home['featured']) == 3 and home['spotlight']['id'] == first
+    assert first not in {c['id'] for c in home['featured']}
     assert len({c['id'] for c in home['featured']}) == 3
     assert all(c['model_name'].startswith('Alternative system') for c in home['featured'])
     with SessionLocal() as db:
@@ -88,12 +90,27 @@ def test_missing_or_deleted_editorial_choices_use_bounded_actual_archive(client)
     updated = client.get('/api/home').json()
     assert updated['summary']['systems'] == 19
     assert len(updated['featured']) == 3 and first not in {c['id'] for c in updated['featured']}
+    assert updated['spotlight']['id'] != first
     assert all(c['cover'] is None and c['image_url'] is None for c in updated['featured'])
 
 
-def test_small_archive_is_not_padded_with_invented_systems(client):
+@pytest.mark.parametrize('count', [1, 2, 3])
+def test_small_archive_is_not_padded_or_repeated(client, count):
     with SessionLocal() as db:
-        db.add(Computer(model_name='Only existing system', manufacturer=Manufacturer(name='Only maker'))); db.commit()
+        maker = Manufacturer(name='Only maker')
+        db.add_all([Computer(model_name=f'Existing system {i}', manufacturer=maker) for i in range(count)]); db.commit()
     home = client.get('/api/home').json()
-    assert len(home['featured']) == 1
-    assert home['featured'][0]['model_name'] == 'Only existing system'
+    assert len(home['featured']) == count - 1
+    ids = [home['spotlight']['id'], *(c['id'] for c in home['featured'])]
+    assert len(set(ids)) == count
+
+
+def test_missing_c64_keeps_the_three_collection_choices_when_another_showcase_exists(client):
+    with SessionLocal() as db:
+        rows = [Computer(model_name=model, manufacturer=Manufacturer(name=maker))
+                for maker, model in [('Olivetti', 'Programma 101'), ('Apple Computer', 'Apple II'),
+                                     ('IBM', 'IBM PC 5150'), ('Synthetic other maker', 'Other actual system')]]
+        db.add_all(rows); db.commit(); ids = [c.id for c in rows]
+    home = client.get('/api/home').json()
+    assert home['spotlight']['id'] == ids[3]
+    assert [c['id'] for c in home['featured']] == ids[:3]
