@@ -16,6 +16,9 @@ MAKERS = {
     'asem': ('ASEM', 'ASEM S.p.A.'),
     'general processor': ('General Processor', 'General Processor Srl', 'General Processor S.r.l.',
                           'General Processor (Italy)', 'General Processor (Italia)', 'GeneralProcessor'),
+    'grundy': ('Grundy', 'Grundy Business Systems', 'Grundy Business Systems Ltd', 'Grundy Business Systems Ltd.'),
+    'multitech': ('Multitech', 'Multitech Industrial Corporation', 'Multitech Industrial Corp.'),
+    'robotron': ('Robotron', 'VEB Robotron', 'VEB Kombinat Robotron'),
 }
 MANUFACTURERS = {name_key(alias): key for key, aliases in MAKERS.items() for alias in aliases}
 MODELS = {
@@ -29,6 +32,12 @@ MODELS = {
                           ('Child Z', 'ChildZ', 'General Processor Child Z'),
                           ('GPS4', 'GPS-4', 'GPS/4', 'General Processor GPS4'),
                           ('GPS5', 'GPS-5', 'GPS/5', 'General Processor GPS5')),
+    'grundy': (('NewBrain', 'Newbrain', 'New Brain', 'Grundy NewBrain', 'NewBrain A', 'NewBrain AD'),),
+    'multitech': (('Micro-Professor I', 'Microprofessor I', 'Microprofessor 1', 'Micro-Professor 1',
+                   'Micro-Professor MPF-I', 'MPF-I', 'MPF-1', 'MPF-1A', 'MPF-IA'),),
+    'robotron': (('KC 85/1', 'KC85/1', 'Robotron KC 85/1', 'Robotron KC85/1', 'Z9001', 'Z 9001', 'Z-9001'),
+                 ('KC 87', 'KC87', 'KC-87', 'Robotron KC 87', 'Robotron KC87'),
+                 ('A 5105', 'A5105', 'A-5105', 'BIC A5105', 'BIC A 5105', 'Robotron A5105')),
 }
 
 # Commercial spelling aliases only. Machine type/model codes deliberately stay

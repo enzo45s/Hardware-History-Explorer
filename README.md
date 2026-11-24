@@ -454,6 +454,15 @@ Dopo aver aggiornato i container:
 `docker compose -p hhe-import-test exec api python -m app.importing.general_processor --apply`.
 Senza `--apply`: anteprima. [Fonti, limiti e verifica](docs/datasets/general-processor-2026-11/README.md).
 
+## NewBrain, Micro-Professor I e Robotron
+
+Pacchetto documentato per NewBrain, Micro-Professor I e tre sistemi Robotron:
+KC 85/1 (comprende Z9001), KC 87 e A 5105. Cinque schede, 87 specifiche,
+fotografie Commons e profili di Robotron e Grundy Business Systems.
+Dopo aver aggiornato i container:
+`docker compose -p hhe-import-test exec api python -m app.importing.microcomputer_research --apply`.
+Senza `--apply`: anteprima. [Fonti, prezzi, limiti e istruzioni](docs/datasets/microcomputers-2026-11/README.md).
+
 ## Anteprime dei sistemi
 
 Il catalogo e l’elenco dei sistemi nella pagina di un produttore usano lo stesso
