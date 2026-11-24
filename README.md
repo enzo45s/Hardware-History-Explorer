@@ -435,6 +435,16 @@ Il supplemento conserva prezzi, mercati e date curate; distingue annuncio e
 introduzione, mantenendo la precisione documentata all’anno, mese o giorno.
 [Mappature, fonti e limiti](docs/datasets/ibm-ps-2026-11/README.md).
 
+## Revisione EarthStation-I e Mistrum
+
+Aggiornamento documentato delle due schede esistenti: 44 specifiche, descrizioni
+italiane e fotografie attribuite. Corregge CPU e RAM dell’EarthStation-I e
+documenta la RAM fisica del Mistrum, separandola dalla memoria video.
+Dopo l’aggiornamento dei container:
+`docker compose -p hhe-import-test exec api python -m app.importing.earthstation_mistrum --apply`.
+Senza `--apply` mostra un’anteprima; non crea nuovi sistemi né modifica le offerte.
+[Fonti, fotografie, condizioni d’uso e verifica](docs/datasets/earthstation-mistrum-2026-11/README.md).
+
 ## Anteprime dei sistemi
 
 Il catalogo e l’elenco dei sistemi nella pagina di un produttore usano lo stesso
