@@ -1,0 +1,1800 @@
+{
+  "researched_on": "2026-11-24",
+  "scope": "99 profiles with a description or logo missing in the 187-manufacturer clone; not an exhaustive search of every website",
+  "profiles": [
+    {
+      "name": "AUVA",
+      "catalog_models": [
+        "VIP 800"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Acorn Computers / Slogger",
+      "catalog_models": [
+        "Acorn Electron"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Alex Zhabin",
+      "catalog_models": [
+        "Pentagon 1024SL"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description",
+        "description_author",
+        "description_source_url",
+        "description_license_url"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Persona/progettista: nessun logo personale documentato, nessuna società inventata.",
+      "new_source_urls": [
+        "https://ru.wikipedia.org/w/index.php?oldid=153680892"
+      ]
+    },
+    {
+      "name": "Alloy",
+      "catalog_models": [
+        "EarthStation-I"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Amaterske RADIO",
+      "catalog_models": [
+        "Mistrum"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Arbiter Leisure",
+      "catalog_models": [
+        "Arbiter Discmate A-02",
+        "Arbiter Discmonitor A-01"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Autocue Ltd.",
+      "catalog_models": [
+        "Autocue 1500 Teleprompter"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.autocue.com/"
+      ]
+    },
+    {
+      "name": "BEMZ",
+      "catalog_models": [
+        "PEVM Byte"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Basis",
+      "catalog_models": [
+        "Basis 108"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=127"
+      ]
+    },
+    {
+      "name": "Bawareth",
+      "catalog_models": [
+        "Perfect MSX1"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "British Telecom Business Systems",
+      "catalog_models": [
+        "BT Merlin M2105",
+        "Merlin M1800 Tonto"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "China HKC",
+      "catalog_models": [
+        "HKC 8800A"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Ciel",
+      "catalog_models": [
+        "Expert 3 IDE",
+        "Expert 3 Turbo"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Codimex",
+      "catalog_models": [
+        "CD-6809"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "ComputerTechnik/IBS",
+      "catalog_models": [
+        "Space 84"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Comus Instruments",
+      "catalog_models": [
+        "Comus Daisy"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Craft",
+      "catalog_models": [
+        "Craft II+"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non identificata con Micro Craft statunitense: le liste di cloni Apple II non risolvono l’identità aziendale.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Creon Enterprises",
+      "catalog_models": [
+        "Power 3000"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Didaktik Skalica",
+      "catalog_models": [
+        "Didaktik Gama 89",
+        "Didaktik Kompakt",
+        "Didaktik M 93",
+        "Didaktik Gama 87",
+        "Didaktik Gama 88",
+        "Didaktik 90",
+        "Didaktik M 91",
+        "Didaktik M 92"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=393"
+      ]
+    },
+    {
+      "name": "Dragon Data / Compusense",
+      "catalog_models": [
+        "Dragon 64 Plus"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Documentato il ruolo dell’espansione Compusense; nessun logo congiunto inventato.",
+      "new_source_urls": [
+        "https://archive.worldofdragon.org/index.php?title=Dragon_Plus&oldid=9785"
+      ]
+    },
+    {
+      "name": "Dragon Data / Tano",
+      "catalog_models": [
+        "Tano Dragon 64"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Il logo Dragon del produttore britannico non documenta un marchio congiunto Dragon/Tano.",
+      "new_source_urls": []
+    },
+    {
+      "name": "EACA Computers",
+      "catalog_models": [
+        "Video Genie EG3003",
+        "System-80"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=51"
+      ]
+    },
+    {
+      "name": "Electromagnetica",
+      "catalog_models": [
+        "JET"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Elwro",
+      "catalog_models": [
+        "800-3 Junior"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=417"
+      ]
+    },
+    {
+      "name": "Ericsson Information System",
+      "catalog_models": [
+        "Ericsson Portable PC"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=164"
+      ]
+    },
+    {
+      "name": "Eurohard",
+      "catalog_models": [
+        "Dragon 200",
+        "Dragon 200-E",
+        "Dragon MSX-64"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Fenner",
+      "catalog_models": [
+        "DPC-200",
+        "FPC-500",
+        "FPC-900",
+        "SPC-800"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "G2 Systems",
+      "catalog_models": [
+        "MasterPieCe 800 Series",
+        "MasterPieCe 900 Series",
+        "MasterPieCe 900GX Series"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "GTAC",
+      "catalog_models": [
+        "Do-Do"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Grundy Business Systems",
+      "catalog_models": [
+        "NewBrain"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "H/H Microcomputers",
+      "catalog_models": [
+        "H/H Tiger"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description",
+        "description_author",
+        "description_source_url",
+        "description_license_url"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Storia della divisione ricostruita; marchio moderno HH Audio non trasferito automaticamente.",
+      "new_source_urls": [
+        "https://en.wikipedia.org/w/index.php?oldid=1376130161"
+      ]
+    },
+    {
+      "name": "Hiradastechnika Szovetkezet",
+      "catalog_models": [
+        "HT-1080Z Series I",
+        "HT-1080Z Series II",
+        "HT-1080Z/64"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Hyundai",
+      "catalog_models": [
+        "Super 16 T",
+        "Super 16 TE"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non usati i loghi moderni Hyundai Motor, Winia o SK Hynix per l’attività storica dei PC.",
+      "new_source_urls": []
+    },
+    {
+      "name": "ICE-Felix",
+      "catalog_models": [
+        "HC-91+",
+        "HC-2000",
+        "HC-85",
+        "HC-88",
+        "HC-90",
+        "HC-91"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=379"
+      ]
+    },
+    {
+      "name": "ILCE / SEP",
+      "catalog_models": [
+        "Micro-SEP 1600",
+        "Micro-Sep Model 3"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "ITCI",
+      "catalog_models": [
+        "Cobra",
+        "Cobra 80K"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "ITT Information Systems",
+      "catalog_models": [
+        "ITT XTRA"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license",
+        "description"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=63",
+        "https://www.1000bit.it/scheda.asp?id=788"
+      ]
+    },
+    {
+      "name": "Intelligent Software / Enterprise Computers",
+      "catalog_models": [
+        "Enterprise One Two Eight",
+        "Enterprise Sixty Four"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Intelligent Software / Hegener + Glaser",
+      "catalog_models": [
+        "Mephisto PHC 64"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Ivasim",
+      "catalog_models": [
+        "Ivel Ultra"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "JUKO",
+      "catalog_models": [
+        "NEST 8086 and V30",
+        "NEST 8088 and V20"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Komtek",
+      "catalog_models": [
+        "Radionic R1001/Komtek 1"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Kondor and Kramis",
+      "catalog_models": [
+        "Profi"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description",
+        "description_author",
+        "description_source_url",
+        "description_license_url"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Attribuzione congiunta di progetto; non è documentato un logo di una società unica.",
+      "new_source_urls": [
+        "https://en.wikipedia.org/w/index.php?oldid=1384603146"
+      ]
+    },
+    {
+      "name": "LNW Research",
+      "catalog_models": [
+        "LNW-80"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=253"
+      ]
+    },
+    {
+      "name": "Lambda Electronics",
+      "catalog_models": [
+        "Lambda 8300"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Lawrie T&M Ltd.",
+      "catalog_models": [
+        "LTM Portable"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Lobo Systems",
+      "catalog_models": [
+        "MAX-80"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=255"
+      ]
+    },
+    {
+      "name": "MY-COM",
+      "catalog_models": [
+        "MPU-9088-VF"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Matra & Hachette",
+      "catalog_models": [
+        "Alice",
+        "Alice 32",
+        "Alice 90"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=66"
+      ]
+    },
+    {
+      "name": "Memotech Ltd",
+      "catalog_models": [
+        "MTX 500",
+        "MTX 512",
+        "RS 128"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "MicroART",
+      "catalog_models": [
+        "ATM-Turbo",
+        "ATM-Turbo 2",
+        "ATM-Turbo 2+"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Micromint",
+      "catalog_models": [
+        "MPX-16"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Milmar",
+      "catalog_models": [
+        "Laser //c"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Laser IIc elencato fra i cloni Apple II, ma il passaggio consultato è privo di riferimenti sufficienti per una storia aziendale.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Monotech",
+      "catalog_models": [
+        "NuXT",
+        "NuXT v2"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Avatar del profilo GitHub esaminato: illustrazione personale, non prova sufficiente di un marchio aziendale.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Morrow Designs",
+      "catalog_models": [
+        "Micro Decision MD-2",
+        "Micro Decision MD-3",
+        "MPZ80",
+        "Tricep"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=282"
+      ]
+    },
+    {
+      "name": "Multitech",
+      "catalog_models": [
+        "Microprofessor III",
+        "Microprofessor II",
+        "Micro-Professor I"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=69"
+      ]
+    },
+    {
+      "name": "NEMO",
+      "catalog_models": [
+        "Kay 1024"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description",
+        "description_author",
+        "description_source_url",
+        "description_license_url"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Nome del progetto/sviluppatore KAY: non identificato con aziende moderne omonime.",
+      "new_source_urls": [
+        "https://en.wikipedia.org/w/index.php?oldid=1354240049"
+      ]
+    },
+    {
+      "name": "NTS Computer Systems",
+      "catalog_models": [
+        "DreamWriter 225"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Nanjing Computer Factory",
+      "catalog_models": [
+        "Zi Jin I"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Titoli Wikipedia tentati senza riscontro; non confusa con la fabbrica Shaanxi dei CEC.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Nascom Microcomputers",
+      "catalog_models": [
+        "Nascom 1",
+        "Nascom 2"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=285"
+      ]
+    },
+    {
+      "name": "Non-Linear Systems",
+      "catalog_models": [
+        "Kaypro 10 - 1983",
+        "Kaypro II - 2/83",
+        "Kaypro IV - 4/83"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Il logo trovato è Kaypro: non trasferito automaticamente alla distinta denominazione storica NLS.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Novo Tempo / LZ Equipamentos",
+      "catalog_models": [
+        "Color64"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Omni Logic",
+      "catalog_models": [
+        "Omni 4 Logic Analyzer"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Orel",
+      "catalog_models": [
+        "BK-08"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Osborne/Nuevo",
+      "catalog_models": [
+        "Osborne-1"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non trasferito automaticamente il logo Osborne americano alla denominazione congiunta presente in catalogo.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Patisonic",
+      "catalog_models": [
+        "Aleste 520EX"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description",
+        "description_author",
+        "description_source_url",
+        "description_license_url"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://en.wikipedia.org/w/index.php?oldid=1386168523"
+      ]
+    },
+    {
+      "name": "Peters Plus, Ivan Mak",
+      "catalog_models": [
+        "Sprinter Sp2000"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Polymax",
+      "catalog_models": [
+        "Maxxi"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Pravetz",
+      "catalog_models": [
+        "Pravetz 82",
+        "Pravetz 8C",
+        "Pravetz 8D",
+        "Pravetz 8M"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Professional Data Computer",
+      "catalog_models": [
+        "Clipper"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Ritas do Brasil Ltda",
+      "catalog_models": [
+        "Ringo R-470"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description",
+        "description_author",
+        "description_source_url",
+        "description_license_url"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://pt.wikipedia.org/w/index.php?oldid=65578410"
+      ]
+    },
+    {
+      "name": "Sakhr",
+      "catalog_models": [
+        "AX-150",
+        "AX-170",
+        "AX-350 II",
+        "AX-350 II F",
+        "AX-230",
+        "AX-350",
+        "AX-370",
+        "AX-500",
+        "AX-200",
+        "AX-200M"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.msx.org/wiki/File:Sakhr-logo.png"
+      ]
+    },
+    {
+      "name": "Schetmash",
+      "catalog_models": [
+        "Iskra 3104"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Scientific Micro Systems",
+      "catalog_models": [
+        "SMS-1000"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://vaxbarn.com/index.php/collection/mini/sms-sms1000",
+        "https://bitsavers.org/pdf/sms/brochures/"
+      ]
+    },
+    {
+      "name": "Scopus/Spectrum",
+      "catalog_models": [
+        "Spectrum ED"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Scorpion",
+      "catalog_models": [
+        "Scorpion GMX",
+        "Scorpion ZS-256 TURBO+",
+        "Scorpion ZS-256"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Secoinsa",
+      "catalog_models": [
+        "Serie 20"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Sergey Kiselev",
+      "catalog_models": [
+        "Micro 8088",
+        "Sergey's XT",
+        "Xi processor board"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Shaanxi Province Computer Factory",
+      "catalog_models": [
+        "China Education Computer 2000",
+        "China Education Computer E",
+        "China Education Computer G",
+        "China Education Computer I",
+        "China Education Computer M"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.ccf.org.cn/Computing_history/Full_List/2021/yllsjy/2022-04-21/760882.shtml"
+      ]
+    },
+    {
+      "name": "Sharp / Epcom",
+      "catalog_models": [
+        "HB-8000 Hotbit 1.3b",
+        "HB-8000 Hotbit 1.3p",
+        "HB-8000 Hotbit",
+        "HB-8000 Hotbit 2.0"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Signal",
+      "catalog_models": [
+        "Sintez 2"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description",
+        "description_author",
+        "description_source_url",
+        "description_license_url"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://en.wikipedia.org/w/index.php?oldid=1384603146",
+        "https://oldcomputer.info/8bit/sintez/index.htm"
+      ]
+    },
+    {
+      "name": "SpecNext Ltd., Victor Trucco, Fabio Belavenuto",
+      "catalog_models": [
+        "ZX Spectrum Next: TBBlue"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.specnext.com/"
+      ]
+    },
+    {
+      "name": "Spectrum Eletronica (SCOPUS)",
+      "catalog_models": [
+        "Micro Engenho"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Talent",
+      "catalog_models": [
+        "DPC-200",
+        "DPC-200A",
+        "TPC-310",
+        "TPP-311",
+        "TPS-312"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Tangerine",
+      "catalog_models": [
+        "Micron",
+        "Microtan 6809 System",
+        "Oric-1",
+        "Microtan 65",
+        "Oric Atmos",
+        "Oric Telestrat"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Il logo individuato su 1000bit è Oric, non Tangerine: escluso.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Tangerine/ETI",
+      "catalog_models": [
+        "Space Invasion"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Tantel",
+      "catalog_models": [
+        "AlphaTantel"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Terco AB",
+      "catalog_models": [
+        "Terco 4426 CNC Programming station"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description",
+        "founded",
+        "website",
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.terco.se/om-oss/",
+        "https://www.terco.se/"
+      ]
+    },
+    {
+      "name": "Tesa Etikett",
+      "catalog_models": [
+        "Etikettendrucker 6240"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non associata a tesa SE moderna; cronologia del produttore storico della stampante non accertata.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Thomson SIMIV",
+      "catalog_models": [
+        "TO16"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "logo_url",
+        "logo_source_url",
+        "logo_author",
+        "logo_license"
+      ],
+      "remaining_missing_fields": [],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://www.1000bit.it/database2.asp?id=87"
+      ]
+    },
+    {
+      "name": "Timex of Portugal",
+      "catalog_models": [
+        "TC-2048"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "1000bit espone il marchio statunitense Timex Sinclair, non Timex Computer Portogallo: escluso.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Tinsley Medical Instruments",
+      "catalog_models": [
+        "Henson CFA 3000"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Torch Computers",
+      "catalog_models": [
+        "Torch CF240",
+        "Torch CH240",
+        "Torch Model 301",
+        "Torch Model 725"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Unipolbrit",
+      "catalog_models": [
+        "UK-2086 ver. 1.2"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Vendex",
+      "catalog_models": [
+        "HeadStart Plus"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Aggiunte circoscritte alle fonti elencate nel pacchetto; i campi residui restano senza riscontro sufficiente nelle fonti consultate.",
+      "new_source_urls": [
+        "https://oldcomputer.info/pc/hs_plus/"
+      ]
+    },
+    {
+      "name": "Victor do Brasil",
+      "catalog_models": [
+        "Elppa II+"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "finding": "Non identificata con Victor/JVC; la lista di cloni Apple II da sola non basta a ricostruire la storia aziendale.",
+      "new_source_urls": []
+    },
+    {
+      "name": "Vladimir Drozdov",
+      "catalog_models": [
+        "Pentagon 128K"
+      ],
+      "initial_missing_fields": [
+        "description",
+        "logo_url"
+      ],
+      "supplement_fields": [
+        "description",
+        "description_author",
+        "description_source_url",
+        "description_license_url"
+      ],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Persona/progettista: documentata l’attribuzione Pentagon 48K, non un logo aziendale né tutte le revisioni 128K.",
+      "new_source_urls": [
+        "https://en.wikipedia.org/w/index.php?oldid=1357714365"
+      ]
+    },
+    {
+      "name": "Your Computer",
+      "catalog_models": [
+        "PC8300"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Non è stato ottenuto un riscontro sufficiente nelle fonti consultate per completare i campi mancanti. Nessun dato inventato.",
+      "new_source_urls": []
+    },
+    {
+      "name": "bootleg (Unitron)",
+      "catalog_models": [
+        "Unitron 1024",
+        "Mac 512"
+      ],
+      "initial_missing_fields": [
+        "logo_url"
+      ],
+      "supplement_fields": [],
+      "remaining_missing_fields": [
+        "logo_url"
+      ],
+      "finding": "Etichetta di catalogo, non una seconda azienda documentata; esclusa Unitron tedesca (1000bit 404).",
+      "new_source_urls": []
+    }
+  ]
+}

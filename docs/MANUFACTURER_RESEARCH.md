@@ -201,3 +201,27 @@ la fonte. I **24 test dei profili** passano su SQLite e PostgreSQL, inclusi
 gli abbinamenti nelle due grafie, gli omonimi e i metadati nell’API. File PNG
 originale scaricato via HTTPS e ispezionato; nessuna nuova prova browser o
 compilazione frontend, perché componenti e stile non sono stati modificati.
+
+## Ricerca supplementare fuori da Commons (24 novembre 2026)
+
+Il [supplemento approfondito](datasets/manufacturers-deep-2026-11/README.md)
+aggiunge **14 descrizioni italiane e 18 loghi a 30 profili esistenti**, usando
+anche 1000bit, siti ufficiali, MSX Wiki, China Computer Federation, VAXBARN,
+Bitsavers, MCbx e The Dragon Archive. Conserva i dati già curati e distingue
+società, marchi, attività congiunte e persone. Il pacchetto generale originario
+non viene modificato o riapplicato.
+
+Sulla copia PostgreSQL di 187 produttori la copertura passa da 151 a **165
+profili descritti** e da 88 a **106 loghi**. Restano **22 descrizioni e 81 loghi
+mancanti**, elencati nell’inventario del supplemento; non sono sostituiti con
+contenuti inventati o marchi di aziende omonime. Le nuove fonti restano pending.
+
+Dopo aggiornamento del branch e ricostruzione dell’API, applicare esplicitamente:
+
+```bash
+docker compose -p hhe-import-test exec api python -m app.manufacturer_enrichment --package app/importing/data/manufacturers-deep-2026-11-v1.json
+```
+
+Il comando applica direttamente il pacchetto. Le istruzioni complete, i diritti
+dei singoli loghi, i casi esclusi e le verifiche sono nella documentazione
+collegata. Nessuna modifica automatica al database del Mac da questo ambiente.

@@ -488,3 +488,12 @@ dimensioni nei temi chiaro e scuro. Le anteprime condivise sono implementate in
 migrazioni o importazioni. Il test browser dei produttori verifica entrambe le
 viste, altezze e pulsanti allineati, testo corto/lungo/mancante, immagini,
 apertura della descrizione integrale e viewport 320/390/768/1440 px nei due temi.
+
+## Produttori: descrizioni e loghi aggiuntivi
+
+Il supplemento di ricerca estende le fonti fuori da Commons e arricchisce
+30 profili esistenti con 14 descrizioni italiane e 18 loghi, conservando i
+contenuti già curati. Dopo aggiornamento del branch e ricostruzione dell’API:
+`docker compose -p hhe-import-test exec api python -m app.manufacturer_enrichment --package app/importing/data/manufacturers-deep-2026-11-v1.json`.
+Il comando applica il pacchetto; ripeterlo non duplica fonti o sostituisce
+valori esistenti. [Fonti, diritti, lacune e istruzioni per il Mac](docs/datasets/manufacturers-deep-2026-11/README.md).

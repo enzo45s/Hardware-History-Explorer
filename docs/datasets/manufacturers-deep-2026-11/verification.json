@@ -1,0 +1,1085 @@
+{
+  "scope": "isolated PostgreSQL clone after Sun research; no access to local Mac database",
+  "package_checksum": "4581fa1c416b770958c369e05941e84a6ebd011ecc28abc9be42d731263647ab",
+  "coverage_before": {
+    "total": 187,
+    "descriptions": 151,
+    "logos": 88
+  },
+  "coverage_after": {
+    "total": 187,
+    "descriptions": 165,
+    "logos": 106
+  },
+  "updated_manufacturers": 30,
+  "added_descriptions": 14,
+  "added_logos": 18,
+  "counts": {
+    "archive_resets": {
+      "before": 2,
+      "after": 2
+    },
+    "catalog_reconciliations": {
+      "before": 294,
+      "after": 295
+    },
+    "categories": {
+      "before": 13,
+      "after": 13
+    },
+    "import_jobs": {
+      "before": 3055,
+      "after": 3055
+    },
+    "manufacturers": {
+      "before": 187,
+      "after": 187
+    },
+    "markets": {
+      "before": 19,
+      "after": 19
+    },
+    "sources": {
+      "before": 7833,
+      "after": 7866
+    },
+    "computers": {
+      "before": 1152,
+      "after": 1152
+    },
+    "manufacturer_sources": {
+      "before": 343,
+      "after": 377
+    },
+    "catalog_dirty": {
+      "before": 0,
+      "after": 0
+    },
+    "catalog_snapshots": {
+      "before": 0,
+      "after": 0
+    },
+    "computer_aliases": {
+      "before": 140,
+      "after": 140
+    },
+    "computer_category": {
+      "before": 1152,
+      "after": 1152
+    },
+    "computer_images": {
+      "before": 620,
+      "after": 620
+    },
+    "computer_sources": {
+      "before": 5140,
+      "after": 5140
+    },
+    "configurations": {
+      "before": 1190,
+      "after": 1190
+    },
+    "facts": {
+      "before": 959,
+      "after": 959
+    },
+    "import_identities": {
+      "before": 2616,
+      "after": 2616
+    },
+    "import_rows": {
+      "before": 10976,
+      "after": 10976
+    },
+    "releases": {
+      "before": 1162,
+      "after": 1162
+    },
+    "reviews": {
+      "before": 0,
+      "after": 0
+    },
+    "sales": {
+      "before": 0,
+      "after": 0
+    },
+    "catalog_metrics": {
+      "before": 0,
+      "after": 0
+    },
+    "fact_sources": {
+      "before": 959,
+      "after": 959
+    },
+    "import_claims": {
+      "before": 72969,
+      "after": 72969
+    },
+    "release_sources": {
+      "before": 1842,
+      "after": 1842
+    },
+    "review_sources": {
+      "before": 0,
+      "after": 0
+    },
+    "sale_sources": {
+      "before": 0,
+      "after": 0
+    },
+    "specifications": {
+      "before": 7456,
+      "after": 7456
+    },
+    "catalog_metric_assertions": {
+      "before": 0,
+      "after": 0
+    },
+    "catalog_metric_sources": {
+      "before": 0,
+      "after": 0
+    },
+    "specification_sources": {
+      "before": 9711,
+      "after": 9711
+    }
+  },
+  "checks": {
+    "archive_resets_unchanged": true,
+    "categories_unchanged": true,
+    "import_jobs_unchanged": true,
+    "markets_unchanged": true,
+    "computers_unchanged": true,
+    "catalog_snapshots_unchanged": true,
+    "computer_aliases_unchanged": true,
+    "computer_category_unchanged": true,
+    "computer_images_unchanged": true,
+    "computer_sources_unchanged": true,
+    "configurations_unchanged": true,
+    "facts_unchanged": true,
+    "import_identities_unchanged": true,
+    "import_rows_unchanged": true,
+    "releases_unchanged": true,
+    "reviews_unchanged": true,
+    "sales_unchanged": true,
+    "catalog_metrics_unchanged": true,
+    "fact_sources_unchanged": true,
+    "import_claims_unchanged": true,
+    "release_sources_unchanged": true,
+    "review_sources_unchanged": true,
+    "sale_sources_unchanged": true,
+    "specifications_unchanged": true,
+    "catalog_metric_assertions_unchanged": true,
+    "catalog_metric_sources_unchanged": true,
+    "specification_sources_unchanged": true,
+    "all_manufacturer_ids_and_names_preserved": true,
+    "all_nonempty_manufacturer_fields_preserved": true,
+    "sources_previous_rows_unchanged": true,
+    "manufacturer_sources_previous_rows_unchanged": true,
+    "catalog_refresh_finished": true,
+    "repeat_zero_changes_and_no_duplicate_sources": true,
+    "every_applied_field_has_audited_source": true
+  },
+  "unchanged_table_fingerprints": {
+    "archive_resets": "71fadd692e9c5879536b3cdf375af6b31c395faf79db032e01633b1a7ea50ab9",
+    "categories": "5e39794c0ddebc6317f8a75737cf6aee11e1161e134811927ee04323a654238d",
+    "import_jobs": "d9d25bef93e4fc35008bd61b4a6687f7dea08523aad7f0da965df3bafa10d49d",
+    "markets": "faa4964fc94ed39fd848788a9a51d25e48e99fe84f22d64669e42082ccc25eff",
+    "computers": "5e0367581e9aeb6e89d41df8344eec0f90ab1aec5ad647e7bf59f5ee10879150",
+    "catalog_snapshots": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "computer_aliases": "a6d4cca3985c82b132ffa9a72c00d9b950552b4bda40d5e6afbd019f3fff9b3f",
+    "computer_category": "f722ba7065fa76bd60f4cb3aa2e27bb18a9ce534d4135d69839400ec3d108ce9",
+    "computer_images": "c47f1b2b5006a7304c38f266e0b646d09eb5d41eb8afadd40549189b3a646d9d",
+    "computer_sources": "c9644040f72fb75bbe549e4751b1e78ba6901860954eddffeae752b104b6257b",
+    "configurations": "952cbe1b6fdabf66dcde50dfccdc733761479fbbf723712bbc741f182c8d9d5c",
+    "facts": "ebb7343196e58c81702f326eedf409f129f7f0701529a30bd2fa3f1688c9235c",
+    "import_identities": "98cfadd381fff6b18a898e7743b8e9f13864b9c71cb9986b38c61fb23a415855",
+    "import_rows": "f989707bd960e50ccd002959dc3fb716d419010ceaf634f4232c9404c3396c86",
+    "releases": "00a85aee9a5c75024bb58bd73d11f190a177488048f4083d7ca656f0f1eebc0d",
+    "reviews": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "sales": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "catalog_metrics": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "fact_sources": "c04825de65924837bfa7c8c373167da26394753f2930a3c2ccdd3832a07e2128",
+    "import_claims": "665c5873ab582b67e844cc70f2bbd4efb299bafb73b37f36f32fd313111eba79",
+    "release_sources": "83d0c16dca7f7b5148cb3e726572510147b952f47f977dbd98be2a63c4ffa677",
+    "review_sources": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "sale_sources": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "specifications": "c00bb80eabd2e30d486f6fc9855665c3038ef048af6c5bc55fe749567f845425",
+    "catalog_metric_assertions": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "catalog_metric_sources": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "specification_sources": "a00e52386da10667a4f353fb2487c07144171e00f51e9fb1b628c4c07342d4a3"
+  },
+  "changes": [
+    {
+      "id": 29,
+      "name": "Alex Zhabin",
+      "fields": [
+        "description",
+        "description_author",
+        "description_license_url",
+        "description_source_url"
+      ],
+      "description": "Alex Zhabin, indicato nelle fonti russe come Aleksej Žabin, è uno sviluppatore legato all’evoluzione del Pentagon, una famiglia di computer compatibili con lo ZX Spectrum. Gli sono attribuiti i Pentagon-1024SL del 2005 e del 2006 e il progetto sperimentale Pentagon 2.666 del 2009. La sua attività appartiene alla comunità dei progettisti che hanno esteso la piattaforma Spectrum con più memoria, nuove interfacce e logiche programmabili.",
+      "logo_url": null
+    },
+    {
+      "id": 87,
+      "name": "H/H Microcomputers",
+      "fields": [
+        "description",
+        "description_author",
+        "description_license_url",
+        "description_source_url"
+      ],
+      "description": "H/H Microcomputers rappresenta l’attività informatica di HH, azienda britannica conosciuta soprattutto per gli amplificatori e le apparecchiature audio. Alla fine del 1983 propose il Tiger, derivato da un progetto acquisito da Tangerine: un sistema professionale con CP/M, processori dedicati a calcolo e ingresso/uscita e una sezione video autonoma. Questa iniziativa documenta il tentativo di un produttore di elettronica di entrare nel mercato dei microcomputer professionali.",
+      "logo_url": null
+    },
+    {
+      "id": 102,
+      "name": "ITT Information Systems",
+      "fields": [
+        "description",
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "L’attività informatica di ITT portò il nome del gruppo nel mercato dei personal computer degli anni Ottanta. Tra i suoi sistemi vi fu l’XTRA, introdotto nel maggio 1984: un desktop con processore Intel 8088 e supporto per ambienti DOS e CP/M-86. La gamma mostra il passaggio dell’elettronica per ufficio verso piattaforme compatibili con l’ecosistema dei PC, con espansioni per dischi, comunicazioni e periferiche.",
+      "logo_url": "https://www.1000bit.it/logos/ITT.png"
+    },
+    {
+      "id": 109,
+      "name": "Kondor and Kramis",
+      "fields": [
+        "description",
+        "description_author",
+        "description_license_url",
+        "description_source_url"
+      ],
+      "description": "Kondor e Kramis sono i nomi associati allo sviluppo del Profi a Mosca nel 1991. Il progetto apparteneva alla diffusione sovietica dei computer compatibili con lo ZX Spectrum e ne ampliava le possibilità con più memoria, interfacce per dischi e collegamenti per periferiche. Il Profi poteva anche utilizzare CP/M: una direzione rivolta all’impiego generale del computer oltre al software domestico dello Spectrum.",
+      "logo_url": null
+    },
+    {
+      "id": 136,
+      "name": "NEMO",
+      "fields": [
+        "description",
+        "description_author",
+        "description_license_url",
+        "description_source_url"
+      ],
+      "description": "NEMO è il nome legato allo sviluppo dei computer KAY a San Pietroburgo, nell’ambiente russo dei compatibili ZX Spectrum. Il KAY-1024, introdotto nel 1998, ampliava la piattaforma con 1 MB di memoria e un sistema di espansione per periferiche e memoria di massa. La documentazione del progetto comprende schemi e soluzioni di interfacciamento note come Nemo-bus, testimonianza dell’evoluzione dello Spectrum oltre i modelli originali.",
+      "logo_url": null
+    },
+    {
+      "id": 150,
+      "name": "Patisonic",
+      "fields": [
+        "description",
+        "description_author",
+        "description_license_url",
+        "description_source_url"
+      ],
+      "description": "Patisonic fu un’impresa di Omsk associata all’Aleste 520EX, presentato nel 1993. Il computer riprendeva la compatibilità con l’Amstrad CPC 6128 e aggiungeva possibilità proprie, fra cui una modalità MSX e l’espansione audio Magic Sound. Il progetto rappresenta una delle reinterpretazioni russe dei microcomputer occidentali a 8 bit, sviluppate quando quelle piattaforme avevano già una vasta base di software.",
+      "logo_url": null
+    },
+    {
+      "id": 158,
+      "name": "Ritas do Brasil Ltda",
+      "fields": [
+        "description",
+        "description_author",
+        "description_license_url",
+        "description_source_url"
+      ],
+      "description": "Ritas do Brasil era un’impresa brasiliana già attiva nella produzione di bottoni automatici, che entrò nell’informatica attraverso un progetto di automazione industriale. Da questo percorso nacque il Ringo R-470, un computer domestico parzialmente compatibile con il Sinclair ZX81. Le possibilità di espansione e il prezzo relativamente elevato lo distinguevano dai concorrenti locali, ma il modello non raggiunse vendite consistenti.",
+      "logo_url": null
+    },
+    {
+      "id": 164,
+      "name": "Scientific Micro Systems",
+      "fields": [
+        "description"
+      ],
+      "description": "Scientific Micro Systems, spesso indicata come SMS, è presente nella storia dei minicomputer con la famiglia SMS 1000. Il sistema adottava l’architettura PDP-11 e il bus QBUS, collocandosi nell’ecosistema professionale sviluppato attorno ai computer Digital. La documentazione conservata negli archivi tecnici comprende brochure della gamma e dei suoi modelli, utili a ricostruire questa produzione specialistica.",
+      "logo_url": null
+    },
+    {
+      "id": 170,
+      "name": "Shaanxi Province Computer Factory",
+      "fields": [
+        "description"
+      ],
+      "description": "La fabbrica di computer della provincia dello Shaanxi partecipò allo sviluppo dei CEC, i computer educativi cinesi destinati a famiglie e scuole. Il progetto fu coordinato dall’Università Tsinghua con la collaborazione di più istituti e produttori, nell’ambito delle iniziative nazionali per diffondere l’alfabetizzazione informatica. Il CEC-I riprendeva la compatibilità con l’Apple IIe e poteva essere ampliato con periferiche e supporto ai caratteri cinesi.",
+      "logo_url": null
+    },
+    {
+      "id": 174,
+      "name": "Signal",
+      "fields": [
+        "description",
+        "description_author",
+        "description_license_url",
+        "description_source_url"
+      ],
+      "description": "Signal è lo stabilimento di Chișinău associato alla produzione dei computer Sintez, compatibili con lo ZX Spectrum. La famiglia comprendeva più progetti: dai primi sistemi legati al circuito Leningrad alle successive rielaborazioni, fra cui il Sintez 2. La loro storia appartiene alla diffusione dei microcomputer domestici nell’Unione Sovietica e in Moldavia, con adattamenti ai componenti e alle esigenze produttive locali.",
+      "logo_url": null
+    },
+    {
+      "id": 67,
+      "name": "Dragon Data / Compusense",
+      "fields": [
+        "description"
+      ],
+      "description": "Questa denominazione collega la piattaforma Dragon all’attività di Compusense, che ne sviluppò espansioni e software. La scheda Dragon Plus aggiungeva memoria e una visualizzazione a 80 colonne ai Dragon 32 e 64; versioni dedicate di OS-9 e Flex potevano sfruttarla. Si tratta quindi dell’evoluzione di computer Dragon tramite prodotti di un fornitore specializzato, non del nome di una nuova azienda costituita dai due marchi.",
+      "logo_url": null
+    },
+    {
+      "id": 191,
+      "name": "Terco AB",
+      "fields": [
+        "description",
+        "founded",
+        "founded_precision",
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url",
+        "website"
+      ],
+      "description": "Terco è un produttore svedese di apparecchiature per la formazione tecnica, fondato nel 1963. Le sue attrezzature sono destinate a scuole, università e centri industriali: dall’elettrotecnica e dalle macchine elettriche all’automazione, alla meccatronica e al controllo dei processi. I sistemi di addestramento si inseriscono in questa specializzazione didattica, distinta da quella dei produttori di personal computer per il grande pubblico.",
+      "logo_url": "https://www.terco.se/wp-content/uploads/2023/03/Terco_wp_logo-340x156-1.png"
+    },
+    {
+      "id": 203,
+      "name": "Vendex",
+      "fields": [
+        "description"
+      ],
+      "description": "Vendex fu un’impresa commerciale olandese che negli anni Ottanta propose anche computer compatibili con i PC, fra cui la linea HeadStart. I sistemi erano rivolti all’uso personale e d’ufficio e furono distribuiti in Europa e negli Stati Uniti. Il marchio commerciale va distinto dal fabbricante effettivo: gli esemplari HeadStart Plus documentati furono costruiti da Samsung e integravano sulla scheda madre molte delle periferiche normalmente aggiunte tramite schede di espansione.",
+      "logo_url": null
+    },
+    {
+      "id": 207,
+      "name": "Vladimir Drozdov",
+      "fields": [
+        "description",
+        "description_author",
+        "description_license_url",
+        "description_source_url"
+      ],
+      "description": "Vladimir Drozdov è il progettista a cui viene attribuito il Pentagon 48K del 1989, uno dei progetti da cui si sviluppò la famiglia di compatibili ZX Spectrum diffusa nell’ex Unione Sovietica. La circolazione della documentazione tecnica ne favorì la realizzazione da parte di appassionati e piccoli produttori. Le successive versioni Pentagon furono sviluppate anche da altri autori: il nome della famiglia non identifica un’unica azienda.",
+      "logo_url": null
+    },
+    {
+      "id": 129,
+      "name": "Multitech",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Multitech fu la denominazione originaria dell’azienda taiwanese poi conosciuta come Acer. La sua storia iniziale si colloca nello sviluppo dei microcomputer e dell’elettronica personale, prima dell’espansione internazionale del marchio Acer.",
+      "logo_url": "https://www.1000bit.it/logos/multitechElectronics.png"
+    },
+    {
+      "id": 38,
+      "name": "Autocue Ltd.",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Autocue è un produttore britannico di sistemi per il suggerimento dei testi durante le riprese televisive. Fondata nel 1955, nel 1962 ottenne una licenza per un teleprompter basato sul brevetto di Jess Oppenheimer; il marchio divenne strettamente associato a questi strumenti per presentatori e giornalisti.",
+      "logo_url": "https://www.autocue.com/wp-content/themes/FatPress-Child/assets/apple-touch-icon.png"
+    },
+    {
+      "id": 40,
+      "name": "Basis",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Basis Microcomputer GmbH, con sede a Münster, realizzò il Basis 108, un computer largamente compatibile con Apple II. La presenza sulla scheda madre di processori 6502 e Z80 consentiva di utilizzare anche CP/M: una soluzione che riuniva funzioni spesso ottenute tramite espansioni separate.",
+      "logo_url": "https://www.1000bit.it/logos/basis.png"
+    },
+    {
+      "id": 64,
+      "name": "Didaktik Skalica",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Didaktik Skalica realizzò in Cecoslovacchia computer a 8 bit destinati anche all’impiego scolastico e domestico. Il marchio divenne noto soprattutto per sistemi compatibili con Sinclair ZX Spectrum, dopo le prime macchine legate alla piattaforma PMD 85.",
+      "logo_url": "https://www.1000bit.it/logos/didaktik.png"
+    },
+    {
+      "id": 71,
+      "name": "EACA Computers",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "EACA International fu un produttore di Hong Kong attivo negli anni Settanta e nei primi anni Ottanta. Alla produzione di giochi televisivi di tipo Pong affiancò quella dei personal computer, partecipando al mercato dei sistemi compatibili e dei modelli distribuiti con marchi diversi.",
+      "logo_url": "https://www.1000bit.it/logos/eaca.gif"
+    },
+    {
+      "id": 75,
+      "name": "Elwro",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Elwro fu un’azienda informatica polacca con stabilimenti a Breslavia. Alla produzione di grandi elaboratori della famiglia Odra affiancò i microcomputer, tra cui l’Elwro 800 Junior destinato all’istruzione.",
+      "logo_url": "https://www.1000bit.it/logos/elwro.jpg"
+    },
+    {
+      "id": 77,
+      "name": "Ericsson Information System",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Ericsson Information Systems fu un’importante società del gruppo Ericsson negli anni Ottanta, con radici nelle attività Datasaab, Stansaab e Facit. Gran parte delle sue operazioni passò a Nokia e nel 1988 confluì in Nokia Data: un passaggio significativo nell’industria informatica nordica.",
+      "logo_url": "https://www.1000bit.it/logos/ericsson.jpg"
+    },
+    {
+      "id": 96,
+      "name": "ICE-Felix",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "ICE Felix, la Fabbrica di calcolatori elettronici FELIX, fu fondata a Bucarest nel 1970. Per decenni occupò un ruolo centrale nell’industria informatica romena, realizzando grandi elaboratori, minicomputer, microcomputer, home computer e sistemi compatibili IBM PC.",
+      "logo_url": "https://www.1000bit.it/logos/icefelix.png"
+    },
+    {
+      "id": 114,
+      "name": "LNW Research",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "LNW Research realizzò il LNW-80, un computer dei primi anni Ottanta legato all’ecosistema TRS-80. La macchina è ricordata fra le implementazioni compatibili sviluppate da produttori indipendenti, con caratteristiche ed espansioni proprie.",
+      "logo_url": "https://www.1000bit.it/logos/lnwResearch.png"
+    },
+    {
+      "id": 115,
+      "name": "Lobo Systems",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Lobo Systems realizzò il MAX-80, un personal computer legato all’ecosistema TRS-80 e ai sistemi operativi per macchine a 8 bit. Il modello rappresenta l’evoluzione dei compatibili prodotti da aziende indipendenti prima dell’affermazione generalizzata del PC IBM.",
+      "logo_url": "https://www.1000bit.it/logos/lobo2.jpg"
+    },
+    {
+      "id": 116,
+      "name": "Matra & Hachette",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Matra e Hachette collaborarono con Tandy alla realizzazione dell’Alice, commercializzato in Francia dal 1983. Questo home computer derivava dal TRS-80 MC-10, ma si distingueva per il contenitore rosso e per il collegamento video Péritel destinato al mercato francese. La denominazione indica una collaborazione industriale ed editoriale, anziché una singola società.",
+      "logo_url": "https://www.1000bit.it/logos/matra_hachette.gif"
+    },
+    {
+      "id": 127,
+      "name": "Morrow Designs",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Morrow Designs nacque dall’attività del progettista George Morrow, uno dei protagonisti della prima industria dei microcomputer. La società propose sistemi e periferiche per il mercato professionale, compresa la famiglia Micro Decision basata sull’ecosistema CP/M.",
+      "logo_url": "https://www.1000bit.it/logos/morrowdesigns.gif"
+    },
+    {
+      "id": 132,
+      "name": "Nascom Microcomputers",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Nascom è il nome associato a una famiglia britannica di microcomputer su scheda, distribuiti anche in kit. I Nascom 1 e 2 appartengono alla stagione in cui appassionati e piccoli utilizzatori potevano assemblare e ampliare direttamente il proprio sistema.",
+      "logo_url": "https://www.1000bit.it/logos/nascom.gif"
+    },
+    {
+      "id": 159,
+      "name": "Sakhr",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Sakhr è un’impresa kuwaitiana legata all’informatica in lingua araba. Nel settore dei computer domestici commercializzò sistemi MSX giapponesi localizzati e rimarchiati per i mercati arabi, mentre la sua attività software si estese all’istruzione e alle tecnologie linguistiche.",
+      "logo_url": "https://www.msx.org/wiki/images/5/56/Sakhr-logo.png"
+    },
+    {
+      "id": 181,
+      "name": "SpecNext Ltd., Victor Trucco, Fabio Belavenuto",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "Questa denominazione riunisce il progetto ZX Spectrum Next e i suoi protagonisti. Il Next, apparso nel 2017, riprende la compatibilità con lo ZX Spectrum aggiungendo nuove possibilità hardware, rivolgendosi sia agli appassionati sia a chi sviluppa per la piattaforma.",
+      "logo_url": "https://www.specnext.com/wp-content/uploads/2025/08/specnextlogo-web.png"
+    },
+    {
+      "id": 194,
+      "name": "Thomson SIMIV",
+      "fields": [
+        "logo_author",
+        "logo_license",
+        "logo_source_url",
+        "logo_url"
+      ],
+      "description": "SIMIV, Société internationale de micro-informatique et de vidéo, fu una società del gruppo Thomson creata nel settembre 1983. Nota per la famiglia dei computer domestici Thomson, depositò il bilancio nell’agosto 1989, al termine della stagione degli home computer francesi a 8 bit.",
+      "logo_url": "https://www.1000bit.it/logos/Thomson.gif"
+    }
+  ],
+  "remaining_gaps": [
+    {
+      "id": 39,
+      "name": "AUVA",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 26,
+      "name": "Acorn Computers / Slogger",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 29,
+      "name": "Alex Zhabin",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 30,
+      "name": "Alloy",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 31,
+      "name": "Amaterske RADIO",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 34,
+      "name": "Arbiter Leisure",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 42,
+      "name": "BEMZ",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 41,
+      "name": "Bawareth",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 45,
+      "name": "British Telecom Business Systems",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 50,
+      "name": "China HKC",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 51,
+      "name": "Ciel",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 52,
+      "name": "Codimex",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 57,
+      "name": "ComputerTechnik/IBS",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 58,
+      "name": "Comus Instruments",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 60,
+      "name": "Craft",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 61,
+      "name": "Creon Enterprises",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 67,
+      "name": "Dragon Data / Compusense",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 68,
+      "name": "Dragon Data / Tano",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 73,
+      "name": "Electromagnetica",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 78,
+      "name": "Eurohard",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 79,
+      "name": "Fenner",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 83,
+      "name": "G2 Systems",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 86,
+      "name": "GTAC",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 218,
+      "name": "Grundy Business Systems",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 87,
+      "name": "H/H Microcomputers",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 90,
+      "name": "Hiradastechnika Szovetkezet",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 94,
+      "name": "Hyundai",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 97,
+      "name": "ILCE / SEP",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 101,
+      "name": "ITCI",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 98,
+      "name": "Intelligent Software / Enterprise Computers",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 99,
+      "name": "Intelligent Software / Hegener + Glaser",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 103,
+      "name": "Ivasim",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 104,
+      "name": "JUKO",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 108,
+      "name": "Komtek",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 109,
+      "name": "Kondor and Kramis",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 111,
+      "name": "Lambda Electronics",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 112,
+      "name": "Lawrie T&M Ltd.",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 130,
+      "name": "MY-COM",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 117,
+      "name": "Memotech Ltd",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 120,
+      "name": "MicroART",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 122,
+      "name": "Micromint",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 123,
+      "name": "Milmar",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 126,
+      "name": "Monotech",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 136,
+      "name": "NEMO",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 141,
+      "name": "NTS Computer Systems",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 131,
+      "name": "Nanjing Computer Factory",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 139,
+      "name": "Non-Linear Systems",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 140,
+      "name": "Novo Tempo / LZ Equipamentos",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 145,
+      "name": "Omni Logic",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 146,
+      "name": "Orel",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 148,
+      "name": "Osborne/Nuevo",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 150,
+      "name": "Patisonic",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 151,
+      "name": "Peters Plus, Ivan Mak",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 154,
+      "name": "Polymax",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 155,
+      "name": "Pravetz",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 156,
+      "name": "Professional Data Computer",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 158,
+      "name": "Ritas do Brasil Ltda",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 162,
+      "name": "Schetmash",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 164,
+      "name": "Scientific Micro Systems",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 165,
+      "name": "Scopus/Spectrum",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 166,
+      "name": "Scorpion",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 167,
+      "name": "Secoinsa",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 169,
+      "name": "Sergey Kiselev",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 170,
+      "name": "Shaanxi Province Computer Factory",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 172,
+      "name": "Sharp / Epcom",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 174,
+      "name": "Signal",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 183,
+      "name": "Spectrum Eletronica (SCOPUS)",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 185,
+      "name": "Talent",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 187,
+      "name": "Tangerine",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 188,
+      "name": "Tangerine/ETI",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 189,
+      "name": "Tantel",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 192,
+      "name": "Tesa Etikett",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 195,
+      "name": "Timex of Portugal",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 197,
+      "name": "Tinsley Medical Instruments",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 198,
+      "name": "Torch Computers",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 201,
+      "name": "Unipolbrit",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 203,
+      "name": "Vendex",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 205,
+      "name": "Victor do Brasil",
+      "description_missing": true,
+      "logo_missing": true
+    },
+    {
+      "id": 207,
+      "name": "Vladimir Drozdov",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 212,
+      "name": "Your Computer",
+      "description_missing": false,
+      "logo_missing": true
+    },
+    {
+      "id": 44,
+      "name": "bootleg (Unitron)",
+      "description_missing": false,
+      "logo_missing": true
+    }
+  ],
+  "repeat_updated": 0,
+  "local_mac_database_updated": false,
+  "validation": {
+    "profile_tests_sqlite": 26,
+    "profile_tests_postgresql": 26,
+    "frontend_tests": 45,
+    "frontend_production_build": "passed",
+    "docker_api_build": "passed",
+    "docker_package_cli_repeat_updated": 0,
+    "browser": {
+      "profiles": [
+        "Multitech",
+        "ITT Information Systems",
+        "Terco AB",
+        "Sakhr",
+        "Autocue Ltd.",
+        "SpecNext Ltd., Victor Trucco, Fabio Belavenuto",
+        "Alex Zhabin",
+        "Dragon Data / Compusense"
+      ],
+      "real_database_api": true,
+      "desktop_and_mobile": true,
+      "sourced_text_and_image_credits": true,
+      "persons_no_invented_logo": true,
+      "page_errors": [],
+      "image_method": "Exact selected URLs fulfilled with their unmodified bytes downloaded over HTTPS; direct browser retrieval from external servers not certified."
+    },
+    "api_all_30_profiles_http_200": true,
+    "api_all_new_fields_match_package": true
+  }
+}

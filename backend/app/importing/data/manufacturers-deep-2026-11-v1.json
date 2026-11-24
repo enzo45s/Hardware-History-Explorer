@@ -1,0 +1,1329 @@
+{
+  "version": "manufacturer-profiles-deep-2026-11-v1",
+  "researched_on": "2026-11-24",
+  "research_notes": [
+    "Supplemento circoscritto ai produttori già presenti: soltanto campi mancanti, senza sostituire testi o loghi curati.",
+    "Ricerca estesa fuori da Commons: 1000bit, MSX Wiki, sito Terco, China Computer Federation, VAXBARN, Bitsavers, MCbx e The Dragon Archive; revisioni Wikipedia per altri profili.",
+    "Persone, attività aziendali, marchi e collaborazioni sono descritti nel loro ruolo effettivo; nessuna identità aziendale o logo combinato inventato.",
+    "Loghi verificati tramite download e ispezione: URL remoti, nessun file grafico redistribuito e nessuna licenza libera presunta.",
+    "Le nuove associazioni alle fonti restano pending. Le lacune e gli abbinamenti esclusi sono elencati nella documentazione del supplemento."
+  ],
+  "records": [
+    {
+      "manufacturer_names": [
+        "Alex Zhabin"
+      ],
+      "fields": {
+        "description": "Alex Zhabin, indicato nelle fonti russe come Aleksej Žabin, è uno sviluppatore legato all’evoluzione del Pentagon, una famiglia di computer compatibili con lo ZX Spectrum. Gli sono attribuiti i Pentagon-1024SL del 2005 e del 2006 e il progetto sperimentale Pentagon 2.666 del 2009. La sua attività appartiene alla comunità dei progettisti che hanno esteso la piattaforma Spectrum con più memoria, nuove interfacce e logiche programmabili.",
+        "description_author": "Collaboratori di Wikipedia · sintesi italiana",
+        "description_source_url": "https://ru.wikipedia.org/w/index.php?oldid=153680892",
+        "description_license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "field_sources": {
+        "description": [
+          "https://ru.wikipedia.org/w/index.php?oldid=153680892"
+        ],
+        "description_author": [
+          "https://ru.wikipedia.org/w/index.php?oldid=153680892"
+        ],
+        "description_source_url": [
+          "https://ru.wikipedia.org/w/index.php?oldid=153680892"
+        ],
+        "description_license_url": [
+          "https://ru.wikipedia.org/w/index.php?oldid=153680892"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Wikipedia — Пентагон (компьютер) (ru)",
+          "url": "https://ru.wikipedia.org/w/index.php?oldid=153680892",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "company_reference",
+          "author": "Collaboratori di Wikipedia",
+          "license": "CC BY-SA 4.0"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "entity_kind": "person/project developer; not a company",
+        "logo_status": "No independently documented personal/project logo found; no fabricated company mark."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Autocue Ltd."
+      ],
+      "fields": {
+        "logo_url": "https://www.autocue.com/wp-content/themes/FatPress-Child/assets/apple-touch-icon.png",
+        "logo_source_url": "https://www.autocue.com/",
+        "logo_author": "Autocue — marchio pubblicato sul sito ufficiale",
+        "logo_license": "Diritti riservati; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.autocue.com/"
+        ],
+        "logo_source_url": [
+          "https://www.autocue.com/"
+        ],
+        "logo_author": [
+          "https://www.autocue.com/"
+        ],
+        "logo_license": [
+          "https://www.autocue.com/"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Autocue — simbolo ufficiale del marchio",
+          "url": "https://www.autocue.com/",
+          "publisher": "Autocue",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "logo_scope": "Official current Autocue brand icon; not an invented historical wordmark. The parent Videndum logo is excluded."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Basis"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/basis.png",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=127",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=127"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=127"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=127"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=127"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — Basis: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=127",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Company identity and catalog models checked against archive. Historical name/brand; no dates inferred from logo.",
+        "archive_manufacturer_id": 127,
+        "image_evidence": {
+          "id": 127,
+          "url": "https://www.1000bit.it/logos/basis.png",
+          "width": 84,
+          "height": 40,
+          "format": "PNG",
+          "sha256": "41abb5a3fefd64fb68a0b61fd3a053106e5bec8e2941c1a7ecee34262c665ea9"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Didaktik Skalica"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/didaktik.png",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=393",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=393"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=393"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=393"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=393"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — Didaktik Skalica: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=393",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Company identity and catalog models checked against archive. Historical name/brand; no dates inferred from logo.",
+        "archive_manufacturer_id": 393,
+        "image_evidence": {
+          "id": 393,
+          "url": "https://www.1000bit.it/logos/didaktik.png",
+          "width": 140,
+          "height": 31,
+          "format": "PNG",
+          "sha256": "a0b82221a7889657aa2d54f4f3c5624db83745af1e9518889b050a2eeb729a89"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Dragon Data / Compusense"
+      ],
+      "fields": {
+        "description": "Questa denominazione collega la piattaforma Dragon all’attività di Compusense, che ne sviluppò espansioni e software. La scheda Dragon Plus aggiungeva memoria e una visualizzazione a 80 colonne ai Dragon 32 e 64; versioni dedicate di OS-9 e Flex potevano sfruttarla. Si tratta quindi dell’evoluzione di computer Dragon tramite prodotti di un fornitore specializzato, non del nome di una nuova azienda costituita dai due marchi."
+      },
+      "field_sources": {
+        "description": [
+          "https://archive.worldofdragon.org/index.php?title=Dragon_Plus&oldid=9785"
+        ]
+      },
+      "sources": [
+        {
+          "title": "The Dragon Archive — Dragon Plus e Compusense",
+          "url": "https://archive.worldofdragon.org/index.php?title=Dragon_Plus&oldid=9785",
+          "publisher": "The Dragon Archive",
+          "source_type": "company_reference",
+          "license": "GNU Free Documentation License 1.2"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "entity_kind": "catalog joint attribution: Dragon platform plus third-party expansion; not a new legal company",
+        "logo_status": "No invented combined logo; Dragon-only mark not attached as a Compusense identity."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "EACA Computers"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/eaca.gif",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=51",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=51"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=51"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=51"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=51"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — EACA Computers: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=51",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Company identity and catalog models checked against archive. Historical name/brand; no dates inferred from logo.",
+        "archive_manufacturer_id": 51,
+        "image_evidence": {
+          "id": 51,
+          "url": "https://www.1000bit.it/logos/eaca.gif",
+          "width": 84,
+          "height": 25,
+          "format": "GIF",
+          "sha256": "69b4acadcffc5bebc19702c4126c0e0baf1047807a1601bba7082d6590bc8354"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Elwro"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/elwro.jpg",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=417",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=417"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=417"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=417"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=417"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — Elwro: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=417",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Company identity and catalog models checked against archive. Historical name/brand; no dates inferred from logo.",
+        "archive_manufacturer_id": 417,
+        "image_evidence": {
+          "id": 417,
+          "url": "https://www.1000bit.it/logos/elwro.jpg",
+          "width": 136,
+          "height": 34,
+          "format": "JPEG",
+          "sha256": "c79d2f4cbf5bef759426822d03a05cb352e25f1003656a2b2e2829fd6907ae57"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Ericsson Information System"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/ericsson.jpg",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=164",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=164"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=164"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=164"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=164"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — Ericsson Information System: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=164",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Company identity and catalog models checked against archive. Historical name/brand; no dates inferred from logo.",
+        "archive_manufacturer_id": 164,
+        "image_evidence": {
+          "id": 164,
+          "url": "https://www.1000bit.it/logos/ericsson.jpg",
+          "width": 174,
+          "height": 40,
+          "format": "JPEG",
+          "sha256": "195b1845f7ecbb56fa42dfccdbc1f240aa8a92e2e38fbd701d4d4d5b74b480b3"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "H/H Microcomputers"
+      ],
+      "fields": {
+        "description": "H/H Microcomputers rappresenta l’attività informatica di HH, azienda britannica conosciuta soprattutto per gli amplificatori e le apparecchiature audio. Alla fine del 1983 propose il Tiger, derivato da un progetto acquisito da Tangerine: un sistema professionale con CP/M, processori dedicati a calcolo e ingresso/uscita e una sezione video autonoma. Questa iniziativa documenta il tentativo di un produttore di elettronica di entrare nel mercato dei microcomputer professionali.",
+        "description_author": "Collaboratori di Wikipedia · sintesi italiana",
+        "description_source_url": "https://en.wikipedia.org/w/index.php?oldid=1376130161",
+        "description_license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "field_sources": {
+        "description": [
+          "https://en.wikipedia.org/w/index.php?oldid=1376130161"
+        ],
+        "description_author": [
+          "https://en.wikipedia.org/w/index.php?oldid=1376130161"
+        ],
+        "description_source_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1376130161"
+        ],
+        "description_license_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1376130161"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Wikipedia — HH Audio (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1376130161",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "company_reference",
+          "author": "Collaboratori di Wikipedia",
+          "license": "CC BY-SA 4.0"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "entity_kind": "computer activity of historical HH; not modern brand-owner history",
+        "article_section": "Other products",
+        "logo_status": "Current HH Audio logo not assigned to the historical computer activity."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "ICE-Felix"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/icefelix.png",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=379",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=379"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=379"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=379"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=379"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — ICE-Felix: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=379",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Company identity and catalog models checked against archive. Historical name/brand; no dates inferred from logo.",
+        "archive_manufacturer_id": 379,
+        "image_evidence": {
+          "id": 379,
+          "url": "https://www.1000bit.it/logos/icefelix.png",
+          "width": 163,
+          "height": 50,
+          "format": "PNG",
+          "sha256": "149e6d705b1cdb156afd87adc88ff481543d29db908e934eb2eb2cc6200d5d8b"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "ITT Information Systems"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/ITT.png",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=63",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata",
+        "description": "L’attività informatica di ITT portò il nome del gruppo nel mercato dei personal computer degli anni Ottanta. Tra i suoi sistemi vi fu l’XTRA, introdotto nel maggio 1984: un desktop con processore Intel 8088 e supporto per ambienti DOS e CP/M-86. La gamma mostra il passaggio dell’elettronica per ufficio verso piattaforme compatibili con l’ecosistema dei PC, con espansioni per dischi, comunicazioni e periferiche."
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=63"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=63"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=63"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=63"
+        ],
+        "description": [
+          "https://www.1000bit.it/scheda.asp?id=788"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — ITT Information Systems: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=63",
+          "publisher": "1000bit",
+          "source_type": "image"
+        },
+        {
+          "title": "1000bit — ITT XTRA: introduzione e caratteristiche",
+          "url": "https://www.1000bit.it/scheda.asp?id=788",
+          "publisher": "1000bit",
+          "source_type": "company_reference"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Historical ITT computer activity; XTRA hardware and May 1984 introduction checked. No parent-group foundation date copied to division.",
+        "archive_manufacturer_id": 63,
+        "image_evidence": {
+          "id": 63,
+          "url": "https://www.1000bit.it/logos/ITT.png",
+          "width": 85,
+          "height": 40,
+          "format": "PNG",
+          "sha256": "2a1a97d0173eb8ac33f00b771b17d647563870280546c2a16d788165a2213fe4"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Kondor and Kramis"
+      ],
+      "fields": {
+        "description": "Kondor e Kramis sono i nomi associati allo sviluppo del Profi a Mosca nel 1991. Il progetto apparteneva alla diffusione sovietica dei computer compatibili con lo ZX Spectrum e ne ampliava le possibilità con più memoria, interfacce per dischi e collegamenti per periferiche. Il Profi poteva anche utilizzare CP/M: una direzione rivolta all’impiego generale del computer oltre al software domestico dello Spectrum.",
+        "description_author": "Collaboratori di Wikipedia · sintesi italiana",
+        "description_source_url": "https://en.wikipedia.org/w/index.php?oldid=1384603146",
+        "description_license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "field_sources": {
+        "description": [
+          "https://en.wikipedia.org/w/index.php?oldid=1384603146"
+        ],
+        "description_author": [
+          "https://en.wikipedia.org/w/index.php?oldid=1384603146"
+        ],
+        "description_source_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1384603146"
+        ],
+        "description_license_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1384603146"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Wikipedia — List of ZX Spectrum clones (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1384603146",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "company_reference",
+          "author": "Collaboratori di Wikipedia",
+          "license": "CC BY-SA 4.0"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "entity_kind": "joint development attribution; not an inferred single legal company",
+        "article_section": "Profi"
+      }
+    },
+    {
+      "manufacturer_names": [
+        "LNW Research"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/lnwResearch.png",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=253",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=253"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=253"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=253"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=253"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — LNW Research: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=253",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Company identity and catalog models checked against archive. Historical name/brand; no dates inferred from logo.",
+        "archive_manufacturer_id": 253,
+        "image_evidence": {
+          "id": 253,
+          "url": "https://www.1000bit.it/logos/lnwResearch.png",
+          "width": 364,
+          "height": 45,
+          "format": "PNG",
+          "sha256": "c8e61f04b8bc6031307d2be0d612b4efde19f1747cff71f9584829d528e80f8b"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Lobo Systems"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/lobo2.jpg",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=255",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=255"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=255"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=255"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=255"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — Lobo Systems: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=255",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Company identity and catalog models checked against archive. Historical name/brand; no dates inferred from logo.",
+        "archive_manufacturer_id": 255,
+        "image_evidence": {
+          "id": 255,
+          "url": "https://www.1000bit.it/logos/lobo2.jpg",
+          "width": 49,
+          "height": 30,
+          "format": "JPEG",
+          "sha256": "c6a97049f80d1eec3391709b771c19ccf17ee8d0d918ebaadc41813d200ef749"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Matra & Hachette"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/matra_hachette.gif",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=66",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=66"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=66"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=66"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=66"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — Matra & Hachette: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=66",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Company identity and catalog models checked against archive. Historical name/brand; no dates inferred from logo.",
+        "archive_manufacturer_id": 66,
+        "image_evidence": {
+          "id": 66,
+          "url": "https://www.1000bit.it/logos/matra_hachette.gif",
+          "width": 167,
+          "height": 21,
+          "format": "GIF",
+          "sha256": "a3d5095213b360010a07dafc812652d45fed88c09b618efeb8235a975aa89954"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Morrow Designs"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/morrowdesigns.gif",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=282",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=282"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=282"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=282"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=282"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — Morrow Designs: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=282",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Company identity and catalog models checked against archive. Historical name/brand; no dates inferred from logo.",
+        "archive_manufacturer_id": 282,
+        "image_evidence": {
+          "id": 282,
+          "url": "https://www.1000bit.it/logos/morrowdesigns.gif",
+          "width": 180,
+          "height": 21,
+          "format": "GIF",
+          "sha256": "865c8fca0309132684664724ef66890afeee4134d2344aa1cafe9945bdf41853"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Multitech"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/multitechElectronics.png",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=69",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=69"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=69"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=69"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=69"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — Multitech: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=69",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Taiwanese Multitech Electronics, Micro-Professor manufacturer; authentic Multitech wordmark, not modern Acer or Multi-Tech Systems.",
+        "archive_manufacturer_id": 69,
+        "image_evidence": {
+          "id": 69,
+          "url": "https://www.1000bit.it/logos/multitechElectronics.png",
+          "width": 161,
+          "height": 40,
+          "format": "PNG",
+          "sha256": "a13534b4b7bd1e7e7fc4fb08e7cc1ca586892feeea51a2e339810fea49d2501a"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Nascom Microcomputers"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/nascom.gif",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=285",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=285"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=285"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=285"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=285"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — Nascom Microcomputers: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=285",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Company identity and catalog models checked against archive. Historical name/brand; no dates inferred from logo.",
+        "archive_manufacturer_id": 285,
+        "image_evidence": {
+          "id": 285,
+          "url": "https://www.1000bit.it/logos/nascom.gif",
+          "width": 85,
+          "height": 35,
+          "format": "GIF",
+          "sha256": "b690aa78d614dc5a149da4c011ee4e43d480280d335b797fc743717a062226b4"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "NEMO"
+      ],
+      "fields": {
+        "description": "NEMO è il nome legato allo sviluppo dei computer KAY a San Pietroburgo, nell’ambiente russo dei compatibili ZX Spectrum. Il KAY-1024, introdotto nel 1998, ampliava la piattaforma con 1 MB di memoria e un sistema di espansione per periferiche e memoria di massa. La documentazione del progetto comprende schemi e soluzioni di interfacciamento note come Nemo-bus, testimonianza dell’evoluzione dello Spectrum oltre i modelli originali.",
+        "description_author": "Collaboratori di Wikipedia · sintesi italiana",
+        "description_source_url": "https://en.wikipedia.org/w/index.php?oldid=1354240049",
+        "description_license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "field_sources": {
+        "description": [
+          "https://en.wikipedia.org/w/index.php?oldid=1354240049"
+        ],
+        "description_author": [
+          "https://en.wikipedia.org/w/index.php?oldid=1354240049"
+        ],
+        "description_source_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1354240049"
+        ],
+        "description_license_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1354240049"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Wikipedia — Kay 1024 (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1354240049",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "company_reference",
+          "author": "Collaboratori di Wikipedia",
+          "license": "CC BY-SA 4.0"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "entity_kind": "historical project/developer name; no unrelated modern company identification"
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Patisonic"
+      ],
+      "fields": {
+        "description": "Patisonic fu un’impresa di Omsk associata all’Aleste 520EX, presentato nel 1993. Il computer riprendeva la compatibilità con l’Amstrad CPC 6128 e aggiungeva possibilità proprie, fra cui una modalità MSX e l’espansione audio Magic Sound. Il progetto rappresenta una delle reinterpretazioni russe dei microcomputer occidentali a 8 bit, sviluppate quando quelle piattaforme avevano già una vasta base di software.",
+        "description_author": "Collaboratori di Wikipedia · sintesi italiana",
+        "description_source_url": "https://en.wikipedia.org/w/index.php?oldid=1386168523",
+        "description_license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "field_sources": {
+        "description": [
+          "https://en.wikipedia.org/w/index.php?oldid=1386168523"
+        ],
+        "description_author": [
+          "https://en.wikipedia.org/w/index.php?oldid=1386168523"
+        ],
+        "description_source_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1386168523"
+        ],
+        "description_license_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1386168523"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Wikipedia — Amstrad CPC (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1386168523",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "company_reference",
+          "author": "Collaboratori di Wikipedia",
+          "license": "CC BY-SA 4.0"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Omsk Aleste developer; unrelated to Panasonic.",
+        "article_section": "Clones / Aleste 520EX"
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Ritas do Brasil Ltda"
+      ],
+      "fields": {
+        "description": "Ritas do Brasil era un’impresa brasiliana già attiva nella produzione di bottoni automatici, che entrò nell’informatica attraverso un progetto di automazione industriale. Da questo percorso nacque il Ringo R-470, un computer domestico parzialmente compatibile con il Sinclair ZX81. Le possibilità di espansione e il prezzo relativamente elevato lo distinguevano dai concorrenti locali, ma il modello non raggiunse vendite consistenti.",
+        "description_author": "Collaboratori di Wikipedia · sintesi italiana",
+        "description_source_url": "https://pt.wikipedia.org/w/index.php?oldid=65578410",
+        "description_license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "field_sources": {
+        "description": [
+          "https://pt.wikipedia.org/w/index.php?oldid=65578410"
+        ],
+        "description_author": [
+          "https://pt.wikipedia.org/w/index.php?oldid=65578410"
+        ],
+        "description_source_url": [
+          "https://pt.wikipedia.org/w/index.php?oldid=65578410"
+        ],
+        "description_license_url": [
+          "https://pt.wikipedia.org/w/index.php?oldid=65578410"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Wikipedia — Ringo R-470 (pt)",
+          "url": "https://pt.wikipedia.org/w/index.php?oldid=65578410",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "company_reference",
+          "author": "Collaboratori di Wikipedia",
+          "license": "CC BY-SA 4.0"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "entity_kind": "Brazilian Ritas manufacturer; not an unrelated namesake"
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Sakhr"
+      ],
+      "fields": {
+        "logo_url": "https://www.msx.org/wiki/images/5/56/Sakhr-logo.png",
+        "logo_source_url": "https://www.msx.org/wiki/File:Sakhr-logo.png",
+        "logo_author": "Sakhr — marchio; file caricato da Rderooy su MSX Wiki",
+        "logo_license": "Marchio Sakhr; nessuna licenza libera del file dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.msx.org/wiki/File:Sakhr-logo.png"
+        ],
+        "logo_source_url": [
+          "https://www.msx.org/wiki/File:Sakhr-logo.png"
+        ],
+        "logo_author": [
+          "https://www.msx.org/wiki/File:Sakhr-logo.png"
+        ],
+        "logo_license": [
+          "https://www.msx.org/wiki/File:Sakhr-logo.png"
+        ]
+      },
+      "sources": [
+        {
+          "title": "MSX Wiki — Sakhr logo: immagine e cronologia",
+          "url": "https://www.msx.org/wiki/File:Sakhr-logo.png",
+          "publisher": "MSX Resource Center",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "image_dimensions": [
+          516,
+          217
+        ],
+        "file_revision": "2016-10-03T23:26:00",
+        "license_note": "MSX Wiki footer is not treated as a free license for third-party trademarks."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Scientific Micro Systems"
+      ],
+      "fields": {
+        "description": "Scientific Micro Systems, spesso indicata come SMS, è presente nella storia dei minicomputer con la famiglia SMS 1000. Il sistema adottava l’architettura PDP-11 e il bus QBUS, collocandosi nell’ecosistema professionale sviluppato attorno ai computer Digital. La documentazione conservata negli archivi tecnici comprende brochure della gamma e dei suoi modelli, utili a ricostruire questa produzione specialistica."
+      },
+      "field_sources": {
+        "description": [
+          "https://vaxbarn.com/index.php/collection/mini/sms-sms1000",
+          "https://bitsavers.org/pdf/sms/brochures/"
+        ]
+      },
+      "sources": [
+        {
+          "title": "VAXBARN — SMS 1000: architettura PDP-11 e QBUS",
+          "url": "https://vaxbarn.com/index.php/collection/mini/sms-sms1000",
+          "publisher": "VAXBARN",
+          "source_type": "company_reference"
+        },
+        {
+          "title": "Bitsavers — indice delle brochure Scientific Micro Systems",
+          "url": "https://bitsavers.org/pdf/sms/brochures/",
+          "publisher": "Bitsavers",
+          "source_type": "company_reference"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "limitations": "Brochure index read; PDF download returned HTTP 403. No facts inferred from inaccessible PDF; no assumed link to similarly named modern companies."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Shaanxi Province Computer Factory"
+      ],
+      "fields": {
+        "description": "La fabbrica di computer della provincia dello Shaanxi partecipò allo sviluppo dei CEC, i computer educativi cinesi destinati a famiglie e scuole. Il progetto fu coordinato dall’Università Tsinghua con la collaborazione di più istituti e produttori, nell’ambito delle iniziative nazionali per diffondere l’alfabetizzazione informatica. Il CEC-I riprendeva la compatibilità con l’Apple IIe e poteva essere ampliato con periferiche e supporto ai caratteri cinesi."
+      },
+      "field_sources": {
+        "description": [
+          "https://www.ccf.org.cn/Computing_history/Full_List/2021/yllsjy/2022-04-21/760882.shtml"
+        ]
+      },
+      "sources": [
+        {
+          "title": "CCF — CEC-I: sviluppo congiunto e ruolo della fabbrica Shaanxi",
+          "url": "https://www.ccf.org.cn/Computing_history/Full_List/2021/yllsjy/2022-04-21/760882.shtml",
+          "publisher": "China Computer Federation",
+          "source_type": "company_reference"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Shaanxi participant explicitly named in CCF history; not confused with separate Nanjing factory."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Signal"
+      ],
+      "fields": {
+        "description": "Signal è lo stabilimento di Chișinău associato alla produzione dei computer Sintez, compatibili con lo ZX Spectrum. La famiglia comprendeva più progetti: dai primi sistemi legati al circuito Leningrad alle successive rielaborazioni, fra cui il Sintez 2. La loro storia appartiene alla diffusione dei microcomputer domestici nell’Unione Sovietica e in Moldavia, con adattamenti ai componenti e alle esigenze produttive locali.",
+        "description_author": "Collaboratori di Wikipedia · sintesi italiana",
+        "description_source_url": "https://en.wikipedia.org/w/index.php?oldid=1384603146",
+        "description_license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "field_sources": {
+        "description": [
+          "https://en.wikipedia.org/w/index.php?oldid=1384603146",
+          "https://oldcomputer.info/8bit/sintez/index.htm"
+        ],
+        "description_author": [
+          "https://en.wikipedia.org/w/index.php?oldid=1384603146"
+        ],
+        "description_source_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1384603146"
+        ],
+        "description_license_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1384603146"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Wikipedia — List of ZX Spectrum clones (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1384603146",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "company_reference",
+          "author": "Collaboratori di Wikipedia",
+          "license": "CC BY-SA 4.0"
+        },
+        {
+          "title": "MCbx — Signal Sintez 2: stabilimento e versioni",
+          "url": "https://oldcomputer.info/8bit/sintez/index.htm",
+          "publisher": "MCbx",
+          "source_type": "company_reference"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Signal plant in Chisinau; no relation to unrelated Signal companies or messaging software.",
+        "article_section": "Sintez and -Sintez-"
+      }
+    },
+    {
+      "manufacturer_names": [
+        "SpecNext Ltd., Victor Trucco, Fabio Belavenuto"
+      ],
+      "fields": {
+        "logo_url": "https://www.specnext.com/wp-content/uploads/2025/08/specnextlogo-web.png",
+        "logo_source_url": "https://www.specnext.com/",
+        "logo_author": "SpecNext Ltd. — marchio pubblicato sul sito ufficiale",
+        "logo_license": "Diritti riservati; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.specnext.com/"
+        ],
+        "logo_source_url": [
+          "https://www.specnext.com/"
+        ],
+        "logo_author": [
+          "https://www.specnext.com/"
+        ],
+        "logo_license": [
+          "https://www.specnext.com/"
+        ]
+      },
+      "sources": [
+        {
+          "title": "SpecNext — marchio del sito ufficiale",
+          "url": "https://www.specnext.com/",
+          "publisher": "SpecNext Ltd.",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "logo_scope": "Logo of SpecNext Ltd., the company named in this combined catalog attribution; not the personal logos of Trucco or Belavenuto."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Terco AB"
+      ],
+      "fields": {
+        "description": "Terco è un produttore svedese di apparecchiature per la formazione tecnica, fondato nel 1963. Le sue attrezzature sono destinate a scuole, università e centri industriali: dall’elettrotecnica e dalle macchine elettriche all’automazione, alla meccatronica e al controllo dei processi. I sistemi di addestramento si inseriscono in questa specializzazione didattica, distinta da quella dei produttori di personal computer per il grande pubblico.",
+        "founded": "1963",
+        "website": "https://www.terco.se/",
+        "logo_url": "https://www.terco.se/wp-content/uploads/2023/03/Terco_wp_logo-340x156-1.png",
+        "logo_source_url": "https://www.terco.se/",
+        "logo_author": "Terco — marchio pubblicato sul sito ufficiale",
+        "logo_license": "Diritti riservati; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "description": [
+          "https://www.terco.se/om-oss/"
+        ],
+        "founded": [
+          "https://www.terco.se/om-oss/"
+        ],
+        "website": [
+          "https://www.terco.se/om-oss/"
+        ],
+        "logo_url": [
+          "https://www.terco.se/"
+        ],
+        "logo_source_url": [
+          "https://www.terco.se/"
+        ],
+        "logo_author": [
+          "https://www.terco.se/"
+        ],
+        "logo_license": [
+          "https://www.terco.se/"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Terco — storia e apparecchiature per la formazione tecnica",
+          "url": "https://www.terco.se/om-oss/",
+          "publisher": "Terco I&S AB",
+          "source_type": "company_reference"
+        },
+        {
+          "title": "Terco — logo del sito ufficiale",
+          "url": "https://www.terco.se/",
+          "publisher": "Terco I&S AB",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "logo_scope": "Current official Terco brand; website asset date is not a historical logo date. No 4426 specifications inferred from present product range."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Thomson SIMIV"
+      ],
+      "fields": {
+        "logo_url": "https://www.1000bit.it/logos/Thomson.gif",
+        "logo_source_url": "https://www.1000bit.it/database2.asp?id=87",
+        "logo_author": "Autore grafico non indicato; riproduzione conservata da 1000bit",
+        "logo_license": "Marchio del rispettivo titolare; nessuna licenza libera dichiarata"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://www.1000bit.it/database2.asp?id=87"
+        ],
+        "logo_source_url": [
+          "https://www.1000bit.it/database2.asp?id=87"
+        ],
+        "logo_author": [
+          "https://www.1000bit.it/database2.asp?id=87"
+        ],
+        "logo_license": [
+          "https://www.1000bit.it/database2.asp?id=87"
+        ]
+      },
+      "sources": [
+        {
+          "title": "1000bit — Thomson SIMIV: marchio e catalogo",
+          "url": "https://www.1000bit.it/database2.asp?id=87",
+          "publisher": "1000bit",
+          "source_type": "image"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Thomson parent brand for its SIMIV computer division; logo is not a separate SIMIV legal-entity mark.",
+        "archive_manufacturer_id": 87,
+        "image_evidence": {
+          "id": 87,
+          "url": "https://www.1000bit.it/logos/Thomson.gif",
+          "width": 187,
+          "height": 20,
+          "format": "GIF",
+          "sha256": "28e4f9747b16812165cca333dc12ecdd93c70e51589495721664869f6159dd03"
+        },
+        "reuse": "Remote image URL only; private study, scholarship or research, as stated in 1000bit footer; user has authorized data recovery. No free-license or authorship claim."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Vendex"
+      ],
+      "fields": {
+        "description": "Vendex fu un’impresa commerciale olandese che negli anni Ottanta propose anche computer compatibili con i PC, fra cui la linea HeadStart. I sistemi erano rivolti all’uso personale e d’ufficio e furono distribuiti in Europa e negli Stati Uniti. Il marchio commerciale va distinto dal fabbricante effettivo: gli esemplari HeadStart Plus documentati furono costruiti da Samsung e integravano sulla scheda madre molte delle periferiche normalmente aggiunte tramite schede di espansione."
+      },
+      "field_sources": {
+        "description": [
+          "https://oldcomputer.info/pc/hs_plus/"
+        ]
+      },
+      "sources": [
+        {
+          "title": "MCbx — Vendex HeadStart Plus: marchio, distribuzione e fabbricazione",
+          "url": "https://oldcomputer.info/pc/hs_plus/",
+          "publisher": "MCbx",
+          "source_type": "company_reference"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "Historical Vendex retail/computer brand, not the modern Maxeda brand. No modern Maxeda logo attached."
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Vladimir Drozdov"
+      ],
+      "fields": {
+        "description": "Vladimir Drozdov è il progettista a cui viene attribuito il Pentagon 48K del 1989, uno dei progetti da cui si sviluppò la famiglia di compatibili ZX Spectrum diffusa nell’ex Unione Sovietica. La circolazione della documentazione tecnica ne favorì la realizzazione da parte di appassionati e piccoli produttori. Le successive versioni Pentagon furono sviluppate anche da altri autori: il nome della famiglia non identifica un’unica azienda.",
+        "description_author": "Collaboratori di Wikipedia · sintesi italiana",
+        "description_source_url": "https://en.wikipedia.org/w/index.php?oldid=1357714365",
+        "description_license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      },
+      "field_sources": {
+        "description": [
+          "https://en.wikipedia.org/w/index.php?oldid=1357714365"
+        ],
+        "description_author": [
+          "https://en.wikipedia.org/w/index.php?oldid=1357714365"
+        ],
+        "description_source_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1357714365"
+        ],
+        "description_license_url": [
+          "https://en.wikipedia.org/w/index.php?oldid=1357714365"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Wikipedia — Pentagon (computer) (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1357714365",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "company_reference",
+          "author": "Collaboratori di Wikipedia",
+          "license": "CC BY-SA 4.0"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "checked_on": "2026-11-24",
+        "identity_scope": "exact existing catalog name; missing fields only",
+        "entity_kind": "person/project developer; not a company",
+        "attribution_scope": "1989 Pentagon 48K attribution only; no claim that Drozdov personally designed every later Pentagon 128K or 1024SL revision."
+      }
+    }
+  ]
+}
