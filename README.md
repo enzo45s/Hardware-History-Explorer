@@ -531,3 +531,17 @@ docker compose -p hhe-import-test exec api python -m app.importing.catalog_resea
 Per applicare, aggiungi `--apply` allo stesso comando. L’avvio dei container
 non importa il pacchetto automaticamente.
 [Fonti, risultati verificati, lacune e istruzioni](docs/datasets/catalog-research-2026-11/README.md).
+
+## Supplemento fotografico NEC, Kaypro, Daewoo e SGI
+
+Una seconda ricerca propone **45 immagini** da gallerie specializzate e
+cataloghi originali, con crediti e fonti. Completa soltanto le schede ancora
+senza foto, conservando tutte le immagini e i dati già presenti. Dopo aver
+aggiornato il branch e ricostruito i container:
+
+```bash
+docker compose -p hhe-import-test exec api python -m app.importing.catalog_photos
+```
+
+Il comando mostra l’anteprima; aggiungere `--apply` per applicare il supplemento.
+[Modelli, condizioni, istruzioni e verifiche](docs/datasets/catalog-photos-deep-2026-11/README.md).

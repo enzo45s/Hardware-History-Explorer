@@ -1,0 +1,362 @@
+{
+  "date": "2026-11-25",
+  "basis": "Clone PostgreSQL del catalogo verificato; database locale dell’utente non modificato da remoto.",
+  "images_added": 45,
+  "by_manufacturer": {
+    "Silicon Graphics": 4,
+    "Daewoo": 11,
+    "NEC": 22,
+    "Kaypro Corporation": 7,
+    "Non-Linear Systems": 1
+  },
+  "image_types": {
+    "photograph": 20,
+    "catalog_illustration": 25
+  },
+  "tables": {
+    "archive_resets": {
+      "before": 2,
+      "after": 2,
+      "unchanged": true
+    },
+    "bit1000_bulk_targets": {
+      "before": 3315,
+      "after": 3315,
+      "unchanged": true
+    },
+    "computers": {
+      "before": 1154,
+      "after": 1154,
+      "unchanged": true
+    },
+    "manufacturers": {
+      "before": 188,
+      "after": 188,
+      "unchanged": true
+    },
+    "bit1000_bulk_jobs": {
+      "before": 3,
+      "after": 3,
+      "unchanged": true
+    },
+    "catalog_metric_sources": {
+      "before": 0,
+      "after": 0,
+      "unchanged": true
+    },
+    "catalog_metrics": {
+      "before": 0,
+      "after": 0,
+      "unchanged": true
+    },
+    "catalog_snapshots": {
+      "before": 0,
+      "after": 0,
+      "unchanged": true
+    },
+    "sources": {
+      "before": 7984,
+      "after": 8000,
+      "unchanged": false
+    },
+    "catalog_reconciliations": {
+      "before": 299,
+      "after": 300,
+      "unchanged": false
+    },
+    "commons_photo_items": {
+      "before": 5203,
+      "after": 5203,
+      "unchanged": true
+    },
+    "computer_images": {
+      "before": 651,
+      "after": 696,
+      "unchanged": false
+    },
+    "commons_photo_jobs": {
+      "before": 6,
+      "after": 6,
+      "unchanged": true
+    },
+    "categories": {
+      "before": 13,
+      "after": 13,
+      "unchanged": true
+    },
+    "bit1000_bulk_pages": {
+      "before": 7696,
+      "after": 7696,
+      "unchanged": true
+    },
+    "import_jobs": {
+      "before": 3056,
+      "after": 3057,
+      "unchanged": false
+    },
+    "catalog_dirty": {
+      "before": 0,
+      "after": 0,
+      "unchanged": true
+    },
+    "computer_category": {
+      "before": 1154,
+      "after": 1154,
+      "unchanged": true
+    },
+    "computer_aliases": {
+      "before": 142,
+      "after": 142,
+      "unchanged": true
+    },
+    "computer_sources": {
+      "before": 5309,
+      "after": 5333,
+      "unchanged": false
+    },
+    "configurations": {
+      "before": 1192,
+      "after": 1192,
+      "unchanged": true
+    },
+    "fact_sources": {
+      "before": 986,
+      "after": 986,
+      "unchanged": true
+    },
+    "facts": {
+      "before": 986,
+      "after": 986,
+      "unchanged": true
+    },
+    "import_rows": {
+      "before": 11079,
+      "after": 11124,
+      "unchanged": false
+    },
+    "import_identities": {
+      "before": 2616,
+      "after": 2616,
+      "unchanged": true
+    },
+    "markets": {
+      "before": 19,
+      "after": 19,
+      "unchanged": true
+    },
+    "release_sources": {
+      "before": 1844,
+      "after": 1844,
+      "unchanged": true
+    },
+    "releases": {
+      "before": 1164,
+      "after": 1164,
+      "unchanged": true
+    },
+    "import_claims": {
+      "before": 73691,
+      "after": 73691,
+      "unchanged": true
+    },
+    "manufacturer_sources": {
+      "before": 378,
+      "after": 378,
+      "unchanged": true
+    },
+    "reviews": {
+      "before": 0,
+      "after": 0,
+      "unchanged": true
+    },
+    "sale_sources": {
+      "before": 0,
+      "after": 0,
+      "unchanged": true
+    },
+    "sales": {
+      "before": 0,
+      "after": 0,
+      "unchanged": true
+    },
+    "specification_sources": {
+      "before": 10057,
+      "after": 10057,
+      "unchanged": true
+    },
+    "specifications": {
+      "before": 7728,
+      "after": 7728,
+      "unchanged": true
+    },
+    "review_sources": {
+      "before": 0,
+      "after": 0,
+      "unchanged": true
+    },
+    "catalog_metric_assertions": {
+      "before": 0,
+      "after": 0,
+      "unchanged": true
+    }
+  },
+  "all_technical_and_historical_tables_unchanged": true,
+  "all_existing_image_and_source_rows_preserved": true,
+  "repeat": {
+    "version": "catalog-photos-deep-2026-11-v1",
+    "already_applied": true,
+    "images_added": 0
+  },
+  "replay_all_tables_unchanged": true,
+  "remaining_without_image": [
+    {
+      "id": 376,
+      "manufacturer": "Daewoo",
+      "model_name": "DPC-200E"
+    },
+    {
+      "id": 603,
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Omni II Logic Analyzer"
+    },
+    {
+      "id": 678,
+      "manufacturer": "NEC",
+      "model_name": "Bungo mini 5SX"
+    },
+    {
+      "id": 679,
+      "manufacturer": "NEC",
+      "model_name": "EWS4800/310"
+    },
+    {
+      "id": 690,
+      "manufacturer": "NEC",
+      "model_name": "PC-8401BD"
+    },
+    {
+      "id": 685,
+      "manufacturer": "NEC",
+      "model_name": "PC-6601"
+    },
+    {
+      "id": 686,
+      "manufacturer": "NEC",
+      "model_name": "PC-6601SR \"Mr. PC\""
+    },
+    {
+      "id": 689,
+      "manufacturer": "NEC",
+      "model_name": "PC-8001mkIISR"
+    },
+    {
+      "id": 693,
+      "manufacturer": "NEC",
+      "model_name": "PC-8801FA"
+    },
+    {
+      "id": 694,
+      "manufacturer": "NEC",
+      "model_name": "PC-8801MA"
+    },
+    {
+      "id": 695,
+      "manufacturer": "NEC",
+      "model_name": "PC-8801MA2"
+    },
+    {
+      "id": 696,
+      "manufacturer": "NEC",
+      "model_name": "PC-8801MC"
+    },
+    {
+      "id": 697,
+      "manufacturer": "NEC",
+      "model_name": "PC-8801MH"
+    },
+    {
+      "id": 699,
+      "manufacturer": "NEC",
+      "model_name": "PC-8801mkIIFR"
+    },
+    {
+      "id": 700,
+      "manufacturer": "NEC",
+      "model_name": "PC-8801mkIIMR"
+    },
+    {
+      "id": 703,
+      "manufacturer": "NEC",
+      "model_name": "PC-88VA2"
+    }
+  ],
+  "validation": {
+    "sqlite": "28 passed",
+    "postgresql": "28 passed",
+    "frontend": "47 passed",
+    "react_build": "passed",
+    "docker_compose": "db/api/web healthy; rebuilt final code",
+    "docker_cli_replay": {
+      "already_applied": true,
+      "images_added": 0
+    },
+    "image_files": {
+      "count": 45,
+      "all_http_200": true,
+      "all_decoded": true,
+      "original_bytes_preserved": true
+    },
+    "browser": {
+      "records": [
+        {
+          "name": "PC-9801FS",
+          "width": 1440,
+          "theme": "light",
+          "crop": true,
+          "original_link_preserved": true,
+          "source_and_author_visible": true
+        },
+        {
+          "name": "Kaypro 2/84",
+          "width": 390,
+          "theme": "dark",
+          "crop": true,
+          "original_link_preserved": true,
+          "source_and_author_visible": true
+        },
+        {
+          "name": "IQ-2000 CPC-300",
+          "width": 1440,
+          "theme": "light",
+          "crop": false,
+          "original_link_preserved": true,
+          "source_and_author_visible": true
+        },
+        {
+          "name": "IRIS 3130",
+          "width": 390,
+          "theme": "dark",
+          "crop": false,
+          "original_link_preserved": true,
+          "source_and_author_visible": true
+        },
+        {
+          "name": "PC-8500",
+          "width": 1440,
+          "theme": "light",
+          "crop": false,
+          "original_link_preserved": true,
+          "source_and_author_visible": true
+        }
+      ],
+      "page_errors": [],
+      "verified_originals_rendered": 5,
+      "network": "Original bytes from separately HTTP-verified files; no synthetic or replacement photographs."
+    },
+    "warnings": [
+      "Preexisting Vite bundle >500 kB",
+      "Preexisting Starlette/httpx deprecation"
+    ]
+  },
+  "package_sha256": "ee88f2b8bae72c0d54d012d1903ca065baaad03a4ba4397175ccdcaadc3251fc"
+}

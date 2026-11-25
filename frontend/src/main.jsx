@@ -1,3 +1,5 @@
+import ArchiveImage from './ArchiveImage.jsx';
+import { imageCrop } from './image-crop.js';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
@@ -33,7 +35,7 @@ function SystemCover({ src, name, year, className = '' }) {
   const [broken, setBroken] = useState(false);
   useEffect(() => setBroken(false), [src]);
   return <div className={'system-cover ' + className}>
-    {src && !broken ? <img src={src} alt={'Fotografia di ' + name} loading="lazy" onError={() => setBroken(true)} />
+    {src && !broken ? <ArchiveImage src={src} alt={'Immagine di ' + name} loading="lazy" onError={() => setBroken(true)} />
       : <div className="system-placeholder"><Monitor size={34} /><span>{year || 'FOTO'}</span></div>}
   </div>;
 }
@@ -52,12 +54,12 @@ function Gallery({ computer }) {
   if (!images.length) return <div className="gallery-empty"><ImageIcon size={30} /><b>Nessuna fotografia ancora associata</b><span>Puoi aggiungere una foto dal dispositivo, tramite URL oppure cercarla su Wikimedia Commons.</span></div>;
   return <div className="gallery-box">
     <div className="gallery-feature">
-      <img src={active.url} alt={active.caption || 'Fotografia di ' + computer.model_name} />
+      <ArchiveImage src={imageCrop(active.thumbnail_url) ? active.thumbnail_url : active.url} alt={active.caption || 'Immagine di ' + computer.model_name} />
       {active.is_primary && <span className="cover-flag"><Star size={12} fill="currentColor" /> Copertina</span>}
     </div>
     {images.length > 1 && <div className="gallery-strip">{images.map(i =>
       <button type="button" key={i.id} className={'gallery-thumb ' + (active.id === i.id ? 'selected' : '')} onClick={() => setActiveId(i.id)} title={i.caption || 'Fotografia'}>
-        <img src={i.thumbnail_url || i.url} alt={i.caption || 'Miniatura'} loading="lazy" />
+        <ArchiveImage src={i.thumbnail_url || i.url} alt={i.caption || 'Miniatura'} loading="lazy" />
       </button>)}</div>}
     <div className="gallery-credit">
       <b>{active.caption || 'Fotografia del sistema'}</b>
