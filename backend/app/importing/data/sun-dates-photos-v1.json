@@ -1,0 +1,366 @@
+{
+  "version": "sun-dates-photos-2026-11-v1",
+  "researched_on": "2026-11-24",
+  "manufacturer_names": [
+    "Sun Microsystems",
+    "Sun Microsystems Inc.",
+    "Sun Microsystems, Inc.",
+    "Sun"
+  ],
+  "models": [
+    "SPARCstation 20",
+    "SPARCstation 1",
+    "SPARCstation 1+",
+    "SPARCstation 10",
+    "SPARCstation 2",
+    "SPARCstation ELC",
+    "SPARCstation IPC",
+    "SPARCstation IPX",
+    "SPARCstation SLC",
+    "Sun 2/120",
+    "Sun 2/50",
+    "Sun 3/110",
+    "Sun 3/260/280",
+    "Sun 3/460/470/480",
+    "Sun 3/50",
+    "Sun 3/60",
+    "Sun 3/75/140/150/160/180",
+    "Sun 3/80",
+    "Sun 3/E",
+    "Sun 4/110",
+    "Sun 4/3x0",
+    "Sun 4/4x0",
+    "Sun-1",
+    "Ultra 45"
+  ],
+  "dates": [
+    {
+      "model_name": "Sun 3/110",
+      "release_date": "1986",
+      "kind": "reference",
+      "source": {
+        "title": "Sun Microsystems — Sun-3 Product Family Configuration Guide, ottobre 1986",
+        "url": "https://archive.org/details/bitsavers_sunsun3SunOct86_5356402",
+        "access_date": "2026-11-24",
+        "author": "Sun Microsystems",
+        "publisher": "Sun Microsystems",
+        "source_type": "technical_manual"
+      },
+      "evidence": "Il Configuration Guide di ottobre 1986 elenca Sun-3/110C,G,LC e ne descrive la configurazione. Dimostra la presenza nel catalogo entro il 1986, non il giorno del lancio.",
+      "note": "Modello documentato nel catalogo Sun di ottobre 1986; anno di riferimento, data esatta di prima commercializzazione non accertata."
+    },
+    {
+      "model_name": "Sun 3/260/280",
+      "release_date": "1986",
+      "kind": "reference",
+      "source": {
+        "title": "Sun Microsystems — Sun-3 Product Family Configuration Guide, ottobre 1986",
+        "url": "https://archive.org/details/bitsavers_sunsun3SunOct86_5356402",
+        "access_date": "2026-11-24",
+        "author": "Sun Microsystems",
+        "publisher": "Sun Microsystems",
+        "source_type": "technical_manual"
+      },
+      "evidence": "Il catalogo originale di ottobre 1986 elenca Sun-3/260HM,C,G, Sun-3/260S e Sun-3/280S. Il 1988 nel contesto prezzi è un listino successivo, non il debutto della famiglia.",
+      "note": "Sun 3/260 e 3/280 sono già documentati nel catalogo di ottobre 1986. Il listino 1988 resta distinto; data esatta del lancio non certificata."
+    },
+    {
+      "model_name": "SPARCstation ELC",
+      "release_date": "1991",
+      "kind": "documented_launch",
+      "source": {
+        "title": "Wikipedia — SPARCstation (en)",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1350514928",
+        "access_date": "2026-11-24",
+        "author": "Collaboratori di Wikipedia",
+        "publisher": "Wikimedia Foundation",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0"
+      },
+      "evidence": "Tabella SPARCstation, all-in-one: SPARCstation ELC (4/25), Introduced Jul 1991. Conservata prudenzialmente la precisione annuale richiesta dal catalogo.",
+      "note": "Introduzione ELC nel 1991; il 1992 del precedente dato di base non è la data di lancio."
+    },
+    {
+      "model_name": "Ultra 45",
+      "release_date": "2006",
+      "kind": "documented_launch",
+      "source": {
+        "title": "Wikipedia — Sun Ultra (en)",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1354697815",
+        "access_date": "2026-11-24",
+        "author": "Collaboratori di Wikipedia",
+        "publisher": "Wikimedia Foundation",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0"
+      },
+      "evidence": "Sezione Late SPARC models: new Ultra 25 and Ultra 45 desktop UltraSPARC IIIi-based systems were introduced in 2006. Non confondere Ultra 45, Ultra 450 e Ultra 3 mobile.",
+      "note": "La Sun Ultra 45 è del 2006, non del 1996. La fonte del prezzo già importato resta separata e gli importi non cambiano."
+    }
+  ],
+  "context_date_corrections": [
+    "Sun 3/60",
+    "Sun 4/3x0"
+  ],
+  "photos": {
+    "SPARCstation 1+": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/32/SPARCstation_1.jpg",
+        "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/3/32/SPARCstation_1.jpg",
+        "caption": "SPARCstation 1+ con monitor e tastiera; il nome del file Commons è generico ma la descrizione identifica il modello 1+.",
+        "author": "Fourdee at English Wikipedia",
+        "license_name": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:SPARCstation_1.jpg",
+        "license_url": "https://commons.wikimedia.org/wiki/Commons:Copyright_tags",
+        "permission_basis": "Licenza o dichiarazione di pubblico dominio del singolo file Commons, verificata tramite metadati."
+      }
+    ],
+    "SPARCstation 2": [
+      {
+        "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Sun_SparcStation_2_%281%29_edit.jpg/1280px-Sun_SparcStation_2_%281%29_edit.jpg",
+        "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Sun_SparcStation_2_%281%29_edit.jpg/1280px-Sun_SparcStation_2_%281%29_edit.jpg",
+        "caption": "Sun SPARCstation 2, vista del sistema.",
+        "author": "Elizabeth K. Joseph",
+        "license_name": "CC BY 2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sun_SparcStation_2_(1)_edit.jpg",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "permission_basis": "Licenza o dichiarazione di pubblico dominio del singolo file Commons, verificata tramite metadati."
+      }
+    ],
+    "SPARCstation IPC": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Sparcstation-ipc-01.jpg",
+        "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Sparcstation-ipc-01.jpg",
+        "caption": "Sun SPARCstation IPC nel contenitore compatto lunchbox.",
+        "author": "Stephen Edmonds",
+        "license_name": "CC BY-SA 2.5",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sparcstation-ipc-01.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+        "permission_basis": "Licenza o dichiarazione di pubblico dominio del singolo file Commons, verificata tramite metadati."
+      }
+    ],
+    "SPARCstation IPX": [
+      {
+        "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Sun_SPARCstation_IPX.jpg/1280px-Sun_SPARCstation_IPX.jpg",
+        "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Sun_SPARCstation_IPX.jpg/1280px-Sun_SPARCstation_IPX.jpg",
+        "caption": "Sun SPARCstation IPX, sistema di serie; non il prototipo IPC/IPX.",
+        "author": "htomari",
+        "license_name": "CC BY-SA 2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sun_SPARCstation_IPX.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "permission_basis": "Licenza o dichiarazione di pubblico dominio del singolo file Commons, verificata tramite metadati."
+      }
+    ],
+    "Sun 3/50": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Sun3_50CPUwHelios4Mb.jpg",
+        "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Sun3_50CPUwHelios4Mb.jpg",
+        "caption": "Scheda madre Sun 3/50 con espansione Helios da 4 MB. È un componente del sistema, non una vista del contenitore.",
+        "author": "Robert.Harker at English Wikipedia",
+        "license_name": "CC BY-SA 2.5",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sun3_50CPUwHelios4Mb.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+        "permission_basis": "Licenza o dichiarazione di pubblico dominio del singolo file Commons, verificata tramite metadati."
+      }
+    ],
+    "Sun 3/60": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Sun3_60_Disk_Tape.jpg",
+        "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Sun3_60_Disk_Tape.jpg",
+        "caption": "Workstation Sun 3/60 con unità disco e nastro.",
+        "author": "Robert Harker",
+        "license_name": "CC BY-SA 2.5",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sun3_60_Disk_Tape.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+        "permission_basis": "Licenza o dichiarazione di pubblico dominio del singolo file Commons, verificata tramite metadati."
+      }
+    ],
+    "Sun 3/80": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Sun_3-80.jpg",
+        "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Sun_3-80.jpg",
+        "caption": "Workstation Sun 3/80.",
+        "author": "Lamune at English Wikipedia",
+        "license_name": "Public domain",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sun_3-80.jpg",
+        "license_url": "https://commons.wikimedia.org/wiki/Commons:Copyright_tags",
+        "permission_basis": "Licenza o dichiarazione di pubblico dominio del singolo file Commons, verificata tramite metadati."
+      }
+    ],
+    "Sun 3/75/140/150/160/180": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Sun3_CPU.jpg",
+        "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Sun3_CPU.jpg",
+        "caption": "Scheda CPU Carrera della famiglia Sun-3/100, condivisa dai modelli di questa scheda; immagine del componente, non dell’intero sistema.",
+        "author": "Robert.Harker at English Wikipedia",
+        "license_name": "CC BY-SA 2.5",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Sun3_CPU.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+        "permission_basis": "Licenza o dichiarazione di pubblico dominio del singolo file Commons, verificata tramite metadati."
+      }
+    ],
+    "Sun 4/3x0": [
+      {
+        "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_%28MIH%29_-_UNIZAR_-_Sun_Sparcstation_330_motherboard_-_full_view.jpg/1280px-Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_%28MIH%29_-_UNIZAR_-_Sun_Sparcstation_330_motherboard_-_full_view.jpg",
+        "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_%28MIH%29_-_UNIZAR_-_Sun_Sparcstation_330_motherboard_-_full_view.jpg/1280px-Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_%28MIH%29_-_UNIZAR_-_Sun_Sparcstation_330_motherboard_-_full_view.jpg",
+        "caption": "Scheda madre di Sun SPARCstation 330, modello 4/330 della famiglia 4/3x0; non rappresenta tutti i contenitori della famiglia.",
+        "author": "Jose Luis Briz Velasco",
+        "license_name": "CC BY-SA 4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_(MIH)_-_UNIZAR_-_Sun_Sparcstation_330_motherboard_-_full_view.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "permission_basis": "Licenza o dichiarazione di pubblico dominio del singolo file Commons, verificata tramite metadati."
+      }
+    ],
+    "SPARCstation 1": [
+      {
+        "image_url": "https://www.1000bit.it/lista/s/sun/sparc1/sparc1.jpg",
+        "thumbnail_url": "https://www.1000bit.it/lista/s/sun/sparc1/sparc1.jpg",
+        "caption": "Sun SPARCstation 1 (4/60), vista del sistema dall’archivio 1000bit.",
+        "author": "Archivio 1000bit; fotografo non indicato",
+        "license_name": "Diritti dei rispettivi titolari; studio e ricerca, condizioni 1000bit",
+        "license_url": "https://www.1000bit.it/scheda.asp?id=331",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=331",
+        "permission_basis": "Autorizzazione al recupero 1000bit già fornita dall’utente; collegamento per studio e ricerca, non licenza libera."
+      }
+    ],
+    "Sun 3/110": [
+      {
+        "image_url": "https://cdn11.bigcommerce.com/s-a1x7hg2jgk/products/18561/images/327433/Sun-3110-Prism-1667Mhz-Unix-Computer-600-2051_103941__66123.1786189529.500.750.jpg",
+        "thumbnail_url": "https://cdn11.bigcommerce.com/s-a1x7hg2jgk/products/18561/images/327433/Sun-3110-Prism-1667Mhz-Unix-Computer-600-2051_103941__66123.1786189529.500.750.jpg",
+        "caption": "Sun 3/110 Prism, esemplare fotografato nella scheda Recycled Goods; non un Sun 3/260 o una scheda di altro modello.",
+        "author": "Recycled Goods, Inc. — fotografo non indicato dalla fonte",
+        "license_name": "Diritti riservati; nessuna licenza libera dichiarata dalla fonte",
+        "license_url": "https://recycledgoods.com/sun-3-110-prism-16-67mhz-unix-computer-600-2051/",
+        "source_url": "https://recycledgoods.com/sun-3-110-prism-16-67mhz-unix-computer-600-2051/",
+        "permission_basis": "Collegamento alla fotografia pubblica della scheda commerciale, per il catalogo locale richiesto dall’utente; non si dichiara una licenza libera o una cessione dei diritti. Nessun file redistribuito nel repository."
+      }
+    ]
+  },
+  "wrong_automatic_photos": {
+    "SPARCstation 1": [
+      "https://commons.wikimedia.org/wiki/File:Sun_Microsystems_SPARCstation_10_motherboard.jpg"
+    ],
+    "SPARCstation 1+": [
+      "https://commons.wikimedia.org/wiki/File:Sun_Microsystems_SPARCstation_10_motherboard.jpg"
+    ],
+    "SPARCstation 2": [
+      "https://commons.wikimedia.org/wiki/File:Sun_SPARCclassic_X_(1).jpg"
+    ],
+    "Sun 3/50": [
+      "https://commons.wikimedia.org/wiki/File:Sun_2-50_Processor.JPG"
+    ],
+    "Sun 3/80": [
+      "https://commons.wikimedia.org/wiki/File:Sun-1_badge.JPG"
+    ],
+    "Sun 3/E": [
+      "https://commons.wikimedia.org/wiki/File:Sun_Agnews_Campus_Bldgs_21_22.jpg"
+    ],
+    "Ultra 45": [
+      "https://commons.wikimedia.org/wiki/File:Sun_Microsystems_Ultra_3_laptop.jpg"
+    ]
+  },
+  "research": {
+    "scope": "Solo computer già presenti del produttore Sun Microsystems. Anni recuperati dalle note di prezzo con fonti, date storiche selettive e fotografie pertinenti; nessuna nuova macchina o modifica agli importi.",
+    "chronology_notes": [
+      "I campi Anno lancio delle ricerche prezzi possono essere anni di listino; il recupero da note è qualificato come riferimento, non verifica automatica del lancio.",
+      "Date curate/verificate o modificate manualmente non sono sostituite; rettifiche di anni preesistenti solo con provenienza esatta del dato di base non verificato.",
+      "3/110 e 3/260/280: prova documentale nel catalogo originale ottobre1986, non una data di lancio inventata.",
+      "I nomi compositi già presenti restano invariati, senza estendere un prezzo di variante a tutta la famiglia."
+    ],
+    "commons": {
+      "SPARCstation 1+": {
+        "commons_revision": 1034357368,
+        "description": "SPARCstation 1+ 25MHz SPARC 1152x900 256-color (cg6 GX accelerated) graphics Mosaic web browser and IRC client visible on screen Intel Inside sticker on keyboard is not accurate.  \nPicture taken circa early 1994. by Mike Chapman"
+      },
+      "SPARCstation 2": {
+        "commons_revision": 1035262749,
+        "description": "SPARCstation 2"
+      },
+      "SPARCstation IPC": {
+        "commons_revision": 1236629413,
+        "description": "SPARCstation IPC workstation."
+      },
+      "SPARCstation IPX": {
+        "commons_revision": 1165210911,
+        "description": "Sun SPARCstation IPX"
+      },
+      "Sun 3/50": {
+        "commons_revision": 1185470792,
+        "description": "Sun3/50 CPU Board With Helios 4 Mb Memory Expansion Board Photo taken by Robert Harker (me), October 2003. Robert.harker ( talk ) 22:31, 5 May 2008 (UTC)"
+      },
+      "Sun 3/60": {
+        "commons_revision": 1254963867,
+        "description": "Sun 3/60 With Sun Disk and Tape \"Shoebox\" Photo taken by Robert Harker (me), October 2003"
+      },
+      "Sun 3/80": {
+        "commons_revision": 1176425613,
+        "description": "Image of a Sun 3/80 workstation with Sun 19 inch color monitor, Type 3 keyboard/optical mouse & pad, and QIC-150 tape drive. Self-created image of system owned by contributor"
+      },
+      "Sun 3/75/140/150/160/180": {
+        "commons_revision": 1221804950,
+        "description": "Sun3 CPU Board\nPhoto taken by Robert Harker (me), October 2003, Robert.harker ( talk ) 22:29, 5 May 2008 (UTC)"
+      },
+      "Sun 4/3x0": {
+        "commons_revision": 957421439,
+        "description": "This image allows observing in full detail all the board's elements (see details on the bug fix here ). The board on the bottom left corner is the FPU , integrating dedicated chips, that can be perfectly identified, for mathematical functions."
+      }
+    },
+    "external_photos": [
+      {
+        "model_name": "SPARCstation 1",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=331",
+        "conditions": "Autorizzazione al recupero 1000bit già fornita; uso studio/ricerca, diritti dei titolari."
+      },
+      {
+        "model_name": "Sun 3/110",
+        "source_url": "https://recycledgoods.com/sun-3-110-prism-16-67mhz-unix-computer-600-2051/",
+        "conditions": "Collegamento a foto pubblica di catalogo commerciale; attribuzione, diritti riservati. Non viene dichiarata una licenza libera o concessa dall’utente per conto del titolare."
+      }
+    ],
+    "photo_gaps": [
+      {
+        "model_name": "SPARCstation ELC",
+        "reason": "Nessuna immagine esatta con condizioni sufficientemente documentate nella ricerca corrente; evitare sostituti di altri modelli."
+      },
+      {
+        "model_name": "SPARCstation SLC",
+        "reason": "Nessuna immagine esatta con condizioni sufficientemente documentate nella ricerca corrente; evitare sostituti di altri modelli."
+      },
+      {
+        "model_name": "Sun 3/260/280",
+        "reason": "Nessuna immagine esatta con condizioni sufficientemente documentate nella ricerca corrente; evitare sostituti di altri modelli."
+      },
+      {
+        "model_name": "Sun 3/460/470/480",
+        "reason": "Nessuna immagine esatta con condizioni sufficientemente documentate nella ricerca corrente; evitare sostituti di altri modelli."
+      },
+      {
+        "model_name": "Sun 3/E",
+        "reason": "Nessuna immagine esatta con condizioni sufficientemente documentate nella ricerca corrente; evitare sostituti di altri modelli."
+      },
+      {
+        "model_name": "Sun 4/110",
+        "reason": "Nessuna immagine esatta con condizioni sufficientemente documentate nella ricerca corrente; evitare sostituti di altri modelli."
+      },
+      {
+        "model_name": "Sun 4/4x0",
+        "reason": "Nessuna immagine esatta con condizioni sufficientemente documentate nella ricerca corrente; evitare sostituti di altri modelli."
+      },
+      {
+        "model_name": "Ultra 45",
+        "reason": "Nessuna immagine esatta con condizioni sufficientemente documentate nella ricerca corrente; evitare sostituti di altri modelli."
+      }
+    ],
+    "unresolved_technical_data": [
+      "Ultra45 ha anche due valori CPU/frequenza del vecchio dataset incompatibili con il modello reale. Questa operazione riguarda date e fotografie e non modifica le specifiche; le discrepanze tecniche vanno revisionate a parte."
+    ],
+    "blocked_or_rejected_sources": [
+      "UPI e Openverse: HTTP403, nessun aggiramento.",
+      "Sun3zoo e Obsolyte: HTTP503; nessuna foto recuperata.",
+      "SunHELP annuncio Ultra45 e API WordPress: HTTP500; non impiegati come nuova prova cronologica.",
+      "Ricerca Google senza contenuti utilizzabili; risultati Bing non pertinenti e scartati. DuckDuckGo interrotto al primo202/challenge.",
+      "Manuali Sun e handbook Oracle consultati per dati, non immagini copiate dalla documentazione con diritti riservati.",
+      "Foto trovate in pagine senza licenza dichiarata non sono marcate CC; le immagini di altri modelli e i falsi positivi solari/NASA sono esclusi."
+    ],
+    "access_policy": "Letture selettive, API Wikimedia e Internet Archive. Robots verificati; nessuno scraping massivo, nessuna API AI a pagamento, nessun file fotografico/PDF/ROM redistribuito nel repository."
+  }
+}

@@ -1,0 +1,993 @@
+{
+  "database": "isolated clone of the archive after IBM chronology and Albert logo",
+  "counts": {
+    "before": {
+      "computers": 1142,
+      "manufacturers": 184,
+      "configurations": 1179,
+      "specifications": 7256,
+      "releases": 1144,
+      "sales": 0,
+      "reviews": 0,
+      "facts": 928,
+      "computer_images": 605,
+      "sources": 7786,
+      "import_jobs": 3051,
+      "import_rows": 10946,
+      "import_claims": 72149
+    },
+    "after": {
+      "computers": 1142,
+      "manufacturers": 184,
+      "configurations": 1179,
+      "specifications": 7290,
+      "releases": 1144,
+      "sales": 0,
+      "reviews": 0,
+      "facts": 937,
+      "computer_images": 607,
+      "sources": 7791,
+      "import_jobs": 3052,
+      "import_rows": 10948,
+      "import_claims": 72301
+    }
+  },
+  "checks": {
+    "unrelated_computers_unchanged": true,
+    "unrelated_manufacturers_unchanged": true,
+    "unrelated_configurations_unchanged": true,
+    "unrelated_specifications_unchanged": true,
+    "unrelated_releases_unchanged": true,
+    "unrelated_sales_unchanged": true,
+    "unrelated_reviews_unchanged": true,
+    "unrelated_facts_unchanged": true,
+    "unrelated_computer_images_unchanged": true,
+    "previous_sources_unchanged": true,
+    "previous_import_jobs_unchanged": true,
+    "previous_import_rows_unchanged": true,
+    "previous_import_claims_unchanged": true,
+    "all_existing_releases_sales_reviews_unchanged": true
+  },
+  "repeat_no_changes": true,
+  "result": {
+    "version": "earthstation-mistrum-2026-11-v1",
+    "checksum": "15fe005de83569a400d426ce53f1344270899d941066bb1f663e9cf9917e62dc",
+    "updated": 2,
+    "specifications_corrected": 7,
+    "specifications_retired": 1,
+    "descriptions_updated": 2,
+    "curated_descriptions_preserved": 0,
+    "photos_added": 4,
+    "wrong_automatic_photos_removed": 2,
+    "categories_corrected": 1,
+    "skipped": [],
+    "protected": [],
+    "import_job_id": 3064
+  },
+  "models": [
+    {
+      "id": 91,
+      "model_name": "EarthStation-I",
+      "description": "L’EarthStation-I è una workstation compatibile IBM PC sviluppata da Earth Computer Technologies e commercializzata anche nell’ambito Alloy. Nella seconda metà degli anni Ottanta proponeva un computer senza dischi, integrato nella tastiera, da collegare a un server attraverso ARCnet. Il NEC V40 a 8 MHz e il controller grafico NCR 7280 permettevano di usare applicazioni DOS e diversi tipi di monitor. La macchina privilegiava la gestione centralizzata dei programmi e dei dati, con possibilità di espansione locale molto limitate.",
+      "ram": {
+        "value": 256.0,
+        "unit": "KB"
+      },
+      "specification_count": 26,
+      "images": [
+        {
+          "id": 669,
+          "computer_id": 91,
+          "url": "https://boginjr.com/wp-content/uploads/earthstation-1.jpg",
+          "thumbnail_url": "https://boginjr.com/wp-content/uploads/earthstation-1.jpg",
+          "caption": "EarthStation-I con alimentatore, manuale e scheda di registrazione. Foto: Jozef Bogin.",
+          "author": "Jozef Bogin",
+          "license_name": "© Jozef Bogin — uso autorizzato",
+          "license_url": "https://boginjr.com/disclaimer/",
+          "source_url": "https://boginjr.com/electronics/old/earthstation/",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        },
+        {
+          "id": 670,
+          "computer_id": 91,
+          "url": "https://boginjr.com/wp-content/uploads/earthstation-2.jpg",
+          "thumbnail_url": "https://boginjr.com/wp-content/uploads/earthstation-2.jpg",
+          "caption": "Connettori posteriori dell’EarthStation-I. Foto: Jozef Bogin.",
+          "author": "Jozef Bogin",
+          "license_name": "© Jozef Bogin — uso autorizzato",
+          "license_url": "https://boginjr.com/disclaimer/",
+          "source_url": "https://boginjr.com/electronics/old/earthstation/",
+          "is_primary": false,
+          "display_order": 1,
+          "storage": "external"
+        },
+        {
+          "id": 671,
+          "computer_id": 91,
+          "url": "https://boginjr.com/wp-content/uploads/earthstation-4.jpg",
+          "thumbnail_url": "https://boginjr.com/wp-content/uploads/earthstation-4.jpg",
+          "caption": "Scheda madre dell’EarthStation-I. Foto: Jozef Bogin.",
+          "author": "Jozef Bogin",
+          "license_name": "© Jozef Bogin — uso autorizzato",
+          "license_url": "https://boginjr.com/disclaimer/",
+          "source_url": "https://boginjr.com/electronics/old/earthstation/",
+          "is_primary": false,
+          "display_order": 2,
+          "storage": "external"
+        }
+      ],
+      "sources": [
+        {
+          "id": 7793,
+          "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+          "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+          "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+          "publisher": null,
+          "source_type": "manual",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7794,
+          "title": "Jozef Bogin — ALLOY EarthStation-I",
+          "url": "https://boginjr.com/electronics/old/earthstation/",
+          "author": "Jozef Bogin",
+          "publisher": "BOGIN, JR.",
+          "source_type": "historical_article",
+          "publication_date": "2020-04-21",
+          "access_date": "2026-11-24"
+        }
+      ],
+      "comparison": {
+        "all": [
+          {
+            "key": "[\"CPU\",\"Modello\"]",
+            "label": "CPU · Modello",
+            "text": "NEC V40",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"CPU\",\"Frequenza\"]",
+            "label": "CPU · Frequenza",
+            "text": "8 MHz",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"RAM\",\"Capacità\"]",
+            "label": "RAM",
+            "text": "256 KB",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Video\",\"Risoluzione\"]",
+            "label": "Video · Risoluzione",
+            "text": "320 × 200 / 640 × 200; Hi-Res CGA 320 × 400 / 640 × 400",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"RAM\",\"Opzioni di memoria\"]",
+            "label": "RAM · Opzioni di memoria",
+            "text": "Espandibile fino a 768 KB",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"ROM\",\"Capacità\"]",
+            "label": "ROM · Capacità",
+            "text": "32 KB",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"ROM\",\"Indirizzi\"]",
+            "label": "ROM · Indirizzi",
+            "text": "D800:0000 / FE00:0000–FE00:FFFF",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Video\",\"Modello\"]",
+            "label": "Video · Modello",
+            "text": "NCR 7280",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Video\",\"Modalità\"]",
+            "label": "Video · Modalità",
+            "text": "MDA/Hercules, CGA e Hi-Res CGA",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Tastiera\",\"Tipo\"]",
+            "label": "Tastiera · Tipo",
+            "text": "Integrata, AT a 101 tasti",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Rete\",\"Interfaccia\"]",
+            "label": "Rete · Interfaccia",
+            "text": "ARCnet, connettore BNC",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Rete\",\"Cavo\"]",
+            "label": "Rete · Cavo",
+            "text": "RG-62/U coassiale, 93 Ω",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Rete\",\"Distanze documentate\"]",
+            "label": "Rete · Distanze documentate",
+            "text": "2.000 piedi da hub attivo; 100 piedi da hub passivo; estensione rete 4 miglia",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Porte\",\"Parallela\"]",
+            "label": "Porte · Parallela",
+            "text": "Centronics DB-25S (LPT1)",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Porte\",\"Seriale\"]",
+            "label": "Porte · Seriale",
+            "text": "COM1 a bassa velocità, DB-9P",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Porte\",\"Video\"]",
+            "label": "Porte · Video",
+            "text": "DB-9S, segnali TTL; nessuna uscita composita CGA diretta",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Memoria di massa\",\"Unità locali\"]",
+            "label": "Memoria di massa · Unità locali",
+            "text": "Nessuna; workstation senza dischi",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Sistema\",\"Compatibilità\"]",
+            "label": "Sistema · Compatibilità",
+            "text": "IBM PC, PC/XT, PC/AT e compatibili",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Sistema\",\"Ambiente di rete\"]",
+            "label": "Sistema · Ambiente di rete",
+            "text": "Novell NetWare e ambienti compatibili NetBIOS",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Chassis\",\"Dimensioni\"]",
+            "label": "Chassis · Dimensioni",
+            "text": "47 × 19,7 × 7 cm",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Alimentazione\",\"Ingresso\"]",
+            "label": "Alimentazione · Ingresso",
+            "text": "120 V CA 60 Hz oppure 240 V CA 50 Hz, 15 W",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Alimentazione\",\"Uscita alimentatore\"]",
+            "label": "Alimentazione · Uscita alimentatore",
+            "text": "16 V CA, 1 A",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Ambiente\",\"Temperatura operativa\"]",
+            "label": "Ambiente · Temperatura operativa",
+            "text": "0–50 °C",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Ambiente\",\"Umidità\"]",
+            "label": "Ambiente · Umidità",
+            "text": "10–90%, senza condensa",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          }
+        ],
+        "configurations": {
+          "111": [
+            {
+              "key": "[\"CPU\",\"Modello\"]",
+              "label": "CPU · Modello",
+              "text": "NEC V40",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"CPU\",\"Frequenza\"]",
+              "label": "CPU · Frequenza",
+              "text": "8 MHz",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"RAM\",\"Capacità\"]",
+              "label": "RAM",
+              "text": "256 KB",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Video\",\"Risoluzione\"]",
+              "label": "Video · Risoluzione",
+              "text": "320 × 200 / 640 × 200; Hi-Res CGA 320 × 400 / 640 × 400",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"RAM\",\"Opzioni di memoria\"]",
+              "label": "RAM · Opzioni di memoria",
+              "text": "Espandibile fino a 768 KB",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"ROM\",\"Capacità\"]",
+              "label": "ROM · Capacità",
+              "text": "32 KB",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"ROM\",\"Indirizzi\"]",
+              "label": "ROM · Indirizzi",
+              "text": "D800:0000 / FE00:0000–FE00:FFFF",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Video\",\"Modello\"]",
+              "label": "Video · Modello",
+              "text": "NCR 7280",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Video\",\"Modalità\"]",
+              "label": "Video · Modalità",
+              "text": "MDA/Hercules, CGA e Hi-Res CGA",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Tastiera\",\"Tipo\"]",
+              "label": "Tastiera · Tipo",
+              "text": "Integrata, AT a 101 tasti",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Rete\",\"Interfaccia\"]",
+              "label": "Rete · Interfaccia",
+              "text": "ARCnet, connettore BNC",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Rete\",\"Cavo\"]",
+              "label": "Rete · Cavo",
+              "text": "RG-62/U coassiale, 93 Ω",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Rete\",\"Distanze documentate\"]",
+              "label": "Rete · Distanze documentate",
+              "text": "2.000 piedi da hub attivo; 100 piedi da hub passivo; estensione rete 4 miglia",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Porte\",\"Parallela\"]",
+              "label": "Porte · Parallela",
+              "text": "Centronics DB-25S (LPT1)",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Porte\",\"Seriale\"]",
+              "label": "Porte · Seriale",
+              "text": "COM1 a bassa velocità, DB-9P",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Porte\",\"Video\"]",
+              "label": "Porte · Video",
+              "text": "DB-9S, segnali TTL; nessuna uscita composita CGA diretta",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Memoria di massa\",\"Unità locali\"]",
+              "label": "Memoria di massa · Unità locali",
+              "text": "Nessuna; workstation senza dischi",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Sistema\",\"Compatibilità\"]",
+              "label": "Sistema · Compatibilità",
+              "text": "IBM PC, PC/XT, PC/AT e compatibili",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Sistema\",\"Ambiente di rete\"]",
+              "label": "Sistema · Ambiente di rete",
+              "text": "Novell NetWare e ambienti compatibili NetBIOS",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Chassis\",\"Dimensioni\"]",
+              "label": "Chassis · Dimensioni",
+              "text": "47 × 19,7 × 7 cm",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Alimentazione\",\"Ingresso\"]",
+              "label": "Alimentazione · Ingresso",
+              "text": "120 V CA 60 Hz oppure 240 V CA 50 Hz, 15 W",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Alimentazione\",\"Uscita alimentatore\"]",
+              "label": "Alimentazione · Uscita alimentatore",
+              "text": "16 V CA, 1 A",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Ambiente\",\"Temperatura operativa\"]",
+              "label": "Ambiente · Temperatura operativa",
+              "text": "0–50 °C",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Ambiente\",\"Umidità\"]",
+              "label": "Ambiente · Umidità",
+              "text": "10–90%, senza condensa",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 92,
+      "model_name": "Mistrum",
+      "description": "Il Mistrum è un progetto cecoslovacco di autocostruzione compatibile con lo ZX Spectrum, descritto nella rivista Amatérské radio, serie B, numero 1 del 1989. Fu progettato per impiegare componenti reperibili localmente, sostituendo la ULA proprietaria dello Spectrum con logica discreta. La configurazione pubblicata usa un processore UA880D compatibile Z80A a 3,5 MHz, 64 KB di RAM e 16 KB di EPROM, con 8 KB separati per il video. Il progetto comprende schemi, circuito stampato, firmware e soluzioni costruttive; le repliche moderne ne proseguono la documentazione senza costituire nuovi allestimenti originali.",
+      "ram": {
+        "value": 64.0,
+        "unit": "KB"
+      },
+      "specification_count": 18,
+      "images": [
+        {
+          "id": 672,
+          "computer_id": 92,
+          "url": "https://user-images.githubusercontent.com/89099767/129786291-4849a68c-49f7-4a31-9ca0-8c69139bf45b.jpg",
+          "thumbnail_url": "https://user-images.githubusercontent.com/89099767/129786291-4849a68c-49f7-4a31-9ca0-8c69139bf45b.jpg",
+          "caption": "Replica moderna del Mistrum dal progetto di Lazarus Long; non un esemplare originale del 1989.",
+          "author": "Lazarus Long (repository Mistrum)",
+          "license_name": "CC BY-NC-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "source_url": "https://github.com/Lazarus-L-o-n-g/Mistrum/blob/aa26429e2c25ac1d110006df405b51f3f540dad2/README.md",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "sources": [
+        {
+          "id": 7795,
+          "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+          "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+          "author": null,
+          "publisher": "Amatérské radio; copia Speccy4ever",
+          "source_type": "magazine",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7796,
+          "title": "Speccy4ever — Amaterske RADIO / Mistrum",
+          "url": "https://speccy4ever.speccy.org/_AR.htm",
+          "author": null,
+          "publisher": "Speccy4ever",
+          "source_type": "archive_index",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7797,
+          "title": "Lazarus Long — replica Mistrum, README e fotografia",
+          "url": "https://github.com/Lazarus-L-o-n-g/Mistrum/blob/aa26429e2c25ac1d110006df405b51f3f540dad2/README.md",
+          "author": "Lazarus Long",
+          "publisher": "GitHub",
+          "source_type": "project_documentation",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        }
+      ],
+      "comparison": {
+        "all": [
+          {
+            "key": "[\"CPU\",\"Modello\"]",
+            "label": "CPU · Modello",
+            "text": "UA880D (compatibile Z80A)",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"CPU\",\"Frequenza\"]",
+            "label": "CPU · Frequenza",
+            "text": "3.5 MHz",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"RAM\",\"Capacità\"]",
+            "label": "RAM",
+            "text": "64 KB",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Video\",\"Risoluzione\"]",
+            "label": "Video · Risoluzione",
+            "text": "256 × 192 pixel",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"ROM\",\"Capacità\"]",
+            "label": "ROM · Capacità",
+            "text": "16 KB",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"ROM\",\"Organizzazione\"]",
+            "label": "ROM · Organizzazione",
+            "text": "8 EPROM da 2 KB oppure una da 16 KB",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Memoria video\",\"Capacità\"]",
+            "label": "Memoria video · Capacità",
+            "text": "8 KB",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Video\",\"Modello\"]",
+            "label": "Video · Modello",
+            "text": "ULAM realizzata con logica discreta",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Video\",\"Uscite\"]",
+            "label": "Video · Uscite",
+            "text": "Video monocromatico; modulatori a colori e uscita RGB opzionali",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Sistema\",\"Compatibilità\"]",
+            "label": "Sistema · Compatibilità",
+            "text": "Software ZX Spectrum",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Sistema\",\"Mappatura della memoria\"]",
+            "label": "Sistema · Mappatura della memoria",
+            "text": "16 KB EPROM alle basse locazioni; EPROM disattivabile via software per rendere accessibili tutti i 64 KB RAM",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Porte\",\"Joystick\"]",
+            "label": "Porte · Joystick",
+            "text": "CURSOR e SINCLAIR 1",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Porte\",\"Registratore\"]",
+            "label": "Porte · Registratore",
+            "text": "Ingresso e uscita separati per registratore a cassette; connettore DIN",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Audio\",\"Uscita\"]",
+            "label": "Audio · Uscita",
+            "text": "Altoparlante integrato con regolazione del volume",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Comandi\",\"Controlli\"]",
+            "label": "Comandi · Controlli",
+            "text": "RESET, NMI e inversione dell’immagine",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Alimentazione\",\"Valori documentati\"]",
+            "label": "Alimentazione · Valori documentati",
+            "text": "Rete 220 V / 10 VA; circuito 5 V / 2 A",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Espansione\",\"Bus\"]",
+            "label": "Espansione · Bus",
+            "text": "Bus esterno con buffer",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          },
+          {
+            "key": "[\"Tastiera\",\"Progetti\"]",
+            "label": "Tastiera · Progetti",
+            "text": "Tre soluzioni costruttive alternative descritte nel fascicolo",
+            "notes": [],
+            "coverage": 1,
+            "total": 1,
+            "partial": false
+          }
+        ],
+        "configurations": {
+          "112": [
+            {
+              "key": "[\"CPU\",\"Modello\"]",
+              "label": "CPU · Modello",
+              "text": "UA880D (compatibile Z80A)",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"CPU\",\"Frequenza\"]",
+              "label": "CPU · Frequenza",
+              "text": "3.5 MHz",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"RAM\",\"Capacità\"]",
+              "label": "RAM",
+              "text": "64 KB",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Video\",\"Risoluzione\"]",
+              "label": "Video · Risoluzione",
+              "text": "256 × 192 pixel",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"ROM\",\"Capacità\"]",
+              "label": "ROM · Capacità",
+              "text": "16 KB",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"ROM\",\"Organizzazione\"]",
+              "label": "ROM · Organizzazione",
+              "text": "8 EPROM da 2 KB oppure una da 16 KB",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Memoria video\",\"Capacità\"]",
+              "label": "Memoria video · Capacità",
+              "text": "8 KB",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Video\",\"Modello\"]",
+              "label": "Video · Modello",
+              "text": "ULAM realizzata con logica discreta",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Video\",\"Uscite\"]",
+              "label": "Video · Uscite",
+              "text": "Video monocromatico; modulatori a colori e uscita RGB opzionali",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Sistema\",\"Compatibilità\"]",
+              "label": "Sistema · Compatibilità",
+              "text": "Software ZX Spectrum",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Sistema\",\"Mappatura della memoria\"]",
+              "label": "Sistema · Mappatura della memoria",
+              "text": "16 KB EPROM alle basse locazioni; EPROM disattivabile via software per rendere accessibili tutti i 64 KB RAM",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Porte\",\"Joystick\"]",
+              "label": "Porte · Joystick",
+              "text": "CURSOR e SINCLAIR 1",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Porte\",\"Registratore\"]",
+              "label": "Porte · Registratore",
+              "text": "Ingresso e uscita separati per registratore a cassette; connettore DIN",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Audio\",\"Uscita\"]",
+              "label": "Audio · Uscita",
+              "text": "Altoparlante integrato con regolazione del volume",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Comandi\",\"Controlli\"]",
+              "label": "Comandi · Controlli",
+              "text": "RESET, NMI e inversione dell’immagine",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Alimentazione\",\"Valori documentati\"]",
+              "label": "Alimentazione · Valori documentati",
+              "text": "Rete 220 V / 10 VA; circuito 5 V / 2 A",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Espansione\",\"Bus\"]",
+              "label": "Espansione · Bus",
+              "text": "Bus esterno con buffer",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            },
+            {
+              "key": "[\"Tastiera\",\"Progetti\"]",
+              "label": "Tastiera · Progetti",
+              "text": "Tre soluzioni costruttive alternative descritte nel fascicolo",
+              "notes": [],
+              "coverage": 1,
+              "total": 1,
+              "partial": false
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "validation": {
+    "sqlite_backend_suite": {
+      "passed": 854,
+      "skipped_postgresql_only": 2
+    },
+    "postgresql_research_and_regression_tests": 25,
+    "assistant_context_reads_single_current_ram_for_both_models": true,
+    "api_startup_on_clone": true,
+    "images_http_200_image_jpeg_including_localhost_referer": true,
+    "browser": {
+      "both_model_cards": true,
+      "one_primary_ram_field_each": true,
+      "image_credits_license_and_sources": true,
+      "desktop_mobile_no_overflow": true,
+      "javascript_errors": 0,
+      "method": "Production React build and actual clone API; image routes serve the identical JPEG bytes downloaded from the cited HTTPS URLs, avoiding cloud browser remote-image restrictions."
+    }
+  }
+}

@@ -1,0 +1,1973 @@
+{
+  "version": "newbrain-mpf1-robotron-2026-11-v1",
+  "researched_on": "2026-11-24",
+  "manufacturer_profiles": [
+    {
+      "manufacturer_names": [
+        "Grundy Business Systems",
+        "Grundy Business Systems Ltd",
+        "Grundy"
+      ],
+      "fields": {
+        "legal_name": "Grundy Business Systems Ltd",
+        "country": "Regno Unito",
+        "headquarters": "Teddington e Cambridge, Inghilterra",
+        "description": "Grundy Business Systems fu l’azienda britannica che portò sul mercato il NewBrain nel 1982, dopo il passaggio del progetto da Sinclair Radionics e Newbury Laboratories. Operava nel settore dei microcomputer e dei sistemi professionali; al NewBrain affiancò hardware e software di espansione. Le difficoltà del 1983 portarono il progetto a Tradecom, che ne proseguì la distribuzione e il supporto."
+      },
+      "sources": [
+        {
+          "title": "Wikipedia — Grundy NewBrain (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1375718570",
+          "access_date": "2026-11-24",
+          "author": "Collaboratori di Wikipedia",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "encyclopedia",
+          "license": "CC BY-SA 4.0"
+        },
+        {
+          "title": "Gerald McMullon — testimonianza sul NewBrain e Grundy",
+          "url": "https://www.binarydinosaurs.co.uk/Museum/Grundy/gerald.php",
+          "access_date": "2026-11-24",
+          "author": "Gerald McMullon",
+          "publisher": "Binary Dinosaurs",
+          "source_type": "historical_account"
+        }
+      ],
+      "field_sources": {
+        "legal_name": [
+          "https://en.wikipedia.org/w/index.php?oldid=1375718570"
+        ],
+        "country": [
+          "https://en.wikipedia.org/w/index.php?oldid=1375718570"
+        ],
+        "headquarters": [
+          "https://en.wikipedia.org/w/index.php?oldid=1375718570"
+        ],
+        "description": [
+          "https://www.binarydinosaurs.co.uk/Museum/Grundy/gerald.php"
+        ]
+      },
+      "research": {
+        "status": "documented_partial",
+        "notes": [
+          "Nessuna data di fondazione o fondatore dedotti dai passaggi del progetto NewBrain. Nessun logo associato senza fonte."
+        ]
+      }
+    },
+    {
+      "manufacturer_names": [
+        "Robotron",
+        "VEB Robotron",
+        "VEB Kombinat Robotron"
+      ],
+      "fields": {
+        "legal_name": "VEB Kombinat Robotron",
+        "country": "Germania Est (DDR)",
+        "headquarters": "Dresda; sede iniziale a Radeberg",
+        "founded": "1969-04-01",
+        "ceased": "1990-07-01",
+        "description": "Robotron fu il principale complesso industriale informatico della Germania Est. Costituito nel 1969, riuniva stabilimenti per computer, periferiche, strumenti di misura e software, con direzione a Dresda. Accanto ai sistemi professionali produsse i piccoli Z9001/KC85/1, KC87 e il computer scolastico A5105. Il Kombinat fu sciolto nel 1990; le aziende successive che ne ripresero il nome non coincidono con l’organizzazione storica.",
+        "logo_url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/VEB_Robotron.svg",
+        "logo_author": "O. Wolters",
+        "logo_license": "Pubblico dominio (PD-textlogo dichiarato su Commons); marchio storico",
+        "logo_license_url": "https://commons.wikimedia.org/wiki/Template:PD-textlogo",
+        "logo_source_url": "https://commons.wikimedia.org/wiki/File:VEB_Robotron.svg"
+      },
+      "sources": [
+        {
+          "title": "Robotrontechnik — VEB Kombinat Robotron",
+          "url": "https://www.robotrontechnik.de/html/standorte/robotron.htm",
+          "access_date": "2026-11-24",
+          "publisher": "Robotrontechnik.de",
+          "source_type": "company_reference"
+        },
+        {
+          "title": "Wikipedia — Kombinat Robotron (de)",
+          "url": "https://de.wikipedia.org/w/index.php?oldid=272370097",
+          "access_date": "2026-11-24",
+          "author": "Collaboratori di Wikipedia",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "encyclopedia",
+          "license": "CC BY-SA 4.0"
+        },
+        {
+          "title": "Wikimedia Commons — VEB Robotron.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:VEB_Robotron.svg",
+          "access_date": "2026-11-24",
+          "author": "O. Wolters",
+          "publisher": "Wikimedia Commons / Wikimedia Foundation",
+          "source_type": "image",
+          "license": "PD-textlogo; marchio commerciale"
+        }
+      ],
+      "field_sources": {
+        "legal_name": [
+          "https://www.robotrontechnik.de/html/standorte/robotron.htm"
+        ],
+        "country": [
+          "https://de.wikipedia.org/w/index.php?oldid=272370097"
+        ],
+        "headquarters": [
+          "https://www.robotrontechnik.de/html/standorte/robotron.htm"
+        ],
+        "founded": [
+          "https://de.wikipedia.org/w/index.php?oldid=272370097"
+        ],
+        "ceased": [
+          "https://de.wikipedia.org/w/index.php?oldid=272370097"
+        ],
+        "description": [
+          "https://www.robotrontechnik.de/html/standorte/robotron.htm"
+        ],
+        "logo_url": [
+          "https://commons.wikimedia.org/wiki/File:VEB_Robotron.svg"
+        ],
+        "logo_author": [
+          "https://commons.wikimedia.org/wiki/File:VEB_Robotron.svg"
+        ],
+        "logo_license": [
+          "https://commons.wikimedia.org/wiki/File:VEB_Robotron.svg"
+        ],
+        "logo_license_url": [
+          "https://commons.wikimedia.org/wiki/File:VEB_Robotron.svg"
+        ],
+        "logo_source_url": [
+          "https://commons.wikimedia.org/wiki/File:VEB_Robotron.svg"
+        ]
+      },
+      "research": {
+        "status": "documented_partial",
+        "commons_logo_revision": 1250770906,
+        "notes": [
+          "Il nome Robotron indica il Kombinat storico; le aziende successive restano distinte. I direttori non vengono presentati come fondatori. I KC85/2,/3,/4 non appartengono alla linea Robotron."
+        ]
+      }
+    }
+  ],
+  "records": [
+    {
+      "manufacturer": "Grundy Business Systems",
+      "model_name": "NewBrain",
+      "categories": [
+        "Personal computer"
+      ],
+      "description": "Il NewBrain fu commercializzato nel 1982 da Grundy Business Systems, dopo uno sviluppo iniziato in Sinclair Radionics e proseguito presso Newbury Laboratories. Il progetto era stato preso in considerazione per l’iniziativa informatica della BBC, prima della scelta di Acorn. Compatto e basato sullo Z80A, offriva 32 KB di RAM, un BASIC con funzioni matematiche e grafiche e un sistema di espansioni esterne. Il NewBrain A usava un televisore o monitor; il NewBrain AD aggiungeva un display fluorescente da 16 caratteri. Dal 1983 Tradecom proseguì la distribuzione e il supporto del sistema.",
+      "source": {
+        "title": "Gerald McMullon — testimonianza sul NewBrain e Grundy",
+        "url": "https://www.binarydinosaurs.co.uk/Museum/Grundy/gerald.php",
+        "access_date": "2026-11-24",
+        "author": "Gerald McMullon",
+        "publisher": "Binary Dinosaurs",
+        "source_type": "historical_account"
+      },
+      "evidence": "Ricerca selettiva del 24 novembre 2026; descrizione italiana originale e dati con citazioni per campo.",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Appendice 9: Z80A microprocessor running at 4MHz.",
+              "text_value": "Zilog Z80A"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Appendice 9: 4MHz.",
+              "numeric_value": 4,
+              "unit": "MHz"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Architettura",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Z80A, processore a 8 bit.",
+              "text_value": "8 bit"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Appendice 9: 32K byte RAM.",
+              "numeric_value": 32,
+              "unit": "KB"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "source": {
+                "title": "Gerald McMullon — testimonianza sul NewBrain e Grundy",
+                "url": "https://www.binarydinosaurs.co.uk/Museum/Grundy/gerald.php",
+                "access_date": "2026-11-24",
+                "author": "Gerald McMullon",
+                "publisher": "Binary Dinosaurs",
+                "source_type": "historical_account"
+              },
+              "evidence": "La testimonianza descrive una paged memory expansion con 64Kb di RAM.",
+              "text_value": "Espansione esterna a banchi da 64 KB; massimo complessivo non accertato in questo pacchetto."
+            },
+            {
+              "component_type": "ROM",
+              "property_name": "Capacità",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Appendice 9: 28K ROM; riportato il valore del manuale senza sostituirlo con 24 KB delle schede secondarie.",
+              "numeric_value": 28,
+              "unit": "KB"
+            },
+            {
+              "component_type": "Controllore",
+              "property_name": "Modello",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Appendice 9: COP 420M micro controller with 1K system ROM.",
+              "text_value": "National Semiconductor COP420M"
+            },
+            {
+              "component_type": "Memoria",
+              "property_name": "ROM del microcontrollore",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "ROM di sistema COP420M distinta dai 28 KB ROM riportati per il computer.",
+              "numeric_value": 1,
+              "unit": "KB"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Modalità testo",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Appendice 9: up to 25 or 30 lines of 40 or 80 characters.",
+              "text_value": "40 o 80 colonne, 25 o 30 righe"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Grafica",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Appendice 9: up to 250 dots vertically by 256, 320, 512 or 640 dots horizontally.",
+              "text_value": "Larghezze 256, 320, 512 o 640 punti; fino a 250 righe secondo il manuale"
+            },
+            {
+              "component_type": "Display",
+              "property_name": "Display integrato",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Appendice 9, Model AD: on-board blue-green vacuum fluorescent 16 character, 14 segment display.",
+              "text_value": "Solo NewBrain AD: VFD blu-verde da 16 caratteri, 14 segmenti; assente sul modello A"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Cassette",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Appendice 9: Dual 1200 baud cassette ports with drive motor control.",
+              "text_value": "Due porte a 1200 baud con controllo motore"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Seriali",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Appendice 9: RS232/V24 bi-directional port, printer port, software driven and non-autonomous.",
+              "text_value": "Due RS-232/V.24 software: bidirezionale e stampante"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Video",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Appendice 9: CCITT 1v, 75 ohm composite video; UHF channel 36.",
+              "text_value": "Video composito e uscita TV UHF"
+            },
+            {
+              "component_type": "Software",
+              "property_name": "Linguaggio",
+              "source": {
+                "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+                "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+                "access_date": "2026-11-24",
+                "author": "Grundy Business Systems",
+                "publisher": "Grundy Business Systems",
+                "source_type": "technical_manual"
+              },
+              "evidence": "Manuale, capitoli BASIC, GRAPHICS e STREAMS.",
+              "text_value": "NewBrain BASIC e comandi per grafica e flussi I/O"
+            },
+            {
+              "component_type": "Software",
+              "property_name": "Sistema operativo opzionale",
+              "source": {
+                "title": "Gerald McMullon — testimonianza sul NewBrain e Grundy",
+                "url": "https://www.binarydinosaurs.co.uk/Museum/Grundy/gerald.php",
+                "access_date": "2026-11-24",
+                "author": "Gerald McMullon",
+                "publisher": "Binary Dinosaurs",
+                "source_type": "historical_account"
+              },
+              "evidence": "GBS sviluppò floppy disc controller and CP/M 2.2 e paged memory expansion.",
+              "text_value": "CP/M 2.2 con espansioni e interfaccia dischi; non nella sola dotazione base"
+            }
+          ]
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Modelli",
+          "statement": "NewBrain A e NewBrain AD condividono la scheda: il display VFD del modello AD è indicato come opzione di allestimento, senza duplicare RAM e caratteristiche comuni.",
+          "source": {
+            "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+            "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+            "access_date": "2026-11-24",
+            "author": "Grundy Business Systems",
+            "publisher": "Grundy Business Systems",
+            "source_type": "technical_manual"
+          },
+          "evidence": "Appendice 9: specifiche comuni Model A and AD; display dedicato Model AD."
+        },
+        {
+          "fact_type": "Memoria ROM",
+          "statement": "Il manuale di fabbrica riporta 28 KB ROM e 1 KB nel COP420M; alcune schede secondarie indicano 24 KB. È conservato il valore del manuale, senza sommare memorie di ruoli diversi.",
+          "source": {
+            "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+            "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+            "access_date": "2026-11-24",
+            "author": "Grundy Business Systems",
+            "publisher": "Grundy Business Systems",
+            "source_type": "technical_manual"
+          },
+          "evidence": "Appendice 9, Hardware specification; confronto con la revisione enciclopedica consultata."
+        }
+      ],
+      "releases": [
+        {
+          "market": "Europa",
+          "release_date": "1982",
+          "source": {
+            "title": "Wikipedia — Grundy NewBrain (en)",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1375718570",
+            "access_date": "2026-11-24",
+            "author": "Collaboratori di Wikipedia",
+            "publisher": "Wikimedia Foundation",
+            "source_type": "encyclopedia",
+            "license": "CC BY-SA 4.0"
+          },
+          "evidence": "Introduzione nel 1982; paese di commercializzazione britannico.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "manufacturer": "Multitech",
+      "model_name": "Micro-Professor I",
+      "categories": [
+        "Microcomputer"
+      ],
+      "description": "Presentato da Multitech nel 1981, il Micro-Professor I, noto anche come MPF-I o MPF-1, era un sistema didattico per imparare il linguaggio macchina e l’assembly dello Z80. La scheda, custodita in un contenitore a libro, permetteva di inserire programmi da una tastiera esadecimale e leggerne indirizzi e dati su sei cifre LED. I 2 KB di RAM e il monitor in ROM bastavano per gli esercizi; cassette e moduli aggiuntivi estendevano le possibilità di laboratorio. L’allestimento MPF-1B aggiunse Tiny BASIC. I successivi Microprofessor II e III, già nel catalogo, appartengono invece alla linea di compatibili Apple.",
+      "source": {
+        "title": "Electrickery — Multitech MPF-1, varianti e documentazione",
+        "url": "https://electrickery.nl/comp/mpf1/",
+        "access_date": "2026-11-24",
+        "publisher": "Yet another computer museum / electrickery.nl",
+        "source_type": "technical_archive"
+      },
+      "evidence": "Ricerca selettiva del 24 novembre 2026; descrizione italiana originale e dati con citazioni per campo.",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "source": {
+                "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+                "url": "https://archive.org/details/byte-magazine-1982-08",
+                "access_date": "2026-11-24",
+                "author": "Multitech Electronics Inc.",
+                "publisher": "BYTE Publications",
+                "source_type": "advertisement"
+              },
+              "evidence": "Pubblicità: Z80 based microcomputer.",
+              "text_value": "Zilog Z80"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "source": {
+                "title": "Wikipedia — Micro-Professor MPF-I (en)",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1358792001",
+                "access_date": "2026-11-24",
+                "author": "Collaboratori di Wikipedia",
+                "publisher": "Wikimedia Foundation",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0"
+              },
+              "evidence": "Infobox: Zilog Z80 @ 1.79 MHz.",
+              "numeric_value": 1.79,
+              "unit": "MHz"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Architettura",
+              "source": {
+                "title": "Wikipedia — Micro-Professor MPF-I (en)",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1358792001",
+                "access_date": "2026-11-24",
+                "author": "Collaboratori di Wikipedia",
+                "publisher": "Wikimedia Foundation",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0"
+              },
+              "evidence": "Microprocessore Z80 a 8 bit.",
+              "text_value": "8 bit"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "source": {
+                "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+                "url": "https://archive.org/details/byte-magazine-1982-08",
+                "access_date": "2026-11-24",
+                "author": "Multitech Electronics Inc.",
+                "publisher": "BYTE Publications",
+                "source_type": "advertisement"
+              },
+              "evidence": "Pubblicità: standard 2K bytes of RAM.",
+              "numeric_value": 2,
+              "unit": "KB"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "source": {
+                "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+                "url": "https://archive.org/details/byte-magazine-1982-08",
+                "access_date": "2026-11-24",
+                "author": "Multitech Electronics Inc.",
+                "publisher": "BYTE Publications",
+                "source_type": "advertisement"
+              },
+              "evidence": "Pubblicità: RAM expandable to 4K.",
+              "text_value": "4 KB con espansione sulla scheda; moduli esterni separati"
+            },
+            {
+              "component_type": "ROM",
+              "property_name": "Capacità",
+              "source": {
+                "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+                "url": "https://archive.org/details/byte-magazine-1982-08",
+                "access_date": "2026-11-24",
+                "author": "Multitech Electronics Inc.",
+                "publisher": "BYTE Publications",
+                "source_type": "advertisement"
+              },
+              "evidence": "Pubblicità: standard 2K bytes of ROM.",
+              "numeric_value": 2,
+              "unit": "KB"
+            },
+            {
+              "component_type": "ROM",
+              "property_name": "Opzioni firmware",
+              "source": {
+                "title": "Electrickery — Multitech MPF-1, varianti e documentazione",
+                "url": "https://electrickery.nl/comp/mpf1/",
+                "access_date": "2026-11-24",
+                "publisher": "Yet another computer museum / electrickery.nl",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Pagina varianti: MPF-1B 4k Byte ROM; confezione: ROM increased to 8K.",
+              "text_value": "MPF-1B: monitor e Tiny BASIC in ROM da 4 KB; fino a 8 KB di ROM installabile sulla scheda originale"
+            },
+            {
+              "component_type": "Display",
+              "property_name": "Tipo",
+              "source": {
+                "title": "Wikipedia — Micro-Professor MPF-I (en)",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1358792001",
+                "access_date": "2026-11-24",
+                "author": "Collaboratori di Wikipedia",
+                "publisher": "Wikimedia Foundation",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0"
+              },
+              "evidence": "Monitor visualizza indirizzo e dato su six digit seven-segment display.",
+              "text_value": "Sei cifre LED a sette segmenti"
+            },
+            {
+              "component_type": "Tastiera",
+              "property_name": "Tipo",
+              "source": {
+                "title": "Wikipedia — Micro-Professor MPF-I (en)",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1358792001",
+                "access_date": "2026-11-24",
+                "author": "Collaboratori di Wikipedia",
+                "publisher": "Wikimedia Foundation",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0"
+              },
+              "evidence": "Keyboard 36 keys including 16 hexadecimal keys, 19 function keys and one user-definable key.",
+              "text_value": "36 tasti esadecimali e di funzione"
+            },
+            {
+              "component_type": "Audio",
+              "property_name": "Tipo",
+              "source": {
+                "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+                "url": "https://archive.org/details/byte-magazine-1982-08",
+                "access_date": "2026-11-24",
+                "author": "Multitech Electronics Inc.",
+                "publisher": "BYTE Publications",
+                "source_type": "advertisement"
+              },
+              "evidence": "Pubblicità: built-in speaker.",
+              "text_value": "Altoparlante integrato"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Cassette",
+              "source": {
+                "title": "Electrickery — Multitech MPF-1, varianti e documentazione",
+                "url": "https://electrickery.nl/comp/mpf1/",
+                "access_date": "2026-11-24",
+                "publisher": "Yet another computer museum / electrickery.nl",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Specifiche e connettori descritti nella scheda; confermati da enciclopedia.",
+              "text_value": "Due jack audio da 3,5 mm per caricamento e salvataggio su cassetta"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "source": {
+                "title": "Electrickery — Multitech MPF-1, varianti e documentazione",
+                "url": "https://electrickery.nl/comp/mpf1/",
+                "access_date": "2026-11-24",
+                "publisher": "Yet another computer museum / electrickery.nl",
+                "source_type": "technical_archive"
+              },
+              "evidence": "40-pin header at top left, essentially Z80 processor pinout minus +5V.",
+              "text_value": "Connettore a 40 pin con segnali del bus Z80"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Circuiti opzionali",
+              "source": {
+                "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+                "url": "https://archive.org/details/byte-magazine-1982-08",
+                "access_date": "2026-11-24",
+                "author": "Multitech Electronics Inc.",
+                "publisher": "BYTE Publications",
+                "source_type": "advertisement"
+              },
+              "evidence": "Pubblicità: sockets to accept optional CTC/PIO.",
+              "text_value": "Z80 PIO e CTC su zoccoli predisposti"
+            },
+            {
+              "component_type": "Software",
+              "property_name": "Firmware",
+              "source": {
+                "title": "Electrickery — Multitech MPF-1, varianti e documentazione",
+                "url": "https://electrickery.nl/comp/mpf1/",
+                "access_date": "2026-11-24",
+                "publisher": "Yet another computer museum / electrickery.nl",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Original machine with 2 kByte monitor ROM; BASIC nell’allestimento successivo B.",
+              "text_value": "Monitor in ROM per inserimento e controllo del codice macchina Z80"
+            },
+            {
+              "component_type": "Struttura",
+              "property_name": "Formato",
+              "source": {
+                "title": "Electrickery — Multitech MPF-1, varianti e documentazione",
+                "url": "https://electrickery.nl/comp/mpf1/",
+                "access_date": "2026-11-24",
+                "publisher": "Yet another computer museum / electrickery.nl",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Vacuum formed bookcase, sistema didattico per linguaggio macchina e assembly.",
+              "text_value": "Scheda didattica in custodia plastica apribile a libro"
+            },
+            {
+              "component_type": "Periferiche",
+              "property_name": "Opzioni",
+              "source": {
+                "title": "Electrickery — Multitech MPF-1, varianti e documentazione",
+                "url": "https://electrickery.nl/comp/mpf1/",
+                "access_date": "2026-11-24",
+                "publisher": "Yet another computer museum / electrickery.nl",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Moduli PRT-MPF, EPB-MPF e SSB-MPF; non dotazione standard.",
+              "text_value": "Stampante termica, programmatore EPROM e sintetizzatore vocale su moduli separati"
+            }
+          ]
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Varianti",
+          "statement": "La scheda descrive MPF-I/MPF-1 originale, poi chiamato MPF-1A. Il MPF-1B aggiunge Tiny BASIC nella ROM da 4 KB; MPF-1P/Plus e MPF-1/88 non sono confusi con questo hardware.",
+          "source": {
+            "title": "Electrickery — Multitech MPF-1, varianti e documentazione",
+            "url": "https://electrickery.nl/comp/mpf1/",
+            "access_date": "2026-11-24",
+            "publisher": "Yet another computer museum / electrickery.nl",
+            "source_type": "technical_archive"
+          },
+          "evidence": "Elenco documentato delle varianti MPF-1, MPF-1B, MPF-1P e MPF-1/88."
+        },
+        {
+          "fact_type": "Prezzo",
+          "statement": "149 USD è il prezzo pubblicizzato su BYTE nell’agosto 1982, non un prezzo di lancio certificato per il 1981; spedizione e imposte sono separate.",
+          "source": {
+            "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+            "url": "https://archive.org/details/byte-magazine-1982-08",
+            "access_date": "2026-11-24",
+            "author": "Multitech Electronics Inc.",
+            "publisher": "BYTE Publications",
+            "source_type": "advertisement"
+          },
+          "evidence": "Pubblicità Multitech p. 127: price of only $149.00; shipping and handling e sales tax separati."
+        }
+      ],
+      "releases": [
+        {
+          "market": "Stati Uniti",
+          "release_date": "1981",
+          "price": 149,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "source": {
+            "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+            "url": "https://archive.org/details/byte-magazine-1982-08",
+            "access_date": "2026-11-24",
+            "author": "Multitech Electronics Inc.",
+            "publisher": "BYTE Publications",
+            "source_type": "advertisement"
+          },
+          "evidence": "BYTE agosto 1982 p.127: price of only $149.00. La data 1981 riguarda l’introduzione del modello, non il listino."
+        }
+      ]
+    },
+    {
+      "manufacturer": "Robotron",
+      "model_name": "KC 85/1",
+      "categories": [
+        "Home computer"
+      ],
+      "description": "Il Robotron Z9001 arrivò sul mercato alla fine del 1984 e fu rinominato KC 85/1 nel 1985, quando l’impiego si concentrò soprattutto su scuole, club e aziende della Germania Est. Prodotto nell’ambito Robotron a Dresda, usava un U880 a 2,5 MHz, 16 KB di RAM e un televisore come schermo. Quattro slot permettevano di aggiungere memoria e interfacce; il BASIC si caricava da cassetta o da un modulo ROM. Le denominazioni Z9001 e KC 85/1 sono riunite in questa scheda. La famiglia non va confusa con i KC 85/2, /3 e /4 di Mühlhausen, che avevano un’altra architettura.",
+      "source": {
+        "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+        "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+        "access_date": "2026-11-24",
+        "publisher": "Robotrontechnik.de",
+        "source_type": "technical_archive"
+      },
+      "evidence": "Ricerca selettiva del 24 novembre 2026; descrizione italiana originale e dati con citazioni per campo.",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Processore U880 compatibile con l’architettura Z80.",
+              "text_value": "U880"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Eckdaten: Prozessor U880 mit 2,5 MHz Taktfrequenz.",
+              "numeric_value": 2.5,
+              "unit": "MHz"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Architettura",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Microprocessore U880 a 8 bit.",
+              "text_value": "8 bit"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "16 KByte RAM eingebaut; anche KC87 conserva 16 KB.",
+              "numeric_value": 16,
+              "unit": "KB"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "source": {
+                "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+                "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+                "access_date": "2026-11-24",
+                "author": "Collaboratori di Wikipedia",
+                "publisher": "Wikimedia Foundation",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0"
+              },
+              "evidence": "Sezione Speicher: due moduli da 16 KB portano la memoria utente a circa 47 KB, su 48 KB fisici; 64 KB è il limite di indirizzamento, non RAM base.",
+              "text_value": "48 KB con due moduli RAM da 16 KB nella mappa standard; espansioni speciali successive distinte"
+            },
+            {
+              "component_type": "ROM",
+              "property_name": "Capacità",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Z9001: 4 KByte ROM; KC87: 14 KByte ROM con BASIC integrato.",
+              "numeric_value": 4,
+              "unit": "KB"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Modalità testo",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Bildschirmausgabe 40x20 Zeichen Text oder 40x24 Zeichen Quasigrafik.",
+              "text_value": "40 × 20 caratteri oppure 40 × 24 in modalità semigrafica"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Grafica",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Keine Vollgrafikausgabe nella dotazione base; Vollgrafikmodul separato.",
+              "text_value": "Semigrafica a caratteri; grafica a punti solo con modulo opzionale"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Colore",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Suffisso .10/.20/.30 monocromatico; .11/.21/.31 a colori, secondo modello.",
+              "text_value": "Versioni monocromatiche e versioni RGB a colori nella stessa famiglia"
+            },
+            {
+              "component_type": "Tastiera",
+              "property_name": "Tipo",
+              "source": {
+                "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+                "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+                "access_date": "2026-11-24",
+                "author": "Collaboratori di Wikipedia",
+                "publisher": "Wikimedia Foundation",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0"
+              },
+              "evidence": "Per la produzione di serie la tastiera dei prototipi fu sostituita da una Elastomer-Matte.",
+              "text_value": "Tastiera integrata a membrana elastomerica"
+            },
+            {
+              "component_type": "Audio",
+              "property_name": "Tipo",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Tonausgabe über internen Lautsprecher oder Tonbandanschluss.",
+              "text_value": "Altoparlante interno; segnale audio al connettore registratore"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Memoria di massa",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Als Datenspeicher Kassettenrecorder.",
+              "text_value": "Registratore a cassette esterno"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "I/O",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Digital-Eingabe und Ausgabe PIO, Joystickanschluss.",
+              "text_value": "Interfaccia digitale PIO e connessione per joystick"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Video",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "HF e RGB secondo allestimento; non si creano schede PAL/NTSC separate.",
+              "text_value": "Uscita TV; RGB sulle versioni a colori"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Slot",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Vier Slots für Erweiterungseinheiten.",
+              "numeric_value": 4
+            },
+            {
+              "component_type": "Software",
+              "property_name": "Sistema operativo",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Z9001-OS immediatamente disponibile dopo l’accensione.",
+              "text_value": "Z9001-OS in ROM"
+            },
+            {
+              "component_type": "Software",
+              "property_name": "BASIC",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Z9001/KC85/1: BASIC da cassetta o modulo ROM; KC87: BASIC integrato.",
+              "text_value": "Da cassetta o modulo ROM; non integrato nei 4 KB della macchina base"
+            },
+            {
+              "component_type": "Produttore",
+              "property_name": "Stabilimento",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Prodotti dal VEB Robotron-Meßelektronik Otto Schön Dresden, nell’ambito del Kombinat Robotron.",
+              "text_value": "VEB Robotron-Meßelektronik Otto Schön, Dresda"
+            }
+          ]
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Denominazioni",
+          "statement": "Z9001 e KC 85/1 identificano la stessa famiglia con lievi revisioni; la rinomina del 1985 non crea una seconda macchina. Le versioni monocromatiche e a colori restano allestimenti della scheda.",
+          "source": {
+            "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+            "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+            "access_date": "2026-11-24",
+            "author": "Collaboratori di Wikipedia",
+            "publisher": "Wikimedia Foundation",
+            "source_type": "encyclopedia",
+            "license": "CC BY-SA 4.0"
+          },
+          "evidence": "Storia: Z9001 commercializzato a fine 1984, rinominato KC85/1 nel 1985 con hardware sostanzialmente invariato."
+        },
+        {
+          "fact_type": "Cronologia",
+          "statement": "Si distingue la presentazione/prototipazione dalla disponibilità: Robotrontechnik menziona primi modelli nel 1983, mentre la ricostruzione dettagliata data la produzione e le prime vendite del Z9001 alla fine del 1984.",
+          "source": {
+            "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+            "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+            "access_date": "2026-11-24",
+            "author": "Collaboratori di Wikipedia",
+            "publisher": "Wikimedia Foundation",
+            "source_type": "encyclopedia",
+            "license": "CC BY-SA 4.0"
+          },
+          "evidence": "Sezione Z9001: produzione nel settembre 1984 e primi cento esemplari entro dicembre."
+        }
+      ],
+      "releases": [
+        {
+          "market": "Europa",
+          "release_date": "1984",
+          "price": 1550,
+          "currency": "DDM",
+          "price_type": "prezzo riportato",
+          "source": {
+            "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+            "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+            "access_date": "2026-11-24",
+            "author": "Collaboratori di Wikipedia",
+            "publisher": "Wikimedia Foundation",
+            "source_type": "encyclopedia",
+            "license": "CC BY-SA 4.0"
+          },
+          "evidence": "Infobox e riferimento Jugend+Technik agosto1984: Z9001.10 1550 Mark; produzione e commercializzazione Z9001 a fine1984."
+        }
+      ]
+    },
+    {
+      "manufacturer": "Robotron",
+      "model_name": "KC 87",
+      "categories": [
+        "Home computer"
+      ],
+      "description": "Il KC 87 proseguì dal 1987 la famiglia Robotron Z9001/KC 85/1. Manteneva il processore U880, i 16 KB di RAM e i moduli di espansione del predecessore, ma portava il BASIC nella ROM interna, lasciando più memoria disponibile ai programmi. Era destinato soprattutto alla formazione e alle applicazioni aziendali della Germania Est; parte della produzione raggiunse anche il commercio al dettaglio. Gli allestimenti differivano per uscita monocromatica o a colori e funzioni del BASIC. La produzione terminò nel 1989, con l’arrivo del computer scolastico A 5105.",
+      "source": {
+        "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+        "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+        "access_date": "2026-11-24",
+        "publisher": "Robotrontechnik.de",
+        "source_type": "technical_archive"
+      },
+      "evidence": "Ricerca selettiva del 24 novembre 2026; descrizione italiana originale e dati con citazioni per campo.",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Processore U880 compatibile con l’architettura Z80.",
+              "text_value": "U880"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Eckdaten: Prozessor U880 mit 2,5 MHz Taktfrequenz.",
+              "numeric_value": 2.5,
+              "unit": "MHz"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Architettura",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Microprocessore U880 a 8 bit.",
+              "text_value": "8 bit"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "16 KByte RAM eingebaut; anche KC87 conserva 16 KB.",
+              "numeric_value": 16,
+              "unit": "KB"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "source": {
+                "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+                "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+                "access_date": "2026-11-24",
+                "author": "Collaboratori di Wikipedia",
+                "publisher": "Wikimedia Foundation",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0"
+              },
+              "evidence": "Sezione Speicher: due moduli da 16 KB portano la memoria utente a circa 47 KB, su 48 KB fisici; 64 KB è il limite di indirizzamento, non RAM base.",
+              "text_value": "48 KB con due moduli RAM da 16 KB nella mappa standard; espansioni speciali successive distinte"
+            },
+            {
+              "component_type": "ROM",
+              "property_name": "Capacità",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Z9001: 4 KByte ROM; KC87: 14 KByte ROM con BASIC integrato.",
+              "numeric_value": 14,
+              "unit": "KB"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Modalità testo",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Bildschirmausgabe 40x20 Zeichen Text oder 40x24 Zeichen Quasigrafik.",
+              "text_value": "40 × 20 caratteri oppure 40 × 24 in modalità semigrafica"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Grafica",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Keine Vollgrafikausgabe nella dotazione base; Vollgrafikmodul separato.",
+              "text_value": "Semigrafica a caratteri; grafica a punti solo con modulo opzionale"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Colore",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Suffisso .10/.20/.30 monocromatico; .11/.21/.31 a colori, secondo modello.",
+              "text_value": "Versioni monocromatiche e versioni RGB a colori nella stessa famiglia"
+            },
+            {
+              "component_type": "Tastiera",
+              "property_name": "Tipo",
+              "source": {
+                "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+                "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+                "access_date": "2026-11-24",
+                "author": "Collaboratori di Wikipedia",
+                "publisher": "Wikimedia Foundation",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0"
+              },
+              "evidence": "Per la produzione di serie la tastiera dei prototipi fu sostituita da una Elastomer-Matte.",
+              "text_value": "Tastiera integrata a membrana elastomerica"
+            },
+            {
+              "component_type": "Audio",
+              "property_name": "Tipo",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Tonausgabe über internen Lautsprecher oder Tonbandanschluss.",
+              "text_value": "Altoparlante interno; segnale audio al connettore registratore"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Memoria di massa",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Als Datenspeicher Kassettenrecorder.",
+              "text_value": "Registratore a cassette esterno"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "I/O",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Digital-Eingabe und Ausgabe PIO, Joystickanschluss.",
+              "text_value": "Interfaccia digitale PIO e connessione per joystick"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Video",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "HF e RGB secondo allestimento; non si creano schede PAL/NTSC separate.",
+              "text_value": "Uscita TV; RGB sulle versioni a colori"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Slot",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Vier Slots für Erweiterungseinheiten.",
+              "numeric_value": 4
+            },
+            {
+              "component_type": "Software",
+              "property_name": "Sistema operativo",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Z9001-OS immediatamente disponibile dopo l’accensione.",
+              "text_value": "Z9001-OS in ROM"
+            },
+            {
+              "component_type": "Software",
+              "property_name": "BASIC",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Z9001/KC85/1: BASIC da cassetta o modulo ROM; KC87: BASIC integrato.",
+              "text_value": "Integrato nella ROM; versioni con comandi per plotter"
+            },
+            {
+              "component_type": "Produttore",
+              "property_name": "Stabilimento",
+              "source": {
+                "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Prodotti dal VEB Robotron-Meßelektronik Otto Schön Dresden, nell’ambito del Kombinat Robotron.",
+              "text_value": "VEB Robotron-Meßelektronik Otto Schön, Dresda"
+            }
+          ]
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Allestimenti",
+          "statement": "KC87.10/.11, .20/.21 e .30/.31 rimangono nella stessa scheda. Le differenze di colore, canale di vendita e comandi BASIC non moltiplicano i sistemi censiti.",
+          "source": {
+            "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+            "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+            "access_date": "2026-11-24",
+            "publisher": "Robotrontechnik.de",
+            "source_type": "technical_archive"
+          },
+          "evidence": "Le versioni KC87.2x e KC87.3x sono tecnicamente identiche; varianti elencate nella pagina."
+        },
+        {
+          "fact_type": "Espansioni",
+          "statement": "Il funzionamento con floppy e CP/M richiede l’espansione Rossendorf e RAM aggiuntiva: non è il sistema operativo della dotazione base.",
+          "source": {
+            "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+            "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+            "access_date": "2026-11-24",
+            "publisher": "Robotrontechnik.de",
+            "source_type": "technical_archive"
+          },
+          "evidence": "Diskettenmodul Rossendorf zusammen mit 64-KByte-RAM-Modul, molto raro."
+        }
+      ],
+      "releases": [
+        {
+          "market": "Europa",
+          "release_date": "1987",
+          "price": 3005,
+          "currency": "DDM",
+          "price_type": "prezzo riportato",
+          "source": {
+            "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+            "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+            "access_date": "2026-11-24",
+            "publisher": "Robotrontechnik.de",
+            "source_type": "technical_archive"
+          },
+          "evidence": "Prezzi KC87: versione monocromatica 3005 Mark, colori 3390 Mark; fonte prezzo non datata, non prezzo di lancio certificato."
+        },
+        {
+          "market": "Europa",
+          "release_date": "1987",
+          "price": 3390,
+          "currency": "DDM",
+          "price_type": "prezzo riportato",
+          "source": {
+            "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+            "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+            "access_date": "2026-11-24",
+            "publisher": "Robotrontechnik.de",
+            "source_type": "technical_archive"
+          },
+          "evidence": "Prezzi KC87: versione monocromatica 3005 Mark, colori 3390 Mark; fonte prezzo non datata, non prezzo di lancio certificato."
+        }
+      ]
+    },
+    {
+      "manufacturer": "Robotron",
+      "model_name": "A 5105",
+      "categories": [
+        "Personal computer"
+      ],
+      "description": "L’A 5105, chiamato anche BIC o Bildungscomputer, fu sviluppato da Robotron per scuole e centri di formazione della Germania Est. Dopo gli esemplari di prova del 1988, la produzione di serie iniziò nel luglio 1989 e le consegne alle scuole nel settembre successivo. Il sistema combinava un U880 a 3,75 MHz, 64 KB di RAM e grafica a colori. L’unità con tastiera poteva funzionare da sola; l’espansione aggiungeva floppy e rete BICLAN per i laboratori scolastici. La rapida apertura al mercato occidentale dal 1990 ne limitò la diffusione.",
+      "source": {
+        "title": "Robotrontechnik — Bildungscomputer A5105",
+        "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+        "access_date": "2026-11-24",
+        "publisher": "Robotrontechnik.de",
+        "source_type": "technical_archive"
+      },
+      "evidence": "Ricerca selettiva del 24 novembre 2026; descrizione italiana originale e dati con citazioni per campo.",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Im Inneren: Prozessor UA880 (8 Bit).",
+              "text_value": "UA880"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Taktrate von 3,75 MHz.",
+              "numeric_value": 3.75,
+              "unit": "MHz"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Architettura",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Prozessor UA880 (8 Bit).",
+              "text_value": "8 bit"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "64 KByte RAM.",
+              "numeric_value": 64,
+              "unit": "KB"
+            },
+            {
+              "component_type": "ROM",
+              "property_name": "Capacità",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "40 KByte ROM.",
+              "numeric_value": 40,
+              "unit": "KB"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "RAM-Floppy-Modul 64 KByte für Daten, 256 KByte come sostituto disco; non specifica RAM principale.",
+              "text_value": "Moduli RAM-floppy separati da 64 o 256 KB; non sommati alla RAM di base"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Modalità testo",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Textmodus 40x25 oder 80x25 Zeichen und 16 möglichen Farben.",
+              "text_value": "40 × 25 oppure 80 × 25 caratteri, 16 colori"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Grafica",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Grafikmodus descrive risoluzioni e tavolozze distinte.",
+              "text_value": "320 × 200 o 640 × 200, 4 colori su 16; multicolore 320 × 200 a 16 colori"
+            },
+            {
+              "component_type": "Tastiera",
+              "property_name": "Tipo",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Tastaturen vom Typ K7676 dal Robotron-Elektroschaltgerätewerk Auerbach.",
+              "text_value": "Integrata, tipo K7676"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Video",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Grundgerät può funzionare autonomo con TV e alimentatore esterno.",
+              "text_value": "TV tramite modulatore UHF oppure AV a colori; monitor nel sistema completo"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Seriali",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Zwei Anschlüsse V.24 per stampanti/plotter.",
+              "text_value": "Due V.24 per stampanti e plotter"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Digitali",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Zwei digitale Schnittstellen PIO mit jeweils 8 Leitungen.",
+              "text_value": "Due interfacce PIO da 8 linee"
+            },
+            {
+              "component_type": "Porte",
+              "property_name": "Joystick",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Zwei Spielhebel-Anschlüsse für digitale Joysticks.",
+              "text_value": "Due porte per joystick digitali"
+            },
+            {
+              "component_type": "Memoria di massa",
+              "property_name": "Dotazione",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "La Erweiterungseinheit ospita drive e logica controller, non il K1505 da solo.",
+              "text_value": "Cassette con unità base; floppy nel modulo DSE K5651.10"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Compatibilità",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Steckverbinder compatibili con Modulschacht KC87.",
+              "text_value": "Moduli del KC 87; connettori su unità base ed espansione"
+            },
+            {
+              "component_type": "Rete",
+              "property_name": "Opzione",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Netzwerkhardware in Erweiterungseinheit; Kopplung bis zu zwölf A5105.",
+              "text_value": "BICLAN: fino a 12 A5105, tramite hardware dell’unità di espansione"
+            },
+            {
+              "component_type": "Software",
+              "property_name": "Firmware",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "RBASIC sul K1505 solo; SCP necessita DSE con unità floppy.",
+              "text_value": "RBASIC in ROM; SCPX5105 con unità di espansione e floppy"
+            },
+            {
+              "component_type": "Struttura",
+              "property_name": "Sistema",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Tre parti: Grundgerät, Erweiterungsgerät e 12-Zoll-Monochrommonitor.",
+              "text_value": "Unità K1505.10; DSE K5651.10 e monitor nel sistema BIC completo"
+            },
+            {
+              "component_type": "Produttore",
+              "property_name": "Stabilimento",
+              "source": {
+                "title": "Robotrontechnik — Bildungscomputer A5105",
+                "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                "access_date": "2026-11-24",
+                "publisher": "Robotrontechnik.de",
+                "source_type": "technical_archive"
+              },
+              "evidence": "Responsabilità produzione Robotron-Meßelektronik, componenti da Riesa, Radeberg, Auerbach e Sömmerda.",
+              "text_value": "VEB Robotron-Meßelektronik Otto Schön con altri stabilimenti Robotron"
+            }
+          ]
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Cronologia",
+          "statement": "Progetto avviato nel gennaio 1987; cinquanta esemplari tra luglio e ottobre 1988; serie dal luglio 1989 e consegne scolastiche dal settembre 1989. Il 1988 non è qui indicato come lancio di serie.",
+          "source": {
+            "title": "Robotrontechnik — Bildungscomputer A5105",
+            "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+            "access_date": "2026-11-24",
+            "publisher": "Robotrontechnik.de",
+            "source_type": "technical_archive"
+          },
+          "evidence": "Cronologia iniziale della pagina A5105."
+        },
+        {
+          "fact_type": "Memoria e dotazione",
+          "statement": "La RAM principale è 64 KB. RAM-floppy, uso del video come RAM-disk e moduli DSE sono risorse o periferiche aggiuntive, non una seconda capacità della RAM di base.",
+          "source": {
+            "title": "Robotrontechnik — Bildungscomputer A5105",
+            "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+            "access_date": "2026-11-24",
+            "publisher": "Robotrontechnik.de",
+            "source_type": "technical_archive"
+          },
+          "evidence": "Sezioni Hardware e Schnittstellen; RAM-floppy e VDISK separati dalla RAM base."
+        }
+      ],
+      "releases": [
+        {
+          "market": "Europa",
+          "release_date": "1989-09",
+          "source": {
+            "title": "Robotrontechnik — Bildungscomputer A5105",
+            "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+            "access_date": "2026-11-24",
+            "publisher": "Robotrontechnik.de",
+            "source_type": "technical_archive"
+          },
+          "evidence": "Serie da luglio1989; consegne a scuole e centri formazione da settembre1989.",
+          "price": null
+        }
+      ]
+    }
+  ],
+  "release_notes": {
+    "NewBrain": [
+      {
+        "variant": null,
+        "date_kind": "documented_launch",
+        "date_source": {
+          "title": "Wikipedia — Grundy NewBrain (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1375718570",
+          "access_date": "2026-11-24",
+          "author": "Collaboratori di Wikipedia",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "encyclopedia",
+          "license": "CC BY-SA 4.0"
+        },
+        "note": "Introduzione del modello nel 1982 nel Regno Unito. Non è stato trovato un prezzo con documentazione sufficiente per questo pacchetto."
+      }
+    ],
+    "Micro-Professor I": [
+      {
+        "variant": null,
+        "date_kind": "documented_launch",
+        "date_source": {
+          "title": "Wikipedia — Micro-Professor MPF-I (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1358792001",
+          "access_date": "2026-11-24",
+          "author": "Collaboratori di Wikipedia",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "encyclopedia",
+          "license": "CC BY-SA 4.0"
+        },
+        "price_reference_date": "1982-08",
+        "note": "Anno di introduzione del modello: 1981. Prezzo pubblicitario negli Stati Uniti, BYTE agosto 1982 p.127; spedizione e tasse escluse, non prezzo di lancio certificato."
+      }
+    ],
+    "KC 85/1": [
+      {
+        "variant": "Z9001.10 monocromatico",
+        "date_kind": "documented_launch",
+        "date_source": {
+          "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+          "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+          "access_date": "2026-11-24",
+          "author": "Collaboratori di Wikipedia",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "encyclopedia",
+          "license": "CC BY-SA 4.0"
+        },
+        "price_reference_date": "1984-08",
+        "note": "Prezzo Z9001.10, Germania Est, in marchi della DDR (DDM), documentato nella fonte secondaria con riferimento a Jugend+Technik agosto1984. La famiglia arrivò sul mercato a fine1984 e fu rinominata KC85/1 nel1985."
+      }
+    ],
+    "KC 87": [
+      {
+        "variant": "KC 87 monocromatico",
+        "date_kind": "documented_launch",
+        "date_source": {
+          "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+          "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+          "access_date": "2026-11-24",
+          "author": "Collaboratori di Wikipedia",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "encyclopedia",
+          "license": "CC BY-SA 4.0"
+        },
+        "note": "Germania Est, marchi DDR (DDM), non marchi della Germania Ovest. 1987 è l’anno del modello; il listino citato non è datato e non viene presentato come prezzo di lancio. KC 87 monocromatico"
+      },
+      {
+        "variant": "KC 87 a colori",
+        "date_kind": "documented_launch",
+        "date_source": {
+          "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+          "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+          "access_date": "2026-11-24",
+          "author": "Collaboratori di Wikipedia",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "encyclopedia",
+          "license": "CC BY-SA 4.0"
+        },
+        "note": "Germania Est, marchi DDR (DDM), non marchi della Germania Ovest. 1987 è l’anno del modello; il listino citato non è datato e non viene presentato come prezzo di lancio. KC 87 a colori"
+      }
+    ],
+    "A 5105": [
+      {
+        "variant": null,
+        "date_kind": "documented_launch",
+        "date_source": {
+          "title": "Robotrontechnik — Bildungscomputer A5105",
+          "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+          "access_date": "2026-11-24",
+          "publisher": "Robotrontechnik.de",
+          "source_type": "technical_archive"
+        },
+        "note": "Consegne alle scuole della Germania Est da settembre1989; serie da luglio1989, prototipi dal1988. Prezzo non accertato nelle fonti consultate."
+      }
+    ]
+  },
+  "photos": {
+    "NewBrain": [
+      {
+        "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/New_Brain_IMG_4244.jpg/960px-New_Brain_IMG_4244.jpg",
+        "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/New_Brain_IMG_4244.jpg/960px-New_Brain_IMG_4244.jpg",
+        "author": "Rama & Musée Bolo",
+        "license_name": "CC BY-SA 2.0 fr",
+        "source_url": "https://commons.wikimedia.org/wiki/File:New_Brain_IMG_4244.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0/fr/deed.en",
+        "caption": "NewBrain AD con display integrato; fotografia dell’esemplare al Musée Bolo."
+      }
+    ],
+    "Micro-Professor I": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Mpf-I.jpg",
+        "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Mpf-I.jpg",
+        "author": "User Toytoy on en.wikipedia",
+        "license_name": "CC BY-SA 2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Mpf-I.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "caption": "Micro-Professor I, scheda didattica con tastiera esadecimale e display LED."
+      }
+    ],
+    "KC 85/1": [
+      {
+        "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Robotron_z_9001_technische_Sammlung_Dresden.jpg/960px-Robotron_z_9001_technische_Sammlung_Dresden.jpg",
+        "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Robotron_z_9001_technische_Sammlung_Dresden.jpg/960px-Robotron_z_9001_technische_Sammlung_Dresden.jpg",
+        "author": "ubahnverleih",
+        "license_name": "CC0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Robotron_z_9001_technische_Sammlung_Dresden.jpg",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "caption": "Robotron Z9001 esposto nelle Technische Sammlungen di Dresda; famiglia rinominata KC 85/1."
+      }
+    ],
+    "KC 87": [
+      {
+        "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Robotron_KC_87.jpg/960px-Robotron_KC_87.jpg",
+        "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Robotron_KC_87.jpg/960px-Robotron_KC_87.jpg",
+        "author": "Max Mustermann",
+        "license_name": "CC BY-SA 2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Robotron_KC_87.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "caption": "Robotron KC 87 al Computerspielemuseum."
+      }
+    ],
+    "A 5105": [
+      {
+        "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Robotron_a5105.jpg/960px-Robotron_a5105.jpg",
+        "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Robotron_a5105.jpg/960px-Robotron_a5105.jpg",
+        "author": "Florian Schäffer",
+        "license_name": "CC BY-SA 4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Robotron_a5105.jpg",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "caption": "Robotron A 5105, sistema scolastico BIC."
+      }
+    ]
+  },
+  "research": {
+    "scope": "Cinque schede richieste: NewBrain, Micro-Professor I e tre sistemi Robotron. Z9001 e KC85/1 accorpati per rinomina, senza duplicati di RAM o colore.",
+    "sources_consulted": [
+      {
+        "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+        "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+        "access_date": "2026-11-24",
+        "author": "Grundy Business Systems",
+        "publisher": "Grundy Business Systems",
+        "source_type": "technical_manual"
+      },
+      {
+        "title": "Gerald McMullon — testimonianza sul NewBrain e Grundy",
+        "url": "https://www.binarydinosaurs.co.uk/Museum/Grundy/gerald.php",
+        "access_date": "2026-11-24",
+        "author": "Gerald McMullon",
+        "publisher": "Binary Dinosaurs",
+        "source_type": "historical_account"
+      },
+      {
+        "title": "Wikipedia — Grundy NewBrain (en)",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1375718570",
+        "access_date": "2026-11-24",
+        "author": "Collaboratori di Wikipedia",
+        "publisher": "Wikimedia Foundation",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+        "url": "https://archive.org/details/byte-magazine-1982-08",
+        "access_date": "2026-11-24",
+        "author": "Multitech Electronics Inc.",
+        "publisher": "BYTE Publications",
+        "source_type": "advertisement"
+      },
+      {
+        "title": "Electrickery — Multitech MPF-1, varianti e documentazione",
+        "url": "https://electrickery.nl/comp/mpf1/",
+        "access_date": "2026-11-24",
+        "publisher": "Yet another computer museum / electrickery.nl",
+        "source_type": "technical_archive"
+      },
+      {
+        "title": "Wikipedia — Micro-Professor MPF-I (en)",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1358792001",
+        "access_date": "2026-11-24",
+        "author": "Collaboratori di Wikipedia",
+        "publisher": "Wikimedia Foundation",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+        "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+        "access_date": "2026-11-24",
+        "publisher": "Robotrontechnik.de",
+        "source_type": "technical_archive"
+      },
+      {
+        "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+        "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+        "access_date": "2026-11-24",
+        "author": "Collaboratori di Wikipedia",
+        "publisher": "Wikimedia Foundation",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0"
+      },
+      {
+        "title": "Robotrontechnik — Bildungscomputer A5105",
+        "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+        "access_date": "2026-11-24",
+        "publisher": "Robotrontechnik.de",
+        "source_type": "technical_archive"
+      },
+      {
+        "title": "Robotrontechnik — VEB Kombinat Robotron",
+        "url": "https://www.robotrontechnik.de/html/standorte/robotron.htm",
+        "access_date": "2026-11-24",
+        "publisher": "Robotrontechnik.de",
+        "source_type": "company_reference"
+      },
+      {
+        "title": "Wikipedia — Kombinat Robotron (de)",
+        "url": "https://de.wikipedia.org/w/index.php?oldid=272370097",
+        "access_date": "2026-11-24",
+        "author": "Collaboratori di Wikipedia",
+        "publisher": "Wikimedia Foundation",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0"
+      }
+    ],
+    "commons_images": {
+      "newbrain": {
+        "source_url": "https://commons.wikimedia.org/wiki/File:New_Brain_IMG_4244.jpg",
+        "revision": 1120559783
+      },
+      "mpf1": {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Mpf-I.jpg",
+        "revision": 809719078
+      },
+      "z9001": {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Robotron_z_9001_technische_Sammlung_Dresden.jpg",
+        "revision": 1214308481
+      },
+      "kc87": {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Robotron_KC_87.jpg",
+        "revision": 1034451752
+      },
+      "a5105": {
+        "source_url": "https://commons.wikimedia.org/wiki/File:Robotron_a5105.jpg",
+        "revision": 1208111981
+      },
+      "robotron": {
+        "source_url": "https://commons.wikimedia.org/wiki/File:VEB_Robotron.svg",
+        "revision": 1250770906
+      }
+    },
+    "gaps": [
+      "Prezzi di NewBrain e A5105 non inseriti senza prova sufficiente.",
+      "NewBrain: manuale appendice9 preferito per ROM28KB e VFD, rispetto a valori secondari discordanti.",
+      "KC87: prezzi documentati ma listino non datato; anno del modello distinto dalla data del prezzo.",
+      "Nessun dato trasferito da emulatori; nessuna fonte autoprodotta usata come prova storica."
+    ],
+    "access_notes": [
+      "API ufficiali Wikimedia e Internet Archive; OCR dei due documenti originali letto.",
+      "Robotrontechnik: lette pagine HTML consentite, senza scaricare immagini o directory downloads escluse da robots.",
+      "Electrickery: sola pagina HTML, niente PDF esclusi da robots; rispettato intervallo di lettura.",
+      "The Register e Flite esclusi dalle fonti impiegate per le rispettive condizioni robots. Nessun contenuto loro usato nel dataset.",
+      "Nessuno scraping massivo; nessuna API AI a pagamento; fotografie solo Commons con crediti e licenze per file."
+    ]
+  }
+}

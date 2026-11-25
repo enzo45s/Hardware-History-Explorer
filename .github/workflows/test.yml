@@ -3,6 +3,17 @@ on: [push, pull_request]
 permissions:
   contents: read
 jobs:
+  powershell-syntax:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse transfer tool with Windows PowerShell 5.1
+        shell: powershell
+        run: |
+          $tokens = $null
+          $issues = $null
+          [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'tools/Transfer-HheArchive.ps1'), [ref]$tokens, [ref]$issues) | Out-Null
+          if ($issues.Count) { $issues | Format-List; exit 1 }
   verify:
     runs-on: ubuntu-latest
     services:
@@ -25,6 +36,8 @@ jobs:
           cache-dependency-path: backend/requirements.lock
       - run: python -m pip install -r backend/requirements.lock
       - run: python -m pip check
+      - name: Full-backup archive integrity and filesystem rollback
+        run: python -m unittest discover -s tools/tests -v
       - name: SQLite tests
         working-directory: backend
         run: python -m pytest -q
@@ -46,3 +59,86 @@ jobs:
         run: npm run build
       - run: docker compose config --quiet
       - run: docker compose build
+      - run: docker compose up -d --wait
+      - name: Full database and photo transfer on disposable Compose projects
+        run: python tools/tests/transfer_roundtrip.py
+      - working-directory: frontend
+        run: npx playwright install --with-deps chromium
+      - name: Browser museum home and existing navigation
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:home
+      - working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser
+      - name: Browser catalog categories and manual review
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:categories
+      - name: Browser historical price workbook
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:prices
+      - name: Browser JSON historical descriptions
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:descriptions
+      - name: Browser complementary release dates, markets and prices
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:releases
+      - name: Browser self-citations and conditional RetroFlops references
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:sources
+      - name: Browser European profiles, regional offers and fresh frontend assets
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:europe
+      - name: Browser manufacturer management and computer deletion
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:admin
+      - name: Browser public manufacturer profiles
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+        run: npm run test:browser:manufacturers
+      - name: Browser reset on disposable Compose database
+        working-directory: frontend
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+          HHE_ALLOW_TEST_RESET: '1'
+        run: npm run test:browser:reset
+      - name: Browser automatic 1000bit traversal on isolated synthetic website
+        env:
+          HHE_BASE_URL: http://127.0.0.1:8080/
+          HHE_BULK_API_URL: http://127.0.0.1:18093
+        run: |
+          HHE_ALLOW_BULK_BROWSER_FIXTURE=1 python backend/tests/browser_bulk_app.py > /tmp/hhe-bulk-browser.log 2>&1 &
+          bulk_fixture_pid=$!
+          trap 'kill "$bulk_fixture_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl -fsS -o /dev/null http://127.0.0.1:18093/__bulk_fixture; then break; fi
+            sleep 1
+          done
+          cd frontend
+          npm run test:browser:bulk
+      - name: Upload browser diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-diagnostics
+          path: frontend/test-results/imports/
+          if-no-files-found: ignore
+      - if: always()
+        run: docker compose down

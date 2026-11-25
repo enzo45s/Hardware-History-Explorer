@@ -1,0 +1,70 @@
+{
+  "version": "albert-commons-logo-2026-11-v1",
+  "researched_on": "2026-11-24",
+  "research_notes": [
+    "Supplemento circoscritto al logo Albert indicato dall’utente; non riapplica la raccolta generale dei produttori.",
+    "Logo collegato al file originale Commons per URL HTTPS, senza parametri di tracciamento. Metadati e revisione della pagina conservati nell’audit."
+  ],
+  "records": [
+    {
+      "manufacturer_names": [
+        "Albert Computers, Inc.",
+        "Albert Computers Inc."
+      ],
+      "fields": {
+        "logo_url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Albert_Computers_Inc._Logo.png",
+        "logo_author": "ChatGPT, Vincenzo Colacicco",
+        "logo_license": "CC0 1.0 · pubblico dominio (dichiarazione Commons)",
+        "logo_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "logo_source_url": "https://commons.wikimedia.org/wiki/File:Albert_Computers_Inc._Logo.png"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://commons.wikimedia.org/wiki/File:Albert_Computers_Inc._Logo.png"
+        ],
+        "logo_author": [
+          "https://commons.wikimedia.org/wiki/File:Albert_Computers_Inc._Logo.png"
+        ],
+        "logo_license": [
+          "https://commons.wikimedia.org/wiki/File:Albert_Computers_Inc._Logo.png"
+        ],
+        "logo_license_url": [
+          "https://commons.wikimedia.org/wiki/File:Albert_Computers_Inc._Logo.png"
+        ],
+        "logo_source_url": [
+          "https://commons.wikimedia.org/wiki/File:Albert_Computers_Inc._Logo.png"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Wikimedia Commons — Albert Computers Inc. Logo.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Albert_Computers_Inc._Logo.png",
+          "author": "ChatGPT, Vincenzo Colacicco",
+          "publisher": "Wikimedia Commons / Wikimedia Foundation",
+          "source_type": "image",
+          "license": "CC0 1.0; PD-algorithm (dichiarazioni nella pagina Commons)",
+          "access_date": "2026-11-24"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "commons_page_id": 203718703,
+        "commons_revision": 1305857945,
+        "commons_revision_url": "https://commons.wikimedia.org/w/index.php?title=File:Albert_Computers_Inc._Logo.png&oldid=1305857945",
+        "uploaded_at": "2026-11-24T08:55:12Z",
+        "uploader": "Enzo45s",
+        "credit": "Took from the box shown in system's pictures.",
+        "description": "Albert Computers Inc. logo",
+        "license_templates": [
+          "cc-zero",
+          "PD-algorithm"
+        ],
+        "notes": [
+          "Attribuzioni e dichiarazioni di licenza trascritte dalla pagina Commons; non attribuire la realizzazione di questa immagine alla società storica.",
+          "Il caricamento del file nel 2026 non è una data della storia aziendale.",
+          "Nessuna modifica alla descrizione aziendale e alle fonti storiche già presenti."
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "tested_on": "2026-11-23",
+  "database_scope": "Isolated PostgreSQL 16 clone; no remote write to Mac; original dump unchanged.",
+  "original_dump_sha256": "0e315c6b52769f6679b062d3df01a230ee15297fc94410216df20ccadd2fccd5",
+  "package_sha256": "521a571f7a477183d726af65fa6b6fce19e0f34dfc762988541b2099202911a2",
+  "computers": {
+    "before": 1133,
+    "after": 1136,
+    "existing_ids_preserved": 1133,
+    "other_manufacturers_unchanged": 1114,
+    "dec_before": 19,
+    "dec_after": 22,
+    "new_models": [
+      "VAX-11/780",
+      "VAX-11/750",
+      "GIGI"
+    ]
+  },
+  "research": {
+    "technical_assertions": 181,
+    "manuals_used": 15,
+    "wikipedia_revisions_used": 9,
+    "descriptions_updated": 17,
+    "curated_descriptions_preserved": 5,
+    "values_corrected": 7,
+    "values_retired_to_audit": 16,
+    "categories_corrected": 1,
+    "claims": {
+      "pending": 677,
+      "conflict": 5
+    }
+  },
+  "dec_specification_rows": {
+    "before": 75,
+    "after": 233,
+    "new_rows": 174,
+    "retired_rows": 16,
+    "rewritten_rows": 7
+  },
+  "preservation": {
+    "existing_prices_and_releases_unchanged": 1133,
+    "photographs_unchanged": 605,
+    "manufacturers_unchanged": 184,
+    "contextual_facts_unchanged": 928,
+    "single_configuration_per_dec_model": true,
+    "second_container_apply_already_applied": true
+  },
+  "checks": {
+    "sqlite": {
+      "passed": 834,
+      "skipped": 2
+    },
+    "postgresql": {
+      "passed": 50,
+      "groups": [
+        48,
+        2
+      ],
+      "includes_both_tests_skipped_on_sqlite": true
+    },
+    "frontend_tests": {
+      "passed": 45
+    },
+    "react_build": "passed; existing bundle-size warning",
+    "docker_compose": "build/start/health passed",
+    "chromium": "Catalog, citations, VK100 alias, GIGI desktop/mobile, VAX comparison passed; read-only browser run.",
+    "source_cross_check": "VAX-11/780 cache: 2048 32-bit longwords = 8192 bytes, documented in DEC MM780 §1.10; secondary 2 KB value discarded."
+  },
+  "limitations": [
+    {
+      "model_name": "DECmate III",
+      "field": "RAM",
+      "reason": "La voce secondaria alterna byte e parole; gli schemi primari consultati non offrono un riepilogo leggibile sufficiente a normalizzare con certezza la capacità. Nessuna quantità ereditata dal DECmate II."
+    },
+    {
+      "model_name": "MicroVAX I",
+      "field": "RAM installata",
+      "reason": "Documentato il limite o la famiglia di opzioni, non una dotazione iniziale unica: nessuna RAM standard inventata."
+    },
+    {
+      "model_name": "MicroVAX 3500",
+      "field": "RAM installata",
+      "reason": "Documentato il limite o la famiglia di opzioni, non una dotazione iniziale unica: nessuna RAM standard inventata."
+    },
+    {
+      "model_name": "PDP-11",
+      "field": "RAM installata",
+      "reason": "Documentato il limite o la famiglia di opzioni, non una dotazione iniziale unica: nessuna RAM standard inventata."
+    },
+    {
+      "model_name": "VAX-11/785",
+      "field": "RAM installata",
+      "reason": "Documentato il limite o la famiglia di opzioni, non una dotazione iniziale unica: nessuna RAM standard inventata."
+    },
+    {
+      "model_name": "Rainbow 190-B",
+      "field": "Allestimento",
+      "reason": "Importate le caratteristiche della piattaforma Rainbow esplicitamente condivise; non inventati dotazione disco, RAM o data del particolare pacchetto commerciale."
+    }
+  ]
+}

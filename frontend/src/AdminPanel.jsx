@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Plus, Pencil, Save, X, BookOpen, Monitor, ExternalLink } from 'lucide-react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { Plus, Pencil, Save, X, BookOpen, Monitor, ExternalLink, Factory, Trash2 } from 'lucide-react';
 import { api, allComputers, latestRequest } from './api.js';
-import { newComputer, newSource, computerDraft, computerPayload, sourcePayload } from './admin-data.js';
+import { newComputer, newSource, newManufacturer, computerDraft, computerPayload, sourcePayload, manufacturerPayload } from './admin-data.js';
 import './admin.css';
+import ImportPanel from './ImportPanel.jsx';
+import PhotoPanel from './PhotoPanel.jsx';
+import ClassificationPanel from './ClassificationPanel.jsx';
+import { ManufacturerLogo } from './ManufacturerProfiles.jsx';
 
 function Field({ label, value, onChange, wide = false, multiline = false, ...props }) {
   const Tag = multiline ? 'textarea' : 'input';
@@ -34,6 +38,42 @@ function ReferenceCreator({ label, path, onCreated }) {
     <label>{label}<input value={name} onChange={e => setName(e.target.value)} onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); if (!busy) create(); } }} maxLength={100} /></label>
     <button type="button" disabled={busy || !name.trim()} onClick={create}><Plus size={14} />Aggiungi</button>
   </div>{error && <p className="inline-error" role="alert">{error}</p>}</div>;
+}
+
+function ManufacturerEditor({ draft, setDraft, sources }) {
+  const [sourceQuery, setSourceQuery] = useState('');
+  const set = (key, value) => setDraft({ ...draft, [key]: value });
+  return <>
+    <div className="admin-grid">
+      <Field label="Nome del produttore" required maxLength={160} value={draft.name} onChange={v => set('name', v)} />
+      <Field label="Paese" maxLength={100} value={draft.country} onChange={v => set('country', v)} />
+      <Field label="Denominazione storica" maxLength={250} value={draft.legal_name} onChange={v => set('legal_name', v)} />
+      <Field label="Sede storica" maxLength={250} value={draft.headquarters} onChange={v => set('headquarters', v)} />
+      <Field label="Fondatori" maxLength={500} value={draft.founders} onChange={v => set('founders', v)} />
+      <Field label="Data di fondazione" placeholder="AAAA, AAAA-MM o AAAA-MM-GG" value={draft.founded} onChange={v => set('founded', v)} />
+      <Field label="Data di cessazione" placeholder="Lascia vuoto se sconosciuta o ancora attiva" value={draft.ceased} onChange={v => set('ceased', v)} />
+      <Field label="Sito web" type="url" maxLength={500} placeholder="https://…" value={draft.website} onChange={v => set('website', v)} />
+    </div>
+      <Field label="Profilo storico in italiano" multiline wide rows={7} maxLength={20000} value={draft.description} onChange={v => set('description', v)} />
+    <div className="admin-grid">
+      <Field label="Attribuzione del testo" maxLength={350} value={draft.description_author} onChange={v => set('description_author', v)} />
+      <Field label="Fonte del testo" type="url" maxLength={800} value={draft.description_source_url} onChange={v => set('description_source_url', v)} />
+      <Field label="Licenza del testo" type="url" maxLength={800} value={draft.description_license_url} onChange={v => set('description_license_url', v)} />
+    </div>
+    <p className="muted">Inserisci solo le informazioni documentate. Le date accettano anche il solo anno; lascia vuote quelle sconosciute.</p>
+    <h3>Logo e attribuzione</h3><div className="admin-grid">
+      <Field label="URL del logo" type="url" wide maxLength={800} placeholder="https://…" value={draft.logo_url} onChange={v => set('logo_url', v)} />
+      <Field label="Autore del logo" maxLength={350} value={draft.logo_author} onChange={v => set('logo_author', v)} />
+      <Field label="Licenza o condizioni del logo" maxLength={160} value={draft.logo_license} onChange={v => set('logo_license', v)} />
+      <Field label="Fonte del logo" type="url" maxLength={800} value={draft.logo_source_url} onChange={v => set('logo_source_url', v)} />
+      <Field label="URL delle condizioni del logo" type="url" maxLength={800} value={draft.logo_license_url} onChange={v => set('logo_license_url', v)} />
+    </div>{draft.logo_url && <ManufacturerLogo manufacturer={draft} />}
+    <h3>Fonti del profilo</h3><Field label="Cerca una fonte aziendale" value={sourceQuery} onChange={setSourceQuery} />
+    <Choices label="Fonti aziendali" options={sources.filter(s => (draft.source_ids || []).includes(s.id) || sourceQuery && s.title.toLocaleLowerCase().includes(sourceQuery.toLocaleLowerCase())).slice(0, 60)} value={draft.source_ids || []} onChange={v => set('source_ids', v)} />
+    <p className="muted">Le fonti si creano nella sezione Fonti e possono essere associate a più schede. Il logo deve avere condizioni d’uso compatibili; non viene ricolorato dal tema.</p>
+    {draft.id && <p className="muted">Calcolatori collegati: <b>{draft.computer_count}</b>.
+      {draft.computer_count > 0 && ' Per eliminare questo produttore, riassegna prima i suoi calcolatori a un altro produttore oppure elimina le schede che non servono.'}</p>}
+  </>;
 }
 
 function ComputerEditor({ draft, setDraft, meta, sources, reload, onReferenceChange }) {
@@ -120,10 +160,12 @@ function SourceEditor({ draft, setDraft }) {
   </div>;
 }
 
-export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer }) {
+export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer, onDeleted = () => {}, onArchiveReset = onSaved }) {
   const [section, setSection] = useState('computers');
+  useLayoutEffect(() => { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }, [section]);
   const [records, setRecords] = useState([]);
   const [sources, setSources] = useState([]);
+  const [manufacturers, setManufacturers] = useState([]);
   const [meta, setMeta] = useState({ manufacturers: [], categories: [], markets: [] });
   const [draft, setDraft] = useState(null);
   const [dirty, setDirty] = useState(false);
@@ -133,10 +175,31 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer }) {
   const [message, setMessage] = useState('');
   const [query, setQuery] = useState('');
   async function loadData(signal) {
-    return Promise.all([allComputers(new URLSearchParams({ sort: 'name' }), signal), api('/sources', { signal }), api('/meta', { signal })]);
+    return Promise.all([allComputers(new URLSearchParams({ sort: 'name' }), signal), api('/sources', { signal }), api('/meta', { signal }), api('/manufacturers', { signal })]);
   }
-  function receive([computers, bibliography, metadata]) { setRecords(computers); setSources(bibliography); setMeta(metadata); setLoading(false); }
+  function receive([computers, bibliography, metadata, makers]) { setRecords(computers); setSources(bibliography); setMeta(metadata); setManufacturers(makers); setLoading(false); }
   async function reload() { receive(await loadData()); }
+  async function enrichManufacturers() {
+    if (busy || !discard()) return;
+    setBusy(true); setError(''); setMessage('');
+    try {
+      const result = await api('/admin/manufacturers/enrichment/apply', { method: 'POST' });
+      setDraft(null); setDirty(false); onSaved();
+      setMessage(`Profili aggiornati: ${result.updated}. Descrizioni presenti: ${result.coverage.description} di ${result.coverage.total}; loghi: ${result.coverage.logo_url}.`);
+      await reload();
+    } catch (e) { setError(e.message); }
+    finally { setBusy(false); }
+  }
+  async function downloadManufacturerReport() {
+    setBusy(true); setError('');
+    try {
+      const report = await api('/admin/manufacturers/enrichment/report');
+      const url = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2) + '\n'], { type: 'application/json' }));
+      const link = document.createElement('a'); link.href = url; link.download = 'profili-produttori.json'; link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch (e) { setError(e.message); }
+    finally { setBusy(false); }
+  }
   useEffect(() => latestRequest(loadData, receive, e => { setError(e.message); setLoading(false); }), []);
   useEffect(() => { onDirtyChange(dirty); }, [dirty, onDirtyChange]);
   useEffect(() => {
@@ -153,13 +216,13 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer }) {
   }
   function create() {
     if (!discard()) return;
-    setDraft(section === 'computers' ? newComputer() : newSource()); setDirty(false); setError(''); setMessage('');
+    setDraft(section === 'computers' ? newComputer() : section === 'manufacturers' ? newManufacturer() : newSource()); setDirty(false); setError(''); setMessage('');
   }
   async function edit(id) {
     if (!discard()) return;
     setBusy(true); setError(''); setMessage('');
     try {
-      const record = await api(section === 'computers' ? '/admin/computers/' + id : '/sources/' + id);
+      const record = await api(section === 'computers' ? '/admin/computers/' + id + '?readable=true' : '/' + section + '/' + id);
       setDraft(section === 'computers' ? computerDraft(record) : record); setDirty(false);
     } catch (e) { setError(e.message); }
     finally { setBusy(false); }
@@ -167,47 +230,87 @@ export default function AdminPanel({ onSaved, onDirtyChange, onOpenComputer }) {
   async function save(event) {
     event.preventDefault(); setBusy(true); setError(''); setMessage('');
     try {
-      const payload = section === 'computers' ? computerPayload(draft) : sourcePayload(draft);
-      const result = await api('/' + section + (draft.id ? '/' + draft.id : ''), { method: draft.id ? 'PUT' : 'POST', body: JSON.stringify(payload) });
+      const payload = section === 'computers' ? computerPayload(draft) : section === 'manufacturers' ? manufacturerPayload(draft) : sourcePayload(draft);
+      const result = await api('/' + section + (draft.id ? '/' + draft.id : '') + (section === 'computers' ? '?readable=true' : ''), { method: draft.id ? 'PUT' : 'POST', body: JSON.stringify(payload) });
       setDraft(section === 'computers' ? computerDraft(result) : result); setDirty(false);
-      setMessage(section === 'computers' ? 'Calcolatore salvato.' : 'Fonte salvata.');
+      setMessage(section === 'computers' ? 'Calcolatore salvato.' : section === 'manufacturers' ? 'Produttore salvato.' : 'Fonte salvata.');
       onSaved();
       try { await reload(); } catch { setError('Salvataggio riuscito. Non è stato possibile aggiornare gli elenchi: ricarica la pagina.'); }
     } catch (e) { setError(e.message); }
     finally { setBusy(false); }
   }
-  const listing = (section === 'computers' ? records : sources).filter(r =>
-    [r.model_name, r.manufacturer, r.title, r.author, r.publisher].filter(Boolean).join(' ').toLocaleLowerCase().includes(query.toLocaleLowerCase()));
+  async function editClassifiedComputer(id) {
+    if (!discard()) return;
+    setBusy(true); setError(''); setMessage('');
+    try {
+      const record = await api('/admin/computers/' + id + '?readable=true');
+      setSection('computers'); setDraft(computerDraft(record)); setDirty(false); setQuery('');
+    } catch (e) { setError(e.message); }
+    finally { setBusy(false); }
+  }
+  async function remove() {
+    if (!draft?.id || busy || !['computers', 'manufacturers'].includes(section)) return;
+    const saved = (section === 'computers' ? records : manufacturers).find(record => record.id === draft.id);
+    const label = saved?.model_name || saved?.name || draft.model_name || draft.name;
+    const detail = section === 'computers' ? 'La scheda, le configurazioni, i dati storici collegati e le associazioni fotografiche verranno rimossi dal catalogo. Le fonti bibliografiche e lo storico delle importazioni resteranno conservati.' : 'Verrà rimosso il produttore dall’elenco.';
+    if (!window.confirm(`Eliminare «${label}»? ${detail}${dirty ? ' Le modifiche non salvate verranno scartate.' : ''}`)) return;
+    setBusy(true); setError(''); setMessage('');
+    try {
+      await api('/' + section + '/' + draft.id, { method: 'DELETE' });
+      onDeleted({ type: section, id: draft.id });
+      setDraft(null); setDirty(false);
+      setMessage(section === 'computers' ? 'Calcolatore eliminato dal catalogo.' : 'Produttore eliminato.');
+      onSaved();
+      try { await reload(); } catch { setError('Eliminazione riuscita. Ricarica la pagina per aggiornare gli elenchi.'); }
+    } catch (e) { setError(e.message); }
+    finally { setBusy(false); }
+  }
+  const entity = section === 'computers' ? { singular: 'calcolatore', plural: 'calcolatori', create: 'Nuovo calcolatore' }
+    : section === 'manufacturers' ? { singular: 'produttore', plural: 'produttori', create: 'Nuovo produttore' }
+    : { singular: 'fonte', plural: 'fonti', create: 'Nuova fonte' };
+  const listing = (section === 'computers' ? records : section === 'manufacturers' ? manufacturers : sources).filter(r =>
+    [r.model_name, ...(r.aliases || []), r.manufacturer, r.name, r.country, r.title, r.author, r.publisher].filter(Boolean).join(' ').toLocaleLowerCase().includes(query.toLocaleLowerCase()));
   return <section className="admin-panel">
     <div className="eyebrow">GESTIONE DELL'ARCHIVIO</div><h1>Amministrazione</h1>
-    <p className="lead">Inserisci e aggiorna calcolatori e fonti. Le informazioni salvate sono subito disponibili nell'archivio.</p>
+    <p className="lead">Gestisci calcolatori, produttori e fonti. Le informazioni salvate sono subito disponibili nell'archivio.</p>
     <div className="admin-tabs" aria-label="Sezioni amministrative">
       <button disabled={busy} className={section === 'computers' ? 'active' : ''} onClick={() => chooseSection('computers')}><Monitor size={17} />Calcolatori</button>
+      <button disabled={busy} className={section === 'manufacturers' ? 'active' : ''} onClick={() => chooseSection('manufacturers')}><Factory size={17} />Produttori</button>
+      <button disabled={busy} className={section === 'classification' ? 'active' : ''} onClick={() => chooseSection('classification')}>Categorie</button>
       <button disabled={busy} className={section === 'sources' ? 'active' : ''} onClick={() => chooseSection('sources')}><BookOpen size={17} />Fonti</button>
+      <button disabled={busy} className={section === 'imports' ? 'active' : ''} onClick={() => chooseSection('imports')}>Importazioni</button>
+      <button disabled={busy} className={section === 'photos' ? 'active' : ''} onClick={() => chooseSection('photos')}>Foto automatiche</button>
     </div>
     {error && <p className="inline-error" role="alert">{error}</p>}
     {message && <p className="inline-success" role="status">{message}</p>}
-    <div className="admin-layout"><aside className="panel admin-list">
-      <button className="admin-primary" disabled={busy || loading} onClick={create}><Plus size={16} />{section === 'computers' ? 'Nuovo calcolatore' : 'Nuova fonte'}</button>
-      <label className="admin-field"><span>Cerca {section === 'computers' ? 'calcolatori' : 'fonti'}</span><input value={query} onChange={e => setQuery(e.target.value)} /></label>
+    {section === 'manufacturers' && <section className="panel" aria-label="Completamento produttori"><h2>Profili documentati</h2>
+      <p>Completa i campi vuoti con i dati e i loghi della raccolta documentata. I valori già presenti vengono conservati; il resoconto elenca le informazioni ancora mancanti e le fonti consultate.</p>
+      <div className="admin-save-bar"><button disabled={busy || loading} onClick={enrichManufacturers}>Completa profili documentati</button>
+        <button disabled={busy || loading} onClick={downloadManufacturerReport}>Scarica resoconto produttori</button></div>
+    </section>}
+    {section === 'classification' ? <ClassificationPanel onEditComputer={editClassifiedComputer} onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'photos' ? <PhotoPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }} /> : section === 'imports' ? <ImportPanel onSaved={() => { onSaved(); reload().catch(e => setError(e.message)); }}
+      onArchiveReset={() => { setDraft(null); setDirty(false); setQuery(''); setMessage(''); onArchiveReset(); reload().catch(e => setError(e.message)); }} /> : <div className="admin-layout"><aside className="panel admin-list">
+      <button className="admin-primary" disabled={busy || loading} onClick={create}><Plus size={16} />{entity.create}</button>
+      <label className="admin-field"><span>Cerca {entity.plural}</span><input value={query} onChange={e => setQuery(e.target.value)} /></label>
       {loading ? <p>Caricamento…</p> : <>
-        <p className="muted">{listing.length} {section === 'computers' ? 'calcolatori' : 'fonti'}</p>
+        <p className="muted">{listing.length} {entity.plural}</p>
         <div className="admin-records">{listing.map(record => <button key={record.id} disabled={busy} className={record.id === draft?.id ? 'selected' : ''} onClick={() => edit(record.id)}>
-          <span><b>{record.model_name || record.title}</b><small>{record.manufacturer || record.author || record.publisher || record.source_type}</small></span><Pencil size={14} />
+          <span><b>{record.model_name || record.name || record.title}</b><small>{section === 'manufacturers' ? `${record.computer_count} calcolatori${record.country ? ' · ' + record.country : ''}` : record.manufacturer || record.author || record.publisher || record.source_type}</small></span><Pencil size={14} />
         </button>)}</div>
         {!listing.length && <p className="muted">Nessun risultato.</p>}
       </>}
     </aside><div className="panel admin-editor">
       {!draft ? <div className="admin-empty"><Pencil size={30} /><h3>Scegli un elemento oppure creane uno nuovo</h3><p>Le modifiche vengono applicate solo quando premi Salva.</p></div> : <form onSubmit={save}>
         <fieldset className="admin-form-fields" disabled={busy}>
-          <div className="admin-section"><h2>{draft.id ? 'Modifica ' : 'Nuovo '}{section === 'computers' ? 'calcolatore' : 'fonte'}</h2>{dirty && <span className="admin-unsaved">Modifiche non salvate</span>}</div>
-          {section === 'computers' ? <ComputerEditor draft={draft} setDraft={change} meta={meta} sources={sources} reload={reload} onReferenceChange={onSaved} /> : <SourceEditor draft={draft} setDraft={change} />}
-          <div className="admin-save-bar"><button type="submit" className="admin-primary"><Save size={16} />{busy ? 'Salvataggio…' : 'Salva ' + (section === 'computers' ? 'calcolatore' : 'fonte')}</button>
+          <div className="admin-section"><h2>{draft.id ? 'Modifica ' : 'Nuovo '}{entity.singular}</h2>{dirty && <span className="admin-unsaved">Modifiche non salvate</span>}</div>
+          {section === 'computers' ? <ComputerEditor draft={draft} setDraft={change} meta={meta} sources={sources} reload={reload} onReferenceChange={onSaved} /> : section === 'manufacturers' ? <ManufacturerEditor draft={draft} setDraft={change} sources={sources} /> : <SourceEditor draft={draft} setDraft={change} />}
+          <div className="admin-save-bar"><button type="submit" className="admin-primary"><Save size={16} />{busy ? 'Salvataggio…' : 'Salva ' + entity.singular}</button>
             <button type="button" onClick={() => { if (discard()) { setDraft(null); setDirty(false); setError(''); setMessage(''); } }}><X size={16} />Annulla</button>
             {section === 'computers' && draft.id && !dirty && <button type="button" onClick={() => onOpenComputer(draft.id)}><ExternalLink size={16} />Apri scheda e fotografie</button>}
+            {draft.id && ['computers', 'manufacturers'].includes(section) && <button type="button" className="admin-remove" disabled={section === 'manufacturers' && draft.computer_count > 0} onClick={remove}><Trash2 size={16} />Elimina {entity.singular}</button>}
           </div>
         </fieldset>
       </form>}
-    </div></div>
+    </div></div>}
   </section>;
 }

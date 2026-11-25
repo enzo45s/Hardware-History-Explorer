@@ -1,5 +1,6 @@
 from datetime import date, datetime, timezone
-from sqlalchemy import String, Integer, Float, Boolean, Date, DateTime, ForeignKey, Text, UniqueConstraint, CheckConstraint, Table, Column
+from decimal import Decimal
+from sqlalchemy import String, Integer, Float, Boolean, Date, DateTime, ForeignKey, Text, UniqueConstraint, CheckConstraint, Table, Column, JSON, Numeric
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 class Base(DeclarativeBase): pass
@@ -8,6 +9,7 @@ computer_category = Table('computer_category', Base.metadata, Column('computer_i
 def link_table(name, target):
  return Table(name,Base.metadata,Column('source_id',ForeignKey('sources.id',ondelete='CASCADE'),primary_key=True),Column('target_id',ForeignKey(f'{target}.id',ondelete='CASCADE'),primary_key=True),Column('evidence',Text),Column('verification_status',String(20),nullable=False,server_default='pending'))
 computer_source=link_table('computer_sources','computers')
+manufacturer_source=link_table('manufacturer_sources','manufacturers')
 spec_source=link_table('specification_sources','specifications')
 release_source=link_table('release_sources','releases')
 sale_source=link_table('sale_sources','sales')
@@ -21,6 +23,22 @@ class Manufacturer(Base):
  country:Mapped[str|None]=mapped_column(String(100))
  founded:Mapped[date|None]=mapped_column(Date)
  website:Mapped[str|None]=mapped_column(String(500))
+ legal_name:Mapped[str|None]=mapped_column(String(250))
+ description:Mapped[str|None]=mapped_column(Text)
+ description_author:Mapped[str|None]=mapped_column(String(350))
+ description_source_url:Mapped[str|None]=mapped_column(String(800))
+ description_license_url:Mapped[str|None]=mapped_column(String(800))
+ headquarters:Mapped[str|None]=mapped_column(String(250))
+ founders:Mapped[str|None]=mapped_column(String(500))
+ founded_precision:Mapped[str|None]=mapped_column(String(12))
+ ceased:Mapped[date|None]=mapped_column(Date)
+ ceased_precision:Mapped[str|None]=mapped_column(String(12))
+ logo_url:Mapped[str|None]=mapped_column(String(800))
+ logo_author:Mapped[str|None]=mapped_column(String(350))
+ logo_license:Mapped[str|None]=mapped_column(String(160))
+ logo_license_url:Mapped[str|None]=mapped_column(String(800))
+ logo_source_url:Mapped[str|None]=mapped_column(String(800))
+ sources=relationship('Source',secondary=manufacturer_source)
 class Category(Base):
  __tablename__='categories'
  id:Mapped[int]=mapped_column(primary_key=True)
@@ -51,6 +69,7 @@ class Configuration(Base):
  computer_id:Mapped[int]=mapped_column(ForeignKey('computers.id',ondelete='CASCADE'))
  variant_name:Mapped[str]=mapped_column(String(140))
  description:Mapped[str|None]=mapped_column(Text)
+ catalog_details:Mapped[dict]=mapped_column(JSON,default=dict,server_default='{}')
  computer=relationship('Computer',back_populates='configurations')
  specifications=relationship('Specification',back_populates='configuration',cascade='all,delete-orphan')
 class Specification(Base):
@@ -64,6 +83,7 @@ class Specification(Base):
  numeric_value:Mapped[float|None]=mapped_column(Float)
  text_value:Mapped[str|None]=mapped_column(Text)
  unit:Mapped[str|None]=mapped_column(String(30))
+ catalog_details:Mapped[dict]=mapped_column(JSON,default=dict,server_default='{}')
  configuration=relationship('Configuration',back_populates='specifications')
  sources=relationship('Source',secondary=spec_source)
 class Market(Base):
@@ -85,6 +105,7 @@ class Release(Base):
  price:Mapped[float|None]=mapped_column(Float)
  currency:Mapped[str|None]=mapped_column(String(3))
  price_type:Mapped[str|None]=mapped_column(String(30))
+ catalog_details:Mapped[dict]=mapped_column(JSON,default=dict,server_default='{}')
  computer=relationship('Computer',back_populates='releases')
  market=relationship('Market')
  sources=relationship('Source',secondary=release_source)
@@ -151,3 +172,48 @@ class ComputerImage(Base):
  display_order:Mapped[int]=mapped_column(Integer,nullable=False,default=0)
  created_at:Mapped[datetime]=mapped_column(DateTime(timezone=True),default=lambda:datetime.now(timezone.utc),nullable=False)
  computer=relationship('Computer',back_populates='images')
+
+
+class CatalogSnapshot(Base):
+ """Rebuildable catalog facts, separate from source assertions and their audit."""
+ __tablename__='catalog_snapshots'
+ computer_id:Mapped[int]=mapped_column(ForeignKey('computers.id',ondelete='CASCADE'),primary_key=True)
+ version:Mapped[str]=mapped_column(String(60))
+ input_sha256:Mapped[str]=mapped_column(String(64))
+ payload:Mapped[dict]=mapped_column(JSON)
+ rebuilt_at:Mapped[datetime]=mapped_column(DateTime(timezone=True),default=lambda:datetime.now(timezone.utc))
+
+
+class CatalogDirty(Base):
+ """Database triggers enqueue changed systems, including external SQL writes."""
+ __tablename__='catalog_dirty'
+ computer_id:Mapped[int]=mapped_column(ForeignKey('computers.id',ondelete='CASCADE'),primary_key=True)
+ generation:Mapped[int]=mapped_column(Integer,nullable=False,default=1,server_default='1')
+
+
+class CatalogMetric(Base):
+ """SQL-queryable consolidated metric, scoped to one substantial configuration."""
+ __tablename__='catalog_metrics'
+ key:Mapped[str]=mapped_column(String(64),primary_key=True)
+ computer_id:Mapped[int]=mapped_column(ForeignKey('catalog_snapshots.computer_id',ondelete='CASCADE'),index=True)
+ sheet_id:Mapped[int]=mapped_column(Integer)
+ metric:Mapped[str]=mapped_column(String(600),index=True)
+ component_type:Mapped[str]=mapped_column(String(80))
+ component_name:Mapped[str|None]=mapped_column(String(160))
+ property_name:Mapped[str]=mapped_column(String(400))
+ numeric_value:Mapped[Decimal|None]=mapped_column(Numeric)
+ text_value:Mapped[str|None]=mapped_column(Text)
+ unit:Mapped[str|None]=mapped_column(String(30))
+ resolution_state:Mapped[str]=mapped_column(String(30))
+ verification_status:Mapped[str]=mapped_column(String(30))
+ quantities:Mapped[list]=mapped_column(JSON)
+ notes:Mapped[list]=mapped_column(JSON)
+ configuration_ids:Mapped[list]=mapped_column(JSON)
+
+
+catalog_metric_assertions=Table('catalog_metric_assertions',Base.metadata,
+ Column('metric_key',ForeignKey('catalog_metrics.key',ondelete='CASCADE'),primary_key=True),
+ Column('specification_id',ForeignKey('specifications.id',ondelete='CASCADE'),primary_key=True))
+catalog_metric_sources=Table('catalog_metric_sources',Base.metadata,
+ Column('metric_key',ForeignKey('catalog_metrics.key',ondelete='CASCADE'),primary_key=True),
+ Column('source_id',ForeignKey('sources.id',ondelete='CASCADE'),primary_key=True))

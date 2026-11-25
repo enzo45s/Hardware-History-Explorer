@@ -1,0 +1,679 @@
+{
+  "database": "isolated clone after EarthStation/Mistrum research",
+  "counts": {
+    "before": {
+      "computers": 1142,
+      "manufacturers": 184,
+      "configurations": 1179,
+      "specifications": 7290,
+      "releases": 1144,
+      "sales": 0,
+      "reviews": 0,
+      "facts": 937,
+      "computer_images": 607,
+      "sources": 7791,
+      "import_jobs": 3052,
+      "import_rows": 10948,
+      "import_claims": 72301,
+      "computer_aliases": 137
+    },
+    "after": {
+      "computers": 1147,
+      "manufacturers": 185,
+      "configurations": 1185,
+      "specifications": 7369,
+      "releases": 1154,
+      "sales": 0,
+      "reviews": 0,
+      "facts": 949,
+      "computer_images": 611,
+      "sources": 7806,
+      "import_jobs": 3053,
+      "import_rows": 10953,
+      "import_claims": 72626,
+      "computer_aliases": 140
+    }
+  },
+  "checks": {
+    "computers_all_previous_rows_unchanged": true,
+    "manufacturers_all_previous_rows_unchanged": true,
+    "configurations_all_previous_rows_unchanged": true,
+    "specifications_all_previous_rows_unchanged": true,
+    "releases_all_previous_rows_unchanged": true,
+    "sales_all_previous_rows_unchanged": true,
+    "reviews_all_previous_rows_unchanged": true,
+    "facts_all_previous_rows_unchanged": true,
+    "computer_images_all_previous_rows_unchanged": true,
+    "sources_all_previous_rows_unchanged": true,
+    "import_jobs_all_previous_rows_unchanged": true,
+    "import_rows_all_previous_rows_unchanged": true,
+    "import_claims_all_previous_rows_unchanged": true,
+    "computer_aliases_all_previous_rows_unchanged": true,
+    "computer_category_all_previous_links_unchanged": true,
+    "computer_sources_all_previous_links_unchanged": true,
+    "manufacturer_sources_all_previous_links_unchanged": true,
+    "specification_sources_all_previous_links_unchanged": true,
+    "release_sources_all_previous_links_unchanged": true
+  },
+  "repeat_no_changes": true,
+  "result": {
+    "version": "general-processor-2026-11-v1",
+    "checksum": "d4901d42c20423bbf42169ba75b283e0f077e0b0b58b9383e84d144f19ddbb7b",
+    "created": 5,
+    "updated": 0,
+    "photos_added": 4,
+    "releases_added": 10,
+    "manufacturer_fields_updated": [
+      "legal_name",
+      "country",
+      "headquarters",
+      "founded",
+      "ceased",
+      "founders",
+      "description",
+      "logo_url",
+      "logo_author",
+      "logo_license",
+      "logo_license_url",
+      "logo_source_url"
+    ],
+    "import_job_id": 3065
+  },
+  "manufacturer": {
+    "id": 215,
+    "name": "General Processor",
+    "fields": {
+      "description": "General Processor fu un’azienda fiorentina fondata nel 1977 da Gianni Becattini, Stefano Giusti e Franco Pirri, dopo l’esperienza Micropi e Child 8. Dai sistemi modulari per appassionati passò al Modello T e alla linea professionale GPS, con CP/M e poi CP/M-86. Il Museo del Calcolatore di Prato colloca la chiusura nel 1985; altre ricostruzioni indicano circa 1984. La produzione testimonia la prima industria italiana dei microcomputer e la successiva trasformazione del mercato verso i PC IBM compatibili. Il G5 di Becattini, talvolta accostato a GP negli archivi, era commercializzato in kit da SUMUS.",
+      "legal_name": "General Processor S.r.l.",
+      "headquarters": "Firenze; successivamente Badia a Settimo (area fiorentina)",
+      "founders": "Gianni Becattini, Stefano Giusti, Franco Pirri",
+      "country": "Italia",
+      "logo_url": "https://www.1000bit.it/logos/gp.png",
+      "logo_author": "Marchio General Processor · archivio 1000bit",
+      "logo_license": "Marchio storico; diritti dei rispettivi titolari — uso per studio e ricerca",
+      "logo_license_url": "https://www.1000bit.it/database2.asp?id=95",
+      "logo_source_url": "https://www.1000bit.it/database2.asp?id=95"
+    },
+    "sources": [
+      {
+        "title": "General Processor — depliant Modello T",
+        "url": "https://archive.org/details/gpmodellotdepliant"
+      },
+      {
+        "title": "General Processor — pubblicità GPS4, archivio 1000bit",
+        "url": "https://www.1000bit.it/ad/images/other/gps4_ad.jpg"
+      },
+      {
+        "title": "1000bit — General Processor (Italia)",
+        "url": "https://www.1000bit.it/database2.asp?id=95"
+      },
+      {
+        "title": "Alessandro Liberalato — Modello T e General Processor",
+        "url": "https://www.apuliaretrocomputing.it/wordpress/2021/03/08/modello-t-general-processor-di-firenze/"
+      },
+      {
+        "title": "Luigi Serrantoni — storia General Processor",
+        "url": "https://www.computerhistory.it/storia/aziende/general-processor"
+      },
+      {
+        "title": "Museo del Calcolatore di Prato — General Processor GPS5",
+        "url": "https://www.museodelcalcolatore.it/singolo.php?cod=266"
+      },
+      {
+        "title": "General Processor — storia dell’azienda",
+        "url": "https://www.storiainformatica.it/computers/informatica-italiana?view=article&id=372:general-processor-pionieri-dellhome-computing-made-in-italy"
+      },
+      {
+        "title": "Luigi Serrantoni — G5 di Becattini e distribuzione SUMUS",
+        "url": "https://www.computerhistory.it/computer/becattini/g5"
+      }
+    ]
+  },
+  "models": [
+    {
+      "id": 1351,
+      "model_name": "Child 8",
+      "first_release": "1976",
+      "categories": [
+        "Microcomputer"
+      ],
+      "description": "Il Child 8 nacque nel 1976 dal lavoro di Gianni Becattini, pubblicato su CQ Elettronica, e fu distribuito prima da Micropi e poi da General Processor. Basato sul Fairchild F8, offriva agli appassionati una piattaforma modulare per imparare a usare i microprocessori. La versione Child 8/BS, documentata nel Kit 8, disponeva di RAM, monitor residente e collegamenti per terminali ed espansioni: un percorso dall’elettronica amatoriale verso il microcomputer personale.",
+      "configurations": [
+        {
+          "name": "Scheda tecnica",
+          "specifications": 15
+        }
+      ],
+      "releases": [
+        {
+          "date": "1976-01-01",
+          "precision": "year",
+          "price": null,
+          "currency": null,
+          "details": {
+            "catalog_clean": true,
+            "date_scope": "market",
+            "date_evidence": {
+              "kind": "documented",
+              "source_ids": [
+                7806
+              ]
+            },
+            "commercialization_notes": [
+              "Presentazione del progetto nel 1976, prima diGeneral Processor; prima venditaGP non datata."
+            ],
+            "date_sources": [
+              7806
+            ]
+          }
+        }
+      ],
+      "images": [],
+      "sources": [
+        {
+          "id": 7806,
+          "title": "ComputerHistory.it — Child 8",
+          "url": "https://www.computerhistory.it/computer/general-processor/child-8",
+          "author": "Luigi Serrantoni",
+          "publisher": "ComputerHistory.it",
+          "source_type": "historical_article",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7807,
+          "title": "Il manuale del Kit 8 — Child 8/BS, seconda edizione",
+          "url": "https://archive.org/details/kit8manuale",
+          "author": "General Processor",
+          "publisher": "General Processor; copia Internet Archive",
+          "source_type": "manual",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": 1352,
+      "model_name": "Child Z",
+      "first_release": "1977",
+      "categories": [
+        "Microcomputer"
+      ],
+      "description": "Presentato da General Processor nel 1977, il Child Z proseguiva l’impostazione modulare del Child 8 adottando il processore Z80. La console a display LED permetteva di lavorare senza una costosa telescrivente. Il manuale del Sistema /05 del marzo 1979 documenta un allestimento più completo con video, tastiera alfanumerica, cassette e BASIC: le specifiche della configurazione qui censita si riferiscono a quel sistema, non alla sola scheda CPU.",
+      "configurations": [
+        {
+          "name": "Scheda tecnica",
+          "specifications": 19
+        }
+      ],
+      "releases": [
+        {
+          "date": "1977-01-01",
+          "precision": "year",
+          "price": null,
+          "currency": null,
+          "details": {
+            "catalog_clean": true,
+            "date_scope": "model",
+            "date_evidence": {
+              "kind": "documented_launch",
+              "source_ids": [
+                7802
+              ]
+            },
+            "date_sources": [
+              7802
+            ]
+          }
+        }
+      ],
+      "images": [],
+      "sources": [
+        {
+          "id": 7802,
+          "title": "Luigi Serrantoni — storia General Processor",
+          "url": "https://www.computerhistory.it/storia/aziende/general-processor",
+          "author": "Luigi Serrantoni",
+          "publisher": "ComputerHistory.it",
+          "source_type": "historical_article",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7808,
+          "title": "Child Z — Sistema /05, manuale dell’utente, marzo 1979",
+          "url": "https://archive.org/details/childzsistema05",
+          "author": "Gianni Becattini",
+          "publisher": "General Processor; copia Internet Archive",
+          "source_type": "manual",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": 1353,
+      "model_name": "Modello T",
+      "first_release": "1979",
+      "categories": [
+        "Personal computer"
+      ],
+      "description": "Il Modello T segnò nel 1979 il passaggio di General Processor dai sistemi per hobbisti al computer professionale. Integrava monitor e tastiera in un mobile con finiture in legno e usava lo Z80 con due bus modulari, separati per memoria/video e periferiche. Le versioni a disco impiegavano CP/M, mentre il modello base poteva lavorare in BASIC da cassetta. La gamma comprendeva configurazioni T/05, T/08, T/10 e T/20; la successiva versione MKIII adottò tastiera separata, 64 KB di RAM e un diverso terminale video.",
+      "configurations": [
+        {
+          "name": "Model T",
+          "specifications": 20
+        },
+        {
+          "name": "Modello T MKIII",
+          "specifications": 6
+        }
+      ],
+      "releases": [
+        {
+          "date": "1979-01-01",
+          "precision": "year",
+          "price": 1731000.0,
+          "currency": "ITL",
+          "details": {
+            "catalog_clean": true,
+            "model_variant": "Unità centrale base",
+            "date_scope": "model",
+            "date_evidence": {
+              "kind": "documented_launch",
+              "source_ids": [
+                7809
+              ]
+            },
+            "commercialization_notes": [
+              "Unità centrale base. Listino ottobre 1979, IVA esclusa. Il 1979 è l’anno del modello, non il giorno della vendita."
+            ],
+            "date_sources": [
+              7809
+            ]
+          }
+        },
+        {
+          "date": "1979-01-01",
+          "precision": "year",
+          "price": 2212000.0,
+          "currency": "ITL",
+          "details": {
+            "catalog_clean": true,
+            "model_variant": "T/05 — cassette, 32 KB",
+            "date_scope": "model",
+            "date_evidence": {
+              "kind": "documented_launch",
+              "source_ids": [
+                7809
+              ]
+            },
+            "commercialization_notes": [
+              "T/05 — cassette, 32 KB. Listino ottobre 1979, IVA esclusa. Il 1979 è l’anno del modello, non il giorno della vendita."
+            ],
+            "date_sources": [
+              7809
+            ]
+          }
+        },
+        {
+          "date": "1979-01-01",
+          "precision": "year",
+          "price": 3289000.0,
+          "currency": "ITL",
+          "details": {
+            "catalog_clean": true,
+            "model_variant": "T/08 — minidischi, 32 KB",
+            "date_scope": "model",
+            "date_evidence": {
+              "kind": "documented_launch",
+              "source_ids": [
+                7809
+              ]
+            },
+            "commercialization_notes": [
+              "T/08 — minidischi, 32 KB. Listino ottobre 1979, IVA esclusa; prezzo a partire da. Il 1979 è l’anno del modello, non il giorno della vendita."
+            ],
+            "date_sources": [
+              7809
+            ]
+          }
+        },
+        {
+          "date": "1979-01-01",
+          "precision": "year",
+          "price": 4572000.0,
+          "currency": "ITL",
+          "details": {
+            "catalog_clean": true,
+            "model_variant": "T/10 — floppy da 8 pollici, 32 KB",
+            "date_scope": "model",
+            "date_evidence": {
+              "kind": "documented_launch",
+              "source_ids": [
+                7809
+              ]
+            },
+            "commercialization_notes": [
+              "T/10 — floppy da 8 pollici, 32 KB. Listino ottobre 1979, IVA esclusa; prezzo a partire da. Il 1979 è l’anno del modello, non il giorno della vendita."
+            ],
+            "date_sources": [
+              7809
+            ]
+          }
+        },
+        {
+          "date": "1979-01-01",
+          "precision": "year",
+          "price": 8722000.0,
+          "currency": "ITL",
+          "details": {
+            "catalog_clean": true,
+            "model_variant": "T/20 — disco rigido, 32 KB",
+            "date_scope": "model",
+            "date_evidence": {
+              "kind": "documented_launch",
+              "source_ids": [
+                7809
+              ]
+            },
+            "commercialization_notes": [
+              "T/20 — disco rigido, 32 KB. Listino ottobre 1979, IVA esclusa; prezzo a partire da. Il 1979 è l’anno del modello, non il giorno della vendita."
+            ],
+            "date_sources": [
+              7809
+            ]
+          }
+        },
+        {
+          "date": "1981-01-01",
+          "precision": "year",
+          "price": null,
+          "currency": null,
+          "details": {
+            "catalog_clean": true,
+            "model_variant": "Modello T MKIII",
+            "display_model_variant": "Modello T MKIII",
+            "date_scope": "model",
+            "date_evidence": {
+              "kind": "documented_launch",
+              "source_ids": [
+                7810
+              ]
+            },
+            "date_sources": [
+              7810
+            ]
+          }
+        }
+      ],
+      "images": [
+        {
+          "id": 673,
+          "computer_id": 1353,
+          "url": "https://www.1000bit.it/lista/g/general_processor/gp_mt.jpg",
+          "thumbnail_url": "https://www.1000bit.it/lista/g/general_processor/gp_mt.jpg",
+          "caption": "Modello T con unità a dischetti esterna, archivio 1000bit.",
+          "author": null,
+          "license_name": "Diritti riservati — studio e ricerca (1000bit)",
+          "license_url": "https://www.1000bit.it/scheda.asp?id=576",
+          "source_url": "https://www.1000bit.it/scheda.asp?id=576",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        },
+        {
+          "id": 674,
+          "computer_id": 1353,
+          "url": "https://www.1000bit.it/lista/g/general_processor/modellotmkiii.jpg",
+          "thumbnail_url": "https://www.1000bit.it/lista/g/general_processor/modellotmkiii.jpg",
+          "caption": "Versione Modello T MKIII con tastiera separata, archivio 1000bit.",
+          "author": null,
+          "license_name": "Diritti riservati — studio e ricerca (1000bit)",
+          "license_url": "https://www.1000bit.it/scheda.asp?id=1528",
+          "source_url": "https://www.1000bit.it/scheda.asp?id=1528",
+          "is_primary": false,
+          "display_order": 1,
+          "storage": "external"
+        }
+      ],
+      "sources": [
+        {
+          "id": 7809,
+          "title": "ComputerHistory.it — Modello T, configurazioni e listino ottobre 1979",
+          "url": "https://www.computerhistory.it/computer/general-processor/modello-t",
+          "author": "Luigi Serrantoni",
+          "publisher": "ComputerHistory.it",
+          "source_type": "historical_article",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7810,
+          "title": "1000bit — Model T MKIII",
+          "url": "https://www.1000bit.it/scheda.asp?id=1528",
+          "author": null,
+          "publisher": "1000bit",
+          "source_type": "collection",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7798,
+          "title": "General Processor — depliant Modello T",
+          "url": "https://archive.org/details/gpmodellotdepliant",
+          "author": "General Processor",
+          "publisher": "General Processor; copia Internet Archive",
+          "source_type": "brochure",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7802,
+          "title": "Luigi Serrantoni — storia General Processor",
+          "url": "https://www.computerhistory.it/storia/aziende/general-processor",
+          "author": "Luigi Serrantoni",
+          "publisher": "ComputerHistory.it",
+          "source_type": "historical_article",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": 1354,
+      "model_name": "GPS4",
+      "first_release": "1983",
+      "categories": [
+        "Personal computer"
+      ],
+      "description": "Il GPS4 appartiene alla gamma professionale sviluppata da General Processor dopo il Modello T. La pubblicità del periodo, documentata anche nel maggio 1983, presenta un sistema modulare per aziende e studi, con tastiera separata, periferiche a disco e possibilità di servire più postazioni. Il costruttore lo proponeva anche come terminale intelligente di elaboratori maggiori. Le fonti consultate descrivono impieghi e archiviazione, ma non consentono di fissarne con affidabilità CPU, frequenza e RAM.",
+      "configurations": [
+        {
+          "name": "Scheda tecnica",
+          "specifications": 6
+        }
+      ],
+      "releases": [
+        {
+          "date": "1983-01-01",
+          "precision": "year",
+          "price": null,
+          "currency": null,
+          "details": {
+            "catalog_clean": true,
+            "date_scope": "market",
+            "date_evidence": {
+              "kind": "documented",
+              "source_ids": [
+                7811
+              ]
+            },
+            "commercialization_notes": [
+              "Attestato nella pubblicità di maggio 1983; data del primo lancio non accertata."
+            ],
+            "date_sources": [
+              7811
+            ]
+          }
+        }
+      ],
+      "images": [
+        {
+          "id": 675,
+          "computer_id": 1354,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Gp_gps4_ad_mc19_mag83.jpg",
+          "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Gp_gps4_ad_mc19_mag83.jpg",
+          "caption": "Pubblicità General Processor GPS-4, MCmicrocomputer19, maggio 1983. FonteCommons.",
+          "author": "G.becattini",
+          "license_name": "CC BY-SA 3.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Gp_gps4_ad_mc19_mag83.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "sources": [
+        {
+          "id": 7811,
+          "title": "Wikimedia Commons — pubblicità GPS-4, MCmicrocomputer 19, maggio 1983",
+          "url": "https://commons.wikimedia.org/wiki/File:Gp_gps4_ad_mc19_mag83.jpg",
+          "author": "G.becattini",
+          "publisher": "Wikimedia Commons",
+          "source_type": "advertisement",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7799,
+          "title": "General Processor — pubblicità GPS4, archivio 1000bit",
+          "url": "https://www.1000bit.it/ad/images/other/gps4_ad.jpg",
+          "author": "General Processor",
+          "publisher": "General Processor; copia 1000bit",
+          "source_type": "advertisement",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": 1355,
+      "model_name": "GPS5",
+      "first_release": "1985",
+      "categories": [
+        "Personal computer"
+      ],
+      "description": "Il GPS5 rappresenta l’ultima fase dei computer professionali General Processor. Il Museo del Calcolatore di Prato ne documenta la produzione nel 1985: usa un Intel 80186, 128 KB di RAM e CP/M-86, con gestione di fino a cinque utenti. La pubblicità lo proponeva per amministrazione aziendale, controllo industriale e applicazioni tecnico-scientifiche. La sua collocazione nel mondo CP/M lo distingue dall’affermazione degli IBM PC e dei compatibili MS-DOS che stava trasformando il mercato.",
+      "configurations": [
+        {
+          "name": "Scheda tecnica",
+          "specifications": 13
+        }
+      ],
+      "releases": [
+        {
+          "date": "1985-01-01",
+          "precision": "year",
+          "price": null,
+          "currency": null,
+          "details": {
+            "catalog_clean": true,
+            "date_scope": "market",
+            "date_evidence": {
+              "kind": "documented",
+              "source_ids": [
+                7803
+              ]
+            },
+            "commercialization_notes": [
+              "Anno di produzione riportato dal Museo di Prato; prima vendita non datata."
+            ],
+            "date_sources": [
+              7803
+            ]
+          }
+        }
+      ],
+      "images": [
+        {
+          "id": 676,
+          "computer_id": 1355,
+          "url": "https://www.1000bit.it/lista/g/general_processor/img-20181102-wa0008.jpg",
+          "thumbnail_url": "https://www.1000bit.it/lista/g/general_processor/img-20181102-wa0008.jpg",
+          "caption": "Esemplare GPS5, archivio 1000bit; autore della fotografia non indicato.",
+          "author": null,
+          "license_name": "Diritti riservati — studio e ricerca (1000bit)",
+          "license_url": "https://www.1000bit.it/scheda.asp?id=171",
+          "source_url": "https://www.1000bit.it/scheda.asp?id=171",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "sources": [
+        {
+          "id": 7803,
+          "title": "Museo del Calcolatore di Prato — General Processor GPS5",
+          "url": "https://www.museodelcalcolatore.it/singolo.php?cod=266",
+          "author": null,
+          "publisher": "Museo del Calcolatore Laura Tellini",
+          "source_type": "museum_catalog",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7812,
+          "title": "1000bit — GPS5",
+          "url": "https://www.1000bit.it/scheda.asp?id=171",
+          "author": null,
+          "publisher": "1000bit",
+          "source_type": "collection",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        }
+      ]
+    }
+  ],
+  "tests": {
+    "backend": {
+      "passed": 862,
+      "skipped": 2,
+      "reason": "two PostgreSQL-only checks"
+    },
+    "postgresql": {
+      "passed": 34
+    },
+    "final_dataset_focused": {
+      "sqlite_passed": 8,
+      "postgresql_passed": 8
+    },
+    "frontend": {
+      "passed": 45,
+      "production_build": true,
+      "existing_warning": "Vite chunk size"
+    },
+    "docker_api_build_and_health": true,
+    "api": {
+      "native_catalog_and_timeline": true,
+      "manufacturer_count": 5,
+      "total": 1147,
+      "comparison_sourced": true,
+      "unsupported_GPS5_euro_price_absent_after_startup": true,
+      "assistant_context_retrieves_sourced_models_without_paid_API": true
+    },
+    "browser": {
+      "company_profile": true,
+      "logo_loaded": true,
+      "five_model_cards": true,
+      "two_model_t_configurations": true,
+      "five_distinct_ITL_prices": true,
+      "two_model_t_photos": true,
+      "mobile_no_overflow": true,
+      "mkiii_search_single_parent_card": true,
+      "page_errors": [],
+      "image_method": "Exact original image URLs fulfilled using bytes previously downloaded over HTTPS; no synthetic images."
+    }
+  },
+  "local_database_updated": false
+}

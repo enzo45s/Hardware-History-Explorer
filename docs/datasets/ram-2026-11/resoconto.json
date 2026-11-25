@@ -1,0 +1,1499 @@
+{
+  "date": "2026-11-21",
+  "catalog_computers": 1133,
+  "without_ram_before": 408,
+  "covered_models": 147,
+  "ram_assertions": 147,
+  "without_ram_after_expected": 261,
+  "source_counts": {
+    "1000bit": 54,
+    "Wikipedia": 83,
+    "Kaypro Corporation": 9,
+    "Archivio Simson Garfinkel": 1
+  },
+  "source_alternatives_not_automatically_imported": [
+    {
+      "manufacturer": "Apple",
+      "model_name": "Lisa",
+      "source": "https://www.1000bit.it/scheda.asp?id=87",
+      "quantity": "512 Kb - 1 Mb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Apple",
+      "model_name": "Lisa2",
+      "source": "https://www.1000bit.it/scheda.asp?id=88",
+      "quantity": "512-1024 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Apple",
+      "model_name": "Macintosh XL",
+      "source": "https://www.1000bit.it/scheda.asp?id=89",
+      "quantity": "1-2 Mb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Digital Equipment Corporation",
+      "model_name": "MicroVAX 3500",
+      "source": "https://www.1000bit.it/scheda.asp?id=2806",
+      "quantity": "2-64 MB",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "IBM 5100",
+      "source": "https://www.1000bit.it/scheda.asp?id=246",
+      "quantity": "16 - 64 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "IBM 5110",
+      "source": "https://www.1000bit.it/scheda.asp?id=1543",
+      "quantity": "16 - 64 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "LNW Research",
+      "model_name": "LNW-80",
+      "source": "https://www.1000bit.it/scheda.asp?id=1011",
+      "quantity": "48 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-6001",
+      "source": "https://www.1000bit.it/scheda.asp?id=765",
+      "quantity": "16 Kb (exp 32 Kb)",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-6001mkII",
+      "source": "https://www.1000bit.it/scheda.asp?id=769",
+      "quantity": "64 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Next Software Inc",
+      "model_name": "NeXTcube",
+      "source": "https://www.1000bit.it/scheda.asp?id=225",
+      "quantity": "8-64 Mb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Next Software Inc",
+      "model_name": "NeXTcube Turbo",
+      "source": "https://www.1000bit.it/scheda.asp?id=1403",
+      "quantity": "16-64 Mb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Next Software Inc",
+      "model_name": "NeXTstation",
+      "source": "https://www.1000bit.it/scheda.asp?id=226",
+      "quantity": "8-64 Mb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Panasonic",
+      "model_name": "FS-A1ST",
+      "source": "https://www.1000bit.it/scheda.asp?id=1721",
+      "quantity": "256-1024 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "PHC-25",
+      "source": "https://www.1000bit.it/scheda.asp?id=1155",
+      "quantity": "16 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "X1",
+      "source": "https://www.1000bit.it/scheda.asp?id=825",
+      "quantity": "64 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Tangerine",
+      "model_name": "Microtan 65",
+      "source": "https://www.1000bit.it/scheda.asp?id=611",
+      "quantity": "1-48 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Tangerine",
+      "model_name": "Oric-1",
+      "source": "https://www.1000bit.it/scheda.asp?id=187",
+      "quantity": "16 - 48 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Lobo Systems",
+      "model_name": "MAX-80",
+      "source": "https://www.1000bit.it/scheda.asp?id=1014",
+      "quantity": "64-128 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "APC",
+      "source": "https://www.1000bit.it/scheda.asp?id=678",
+      "quantity": "128 Kb Standard, 640 Kb Max.",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Mera-Elzab",
+      "model_name": "Meritum I",
+      "source": "https://www.1000bit.it/scheda.asp?id=1792",
+      "quantity": "16 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 2x",
+      "source": "https://www.1000bit.it/scheda.asp?id=1004",
+      "quantity": "64 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 10",
+      "source": "https://www.1000bit.it/scheda.asp?id=221",
+      "quantity": "64 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-8801",
+      "source": "https://www.1000bit.it/scheda.asp?id=766",
+      "quantity": "64-576 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-88VA2",
+      "source": "https://www.1000bit.it/scheda.asp?id=774",
+      "quantity": "512 Kb",
+      "note": "Formulazione alternativa non aggiunta automaticamente; può riguardare dotazioni, limiti o revisioni diversi."
+    }
+  ],
+  "unresolved": [
+    {
+      "manufacturer": "Acorn",
+      "model_name": "J233 StrongARM Risc PC",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Acorn",
+      "model_name": "StrongARM Risc PC",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Bawareth",
+      "model_name": "Perfect MSX1",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Canon",
+      "model_name": "V-20E",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Canon",
+      "model_name": "V-20F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Canon",
+      "model_name": "V-20G",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Canon",
+      "model_name": "V-20S",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Casio",
+      "model_name": "MX-15",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Ciel",
+      "model_name": "Expert 3 IDE",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Ciel",
+      "model_name": "Expert 3 Turbo",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "CPC-88",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "DPC-200E",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "IQ-1000 DPC-100",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "IQ-1000 DPC-180",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "IQ-1000 DPC-200",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "IQ-2000 CPC-300",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "IQ-2000 CPC-300E",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "X-II CPC-400",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "X-II CPC-400S",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-50A",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-50B",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-51",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-61",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPG-120 Normal",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Digital Equipment Corporation",
+      "model_name": "DECmate II",
+      "reason": "Fonti secondarie discordanti fra parole a 12 bit e byte; serve manuale primario."
+    },
+    {
+      "manufacturer": "Digital Equipment Corporation",
+      "model_name": "DECmate III",
+      "reason": "Fonti secondarie discordanti fra parole e byte; serve manuale primario."
+    },
+    {
+      "manufacturer": "Digital Equipment Corporation",
+      "model_name": "MicroVAX 3100 Model 10",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Digital Equipment Corporation",
+      "model_name": "MicroVAX 3400",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Digital Equipment Corporation",
+      "model_name": "MicroVAX I",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Digital Equipment Corporation",
+      "model_name": "PDP-11",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Digital Equipment Corporation",
+      "model_name": "VAX-11/785",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "EACA Computers",
+      "model_name": "System-80",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Fenner",
+      "model_name": "DPC-200",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Fenner",
+      "model_name": "FPC-500",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Fenner",
+      "model_name": "FPC-900",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Fenner",
+      "model_name": "SPC-800",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Frael",
+      "model_name": "Bruc 100-1",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Frael",
+      "model_name": "Bruc 100-2",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Goldstar",
+      "model_name": "FC-200",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Goldstar",
+      "model_name": "FC-80U",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Goldstar",
+      "model_name": "GFC-1080",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Goldstar",
+      "model_name": "GFC-1080A",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Gradiente",
+      "model_name": "Expert 1.3",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Gradiente",
+      "model_name": "Expert 2.0",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Gradiente",
+      "model_name": "Expert AC88+",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Gradiente",
+      "model_name": "Expert DDX+",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Gradiente",
+      "model_name": "Expert XP-800",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Gradiente",
+      "model_name": "Expert XP-800 / Expert GPC-1",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "9835B",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP 2100",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP 9816",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP 9825B",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP 9825T",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP9000/310",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP9000/320",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP9000/330",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP9000/332",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP9000/340",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP9000/360",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP9000/370",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP9000/380",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "HP",
+      "model_name": "HP9000/382",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Hiradastechnika Szovetkezet",
+      "model_name": "HT-1080Z Series I",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Hiradastechnika Szovetkezet",
+      "model_name": "HT-1080Z Series II",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Hiradastechnika Szovetkezet",
+      "model_name": "HT-1080Z/64",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Hitachi",
+      "model_name": "MB-H1",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "IBM RT PC Model 010",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "IBM RT PC Model 015",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "IBM RT PC Model 020",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "IBM RT PC Model 025",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "IBM RT PC Model A25",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "RS/6000 Type 7009 Model C10 Server",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "ThinkPad 850",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "JVC",
+      "model_name": "HC-7E / HC-7GB",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Kawai",
+      "model_name": "KMC-5000",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 1",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 4 plus88 - 4/83",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 4/84 plus88",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro New 2",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Omni II Logic Analyzer",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Komtek",
+      "model_name": "Radionic R1001/Komtek 1",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "MITS",
+      "model_name": "Altair 8800bt",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Mitsubishi",
+      "model_name": "ML-G30 Model 1",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Mitsubishi",
+      "model_name": "ML-G30 Model 2",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Morrow Designs",
+      "model_name": "Micro Decision MD-2",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Morrow Designs",
+      "model_name": "Micro Decision MD-3",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "National",
+      "model_name": "FS-4600F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "National",
+      "model_name": "FS-4700F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "National",
+      "model_name": "FS-5000F2",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "Bungo mini 5SX",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-6001A \"NEC Trek\"",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-6601SR \"Mr. PC\"",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-8401BD",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-98HA",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-98LT",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Next Software Inc",
+      "model_name": "NeXTcube Turbo Color",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olympia",
+      "model_name": "PHC-2",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olympia",
+      "model_name": "PHC-28",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Omni Logic",
+      "model_name": "Omni 4 Logic Analyzer",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Osborne",
+      "model_name": "Osborne-1",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Osborne",
+      "model_name": "Osborne-1 with SCREEN-PAC",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Osborne/Nuevo",
+      "model_name": "Osborne-1",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Panasonic",
+      "model_name": "FS-A1MK2",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "NMS 8220",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "NMS 8245F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "NMS 8250/16",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "NMS 8250/19",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "NMS 8255F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "NMS 8280F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "NMS 8280G",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "VG-8010 / VG-8010/00",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "VG-8010F / VG-8010/19",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "VG-8020/00",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "VG-8020/19 / VG-8020F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "VG-8020/20",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Philips",
+      "model_name": "VG-8235F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Pioneer",
+      "model_name": "PX-07 Palcom",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Pioneer",
+      "model_name": "PX-07UK Palcom",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Pioneer",
+      "model_name": "PX-V60",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Pioneer",
+      "model_name": "UC-V102",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Pravetz",
+      "model_name": "Pravetz 8D",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sakhr",
+      "model_name": "AX-150",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sakhr",
+      "model_name": "AX-170",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sakhr",
+      "model_name": "AX-200",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sakhr",
+      "model_name": "AX-200M",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sakhr",
+      "model_name": "AX-230",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sakhr",
+      "model_name": "AX-350",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sakhr",
+      "model_name": "AX-350 II",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sakhr",
+      "model_name": "AX-350 II F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sakhr",
+      "model_name": "AX-370",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sakhr",
+      "model_name": "AX-500",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Samsung",
+      "model_name": "SPC-800",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "MBC-200",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "MPC-10 / Wavy10",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "MPC-200SP",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "MPC-2300",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "MPC-2500FD",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "MPC-25FD",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "MPC-25FS",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "MPC-27",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "PHC-23 / Wavy23",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "PHC-23JB / Wavy23",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "PHC-28L",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "PHC-28S",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "PHC-35J / Wavy35",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "PHC-55FD2 / Wavy55FD2",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "PHC-70FD / Wavy70FD",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "PHC-70FD2 / Wavy70FD2",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sanyo",
+      "model_name": "PHC-77 / Wavy77",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Scientific Micro Systems",
+      "model_name": "SMS-1000",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Secoinsa",
+      "model_name": "Serie 20",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Seiko",
+      "model_name": "MAP-1010",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "MZ-2200",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "MZ-2520",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "Pocket Computer 1250",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "Pocket Computer 1255",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "Pocket Computer 1260",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "Pocket Computer 1261/1262",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "Pocket Computer 1360",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "Zaurus SL-5600 / SL-B500 \"Poodle\"",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "Zaurus SL-C3000 \"Akita\"",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "Zaurus SL-C3000 \"Spitz\"",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "Zaurus SL-C500",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "Zaurus SL-C750 \"Shepherd\"",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp",
+      "model_name": "Zaurus SL-C760 \"Husky\"",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp / Epcom",
+      "model_name": "HB-8000 Hotbit",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp / Epcom",
+      "model_name": "HB-8000 Hotbit 1.3b",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp / Epcom",
+      "model_name": "HB-8000 Hotbit 1.3p",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sharp / Epcom",
+      "model_name": "HB-8000 Hotbit 2.0",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Silicon Graphics",
+      "model_name": "Professional IRIS 4D/50",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Silicon Graphics",
+      "model_name": "Professional IRIS 4D/70",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Silicon Graphics",
+      "model_name": "IRIS 3130",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-101P",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-201P",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-20P",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-501P",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-55D",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-55P",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-75D",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-75P",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-F500 2nd version",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-F500F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-F500P",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-F700D",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-F700F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-F700P",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-F700S",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-F9P",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-F9S",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-G900AP",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Sony",
+      "model_name": "HB-G900P",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Talent",
+      "model_name": "DPC-200",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Talent",
+      "model_name": "DPC-200A",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Talent",
+      "model_name": "TPC-310",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Talent",
+      "model_name": "TPP-311",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Talent",
+      "model_name": "TPS-312",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Tandy",
+      "model_name": "TRS-80 Pocket Computer PC-3",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Tangerine",
+      "model_name": "Micron",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Tangerine",
+      "model_name": "Microtan 6809 System",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Tangerine/ETI",
+      "model_name": "Space Invasion",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Tantel",
+      "model_name": "AlphaTantel",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-10AA",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-10D",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-10DP",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-10E",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-10F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-10SA",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-20I",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-21F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-22I",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-33 w/HX-R702",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-34 w/HX-R703",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "HX-51I",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "Pasopia 1600",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "Pasopia 7 PA7007",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "Pasopia 7 PA7007 with PA7170",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Toshiba",
+      "model_name": "Personal Computer Pasopia PA7010",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Victor",
+      "model_name": "HC-90A",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Victor",
+      "model_name": "HC-95A",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model_name": "CX5F w/SFG01",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model_name": "CX5F w/SFG05",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model_name": "CX5M-128",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model_name": "CX5MIIB",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model_name": "CX5MU",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model_name": "CX7/128",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model_name": "YIS503F",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Yamaha",
+      "model_name": "YIS805/128R2",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Yashica",
+      "model_name": "YC-64",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Yeno",
+      "model_name": "MX64",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Elea 9003",
+      "reason": "Memoria a nuclei espressa in posizioni alfanumeriche: già documentata come memoria, senza falsa conversione in RAM a byte."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Elea 4001",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Programma 101",
+      "reason": "Registri, non RAM convenzionale indirizzabile."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P102",
+      "reason": "Registri, non RAM convenzionale indirizzabile."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P203",
+      "reason": "Registri, non RAM convenzionale indirizzabile."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P602",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P603",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P6040 SBS",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 3030",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 2005",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 2010",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 2020",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "BCS 2035",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M200",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M211",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M316",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCS 386",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "A12",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M700-10",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "CP486",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Echos P75",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M28 SP",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "M4 40 Modulo",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Notebook S20",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "P500",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCS 42",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCS 44",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "PCX 386",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Philos 11",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Philos 22",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Philos 33",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    },
+    {
+      "manufacturer": "Olivetti",
+      "model_name": "Philos 45 Color",
+      "reason": "Nessuna quantità attribuibile con sufficiente precisione nelle fonti consultate. Non ereditata da modelli simili o dallo standard di famiglia."
+    }
+  ],
+  "limits": [
+    "Il dump è una copia fornita, non un accesso remoto al Mac.",
+    "Fonti consultate e quantità importabili restano pending, senza verifica storica automatica.",
+    "MSX Resource Center: API disabilitata e termini senza autorizzazione al riutilizzo generalizzato. Nessuna raccolta massiva eseguita.",
+    "HP Computer Museum e Bitsavers: risposta HTTP 403; nessun aggiramento.",
+    "Le capacità massime e le opzioni sono etichettate; non diventano dotazioni standard.",
+    "Le unità storiche Kb/KB/MB vengono conservate; non sono convertite arbitrariamente in KiB/MiB."
+  ]
+}

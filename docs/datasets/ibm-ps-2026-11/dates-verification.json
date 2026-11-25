@@ -1,0 +1,300 @@
+{
+  "database": "isolated clone of hhe_ibm_ps_20261123",
+  "result": {
+    "version": "ibm-ps-dates-2026-11-v1",
+    "models_updated": 10,
+    "announcement_dates": 6,
+    "release_dates": 10,
+    "release_rows_created": 3,
+    "skipped": [],
+    "preserved": [
+      {
+        "model_name": "PS/2 Model 30-286",
+        "release_id": 538,
+        "date": "1990",
+        "reason": "Data esistente diversa o più precisa: conservata."
+      }
+    ],
+    "import_job_id": 3063
+  },
+  "before": {
+    "computers": 1142,
+    "manufacturers": 184,
+    "configurations": 1179,
+    "specifications": 7256,
+    "releases": 1141,
+    "computer_images": 605,
+    "facts": 928,
+    "import_jobs": 3050
+  },
+  "after": {
+    "computers": 1142,
+    "manufacturers": 184,
+    "configurations": 1179,
+    "specifications": 7256,
+    "releases": 1144,
+    "computer_images": 605,
+    "facts": 928,
+    "import_jobs": 3051
+  },
+  "checks": {
+    "prices_currencies_markets_preserved": true,
+    "photos_preserved": true,
+    "names_descriptions_manufacturers_preserved": true,
+    "specifications_configurations_preserved": true,
+    "repeat_creates_no_jobs_or_rows": true,
+    "all_14_models_have_native_release_dates": true
+  },
+  "models": [
+    {
+      "model_name": "PS/2 Model 30-286",
+      "first_release": "1988-09-13",
+      "announcement_date": null,
+      "releases": [
+        {
+          "id": 540,
+          "date": "1988-09-13",
+          "price": "1995.0",
+          "currency": "USD",
+          "variant": null
+        },
+        {
+          "id": 538,
+          "date": "1990",
+          "price": "3040.0",
+          "currency": "DEM",
+          "variant": "IBM PS/2 8530-H31 (Model 30/286)"
+        }
+      ]
+    },
+    {
+      "model_name": "PS/2 Model 50",
+      "first_release": "1987-04-02",
+      "announcement_date": "1987-04-02",
+      "releases": [
+        {
+          "id": 1427,
+          "date": "1987-04-02",
+          "price": "3595.0",
+          "currency": "USD",
+          "variant": "IBM PS/2 8550-021 (Model 50)"
+        }
+      ]
+    },
+    {
+      "model_name": "PS/2 Model 50 Z",
+      "first_release": "1988-06",
+      "announcement_date": "1988-06-02",
+      "releases": [
+        {
+          "id": 1428,
+          "date": "1988-06",
+          "price": "4595.0",
+          "currency": "USD",
+          "variant": "IBM PS/2 8550-061 (Model 50Z)"
+        }
+      ]
+    },
+    {
+      "model_name": "PS/2 Model 35 SX",
+      "first_release": "1991",
+      "announcement_date": "1991-06-11",
+      "releases": [
+        {
+          "id": 1426,
+          "date": "1991",
+          "price": "2525.0",
+          "currency": "USD",
+          "variant": "IBM PS/2 8535-043 (Model 35SX)"
+        }
+      ]
+    },
+    {
+      "model_name": "PS/2 Model 55 SX",
+      "first_release": "1989-05",
+      "announcement_date": "1989-05-09",
+      "releases": [
+        {
+          "id": 539,
+          "date": "1989-05",
+          "price": "2945.0",
+          "currency": "USD",
+          "variant": "IBM PS/2 8555-081 (Model 55SX)"
+        }
+      ]
+    },
+    {
+      "model_name": "PS/2 Model 80",
+      "first_release": "1987-07",
+      "announcement_date": "1987-04-02",
+      "releases": [
+        {
+          "id": 1431,
+          "date": "1987-11",
+          "price": "10995.0",
+          "currency": "USD",
+          "variant": "IBM PS/2 8580-111 (Model 80)"
+        },
+        {
+          "id": 1430,
+          "date": "1987-07",
+          "price": "8495.0",
+          "currency": "USD",
+          "variant": "IBM PS/2 8580-071 (Model 80)"
+        }
+      ]
+    },
+    {
+      "model_name": "PS/1 Model 2011",
+      "first_release": "1990",
+      "announcement_date": null,
+      "releases": [
+        {
+          "id": 1846,
+          "date": "1990",
+          "price": "None",
+          "currency": null,
+          "variant": null
+        }
+      ]
+    },
+    {
+      "model_name": "PS/1 Model 2121",
+      "first_release": "1991",
+      "announcement_date": null,
+      "releases": [
+        {
+          "id": 1851,
+          "date": "1991",
+          "price": "None",
+          "currency": null,
+          "variant": null
+        }
+      ]
+    },
+    {
+      "model_name": "PS/1 Model 2133",
+      "first_release": "1992",
+      "announcement_date": null,
+      "releases": [
+        {
+          "id": 1852,
+          "date": "1992",
+          "price": "None",
+          "currency": null,
+          "variant": null
+        }
+      ]
+    },
+    {
+      "model_name": "PS/1 Model 2168",
+      "first_release": "1992",
+      "announcement_date": null,
+      "releases": [
+        {
+          "id": 1853,
+          "date": "1992",
+          "price": "None",
+          "currency": null,
+          "variant": null
+        }
+      ]
+    },
+    {
+      "model_name": "PS/2 Note N33 SX",
+      "first_release": "1991",
+      "announcement_date": null,
+      "releases": [
+        {
+          "id": 1847,
+          "date": "1991",
+          "price": "None",
+          "currency": null,
+          "variant": null
+        }
+      ]
+    },
+    {
+      "model_name": "PS/note 182",
+      "first_release": "1992",
+      "announcement_date": null,
+      "releases": [
+        {
+          "id": 1849,
+          "date": "1992",
+          "price": "None",
+          "currency": null,
+          "variant": null
+        }
+      ]
+    },
+    {
+      "model_name": "PS/2 Note N51 SX",
+      "first_release": "1992",
+      "announcement_date": "1992-03",
+      "releases": [
+        {
+          "id": 1848,
+          "date": "1992",
+          "price": "None",
+          "currency": null,
+          "variant": null
+        }
+      ]
+    },
+    {
+      "model_name": "PS/note 425",
+      "first_release": "1993",
+      "announcement_date": null,
+      "releases": [
+        {
+          "id": 1850,
+          "date": "1993",
+          "price": "None",
+          "currency": null,
+          "variant": null
+        }
+      ]
+    }
+  ],
+  "api_checks": {
+    "api_health": true,
+    "catalog_dates": {
+      "PS/1 Model 2121": 1991,
+      "PS/1 Model 2133": 1992,
+      "PS/1 Model 2168": 1992,
+      "PS/2 Model 35 SX": 1991,
+      "PS/2 Model 50": 1987,
+      "PS/2 Model 50 Z": 1988,
+      "PS/2 Model 80": 1987
+    },
+    "compare_native_years": [
+      1991,
+      1992
+    ],
+    "model80_announcement_distinct_from_release": true,
+    "analytics_total": 1142
+  },
+  "validation": {
+    "sqlite_full": {
+      "passed": 845,
+      "skipped_postgresql_only": 2
+    },
+    "sqlite_final_ibm": {
+      "passed": 13,
+      "includes_two_additional_scope_and_whole_import_rollback_tests": true
+    },
+    "postgresql_final": {
+      "passed": 15,
+      "includes_two_exclusive_concurrency_and_migration_tests": true
+    },
+    "docker_api_build_and_health": true,
+    "browser_production": {
+      "ps1_2121_catalog_year": true,
+      "model80_catalog_month": true,
+      "two_dated_price_variants": true,
+      "desktop_mobile_no_overflow": true,
+      "javascript_errors": 0
+    }
+  }
+}

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import ArchiveImage from './ArchiveImage.jsx';
+import { imageCrop } from './image-crop.js';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
   Search, Clock3, Database, BarChart3, GitCompareArrows, Bot, ChevronRight, ArrowLeft,
   ExternalLink, Monitor, BookOpen, Image as ImageIcon, Upload, Link as LinkIcon,
-  Star, Trash2, Plus, X, RefreshCw, Camera, Info, Check, Images, Pencil
+  Star, Trash2, Plus, X, RefreshCw, Camera, Info, Check, Images, Pencil, Factory, House
 } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import './style.css';
@@ -11,12 +13,20 @@ import ThemeSwitcher from './ThemeSwitcher.jsx';
 import BrandLogo from './BrandLogo.jsx';
 import { api, allComputers, latestRequest } from './api.js';
 import AdminPanel from './AdminPanel.jsx';
+import ManufacturerProfiles from './ManufacturerProfiles.jsx';
+import HomePage from './HomePage.jsx';
+import ComputerCard from './ComputerCard.jsx';
 import ComparisonPicker from './ComparisonPicker.jsx';
 import ComparisonTable from './ComparisonTable.jsx';
+import ReleasePanels from './ReleasePanels.jsx';
 import { comparisonSummary } from './comparison-api.js';
+import { computerSources } from './computer-sources.js';
+import { displaySpecification, displayDescription, displayConfigurationName, displayConfigurations } from './catalog-display.js';
+import { memorySpecifications, visibleMemoryNotes } from './ram-display.js';
 
 const nav = [
-  ['timeline', 'Timeline', Clock3], ['catalog', 'Catalogo', Database],
+  ['home', 'Benvenuto', House],
+  ['timeline', 'Timeline', Clock3], ['catalog', 'Catalogo', Database], ['manufacturers', 'Produttori', Factory],
   ['analysis', 'Analisi', BarChart3], ['compare', 'Confronta', GitCompareArrows],
   ['assistant', 'Assistente AI', Bot], ['admin', 'Amministrazione', Pencil]
 ];
@@ -25,15 +35,15 @@ function SystemCover({ src, name, year, className = '' }) {
   const [broken, setBroken] = useState(false);
   useEffect(() => setBroken(false), [src]);
   return <div className={'system-cover ' + className}>
-    {src && !broken ? <img src={src} alt={'Fotografia di ' + name} loading="lazy" onError={() => setBroken(true)} />
+    {src && !broken ? <ArchiveImage src={src} alt={'Immagine di ' + name} loading="lazy" onError={() => setBroken(true)} />
       : <div className="system-placeholder"><Monitor size={34} /><span>{year || 'FOTO'}</span></div>}
   </div>;
 }
 
-function Source({ s }) {
+function Source({ s, compact = false }) {
   return s.url
-    ? <a className="source" href={s.url} target="_blank" rel="noopener noreferrer"><BookOpen size={14} />{s.title}<ExternalLink size={13} /></a>
-    : <div className="source"><BookOpen size={14} />{s.title}</div>;
+    ? <a className="source" title={compact ? s.title : undefined} aria-label={compact ? 'Fonte: ' + s.title : undefined} href={s.url} target="_blank" rel="noopener noreferrer"><BookOpen size={14} />{compact ? 'Fonte' : s.title}<ExternalLink size={13} /></a>
+    : <div className="source" title={compact ? s.title : undefined}><BookOpen size={14} />{compact ? 'Fonte' : s.title}</div>;
 }
 
 function Gallery({ computer }) {
@@ -44,12 +54,12 @@ function Gallery({ computer }) {
   if (!images.length) return <div className="gallery-empty"><ImageIcon size={30} /><b>Nessuna fotografia ancora associata</b><span>Puoi aggiungere una foto dal dispositivo, tramite URL oppure cercarla su Wikimedia Commons.</span></div>;
   return <div className="gallery-box">
     <div className="gallery-feature">
-      <img src={active.url} alt={active.caption || 'Fotografia di ' + computer.model_name} />
+      <ArchiveImage src={imageCrop(active.thumbnail_url) ? active.thumbnail_url : active.url} alt={active.caption || 'Immagine di ' + computer.model_name} />
       {active.is_primary && <span className="cover-flag"><Star size={12} fill="currentColor" /> Copertina</span>}
     </div>
     {images.length > 1 && <div className="gallery-strip">{images.map(i =>
       <button type="button" key={i.id} className={'gallery-thumb ' + (active.id === i.id ? 'selected' : '')} onClick={() => setActiveId(i.id)} title={i.caption || 'Fotografia'}>
-        <img src={i.thumbnail_url || i.url} alt={i.caption || 'Miniatura'} loading="lazy" />
+        <ArchiveImage src={i.thumbnail_url || i.url} alt={i.caption || 'Miniatura'} loading="lazy" />
       </button>)}</div>}
     <div className="gallery-credit">
       <b>{active.caption || 'Fotografia del sistema'}</b>
@@ -66,7 +76,7 @@ function Gallery({ computer }) {
 function ImageManager({ computer, onChanged }) {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState('commons');
-  const [query, setQuery] = useState(computer.manufacturer + ' ' + computer.model_name);
+  const [query, setQuery] = useState(computer.photo_search_query || `${computer.manufacturer} ${computer.model_name}`);
   const [results, setResults] = useState([]);
   const [file, setFile] = useState(null);
   const [url, setUrl] = useState('');
@@ -79,7 +89,7 @@ function ImageManager({ computer, onChanged }) {
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
-  useEffect(() => { setQuery(computer.manufacturer + ' ' + computer.model_name); setResults([]); setMessage(''); }, [computer.id]);
+  useEffect(() => { setQuery(computer.photo_search_query || `${computer.manufacturer} ${computer.model_name}`); setResults([]); setMessage(''); }, [computer.id]);
 
   async function perform(action, success) {
     setBusy(true); setError(''); setMessage('');
@@ -195,27 +205,34 @@ function Filters({ meta, filters, setFilters }) {
   </div>;
 }
 
-function ComputerDetail({ computer, onClose, onChanged }) {
+function ComputerDetail({ computer, onClose, onChanged, onOpenManufacturer }) {
   return <>
     <button className="back" onClick={onClose}><ArrowLeft size={16} /> Torna all'esplorazione</button>
     <div className="eyebrow">SCHEDA SISTEMA · #{computer.id}</div>
     <h1>{computer.model_name}</h1>
-    <p className="lead">{computer.manufacturer} · {computer.first_release || 'Data non disponibile'}</p>
-    <p>{computer.description}</p><div className="tag-row">{computer.categories.map(x => <span className="tag" key={x}>{x}</span>)}</div>
+    <p className="lead"><button className="manufacturer-link" onClick={() => onOpenManufacturer(computer.manufacturer_id)}>{computer.manufacturer}</button> · {computer.first_release || 'Data non disponibile'}</p>
+    <p>{displayDescription(computer)}</p><div className="tag-row">{computer.categories.map(x => <span className="tag" key={x}>{x}</span>)}</div>
+    {computer.description_attribution && <p className="muted">{computer.description_attribution.method === 'estratto introduttivo italiano' ? 'Estratto da ' : computer.description_attribution.method === 'passaggi italiani dedicati al modello' ? 'Passaggi da ' : 'Sintesi da '}<a href={computer.description_attribution.url} target="_blank" rel="noopener noreferrer">{computer.description_attribution.title}</a> · Collaboratori di Wikipedia · <a href={computer.description_attribution.license_url} target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a></p>}
     <div className="section-title">Galleria fotografica <span>{computer.images?.length || 0} fotografie</span></div>
     <Gallery computer={computer} />
     <ImageManager computer={computer} onChanged={onChanged} />
     <div className="section-title">Configurazioni e specifiche</div>
-    {computer.configurations.map(c => <section className="panel" key={c.id}><h3>{c.variant_name}</h3><table><tbody>{c.specifications.map(s => <tr key={s.id}><td>{s.component_type} · {s.property_name}</td><td><strong>{s.numeric_value ?? s.text_value} {s.unit || ''}</strong></td></tr>)}</tbody></table></section>)}
+    {displayConfigurations(computer).map(c => <section className="panel" key={c.id} aria-label={'Configurazione · ' + displayConfigurationName(c)}><h3>{displayConfigurationName(c)}</h3>{c.regional_variants?.length > 0 && <p className="muted">Varianti regionali: {c.regional_variants.join(' · ')}</p>}{c.variant_description && <p>{c.variant_description}</p>}{c.variant_announcement_date && <p className="muted">Annuncio della configurazione: {c.variant_announcement_date}</p>}{displayDescription(c) && <p className="muted">{displayDescription(c)}</p>}<table><tbody>{memorySpecifications(c.specifications).map(s => {
+      const view = displaySpecification(s);
+      return <tr key={s.id}><td>{s.memory_values && view.property_name === 'Capacità' ? 'RAM' : view.component_type + ' · ' + view.property_name}</td><td><strong title={s.memory_values ? undefined : 'Valore registrato: ' + (s.numeric_value ?? s.text_value) + (s.unit ? ' ' + s.unit : '')}>{view.numeric_value ?? view.text_value} {view.unit || ''}</strong>{visibleMemoryNotes(s.memory_notes).map(note => <small className="memory-note" key={note}>{note}</small>)}{s.sources?.map(source => <Source key={source.id} s={source} compact />)}</td></tr>;
+    })}</tbody></table></section>)}
     <div className="section-title">Commercializzazione</div>
-    {computer.releases.map(r => <section className="panel" key={r.id}><b>{r.market}</b><p>{r.release_date || 'Data non disponibile'} · {r.price != null ? `${r.price} ${r.currency}` : 'Prezzo non disponibile'}</p>{r.sources.map(s => <Source key={s.id} s={s} />)}</section>)}
+    <ReleasePanels computer={computer} renderSource={source => <Source key={source.id} s={source} compact />} />
+    {!!computer.facts.length && <><div className="section-title">Note e dati contestuali</div><section className="panel">{computer.facts.map(f => <div key={f.id ?? f.type + f.statement}><b>{f.type}</b>{f.model_variant && <p className="muted">Configurazione: {f.display_model_variant ?? f.model_variant}</p>}<p>{f.display_statement ?? f.statement}</p>{f.sources.map(s => <Source key={s.id} s={s} compact />)}</div>)}</section></>}
     <div className="section-title">Fonti e verificabilità</div>
-    <section className="panel">{computer.sources.length ? computer.sources.map(s => <Source key={s.id} s={s} />) : <p className="muted">Non sono ancora state associate fonti verificate a questa scheda. I dati iniziali sono dimostrativi. Le fonti fotografiche sono indicate nella galleria.</p>}</section>
+    <section className="panel">{computerSources(computer).length ? <><p className="muted">Fonti della scheda e dei singoli dati. I valori di riferimento non attestano una configurazione ordinabile al lancio. La presenza di una citazione non implica una verifica: gli stati e le decisioni sono in Amministrazione → Importazioni → Fonti e verifiche.</p>{computerSources(computer).map(s => <Source key={s.id} s={s} />)}</> : <p className="muted">Nessuna fonte associata alla scheda o ai suoi dati. Le fonti fotografiche sono indicate nella galleria. Se hai importato una seconda scheda dello stesso modello, controlla i duplicati in Amministrazione → Importazioni.</p>}</section>
   </>;
 }
 
 function App() {
-  const [tab, setTab] = useState('timeline');
+  const detailRequest = useRef(0);
+  const [tab, setTab] = useState('home');
+  const [manufacturerId, setManufacturerId] = useState(null);
   const [revision, setRevision] = useState(0);
   const [adminDirty, setAdminDirty] = useState(false);
   const [meta, setMeta] = useState({ manufacturers: [], categories: [] });
@@ -229,6 +246,8 @@ function App() {
   const [answer, setAnswer] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  // Restore the new view before painting; data refreshes keep reading position.
+  useLayoutEffect(() => { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }, [tab, selected?.id, manufacturerId]);
   useEffect(() => {
     setComparisonConfigurations(previous => {
       const kept = Object.entries(previous).filter(([id]) => compare.some(c => String(c.id) === id));
@@ -241,7 +260,10 @@ function App() {
     const params = new URLSearchParams(Object.entries(filters).filter(([, v]) => v !== ''));
     return latestRequest(signal => allComputers(params, signal), rows => { setItems(rows); setError(''); }, e => setError(e.message));
   }, [filters, revision, tab]);
-  useEffect(() => { api('/analytics').then(setAnalytics).catch(() => {}); }, [revision]);
+  useEffect(() => {
+    if (tab !== 'timeline' && tab !== 'analysis') return;
+    return latestRequest(signal => api('/analytics', { signal }), setAnalytics, () => {});
+  }, [revision, tab]);
   // Refresh stored labels after administrative edits without loading the archive for the picker.
   useEffect(() => {
     if (!compare.length) return;
@@ -250,11 +272,26 @@ function App() {
   }, [revision]);
   async function refreshComputer() {
     if (!selected) return;
+    const request = detailRequest.current;
     const [updated, listing] = await Promise.all([api('/computers/' + selected.id), allComputers()]);
+    if (request !== detailRequest.current) return;
     setSelected(updated);
     setItems(previous => previous.map(old => listing.find(c => c.id === old.id) || old));
   }
-  const openComputer = async id => { try { setSelected(await api('/computers/' + id)); } catch (e) { setError(e.message); } };
+  const openComputer = async id => {
+    const request = ++detailRequest.current;
+    try { const computer = await api('/computers/' + id); if (request === detailRequest.current) setSelected(computer); }
+    catch (e) { if (request === detailRequest.current) setError(e.message); }
+  };
+  const closeComputer = () => { detailRequest.current += 1; setSelected(null); };
+  const openManufacturer = id => { closeComputer(); setManufacturerId(id); setTab('manufacturers'); };
+  const navigate = (id, period = null) => {
+    if (id === tab && !selected && manufacturerId == null && !period) { detailRequest.current += 1; return; }
+    if (tab === 'admin' && adminDirty && !window.confirm('Ci sono modifiche non salvate. Vuoi abbandonarle?')) return;
+    detailRequest.current += 1;
+    setAdminDirty(false); setTab(id); setSelected(null); setManufacturerId(null);
+    if (period) setFilters({ q: '', category_id: '', manufacturer_id: '', year_from: period.year_from, year_to: period.year_to });
+  };
   const toggle = computer => setCompare(a => a.some(c => c.id === computer.id) ? a.filter(c => c.id !== computer.id) : a.length < 5 ? [...a, comparisonSummary(computer)] : a);
   const ask = async e => {
     e.preventDefault(); setLoading(true); setAnswer('');
@@ -265,19 +302,33 @@ function App() {
   return <div className="shell"><aside className="sidebar">
     <BrandLogo />
     <div className="side-label">ESPLORA</div>
-    <nav>{nav.map(([id, label, Icon]) => <button key={id} onClick={() => { if (id === tab && !selected) return; if (tab === 'admin' && adminDirty && !window.confirm('Ci sono modifiche non salvate. Vuoi abbandonarle?')) return; setAdminDirty(false); setTab(id); setSelected(null); }} className={tab === id ? 'active' : ''}><Icon size={18} />{label}{id === 'compare' && compare.length > 0 ? <small>{compare.length}</small> : null}</button>)}</nav>
-    <div className="side-bottom"><div className="status-dot" />Archivio dimostrativo<br /><span>Versione 1.1 · Single-user</span></div>
+    <nav aria-label="Navigazione principale">{nav.map(([id, label, Icon]) => <button key={id} aria-label={id === 'manufacturers' ? 'Esplora produttori' : undefined} onClick={() => navigate(id)} className={tab === id ? 'active' : ''} aria-current={tab === id ? 'page' : undefined}><Icon size={18} />{label}{id === 'compare' && compare.length > 0 ? <small>{compare.length}</small> : null}</button>)}</nav>
+    <div className="side-bottom"><div className="status-dot" />Archivio storico<br /><span>Versione 1.1 · Single-user</span></div>
   </aside><main><header><div className="breadcrumb">ARCHIVIO DIGITALE <ChevronRight size={14} /> {nav.find(x => x[0] === tab)?.[1].toUpperCase()}</div><div className="header-actions"><ThemeSwitcher /><div className="header-right"><span className="header-tagline">STORIA DELL'INFORMATICA</span><span className="avatar">H</span></div></div></header>
-    <div className="content">{error && <div className="error">{error} <button onClick={() => setError('')}>×</button></div>}
-      {selected ? <ComputerDetail computer={selected} onClose={() => setSelected(null)} onChanged={refreshComputer} /> : <>
-        {tab === 'admin' && <AdminPanel onSaved={() => setRevision(v => v + 1)} onDirtyChange={setAdminDirty} onOpenComputer={openComputer} />}
+    <div className={'content' + (tab === 'home' && !selected ? ' home-content' : '')}>{error && <div className="error">{error} <button onClick={() => setError('')}>×</button></div>}
+      {selected ? <ComputerDetail computer={selected} onClose={closeComputer} onChanged={refreshComputer} onOpenManufacturer={openManufacturer} /> : <>
+        {tab === 'home' && <HomePage revision={revision} manufacturers={meta.manufacturers} onNavigate={navigate} onOpenComputer={openComputer} onOpenManufacturer={openManufacturer} Cover={SystemCover} />}
+        {tab === 'admin' && <AdminPanel onSaved={() => setRevision(v => v + 1)} onDirtyChange={setAdminDirty} onOpenComputer={openComputer}
+          onDeleted={({ type, id }) => {
+            if (type === 'computers') {
+              setCompare(previous => previous.filter(computer => computer.id !== id));
+              setItems(previous => previous.filter(computer => computer.id !== id));
+              setSelected(previous => previous?.id === id ? null : previous);
+            } else if (type === 'manufacturers') {
+              setFilters(previous => String(previous.manufacturer_id) === String(id) ? { ...previous, manufacturer_id: '' } : previous);
+            }
+          }}
+          onArchiveReset={() => { setCompare([]); setComparisonConfigurations({}); setSelected(null); setItems([]);
+            setFilters({ q: '', category_id: '', manufacturer_id: '', year_from: '', year_to: '' });
+            setAnswer(''); setRevision(v => v + 1); }} />}
+        {tab === 'manufacturers' && <ManufacturerProfiles id={manufacturerId} onOpen={setManufacturerId} onBack={() => setManufacturerId(null)} onOpenComputer={openComputer} revision={revision} Cover={SystemCover} />}
         {tab === 'timeline' && <><div className="eyebrow">UN VIAGGIO NELL'EVOLUZIONE TECNOLOGICA</div><h1>La storia dei <em>calcolatori.</em></h1><p className="lead">Esplora i sistemi che hanno definito l'informatica, dai mainframe ai personal computer.</p><Stats analytics={analytics} /><div className="section-title">Timeline delle innovazioni <span>{items.length} sistemi</span></div><Filters meta={meta} filters={filters} setFilters={setFilters} />
           <div className="timeline">{items.map(c => <div className="time-item" key={c.id}><div className="time-year">{c.year || '—'}</div><div className="time-line"><i /></div>
-            <div className="time-card" onClick={() => openComputer(c.id)}><div className="time-top"><span className="tag">{c.categories[0]}</span><span>{c.manufacturer}</span></div><div className="time-content"><SystemCover src={c.image_url} name={c.model_name} year={c.year} className="time-photo" /><div className="time-info"><h3>{c.model_name}</h3><p>{c.description}</p></div></div>
+            <div className="time-card" onClick={() => openComputer(c.id)}><div className="time-top"><span className="tag">{c.categories[0]}</span><button className="manufacturer-link" onClick={e => { e.stopPropagation(); openManufacturer(c.manufacturer_id); }}>{c.manufacturer}</button></div><div className="time-content"><SystemCover src={c.image_url} name={c.model_name} year={c.year} className="time-photo" /><div className="time-info"><h3>{c.model_name}</h3><p>{displayDescription(c)}</p></div></div>
               <div className="card-foot"><span>Esplora scheda <ChevronRight size={15} /></span><button onClick={e => { e.stopPropagation(); toggle(c); }} className={compare.some(s => s.id === c.id) ? 'added' : ''}>{compare.some(s => s.id === c.id) ? '✓ Selezionato' : '+ Confronta'}</button></div></div>
           </div>)}</div></>}
         {tab === 'catalog' && <><div className="eyebrow">DATABASE STORICO</div><h1>Catalogo sistemi</h1><p className="lead">Cerca, filtra e approfondisci le caratteristiche dei calcolatori.</p><Filters meta={meta} filters={filters} setFilters={setFilters} />
-          <div className="catalog-grid">{items.map(c => <article className="catalog-card" key={c.id}><SystemCover src={c.image_url} name={c.model_name} year={c.year} className="catalog-photo" /><span className="tag">{c.categories[0]}</span><h3>{c.model_name}</h3><p className="muted">{c.manufacturer}</p><p>{c.description}</p><div className="card-foot"><button onClick={() => openComputer(c.id)}>Dettagli <ChevronRight size={15} /></button><button onClick={() => toggle(c)} className={compare.some(s => s.id === c.id) ? 'added' : ''}>{compare.some(s => s.id === c.id) ? '✓' : '+ Confronta'}</button></div></article>)}</div></>}
+          <div className="catalog-grid">{items.map(c => <ComputerCard key={c.id} computer={c} Cover={SystemCover} onOpen={openComputer} onOpenManufacturer={openManufacturer} onCompare={toggle} selected={compare.some(s => s.id === c.id)} />)}</div></>}
         {tab === 'analysis' && <><div className="eyebrow">DATA EXPLORATION</div><h1>Analisi dell'archivio</h1><p className="lead">Distribuzioni temporali e per categoria calcolate direttamente dal database.</p><Stats analytics={analytics} /><div className="charts"><section className="panel"><h3>Sistemi per anno di commercializzazione</h3><div className="chart"><ResponsiveContainer><BarChart data={analytics?.by_year || []}><CartesianGrid stroke="var(--chart-grid)" strokeDasharray="3 3" vertical={false} /><XAxis stroke="var(--chart-axis)" tick={{ fill: 'var(--chart-text)' }} dataKey="year" /><YAxis stroke="var(--chart-axis)" allowDecimals={false} /><Tooltip contentStyle={{ backgroundColor: 'var(--chart-tooltip-bg)', color: 'var(--chart-tooltip-text)', borderColor: 'var(--chart-grid)', borderRadius: 8 }} labelStyle={{ color: 'var(--chart-tooltip-text)' }} itemStyle={{ color: 'var(--chart-tooltip-text)' }} cursor={{ fill: 'var(--chart-cursor)' }} /><Bar dataKey="count" fill="var(--chart-bar)" radius={[5, 5, 0, 0]} /></BarChart></ResponsiveContainer></div></section><section className="panel"><h3>Distribuzione per categoria</h3><div className="chart"><ResponsiveContainer><BarChart data={analytics?.by_category || []} layout="vertical" margin={{ left: 35 }}><XAxis stroke="var(--chart-axis)" tick={{ fill: 'var(--chart-text)' }} type="number" allowDecimals={false} /><YAxis stroke="var(--chart-axis)" type="category" dataKey="name" width={110} tick={{ fontSize: 11, fill: 'var(--chart-text)' }} /><Tooltip contentStyle={{ backgroundColor: 'var(--chart-tooltip-bg)', color: 'var(--chart-tooltip-text)', borderColor: 'var(--chart-grid)', borderRadius: 8 }} labelStyle={{ color: 'var(--chart-tooltip-text)' }} itemStyle={{ color: 'var(--chart-tooltip-text)' }} cursor={{ fill: 'var(--chart-cursor)' }} /><Bar dataKey="count" fill="var(--chart-bar)" radius={[0, 5, 5, 0]} /></BarChart></ResponsiveContainer></div></section></div><p className="muted">Le distribuzioni riflettono il campione dimostrativo e non la totalità del mercato storico.</p></>}
         {tab === 'compare' && <><div className="eyebrow">ANALISI COMPARATIVA</div><h1>Confronta i sistemi</h1><p className="lead">Cerca e aggiungi da 2 a 5 sistemi per confrontarli subito. Puoi selezionarli anche dal catalogo e dalla timeline.</p>
           <ComparisonPicker selected={compare} onSelect={toggle} onRemove={id => setCompare(a => a.filter(c => c.id !== id))} />

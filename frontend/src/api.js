@@ -11,7 +11,10 @@ export async function api(path, options = {}) {
       if (typeof payload.detail === 'string') explanation = payload.detail;
       else if (Array.isArray(payload.detail)) explanation = payload.detail.map(e => e.msg).join('; ');
     } catch { /* risposta non JSON */ }
-    throw Error(explanation);
+    const error = Error(explanation);
+    error.status = response.status;
+    error.retryAfter = response.headers.get('Retry-After');
+    throw error;
   }
   return response.status === 204 ? null : response.json();
 }

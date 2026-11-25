@@ -1,0 +1,224 @@
+{
+  "version": "ibm-ps-dates-2026-11-v1",
+  "researched_on": "2026-11-24",
+  "records": [
+    {
+      "model_name": "PS/2 Model 30-286",
+      "release_date": "1988-09-13",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Model 30",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1363947418",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "tion [[keypad]].<ref name=Gibson1987 /> On September 13, 1988, IBM launched the PS/2 Model 30 286, which features the [[Intel 80286]] microprocessor, clocked at 10&nbsp;MHz. Per the updated microprocessor's 16-bit external data bus, the Model 30 286 also sports 16-bit [[AT bus]] expansion slots"
+    },
+    {
+      "model_name": "PS/2 Model 50",
+      "release_date": "1987-04-02",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Model 50",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1376902896",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "y. ==Development and release== The PS/2 Model 50 was introduced on April 2, 1987, alongside the lower-end [[IBM PS/2 Model 30|Model 30]] and the higher-end [[IBM PS/2 Model 60|Model 60]]. The PS/2 Model 50, as well as the Model 60, served as the public market introduction of the [[Micro Channel arch",
+      "announcement_date": "1987-04-02",
+      "announcement_evidence": "y. ==Development and release== The PS/2 Model 50 was introduced on April 2, 1987, alongside the lower-end [[IBM PS/2 Model 30|Model 30]] and the higher-end [[IBM PS/2 Model 60|Model 60]]. The PS/2 Model 50, as well as the Model 60, served as the public market introduction of the [[Micro Channel arch"
+    },
+    {
+      "model_name": "PS/2 Model 50 Z",
+      "release_date": "1988-06",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Model 50",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1376902896",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "ng at a [[clock speed]] of 10&nbsp;MHz. In June 1988, the PS/2 Model 50 received an update in the form of the '''Personal System/2 Model 50 Z''', which offered faster [[Random-access memory|RAM]], eliminating the insertion of [[wait state]]s endemic to the original Model ",
+      "announcement_date": "1988-06-02",
+      "announcement_evidence": "On June 2, 1988, IBM introduced the Model 50 Z, which replaced the on-board 125-ns DRAM of its predecessor with 85-ns DRAM, leading to a memory and number-crunching performance boost of roughly 20 percent, according to PC Magazine. In addition, the Model 50's dual 30-pin SIMM slots was replaced by a single 72-pin SIMM slot on the Model 50 Z, able to take a 1-MB or 2-MB SIMM (compared to only 512-KB SIMMs on the Model 50). "
+    },
+    {
+      "model_name": "PS/2 Model 35 SX",
+      "release_date": "1991",
+      "source": {
+        "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+        "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "ystem (DOS) Versions 3.3, 4.01 and 5.0. Planned Availability Date: June 11, 1991. (R) Registered trademark of International Business Machines Corporation. Customer Letter Section HIGHLIGHTS o 20MHz 80386SX microprocessor with coprocessor socket o 2MB memory standard on the system board (expandable t",
+      "announcement_date": "1991-06-11",
+      "announcement_evidence": "ystem (DOS) Versions 3.3, 4.01 and 5.0. Planned Availability Date: June 11, 1991. (R) Registered trademark of International Business Machines Corporation. Customer Letter Section HIGHLIGHTS o 20MHz 80386SX microprocessor with coprocessor socket o 2MB memory standard on the system board (expandable t",
+      "note": "IBM annunciò il modello l’11 giugno 1991 con disponibilità prevista per lo stesso giorno. È importato l’anno di introduzione, non una data di consegna accertata."
+    },
+    {
+      "model_name": "PS/2 Model 55 SX",
+      "release_date": "1989-05",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Model 55 SX",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1380394988",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "]] (PS/2) family of personal computers. First released in May 1989, the Model 55 SX features an [[i386SX|Intel 386SX]] processor running at a [[clock speed]] of 16&nbsp;MHz. In October 1990, IBM introduced a [[diskless workstation]] version of the Model 55 SX, called the '''Personal Sy",
+      "announcement_date": "1989-05-09",
+      "announcement_evidence": "d-1992. ==Development and release== IBM announced the PS/2 Model 55 SX on May 9, 1989, alongside the [[Portable computer|portable]] [[IBM PS/2 Model P70|PS/2 Model P70]]. The Model 55 SX was IBM's first personal computer to use the [[i386SX|386SX]] processor by [[Intel]], released almost a year earlier i"
+    },
+    {
+      "model_name": "PS/2 Model 80",
+      "release_date": "1987-07",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Model 80",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1335973655",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "]] (PS/2) family of personal computers. First released in July 1987, the Model 80 features the 32-bit [[i386|Intel 386]] processor running at a [[clock speed]] of 16&nbsp;MHz. The Model 80 was built into a [[Computer tower|tower case]], the same one as its 16-bit counterpart the [[IBM P",
+      "announcement_date": "1987-04-02",
+      "announcement_evidence": "n 1992. ==Development and release== IBM announced the PS/2 Model 80 on April 2, 1987, alongside the entire [[IBM PS/2|Personal System/2]] line, which represented IBM's second generation of personal desktop computers after the original [[IBM Personal Computer|IBM PC]] was launched in 1981. The original P",
+      "offers": [
+        {
+          "machine_code": "8580-071",
+          "release_date": "1987-07",
+          "evidence": "]] (PS/2) family of personal computers. First released in July 1987, the Model 80 features the 32-bit [[i386|Intel 386]] processor running at a [[clock speed]] of 16&nbsp;MHz. The Model 80 was built into a [[Computer tower|tower case]], the same one as its 16-bit counterpart the [[IBM P"
+        },
+        {
+          "machine_code": "8580-111",
+          "release_date": "1987-11",
+          "evidence": "shipjuly\"/> ahead of the Model 80-111's November 1987 release date.<ref name=ships115 /> The Model 80-111 featured a substantially redesigned system board (\"planar\", in IBM parlance) in order to accommodate a boost in the clock speed as well as the maximum amount of [[random-access mem"
+        }
+      ]
+    },
+    {
+      "model_name": "PS/1 Model 2011",
+      "release_date": "1990",
+      "source": {
+        "title": "Wikipedia — IBM PS/1",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374694288",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "of personal computers that marked IBM's return to the home market in 1990, five years after the IBM PCjr. It was replaced by the IBM Aptiva in September 1994. == Position among IBM's PC brands == The PS/1 line was created for new computer users and was sold in consumer electronics stores alon"
+    },
+    {
+      "model_name": "PS/1 Model 2121",
+      "release_date": "1991",
+      "source": {
+        "title": "PC Collection — gamme IBM PS/1",
+        "url": "https://www.pc-collection.com/gamme-ps1.php",
+        "author": "PC Collection",
+        "source_type": "collection",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Tabella: PS/1 282 | 2121-282 | Mai 1991 | 386SX 16 | 2 Mb | 6 Mb | 80 Mb.",
+      "note": "Anno della famiglia documentato dal 2121-282 nel maggio 1991. La voce Wikipedia riporta 1992: la discrepanza è conservata nella ricerca; non si attribuisce un giorno di uscita agli allestimenti C42/G42."
+    },
+    {
+      "model_name": "PS/1 Model 2133",
+      "release_date": "1992",
+      "source": {
+        "title": "Wikipedia — IBM PS/1",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374694288",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "> ===Model 2133=== {{Infobox computer | name = IBM PS/1 (model 2133) | image = | release_date = 1992 | discontinued = 1993 | cpu = Intel 80386SX @ 25&nbsp;MHz or 80486SX @ 20&nbsp;MHz or 80486SX @ 25&nbsp;MHz or 80486DX @ 33&nbsp;MHz or [[80486DX2]] @ 50&nbsp;MHz | memory = 2–16&nbsp;MB (2–4&nbsp;MB on-board) | os = PC",
+      "note": "Anno della famiglia 2133. PC Collection documenta il 2133-111 a fine 1992; non è ricavato dalla data del manuale di manutenzione."
+    },
+    {
+      "model_name": "PS/1 Model 2168",
+      "release_date": "1992",
+      "source": {
+        "title": "Wikipedia — IBM PS/1",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374694288",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "} ===Model 2168=== {{Infobox computer | name = IBM PS/1 (model 2168) | image = | release_date = 1992 | discontinued = 1993 | cpu = 80486SX @ 25&nbsp;MHz or 80486SX @ 33&nbsp;MHz or 80486DX @ 33&nbsp;MHz or 80486DX @ 50&nbsp;MHz or [[80486DX2]] @ 50&nbsp;MHz or [[80486DX2]] @ 66&nbsp;MHz | memory = 2–16&nbsp;MB (2–4&nbs",
+      "note": "Anno della famiglia secondo la voce enciclopedica; la collezione francese documenta allestimenti 2168 a inizio 1993. Non certifica la prima vendita del singolo allestimento BB1."
+    },
+    {
+      "model_name": "PS/2 Note N33 SX",
+      "release_date": "1991",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Note and PS/note",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "ebook-sized computer from IBM which was announced in 1991. This model was based on the AT-bus and had between 2 or 6MB RAM. It has a 9.5\" 16-greyscale VGA LCD (640x480), external 1.44MB floppy connector, expansion ports and a 40MB or 80MB HDD, and weighs 5.5 lb (2.5 kg). There"
+    },
+    {
+      "model_name": "PS/note 182",
+      "release_date": "1992",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Note and PS/note",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "/note N82 was equipped with 80386SX and released in 1992. This line has a 7-row keyboard layout and similar to next-year PS/note 425 model case (but with gray case color and without TrackPoint). The case badge uniquely resembled the style of the PS/1. === Model 425/425C === T"
+    },
+    {
+      "model_name": "PS/2 Note N51 SX",
+      "release_date": "1992",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Note and PS/note",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "books from the PS/2 line by IBM. It was announced in March 1992, half a year prior to the release of the first ThinkPad, the IBM ThinkPad 700. The series was discontinued in 1994. == Background == After the departure of Bob Lawten from IBM, the team at IBM had little development dir",
+      "announcement_date": "1992-03",
+      "announcement_evidence": "books from the PS/2 line by IBM. It was announced in March 1992, half a year prior to the release of the first ThinkPad, the IBM ThinkPad 700. The series was discontinued in 1994. == Background == After the departure of Bob Lawten from IBM, the team at IBM had little development dir",
+      "note": "Annuncio della serie nel marzo 1992; non viene trasformato in un giorno di consegna del modello N51 SX."
+    },
+    {
+      "model_name": "PS/note 425",
+      "release_date": "1993",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Note and PS/note",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-24"
+      },
+      "evidence": " a 7-row keyboard layout and similar to next-year PS/note 425 model case (but with gray case color and without TrackPoint). The case badge uniquely resembled the style of the PS/1. === Model 425/425C === The PS/note 425/425C are identical to the ThinkPad 350/350C. == Accessories =",
+      "note": "Anno del PS/note 425; le date di spedizione giugno/luglio 1993 del ThinkPad 350 non sono attribuite automaticamente al marchio PS/note."
+    }
+  ],
+  "notes": [
+    "Date documentate del modello o della famiglia; non inferite da data di aggiornamento manuali, prezzo o valuta.",
+    "PS/1 2121: fonte di collezione maggio 1991 contro infobox Wikipedia 1992; mantenuta nota esplicita.",
+    "PS/1 2168: anno globale enciclopedico 1992 e allestimenti francesi documentati a inizio 1993; non sono date universali di ogni configurazione.",
+    "NYT non accessibile tramite il proxy; Google Books ha restituito immagini non disponibili; non usati come evidenze lette.",
+    "Fonti nuove pending; nessuna certificazione umana automatica."
+  ]
+}

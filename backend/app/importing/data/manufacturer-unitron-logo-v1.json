@@ -1,0 +1,71 @@
+{
+  "version": "unitron-commons-logo-2026-11-v1",
+  "researched_on": "2026-11-24",
+  "research_notes": [
+    "Supplemento circoscritto al logo della brasiliana Unitron Eletrônica indicato dall’utente; non riapplica la raccolta generale dei produttori.",
+    "File originale Commons via URL HTTPS senza tracciamento; nessun file fotografico redistribuito."
+  ],
+  "records": [
+    {
+      "manufacturer_names": [
+        "Unitron Eletronica",
+        "Unitron Eletrônica"
+      ],
+      "fields": {
+        "logo_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_retr%C3%B2_Unitron_Eletr%C3%B4nica.png",
+        "logo_author": "ChatGPT, Vincenzo Colacicco",
+        "logo_license": "CC0 1.0 · pubblico dominio (dichiarazione Commons)",
+        "logo_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "logo_source_url": "https://commons.wikimedia.org/wiki/File:Logo_retr%C3%B2_Unitron_Eletr%C3%B4nica.png"
+      },
+      "field_sources": {
+        "logo_url": [
+          "https://commons.wikimedia.org/wiki/File:Logo_retr%C3%B2_Unitron_Eletr%C3%B4nica.png"
+        ],
+        "logo_author": [
+          "https://commons.wikimedia.org/wiki/File:Logo_retr%C3%B2_Unitron_Eletr%C3%B4nica.png"
+        ],
+        "logo_license": [
+          "https://commons.wikimedia.org/wiki/File:Logo_retr%C3%B2_Unitron_Eletr%C3%B4nica.png"
+        ],
+        "logo_license_url": [
+          "https://commons.wikimedia.org/wiki/File:Logo_retr%C3%B2_Unitron_Eletr%C3%B4nica.png"
+        ],
+        "logo_source_url": [
+          "https://commons.wikimedia.org/wiki/File:Logo_retr%C3%B2_Unitron_Eletr%C3%B4nica.png"
+        ]
+      },
+      "sources": [
+        {
+          "title": "Wikimedia Commons — Logo retrò Unitron Eletrônica.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Logo_retr%C3%B2_Unitron_Eletr%C3%B4nica.png",
+          "author": "ChatGPT, Vincenzo Colacicco",
+          "publisher": "Wikimedia Commons / Wikimedia Foundation",
+          "source_type": "image",
+          "license": "CC0 1.0; PD-algorithm (dichiarazioni nella pagina Commons)",
+          "access_date": "2026-11-24"
+        }
+      ],
+      "research": {
+        "status": "documented_partial",
+        "commons_page_id": 203724844,
+        "commons_revision": 1305896637,
+        "commons_revision_url": "https://commons.wikimedia.org/w/index.php?title=File%3ALogo+retr%C3%B2+Unitron+Eletr%C3%B4nica.png&oldid=1305896637",
+        "uploaded_at": "2026-11-24T11:48:49Z",
+        "uploader": "Enzo45s",
+        "credit": "Digitally reconstructed from the original logo visible on the back of a Unitron computer in a photograph.",
+        "description": "Historical logo of Unitron Eletrônica, a Brazilian computer manufacturer. Digital reconstruction based on a photograph of the original logo.",
+        "license_templates": [
+          "cc-zero",
+          "PD-algorithm"
+        ],
+        "notes": [
+          "Ricostruzione digitale da una fotografia del logo originale sul retro di un computer Unitron, secondo la pagina Commons; non attribuire la realizzazione del file alla società storica.",
+          "Il caricamento del 2026 non è una data della storia aziendale.",
+          "Aggiornamento limitato al logo: descrizione, date, fonti storiche e sistemi già presenti restano invariati.",
+          "Non associare il logo alla Unitron tedesca o alla scheda separata bootleg (Unitron)."
+        ]
+      }
+    }
+  ]
+}

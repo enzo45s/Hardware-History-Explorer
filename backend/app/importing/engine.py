@@ -1,0 +1,523 @@
+"""Transactional, append-only provenance and conservative catalog merging."""
+import hashlib
+import base64
+import json
+from datetime import date
+from sqlalchemy import select, text
+from ..models import Computer, Manufacturer, Category, Configuration, Specification, Release, Sale, Review, Fact, Market, Source
+from ..import_models import ImportJob, ImportRow, ImportClaim, ExternalIdentity, ComputerAlias, now
+from ..admin import historical_date
+from .normalize import Record, name_key, parse_payload, MAX_BYTES, MAX_ROWS
+from .vocabulary import matching_specs, quantity_equal
+from .identity import price_model_keys, provider_computer_key, provider_maker_key
+from .reconcile import reconciled_configuration, reconciled_release
+from ..catalog_names import catalog_name
+
+TARGETS = {c.__name__: c for c in (Computer, Configuration, Specification, Release, Sale, Review, Fact)}
+DATE_PRECISION = {'announcement_date': 'announcement_precision', 'release_date': 'release_precision',
+                  'discontinuation_date': 'discontinuation_precision'}
+BUNDLES = {'quantity': ('numeric_value', 'text_value', 'unit'),
+           'price_bundle': ('price', 'currency', 'price_type'),
+           'review_score': ('score', 'max_score'), 'sales_quantity': ('units_sold', 'estimated', 'metric_type')}
+
+
+def serialize(value):
+    return value.isoformat() if isinstance(value, date) else value
+
+
+def identity_provider(provider, data):
+    if provider in ('wikidata', 'retroflops'):
+        return provider
+    citation = data['source']
+    namespace = citation.get('url') or (citation['title'] + '|' + (citation.get('author') or ''))
+    return provider + ':' + hashlib.sha256(namespace.encode()).hexdigest()[:16]
+
+
+def catalog_candidates(db, data, provider, description_index=None):
+    if provider == 'historical_descriptions':
+        from .descriptions import candidate_index
+        from ..catalog_identity import model_key
+        index = description_index if description_index is not None else candidate_index(db)
+        candidates = index.get(model_key(data['manufacturer'], data['model_name']), [])
+        return candidates, len(candidates) > 1
+    if data.get('external_id'):
+        identity = db.scalar(select(ExternalIdentity).where(ExternalIdentity.provider == identity_provider(provider, data),
+                             ExternalIdentity.external_id == data['external_id']))
+        if identity:
+            # A stable identity also preserves an explicitly approved alias mapping.
+            # Changed names/manufacturers still produce non-overwriting field conflicts.
+            return [identity.computer_id], False
+    makers = [m.id for m in db.scalars(select(Manufacturer))
+              if provider_maker_key(provider, m.name) == provider_maker_key(provider, data['manufacturer'])]
+    key = provider_computer_key(provider, data['manufacturer'], data['model_name'])
+    price_keys = price_model_keys(data['manufacturer'], data['model_name']) if provider == 'historical_prices' else None
+    candidates = [c.id for c in db.scalars(select(Computer).where(Computer.manufacturer_id.in_(makers)))
+                  if (bool(price_keys & price_model_keys(c.manufacturer.name, c.model_name)) if price_keys is not None
+                      else key == provider_computer_key(provider, c.manufacturer.name, c.model_name))]
+    plain = catalog_name(data['model_name'])
+    if plain != data['model_name']:
+        for c in db.scalars(select(Computer).where(Computer.manufacturer_id.in_(makers))):
+            if (c.model_name == catalog_name(c.model_name) and
+                provider_computer_key(provider, c.manufacturer.name, c.model_name) ==
+                    provider_computer_key(provider, data['manufacturer'], plain) and c.id not in candidates):
+                candidates.append(c.id)
+    from .catalog_aliases import alias_for
+    alias = alias_for(db, data['manufacturer'], data['model_name'])
+    if alias and alias.computer_id not in candidates:
+        candidates.append(alias.computer_id)
+    return candidates, len(candidates) > 1
+
+
+def stage(db, provider, filename, format, raw, records=None, options=None, retry_of=None, commit=True):
+    if len(raw) > MAX_BYTES:
+        raise ValueError('Massimo 8 MB per importazione')
+    if records is None:
+        _, records = parse_payload(raw, format)
+    if not isinstance(records, list) or not 1 <= len(records) <= MAX_ROWS or not all(isinstance(r, dict) for r in records):
+        raise ValueError('Serve un elenco di 1–1000 record adattati')
+    # JSON allows exponent literals that Python may overflow to Infinity;
+    # reject these before storing raw rows in PostgreSQL's strict JSON type.
+    json.dumps(records, allow_nan=False)
+    options = dict(options or {})
+    if format == 'json' and provider in ('manual', '1000bit'):
+        payload = json.loads(raw.decode('utf-8-sig'))
+        metadata = payload.get('_metadata') if isinstance(payload, dict) else None
+        if isinstance(metadata, dict) and metadata.get('import_mode') == 'existing_only':
+            # An enrichment package can restrict application even when uploaded
+            # through the generic file picker. Retry inherits the same guard.
+            options['existing_only'] = True
+        if isinstance(metadata, dict) and metadata.get('enrichment_mode') == 'missing_ram_only':
+            options.update(existing_only=True, missing_ram_only=True)
+    if provider in ('historical_prices', 'historical_descriptions'):
+        options['existing_only'] = True
+    options.pop('raw_payload_encoding', None)
+    if provider == 'historical_prices' and format == 'xlsx':
+        original_text = base64.b64encode(raw).decode('ascii')
+        options['raw_payload_encoding'] = 'base64'
+    else:
+        try:
+            original_text = raw.decode('utf-8')
+        except UnicodeDecodeError:
+            if provider != '1000bit' or format not in ('html', 'htm'):
+                raise ValueError('Il dataset richiede UTF-8.')
+            original_text = base64.b64encode(raw).decode('ascii')
+            options['raw_payload_encoding'] = 'base64'
+    job = ImportJob(provider=provider, filename=filename, format=format,
+                    checksum=hashlib.sha256(raw).hexdigest(), raw_payload=original_text,
+                    request_options=options, retry_of=retry_of)
+    db.add(job)
+    db.flush()
+    description_index = None
+    if provider == 'historical_descriptions':
+        from .descriptions import candidate_index
+        description_index = candidate_index(db)
+    for position, original in enumerate(records, 1):
+        row = ImportRow(job_id=job.id, position=position, raw=original)
+        try:
+            if isinstance(original.get('error'), str) and original['error']:
+                raise ValueError(original['error'])
+            if provider == 'historical_descriptions':
+                from .descriptions import normalize_record
+                data = normalize_record(original)
+            else:
+                data = Record.model_validate(original).model_dump(mode='json', exclude_none=True)
+            if options.get('missing_ram_only'):
+                from .ram_enrichment import validate_enrichment
+                validate_enrichment(data)
+            candidates, ambiguous = catalog_candidates(db, data, provider, description_index)
+            row.normalized = data
+            row.candidates = candidates
+            row.status = 'ambiguous' if ambiguous else 'ready'
+            row.computer_id = candidates[0] if len(candidates) == 1 and not ambiguous else None
+        except (ValueError, TypeError) as exc:
+            row.status, row.error = 'invalid', str(exc)[:5000]
+        db.add(row)
+    db.commit() if commit else db.flush()
+    return job
+
+
+def original_bytes(job):
+    if job.request_options.get('raw_payload_encoding') == 'base64':
+        return base64.b64decode(job.raw_payload, validate=True)
+    return job.raw_payload.encode('utf-8')
+
+
+def reference(db, model, name, provider=None):
+    identity = (lambda value: provider_maker_key(provider, value)) if model is Manufacturer else name_key
+    rows = [x for x in db.scalars(select(model)) if identity(x.name) == identity(name)]
+    if len(rows) > 1:
+        raise ValueError(f'Riferimento ambiguo: {name}')
+    if rows:
+        return rows[0]
+    value = model(name=name)
+    db.add(value)
+    db.flush()
+    return value
+
+
+def source(db, citation, accessed=True):
+    conditions = [Source.title == citation['title'], Source.url == citation.get('url')]
+    if not citation.get('url'):
+        conditions.extend([Source.author == citation.get('author'), Source.publisher == citation.get('publisher')])
+    found = db.scalar(select(Source).where(*conditions).order_by(Source.id))
+    if found:
+        return found
+    found = Source(**{k: v for k, v in citation.items() if k != 'license'})
+    for field in ('access_date', 'publication_date'):
+        if isinstance(getattr(found, field), str):
+            setattr(found, field, date.fromisoformat(getattr(found, field)))
+    if accessed and found.source_type != 'research_reference':
+        found.access_date = found.access_date or date.today()
+    db.add(found)
+    db.flush()
+    return found
+
+
+def attribute(db, row, target, field, incoming, citation, evidence=None, estimated=False, *, accessed=True, catalog_cleaned=False):
+    """Keep differing values staged as claims; fill only genuinely missing fields."""
+    if incoming is None:
+        return False
+    s = source(db, citation, accessed=accessed)
+    linked = False
+    if hasattr(target, 'sources') and s not in target.sources:
+        target.sources.append(s)
+        linked = True
+    previous = serialize(getattr(target, field))
+    value = incoming
+    precision = None
+    if field.endswith('_date') or field in ('period_start', 'period_end'):
+        value, precision = historical_date(incoming)
+        incoming = serialize(value)
+    precision_field = DATE_PRECISION.get(field)
+    old_precision = getattr(target, precision_field) if precision_field else None
+    missing = previous is None or (field=='description' and isinstance(previous,str) and not previous.strip())
+    conflict = not missing and (previous != incoming or (precision_field and old_precision != precision))
+    if isinstance(target,Release) and catalog_cleaned:
+        from ..catalog_cleanup import represented_release_field
+        if represented_release_field(db,target,field,{'value':incoming,**({'precision':precision} if precision_field else {})}):
+            conflict=False
+    changed = missing
+    if changed:
+        setattr(target, field, value)
+        if precision_field:
+            setattr(target, precision_field, precision)
+    db.flush()
+    db.add(ImportClaim(row_id=row.id, computer_id=row.computer_id, source_id=s.id,
+        entity=type(target).__name__, target_id=target.id, field=field,
+        value={'value': incoming, **({'precision': precision} if precision_field else {})},
+        previous={'value': previous, **({'precision': old_precision} if precision_field else {})},
+        status='conflict' if conflict else 'pending', estimated=estimated,
+        evidence='\n'.join(x for x in (evidence, ('Licenza: ' + citation['license']) if citation.get('license') else None) if x) or None))
+    return changed or linked
+
+
+def import_record(db, job, row):
+    if job.provider == 'historical_descriptions':
+        from .descriptions import apply_row
+        return apply_row(db, row)
+    data = Record.model_validate(row.normalized).model_dump(mode='json', exclude_none=True)
+    candidates, ambiguous = catalog_candidates(db, data, job.provider)
+    c = db.get(Computer, row.computer_id) if row.computer_id else None
+    if job.request_options.get('existing_only') and c is None:
+        row.status, row.error = 'skipped', 'La scheda da arricchire è stata rimossa; nessun calcolatore creato.'
+        return
+    if c is None and ambiguous:
+        row.status, row.candidates = 'ambiguous', candidates
+        return
+    if c is None and candidates:
+        c = db.get(Computer, candidates[0])
+    if job.request_options.get('missing_ram_only'):
+        from .ram_enrichment import validate_enrichment, has_documented_ram
+        validate_enrichment(data)
+        if c is None or has_documented_ram(c):
+            row.status, row.error = 'skipped', 'Quantità RAM già documentata o sistema rimosso: nessuna modifica.'
+            return
+    created = c is None
+    from ..catalog_cleanup import physical_mode, incoming_configuration, incoming_specification, incoming_release
+    cleaned = physical_mode(db)
+    maker = c.manufacturer if c is not None and (job.provider == 'historical_prices' or provider_maker_key(job.provider, c.manufacturer.name) == provider_maker_key(job.provider, data['manufacturer'])) else reference(db, Manufacturer, data['manufacturer'], provider=job.provider)
+    if created:
+        c = Computer(manufacturer=maker, model_name=catalog_name(data['model_name']))
+        db.add(c)
+        db.flush()
+    row.computer_id = c.id
+    changed = False
+    root_source = data['source']
+    root_estimate = data.get('estimated', False)
+    from .catalog_aliases import alias_for, remember_input
+    alias = alias_for(db, data['manufacturer'], data['model_name'], c.id)
+    if (alias is None and catalog_name(data['model_name']) != data['model_name']
+            and c.model_name == catalog_name(c.model_name)
+            and provider_computer_key('historical_prices', data['manufacturer'], data['model_name']) !=
+                provider_computer_key('historical_prices', data['manufacturer'], catalog_name(data['model_name']))):
+        alias = remember_input(db, c, data)
+    scoped_configs, scoped_names = [], {}
+    scoped_children = {name: [] for name in ('releases', 'sales', 'reviews', 'facts')}
+    other_scopes = [] if alias else db.scalars(select(ComputerAlias).where(ComputerAlias.computer_id == c.id)).all()
+    reserved = {name: {identifier for a in other_scopes for identifier in a.original.get(name, [])}
+                for name in ('configurations', 'releases', 'sales', 'reviews', 'facts')}
+    if alias:
+        # Variant prose/dates must not overwrite or become the family's values.
+        for field, kind in (('description', 'Descrizione variante'), ('announcement_date', 'Annuncio variante')):
+            incoming = data.pop(field, None)
+            if incoming and field == 'description' and job.provider == '1000bit':
+                import re
+                template = re.escape(f"{data['model_name']} è un calcolatore di {data['manufacturer']}.") + r'(?: La scheda tecnica riporta la CPU [^\n]+\.)?'
+                if re.fullmatch(template, incoming):
+                    continue  # The adapter's technical summary is already in the specifications.
+            members = alias.original.get('members', [alias.original])
+            same = any(incoming == member.get(field) for member in members)
+            if incoming and field == 'announcement_date':
+                day, precision = historical_date(incoming)
+                same = any((serialize(day), precision) == (member.get(field), member.get('announcement_precision')) for member in members)
+            if incoming and not same:
+                data.setdefault('facts', []).append({'fact_type': kind,
+                    'statement': f'{alias.original_name}: {incoming}', 'source': root_source})
+
+    def record_fields(target, values, fields, parent=None):
+        nonlocal changed
+        citation = values.get('source') or (parent or {}).get('source') or root_source
+        estimate = values.get('estimated', False) or (parent or {}).get('estimated', False) or root_estimate
+        evidence = values.get('evidence') or (parent or {}).get('evidence') or data.get('evidence')
+        for field in fields:
+            changed = attribute(db, row, target, field, values.get(field), citation, evidence, estimate, catalog_cleaned=cleaned) or changed
+
+    def bundle(target, entry, field):
+        nonlocal changed
+        fields = BUNDLES[field]
+        old = {key: getattr(target, key) for key in fields}
+        value = {key: entry.get(key, old[key]) for key in fields}
+        if all(v is None for v in value.values()):
+            return
+        conflict = any(old[key] is not None and old[key] != value[key] for key in fields)
+        if not conflict:
+            for key in fields:
+                if old[key] is None and value[key] is not None:
+                    setattr(target, key, value[key]); changed = True
+        citation = entry.get('source') or root_source
+        s = source(db, citation)
+        if s not in target.sources:
+            target.sources.append(s); changed = True
+        db.add(ImportClaim(row_id=row.id, computer_id=c.id, source_id=s.id, entity=type(target).__name__, target_id=target.id,
+            field=field, value=value, previous=old, status='conflict' if conflict else 'pending',
+            estimated=entry.get('estimated', False) or root_estimate,
+            evidence='\n'.join(x for x in (entry.get('evidence') or data.get('evidence'),
+                 ('Licenza: ' + citation['license']) if citation.get('license') else None) if x) or None))
+
+    model_name = c.model_name if alias or job.provider == 'historical_prices' or provider_computer_key(job.provider, c.manufacturer.name, c.model_name) == provider_computer_key(job.provider, data['manufacturer'], data['model_name']) else data['model_name']
+    record_fields(c, {**data, 'model_name': model_name, 'manufacturer_id': maker.id}, ('model_name', 'manufacturer_id', 'description', 'announcement_date'))
+    for name in data.get('categories', []):
+        if name_key(name) == 'calcolatore' and any(name_key(cat.name) != 'calcolatore' for cat in c.categories):
+            continue  # Reimports must not restore a redundant generic label.
+        cat = reference(db, Category, name)
+        if cat not in c.categories:
+            c.categories.append(cat)
+            changed = True
+        # Categories are sets, so a claim records the asserted membership.
+        s = source(db, root_source)
+        db.add(ImportClaim(row_id=row.id, computer_id=c.id, source_id=s.id, entity='Computer', target_id=c.id,
+            field='category', value={'value': cat.id}, previous={'value': None}, status='pending', estimated=root_estimate,
+            evidence=data.get('evidence')))
+    for cfg in data.get('configurations', []):
+        reconciled = reconciled_configuration(db, c.id, identity_provider(job.provider, data), data.get('external_id'), cfg['variant_name'])
+        if cleaned and reconciled is None:
+            reconciled = incoming_configuration(db,c.id,cfg['variant_name'],alias)
+        pool = [v for v in c.configurations if v.id in alias.original.get('configurations', [])] if alias else [v for v in c.configurations if v.id not in reserved['configurations']]
+        matches = [reconciled] if reconciled else [v for v in pool if name_key(alias.original.get('configuration_names', {}).get(str(v.id), v.variant_name) if alias else v.variant_name) == name_key(cfg['variant_name'])]
+        if len(matches) > 1:
+            raise ValueError('Configurazione ambigua')
+        new_name = (alias.original_name + ' · ' + cfg['variant_name'])[:140] if alias else cfg['variant_name']
+        variant = matches[0] if matches else Configuration(variant_name=new_name)
+        if not matches:
+            c.configurations.append(variant)
+            changed = True
+        db.flush()
+        scoped_configs.append(variant.id)
+        scoped_names[str(variant.id)] = cfg['variant_name']
+        record_fields(variant, {**cfg, 'variant_name': variant.variant_name} if reconciled or alias else cfg, ('variant_name', 'description'))
+        for spec in cfg.get('specifications', []):
+            if cleaned:
+                from ..technical_display import regional_video_spec
+                if regional_video_spec(spec):
+                    continue  # Original upload retains discarded TV-profile metadata.
+            canonical = incoming_specification(db,c.id,variant,spec) if cleaned else None
+            from ..catalog_cleanup import promotes_reference
+            promote = cleaned and promotes_reference(variant,spec)
+            matches = [] if promote else [canonical] if canonical is not None else matching_specs(variant.specifications, spec)
+            if not matches:
+                from .reviewed_units import reviewed_import_target
+                reviewed = reviewed_import_target(db, variant.specifications, spec,
+                    spec.get('source') or cfg.get('source') or root_source)
+                if reviewed is not None:
+                    matches = [reviewed]
+            if len(matches) > 1:
+                raise ValueError('Specifiche ripetute: scegli configurazioni distinte prima di importare')
+            if matches:
+                target = matches[0]
+                # Value and unit form one assertion: never fill a unit on a conflicting number.
+                s_citation = spec.get('source') or cfg.get('source') or root_source
+                s = source(db, s_citation)
+                if s not in target.sources:
+                    target.sources.append(s)
+                    changed = True
+                old = {k: getattr(target, k) for k in ('numeric_value', 'text_value', 'unit')}
+                val = {k: spec.get(k) for k in old}
+                from ..catalog_cleanup import represented_quantity
+                same_quantity=quantity_equal(target,val,old) or (cleaned and represented_quantity(db,target,val))
+                db.add(ImportClaim(row_id=row.id, computer_id=c.id, source_id=s.id, entity='Specification', target_id=target.id,
+                    field='quantity', value=val, previous=old, status='pending' if same_quantity else 'conflict',
+                    estimated=spec.get('estimated', False) or cfg.get('estimated', False) or root_estimate,
+                    evidence='\n'.join(x for x in (spec.get('evidence') or cfg.get('evidence') or data.get('evidence'),
+                        ('Licenza: ' + s_citation['license']) if s_citation.get('license') else None) if x) or None))
+            else:
+                target = Specification(**{k: v for k, v in spec.items() if k not in ('source', 'evidence', 'estimated')})
+                variant.specifications.append(target)
+                changed = True
+                db.flush()
+                record_fields(target, spec, ('component_type', 'component_name', 'property_name', 'numeric_value', 'text_value', 'unit'), cfg)
+    for collection, model, fields in (
+        ('releases', Release, ('release_date', 'discontinuation_date', 'price', 'currency', 'price_type')),
+        ('sales', Sale, ('period_start', 'period_end', 'units_sold', 'metric_type', 'estimated')),
+        ('reviews', Review, ('publication', 'review_date', 'score', 'max_score', 'summary')),
+        ('facts', Fact, ('fact_type', 'statement', 'reference_date')),
+    ):
+        for entry in data.get(collection, []):
+            existing = list(getattr(c, collection))
+            if alias:
+                existing = [item for item in existing if item.id in alias.original.get(collection, [])]
+            else:
+                existing = [item for item in existing if item.id not in reserved[collection]]
+            if model in (Release, Sale):
+                market = reference(db, Market, entry['market'])
+                existing = [r for r in existing if r.market_id == market.id]
+                original_release = reconciled_release(db,c.id,identity_provider(job.provider,data),data.get('external_id'),
+                    market.id,serialize(historical_date(entry.get('release_date'))[0])) if model is Release else None
+                if cleaned and model is Release and original_release is None:
+                    original_release = incoming_release(db,c.id,market,entry)
+                # An undated price must not inherit a launch date from another
+                # source merely because the catalog has one release in this market.
+                if model is Release and original_release is None and entry.get('price') is not None and not entry.get('release_date'):
+                    existing = [r for r in existing if r.release_date is None]
+                if model is Sale:
+                    existing = [r for r in existing if serialize(r.period_start) == entry.get('period_start') and serialize(r.period_end) == entry.get('period_end') and r.metric_type == entry.get('metric_type', 'units_sold')]
+                elif original_release is not None:
+                    existing=[original_release]
+                elif len(existing) > 1 or sum(name_key(r['market']) == name_key(entry['market']) for r in data.get('releases', [])) > 1:
+                    existing = [r for r in existing if serialize(r.release_date) == serialize(historical_date(entry.get('release_date'))[0])]
+            elif model is Review:
+                existing = [r for r in existing if name_key(r.publication) == name_key(entry['publication']) and serialize(r.review_date) == entry.get('review_date')]
+            else:
+                existing = [r for r in existing if r.fact_type == entry['fact_type'] and r.statement == entry['statement']]
+            if len(existing) > 1:
+                raise ValueError(f'{collection}: corrispondenza ambigua')
+            if existing:
+                target = existing[0]
+            else:
+                initial = {k: entry[k] for k in fields if k in entry and not k.endswith('_date') and k not in ('period_start', 'period_end')}
+                if model in (Release, Sale):
+                    initial['market_id'] = market.id
+                target = model(**initial)
+                getattr(c, collection).append(target)
+                changed = True
+                db.flush()
+            grouped = ('price_bundle' if model is Release else 'review_score' if model is Review else 'sales_quantity' if model is Sale else None)
+            if grouped:
+                bundle(target, entry, grouped)
+            remaining_fields = tuple(k for k in fields if not grouped or k not in BUNDLES[grouped])
+            if model in (Release, Sale):
+                record_fields(target, {**entry, 'market_id': market.id}, ('market_id',))
+            record_fields(target, entry, remaining_fields)
+            scoped_children[collection].append(target.id)
+    if alias:
+        alias.original = {**alias.original,
+            'configurations': list(dict.fromkeys(alias.original.get('configurations', []) + scoped_configs)),
+            'configuration_names': {**alias.original.get('configuration_names', {}), **scoped_names},
+            **{name: list(dict.fromkeys(alias.original.get(name, []) + ids)) for name, ids in scoped_children.items()}}
+    if data.get('external_id'):
+        namespace = identity_provider(job.provider, data)
+        identity = db.scalar(select(ExternalIdentity).where(ExternalIdentity.provider == namespace, ExternalIdentity.external_id == data['external_id']))
+        if identity and identity.computer_id != c.id:
+            raise ValueError('Identità esterna già associata a un altro calcolatore')
+        if not identity:
+            db.add(ExternalIdentity(provider=namespace, external_id=data['external_id'], computer_id=c.id))
+    row.status = 'imported' if created else 'updated' if changed else 'unchanged'
+
+
+def apply_job(db, job_id, commit=True):
+    # Serialize import writers across jobs on PostgreSQL; SQLite serializes the first write.
+    if db.bind.dialect.name == 'postgresql':
+        db.execute(text('SELECT pg_advisory_xact_lock(68484931)'))
+    job = db.scalar(select(ImportJob).where(ImportJob.id == job_id).with_for_update())
+    if job.status in ('completed', 'partial'):
+        return job
+    if job.status != 'ready':
+        raise ValueError('Importazione non pronta: usa Riprova')
+    job.status = 'running'
+    db.flush()
+    for row in job.rows:
+        if row.status != 'ready':
+            continue
+        try:
+            with db.begin_nested():
+                import_record(db, job, row)
+                db.flush()
+        except Exception as exc:
+            # Preserve a retryable row and all previously successful rows, without raw DB diagnostics.
+            row.status = 'failed'
+            row.error = str(exc)[:1000] if isinstance(exc, ValueError) else 'Errore di integrità: controlla dati e corrispondenze; riprova.'
+    job.status = 'partial' if any(r.status in ('failed', 'invalid', 'ambiguous') for r in job.rows) else 'completed'
+    db.commit() if commit else db.flush()
+    if (commit and job.provider == 'historical_prices' and not job.request_options.get('price_context_recovery')
+            and any(row.normalized and not row.normalized.get('releases') and row.normalized.get('facts') for row in job.rows)):
+        from .price_recovery import recover_price_contexts
+        recover_price_contexts(db, origin_job_id=job.id)
+    if commit and not job.request_options.get('classification_version') and not job.request_options.get('missing_ram_only'):
+        identifiers = {row.computer_id for row in job.rows if row.computer_id is not None
+                       and row.status in ('imported', 'updated', 'unchanged')}
+        if identifiers:
+            from .classification import normalize_categories
+            normalize_categories(db, identifiers)
+    return job
+
+
+def review_claim(db, claim, decision, note):
+    if claim.status in ('verified', 'rejected'):
+        raise ValueError('Decisione già registrata; crea una nuova importazione per una nuova revisione')
+    model = TARGETS[claim.entity]
+    target = db.scalar(select(model).where(model.id == claim.target_id).with_for_update())
+    if target is None or claim.computer_id is None:
+        raise ValueError('Elemento originale non più disponibile')
+    if decision == 'accept':
+        if claim.field == 'category':
+            category = db.get(Category, claim.value['value'])
+            if category is None:
+                raise ValueError('Categoria non più disponibile')
+            if category not in target.categories:
+                target.categories.append(category)
+        else:
+            current = {k: getattr(target, k) for k in BUNDLES[claim.field]} if claim.field in BUNDLES else {'value': serialize(getattr(target, claim.field))}
+            if claim.field in DATE_PRECISION:
+                current['precision'] = getattr(target, DATE_PRECISION[claim.field])
+            expected = claim.previous if claim.status == 'conflict' else claim.value
+            from ..catalog_cleanup import represented_quantity, represented_release_field
+            represented = ((claim.field=='quantity' and represented_quantity(db,target,claim.value)) or
+                (isinstance(target,Release) and represented_release_field(db,target,claim.field,claim.value)))
+            same = (quantity_equal(target, current, expected) if claim.field == 'quantity' else current == expected) or represented
+            if not same:
+                raise ValueError('Il dato è cambiato dopo l’importazione: riesamina con una nuova anteprima')
+            if represented:
+                pass  # Verify the archived supporting assertion, not replace the whole fact.
+            elif claim.field in BUNDLES:
+                for field, value in claim.value.items():
+                    setattr(target, field, value)
+            else:
+                value = claim.value['value']
+                if claim.field.endswith('_date') or claim.field in ('period_start', 'period_end'):
+                    value = date.fromisoformat(value) if value else None
+                setattr(target, claim.field, value)
+                if claim.field in DATE_PRECISION:
+                    setattr(target, DATE_PRECISION[claim.field], claim.value.get('precision'))
+        db.flush()
+    claim.status = 'verified' if decision == 'accept' else 'rejected'
+    claim.review_note, claim.reviewed_at = note, now()
+    db.commit()

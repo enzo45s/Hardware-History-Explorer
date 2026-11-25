@@ -12,9 +12,14 @@ if make_url(_test_url).get_backend_name() != 'sqlite' and not make_url(_test_url
     raise RuntimeError('HHE_TEST_DATABASE_URL must use a dedicated database ending in _test')
 os.environ['DATABASE_URL'] = _test_url
 os.environ['UPLOAD_DIR'] = str(Path(_test_files.name) / 'uploads')
+os.environ['HHE_MANUFACTURER_ENRICHMENT_AUTO'] = '0'  # Tests use only their explicit synthetic evidence.
 
 from app.main import Base, app, engine, UPLOAD_DIR  # noqa: E402
+from migrations.retire_admin_tools import migrate as retire_admin_tools
 from fastapi.testclient import TestClient  # noqa: E402
+
+# Reusable isolated PostgreSQL test databases may still have the old queue FKs.
+retire_admin_tools(engine)
 
 
 @pytest.fixture(autouse=True)

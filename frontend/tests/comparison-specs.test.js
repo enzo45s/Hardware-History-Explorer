@@ -4,6 +4,18 @@ import { comparisonSpecifications, selectedConfiguration } from '../src/comparis
 
 const spec = (component, property, numeric, text = null, unit = null) => ({ component_type: component, property_name: property, numeric_value: numeric, text_value: text, unit });
 const key = (component, property) => JSON.stringify([component, property]);
+
+test('backend normalized views align legacy labels and equivalent units without mutating raw data', () => {
+  const computer = { configurations: [{ id: 1, specifications: [
+    { ...spec('main-cpu', 'clock-frequency', 1000000, null, 'Hz'), normalized: spec('CPU', 'Frequenza', 1, null, 'MHz') },
+    spec('CPU', 'Frequenza', 1, null, 'MHz')
+  ] }] };
+  const before = JSON.stringify(computer);
+  const result = comparisonSpecifications(computer);
+  assert.equal(result.size, 1);
+  assert.equal(result.get(key('CPU', 'Frequenza')).text, '1 MHz');
+  assert.equal(JSON.stringify(computer), before);
+});
 const family = {
   configurations: [48, 4, 8, 12, 16, 20, 24, 32, 36].map((ram, index) => ({
     id: index + 1, variant_name: `RAM ${ram} KB`, specifications: [spec('RAM', 'Capacità', ram, null, 'KB'), spec('CPU', 'Modello', null, 'MOS 6502')]
@@ -67,4 +79,20 @@ test('repeated properties inside one configuration do not overwrite values or in
   assert.equal(value.text, '10 / 20 GB');
   assert.equal(value.coverage, 1);
   assert.equal(value.partial, false);
+});
+
+test('readable aliases align CPU rows and put RAM bounds in memory options', () => {
+  const computer = { configurations: [{ id: 1, specifications: [
+    { ...spec('CPU', 'Modello emulato (MAME)', null, '6502'), display: { component_type: 'CPU', property_name: 'Modello' } },
+    { ...spec('CPU', 'Modello riportato (Wikidata)', null, '65C02'), display: { component_type: 'CPU', property_name: 'Modello' } },
+    { ...spec('RAM', 'Capacità predefinita (MAME)', 640, null, 'KiB'), display: { component_type: 'RAM', property_name: 'Capacità di riferimento' } },
+    spec('RAM', 'Capacità minima riportata', 16, null, 'KB')
+  ] }] };
+  const before = JSON.stringify(computer);
+  const result = comparisonSpecifications(computer);
+  assert.equal(result.size, 3);
+  assert.deepEqual(new Set(result.get(key('CPU', 'Modello')).text.split(' / ')), new Set(['6502', '65C02']));
+  assert.equal(result.get(key('RAM', 'Capacità')).text, '640 KB');
+  assert.equal(result.get(key('RAM', 'Opzioni di memoria')).text, 'Minima: 16 KB');
+  assert.equal(JSON.stringify(computer), before);
 });

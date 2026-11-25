@@ -1,0 +1,68 @@
+{
+  "database": "isolated clone of hhe_ibm_dates_20261124",
+  "manufacturer_id": 28,
+  "updated": 1,
+  "fields_updated": {
+    "logo_url": 1,
+    "logo_author": 1,
+    "logo_license": 1,
+    "logo_license_url": 1,
+    "logo_source_url": 1
+  },
+  "before_counts": {
+    "manufacturers": 184,
+    "computers": 1142,
+    "computer_images": 605,
+    "import_jobs": 3051,
+    "sources": 7785
+  },
+  "after_counts": {
+    "manufacturers": 184,
+    "computers": 1142,
+    "computer_images": 605,
+    "import_jobs": 3051,
+    "sources": 7786
+  },
+  "existing_sources_preserved": true,
+  "all_other_manufacturers_unchanged": true,
+  "company_text_dates_unchanged": true,
+  "repeat_updated": 0,
+  "sources": [
+    {
+      "id": 7443,
+      "title": "Wikipedia — Albert (computer) (en)",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1335970053",
+      "author": "Collaboratori di Wikipedia",
+      "publisher": "Wikimedia Foundation"
+    },
+    {
+      "id": 7792,
+      "title": "Wikimedia Commons — Albert Computers Inc. Logo.png",
+      "url": "https://commons.wikimedia.org/wiki/File:Albert_Computers_Inc._Logo.png",
+      "author": "ChatGPT, Vincenzo Colacicco",
+      "publisher": "Wikimedia Commons / Wikimedia Foundation"
+    }
+  ],
+  "logo": {
+    "logo_license": "CC0 1.0 · pubblico dominio (dichiarazione Commons)",
+    "logo_author": "ChatGPT, Vincenzo Colacicco",
+    "logo_url": "https://upload.wikimedia.org/wikipedia/commons/1/13/Albert_Computers_Inc._Logo.png",
+    "logo_license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "logo_source_url": "https://commons.wikimedia.org/wiki/File:Albert_Computers_Inc._Logo.png"
+  },
+  "commons_revision": 1305857945,
+  "validation": {
+    "sqlite_manufacturer_tests_passed": 22,
+    "postgresql_manufacturer_tests_passed": 22,
+    "commons_api_and_revision_consulted": true,
+    "original_image_https_download_verified": true,
+    "explicit_cli_repeat_updated": 0,
+    "browser": {
+      "logo_rendered": true,
+      "author_license_commons_and_existing_wikipedia_links": true,
+      "desktop_and_mobile_no_overflow": true,
+      "method": "Production frontend with actual PostgreSQL clone; image route serves the identical PNG downloaded successfully from Commons over HTTPS. Browser direct remote image loading failed in this cloud environment.",
+      "javascript_errors": 0
+    }
+  }
+}

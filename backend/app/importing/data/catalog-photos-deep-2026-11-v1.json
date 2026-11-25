@@ -1,0 +1,1632 @@
+{
+  "version": "catalog-photos-deep-2026-11-v1",
+  "researched_on": "2026-11-25",
+  "records": [
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "CPC-330K KOBO",
+      "model_aliases": [],
+      "source": {
+        "title": "MSX Resource Center — CPC-330K — fotografia",
+        "url": "https://www.msx.org/wiki/File:Cpc330kb.jpg",
+        "publisher": "MSX Resource Center",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Immagine selezionata nella galleria della scheda https://www.msx.org/wiki/Daewoo_CPC-330K; didascalia: Daewoo CPC-330K. Il caricatore del file non è automaticamente l’autore della fotografia.",
+      "photo": {
+        "image_url": "https://www.msx.org/wiki/images/f/f5/Cpc330kb.jpg",
+        "caption": "Daewoo CPC-330K",
+        "author": "Autore non documentato; file caricato da Mars2000you su MSX Resource Center",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://www.msx.org/wiki/File:Cpc330kb.jpg",
+        "license_url": "https://www.msx.org/node/3"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        900,
+        675
+      ],
+      "image_sha256": "071e94679771596524a1df3657099ce66decb9a0dcaa6d9cf00d5901487e71a9"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "IQ-1000 DPC-100",
+      "model_aliases": [],
+      "source": {
+        "title": "MSX Resource Center — DPC-100 — fotografia",
+        "url": "https://www.msx.org/wiki/File:Daewoo_DPC-100.jpg",
+        "publisher": "MSX Resource Center",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Immagine selezionata nella galleria della scheda https://www.msx.org/wiki/Daewoo_DPC-100; didascalia: Daewoo DPC-100. Il caricatore del file non è automaticamente l’autore della fotografia.",
+      "photo": {
+        "image_url": "https://www.msx.org/wiki/images/8/8a/Daewoo_DPC-100.jpg",
+        "caption": "Daewoo DPC-100",
+        "author": "Autore non documentato; file caricato da Gdx su MSX Resource Center",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://www.msx.org/wiki/File:Daewoo_DPC-100.jpg",
+        "license_url": "https://www.msx.org/node/3"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        550,
+        368
+      ],
+      "image_sha256": "abc305745789ba004797f4b38c982fa2a2d1fffe861b1edf03d9faf412e3d442"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "IQ-1000 DPC-180",
+      "model_aliases": [],
+      "source": {
+        "title": "MSX Resource Center — DPC-180 — fotografia",
+        "url": "https://www.msx.org/wiki/File:Daewoo_DPC-180.jpg",
+        "publisher": "MSX Resource Center",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Immagine selezionata nella galleria della scheda https://www.msx.org/wiki/Daewoo_DPC-180; didascalia: Yellow Daewoo DPC-180. Il caricatore del file non è automaticamente l’autore della fotografia.",
+      "photo": {
+        "image_url": "https://www.msx.org/wiki/images/3/38/Daewoo_DPC-180.jpg",
+        "caption": "Daewoo DPC-180 — esemplare con tastiera gialla",
+        "author": "Autore non documentato; file caricato da Gdx su MSX Resource Center",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://www.msx.org/wiki/File:Daewoo_DPC-180.jpg",
+        "license_url": "https://www.msx.org/node/3"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        385,
+        260
+      ],
+      "image_sha256": "c14dddaf74a9a116ed0f712abc91aa640dc1264b1baa9e5a1fb08fa200e119c0"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "IQ-2000 CPC-300",
+      "model_aliases": [],
+      "source": {
+        "title": "MSX Resource Center — CPC-300 — fotografia",
+        "url": "https://www.msx.org/wiki/File:Cpc300d.jpg",
+        "publisher": "MSX Resource Center",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Immagine selezionata nella galleria della scheda https://www.msx.org/wiki/Daewoo_CPC-300; didascalia: Daewoo CPC-300 ivory. Il caricatore del file non è automaticamente l’autore della fotografia.",
+      "photo": {
+        "image_url": "https://www.msx.org/wiki/images/c/ca/Cpc300d.jpg",
+        "caption": "Daewoo CPC-300 — versione color avorio",
+        "author": "Autore non documentato; file caricato da Mars2000you su MSX Resource Center",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://www.msx.org/wiki/File:Cpc300d.jpg",
+        "license_url": "https://www.msx.org/node/3"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        1595,
+        979
+      ],
+      "image_sha256": "d6570eba90805d099704de745e961a736375a621ee377215644312ca39cd189c"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "X-II CPC-400",
+      "model_aliases": [],
+      "source": {
+        "title": "MSX Resource Center — CPC-400 — fotografia",
+        "url": "https://www.msx.org/wiki/File:Daewoo_CPC-400.jpg",
+        "publisher": "MSX Resource Center",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Immagine selezionata nella galleria della scheda https://www.msx.org/wiki/Daewoo_CPC-400; didascalia: Daewoo CPC-400. Il caricatore del file non è automaticamente l’autore della fotografia.",
+      "photo": {
+        "image_url": "https://www.msx.org/wiki/images/d/d2/Daewoo_CPC-400.jpg",
+        "caption": "Daewoo CPC-400",
+        "author": "Autore non documentato; file caricato da Gdx su MSX Resource Center",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://www.msx.org/wiki/File:Daewoo_CPC-400.jpg",
+        "license_url": "https://www.msx.org/node/3"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        756,
+        326
+      ],
+      "image_sha256": "a5c72d4a7086661b6cc00dbb807437ce2cde9bcf0b981dfd9fc765945dc13fe9"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "X-II CPC-400S",
+      "model_aliases": [],
+      "source": {
+        "title": "MSX Resource Center — CPC-400S — fotografia",
+        "url": "https://www.msx.org/wiki/File:Daewoo_CPC-400Sa.jpg",
+        "publisher": "MSX Resource Center",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Immagine selezionata nella galleria della scheda https://www.msx.org/wiki/Daewoo_CPC-400S; didascalia: CPC-400 & CPC-400S with Monitor. Il caricatore del file non è automaticamente l’autore della fotografia.",
+      "photo": {
+        "image_url": "https://www.msx.org/wiki/images/e/e8/Daewoo_CPC-400Sa.jpg",
+        "caption": "Daewoo CPC-400 e CPC-400S con monitor — famiglia X-II",
+        "author": "Autore non documentato; file caricato da Gdx su MSX Resource Center",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://www.msx.org/wiki/File:Daewoo_CPC-400Sa.jpg",
+        "license_url": "https://www.msx.org/node/3"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        874,
+        773
+      ],
+      "image_sha256": "03de4cad560ce9b7591efe45474cc5c9499d4efb1201e3792f14eac4ac15773f"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-50A",
+      "model_aliases": [],
+      "source": {
+        "title": "MSX Resource Center — CPC-50A — fotografia",
+        "url": "https://www.msx.org/wiki/File:Cpc50a10.jpg",
+        "publisher": "MSX Resource Center",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Immagine selezionata nella galleria della scheda https://www.msx.org/wiki/Daewoo_CPC-50A; didascalia: Daewoo Zemmix CPC-50A green/white. Il caricatore del file non è automaticamente l’autore della fotografia.",
+      "photo": {
+        "image_url": "https://www.msx.org/wiki/images/f/fc/Cpc50a10.jpg",
+        "caption": "Daewoo Zemmix CPC-50A green/white",
+        "author": "Autore non documentato; file caricato da Mars2000you su MSX Resource Center",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://www.msx.org/wiki/File:Cpc50a10.jpg",
+        "license_url": "https://www.msx.org/node/3"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        900,
+        656
+      ],
+      "image_sha256": "ae3498d1c6dfd913323669f5509c021decba35e50693917db9d4a20d095bf925"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-50B",
+      "model_aliases": [],
+      "source": {
+        "title": "MSX Resource Center — CPC-50B — fotografia",
+        "url": "https://www.msx.org/wiki/File:Cpc50b1.jpg",
+        "publisher": "MSX Resource Center",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Immagine selezionata nella galleria della scheda https://www.msx.org/wiki/Daewoo_CPC-50B; didascalia: Daewoo Zemmix CPC-50B <br />yellow/dark blue. Il caricatore del file non è automaticamente l’autore della fotografia.",
+      "photo": {
+        "image_url": "https://www.msx.org/wiki/images/2/29/Cpc50b1.jpg",
+        "caption": "Daewoo Zemmix CPC-50B yellow/dark blue",
+        "author": "Autore non documentato; file caricato da Mars2000you su MSX Resource Center",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://www.msx.org/wiki/File:Cpc50b1.jpg",
+        "license_url": "https://www.msx.org/node/3"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        1036,
+        765
+      ],
+      "image_sha256": "83998f77176fb94e796373725e3566355f86b9eaaa2fc8903add413bd4d14462"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-51",
+      "model_aliases": [],
+      "source": {
+        "title": "MSX Resource Center — CPC-51 — fotografia",
+        "url": "https://www.msx.org/wiki/File:Cpc51a.jpg",
+        "publisher": "MSX Resource Center",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Immagine selezionata nella galleria della scheda https://www.msx.org/wiki/Daewoo_CPC-51; didascalia: Daewoo Zemmix CPC-51. Il caricatore del file non è automaticamente l’autore della fotografia.",
+      "photo": {
+        "image_url": "https://www.msx.org/wiki/images/2/29/Cpc51a.jpg",
+        "caption": "Daewoo Zemmix CPC-51",
+        "author": "Autore non documentato; file caricato da Mars2000you su MSX Resource Center",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://www.msx.org/wiki/File:Cpc51a.jpg",
+        "license_url": "https://www.msx.org/node/3"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        1600,
+        1275
+      ],
+      "image_sha256": "cf8c0abe515b387f597b472d118e0f6fe9ac3677eff43ee231bdfdda58bbba43"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-61",
+      "model_aliases": [],
+      "source": {
+        "title": "MSX Resource Center — CPC-61 — fotografia",
+        "url": "https://www.msx.org/wiki/File:Daewoo_CPC-61B.jpg",
+        "publisher": "MSX Resource Center",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Immagine selezionata nella galleria della scheda https://www.msx.org/wiki/Daewoo_CPC-61; didascalia: Daewoo Zemmix CPC-61B. Il caricatore del file non è automaticamente l’autore della fotografia.",
+      "photo": {
+        "image_url": "https://www.msx.org/wiki/images/5/52/Daewoo_CPC-61B.jpg",
+        "caption": "Daewoo Zemmix CPC-61B",
+        "author": "Autore non documentato; file caricato da Rderooy su MSX Resource Center",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://www.msx.org/wiki/File:Daewoo_CPC-61B.jpg",
+        "license_url": "https://www.msx.org/node/3"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        800,
+        600
+      ],
+      "image_sha256": "f59a29ee3774536487b0d8ce31fcc61b880f318542451137b83f6278efa91191"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPG-120 Normal",
+      "model_aliases": [],
+      "source": {
+        "title": "MSX Resource Center — CPG-120 — fotografia",
+        "url": "https://www.msx.org/wiki/File:Cpg120a.jpg",
+        "publisher": "MSX Resource Center",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Immagine selezionata nella galleria della scheda https://www.msx.org/wiki/Daewoo_CPG-120; didascalia: Daewoo CPG-120. Il caricatore del file non è automaticamente l’autore della fotografia.",
+      "photo": {
+        "image_url": "https://www.msx.org/wiki/images/4/4b/Cpg120a.jpg",
+        "caption": "Daewoo CPG-120",
+        "author": "Autore non documentato; file caricato da Mars2000you su MSX Resource Center",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://www.msx.org/wiki/File:Cpg120a.jpg",
+        "license_url": "https://www.msx.org/node/3"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        1008,
+        1138
+      ],
+      "image_sha256": "dbcf8cbb37b817656d954930ca20256a3a63c43dc8ebe7f608e10cb6e9e6565a"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 2/84",
+      "model_aliases": [],
+      "source": {
+        "title": "retrocmp — Kaypro 2/84",
+        "url": "https://retrocmp.de/kaypro/kay-p1_vers.htm#kay-2",
+        "publisher": "Thomas Brase / retrocmp",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "La brochure è inserita nella sezione con titolo Kaypro 2/84 (ancora kay-2), distinta dal Kaypro II del 1983 e dal New 2 del 1985.",
+      "photo": {
+        "image_url": "https://retrocmp.de/kaypro/kaypro-2_brochure_01.jpg",
+        "caption": "Kaypro 2/84 — illustrazione della brochure — particolare della fotografia nel documento originale",
+        "author": "Kaypro; scansione conservata da retrocmp",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://retrocmp.de/kaypro/kay-p1_vers.htm#kay-2",
+        "license_url": "https://retrocmp.de/imprint.htm",
+        "thumbnail_url": "https://retrocmp.de/kaypro/kaypro-2_brochure_01.jpg#hhe-crop=1280,561,358,72,742,466"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        1280,
+        561
+      ],
+      "image_sha256": "7fb18ac8949d3b93eb0f70d54c49d85bb355b3c982a860efc5203ee764bca658",
+      "crop_bounds": [
+        358,
+        72,
+        742,
+        466
+      ]
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 4 plus88 - 4/83",
+      "model_aliases": [],
+      "source": {
+        "title": "retrocmp — Kaypro 4 plus88 - 4/83 — immagine della revisione",
+        "url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "publisher": "Thomas Brase / retrocmp",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "La sezione Kaypro 4 Plus 88 descrive il prodotto come Kaypro 4 del 1983 con scheda interna SWP Plus 88 installata in fabbrica. L’immagine è l’aspetto del modello base e non prova la presenza della scheda aggiuntiva.",
+      "photo": {
+        "image_url": "https://retrocmp.de/kaypro/kaypro_4-83_bro.jpg",
+        "caption": "Kaypro 4 (1983), aspetto del modello base usato anche per l’allestimento Plus 88 — particolare della fotografia nel documento originale",
+        "author": "Kaypro; scansione conservata da retrocmp",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "license_url": "https://retrocmp.de/imprint.htm",
+        "thumbnail_url": "https://retrocmp.de/kaypro/kaypro_4-83_bro.jpg#hhe-crop=1280,539,358,70,755,447"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "shared_enclosure",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        1280,
+        539
+      ],
+      "image_sha256": "4e0b5c0dc1279fe018b843082070050cd36f820848ea6d622f922c888a9e72ed",
+      "shared_enclosure_note": "La sezione Kaypro 4 Plus 88 descrive il prodotto come Kaypro 4 del 1983 con scheda interna SWP Plus 88 installata in fabbrica. L’immagine è l’aspetto del modello base e non prova la presenza della scheda aggiuntiva.",
+      "crop_bounds": [
+        358,
+        70,
+        755,
+        447
+      ]
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 4/84",
+      "model_aliases": [],
+      "source": {
+        "title": "retrocmp — Kaypro 4/84 — immagine della revisione",
+        "url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "publisher": "Thomas Brase / retrocmp",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "La didascalia della sezione versioni identifica Kaypro 4/84. Non è una foto del Kaypro II o 10 usata come sostituzione.",
+      "photo": {
+        "image_url": "https://retrocmp.de/kaypro/Kaypro-4-84_front_01.jpg",
+        "caption": "Kaypro 4/84 — vista frontale",
+        "author": "Autore non indicato; raccolta retrocmp",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "license_url": "https://retrocmp.de/imprint.htm"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        905,
+        357
+      ],
+      "image_sha256": "f3621bf1534dab5b997b1c39c5407f8b8b70944c8daca341025d04eb0ae03f77"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 4/84 plus88",
+      "model_aliases": [],
+      "source": {
+        "title": "retrocmp — Kaypro 4/84 plus88 — immagine della revisione",
+        "url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "publisher": "Thomas Brase / retrocmp",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "La didascalia della sezione versioni identifica Kaypro 4/84 +88. Non è una foto del Kaypro II o 10 usata come sostituzione.",
+      "photo": {
+        "image_url": "https://retrocmp.de/kaypro/Kaypro-4-84%2B88_back.jpg",
+        "caption": "Kaypro 4/84 Plus 88 — vista posteriore",
+        "author": "Autore non indicato; raccolta retrocmp",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "license_url": "https://retrocmp.de/imprint.htm"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        595,
+        269
+      ],
+      "image_sha256": "0e5e2accb9152fc8925dc59465597eb5fdc54dbf181b515cb3e1784e4cd11e05"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 4x",
+      "model_aliases": [],
+      "source": {
+        "title": "retrocmp — Kaypro 4x — immagine della revisione",
+        "url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "publisher": "Thomas Brase / retrocmp",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "La didascalia della sezione versioni identifica Kaypro 4X. Non è una foto del Kaypro II o 10 usata come sostituzione.",
+      "photo": {
+        "image_url": "https://retrocmp.de/kaypro/Kaypro-4X_02.png",
+        "caption": "Kaypro 4X",
+        "author": "Chris Singleton, Duncan (BC); conservata da retrocmp",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "license_url": "https://retrocmp.de/imprint.htm"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        1240,
+        963
+      ],
+      "image_sha256": "c375c24a2a5ebb0c2846fd60aa412e1ae5141b4e0a19937fe94cef46107dce1d"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro New 2",
+      "model_aliases": [],
+      "source": {
+        "title": "retrocmp — Kaypro New 2 — immagine della revisione",
+        "url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "publisher": "Thomas Brase / retrocmp",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "La didascalia della sezione versioni identifica New Kaypro 2. Non è una foto del Kaypro II o 10 usata come sostituzione.",
+      "photo": {
+        "image_url": "https://retrocmp.de/kaypro/kaypro-new-2_02.jpg",
+        "caption": "New Kaypro 2 — esemplare con unità disco aggiuntiva",
+        "author": "Autore non indicato; raccolta retrocmp",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "license_url": "https://retrocmp.de/imprint.htm"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        640,
+        480
+      ],
+      "image_sha256": "c811b5400e934e67a5a2f4e1bfdcc819fdaf5d75053d90e4217a6ee94d2d015d"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro PC",
+      "model_aliases": [
+        "PC"
+      ],
+      "source": {
+        "title": "1000bit — Kaypro Professional Computer",
+        "url": "https://www.1000bit.it/scheda.asp?id=1006",
+        "publisher": "1000bit",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Brochure del Kaypro Professional Computer collegata alla scheda PC, distinta dai trasportabili CP/M.",
+      "photo": {
+        "image_url": "https://www.1000bit.it/ad/bro/kaypro/KayproPC-TheAffordableCompatible_b.jpg",
+        "caption": "Kaypro PC — brochure «The Affordable Compatible» — particolare della fotografia nel documento originale",
+        "author": "Kaypro; scansione conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=1006",
+        "license_url": "https://www.1000bit.it/",
+        "thumbnail_url": "https://www.1000bit.it/ad/bro/kaypro/KayproPC-TheAffordableCompatible_b.jpg#hhe-crop=200,300,32,54,140,171"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        200,
+        300
+      ],
+      "image_sha256": "407dca91b2024bd8024e2f7527e0f5cff6e32acd96ba62b55fa49d0361837f98",
+      "crop_bounds": [
+        32,
+        54,
+        140,
+        171
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9801BX2/U2",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9801BX2/U2",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9801bx2.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9801ba2_l.jpg",
+        "caption": "PC-9801BX2/U2 — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9801bx2.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9801ba2_l.jpg#hhe-crop=800,1131,440,475,288,351"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        800,
+        1131
+      ],
+      "image_sha256": "8bd852af160e99654b58ed17c9ac6660a0b73705281248c6caefce5c8e9ef1b7",
+      "crop_bounds": [
+        440,
+        475,
+        288,
+        351
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9801FS",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9801FS",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9801fs.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9801fs_l.jpg",
+        "caption": "PC-9801FS — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9801fs.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9801fs_l.jpg#hhe-crop=598,835,334,359,233,284"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        598,
+        835
+      ],
+      "image_sha256": "32474510e7b94ad5a58ebb13bc214d108e8daf0b9078d6e5344a5b1066e54e7b",
+      "crop_bounds": [
+        334,
+        359,
+        233,
+        284
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9801RS",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9801RS",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9801rs.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9801rs21_l.jpg",
+        "caption": "PC-9801RS — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9801rs.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9801rs21_l.jpg#hhe-crop=597,838,47,167,478,385"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        597,
+        838
+      ],
+      "image_sha256": "735f5bc4f046c87213aca11db4c76743329e37a18b7eed228e2f6c8447e1e411",
+      "crop_bounds": [
+        47,
+        167,
+        478,
+        385
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9801US",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9801US",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9801us.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9801us_l.jpg",
+        "caption": "PC-9801US — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9801us.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9801us_l.jpg#hhe-crop=599,838,101,243,395,352"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        599,
+        838
+      ],
+      "image_sha256": "caec90461e730c466b73bcf6fe722fab34b78a760f94371b8393d93d71008a8b",
+      "crop_bounds": [
+        101,
+        243,
+        395,
+        352
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Ap2/U8W",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821Ap2/U8W",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821ap2.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821a2_l.jpg",
+        "caption": "PC-9821Ap2/U8W — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821ap2.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821a2_l.jpg#hhe-crop=609,847,200,271,408,534"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        609,
+        847
+      ],
+      "image_sha256": "0c513ed537bb5fcc0b679547391fff147a705ee5cb38f630c344c68c6aa9a558",
+      "crop_bounds": [
+        200,
+        271,
+        408,
+        534
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821As",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821As",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821as.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821a_l.jpg",
+        "caption": "PC-9821As — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821as.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821a_l.jpg#hhe-crop=606,847,418,626,182,203"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        606,
+        847
+      ],
+      "image_sha256": "d7ed2ea5936ca39f977e63b05d07c536f1c33830b162f188e9f9de88a6ec4045",
+      "crop_bounds": [
+        418,
+        626,
+        182,
+        203
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Cx3",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821Cx3",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821cx3.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821cb3cx3_l.jpg",
+        "caption": "PC-9821Cx3 — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821cx3.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821cb3cx3_l.jpg#hhe-crop=800,1141,184,730,464,331"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        800,
+        1141
+      ],
+      "image_sha256": "87e267c5d7088d36919dbf65bdb5a54374355a53282db3d4016b974a4b6e205c",
+      "crop_bounds": [
+        184,
+        730,
+        464,
+        331
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Ne",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821Ne",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821ne.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821ne_l.jpg",
+        "caption": "PC-9821Ne — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821ne.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821ne_l.jpg#hhe-crop=800,1141,64,627,680,479"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        800,
+        1141
+      ],
+      "image_sha256": "b40ef90e1bea7b027e6ac6fdecf95ca9fa551a867883c0d9e207ca0fbd46c8eb",
+      "crop_bounds": [
+        64,
+        627,
+        680,
+        479
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Nr15",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821Nr15",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821nr15.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821nr_1_l.jpg",
+        "caption": "PC-9821Nr15 — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821nr15.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821nr_1_l.jpg#hhe-crop=601,837,102,368,397,326"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        601,
+        837
+      ],
+      "image_sha256": "b3f69f08d76784d517f900282de40afd2e7531fd114fb600ec09b4fc5a5d92a5",
+      "crop_bounds": [
+        102,
+        368,
+        397,
+        326
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Nr166",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821Nr166",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821nr166.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821nr_2_l.jpg",
+        "caption": "PC-9821Nr166 — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821nr166.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821nr_2_l.jpg#hhe-crop=602,835,144,350,397,317"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        602,
+        835
+      ],
+      "image_sha256": "990e17553680b6e484ec00a4514db3ebac0b0ba24e35f16a60e42a73faac5ccb",
+      "crop_bounds": [
+        144,
+        350,
+        397,
+        317
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Nw150",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821Nw150",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821nw150.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco. Le due unità della copertina non sono identificate singolarmente; non è dichiarata una foto esclusiva del Nw150.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821nrnw_1_l.jpg",
+        "caption": "NEC LaVie Nr/Nw/Ni — fotografia della famiglia nel catalogo riferito al Nw150",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821nw150.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821nrnw_1_l.jpg#hhe-crop=600,837,48,435,504,268"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        600,
+        837
+      ],
+      "image_sha256": "15ca22de56066e3b8a554153e766e8504a35e6ba2aad0b74a34e4506117a0845",
+      "crop_bounds": [
+        48,
+        435,
+        504,
+        268
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Ra20",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821Ra20",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821ra20.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821ra20n12_l.jpg",
+        "caption": "PC-9821Ra20 — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821ra20.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821ra20n12_l.jpg#hhe-crop=612,849,165,254,379,458"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        612,
+        849
+      ],
+      "image_sha256": "41492f1ae389212b1ca885f691375e3ba732fc614ea02d8e1b33eb496b9f36aa",
+      "crop_bounds": [
+        165,
+        254,
+        379,
+        458
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Ra266",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821Ra266",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821ra266.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821ra266_l.jpg",
+        "caption": "PC-9821Ra266 — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821ra266.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821ra266_l.jpg#hhe-crop=607,845,115,160,413,363"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        607,
+        845
+      ],
+      "image_sha256": "7d4b37024c6a993ad1419be280291aea6f576fc7af5cbe5cb3b0ce52359a5c0c",
+      "crop_bounds": [
+        115,
+        160,
+        413,
+        363
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Ra333",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821Ra333",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821ra333.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821ra333_l.jpg",
+        "caption": "PC-9821Ra333 — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821ra333.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821ra333_l.jpg#hhe-crop=600,833,108,349,444,333"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        600,
+        833
+      ],
+      "image_sha256": "5fdc3d4f76b708a6f0a65ab4269cb1e0a94a2302bef7893421efc0dafb3f4aca",
+      "crop_bounds": [
+        108,
+        349,
+        444,
+        333
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821V13",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821V13",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821v13.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821v_2_l.jpg",
+        "caption": "PC-9821V13 — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821v13.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821v_2_l.jpg#hhe-crop=604,846,144,507,320,288"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        604,
+        846
+      ],
+      "image_sha256": "473bcf6194f4882306929202092611b5a14e2fdbc9a690b033423d516ddf3408",
+      "crop_bounds": [
+        144,
+        507,
+        320,
+        288
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821V20",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821V20",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821v20.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821v_4_l.jpg",
+        "caption": "PC-9821V20 — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821v20.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821v_4_l.jpg#hhe-crop=606,845,303,236,297,372"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        606,
+        845
+      ],
+      "image_sha256": "0fd807a3dc90c1b543549db0775236167b20ba8825900cb3a48b02b6bba6c216",
+      "crop_bounds": [
+        303,
+        236,
+        297,
+        372
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Xa16",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821Xa16",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821xa16.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821x_3_l.jpg",
+        "caption": "PC-9821Xa16 — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821xa16.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821x_3_l.jpg#hhe-crop=611,847,122,296,403,381"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        611,
+        847
+      ],
+      "image_sha256": "aa51f34dfe718c1d2b2c6a27875d7cc1027ba0e5678672c36ec055bb3d7b98de",
+      "crop_bounds": [
+        122,
+        296,
+        403,
+        381
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Xs",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-9821Xs",
+        "url": "https://www.pc-9800.net/db_98/data/pc-9821xs.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-9821xnxpxs_l.jpg",
+        "caption": "PC-9821Xs — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-9821xs.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-9821xnxpxs_l.jpg#hhe-crop=610,846,176,279,329,381"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        610,
+        846
+      ],
+      "image_sha256": "8c573ca451f5dde47f1115780e6b4f8ffc01a49d62983c13c50defd9c45d8f73",
+      "crop_bounds": [
+        176,
+        279,
+        329,
+        381
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-98HA",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — catalogo PC-98HA",
+        "url": "https://www.pc-9800.net/db_98/data/pc-98ha.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Il catalogo è collegato dalla scheda di questo modello. L’illustrazione è di serie e non prova una particolare dotazione CPU, RAM o disco.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-98ha_l.jpg",
+        "caption": "PC-98HA — catalogo originale NEC (illustrazione di serie) — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-98ha.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-98ha_l.jpg#hhe-crop=600,834,96,150,420,350"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        600,
+        834
+      ],
+      "image_sha256": "d51228ef2345d362e33e9c1b3fa5f22c50c394f487f61822087c601d24eb40f7",
+      "crop_bounds": [
+        96,
+        150,
+        420,
+        350
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-H98S model 8/U8",
+      "model_aliases": [],
+      "source": {
+        "title": "With98 — PC-H98S model 8/U8",
+        "url": "https://www.pc-9800.net/db_98/data/pc-h98sm8.htm",
+        "publisher": "FiNE / With98",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Pagina raggiunta dall’indice PC-H98, con titolo PC-H98S model 8/U8 e collegamento al catalogo pertinente.",
+      "photo": {
+        "image_url": "https://www.pc-9800.net/db_98/data/img/pc-h98sm8_l.jpg",
+        "caption": "PC-H98S model 8/U8 — particolare del catalogo originale — particolare della fotografia nel documento originale",
+        "author": "NEC; scansione conservata da FiNE / With98",
+        "license_name": "© NEC; catalogo originale, diritti riservati",
+        "source_url": "https://www.pc-9800.net/db_98/data/pc-h98sm8.htm",
+        "thumbnail_url": "https://www.pc-9800.net/db_98/data/img/pc-h98sm8_l.jpg#hhe-crop=600,833,78,66,456,500"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "documented_catalog",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        600,
+        833
+      ],
+      "image_sha256": "890505187d1b8932b0afb834755fd9d4de086f9cb1d4f1d6dbe84e67fc7e1e14",
+      "crop_bounds": [
+        78,
+        66,
+        456,
+        500
+      ]
+    },
+    {
+      "manufacturer": "Non-Linear Systems",
+      "model_name": "Kaypro IV - 4/83",
+      "model_aliases": [],
+      "source": {
+        "title": "retrocmp — Kaypro 4 del 1983",
+        "url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "publisher": "Thomas Brase / retrocmp",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Sezione Kaypro 4 del 1983: illustrazione della brochure, distinta dalle foto del Kaypro 4/84.",
+      "photo": {
+        "image_url": "https://retrocmp.de/kaypro/kaypro_4-83_bro.jpg",
+        "caption": "Kaypro 4 (1983), noto come Kaypro IV — brochure d’epoca — particolare della fotografia nel documento originale",
+        "author": "Kaypro; scansione conservata da retrocmp",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+        "license_url": "https://retrocmp.de/imprint.htm",
+        "thumbnail_url": "https://retrocmp.de/kaypro/kaypro_4-83_bro.jpg#hhe-crop=1280,539,358,70,755,447"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        1280,
+        539
+      ],
+      "image_sha256": "4e0b5c0dc1279fe018b843082070050cd36f820848ea6d622f922c888a9e72ed",
+      "crop_bounds": [
+        358,
+        70,
+        755,
+        447
+      ]
+    },
+    {
+      "manufacturer": "Silicon Graphics",
+      "model_name": "IRIS 3130",
+      "model_aliases": [],
+      "source": {
+        "title": "SGIstuff — IRIS 3130 — galleria originale",
+        "url": "http://www.sgistuff.net/hardware/systems/iris3000.html",
+        "publisher": "Gerhard Lenerz / SGIstuff",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "La galleria IRIS 3000 identifica esplicitamente la foto come Front of an IRIS 3130 system; 1500 nel nome dell’asset non è usato come identificazione del modello.",
+      "photo": {
+        "image_url": "https://web.archive.org/web/20250915012143im_/http%3A//www.sgistuff.net/hardware/systems/images/iris-1500-front.jpg",
+        "caption": "SGI IRIS 3130 — vista frontale",
+        "author": "Autore fotografia non indicato; raccolta Gerhard Lenerz / SGIstuff",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://web.archive.org/web/20250915012143im_/http%3A//www.sgistuff.net/hardware/systems/images/iris-1500-front.jpg"
+      },
+      "image_kind": "photograph",
+      "match_kind": "documented_variant",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        1875,
+        2500
+      ],
+      "image_sha256": "d13001a62d900e895437990a10fb462e00e1bea93c748de37ecf1d23268618c6"
+    },
+    {
+      "manufacturer": "Silicon Graphics",
+      "model_name": "IRIS Indigo R4400",
+      "model_aliases": [],
+      "source": {
+        "title": "SGIstuff — IRIS Indigo R4400 — galleria originale",
+        "url": "http://www.sgistuff.net/hardware/systems/indigo.html",
+        "publisher": "Gerhard Lenerz / SGIstuff",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "La stessa galleria dell’esemplare 1000 mostra il frontale con badge R4000 Elan e la scheda IP20 con modulo R4400/150. Il badge esterno non è usato come prova di una CPU R4000.",
+      "photo": {
+        "image_url": "https://web.archive.org/web/20261006072729im_/http%3A//www.sgistuff.net/hardware/systems/images/indigo-front-1000.jpg",
+        "caption": "Indigo IP20 con aggiornamento R4400/150; badge esterno R4000",
+        "author": "Autore fotografia non indicato; raccolta Gerhard Lenerz / SGIstuff",
+        "license_name": "Diritti riservati; licenza di riutilizzo non documentata",
+        "source_url": "https://web.archive.org/web/20261006072729im_/http%3A//www.sgistuff.net/hardware/systems/images/indigo-front-1000.jpg"
+      },
+      "image_kind": "photograph",
+      "match_kind": "documented_variant",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale; attribuzione conservata. Non è una licenza libera né una dichiarazione di permesso alla ripubblicazione.",
+      "original_dimensions": [
+        1673,
+        2500
+      ],
+      "image_sha256": "fba3244550b352e0a85f0259f2ceb79f5bfad77b5fa28421b0a280a1dcc01616"
+    },
+    {
+      "manufacturer": "Silicon Graphics",
+      "model_name": "Professional IRIS 4D/50",
+      "model_aliases": [],
+      "source": {
+        "title": "Wikimedia Commons — Professional IRIS TwinTower",
+        "url": "https://commons.wikimedia.org/wiki/File:SGI_Professional_IRIS_(2).jpg",
+        "publisher": "Wikimedia Commons",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "La foto Commons mostra il cabinet TwinTower; la tabella Models di SGIstuff elenca 4D/50 e 4D/70 entrambi con questo cabinet. È un’immagine dell’aspetto comune, non una prova della CPU installata. La foto Commons (1), identificata come 4D/80, è stata scartata.",
+      "photo": {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/13/SGI_Professional_IRIS_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "Professional IRIS — cabinet TwinTower; CPU del singolo esemplare non identificata",
+        "author": "Seiya Ishibashi",
+        "license_name": "CC BY 2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:SGI_Professional_IRIS_(2).jpg",
+        "license_url": "https://creativecommons.org/licenses/by/2.0"
+      },
+      "image_kind": "photograph",
+      "match_kind": "shared_enclosure",
+      "usage_basis": "Licenza dichiarata nella pagina del file Commons.",
+      "original_dimensions": [
+        3200,
+        1824
+      ],
+      "image_sha256": "df1464ad2947971dd3e6b83370eebc2c065c8c7bf4686841e342f1e35b3fc449",
+      "shared_enclosure_note": "La foto Commons mostra il cabinet TwinTower; la tabella Models di SGIstuff elenca 4D/50 e 4D/70 entrambi con questo cabinet. È un’immagine dell’aspetto comune, non una prova della CPU installata. La foto Commons (1), identificata come 4D/80, è stata scartata.",
+      "supporting_sources": [
+        {
+          "title": "SGIstuff — Professional IRIS, tabella dei cabinet TwinTower",
+          "url": "http://www.sgistuff.net/hardware/systems/professional.html",
+          "publisher": "Gerhard Lenerz / SGIstuff",
+          "source_type": "reference",
+          "access_date": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "manufacturer": "Silicon Graphics",
+      "model_name": "Professional IRIS 4D/70",
+      "model_aliases": [],
+      "source": {
+        "title": "Wikimedia Commons — Professional IRIS TwinTower",
+        "url": "https://commons.wikimedia.org/wiki/File:SGI_Professional_IRIS_(2).jpg",
+        "publisher": "Wikimedia Commons",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "La foto Commons mostra il cabinet TwinTower; la tabella Models di SGIstuff elenca 4D/50 e 4D/70 entrambi con questo cabinet. È un’immagine dell’aspetto comune, non una prova della CPU installata. La foto Commons (1), identificata come 4D/80, è stata scartata.",
+      "photo": {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/13/SGI_Professional_IRIS_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "Professional IRIS — cabinet TwinTower; CPU del singolo esemplare non identificata",
+        "author": "Seiya Ishibashi",
+        "license_name": "CC BY 2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:SGI_Professional_IRIS_(2).jpg",
+        "license_url": "https://creativecommons.org/licenses/by/2.0"
+      },
+      "image_kind": "photograph",
+      "match_kind": "shared_enclosure",
+      "usage_basis": "Licenza dichiarata nella pagina del file Commons.",
+      "original_dimensions": [
+        3200,
+        1824
+      ],
+      "image_sha256": "df1464ad2947971dd3e6b83370eebc2c065c8c7bf4686841e342f1e35b3fc449",
+      "shared_enclosure_note": "La foto Commons mostra il cabinet TwinTower; la tabella Models di SGIstuff elenca 4D/50 e 4D/70 entrambi con questo cabinet. È un’immagine dell’aspetto comune, non una prova della CPU installata. La foto Commons (1), identificata come 4D/80, è stata scartata.",
+      "supporting_sources": [
+        {
+          "title": "SGIstuff — Professional IRIS, tabella dei cabinet TwinTower",
+          "url": "http://www.sgistuff.net/hardware/systems/professional.html",
+          "publisher": "Gerhard Lenerz / SGIstuff",
+          "source_type": "reference",
+          "access_date": "2026-11-25"
+        }
+      ]
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-6001A \"NEC Trek\"",
+      "model_aliases": [],
+      "source": {
+        "title": "1000bit — NEC PC-6001A \"NEC Trek\"",
+        "url": "https://www.1000bit.it/scheda.asp?id=977",
+        "publisher": "1000bit",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Fotografia nella scheda specifica https://www.1000bit.it/scheda.asp?id=977; identificazione del modello nella scheda e sull’immagine. Nessuna assimilazione al PC-6001 o al PC-8401.",
+      "photo": {
+        "image_url": "https://www.1000bit.it/lista/n/nec/pc6001a/necpc6001.jpg",
+        "caption": "NEC PC-6001A, commercializzato negli Stati Uniti come NEC Trek",
+        "author": "Fotografo non documentato; raccolta 1000bit",
+        "license_name": "Diritti riservati; consultazione per studio privato e ricerca, secondo il footer 1000bit",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=977"
+      },
+      "image_kind": "photograph",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale. Nessuna licenza libera o autorizzazione generale alla pubblicazione dichiarata.",
+      "original_dimensions": [
+        537,
+        346
+      ],
+      "image_sha256": "ad67e9a84a48b38413caa689ae5653b116983a00ff7dfe0373d35300feede7f0"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-8500",
+      "model_aliases": [],
+      "source": {
+        "title": "1000bit — NEC PC-8500",
+        "url": "https://www.1000bit.it/scheda.asp?id=1109",
+        "publisher": "1000bit",
+        "source_type": "image",
+        "access_date": "2026-11-25"
+      },
+      "evidence": "Fotografia nella scheda specifica https://www.1000bit.it/scheda.asp?id=1109; identificazione del modello nella scheda e sull’immagine. Nessuna assimilazione al PC-6001 o al PC-8401.",
+      "photo": {
+        "image_url": "https://www.1000bit.it/ad/bro/nec/NECPC8500_b.jpg",
+        "caption": "NEC PC-8500 — copertina del catalogo originale; immagine a bassa risoluzione",
+        "author": "NEC (catalogo)",
+        "license_name": "Diritti riservati; consultazione per studio privato e ricerca, secondo il footer 1000bit",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=1109"
+      },
+      "image_kind": "catalog_illustration",
+      "match_kind": "exact_model",
+      "usage_basis": "Collegamento remoto all’originale per consultazione personale locale. Nessuna licenza libera o autorizzazione generale alla pubblicazione dichiarata.",
+      "original_dimensions": [
+        160,
+        240
+      ],
+      "image_sha256": "472528c38d4b75473ec138b86abf19eb9e72e7b08506ccbadbc8aa2599f7fb28"
+    }
+  ],
+  "research": {
+    "scope": "Sole immagini per NEC, Kaypro/NLS, Daewoo e Silicon Graphics. Nessuna modifica a dati tecnici, descrizioni, prezzi o produttori.",
+    "usage": "Archivio personale locale: si conservano URL remoti degli originali, crediti e stato dei diritti. I riferimenti con diritti riservati o licenza non documentata non diventano immagini libere e non autorizzano una pubblicazione pubblica. Nessuna immagine binaria distribuita nel repository.",
+    "excluded": [
+      {
+        "source": "Wikimedia Commons — Professional IRIS (1)",
+        "reason": "La voce SGI IRIS identifica il soggetto come 4D/80: non è il TwinTower 4D/50 o 4D/70."
+      },
+      {
+        "source": "Google Search",
+        "reason": "Richiesta bloccata da verifica automatica del traffico; nessun aggiramento."
+      }
+    ],
+    "unselected_references": [
+      {
+        "model_name": "PC-8801FA",
+        "url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b025-1.html",
+        "reason": "Schema delle porte posteriori, non una foto della macchina."
+      },
+      {
+        "model_name": "PC-8801MA",
+        "url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b031-1.html",
+        "reason": "Schema delle porte posteriori, non una foto della macchina."
+      },
+      {
+        "model_name": "PC-8801MA2",
+        "url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b032-1.html",
+        "reason": "Schema delle porte posteriori, non una foto della macchina."
+      },
+      {
+        "model_name": "PC-8801MC",
+        "url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b033-1.html",
+        "reason": "Schema delle porte posteriori, non una foto della macchina."
+      },
+      {
+        "model_name": "PC-8801MH",
+        "url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b035-1.html",
+        "reason": "Schema delle porte posteriori, non una foto della macchina."
+      },
+      {
+        "model_name": "PC-8801mkIIFR",
+        "url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b039-1.html",
+        "reason": "Schema delle porte posteriori, non una foto della macchina."
+      },
+      {
+        "model_name": "PC-8801mkIIMR",
+        "url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b042-1.html",
+        "reason": "Schema delle porte posteriori, non una foto della macchina."
+      },
+      {
+        "model_name": "PC-88VA2",
+        "url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b048-1.html",
+        "reason": "Schema delle porte posteriori, non una foto della macchina."
+      }
+    ],
+    "method": "Gallerie dei singoli modelli, sezioni delle revisioni, cataloghi originali, dati del produttore e copie archiviate. Controllo di didascalie, dimensioni, file e contenuto visivo; nessuna selezione basata soltanto sulla posizione nei risultati.",
+    "copyright_notes": [
+      "NEC e scansioni dei cataloghi: diritti del produttore; i collegamenti non costituiscono licenze libere.",
+      "MSX Resource Center: i file caricati dagli utenti conservano i diritti dei rispettivi autori; il caricatore viene distinto dal fotografo. Nessun permesso generale di ripubblicazione dichiarato.",
+      "retrocmp e SGIstuff: crediti di raccolta e autori espliciti conservati; nessuna licenza libera attribuita quando non indicata.",
+      "1000bit: footer per studio privato e ricerca, autorizzazione ai dati già fornita dall’utente.",
+      "Commons: licenza CC BY 2.0 dichiarata sul file Professional IRIS (2); foto della famiglia, non prova della CPU."
+    ],
+    "omitted_targets": [
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801FA",
+        "reason": "Schema delle porte posteriori, non una foto della macchina.",
+        "reference_url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b025-1.html"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MA",
+        "reason": "Schema delle porte posteriori, non una foto della macchina.",
+        "reference_url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b031-1.html"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MA2",
+        "reason": "Schema delle porte posteriori, non una foto della macchina.",
+        "reference_url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b032-1.html"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MC",
+        "reason": "Schema delle porte posteriori, non una foto della macchina.",
+        "reference_url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b033-1.html"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MH",
+        "reason": "Schema delle porte posteriori, non una foto della macchina.",
+        "reference_url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b035-1.html"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801mkIIFR",
+        "reason": "Schema delle porte posteriori, non una foto della macchina.",
+        "reference_url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b039-1.html"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801mkIIMR",
+        "reason": "Schema delle porte posteriori, non una foto della macchina.",
+        "reference_url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b042-1.html"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-88VA2",
+        "reason": "Schema delle porte posteriori, non una foto della macchina.",
+        "reference_url": "https://support.nec-lavie.jp/support/product/data/spec/cpu/b048-1.html"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "DPC-200E",
+        "reason": "Nessuna fotografia distinta e sufficientemente documentata rispetto al DPC-200."
+      },
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Omni II Logic Analyzer",
+        "reason": "Non viene utilizzata una foto di un generico computer Kaypro per un analizzatore logico."
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "Bungo mini 5SX",
+        "reason": "Fonti e gallerie consultate senza una fotografia chiaramente identificata per questa variante. Nessuna sostituzione con modelli diversi."
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "EWS4800/310",
+        "reason": "Fonti e gallerie consultate senza una fotografia chiaramente identificata per questa variante. Nessuna sostituzione con modelli diversi."
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8401BD",
+        "reason": "Fonti e gallerie consultate senza una fotografia chiaramente identificata per questa variante. Nessuna sostituzione con modelli diversi."
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-6601",
+        "reason": "Fonti e gallerie consultate senza una fotografia chiaramente identificata per questa variante. Nessuna sostituzione con modelli diversi."
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-6601SR \"Mr. PC\"",
+        "reason": "Fonti e gallerie consultate senza una fotografia chiaramente identificata per questa variante. Nessuna sostituzione con modelli diversi."
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8001mkIISR",
+        "reason": "Fonti e gallerie consultate senza una fotografia chiaramente identificata per questa variante. Nessuna sostituzione con modelli diversi."
+      }
+    ]
+  }
+}

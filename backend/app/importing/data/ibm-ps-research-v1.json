@@ -1,0 +1,3217 @@
+{
+  "version": "ibm-ps-2026-11-v1",
+  "records": [
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/2 Model 30-286",
+      "description": "Il PS/2 Model 30-286 aggiornò il modello d’ingresso della famiglia IBM con un processore 80286 a 10 MHz e grafica VGA. Manteneva il bus di espansione ISA, a differenza dei PS/2 Micro Channel di fascia superiore. La configurazione documentata nel catalogo IBM del 1989 partiva da 512 KB, con floppy da 3,5 pollici e possibilità di disco fisso.",
+      "source": {
+        "title": "Wikipedia — IBM PS/2",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The Personal System/2 or PS/2 is IBM's second generation of personal computers. Released in 1987, it officially replaced the IBM PC, XT, AT, and PC Convertible in IBM's lineup. Many of the PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch flopp",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80286",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "P/N Processor Std. Max. w/Adapter(s) Std. Max. 2 Std.3 Max. 30-E01 8530E01 80286-1 OMHz 512KB 4MB 16MB NONE 2 30MB 2 30-E21 8530E21 80286-1 OMHz 512KB 4MB 16MB 20MB 20MB 2 Notes: (1) System Board Memory; (2) Optional Fixed Disk, 20MB or 30MB; (3) t.44MB Models STANDARD FEATURES: 30-E01 30-E21 Processor Wait State"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 10,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "P/N Processor Std. Max. w/Adapter(s) Std. Max. 2 Std.3 Max. 30-E01 8530E01 80286-1 OMHz 512KB 4MB 16MB NONE 2 30MB 2 30-E21 8530E21 80286-1 OMHz 512KB 4MB 16MB 20MB 20MB 2 Notes: (1) System Board Memory; (2) Optional Fixed Disk, 20MB or 30MB; (3) t.44MB Models STANDARD FEATURES: 30-E01 30-E21 Processor Wait State"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 512,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "P/N Processor Std. Max. w/Adapter(s) Std. Max. 2 Std.3 Max. 30-E01 8530E01 80286-1 OMHz 512KB 4MB 16MB NONE 2 30MB 2 30-E21 8530E21 80286-1 OMHz 512KB 4MB 16MB 20MB 20MB 2 Notes: (1) System Board Memory; (2) Optional Fixed Disk, 20MB or 30MB; (3) t.44MB Models STANDARD FEATURES: 30-E01 30-E21 Processor Wait State"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Fino a 4 MB sulla scheda madre; configurazione standard E01/E21 del 1989",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "P/N Processor Std. Max. w/Adapter(s) Std. Max. 2 Std.3 Max. 30-E01 8530E01 80286-1 OMHz 512KB 4MB 16MB NONE 2 30MB 2 30-E21 8530E21 80286-1 OMHz 512KB 4MB 16MB 20MB 20MB 2 Notes: (1) System Board Memory; (2) Optional Fixed Disk, 20MB or 30MB; (3) t.44MB Models STANDARD FEATURES: 30-E01 30-E21 Processor Wait State"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "ISA",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "wise a full AT-class machine and support up to 4 MB of RAM. Later ISA PS/2 models comprised the Model 30 286 (a Model 30 with an Intel 286 CPU), Model 35 (IBM 8535) and Model 40 (IBM 8540) with Intel 386SX or IBM 386SLC processors. The higher-numbered models (above 50) were equipped with the Micro Channel bus and"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "isk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC market by introducing the advanced yet proprietary Micro Channel architecture (MCA)"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch floppy disk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/2 Model 35 SX",
+      "description": "Presentato l’11 giugno 1991, il PS/2 Model 35 SX era un desktop IBM compatto per l’ufficio. Abbinava un 80386SX a 20 MHz, 2 MB di RAM standard e VGA al bus ISA. Il codice 8535-043 identificava l’allestimento con disco da 40 MB; il 040 era invece privo di disco fisso.",
+      "source": {
+        "title": "Wikipedia — IBM PS/2",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The Personal System/2 or PS/2 is IBM's second generation of personal computers. Released in 1987, it officially replaced the IBM PC, XT, AT, and PC Convertible in IBM's lineup. Many of the PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch flopp",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80386SX",
+              "source": {
+                "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+                "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e Personal System/2 (R) (PS/2 (R)) Model 35 SX utilizes the 80386SX microprocessor operating at 20MHz with zero to two wait states and has the following integrated functions: parallel port, serial port, pointing device port, video graphics array (VGA 16-bit) port, keyboard port, 1.44MB (million bytes) diskette drive support, Math Co-Proces"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 20,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+                "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e Personal System/2 (R) (PS/2 (R)) Model 35 SX utilizes the 80386SX microprocessor operating at 20MHz with zero to two wait states and has the following integrated functions: parallel port, serial port, pointing device port, video graphics array (VGA 16-bit) port, keyboard port, 1.44MB (million bytes) diskette drive support, Math Co-Proces"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 2048,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+                "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "ly (040) and a 40MB fixed disk model (043). All models have 2MBs of memory standard on the system board (expandable to 16MB). The PS/2 Model 35 LS provides a small footprint and low priced, general business solution. The Model 35 LS provides a local area network (LAN) workstation solution and is available with all the sta"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Espandibile fino a 16 MB",
+              "source": {
+                "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+                "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "ly (040) and a 40MB fixed disk model (043). All models have 2MBs of memory standard on the system board (expandable to 16MB). The PS/2 Model 35 LS provides a small footprint and low priced, general business solution. The Model 35 LS provides a local area network (LAN) workstation solution and is available with all the sta"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "ISA / AT",
+              "source": {
+                "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+                "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " Average Latency (ms) 8.3ms 8.3ms Sector Interleave 1:1 1:1 Interface AT AT Buffer 32KB 32KB (1) Actual user accessible capacity may vary slightly based on different operating environments. o Dimensions: - Width: 360mm (14.2 in.) - Depth: 395mm (15.6 in.) - Height: 115mm (4.5 in.) - Weight: 10.2kg (22.4 lb) (diske"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+                "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "t, serial port, pointing device port, video graphics array (VGA 16-bit) port, keyboard port, 1.44MB (million bytes) diskette drive support, Math Co-Processor socket, and three single in-line memory module (SIMM) sockets (two available for memory expansion). The PS/2 Model 35 SX is a 3-slot 2-bay system"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+                "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "ort, video graphics array (VGA 16-bit) port, keyboard port, 1.44MB (million bytes) diskette drive support, Math Co-Processor socket, and three single in-line memory module (SIMM) sockets (two available for memory expansion). The PS/2 Model 35 SX is a 3-slot 2-bay system and is offered in diskette only ("
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "40 MB; allestimento 8535-043",
+              "source": {
+                "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+                "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "86SX 80386SX Speed (MHz) 20 20 20 Memory (85ns) 2MB 2MB 2MB Fixed Disk None 40MB None Floppy Drive 1.44MB 1.44MB None Token-Ring Adapter None None 16/4 The standard fixed disk drive capacities is 40MB (80MB available as an option). Both fixed disk drives have an integrated fixed disk controller. DRIVE SPECIFICATIONS: Format"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Slot",
+              "numeric_value": 3,
+              "source": {
+                "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+                "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " available for memory expansion). The PS/2 Model 35 SX is a 3-slot 2-bay system and is offered in diskette only (040) and a 40MB fixed disk model (043). All models have 2MBs of memory standard on the system board (expandable to 16MB). The PS/2 Model 35 LS provides a small footprint and low priced, general busin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/2 Model 50",
+      "description": "Il PS/2 Model 50 fu uno dei sistemi con cui IBM introdusse nel 1987 il bus Micro Channel e la grafica VGA. Il desktop utilizzava un 80286 a 10 MHz e 1 MB di RAM; l’allestimento 8550-021 includeva un disco da 20 MB. Il telaio e le connessioni interne semplificavano gli interventi di manutenzione.",
+      "source": {
+        "title": "Wikipedia — IBM PS/2",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The Personal System/2 or PS/2 is IBM's second generation of personal computers. Released in 1987, it officially replaced the IBM PC, XT, AT, and PC Convertible in IBM's lineup. Many of the PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch flopp",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80286",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "Max) Diskette Graphics Orientation Available Slots Model SO 50-021 8550021 80286- lOMHz 1MB/l MB l 6MB 20MB I 80ms I 60MB• lxl .44MB VGA Desktop 3 Note: The IBM PS/2 Model 50-021 is withdrawn from marketing effective May 3, 1989. See Green Letter NDD89-153. Model50Z S0-031 8550031 80286- lOMHz 1MB/2MB 16MB 30MB I"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 10,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "Max) Diskette Graphics Orientation Available Slots Model SO 50-021 8550021 80286- lOMHz 1MB/l MB l 6MB 20MB I 80ms I 60MB• lxl .44MB VGA Desktop 3 Note: The IBM PS/2 Model 50-021 is withdrawn from marketing effective May 3, 1989. See Green Letter NDD89-153. Model50Z S0-031 8550031 80286- lOMHz 1MB/2MB 16MB 30MB I"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 1024,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "Max) Diskette Graphics Orientation Available Slots Model SO 50-021 8550021 80286- lOMHz 1MB/l MB l 6MB 20MB I 80ms I 60MB• lxl .44MB VGA Desktop 3 Note: The IBM PS/2 Model 50-021 is withdrawn from marketing effective May 3, 1989. See Green Letter NDD89-153. Model50Z S0-031 8550031 80286- lOMHz 1MB/2MB 16MB 30MB I"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Fino a 16 MB con adattatori; memoria sulla scheda madre fino a 1 MB",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "Max) Diskette Graphics Orientation Available Slots Model SO 50-021 8550021 80286- lOMHz 1MB/l MB l 6MB 20MB I 80ms I 60MB• lxl .44MB VGA Desktop 3 Note: The IBM PS/2 Model 50-021 is withdrawn from marketing effective May 3, 1989. See Green Letter NDD89-153. Model50Z S0-031 8550031 80286- lOMHz 1MB/2MB 16MB 30MB I"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "Micro Channel (MCA)",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "he higher-numbered models (above 50) were equipped with the Micro Channel bus and mostly ESDI or SCSI hard drives (models 60-041 and 80-041 had MFM hard drives). PS/2 Models 50 (IBM 8550) and 60 (IBM 8560) used the Intel 286 processor, the PS/2 Models 70 386 (IBM 8570) and 80 used the 386DX, while the mid-range PS/2"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "isk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC market by introducing the advanced yet proprietary Micro Channel architecture (MCA)"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch floppy disk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "20 MB; allestimento 8550-021",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "Max) Diskette Graphics Orientation Available Slots Model SO 50-021 8550021 80286- lOMHz 1MB/l MB l 6MB 20MB I 80ms I 60MB• lxl .44MB VGA Desktop 3 Note: The IBM PS/2 Model 50-021 is withdrawn from marketing effective May 3, 1989. See Green Letter NDD89-153. Model50Z S0-031 8550031 80286- lOMHz 1MB/2MB 16MB 30MB I"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/2 Model 50 Z",
+      "description": "Il PS/2 Model 50 Z rinnovò il desktop 286 di IBM mantenendo il clock a 10 MHz, ma adottando memoria a zero wait state e dischi ESDI. Il suffisso Z identifica questa revisione del progetto, non una semplice variante del disco: il codice 8550-061 corrispondeva all’allestimento da 60 MB.",
+      "source": {
+        "title": "Wikipedia — IBM PS/2",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The Personal System/2 or PS/2 is IBM's second generation of personal computers. Released in 1987, it officially replaced the IBM PC, XT, AT, and PC Convertible in IBM's lineup. Many of the PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch flopp",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80286",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B3 2 50-031 8550031 80286-1 OMHz 1MB 2MB2 16MB 30MB 60MB3 2 50-061 8550061 80286-1 OMHz 1MB 2MB2 16MB 60MB 60MB 2 Notes: (1) System Board Memory; (2) Replacing Standard 1MB Memory Kit on System Board; (3) Replacing Standard Fixed Disk; (4) 1.44MB Models STANDARD FEATURES : 50-021 50-031 50-061 Processor Wait Stat"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 10,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B3 2 50-031 8550031 80286-1 OMHz 1MB 2MB2 16MB 30MB 60MB3 2 50-061 8550061 80286-1 OMHz 1MB 2MB2 16MB 60MB 60MB 2 Notes: (1) System Board Memory; (2) Replacing Standard 1MB Memory Kit on System Board; (3) Replacing Standard Fixed Disk; (4) 1.44MB Models STANDARD FEATURES : 50-021 50-031 50-061 Processor Wait Stat"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 1024,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B3 2 50-031 8550031 80286-1 OMHz 1MB 2MB2 16MB 30MB 60MB3 2 50-061 8550061 80286-1 OMHz 1MB 2MB2 16MB 60MB 60MB 2 Notes: (1) System Board Memory; (2) Replacing Standard 1MB Memory Kit on System Board; (3) Replacing Standard Fixed Disk; (4) 1.44MB Models STANDARD FEATURES : 50-021 50-031 50-061 Processor Wait Stat"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Fino a 16 MB con adattatori; memoria sulla scheda madre fino a 2 MB",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B3 2 50-031 8550031 80286-1 OMHz 1MB 2MB2 16MB 30MB 60MB3 2 50-061 8550061 80286-1 OMHz 1MB 2MB2 16MB 60MB 60MB 2 Notes: (1) System Board Memory; (2) Replacing Standard 1MB Memory Kit on System Board; (3) Replacing Standard Fixed Disk; (4) 1.44MB Models STANDARD FEATURES : 50-021 50-031 50-061 Processor Wait Stat"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "Micro Channel (MCA)",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "he higher-numbered models (above 50) were equipped with the Micro Channel bus and mostly ESDI or SCSI hard drives (models 60-041 and 80-041 had MFM hard drives). PS/2 Models 50 (IBM 8550) and 60 (IBM 8560) used the Intel 286 processor, the PS/2 Models 70 386 (IBM 8570) and 80 used the 386DX, while the mid-range PS/2"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "isk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC market by introducing the advanced yet proprietary Micro Channel architecture (MCA)"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch floppy disk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "60 MB; allestimento 8550-061",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B3 2 50-031 8550031 80286-1 OMHz 1MB 2MB2 16MB 30MB 60MB3 2 50-061 8550061 80286-1 OMHz 1MB 2MB2 16MB 60MB 60MB 2 Notes: (1) System Board Memory; (2) Replacing Standard 1MB Memory Kit on System Board; (3) Replacing Standard Fixed Disk; (4) 1.44MB Models STANDARD FEATURES : 50-021 50-031 50-061 Processor Wait Stat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/2 Model 55 SX",
+      "description": "Il PS/2 Model 55 SX portò il processore 386SX nella fascia intermedia dei desktop Micro Channel IBM. Il progetto offriva VGA e 2 MB di memoria standard, mantenendo un sistema di espansione e configurazione coerente con i PS/2 professionali. Il processore a 16 MHz aveva un bus dati esterno a 16 bit, distinto da quello dei 386DX.",
+      "source": {
+        "title": "Wikipedia — IBM PS/2",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The Personal System/2 or PS/2 is IBM's second generation of personal computers. Released in 1987, it officially replaced the IBM PC, XT, AT, and PC Convertible in IBM's lineup. Many of the PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch flopp",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80386SX",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "6MB 60MB I 27ms I 60MB lxl .44MB VGA Desktop 3 ModelSSSX .. 55-031 8555031 80386SX-16MHz 2MB/4MB 16MB 30MB I 39ms I 30MB lxl.44MB VGA Desktop 3 ... 55-061 8555061 80386SX-16MHz 2MB/4MB 16MB 60MB I 27ms I 60MB lxl.44MB VGA Desktop 3 Model60 60-041 8560041 80286- lOMHz lMB/lMB 16MB 44MB I 40ms I 88MB lxl.44MB VGA F"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 16,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "6MB 60MB I 27ms I 60MB lxl .44MB VGA Desktop 3 ModelSSSX .. 55-031 8555031 80386SX-16MHz 2MB/4MB 16MB 30MB I 39ms I 30MB lxl.44MB VGA Desktop 3 ... 55-061 8555061 80386SX-16MHz 2MB/4MB 16MB 60MB I 27ms I 60MB lxl.44MB VGA Desktop 3 Model60 60-041 8560041 80286- lOMHz lMB/lMB 16MB 44MB I 40ms I 88MB lxl.44MB VGA F"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 2048,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "6MB 60MB I 27ms I 60MB lxl .44MB VGA Desktop 3 ModelSSSX .. 55-031 8555031 80386SX-16MHz 2MB/4MB 16MB 30MB I 39ms I 30MB lxl.44MB VGA Desktop 3 ... 55-061 8555061 80386SX-16MHz 2MB/4MB 16MB 60MB I 27ms I 60MB lxl.44MB VGA Desktop 3 Model60 60-041 8560041 80286- lOMHz lMB/lMB 16MB 44MB I 40ms I 88MB lxl.44MB VGA F"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Fino a 16 MB con adattatori; fino a 4 MB sulla scheda madre nel catalogo 1989",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "6MB 60MB I 27ms I 60MB lxl .44MB VGA Desktop 3 ModelSSSX .. 55-031 8555031 80386SX-16MHz 2MB/4MB 16MB 30MB I 39ms I 30MB lxl.44MB VGA Desktop 3 ... 55-061 8555061 80386SX-16MHz 2MB/4MB 16MB 60MB I 27ms I 60MB lxl.44MB VGA Desktop 3 Model60 60-041 8560041 80286- lOMHz lMB/lMB 16MB 44MB I 40ms I 88MB lxl.44MB VGA F"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "Micro Channel (MCA)",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "he higher-numbered models (above 50) were equipped with the Micro Channel bus and mostly ESDI or SCSI hard drives (models 60-041 and 80-041 had MFM hard drives). PS/2 Models 50 (IBM 8550) and 60 (IBM 8560) used the Intel 286 processor, the PS/2 Models 70 386 (IBM 8570) and 80 used the 386DX, while the mid-range PS/2"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "isk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC market by introducing the advanced yet proprietary Micro Channel architecture (MCA)"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch floppy disk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/2 Model 80",
+      "description": "Il PS/2 Model 80 era il sistema a torre della prima famiglia PS/2 del 1987, destinato a impieghi professionali più impegnativi. Utilizzava il processore 80386, il bus Micro Channel e la grafica VGA. Le sigle 8580-071 e 8580-111 indicavano allestimenti diversi: rispettivamente 16 MHz con disco da 70 MB e 20 MHz con disco da 115 MB; rimangono configurazioni dello stesso modello commerciale.",
+      "source": {
+        "title": "Wikipedia — IBM PS/2",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The Personal System/2 or PS/2 is IBM's second generation of personal computers. Released in 1987, it officially replaced the IBM PC, XT, AT, and PC Convertible in IBM's lineup. Many of the PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch flopp",
+      "configurations": [
+        {
+          "variant_name": "8580-071",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80386",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B/2MB 16MB 44MB I 40ms I 88MB lxl.44MB VGA Floor Standing 7 80-071 8580071 80386- l6MHz 2MB/2MB 16MB 70MB / 30ms / 384MB lxl.44MB VGA Floor Standing 7 S0-111 8580111 80386-20MHz 2MB/4MB 16MB l 15MB / 28ms / 429MB lxl.44MB VGA Floor Standing 7 80-311 8580311 80386-20MHz 2MB/4MB 16MB 314MB I 23ms / 628MB lxl .44MB "
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 16,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B/2MB 16MB 44MB I 40ms I 88MB lxl.44MB VGA Floor Standing 7 80-071 8580071 80386- l6MHz 2MB/2MB 16MB 70MB / 30ms / 384MB lxl.44MB VGA Floor Standing 7 S0-111 8580111 80386-20MHz 2MB/4MB 16MB l 15MB / 28ms / 429MB lxl.44MB VGA Floor Standing 7 80-311 8580311 80386-20MHz 2MB/4MB 16MB 314MB I 23ms / 628MB lxl .44MB "
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 2048,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B/2MB 16MB 44MB I 40ms I 88MB lxl.44MB VGA Floor Standing 7 80-071 8580071 80386- l6MHz 2MB/2MB 16MB 70MB / 30ms / 384MB lxl.44MB VGA Floor Standing 7 S0-111 8580111 80386-20MHz 2MB/4MB 16MB l 15MB / 28ms / 429MB lxl.44MB VGA Floor Standing 7 80-311 8580311 80386-20MHz 2MB/4MB 16MB 314MB I 23ms / 628MB lxl .44MB "
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Fino a 16 MB con adattatori nel catalogo IBM del 1989",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B/2MB 16MB 44MB I 40ms I 88MB lxl.44MB VGA Floor Standing 7 80-071 8580071 80386- l6MHz 2MB/2MB 16MB 70MB / 30ms / 384MB lxl.44MB VGA Floor Standing 7 S0-111 8580111 80386-20MHz 2MB/4MB 16MB l 15MB / 28ms / 429MB lxl.44MB VGA Floor Standing 7 80-311 8580311 80386-20MHz 2MB/4MB 16MB 314MB I 23ms / 628MB lxl .44MB "
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "Micro Channel (MCA)",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "he higher-numbered models (above 50) were equipped with the Micro Channel bus and mostly ESDI or SCSI hard drives (models 60-041 and 80-041 had MFM hard drives). PS/2 Models 50 (IBM 8550) and 60 (IBM 8560) used the Intel 286 processor, the PS/2 Models 70 386 (IBM 8570) and 80 used the 386DX, while the mid-range PS/2"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "isk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC market by introducing the advanced yet proprietary Micro Channel architecture (MCA)"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch floppy disk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "70 MB ESDI",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B/2MB 16MB 44MB I 40ms I 88MB lxl.44MB VGA Floor Standing 7 80-071 8580071 80386- l6MHz 2MB/2MB 16MB 70MB / 30ms / 384MB lxl.44MB VGA Floor Standing 7 S0-111 8580111 80386-20MHz 2MB/4MB 16MB l 15MB / 28ms / 429MB lxl.44MB VGA Floor Standing 7 80-311 8580311 80386-20MHz 2MB/4MB 16MB 314MB I 23ms / 628MB lxl .44MB "
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Slot",
+              "numeric_value": 7,
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e - - - - - - - - - - - - - - - - - - NIA Direct Bus Attach VGA Graphics Available Slots - - - - - - - - - - - - - - - - - - - - - - 3 Math Coprocessor Socket - - - - - - - - - - - - - - - - - - 1 \" \" 3 1 Keylock & Bolt-Down Capability - - - - - - - - - - - - - - - - \" Models \" DISPLAYS (REQUIRED): 30-E01 30-E21 IBM PIN Dealer"
+            }
+          ]
+        },
+        {
+          "variant_name": "8580-111",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80386",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "8MB 2 80-071 8580071 80386-16MHz 2MB3 2MB 16MB 70MB 384MB 2 80-111 8580111 80386-20MHz 2MB3 4MB 16MB 115MB 429MB 2 80-311 8580311 80386-20MHz 2MB3 4MB 16MB 315MB 628MB 2 Notes: (1) System Board Memory; (2) 1.44MB; (3) 128KB used for high performance BIOS Models STANDARD FEATURES: 80-041 80-071 80-111 80-311 Proce"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 20,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "8MB 2 80-071 8580071 80386-16MHz 2MB3 2MB 16MB 70MB 384MB 2 80-111 8580111 80386-20MHz 2MB3 4MB 16MB 115MB 429MB 2 80-311 8580311 80386-20MHz 2MB3 4MB 16MB 315MB 628MB 2 Notes: (1) System Board Memory; (2) 1.44MB; (3) 128KB used for high performance BIOS Models STANDARD FEATURES: 80-041 80-071 80-111 80-311 Proce"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 2048,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "8MB 2 80-071 8580071 80386-16MHz 2MB3 2MB 16MB 70MB 384MB 2 80-111 8580111 80386-20MHz 2MB3 4MB 16MB 115MB 429MB 2 80-311 8580311 80386-20MHz 2MB3 4MB 16MB 315MB 628MB 2 Notes: (1) System Board Memory; (2) 1.44MB; (3) 128KB used for high performance BIOS Models STANDARD FEATURES: 80-041 80-071 80-111 80-311 Proce"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Fino a 16 MB con adattatori nel catalogo IBM del 1989",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "8MB 2 80-071 8580071 80386-16MHz 2MB3 2MB 16MB 70MB 384MB 2 80-111 8580111 80386-20MHz 2MB3 4MB 16MB 115MB 429MB 2 80-311 8580311 80386-20MHz 2MB3 4MB 16MB 315MB 628MB 2 Notes: (1) System Board Memory; (2) 1.44MB; (3) 128KB used for high performance BIOS Models STANDARD FEATURES: 80-041 80-071 80-111 80-311 Proce"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "Micro Channel (MCA)",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "he higher-numbered models (above 50) were equipped with the Micro Channel bus and mostly ESDI or SCSI hard drives (models 60-041 and 80-041 had MFM hard drives). PS/2 Models 50 (IBM 8550) and 60 (IBM 8560) used the Intel 286 processor, the PS/2 Models 70 386 (IBM 8570) and 80 used the 386DX, while the mid-range PS/2"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "isk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC market by introducing the advanced yet proprietary Micro Channel architecture (MCA)"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "Wikipedia — IBM PS/2",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e PS/2's innovations, such as the 16550 UART (serial port), 1440 KB 3.5-inch floppy disk format, 72-pin SIMMs, PS/2 mouse and keyboard port, and VGA, went on to become standards in the broader IBM PC compatibles market. The PS/2 line was created by IBM partly in an attempt to recapture control of the PC"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "115 MB ESDI",
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "8MB 2 80-071 8580071 80386-16MHz 2MB3 2MB 16MB 70MB 384MB 2 80-111 8580111 80386-20MHz 2MB3 4MB 16MB 115MB 429MB 2 80-311 8580311 80386-20MHz 2MB3 4MB 16MB 315MB 628MB 2 Notes: (1) System Board Memory; (2) 1.44MB; (3) 128KB used for high performance BIOS Models STANDARD FEATURES: 80-041 80-071 80-111 80-311 Proce"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Slot",
+              "numeric_value": 7,
+              "source": {
+                "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+                "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e - - - - - - - - - - - - - - - - - - NIA Direct Bus Attach VGA Graphics Available Slots - - - - - - - - - - - - - - - - - - - - - - 3 Math Coprocessor Socket - - - - - - - - - - - - - - - - - - 1 \" \" 3 1 Keylock & Bolt-Down Capability - - - - - - - - - - - - - - - - \" Models \" DISPLAYS (REQUIRED): 30-E01 30-E21 IBM PIN Dealer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/1 Model 2011",
+      "description": "Il PS/1 2011 segnò nel 1990 il ritorno di IBM al computer domestico dopo l’esperienza PCjr. Era progettato per essere semplice da installare: DOS e l’interfaccia iniziale erano in ROM e l’alimentatore era integrato nel monitor. Il 286 a 10 MHz e la grafica VGA offrivano l’accesso al software PC, mentre l’espansione richiedeva componenti e accessori dedicati.",
+      "source": {
+        "title": "Wikipedia — IBM PS/1",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374694288",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The PS/1 (known in some European countries as the PS/1000) is a brand for a line of personal computers that marked IBM's return to the home market in 1990, five years after the IBM PCjr. It was replaced by the IBM Aptiva in September 1994. == Posit",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80286",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2011, MWER-3S2TF8",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "1 System Information Applicable to: United States Processor 80286 10MHz Intel Processor Bus Type ISA Bus Memory 512 KB Memory - 2.5 MB Maximum Floppy Drive 3.5\" 1.44 MB Diskette Drive Device Controller Modified RLL Video Memory 256 KB (256 KB Maximum) VGA Slots None Bays 2 Power Supply 65 Watt (In Monitor) Par"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 10,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2011, MWER-3S2TF8",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "1 System Information Applicable to: United States Processor 80286 10MHz Intel Processor Bus Type ISA Bus Memory 512 KB Memory - 2.5 MB Maximum Floppy Drive 3.5\" 1.44 MB Diskette Drive Device Controller Modified RLL Video Memory 256 KB (256 KB Maximum) VGA Slots None Bays 2 Power Supply 65 Watt (In Monitor) Par"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 512,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2011, MWER-3S2TF8",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "ocessor 80286 10MHz Intel Processor Bus Type ISA Bus Memory 512 KB Memory - 2.5 MB Maximum Floppy Drive 3.5\" 1.44 MB Diskette Drive Device Controller Modified RLL Video Memory 256 KB (256 KB Maximum) VGA Slots None Bays 2 Power Supply 65 Watt (In Monitor) Parallel Ports PS/2 Bidirectional Modem 2400 bps Hayes Co"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Fino a 2,5 MB; disponibili anche allestimenti con 1 MB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2011, MWER-3S2TF8",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "ocessor 80286 10MHz Intel Processor Bus Type ISA Bus Memory 512 KB Memory - 2.5 MB Maximum Floppy Drive 3.5\" 1.44 MB Diskette Drive Device Controller Modified RLL Video Memory 256 KB (256 KB Maximum) VGA Slots None Bays 2 Power Supply 65 Watt (In Monitor) Parallel Ports PS/2 Bidirectional Modem 2400 bps Hayes Co"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "ISA tramite unità ACU opzionale; nessuno slot interno",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2011, MWER-3S2TF8",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "oller Modified RLL Video Memory 256 KB (256 KB Maximum) VGA Slots None Bays 2 Power Supply 65 Watt (In Monitor) Parallel Ports PS/2 Bidirectional Modem 2400 bps Hayes Compatible Serial Ports None Keyboard 101 Key Selectric Touch Keyboard Mouse IBM Mouse (PS/2 style connection) Operating System IBM DOS R4.01 D"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2011, MWER-3S2TF8",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "ontroller Modified RLL Video Memory 256 KB (256 KB Maximum) VGA Slots None Bays 2 Power Supply 65 Watt (In Monitor) Parallel Ports PS/2 Bidirectional Modem 2400 bps Hayes Compatible Serial Ports None Keyboard 101 Key Selectric Touch Keyboard Mouse IBM Mouse (PS/2 style connection) Operating System IBM "
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2011, MWER-3S2TF8",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "Bus Memory 512 KB Memory - 2.5 MB Maximum Floppy Drive 3.5\" 1.44 MB Diskette Drive Device Controller Modified RLL Video Memory 256 KB (256 KB Maximum) VGA Slots None Bays 2 Power Supply 65 Watt (In Monitor) Parallel Ports PS/2 Bidirectional Modem 2400 bps Hayes Compatible Serial Ports None Keyboard 101 "
+            },
+            {
+              "component_type": "Software",
+              "property_name": "Sistema operativo",
+              "text_value": "IBM DOS 4.01 e interfaccia in ROM",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2011, MWER-3S2TF8",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "rd Mouse IBM Mouse (PS/2 style connection) Operating System IBM DOS R4.01 DOS Kernel and User Interface in ROM 2011-C01 & M01 did not come with a Hard Drive 2011-C34 & M34 include a 30MB Modified RLL Hard Drive 2011-NEA included special educational software (Grade 2, Express Publisher & Linkway) 2011-U35 & T35 i"
+            },
+            {
+              "component_type": "Sistema",
+              "property_name": "Alimentazione",
+              "text_value": "Alimentatore da 65 W nel monitor",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2011, MWER-3S2TF8",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " 256 KB (256 KB Maximum) VGA Slots None Bays 2 Power Supply 65 Watt (In Monitor) Parallel Ports PS/2 Bidirectional Modem 2400 bps Hayes Compatible Serial Ports None Keyboard 101 Key Selectric Touch Keyboard Mouse IBM Mouse (PS/2 style connection) Operating System IBM DOS R4.01 DOS Kernel and User Interface"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "30 MB Modified RLL nei modelli C34/M34; assente in C01/M01",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2011, MWER-3S2TF8",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "M01 did not come with a Hard Drive 2011-C34 & M34 include a 30MB Modified RLL Hard Drive 2011-NEA included special educational software (Grade 2, Express Publisher & Linkway) 2011-U35 & T35 included ACIS software package (Windows 3.0, MS-Word) The C01, C34, NEA and U35 came with a color VGA monitor. The M01, M34 and"
+            }
+          ]
+        }
+      ],
+      "releases": [
+        {
+          "market": "Mercato non documentato",
+          "release_date": "1990",
+          "source": {
+            "title": "Wikipedia — IBM PS/1",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1374694288",
+            "author": "Collaboratori di Wikipedia",
+            "source_type": "encyclopedia",
+            "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+            "access_date": "2026-11-23"
+          },
+          "evidence": "The PS/1 (known in some European countries as the PS/1000) is a brand for a line of personal computers that marked IBM's return to the home market in 1990, five years after the IBM PCjr. It was replaced by the IBM Aptiva in September 1994. == Posit"
+        }
+      ],
+      "categories": [
+        "Personal computer"
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/1 Model 2121",
+      "description": "Il PS/1 2121 proseguì il progetto domestico del 2011 con processori 386SX e più memoria. Conservava la caratteristica unità monitor con alimentatore e l’ambiente iniziale in ROM, ma alcune versioni offrivano slot ISA interni. La documentazione IBM distingue allestimenti a 16 e 20 MHz e dotazioni del disco differenti.",
+      "source": {
+        "title": "Wikipedia — IBM PS/1",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374694288",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The PS/1 (known in some European countries as the PS/1000) is a brand for a line of personal computers that marked IBM's return to the home market in 1990, five years after the IBM PCjr. It was replaced by the IBM Aptiva in September 1994. == Posit",
+      "configurations": [
+        {
+          "variant_name": "2121-C42",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80386SX",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "21 Model Information Models C42 B82 C92 G42 A82 S92 M82 A94 CPU 386SX/16 386SX/16 386SX/16 386SX/20 386SX/20 386SX/20 386SX/20 386SX/20 Bays 2/0 3/1 2/0 2/0 3/1 2/0 3/1 3/1 Hard Drive 40 MB 80 MB 129 MB 40 MB 80 MB 129 MB 80 MB 129 MB RAM 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 6 MB Slots 0 2 0 0 2 0 2 2 Drive Bays "
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 16,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "21 Model Information Models C42 B82 C92 G42 A82 S92 M82 A94 CPU 386SX/16 386SX/16 386SX/16 386SX/20 386SX/20 386SX/20 386SX/20 386SX/20 Bays 2/0 3/1 2/0 2/0 3/1 2/0 3/1 3/1 Hard Drive 40 MB 80 MB 129 MB 40 MB 80 MB 129 MB 80 MB 129 MB RAM 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 6 MB Slots 0 2 0 0 2 0 2 2 Drive Bays "
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 2048,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "rd Drive 40 MB 80 MB 129 MB 40 MB 80 MB 129 MB 80 MB 129 MB RAM 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 6 MB Slots 0 2 0 0 2 0 2 2 Drive Bays are listed as (Total/Available) Bus Type ISA Bus Memory Maximum 6 MB Floppy Drive 3.5\" 1.44MB Device Controller IDE Controller Video Memory 256KB VGA (256KB Maximum) Power"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Espandibile fino a 6 MB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "rd Drive 40 MB 80 MB 129 MB 40 MB 80 MB 129 MB 80 MB 129 MB RAM 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 6 MB Slots 0 2 0 0 2 0 2 2 Drive Bays are listed as (Total/Available) Bus Type ISA Bus Memory Maximum 6 MB Floppy Drive 3.5\" 1.44MB Device Controller IDE Controller Video Memory 256KB VGA (256KB Maximum) Power"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "ISA",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " 0 2 0 0 2 0 2 2 Drive Bays are listed as (Total/Available) Bus Type ISA Bus Memory Maximum 6 MB Floppy Drive 3.5\" 1.44MB Device Controller IDE Controller Video Memory 256KB VGA (256KB Maximum) Power Supply 65 Watt Power Supply, In Monitor Parallel Ports PS/2 Bi-Directional Serial Ports None (A92 has one) Modem"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " 1.44MB Device Controller IDE Controller Video Memory 256KB VGA (256KB Maximum) Power Supply 65 Watt Power Supply, In Monitor Parallel Ports PS/2 Bi-Directional Serial Ports None (A92 has one) Modem 2400 bps Hayes Compatible Keyboard IBM 101-Key Keyboard Mouse IBM Mouse, PS/2 Style Connection All of th"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "ble) Bus Type ISA Bus Memory Maximum 6 MB Floppy Drive 3.5\" 1.44MB Device Controller IDE Controller Video Memory 256KB VGA (256KB Maximum) Power Supply 65 Watt Power Supply, In Monitor Parallel Ports PS/2 Bi-Directional Serial Ports None (A92 has one) Modem 2400 bps Hayes Compatible Keyboard IBM 101-Key"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "40 MB nell’allestimento 2121-C42",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "X/20 386SX/20 386SX/20 Bays 2/0 3/1 2/0 2/0 3/1 2/0 3/1 3/1 Hard Drive 40 MB 80 MB 129 MB 40 MB 80 MB 129 MB 80 MB 129 MB RAM 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 6 MB Slots 0 2 0 0 2 0 2 2 Drive Bays are listed as (Total/Available) Bus Type ISA Bus Memory Maximum 6 MB Floppy Drive 3.5\" 1.44MB Device Controller IDE C"
+            },
+            {
+              "component_type": "Sistema",
+              "property_name": "Alimentazione",
+              "text_value": "65 W, alimentatore nel monitor",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "troller Video Memory 256KB VGA (256KB Maximum) Power Supply 65 Watt Power Supply, In Monitor Parallel Ports PS/2 Bi-Directional Serial Ports None (A92 has one) Modem 2400 bps Hayes Compatible Keyboard IBM 101-Key Keyboard Mouse IBM Mouse, PS/2 Style Connection All of these machines use a standard IDE contr"
+            }
+          ]
+        },
+        {
+          "variant_name": "2121-G42",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80386SX",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "21 Model Information Models C42 B82 C92 G42 A82 S92 M82 A94 CPU 386SX/16 386SX/16 386SX/16 386SX/20 386SX/20 386SX/20 386SX/20 386SX/20 Bays 2/0 3/1 2/0 2/0 3/1 2/0 3/1 3/1 Hard Drive 40 MB 80 MB 129 MB 40 MB 80 MB 129 MB 80 MB 129 MB RAM 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 6 MB Slots 0 2 0 0 2 0 2 2 Drive Bays "
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 20,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "21 Model Information Models C42 B82 C92 G42 A82 S92 M82 A94 CPU 386SX/16 386SX/16 386SX/16 386SX/20 386SX/20 386SX/20 386SX/20 386SX/20 Bays 2/0 3/1 2/0 2/0 3/1 2/0 3/1 3/1 Hard Drive 40 MB 80 MB 129 MB 40 MB 80 MB 129 MB 80 MB 129 MB RAM 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 6 MB Slots 0 2 0 0 2 0 2 2 Drive Bays "
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 2048,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "rd Drive 40 MB 80 MB 129 MB 40 MB 80 MB 129 MB 80 MB 129 MB RAM 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 6 MB Slots 0 2 0 0 2 0 2 2 Drive Bays are listed as (Total/Available) Bus Type ISA Bus Memory Maximum 6 MB Floppy Drive 3.5\" 1.44MB Device Controller IDE Controller Video Memory 256KB VGA (256KB Maximum) Power"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Espandibile fino a 6 MB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "rd Drive 40 MB 80 MB 129 MB 40 MB 80 MB 129 MB 80 MB 129 MB RAM 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 6 MB Slots 0 2 0 0 2 0 2 2 Drive Bays are listed as (Total/Available) Bus Type ISA Bus Memory Maximum 6 MB Floppy Drive 3.5\" 1.44MB Device Controller IDE Controller Video Memory 256KB VGA (256KB Maximum) Power"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "ISA",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " 0 2 0 0 2 0 2 2 Drive Bays are listed as (Total/Available) Bus Type ISA Bus Memory Maximum 6 MB Floppy Drive 3.5\" 1.44MB Device Controller IDE Controller Video Memory 256KB VGA (256KB Maximum) Power Supply 65 Watt Power Supply, In Monitor Parallel Ports PS/2 Bi-Directional Serial Ports None (A92 has one) Modem"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " 1.44MB Device Controller IDE Controller Video Memory 256KB VGA (256KB Maximum) Power Supply 65 Watt Power Supply, In Monitor Parallel Ports PS/2 Bi-Directional Serial Ports None (A92 has one) Modem 2400 bps Hayes Compatible Keyboard IBM 101-Key Keyboard Mouse IBM Mouse, PS/2 Style Connection All of th"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "ble) Bus Type ISA Bus Memory Maximum 6 MB Floppy Drive 3.5\" 1.44MB Device Controller IDE Controller Video Memory 256KB VGA (256KB Maximum) Power Supply 65 Watt Power Supply, In Monitor Parallel Ports PS/2 Bi-Directional Serial Ports None (A92 has one) Modem 2400 bps Hayes Compatible Keyboard IBM 101-Key"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "40 MB nell’allestimento 2121-G42",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "X/20 386SX/20 386SX/20 Bays 2/0 3/1 2/0 2/0 3/1 2/0 3/1 3/1 Hard Drive 40 MB 80 MB 129 MB 40 MB 80 MB 129 MB 80 MB 129 MB RAM 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 2 MB 6 MB Slots 0 2 0 0 2 0 2 2 Drive Bays are listed as (Total/Available) Bus Type ISA Bus Memory Maximum 6 MB Floppy Drive 3.5\" 1.44MB Device Controller IDE C"
+            },
+            {
+              "component_type": "Sistema",
+              "property_name": "Alimentazione",
+              "text_value": "65 W, alimentatore nel monitor",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "troller Video Memory 256KB VGA (256KB Maximum) Power Supply 65 Watt Power Supply, In Monitor Parallel Ports PS/2 Bi-Directional Serial Ports None (A92 has one) Modem 2400 bps Hayes Compatible Keyboard IBM 101-Key Keyboard Mouse IBM Mouse, PS/2 Style Connection All of these machines use a standard IDE contr"
+            }
+          ]
+        }
+      ],
+      "categories": [
+        "Personal computer"
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/1 Model 2133",
+      "description": "Il PS/1 2133 rappresenta la generazione di desktop IBM per il mercato domestico venduta anche nei pacchetti Consultant, Essential ed Expert. Questi nomi potevano distinguere il software preinstallato più che l’hardware: la scheda IBM raccoglie sotto lo stesso tipo versioni 386SX e 486SX. DOS, Windows 3.1 e Works offrivano un ambiente pronto per produttività personale e studio.",
+      "source": {
+        "title": "Wikipedia — IBM PS/1",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374694288",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The PS/1 (known in some European countries as the PS/1000) is a brand for a line of personal computers that marked IBM's return to the home market in 1990, five years after the IBM PCjr. It was replaced by the IBM Aptiva in September 1994. == Posit",
+      "configurations": [
+        {
+          "variant_name": "2133-G11",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80386SX",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "rchitecture (? = G, W or S) 2133 Models ?11 ?13 ?43 ?50 ?53 Processor 386SX/25 386SX/25 486SX/20 486SX/25 486SX/25 Video Chipset CL-5410 CL-5410 Tseng ET-4000 Tseng ET-4000 Tseng ET-4000 VRAM (Installed/Max) 256KB / 256KB 256KB / 256KB 512 KB / 1 MB 512 KB / 1 MB 512 KB / 1 MB Diskette Drives 3.5\" 3.5\" / 5.25\" 3.5\" 3"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 25,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "rchitecture (? = G, W or S) 2133 Models ?11 ?13 ?43 ?50 ?53 Processor 386SX/25 386SX/25 486SX/20 486SX/25 486SX/25 Video Chipset CL-5410 CL-5410 Tseng ET-4000 Tseng ET-4000 Tseng ET-4000 VRAM (Installed/Max) 256KB / 256KB 256KB / 256KB 512 KB / 1 MB 512 KB / 1 MB 512 KB / 1 MB Diskette Drives 3.5\" 3.5\" / 5.25\" 3.5\" 3"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 2048,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " CL-5410 CL-5410 Tseng ET-4000 Tseng ET-4000 Tseng ET-4000 VRAM (Installed/Max) 256KB / 256KB 256KB / 256KB 512 KB / 1 MB 512 KB / 1 MB 512 KB / 1 MB Diskette Drives 3.5\" 3.5\" / 5.25\" 3.5\" 3.5\" / 5.25\" 3.5\" Slots (Total/Open) 3 / 2 3 / 2 3 / 2 3 / 2 3 / 2 Hard Drive 85 MB 129 MB 129 MB 129 MB 129 MB RAM (Installed/Max"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Fino a 16 MB, secondo scheda madre",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " CL-5410 CL-5410 Tseng ET-4000 Tseng ET-4000 Tseng ET-4000 VRAM (Installed/Max) 256KB / 256KB 256KB / 256KB 512 KB / 1 MB 512 KB / 1 MB 512 KB / 1 MB Diskette Drives 3.5\" 3.5\" / 5.25\" 3.5\" 3.5\" / 5.25\" 3.5\" Slots (Total/Open) 3 / 2 3 / 2 3 / 2 3 / 2 3 / 2 Hard Drive 85 MB 129 MB 129 MB 129 MB 129 MB RAM (Installed/Max"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "85 MB IDE",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "5.25\" 3.5\" Slots (Total/Open) 3 / 2 3 / 2 3 / 2 3 / 2 3 / 2 Hard Drive 85 MB 129 MB 129 MB 129 MB 129 MB RAM (Installed/Max) 2 MB / 16 MB 2 MB / 16 MB 4 MB / 32 MB 4 MB / 32 MB 4 MB / 32 MB 386 Systems in this document use 72-pin 85ns gold-lead PS/2-style parity memory in units of 1, 2, 4 or 8 MB. 486 Systems use 3"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "ISA",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " CD-ROM with it's own ISA interface controller should work. Any ISA card (CD-ROM controller, modem, SCSI card) added to these machines needs to be non-\"Plug and Play\" to help insure compatability. All of these options assume you have sufficient room inside of your case (slots and/or drive bays), please check th"
+            },
+            {
+              "component_type": "Software",
+              "property_name": "Software preinstallato",
+              "text_value": "DOS 5.0, Windows 3.1 e Works 2.0",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "& W43) were their preloaded software bundles. All came with Dos 5.0, Windows 3.1 and Works 2.0 2133 System Architecture (? = G, W or S) 2133 Models ?11 ?13 ?43 ?50 ?53 Processor 386SX/25 386SX/25 486SX/20 486SX/25 486SX/25 Video Chipset CL-5410 CL-5410 Tseng ET-4000 Tseng ET-4000 Tseng ET-4000 VRAM (Installed/Max) 256KB / 256KB 256K"
+            }
+          ]
+        },
+        {
+          "variant_name": "2133-G53",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80486SX",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "rchitecture (? = G, W or S) 2133 Models ?11 ?13 ?43 ?50 ?53 Processor 386SX/25 386SX/25 486SX/20 486SX/25 486SX/25 Video Chipset CL-5410 CL-5410 Tseng ET-4000 Tseng ET-4000 Tseng ET-4000 VRAM (Installed/Max) 256KB / 256KB 256KB / 256KB 512 KB / 1 MB 512 KB / 1 MB 512 KB / 1 MB Diskette Drives 3.5\" 3.5\" / 5.25\" 3.5\" 3"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 25,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "rchitecture (? = G, W or S) 2133 Models ?11 ?13 ?43 ?50 ?53 Processor 386SX/25 386SX/25 486SX/20 486SX/25 486SX/25 Video Chipset CL-5410 CL-5410 Tseng ET-4000 Tseng ET-4000 Tseng ET-4000 VRAM (Installed/Max) 256KB / 256KB 256KB / 256KB 512 KB / 1 MB 512 KB / 1 MB 512 KB / 1 MB Diskette Drives 3.5\" 3.5\" / 5.25\" 3.5\" 3"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 4096,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " CL-5410 CL-5410 Tseng ET-4000 Tseng ET-4000 Tseng ET-4000 VRAM (Installed/Max) 256KB / 256KB 256KB / 256KB 512 KB / 1 MB 512 KB / 1 MB 512 KB / 1 MB Diskette Drives 3.5\" 3.5\" / 5.25\" 3.5\" 3.5\" / 5.25\" 3.5\" Slots (Total/Open) 3 / 2 3 / 2 3 / 2 3 / 2 3 / 2 Hard Drive 85 MB 129 MB 129 MB 129 MB 129 MB RAM (Installed/Max"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Fino a 32 MB, secondo scheda madre",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " CL-5410 CL-5410 Tseng ET-4000 Tseng ET-4000 Tseng ET-4000 VRAM (Installed/Max) 256KB / 256KB 256KB / 256KB 512 KB / 1 MB 512 KB / 1 MB 512 KB / 1 MB Diskette Drives 3.5\" 3.5\" / 5.25\" 3.5\" 3.5\" / 5.25\" 3.5\" Slots (Total/Open) 3 / 2 3 / 2 3 / 2 3 / 2 3 / 2 Hard Drive 85 MB 129 MB 129 MB 129 MB 129 MB RAM (Installed/Max"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "129 MB IDE",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "5.25\" 3.5\" Slots (Total/Open) 3 / 2 3 / 2 3 / 2 3 / 2 3 / 2 Hard Drive 85 MB 129 MB 129 MB 129 MB 129 MB RAM (Installed/Max) 2 MB / 16 MB 2 MB / 16 MB 4 MB / 32 MB 4 MB / 32 MB 4 MB / 32 MB 386 Systems in this document use 72-pin 85ns gold-lead PS/2-style parity memory in units of 1, 2, 4 or 8 MB. 486 Systems use 3"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "ISA",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " CD-ROM with it's own ISA interface controller should work. Any ISA card (CD-ROM controller, modem, SCSI card) added to these machines needs to be non-\"Plug and Play\" to help insure compatability. All of these options assume you have sufficient room inside of your case (slots and/or drive bays), please check th"
+            },
+            {
+              "component_type": "Software",
+              "property_name": "Software preinstallato",
+              "text_value": "DOS 5.0, Windows 3.1 e Works 2.0",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "& W43) were their preloaded software bundles. All came with Dos 5.0, Windows 3.1 and Works 2.0 2133 System Architecture (? = G, W or S) 2133 Models ?11 ?13 ?43 ?50 ?53 Processor 386SX/25 386SX/25 486SX/20 486SX/25 486SX/25 Video Chipset CL-5410 CL-5410 Tseng ET-4000 Tseng ET-4000 Tseng ET-4000 VRAM (Installed/Max) 256KB / 256KB 256K"
+            }
+          ]
+        }
+      ],
+      "categories": [
+        "Personal computer"
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/1 Model 2168",
+      "description": "Il PS/1 2168 adottava un contenitore a torre con maggiore spazio per unità ed espansioni rispetto ai primi PS/1. I numerosi allestimenti comprendevano processori 486 e dotazioni multimediali differenti. La configurazione BB1 qui documentata impiegava un 486DX2 a 66 MHz, disco da 420 MB, CD-ROM a doppia velocità e audio Aria 16.",
+      "source": {
+        "title": "Wikipedia — IBM PS/1",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1374694288",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The PS/1 (known in some European countries as the PS/1000) is a brand for a line of personal computers that marked IBM's return to the home market in 1990, five years after the IBM PCjr. It was replaced by the IBM Aptiva in September 1994. == Posit",
+      "configurations": [
+        {
+          "variant_name": "2168-BB1",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80486DX2",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2168 SL-B, MWER-3THU84",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/bcaa.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "n 2168 System Architecture Model 2168 BB1 2168 US1 2168 SR1 Processor 486DX2/66 486DX2/50 486SX/33 Cache / Max 0 / 256KB 0 / 256KB 0 / 256KB Video Chipset CL-5428 CL-5428 CL-5428 VRAM / Max 1MB / 1MB 1MB / 1MB 1MB / 1MB Disk Drive 3.5\" 3.5\" 3.5\" Hard Drive 420 MB 340 MB 253 MB Memory / Max 4 MB / 64 MB 4 MB / 64 MB 4 "
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 66,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2168 SL-B, MWER-3THU84",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/bcaa.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "n 2168 System Architecture Model 2168 BB1 2168 US1 2168 SR1 Processor 486DX2/66 486DX2/50 486SX/33 Cache / Max 0 / 256KB 0 / 256KB 0 / 256KB Video Chipset CL-5428 CL-5428 CL-5428 VRAM / Max 1MB / 1MB 1MB / 1MB 1MB / 1MB Disk Drive 3.5\" 3.5\" 3.5\" Hard Drive 420 MB 340 MB 253 MB Memory / Max 4 MB / 64 MB 4 MB / 64 MB 4 "
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 4096,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2168 SL-B, MWER-3THU84",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/bcaa.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B Disk Drive 3.5\" 3.5\" 3.5\" Hard Drive 420 MB 340 MB 253 MB Memory / Max 4 MB / 64 MB 4 MB / 64 MB 4 MB / 64 MB Modem Speed 14.4 Kbps 2400 bps 2400 bps Fax Speed (S/R) 14.4K / 14.4K 9600 / 4800 N/A CD-ROM Matsushita 2x Matsushita 2x Matsushita 2x Sound Card Aria 16 Aria 16 Sound Blaster Model 2168 38C 2168 57C Processor 486"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Espandibile fino a 64 MB",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2168 SL-B, MWER-3THU84",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/bcaa.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "B Disk Drive 3.5\" 3.5\" 3.5\" Hard Drive 420 MB 340 MB 253 MB Memory / Max 4 MB / 64 MB 4 MB / 64 MB 4 MB / 64 MB Modem Speed 14.4 Kbps 2400 bps 2400 bps Fax Speed (S/R) 14.4K / 14.4K 9600 / 4800 N/A CD-ROM Matsushita 2x Matsushita 2x Matsushita 2x Sound Card Aria 16 Aria 16 Sound Blaster Model 2168 38C 2168 57C Processor 486"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "420 MB IDE",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2168 SL-B, MWER-3THU84",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/bcaa.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "Max 1MB / 1MB 1MB / 1MB 1MB / 1MB Disk Drive 3.5\" 3.5\" 3.5\" Hard Drive 420 MB 340 MB 253 MB Memory / Max 4 MB / 64 MB 4 MB / 64 MB 4 MB / 64 MB Modem Speed 14.4 Kbps 2400 bps 2400 bps Fax Speed (S/R) 14.4K / 14.4K 9600 / 4800 N/A CD-ROM Matsushita 2x Matsushita 2x Matsushita 2x Sound Card Aria 16 Aria 16 Sound Blast"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Controller",
+              "text_value": "Cirrus Logic CL-GD5428, 1 MB VRAM",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2168 SL-B, MWER-3THU84",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/bcaa.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "86DX2/50 486SX/33 Cache / Max 0 / 256KB 0 / 256KB 0 / 256KB Video Chipset CL-5428 CL-5428 CL-5428 VRAM / Max 1MB / 1MB 1MB / 1MB 1MB / 1MB Disk Drive 3.5\" 3.5\" 3.5\" Hard Drive 420 MB 340 MB 253 MB Memory / Max 4 MB / 64 MB 4 MB / 64 MB 4 MB / 64 MB Modem Speed 14.4 Kbps 2400 bps 2400 bps Fax Speed (S/R) 14.4K / 14.4K 96"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "CD-ROM",
+              "text_value": "Matsushita 2×",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2168 SL-B, MWER-3THU84",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/bcaa.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " bps 2400 bps Fax Speed (S/R) 14.4K / 14.4K 9600 / 4800 N/A CD-ROM Matsushita 2x Matsushita 2x Matsushita 2x Sound Card Aria 16 Aria 16 Sound Blaster Model 2168 38C 2168 57C Processor 486DX2/50 486DX2/66 Cache / Max 0 / 256KB 0 / 256KB Video Chipset CL-5428 CL-5428 VRAM / Max 512KB / 1MB 1MB / 1MB Disk Drive 3.5\" & 5.2"
+            },
+            {
+              "component_type": "Audio",
+              "property_name": "Scheda",
+              "text_value": "Aria 16",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2168 SL-B, MWER-3THU84",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/bcaa.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "/ 4800 N/A CD-ROM Matsushita 2x Matsushita 2x Matsushita 2x Sound Card Aria 16 Aria 16 Sound Blaster Model 2168 38C 2168 57C Processor 486DX2/50 486DX2/66 Cache / Max 0 / 256KB 0 / 256KB Video Chipset CL-5428 CL-5428 VRAM / Max 512KB / 1MB 1MB / 1MB Disk Drive 3.5\" & 5.25\" 3.5\" & 5.25\" Hard Drive 340 MB 720 MB Memory"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "ISA",
+              "source": {
+                "title": "IBM Service Hints & Tips — PS/1 2168 SL-B, MWER-3THU84",
+                "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/bcaa.htm",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " CD-ROM with it's own ISA interface controller should work. Any ISA card (CD-ROM controller, modem, SCSI card) added to these machines needs to be non-\"Plug and Play\" to help insure compatability. Processor Upgrade Matrix Model CPU Upgrade Processor Installation Notes 2168 38C DX2/50 P24T-63 J24: 1-2, J25: 1-2,"
+            }
+          ]
+        }
+      ],
+      "categories": [
+        "Personal computer"
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/2 Note N33 SX",
+      "description": "Il PS/2 Note N33 SX fu il primo notebook IBM distribuito sui mercati occidentali nel 1991. Derivava dai PS/55 Note giapponesi e combinava un 386SX con uno schermo VGA monocromatico da 9,5 pollici. Il contenitore compatto ospitava il disco fisso ma ricorreva a un’unità floppy esterna; le due revisioni principali impiegavano CPU a 12 o 16 MHz.",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Note and PS/note",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The IBM PS/2 Note and PS/note are a series of notebooks from the PS/2 line by IBM. It was announced in March 1992, half a year prior to the release of the first ThinkPad, the IBM ThinkPad 700. The series was discontinued in 1994. == Background == After the ",
+      "configurations": [
+        {
+          "variant_name": "12 MHz",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80386SX",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e were two versions with one based on the original Japanese 12Mhz PS/55 Note and the other based on the Japanese 16Mhz N23 SX. The main two changes is that neither had internal floppy drives and they both had a Western keyboard. === PS/ note C23 SX === A joint third generation PS/Note took the ISA-bus N23SX and add"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 12,
+              "unit": "MHz",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e were two versions with one based on the original Japanese 12Mhz PS/55 Note and the other based on the Japanese 16Mhz N23 SX. The main two changes is that neither had internal floppy drives and they both had a Western keyboard. === PS/ note C23 SX === A joint third generation PS/Note took the ISA-bus N23SX and add"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "text_value": "2–6 MB secondo allestimento",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "nounced in 1991. This model was based on the AT-bus and had between 2 or 6MB RAM. It has a 9.5\" 16-greyscale VGA LCD (640x480), external 1.44MB floppy connector, expansion ports and a 40MB or 80MB HDD, and weighs 5.5 lb (2.5 kg). There were two versions with one based on the original Japanese 12Mhz PS/55 Note and the o"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Schermo",
+              "text_value": "LCD 9,5 pollici, VGA 640 × 480, 16 grigi",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "he 55-series with a 12Mhz 80386 CPU, 2Mb RAM built in and a 9.5\" 16-greyscale VGA LCD (640x480). It was only released in Japan. The two main planars inside consisted of two separate boards \"APEX-MAIN\" and \"SUB-BOARD\" leaving room inside for either a floppy drive or a hard drive - but not both. The keyboard has a 7-row layout only. It was not common for IBM to add codenames or words to their internal PCBs, suggesting some influence from outside IBM. === PS/55 note N23 SX === This was a second generation PS/55 note type 5523-S1x with N23 SX added to its case badge and also only released in Japan. This machine had a 16Mhz 80386 CPU and a redesigned motherboard consisting of just one planar. The additional space inside meant the machine could accommodate both an internal floppy disk drive and a hard drive. It also featured an external VGA output and display invert switch. The main planar inside has \"EXCEL-MAIN\" written on it. === PS/2 note N33 SX === The PS/2 Model N33 SX (also known as PS/2 note N33 SX) was the first Western-released notebook-sized computer from IBM which was announced in 1991. This model was based on the AT-bus and had between 2 or 6MB RAM. It has a 9.5\" 16-greyscale VGA LCD (640x480), external 1.44MB floppy connector, expansion ports and a 40MB or 80MB HDD, and weighs 5.5 lb (2.5 kg). There were two versions with one based on the original Japanese 12Mhz PS/55 Note and the other based on the Japanese 1"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "40 o 80 MB",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "0), external 1.44MB floppy connector, expansion ports and a 40MB or 80MB HDD, and weighs 5.5 lb (2.5 kg). There were two versions with one based on the original Japanese 12Mhz PS/55 Note and the other based on the Japanese 16Mhz N23 SX. The main two changes is that neither had internal floppy drives and they both h"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "AT / ISA",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "BM which was announced in 1991. This model was based on the AT-bus and had between 2 or 6MB RAM. It has a 9.5\" 16-greyscale VGA LCD (640x480), external 1.44MB floppy connector, expansion ports and a 40MB or 80MB HDD, and weighs 5.5 lb (2.5 kg). There were two versions with one based on the original Japane"
+            },
+            {
+              "component_type": "Sistema",
+              "property_name": "Peso",
+              "numeric_value": 2.5,
+              "unit": "kg",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " expansion ports and a 40MB or 80MB HDD, and weighs 5.5 lb (2.5 kg). There were two versions with one based on the original Japanese 12Mhz PS/55 Note and the other based on the Japanese 16Mhz N23 SX. The main two changes is that neither had internal floppy drives and they both had a Western keyboard. === "
+            }
+          ]
+        },
+        {
+          "variant_name": "16 MHz",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80386SX",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e were two versions with one based on the original Japanese 12Mhz PS/55 Note and the other based on the Japanese 16Mhz N23 SX. The main two changes is that neither had internal floppy drives and they both had a Western keyboard. === PS/ note C23 SX === A joint third generation PS/Note took the ISA-bus N23SX and add"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 16,
+              "unit": "MHz",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "e were two versions with one based on the original Japanese 12Mhz PS/55 Note and the other based on the Japanese 16Mhz N23 SX. The main two changes is that neither had internal floppy drives and they both had a Western keyboard. === PS/ note C23 SX === A joint third generation PS/Note took the ISA-bus N23SX and add"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "text_value": "2–6 MB secondo allestimento",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "nounced in 1991. This model was based on the AT-bus and had between 2 or 6MB RAM. It has a 9.5\" 16-greyscale VGA LCD (640x480), external 1.44MB floppy connector, expansion ports and a 40MB or 80MB HDD, and weighs 5.5 lb (2.5 kg). There were two versions with one based on the original Japanese 12Mhz PS/55 Note and the o"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Schermo",
+              "text_value": "LCD 9,5 pollici, VGA 640 × 480, 16 grigi",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "he 55-series with a 12Mhz 80386 CPU, 2Mb RAM built in and a 9.5\" 16-greyscale VGA LCD (640x480). It was only released in Japan. The two main planars inside consisted of two separate boards \"APEX-MAIN\" and \"SUB-BOARD\" leaving room inside for either a floppy drive or a hard drive - but not both. The keyboard has a 7-row layout only. It was not common for IBM to add codenames or words to their internal PCBs, suggesting some influence from outside IBM. === PS/55 note N23 SX === This was a second generation PS/55 note type 5523-S1x with N23 SX added to its case badge and also only released in Japan. This machine had a 16Mhz 80386 CPU and a redesigned motherboard consisting of just one planar. The additional space inside meant the machine could accommodate both an internal floppy disk drive and a hard drive. It also featured an external VGA output and display invert switch. The main planar inside has \"EXCEL-MAIN\" written on it. === PS/2 note N33 SX === The PS/2 Model N33 SX (also known as PS/2 note N33 SX) was the first Western-released notebook-sized computer from IBM which was announced in 1991. This model was based on the AT-bus and had between 2 or 6MB RAM. It has a 9.5\" 16-greyscale VGA LCD (640x480), external 1.44MB floppy connector, expansion ports and a 40MB or 80MB HDD, and weighs 5.5 lb (2.5 kg). There were two versions with one based on the original Japanese 12Mhz PS/55 Note and the other based on the Japanese 1"
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "40 o 80 MB",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "0), external 1.44MB floppy connector, expansion ports and a 40MB or 80MB HDD, and weighs 5.5 lb (2.5 kg). There were two versions with one based on the original Japanese 12Mhz PS/55 Note and the other based on the Japanese 16Mhz N23 SX. The main two changes is that neither had internal floppy drives and they both h"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "AT / ISA",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "BM which was announced in 1991. This model was based on the AT-bus and had between 2 or 6MB RAM. It has a 9.5\" 16-greyscale VGA LCD (640x480), external 1.44MB floppy connector, expansion ports and a 40MB or 80MB HDD, and weighs 5.5 lb (2.5 kg). There were two versions with one based on the original Japane"
+            },
+            {
+              "component_type": "Sistema",
+              "property_name": "Peso",
+              "numeric_value": 2.5,
+              "unit": "kg",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " expansion ports and a 40MB or 80MB HDD, and weighs 5.5 lb (2.5 kg). There were two versions with one based on the original Japanese 12Mhz PS/55 Note and the other based on the Japanese 16Mhz N23 SX. The main two changes is that neither had internal floppy drives and they both had a Western keyboard. === "
+            }
+          ]
+        }
+      ],
+      "releases": [
+        {
+          "market": "Mercato non documentato",
+          "release_date": "1991",
+          "source": {
+            "title": "Wikipedia — IBM PS/2 Note and PS/note",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+            "author": "Collaboratori di Wikipedia",
+            "source_type": "encyclopedia",
+            "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+            "access_date": "2026-11-23"
+          },
+          "evidence": "The IBM PS/2 Note and PS/note are a series of notebooks from the PS/2 line by IBM. It was announced in March 1992, half a year prior to the release of the first ThinkPad, the IBM ThinkPad 700. The series was discontinued in 1994. == Background == After the "
+        }
+      ],
+      "categories": [
+        "Portable"
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/2 Note N51 SX",
+      "description": "Il PS/2 Note N51 SX apparteneva alla generazione di notebook presentata da IBM nel marzo 1992, poco prima dei ThinkPad. A differenza del precedente N33, adottava il bus Micro Channel. Il modello 8551-033 documentato da IBM utilizzava un 386SX a 16 MHz, 2 MB di RAM e un disco da 40 MB.",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Note and PS/note",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The IBM PS/2 Note and PS/note are a series of notebooks from the PS/2 line by IBM. It was announced in March 1992, half a year prior to the release of the first ThinkPad, the IBM ThinkPad 700. The series was discontinued in 1994. == Background == After the ",
+      "configurations": [
+        {
+          "variant_name": "8551-033",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80386SX",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "L-25 2M/8M 120M Model N51 SLC 8551-025 386SLC-16 2M/10M 80M Model N51 SX 8551-033 386SX-16 2M/10M 40M Model CL57 SX 8554-045 386SX-20 2M/16M 80M Model P70 386 8573-031 80386-16 2M/8M 30M 8573-061 80386-20 2M/8M 60M 8573-121 80386-20 2M/8M 120M Model P75 486 8573-161 80486-33 8M/16M 160M 8573-401 80486-33 8M/16M 400M Thi"
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 16,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "L-25 2M/8M 120M Model N51 SLC 8551-025 386SLC-16 2M/10M 80M Model N51 SX 8551-033 386SX-16 2M/10M 40M Model CL57 SX 8554-045 386SX-20 2M/16M 80M Model P70 386 8573-031 80386-16 2M/8M 30M 8573-061 80386-20 2M/8M 60M 8573-121 80386-20 2M/8M 120M Model P75 486 8573-161 80486-33 8M/16M 160M 8573-401 80486-33 8M/16M 400M Thi"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 2048,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "L-25 2M/8M 120M Model N51 SLC 8551-025 386SLC-16 2M/10M 80M Model N51 SX 8551-033 386SX-16 2M/10M 40M Model CL57 SX 8554-045 386SX-20 2M/16M 80M Model P70 386 8573-031 80386-16 2M/8M 30M 8573-061 80386-20 2M/8M 60M 8573-121 80386-20 2M/8M 120M Model P75 486 8573-161 80486-33 8M/16M 160M 8573-401 80486-33 8M/16M 400M Thi"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Espandibile fino a 10 MB",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "L-25 2M/8M 120M Model N51 SLC 8551-025 386SLC-16 2M/10M 80M Model N51 SX 8551-033 386SX-16 2M/10M 40M Model CL57 SX 8554-045 386SX-20 2M/16M 80M Model P70 386 8573-031 80386-16 2M/8M 30M 8573-061 80386-20 2M/8M 60M 8573-121 80386-20 2M/8M 120M Model P75 486 8573-161 80486-33 8M/16M 160M 8573-401 80486-33 8M/16M 400M Thi"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "Micro Channel (MCA)",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "criptions All models in the following table have VGA video. Models N51, CL57, P70/75, and Thinkpads 700x and 720x are Micro Channel* systems. All others are AT* bus systems. Model Type Processor Memory Hrd Dsk Model L40SX 8543-044 386SX-20 2M/18M 60M Model N45 SL 2614-065 386SL-25 2M/8M 80M 2614-067 386SL-25 2M/8M "
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "omputer Descriptions All models in the following table have VGA video. Models N51, CL57, P70/75, and Thinkpads 700x and 720x are Micro Channel* systems. All others are AT* bus systems. Model Type Processor Memory Hrd Dsk Model L40SX 8543-044 386SX-20 2M/18M 60M Model N45 SL 2614-065 386SL-25 2M/8M 80M "
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "diskette drives. Diskette Identifying Drive Mark 3.5-Inch - 1.44MB 1.44 on the eject button 3.5-Inch - 2.88MB 2.88 on the eject button The following table provides compatibility information for 3.5-inch diskettes and 3.5-inch diskette drives. Diskette 1.44MB 2.88MB Capacity Drive Drive 1.0MB Read/Write "
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "40 MB",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "L-25 2M/8M 120M Model N51 SLC 8551-025 386SLC-16 2M/10M 80M Model N51 SX 8551-033 386SX-16 2M/10M 40M Model CL57 SX 8554-045 386SX-20 2M/16M 80M Model P70 386 8573-031 80386-16 2M/8M 30M 8573-061 80386-20 2M/8M 60M 8573-121 80386-20 2M/8M 120M Model P75 486 8573-161 80486-33 8M/16M 160M 8573-401 80486-33 8M/16M 400M Thi"
+            }
+          ]
+        }
+      ],
+      "releases": [
+        {
+          "market": "Mercato non documentato",
+          "release_date": "1992",
+          "source": {
+            "title": "Wikipedia — IBM PS/2 Note and PS/note",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+            "author": "Collaboratori di Wikipedia",
+            "source_type": "encyclopedia",
+            "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+            "access_date": "2026-11-23"
+          },
+          "evidence": "The IBM PS/2 Note and PS/note are a series of notebooks from the PS/2 line by IBM. It was announced in March 1992, half a year prior to the release of the first ThinkPad, the IBM ThinkPad 700. The series was discontinued in 1994. == Background == After the "
+        }
+      ],
+      "categories": [
+        "Portable"
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/note 182",
+      "description": "Il PS/note 182 nacque da una collaborazione IBM con Lexmark nel 1992. Il mobile grigio e il marchio richiamavano la linea domestica PS/1, ma la denominazione commerciale era PS/note. Impiegava un 80386SL e una tastiera su sette file; il successivo 425 ne riprese l’impostazione del contenitore introducendo anche il TrackPoint.",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Note and PS/note",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The IBM PS/2 Note and PS/note are a series of notebooks from the PS/2 line by IBM. It was announced in March 1992, half a year prior to the release of the first ThinkPad, the IBM ThinkPad 700. The series was discontinued in 1994. == Background == After the ",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80386SL",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "== PS/note 182/E82/N82 === A side project with Lexmark, the PS/note 182 and PS/note E82 was equipped with 80386SL CPU, PS/note N82 was equipped with 80386SX and released in 1992. This line has a 7-row keyboard layout and similar to next-year PS/note 425 model case (but with gray case color and without TrackPoint). The case badge uniquely resembled the"
+            },
+            {
+              "component_type": "I/O",
+              "property_name": "Tastiera",
+              "text_value": "Sette file di tasti",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "equipped with 80386SX and released in 1992. This line has a 7-row keyboard layout and similar to next-year PS/note 425 model case (but with gray case color and without TrackPoint). The case badge uniquely resembled the style of the PS/1. === Model 425/425C === The PS/note 425/425C are identical to the ThinkPad 350/350C."
+            },
+            {
+              "component_type": "Sistema",
+              "property_name": "Progetto",
+              "text_value": "Collaborazione IBM / Lexmark",
+              "source": {
+                "title": "Wikipedia — IBM PS/2 Note and PS/note",
+                "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+                "author": "Collaboratori di Wikipedia",
+                "source_type": "encyclopedia",
+                "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "ge. It sold in small numbers. === PS/note 182/E82/N82 === A side project with Lexmark, the PS/note 182 and PS/note E82 was equipped with 80386SL CPU, PS/note N82 was equipped with 80386SX and released in 1992. This line has a 7-row keyboard layout and similar to next-year PS/note 425 model case (but with gray case color and"
+            }
+          ]
+        }
+      ],
+      "releases": [
+        {
+          "market": "Mercato non documentato",
+          "release_date": "1992",
+          "source": {
+            "title": "Wikipedia — IBM PS/2 Note and PS/note",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+            "author": "Collaboratori di Wikipedia",
+            "source_type": "encyclopedia",
+            "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+            "access_date": "2026-11-23"
+          },
+          "evidence": "The IBM PS/2 Note and PS/note are a series of notebooks from the PS/2 line by IBM. It was announced in March 1992, half a year prior to the release of the first ThinkPad, the IBM ThinkPad 700. The series was discontinued in 1994. == Background == After the "
+        }
+      ],
+      "categories": [
+        "Portable"
+      ]
+    },
+    {
+      "manufacturer": "IBM",
+      "model_name": "PS/note 425",
+      "description": "Il PS/note 425 fu un notebook IBM della fase di transizione verso la famiglia ThinkPad. Condivideva l’hardware con il ThinkPad 350 e abbinava un 486SL a 25 MHz a 4 MB di memoria standard. Il manuale di manutenzione tratta insieme i due marchi e documenta TrackPoint II, slot PCMCIA e gestione energetica suspend/resume.",
+      "source": {
+        "title": "Wikipedia — IBM PS/2 Note and PS/note",
+        "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+        "author": "Collaboratori di Wikipedia",
+        "source_type": "encyclopedia",
+        "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "The IBM PS/2 Note and PS/note are a series of notebooks from the PS/2 line by IBM. It was announced in March 1992, half a year prior to the release of the first ThinkPad, the IBM ThinkPad 700. The series was discontinued in 1994. == Background == After the ",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "property_name": "Modello",
+              "text_value": "Intel 80486SL",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " brief overview of the system features. Feature Description Processor (MHz) 486SL 25-MHz Bus Architecture AT Bus Memory 4MB (Standard) Memory 20MB (Maximum) CMOS RAM 256KB Video VGA Diskette Drive 3.5-inch Hard Drive  85MB, 2.5-inch  125MB, 2.5-inch  250MB, 2.5-inch PCMCIA Type-I or Type-II Keyboard TrackPoint II Notes: 1. "
+            },
+            {
+              "component_type": "CPU",
+              "property_name": "Frequenza",
+              "numeric_value": 25,
+              "unit": "MHz",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " brief overview of the system features. Feature Description Processor (MHz) 486SL 25-MHz Bus Architecture AT Bus Memory 4MB (Standard) Memory 20MB (Maximum) CMOS RAM 256KB Video VGA Diskette Drive 3.5-inch Hard Drive  85MB, 2.5-inch  125MB, 2.5-inch  250MB, 2.5-inch PCMCIA Type-I or Type-II Keyboard TrackPoint II Notes: 1. "
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Capacità",
+              "numeric_value": 4096,
+              "unit": "KiB",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "Processor (MHz) 486BL2-50 25/50-Mhz Bus Architecture AT Bus Memory (Standard) 4MB Memory (Maximum) 20MB CMOS RAM 256 bytes Video VGA (with 1MB VRAM) Diskette Drive 3.5-inch Hard Drive 200MB, 2.5-inch Audio Subsystem Yes (Standard AT Audio) PCMCIA One Type-II slot Keyboard TrackPoint II ThinkPad MultiPort Provides connec"
+            },
+            {
+              "component_type": "RAM",
+              "property_name": "Opzioni di memoria",
+              "text_value": "Espandibile fino a 20 MB",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "Processor (MHz) 486BL2-50 25/50-Mhz Bus Architecture AT Bus Memory (Standard) 4MB Memory (Maximum) 20MB CMOS RAM 256 bytes Video VGA (with 1MB VRAM) Diskette Drive 3.5-inch Hard Drive 200MB, 2.5-inch Audio Subsystem Yes (Standard AT Audio) PCMCIA One Type-II slot Keyboard TrackPoint II ThinkPad MultiPort Provides connec"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "Bus",
+              "text_value": "AT / ISA",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " features. Feature Description Processor (MHz) 386SX 20-Mhz Bus Architecture AT Bus Memory (Standard) 2MB Memory (Maximum) 18MB Video VGA Diskette Drive 3.5-inch Hard Drive 60MB 38 IBM Mobile Systems HMM - Volume 1 FRU Removals and Replacements Follow the numerical sequence in the FRU removal sequence list and the explode"
+            },
+            {
+              "component_type": "Video",
+              "property_name": "Standard",
+              "text_value": "VGA",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "omputer Descriptions All models in the following table have VGA video. Models N51, CL57, P70/75, and Thinkpads 700x and 720x are Micro Channel* systems. All others are AT* bus systems. Model Type Processor Memory Hrd Dsk Model L40SX 8543-044 386SX-20 2M/18M 60M Model N45 SL 2614-065 386SL-25 2M/8M 80M "
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Unità floppy",
+              "text_value": "3,5 pollici, 1,44 MB",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "diskette drives. Diskette Identifying Drive Mark 3.5-Inch - 1.44MB 1.44 on the eject button 3.5-Inch - 2.88MB 2.88 on the eject button The following table provides compatibility information for 3.5-inch diskettes and 3.5-inch diskette drives. Diskette 1.44MB 2.88MB Capacity Drive Drive 1.0MB Read/Write "
+            },
+            {
+              "component_type": "Archiviazione",
+              "property_name": "Disco fisso",
+              "text_value": "85, 125 o 250 MB, secondo allestimento",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": "OS RAM 256KB Video VGA Diskette Drive 3.5-inch Hard Drive  85MB, 2.5-inch  125MB, 2.5-inch  250MB, 2.5-inch PCMCIA Type-I or Type-II Keyboard TrackPoint II Notes: 1. The Power Switch is located inside the rear I/O door. 2. The Suspend/Resume button is located at the rear of the keyboard on the status indicator"
+            },
+            {
+              "component_type": "Espansione",
+              "property_name": "PCMCIA",
+              "text_value": "Tipo I o II",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " Drive  85MB, 2.5-inch  125MB, 2.5-inch  250MB, 2.5-inch PCMCIA Type-I or Type-II Keyboard TrackPoint II Notes: 1. The Power Switch is located inside the rear I/O door. 2. The Suspend/Resume button is located at the rear of the keyboard on the status indicator light cover. 220 IBM Mobile Systems HMM - Volume 1 FRU Remov"
+            },
+            {
+              "component_type": "I/O",
+              "property_name": "Puntamento",
+              "text_value": "TrackPoint II",
+              "source": {
+                "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+                "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+                "author": "IBM",
+                "publisher": "IBM / archivio documentale",
+                "source_type": "manual",
+                "access_date": "2026-11-23"
+              },
+              "evidence": " 125MB, 2.5-inch  250MB, 2.5-inch PCMCIA Type-I or Type-II Keyboard TrackPoint II Notes: 1. The Power Switch is located inside the rear I/O door. 2. The Suspend/Resume button is located at the rear of the keyboard on the status indicator light cover. 220 IBM Mobile Systems HMM - Volume 1 FRU Removals and Replacements Fo"
+            }
+          ]
+        }
+      ],
+      "releases": [
+        {
+          "market": "Mercato non documentato",
+          "release_date": "1993",
+          "source": {
+            "title": "Wikipedia — IBM PS/2 Note and PS/note",
+            "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+            "author": "Collaboratori di Wikipedia",
+            "source_type": "encyclopedia",
+            "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+            "access_date": "2026-11-23"
+          },
+          "evidence": "The IBM PS/2 Note and PS/note are a series of notebooks from the PS/2 line by IBM. It was announced in March 1992, half a year prior to the release of the first ThinkPad, the IBM ThinkPad 700. The series was discontinued in 1994. == Background == After the "
+        }
+      ],
+      "categories": [
+        "Portable"
+      ]
+    }
+  ],
+  "corrections": [
+    {
+      "model_name": "IBM PS/2 8530-H31",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 1664.0,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 512,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "P/N Processor Std. Max. w/Adapter(s) Std. Max. 2 Std.3 Max. 30-E01 8530E01 80286-1 OMHz 512KB 4MB 16MB NONE 2 30MB 2 30-E21 8530E21 80286-1 OMHz 512KB 4MB 16MB 20MB 20MB 2 Notes: (1) System Board Memory; (2) Optional Fixed Disk, 20MB or 30MB; (3) t.44MB Models STANDARD FEATURES: 30-E01 30-E21 Processor Wait State"
+    },
+    {
+      "model_name": "IBM PS/2 8530-H31",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "1664 KiB / 2048 KiB / 4096 KiB / 8192 KiB / 15360 KiB",
+        "unit": null
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "Fino a 4 MB sulla scheda madre; configurazione standard E01/E21 del 1989",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "P/N Processor Std. Max. w/Adapter(s) Std. Max. 2 Std.3 Max. 30-E01 8530E01 80286-1 OMHz 512KB 4MB 16MB NONE 2 30MB 2 30-E21 8530E21 80286-1 OMHz 512KB 4MB 16MB 20MB 20MB 2 Notes: (1) System Board Memory; (2) Optional Fixed Disk, 20MB or 30MB; (3) t.44MB Models STANDARD FEATURES: 30-E01 30-E21 Processor Wait State"
+    },
+    {
+      "model_name": "IBM PS/2 8535-043",
+      "before": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "Intel I386SX",
+        "unit": null
+      },
+      "after": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "Intel 80386SX",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+        "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "e Personal System/2 (R) (PS/2 (R)) Model 35 SX utilizes the 80386SX microprocessor operating at 20MHz with zero to two wait states and has the following integrated functions: parallel port, serial port, pointing device port, video graphics array (VGA 16-bit) port, keyboard port, 1.44MB (million bytes) diskette drive support, Math Co-Proces"
+    },
+    {
+      "model_name": "IBM PS/2 8535-043",
+      "before": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Frequenza",
+        "numeric_value": 12.0,
+        "text_value": null,
+        "unit": "MHz"
+      },
+      "after": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Frequenza",
+        "numeric_value": 20,
+        "text_value": null,
+        "unit": "MHz"
+      },
+      "source": {
+        "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+        "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "e Personal System/2 (R) (PS/2 (R)) Model 35 SX utilizes the 80386SX microprocessor operating at 20MHz with zero to two wait states and has the following integrated functions: parallel port, serial port, pointing device port, video graphics array (VGA 16-bit) port, keyboard port, 1.44MB (million bytes) diskette drive support, Math Co-Proces"
+    },
+    {
+      "model_name": "IBM PS/2 8535-043",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 1664.0,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 2048,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "source": {
+        "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+        "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "ly (040) and a 40MB fixed disk model (043). All models have 2MBs of memory standard on the system board (expandable to 16MB). The PS/2 Model 35 LS provides a small footprint and low priced, general business solution. The Model 35 LS provides a local area network (LAN) workstation solution and is available with all the sta"
+    },
+    {
+      "model_name": "IBM PS/2 8535-043",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "1664 KiB / 2048 KiB / 4096 KiB / 8192 KiB / 15360 KiB / 16384 KiB / 32768 KiB / 65536 KiB / 131072 KiB / 262144 KiB",
+        "unit": null
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "Espandibile fino a 16 MB",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+        "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "ly (040) and a 40MB fixed disk model (043). All models have 2MBs of memory standard on the system board (expandable to 16MB). The PS/2 Model 35 LS provides a small footprint and low priced, general business solution. The Model 35 LS provides a local area network (LAN) workstation solution and is available with all the sta"
+    },
+    {
+      "model_name": "IBM PS/2 8550-021",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 1664.0,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 1024,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "Max) Diskette Graphics Orientation Available Slots Model SO 50-021 8550021 80286- lOMHz 1MB/l MB l 6MB 20MB I 80ms I 60MB• lxl .44MB VGA Desktop 3 Note: The IBM PS/2 Model 50-021 is withdrawn from marketing effective May 3, 1989. See Green Letter NDD89-153. Model50Z S0-031 8550031 80286- lOMHz 1MB/2MB 16MB 30MB I"
+    },
+    {
+      "model_name": "IBM PS/2 8550-021",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "1664 KiB / 2048 KiB / 4096 KiB / 8192 KiB / 15360 KiB",
+        "unit": null
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "Fino a 16 MB con adattatori; memoria sulla scheda madre fino a 1 MB",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "Max) Diskette Graphics Orientation Available Slots Model SO 50-021 8550021 80286- lOMHz 1MB/l MB l 6MB 20MB I 80ms I 60MB• lxl .44MB VGA Desktop 3 Note: The IBM PS/2 Model 50-021 is withdrawn from marketing effective May 3, 1989. See Green Letter NDD89-153. Model50Z S0-031 8550031 80286- lOMHz 1MB/2MB 16MB 30MB I"
+    },
+    {
+      "model_name": "IBM PS/2 Model 30-286",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 1664.0,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 512,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "P/N Processor Std. Max. w/Adapter(s) Std. Max. 2 Std.3 Max. 30-E01 8530E01 80286-1 OMHz 512KB 4MB 16MB NONE 2 30MB 2 30-E21 8530E21 80286-1 OMHz 512KB 4MB 16MB 20MB 20MB 2 Notes: (1) System Board Memory; (2) Optional Fixed Disk, 20MB or 30MB; (3) t.44MB Models STANDARD FEATURES: 30-E01 30-E21 Processor Wait State"
+    },
+    {
+      "model_name": "IBM PS/2 Model 30-286",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "1664 KiB / 2048 KiB / 4096 KiB / 8192 KiB / 15360 KiB",
+        "unit": null
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "Fino a 4 MB sulla scheda madre; configurazione standard E01/E21 del 1989",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "P/N Processor Std. Max. w/Adapter(s) Std. Max. 2 Std.3 Max. 30-E01 8530E01 80286-1 OMHz 512KB 4MB 16MB NONE 2 30MB 2 30-E21 8530E21 80286-1 OMHz 512KB 4MB 16MB 20MB 20MB 2 Notes: (1) System Board Memory; (2) Optional Fixed Disk, 20MB or 30MB; (3) t.44MB Models STANDARD FEATURES: 30-E01 30-E21 Processor Wait State"
+    },
+    {
+      "model_name": "IBM PS/2 8550-061",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 1664.0,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 1024,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "B3 2 50-031 8550031 80286-1 OMHz 1MB 2MB2 16MB 30MB 60MB3 2 50-061 8550061 80286-1 OMHz 1MB 2MB2 16MB 60MB 60MB 2 Notes: (1) System Board Memory; (2) Replacing Standard 1MB Memory Kit on System Board; (3) Replacing Standard Fixed Disk; (4) 1.44MB Models STANDARD FEATURES : 50-021 50-031 50-061 Processor Wait Stat"
+    },
+    {
+      "model_name": "IBM PS/2 8550-061",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "1664 KiB / 2048 KiB / 4096 KiB / 8192 KiB / 15360 KiB",
+        "unit": null
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "Fino a 16 MB con adattatori; memoria sulla scheda madre fino a 2 MB",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "B3 2 50-031 8550031 80286-1 OMHz 1MB 2MB2 16MB 30MB 60MB3 2 50-061 8550061 80286-1 OMHz 1MB 2MB2 16MB 60MB 60MB 2 Notes: (1) System Board Memory; (2) Replacing Standard 1MB Memory Kit on System Board; (3) Replacing Standard Fixed Disk; (4) 1.44MB Models STANDARD FEATURES : 50-021 50-031 50-061 Processor Wait Stat"
+    },
+    {
+      "model_name": "IBM PS/2 8555-081",
+      "before": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "Intel I386SX",
+        "unit": null
+      },
+      "after": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "Intel 80386SX",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "6MB 60MB I 27ms I 60MB lxl .44MB VGA Desktop 3 ModelSSSX .. 55-031 8555031 80386SX-16MHz 2MB/4MB 16MB 30MB I 39ms I 30MB lxl.44MB VGA Desktop 3 ... 55-061 8555061 80386SX-16MHz 2MB/4MB 16MB 60MB I 27ms I 60MB lxl.44MB VGA Desktop 3 Model60 60-041 8560041 80286- lOMHz lMB/lMB 16MB 44MB I 40ms I 88MB lxl.44MB VGA F"
+    },
+    {
+      "model_name": "IBM PS/2 8555-081",
+      "before": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Frequenza",
+        "numeric_value": 12.0,
+        "text_value": null,
+        "unit": "MHz"
+      },
+      "after": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Frequenza",
+        "numeric_value": 16,
+        "text_value": null,
+        "unit": "MHz"
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "6MB 60MB I 27ms I 60MB lxl .44MB VGA Desktop 3 ModelSSSX .. 55-031 8555031 80386SX-16MHz 2MB/4MB 16MB 30MB I 39ms I 30MB lxl.44MB VGA Desktop 3 ... 55-061 8555061 80386SX-16MHz 2MB/4MB 16MB 60MB I 27ms I 60MB lxl.44MB VGA Desktop 3 Model60 60-041 8560041 80286- lOMHz lMB/lMB 16MB 44MB I 40ms I 88MB lxl.44MB VGA F"
+    },
+    {
+      "model_name": "IBM PS/2 8555-081",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 1664.0,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 2048,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "6MB 60MB I 27ms I 60MB lxl .44MB VGA Desktop 3 ModelSSSX .. 55-031 8555031 80386SX-16MHz 2MB/4MB 16MB 30MB I 39ms I 30MB lxl.44MB VGA Desktop 3 ... 55-061 8555061 80386SX-16MHz 2MB/4MB 16MB 60MB I 27ms I 60MB lxl.44MB VGA Desktop 3 Model60 60-041 8560041 80286- lOMHz lMB/lMB 16MB 44MB I 40ms I 88MB lxl.44MB VGA F"
+    },
+    {
+      "model_name": "IBM PS/2 8555-081",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "1664 KiB / 2048 KiB / 4096 KiB / 8192 KiB / 15360 KiB / 16384 KiB / 32768 KiB / 65536 KiB / 131072 KiB / 262144 KiB",
+        "unit": null
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "Fino a 16 MB con adattatori; fino a 4 MB sulla scheda madre nel catalogo 1989",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "6MB 60MB I 27ms I 60MB lxl .44MB VGA Desktop 3 ModelSSSX .. 55-031 8555031 80386SX-16MHz 2MB/4MB 16MB 30MB I 39ms I 30MB lxl.44MB VGA Desktop 3 ... 55-061 8555061 80386SX-16MHz 2MB/4MB 16MB 60MB I 27ms I 60MB lxl.44MB VGA Desktop 3 Model60 60-041 8560041 80286- lOMHz lMB/lMB 16MB 44MB I 40ms I 88MB lxl.44MB VGA F"
+    },
+    {
+      "model_name": "IBM PS/2 8580-071",
+      "before": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "Intel I386",
+        "unit": null
+      },
+      "after": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "Intel 80386",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "B/2MB 16MB 44MB I 40ms I 88MB lxl.44MB VGA Floor Standing 7 80-071 8580071 80386- l6MHz 2MB/2MB 16MB 70MB / 30ms / 384MB lxl.44MB VGA Floor Standing 7 S0-111 8580111 80386-20MHz 2MB/4MB 16MB l 15MB / 28ms / 429MB lxl.44MB VGA Floor Standing 7 80-311 8580311 80386-20MHz 2MB/4MB 16MB 314MB I 23ms / 628MB lxl .44MB "
+    },
+    {
+      "model_name": "IBM PS/2 8580-071",
+      "before": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Frequenza",
+        "numeric_value": 12.0,
+        "text_value": null,
+        "unit": "MHz"
+      },
+      "after": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Frequenza",
+        "numeric_value": 16,
+        "text_value": null,
+        "unit": "MHz"
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "B/2MB 16MB 44MB I 40ms I 88MB lxl.44MB VGA Floor Standing 7 80-071 8580071 80386- l6MHz 2MB/2MB 16MB 70MB / 30ms / 384MB lxl.44MB VGA Floor Standing 7 S0-111 8580111 80386-20MHz 2MB/4MB 16MB l 15MB / 28ms / 429MB lxl.44MB VGA Floor Standing 7 80-311 8580311 80386-20MHz 2MB/4MB 16MB 314MB I 23ms / 628MB lxl .44MB "
+    },
+    {
+      "model_name": "IBM PS/2 8580-071",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 1664.0,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 2048,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "B/2MB 16MB 44MB I 40ms I 88MB lxl.44MB VGA Floor Standing 7 80-071 8580071 80386- l6MHz 2MB/2MB 16MB 70MB / 30ms / 384MB lxl.44MB VGA Floor Standing 7 S0-111 8580111 80386-20MHz 2MB/4MB 16MB l 15MB / 28ms / 429MB lxl.44MB VGA Floor Standing 7 80-311 8580311 80386-20MHz 2MB/4MB 16MB 314MB I 23ms / 628MB lxl .44MB "
+    },
+    {
+      "model_name": "IBM PS/2 8580-071",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "1664 KiB / 2048 KiB / 4096 KiB / 8192 KiB / 15360 KiB / 16384 KiB / 32768 KiB / 65536 KiB / 131072 KiB / 262144 KiB",
+        "unit": null
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "Fino a 16 MB con adattatori nel catalogo IBM del 1989",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "B/2MB 16MB 44MB I 40ms I 88MB lxl.44MB VGA Floor Standing 7 80-071 8580071 80386- l6MHz 2MB/2MB 16MB 70MB / 30ms / 384MB lxl.44MB VGA Floor Standing 7 S0-111 8580111 80386-20MHz 2MB/4MB 16MB l 15MB / 28ms / 429MB lxl.44MB VGA Floor Standing 7 80-311 8580311 80386-20MHz 2MB/4MB 16MB 314MB I 23ms / 628MB lxl .44MB "
+    },
+    {
+      "model_name": "IBM PS/2 8580-111",
+      "before": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "Intel I386",
+        "unit": null
+      },
+      "after": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "Intel 80386",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "8MB 2 80-071 8580071 80386-16MHz 2MB3 2MB 16MB 70MB 384MB 2 80-111 8580111 80386-20MHz 2MB3 4MB 16MB 115MB 429MB 2 80-311 8580311 80386-20MHz 2MB3 4MB 16MB 315MB 628MB 2 Notes: (1) System Board Memory; (2) 1.44MB; (3) 128KB used for high performance BIOS Models STANDARD FEATURES: 80-041 80-071 80-111 80-311 Proce"
+    },
+    {
+      "model_name": "IBM PS/2 8580-111",
+      "before": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Frequenza",
+        "numeric_value": 12.0,
+        "text_value": null,
+        "unit": "MHz"
+      },
+      "after": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Frequenza",
+        "numeric_value": 20,
+        "text_value": null,
+        "unit": "MHz"
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "8MB 2 80-071 8580071 80386-16MHz 2MB3 2MB 16MB 70MB 384MB 2 80-111 8580111 80386-20MHz 2MB3 4MB 16MB 115MB 429MB 2 80-311 8580311 80386-20MHz 2MB3 4MB 16MB 315MB 628MB 2 Notes: (1) System Board Memory; (2) 1.44MB; (3) 128KB used for high performance BIOS Models STANDARD FEATURES: 80-041 80-071 80-111 80-311 Proce"
+    },
+    {
+      "model_name": "IBM PS/2 8580-111",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 1664.0,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 2048,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "8MB 2 80-071 8580071 80386-16MHz 2MB3 2MB 16MB 70MB 384MB 2 80-111 8580111 80386-20MHz 2MB3 4MB 16MB 115MB 429MB 2 80-311 8580311 80386-20MHz 2MB3 4MB 16MB 315MB 628MB 2 Notes: (1) System Board Memory; (2) 1.44MB; (3) 128KB used for high performance BIOS Models STANDARD FEATURES: 80-041 80-071 80-111 80-311 Proce"
+    },
+    {
+      "model_name": "IBM PS/2 8580-111",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "1664 KiB / 2048 KiB / 4096 KiB / 8192 KiB / 15360 KiB / 16384 KiB / 32768 KiB / 65536 KiB / 131072 KiB / 262144 KiB",
+        "unit": null
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "Fino a 16 MB con adattatori nel catalogo IBM del 1989",
+        "unit": null
+      },
+      "source": {
+        "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+        "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+        "author": "IBM",
+        "publisher": "IBM / archivio documentale",
+        "source_type": "manual",
+        "access_date": "2026-11-23"
+      },
+      "evidence": "8MB 2 80-071 8580071 80386-16MHz 2MB3 2MB 16MB 70MB 384MB 2 80-111 8580111 80386-20MHz 2MB3 4MB 16MB 115MB 429MB 2 80-311 8580311 80386-20MHz 2MB3 4MB 16MB 315MB 628MB 2 Notes: (1) System Board Memory; (2) 1.44MB; (3) 128KB used for high performance BIOS Models STANDARD FEATURES: 80-041 80-071 80-111 80-311 Proce"
+    }
+  ],
+  "sources": {
+    "sales1989": {
+      "title": "IBM PS/2 and Printers Sales Advisor — maggio 1989",
+      "url": "https://bitsavers.org/pdf/ibm/pc/ps2/G320-9781-00_PS2_and_Printers_Sales_Advisor_198905.pdf",
+      "author": "IBM",
+      "publisher": "IBM / archivio documentale",
+      "source_type": "manual",
+      "access_date": "2026-11-23"
+    },
+    "model35": {
+      "title": "IBM Announcement 191-075 — PS/2 Model 35 SX, 11 giugno 1991",
+      "url": "https://www.ardent-tool.com/35_40/191-075.txt",
+      "author": "IBM",
+      "publisher": "IBM / archivio documentale",
+      "source_type": "manual",
+      "access_date": "2026-11-23"
+    },
+    "tpvol1": {
+      "title": "IBM Mobile Systems Hardware Maintenance Manual, Volume 1 — 1995",
+      "url": "https://download.lenovo.com/ibmdl/pub/pc/pccbbs/bp_thinkpad/tpvol1.pdf",
+      "author": "IBM",
+      "publisher": "IBM / archivio documentale",
+      "source_type": "manual",
+      "access_date": "2026-11-23"
+    },
+    "ca16": {
+      "title": "IBM Service Hints & Tips — PS/1 2011, MWER-3S2TF8",
+      "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/ca16.htm",
+      "author": "IBM",
+      "publisher": "IBM / archivio documentale",
+      "source_type": "manual",
+      "access_date": "2026-11-23"
+    },
+    "c586": {
+      "title": "IBM Service Hints & Tips — PS/1 2121, MWER-3S2UQG",
+      "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/c586.htm",
+      "author": "IBM",
+      "publisher": "IBM / archivio documentale",
+      "source_type": "manual",
+      "access_date": "2026-11-23"
+    },
+    "a8ce": {
+      "title": "IBM Service Hints & Tips — PS/1 2133, MWER-3S7Q9R",
+      "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/a8ce.htm",
+      "author": "IBM",
+      "publisher": "IBM / archivio documentale",
+      "source_type": "manual",
+      "access_date": "2026-11-23"
+    },
+    "ps1tips": {
+      "title": "IBM Service Hints & Tips — PS/1 2168 SL-B, MWER-3THU84",
+      "url": "https://ps-2.kev009.com/pcpartnerinfo/ctstips/bcaa.htm",
+      "author": "IBM",
+      "publisher": "IBM / archivio documentale",
+      "source_type": "manual",
+      "access_date": "2026-11-23"
+    },
+    "wiki1": {
+      "title": "Wikipedia — IBM PS/1",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1374694288",
+      "author": "Collaboratori di Wikipedia",
+      "source_type": "encyclopedia",
+      "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+      "access_date": "2026-11-23"
+    },
+    "wiki2": {
+      "title": "Wikipedia — IBM PS/2",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1374134538",
+      "author": "Collaboratori di Wikipedia",
+      "source_type": "encyclopedia",
+      "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+      "access_date": "2026-11-23"
+    },
+    "wikinote": {
+      "title": "Wikipedia — IBM PS/2 Note and PS/note",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1379157470",
+      "author": "Collaboratori di Wikipedia",
+      "source_type": "encyclopedia",
+      "license": "CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/",
+      "access_date": "2026-11-23"
+    }
+  },
+  "research_notes": [
+    "Documenti IBM e fonti enciclopediche consultati selettivamente; nessuna redistribuzione di manuali o immagini.",
+    "Alcune pagine Ardent Tool hanno restituito 403 e il PS/1 Reference Book 404: non usate né aggirate.",
+    "PS/note 182: RAM e frequenza non sufficientemente documentate; lasciate sconosciute.",
+    "Anni di lancio 2121, 2133 e 2168 non inventati a partire dalle date di aggiornamento dei documenti di supporto.",
+    "Prezzi e fotografie esistenti conservati. Le offerte dei due Model 80 restano distinte e collegate agli originali."
+  ]
+}

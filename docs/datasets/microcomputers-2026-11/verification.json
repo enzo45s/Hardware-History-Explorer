@@ -1,0 +1,1412 @@
+{
+  "database": "isolated clone after Unitron logo",
+  "counts": {
+    "before": {
+      "computers": 1147,
+      "manufacturers": 185,
+      "configurations": 1185,
+      "specifications": 7369,
+      "releases": 1154,
+      "sales": 0,
+      "reviews": 0,
+      "facts": 949,
+      "computer_images": 611,
+      "sources": 7807,
+      "import_jobs": 3053,
+      "import_rows": 10953,
+      "import_claims": 72626,
+      "computer_aliases": 140
+    },
+    "after": {
+      "computers": 1152,
+      "manufacturers": 187,
+      "configurations": 1190,
+      "specifications": 7456,
+      "releases": 1160,
+      "sales": 0,
+      "reviews": 0,
+      "facts": 959,
+      "computer_images": 616,
+      "sources": 7819,
+      "import_jobs": 3054,
+      "import_rows": 10958,
+      "import_claims": 72958,
+      "computer_aliases": 140
+    }
+  },
+  "checks": {
+    "computers_all_previous_rows_unchanged": true,
+    "manufacturers_all_previous_rows_unchanged": true,
+    "configurations_all_previous_rows_unchanged": true,
+    "specifications_all_previous_rows_unchanged": true,
+    "releases_all_previous_rows_unchanged": true,
+    "sales_all_previous_rows_unchanged": true,
+    "reviews_all_previous_rows_unchanged": true,
+    "facts_all_previous_rows_unchanged": true,
+    "computer_images_all_previous_rows_unchanged": true,
+    "sources_all_previous_rows_unchanged": true,
+    "import_jobs_all_previous_rows_unchanged": true,
+    "import_rows_all_previous_rows_unchanged": true,
+    "import_claims_all_previous_rows_unchanged": true,
+    "computer_aliases_all_previous_rows_unchanged": true,
+    "computer_category_all_previous_links_unchanged": true,
+    "computer_sources_all_previous_links_unchanged": true,
+    "manufacturer_sources_all_previous_links_unchanged": true,
+    "specification_sources_all_previous_links_unchanged": true,
+    "release_sources_all_previous_links_unchanged": true
+  },
+  "repeat_no_changes": true,
+  "result": {
+    "version": "newbrain-mpf1-robotron-2026-11-v1",
+    "checksum": "b70ff80083e60b9b3ab0b7d58f315c7ae50c099498042cd769185b68c05e9627",
+    "created": 5,
+    "updated": 0,
+    "manufacturers_created": [
+      "Grundy Business Systems",
+      "Robotron"
+    ],
+    "manufacturer_fields_updated": {
+      "Grundy Business Systems": [
+        "legal_name",
+        "country",
+        "headquarters",
+        "description"
+      ],
+      "Robotron": [
+        "legal_name",
+        "country",
+        "headquarters",
+        "founded",
+        "ceased",
+        "description",
+        "logo_url",
+        "logo_author",
+        "logo_license",
+        "logo_license_url",
+        "logo_source_url"
+      ]
+    },
+    "photos_added": 5,
+    "releases_added": 6,
+    "descriptions_updated": 5,
+    "curated_descriptions_preserved": 0,
+    "skipped": [],
+    "import_job_id": 3067
+  },
+  "manufacturers": [
+    {
+      "id": 219,
+      "name": "Robotron",
+      "country": "Germania Est (DDR)",
+      "description": "Robotron fu il principale complesso industriale informatico della Germania Est. Costituito nel 1969, riuniva stabilimenti per computer, periferiche, strumenti di misura e software, con direzione a Dresda. Accanto ai sistemi professionali produsse i piccoli Z9001/KC85/1, KC87 e il computer scolastico A5105. Il Kombinat fu sciolto nel 1990; le aziende successive che ne ripresero il nome non coincidono con l’organizzazione storica.",
+      "logo_url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/VEB_Robotron.svg",
+      "logo_author": "O. Wolters",
+      "logo_license": "Pubblico dominio (PD-textlogo dichiarato su Commons); marchio storico",
+      "logo_source_url": "https://commons.wikimedia.org/wiki/File:VEB_Robotron.svg",
+      "sources": [
+        {
+          "title": "Robotrontechnik — VEB Kombinat Robotron",
+          "url": "https://www.robotrontechnik.de/html/standorte/robotron.htm"
+        },
+        {
+          "title": "Wikipedia — Kombinat Robotron (de)",
+          "url": "https://de.wikipedia.org/w/index.php?oldid=272370097"
+        },
+        {
+          "title": "Wikimedia Commons — VEB Robotron.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:VEB_Robotron.svg"
+        }
+      ]
+    },
+    {
+      "id": 218,
+      "name": "Grundy Business Systems",
+      "country": "Regno Unito",
+      "description": "Grundy Business Systems fu l’azienda britannica che portò sul mercato il NewBrain nel 1982, dopo il passaggio del progetto da Sinclair Radionics e Newbury Laboratories. Operava nel settore dei microcomputer e dei sistemi professionali; al NewBrain affiancò hardware e software di espansione. Le difficoltà del 1983 portarono il progetto a Tradecom, che ne proseguì la distribuzione e il supporto.",
+      "logo_url": null,
+      "logo_author": null,
+      "logo_license": null,
+      "logo_source_url": null,
+      "sources": [
+        {
+          "title": "Wikipedia — Grundy NewBrain (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1375718570"
+        },
+        {
+          "title": "Gerald McMullon — testimonianza sul NewBrain e Grundy",
+          "url": "https://www.binarydinosaurs.co.uk/Museum/Grundy/gerald.php"
+        }
+      ]
+    }
+  ],
+  "models": [
+    {
+      "id": 1365,
+      "model_name": "A 5105",
+      "manufacturer_id": 219,
+      "manufacturer": "Robotron",
+      "description": "L’A 5105, chiamato anche BIC o Bildungscomputer, fu sviluppato da Robotron per scuole e centri di formazione della Germania Est. Dopo gli esemplari di prova del 1988, la produzione di serie iniziò nel luglio 1989 e le consegne alle scuole nel settembre successivo. Il sistema combinava un U880 a 3,75 MHz, 64 KB di RAM e grafica a colori. L’unità con tastiera poteva funzionare da sola; l’espansione aggiungeva floppy e rete BICLAN per i laboratori scolastici. La rapida apertura al mercato occidentale dal 1990 ne limitò la diffusione.",
+      "first_release": "1989-09",
+      "categories": [
+        "Personal computer"
+      ],
+      "configuration_count": 1,
+      "specifications": 19,
+      "memory": {
+        "id": 10272,
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 64.0,
+        "text_value": null,
+        "unit": "KB",
+        "normalized": {
+          "component_type": "RAM",
+          "component_name": null,
+          "property_name": "Capacità",
+          "numeric_value": null,
+          "text_value": "64 KB",
+          "unit": null
+        },
+        "display": {
+          "component_type": "RAM",
+          "property_name": "Capacità"
+        },
+        "sources": [
+          {
+            "id": 7837,
+            "title": "Robotrontechnik — Bildungscomputer A5105",
+            "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+            "author": null,
+            "publisher": "Robotrontechnik.de",
+            "source_type": "technical_archive",
+            "publication_date": null,
+            "access_date": "2026-11-24"
+          }
+        ],
+        "catalog_clean": true,
+        "catalog_metric": "ram.capacity",
+        "resolution_state": "reported",
+        "memory_values": [
+          {
+            "number": 64.0,
+            "unit": "KB",
+            "text": "",
+            "role": "",
+            "qualifier": "",
+            "bytes": null,
+            "shownNumber": 64.0,
+            "shownUnit": "KB",
+            "shownText": "",
+            "identity": "[\"\",\"\",[64,\"KB\",\"\"]]"
+          }
+        ],
+        "memory_notes": [],
+        "specification_ids": [
+          10272
+        ]
+      },
+      "releases": [
+        {
+          "id": 1875,
+          "market": "Europa",
+          "release_date": "1989-09",
+          "discontinuation_date": null,
+          "price": null,
+          "currency": null,
+          "price_type": null,
+          "sources": [
+            {
+              "id": 7837,
+              "title": "Robotrontechnik — Bildungscomputer A5105",
+              "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+              "author": null,
+              "publisher": "Robotrontechnik.de",
+              "source_type": "technical_archive",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "model",
+          "date_evidence": {
+            "kind": "documented_launch",
+            "source_ids": [
+              7837
+            ]
+          },
+          "commercialization_notes": [
+            "Consegne alle scuole della Germania Est da settembre1989; serie da luglio1989, prototipi dal1988. Prezzo non accertato nelle fonti consultate."
+          ],
+          "date_sources": [
+            7837
+          ],
+          "release_ids": [
+            1875
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1875,
+              "market": "Europa",
+              "release_date": "1989-09",
+              "discontinuation_date": null,
+              "price": null,
+              "currency": null,
+              "price_type": null,
+              "sources": [
+                {
+                  "id": 7837,
+                  "title": "Robotrontechnik — Bildungscomputer A5105",
+                  "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+                  "author": null,
+                  "publisher": "Robotrontechnik.de",
+                  "source_type": "technical_archive",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "model",
+              "date_evidence": {
+                "kind": "documented_launch",
+                "source_ids": [
+                  7837
+                ]
+              },
+              "commercialization_notes": [
+                "Consegne alle scuole della Germania Est da settembre1989; serie da luglio1989, prototipi dal1988. Prezzo non accertato nelle fonti consultate."
+              ],
+              "date_sources": [
+                7837
+              ]
+            }
+          ],
+          "countries": [
+            "Europa"
+          ],
+          "price_countries": [],
+          "original_markets": [
+            "Europa"
+          ],
+          "field_sources": {
+            "market": [
+              7837
+            ],
+            "release_date": [
+              7837
+            ],
+            "discontinuation_date": [],
+            "price": [],
+            "currency": [],
+            "price_type": []
+          }
+        }
+      ],
+      "images": [
+        {
+          "id": 686,
+          "computer_id": 1365,
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Robotron_a5105.jpg/960px-Robotron_a5105.jpg",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Robotron_a5105.jpg/960px-Robotron_a5105.jpg",
+          "caption": "Robotron A 5105, sistema scolastico BIC.",
+          "author": "Florian Schäffer",
+          "license_name": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Robotron_a5105.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "sources": [
+        {
+          "id": 7837,
+          "title": "Robotrontechnik — Bildungscomputer A5105",
+          "url": "https://www.robotrontechnik.de/html/computer/a5105.htm",
+          "author": null,
+          "publisher": "Robotrontechnik.de",
+          "source_type": "technical_archive",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": 1363,
+      "model_name": "KC 85/1",
+      "manufacturer_id": 219,
+      "manufacturer": "Robotron",
+      "description": "Il Robotron Z9001 arrivò sul mercato alla fine del 1984 e fu rinominato KC 85/1 nel 1985, quando l’impiego si concentrò soprattutto su scuole, club e aziende della Germania Est. Prodotto nell’ambito Robotron a Dresda, usava un U880 a 2,5 MHz, 16 KB di RAM e un televisore come schermo. Quattro slot permettevano di aggiungere memoria e interfacce; il BASIC si caricava da cassetta o da un modulo ROM. Le denominazioni Z9001 e KC 85/1 sono riunite in questa scheda. La famiglia non va confusa con i KC 85/2, /3 e /4 di Mühlhausen, che avevano un’altra architettura.",
+      "first_release": "1984",
+      "categories": [
+        "Home computer"
+      ],
+      "configuration_count": 1,
+      "specifications": 18,
+      "memory": {
+        "id": 10236,
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 16.0,
+        "text_value": null,
+        "unit": "KB",
+        "normalized": {
+          "component_type": "RAM",
+          "component_name": null,
+          "property_name": "Capacità",
+          "numeric_value": null,
+          "text_value": "16 KB",
+          "unit": null
+        },
+        "display": {
+          "component_type": "RAM",
+          "property_name": "Capacità"
+        },
+        "sources": [
+          {
+            "id": 7835,
+            "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+            "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+            "author": null,
+            "publisher": "Robotrontechnik.de",
+            "source_type": "technical_archive",
+            "publication_date": null,
+            "access_date": "2026-11-24"
+          }
+        ],
+        "catalog_clean": true,
+        "catalog_metric": "ram.capacity",
+        "resolution_state": "reported",
+        "memory_values": [
+          {
+            "number": 16.0,
+            "unit": "KB",
+            "text": "",
+            "role": "",
+            "qualifier": "",
+            "bytes": null,
+            "shownNumber": 16.0,
+            "shownUnit": "KB",
+            "shownText": "",
+            "identity": "[\"\",\"\",[16,\"KB\",\"\"]]"
+          }
+        ],
+        "memory_notes": [],
+        "specification_ids": [
+          10236
+        ]
+      },
+      "releases": [
+        {
+          "id": 1872,
+          "market": "Europa",
+          "release_date": "1984",
+          "discontinuation_date": null,
+          "price": 1550.0,
+          "currency": "DDM",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 7836,
+              "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+              "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+              "author": "Collaboratori di Wikipedia",
+              "publisher": "Wikimedia Foundation",
+              "source_type": "encyclopedia",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            }
+          ],
+          "catalog_clean": true,
+          "model_variant": "Z9001.10 monocromatico",
+          "date_scope": "model",
+          "date_evidence": {
+            "kind": "documented_launch",
+            "source_ids": [
+              7836
+            ]
+          },
+          "commercialization_notes": [
+            "Prezzo Z9001.10, Germania Est, in marchi della DDR (DDM), documentato nella fonte secondaria con riferimento a Jugend+Technik agosto1984. La famiglia arrivò sul mercato a fine1984 e fu rinominata KC85/1 nel1985."
+          ],
+          "date_sources": [
+            7836
+          ],
+          "release_ids": [
+            1872
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1872,
+              "market": "Europa",
+              "release_date": "1984",
+              "discontinuation_date": null,
+              "price": 1550.0,
+              "currency": "DDM",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 7836,
+                  "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+                  "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+                  "author": "Collaboratori di Wikipedia",
+                  "publisher": "Wikimedia Foundation",
+                  "source_type": "encyclopedia",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                }
+              ],
+              "catalog_clean": true,
+              "model_variant": "Z9001.10 monocromatico",
+              "date_scope": "model",
+              "date_evidence": {
+                "kind": "documented_launch",
+                "source_ids": [
+                  7836
+                ]
+              },
+              "commercialization_notes": [
+                "Prezzo Z9001.10, Germania Est, in marchi della DDR (DDM), documentato nella fonte secondaria con riferimento a Jugend+Technik agosto1984. La famiglia arrivò sul mercato a fine1984 e fu rinominata KC85/1 nel1985."
+              ],
+              "date_sources": [
+                7836
+              ]
+            }
+          ],
+          "countries": [
+            "Europa"
+          ],
+          "price_countries": [
+            "Europa"
+          ],
+          "original_markets": [
+            "Europa"
+          ],
+          "field_sources": {
+            "market": [
+              7836
+            ],
+            "release_date": [
+              7836
+            ],
+            "discontinuation_date": [],
+            "price": [
+              7836
+            ],
+            "currency": [
+              7836
+            ],
+            "price_type": [
+              7836
+            ]
+          }
+        }
+      ],
+      "images": [
+        {
+          "id": 684,
+          "computer_id": 1363,
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Robotron_z_9001_technische_Sammlung_Dresden.jpg/960px-Robotron_z_9001_technische_Sammlung_Dresden.jpg",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Robotron_z_9001_technische_Sammlung_Dresden.jpg/960px-Robotron_z_9001_technische_Sammlung_Dresden.jpg",
+          "caption": "Robotron Z9001 esposto nelle Technische Sammlungen di Dresda; famiglia rinominata KC 85/1.",
+          "author": "ubahnverleih",
+          "license_name": "CC0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Robotron_z_9001_technische_Sammlung_Dresden.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "sources": [
+        {
+          "id": 7835,
+          "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+          "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+          "author": null,
+          "publisher": "Robotrontechnik.de",
+          "source_type": "technical_archive",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7836,
+          "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+          "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+          "author": "Collaboratori di Wikipedia",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "encyclopedia",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": 1364,
+      "model_name": "KC 87",
+      "manufacturer_id": 219,
+      "manufacturer": "Robotron",
+      "description": "Il KC 87 proseguì dal 1987 la famiglia Robotron Z9001/KC 85/1. Manteneva il processore U880, i 16 KB di RAM e i moduli di espansione del predecessore, ma portava il BASIC nella ROM interna, lasciando più memoria disponibile ai programmi. Era destinato soprattutto alla formazione e alle applicazioni aziendali della Germania Est; parte della produzione raggiunse anche il commercio al dettaglio. Gli allestimenti differivano per uscita monocromatica o a colori e funzioni del BASIC. La produzione terminò nel 1989, con l’arrivo del computer scolastico A 5105.",
+      "first_release": "1987",
+      "categories": [
+        "Home computer"
+      ],
+      "configuration_count": 1,
+      "specifications": 18,
+      "memory": {
+        "id": 10254,
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 16.0,
+        "text_value": null,
+        "unit": "KB",
+        "normalized": {
+          "component_type": "RAM",
+          "component_name": null,
+          "property_name": "Capacità",
+          "numeric_value": null,
+          "text_value": "16 KB",
+          "unit": null
+        },
+        "display": {
+          "component_type": "RAM",
+          "property_name": "Capacità"
+        },
+        "sources": [
+          {
+            "id": 7835,
+            "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+            "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+            "author": null,
+            "publisher": "Robotrontechnik.de",
+            "source_type": "technical_archive",
+            "publication_date": null,
+            "access_date": "2026-11-24"
+          }
+        ],
+        "catalog_clean": true,
+        "catalog_metric": "ram.capacity",
+        "resolution_state": "reported",
+        "memory_values": [
+          {
+            "number": 16.0,
+            "unit": "KB",
+            "text": "",
+            "role": "",
+            "qualifier": "",
+            "bytes": null,
+            "shownNumber": 16.0,
+            "shownUnit": "KB",
+            "shownText": "",
+            "identity": "[\"\",\"\",[16,\"KB\",\"\"]]"
+          }
+        ],
+        "memory_notes": [],
+        "specification_ids": [
+          10254
+        ]
+      },
+      "releases": [
+        {
+          "id": 1873,
+          "market": "Europa",
+          "release_date": "1987",
+          "discontinuation_date": null,
+          "price": 3005.0,
+          "currency": "DDM",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 7835,
+              "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+              "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+              "author": null,
+              "publisher": "Robotrontechnik.de",
+              "source_type": "technical_archive",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            },
+            {
+              "id": 7836,
+              "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+              "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+              "author": "Collaboratori di Wikipedia",
+              "publisher": "Wikimedia Foundation",
+              "source_type": "encyclopedia",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            }
+          ],
+          "catalog_clean": true,
+          "model_variant": "KC 87 monocromatico",
+          "date_scope": "model",
+          "date_evidence": {
+            "kind": "documented_launch",
+            "source_ids": [
+              7836
+            ]
+          },
+          "commercialization_notes": [
+            "Germania Est, marchi DDR (DDM), non marchi della Germania Ovest. 1987 è l’anno del modello; il listino citato non è datato e non viene presentato come prezzo di lancio. KC 87 monocromatico"
+          ],
+          "date_sources": [
+            7836
+          ],
+          "release_ids": [
+            1873
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1873,
+              "market": "Europa",
+              "release_date": "1987",
+              "discontinuation_date": null,
+              "price": 3005.0,
+              "currency": "DDM",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 7835,
+                  "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                  "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                  "author": null,
+                  "publisher": "Robotrontechnik.de",
+                  "source_type": "technical_archive",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                },
+                {
+                  "id": 7836,
+                  "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+                  "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+                  "author": "Collaboratori di Wikipedia",
+                  "publisher": "Wikimedia Foundation",
+                  "source_type": "encyclopedia",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                }
+              ],
+              "catalog_clean": true,
+              "model_variant": "KC 87 monocromatico",
+              "date_scope": "model",
+              "date_evidence": {
+                "kind": "documented_launch",
+                "source_ids": [
+                  7836
+                ]
+              },
+              "commercialization_notes": [
+                "Germania Est, marchi DDR (DDM), non marchi della Germania Ovest. 1987 è l’anno del modello; il listino citato non è datato e non viene presentato come prezzo di lancio. KC 87 monocromatico"
+              ],
+              "date_sources": [
+                7836
+              ]
+            }
+          ],
+          "countries": [
+            "Europa"
+          ],
+          "price_countries": [
+            "Europa"
+          ],
+          "original_markets": [
+            "Europa"
+          ],
+          "field_sources": {
+            "market": [
+              7835,
+              7836
+            ],
+            "release_date": [
+              7836
+            ],
+            "discontinuation_date": [],
+            "price": [
+              7835,
+              7836
+            ],
+            "currency": [
+              7835,
+              7836
+            ],
+            "price_type": [
+              7835,
+              7836
+            ]
+          }
+        },
+        {
+          "id": 1874,
+          "market": "Europa",
+          "release_date": "1987",
+          "discontinuation_date": null,
+          "price": 3390.0,
+          "currency": "DDM",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 7835,
+              "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+              "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+              "author": null,
+              "publisher": "Robotrontechnik.de",
+              "source_type": "technical_archive",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            },
+            {
+              "id": 7836,
+              "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+              "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+              "author": "Collaboratori di Wikipedia",
+              "publisher": "Wikimedia Foundation",
+              "source_type": "encyclopedia",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            }
+          ],
+          "catalog_clean": true,
+          "model_variant": "KC 87 a colori",
+          "date_scope": "model",
+          "date_evidence": {
+            "kind": "documented_launch",
+            "source_ids": [
+              7836
+            ]
+          },
+          "commercialization_notes": [
+            "Germania Est, marchi DDR (DDM), non marchi della Germania Ovest. 1987 è l’anno del modello; il listino citato non è datato e non viene presentato come prezzo di lancio. KC 87 a colori"
+          ],
+          "date_sources": [
+            7836
+          ],
+          "release_ids": [
+            1874
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1874,
+              "market": "Europa",
+              "release_date": "1987",
+              "discontinuation_date": null,
+              "price": 3390.0,
+              "currency": "DDM",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 7835,
+                  "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+                  "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+                  "author": null,
+                  "publisher": "Robotrontechnik.de",
+                  "source_type": "technical_archive",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                },
+                {
+                  "id": 7836,
+                  "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+                  "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+                  "author": "Collaboratori di Wikipedia",
+                  "publisher": "Wikimedia Foundation",
+                  "source_type": "encyclopedia",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                }
+              ],
+              "catalog_clean": true,
+              "model_variant": "KC 87 a colori",
+              "date_scope": "model",
+              "date_evidence": {
+                "kind": "documented_launch",
+                "source_ids": [
+                  7836
+                ]
+              },
+              "commercialization_notes": [
+                "Germania Est, marchi DDR (DDM), non marchi della Germania Ovest. 1987 è l’anno del modello; il listino citato non è datato e non viene presentato come prezzo di lancio. KC 87 a colori"
+              ],
+              "date_sources": [
+                7836
+              ]
+            }
+          ],
+          "countries": [
+            "Europa"
+          ],
+          "price_countries": [
+            "Europa"
+          ],
+          "original_markets": [
+            "Europa"
+          ],
+          "field_sources": {
+            "market": [
+              7835,
+              7836
+            ],
+            "release_date": [
+              7836
+            ],
+            "discontinuation_date": [],
+            "price": [
+              7835,
+              7836
+            ],
+            "currency": [
+              7835,
+              7836
+            ],
+            "price_type": [
+              7835,
+              7836
+            ]
+          }
+        }
+      ],
+      "images": [
+        {
+          "id": 685,
+          "computer_id": 1364,
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Robotron_KC_87.jpg/960px-Robotron_KC_87.jpg",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Robotron_KC_87.jpg/960px-Robotron_KC_87.jpg",
+          "caption": "Robotron KC 87 al Computerspielemuseum.",
+          "author": "Max Mustermann",
+          "license_name": "CC BY-SA 2.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Robotron_KC_87.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "sources": [
+        {
+          "id": 7835,
+          "title": "Robotrontechnik — Kleincomputer aus Dresden: Z9001, KC85/1 e KC87",
+          "url": "https://www.robotrontechnik.de/html/computer/kc_dresden.htm",
+          "author": null,
+          "publisher": "Robotrontechnik.de",
+          "source_type": "technical_archive",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7836,
+          "title": "Wikipedia — Robotron Z 9001, Robotron KC 85/1, Robotron KC 87 (de)",
+          "url": "https://de.wikipedia.org/w/index.php?oldid=271037037",
+          "author": "Collaboratori di Wikipedia",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "encyclopedia",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": 1362,
+      "model_name": "Micro-Professor I",
+      "manufacturer_id": 129,
+      "manufacturer": "Multitech",
+      "description": "Presentato da Multitech nel 1981, il Micro-Professor I, noto anche come MPF-I o MPF-1, era un sistema didattico per imparare il linguaggio macchina e l’assembly dello Z80. La scheda, custodita in un contenitore a libro, permetteva di inserire programmi da una tastiera esadecimale e leggerne indirizzi e dati su sei cifre LED. I 2 KB di RAM e il monitor in ROM bastavano per gli esercizi; cassette e moduli aggiuntivi estendevano le possibilità di laboratorio. L’allestimento MPF-1B aggiunse Tiny BASIC. I successivi Microprofessor II e III, già nel catalogo, appartengono invece alla linea di compatibili Apple.",
+      "first_release": "1981",
+      "categories": [
+        "Microcomputer"
+      ],
+      "configuration_count": 1,
+      "specifications": 16,
+      "memory": {
+        "id": 10220,
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 2.0,
+        "text_value": null,
+        "unit": "KB",
+        "normalized": {
+          "component_type": "RAM",
+          "component_name": null,
+          "property_name": "Capacità",
+          "numeric_value": null,
+          "text_value": "2 KB",
+          "unit": null
+        },
+        "display": {
+          "component_type": "RAM",
+          "property_name": "Capacità"
+        },
+        "sources": [
+          {
+            "id": 7833,
+            "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+            "url": "https://archive.org/details/byte-magazine-1982-08",
+            "author": "Multitech Electronics Inc.",
+            "publisher": "BYTE Publications",
+            "source_type": "advertisement",
+            "publication_date": null,
+            "access_date": "2026-11-24"
+          }
+        ],
+        "catalog_clean": true,
+        "catalog_metric": "ram.capacity",
+        "resolution_state": "reported",
+        "memory_values": [
+          {
+            "number": 2.0,
+            "unit": "KB",
+            "text": "",
+            "role": "",
+            "qualifier": "",
+            "bytes": null,
+            "shownNumber": 2.0,
+            "shownUnit": "KB",
+            "shownText": "",
+            "identity": "[\"\",\"\",[2,\"KB\",\"\"]]"
+          }
+        ],
+        "memory_notes": [],
+        "specification_ids": [
+          10220
+        ]
+      },
+      "releases": [
+        {
+          "id": 1871,
+          "market": "Stati Uniti",
+          "release_date": "1981",
+          "discontinuation_date": null,
+          "price": 149.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 7833,
+              "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+              "url": "https://archive.org/details/byte-magazine-1982-08",
+              "author": "Multitech Electronics Inc.",
+              "publisher": "BYTE Publications",
+              "source_type": "advertisement",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            },
+            {
+              "id": 7834,
+              "title": "Wikipedia — Micro-Professor MPF-I (en)",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1358792001",
+              "author": "Collaboratori di Wikipedia",
+              "publisher": "Wikimedia Foundation",
+              "source_type": "encyclopedia",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "model",
+          "date_evidence": {
+            "kind": "documented_launch",
+            "source_ids": [
+              7834
+            ]
+          },
+          "commercialization_notes": [
+            "Anno di introduzione del modello: 1981. Prezzo pubblicitario negli Stati Uniti, BYTE agosto 1982 p.127; spedizione e tasse escluse, non prezzo di lancio certificato."
+          ],
+          "date_sources": [
+            7834
+          ],
+          "release_ids": [
+            1871
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1871,
+              "market": "Stati Uniti",
+              "release_date": "1981",
+              "discontinuation_date": null,
+              "price": 149.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 7833,
+                  "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+                  "url": "https://archive.org/details/byte-magazine-1982-08",
+                  "author": "Multitech Electronics Inc.",
+                  "publisher": "BYTE Publications",
+                  "source_type": "advertisement",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                },
+                {
+                  "id": 7834,
+                  "title": "Wikipedia — Micro-Professor MPF-I (en)",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1358792001",
+                  "author": "Collaboratori di Wikipedia",
+                  "publisher": "Wikimedia Foundation",
+                  "source_type": "encyclopedia",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "model",
+              "date_evidence": {
+                "kind": "documented_launch",
+                "source_ids": [
+                  7834
+                ]
+              },
+              "commercialization_notes": [
+                "Anno di introduzione del modello: 1981. Prezzo pubblicitario negli Stati Uniti, BYTE agosto 1982 p.127; spedizione e tasse escluse, non prezzo di lancio certificato."
+              ],
+              "date_sources": [
+                7834
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              7833,
+              7834
+            ],
+            "release_date": [
+              7834
+            ],
+            "discontinuation_date": [],
+            "price": [
+              7833,
+              7834
+            ],
+            "currency": [
+              7833,
+              7834
+            ],
+            "price_type": [
+              7833,
+              7834
+            ]
+          }
+        }
+      ],
+      "images": [
+        {
+          "id": 683,
+          "computer_id": 1362,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Mpf-I.jpg",
+          "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Mpf-I.jpg",
+          "caption": "Micro-Professor I, scheda didattica con tastiera esadecimale e display LED.",
+          "author": "User Toytoy on en.wikipedia",
+          "license_name": "CC BY-SA 2.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Mpf-I.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "sources": [
+        {
+          "id": 7832,
+          "title": "Electrickery — Multitech MPF-1, varianti e documentazione",
+          "url": "https://electrickery.nl/comp/mpf1/",
+          "author": null,
+          "publisher": "Yet another computer museum / electrickery.nl",
+          "source_type": "technical_archive",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7833,
+          "title": "Multitech — The Micro-Professor, BYTE agosto 1982, p. 127",
+          "url": "https://archive.org/details/byte-magazine-1982-08",
+          "author": "Multitech Electronics Inc.",
+          "publisher": "BYTE Publications",
+          "source_type": "advertisement",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7834,
+          "title": "Wikipedia — Micro-Professor MPF-I (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1358792001",
+          "author": "Collaboratori di Wikipedia",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "encyclopedia",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        }
+      ]
+    },
+    {
+      "id": 1361,
+      "model_name": "NewBrain",
+      "manufacturer_id": 218,
+      "manufacturer": "Grundy Business Systems",
+      "description": "Il NewBrain fu commercializzato nel 1982 da Grundy Business Systems, dopo uno sviluppo iniziato in Sinclair Radionics e proseguito presso Newbury Laboratories. Il progetto era stato preso in considerazione per l’iniziativa informatica della BBC, prima della scelta di Acorn. Compatto e basato sullo Z80A, offriva 32 KB di RAM, un BASIC con funzioni matematiche e grafiche e un sistema di espansioni esterne. Il NewBrain A usava un televisore o monitor; il NewBrain AD aggiungeva un display fluorescente da 16 caratteri. Dal 1983 Tradecom proseguì la distribuzione e il supporto del sistema.",
+      "first_release": "1982",
+      "categories": [
+        "Personal computer"
+      ],
+      "configuration_count": 1,
+      "specifications": 16,
+      "memory": {
+        "id": 10204,
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 32.0,
+        "text_value": null,
+        "unit": "KB",
+        "normalized": {
+          "component_type": "RAM",
+          "component_name": null,
+          "property_name": "Capacità",
+          "numeric_value": null,
+          "text_value": "32 KB",
+          "unit": null
+        },
+        "display": {
+          "component_type": "RAM",
+          "property_name": "Capacità"
+        },
+        "sources": [
+          {
+            "id": 7831,
+            "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+            "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+            "author": "Grundy Business Systems",
+            "publisher": "Grundy Business Systems",
+            "source_type": "technical_manual",
+            "publication_date": null,
+            "access_date": "2026-11-24"
+          }
+        ],
+        "catalog_clean": true,
+        "catalog_metric": "ram.capacity",
+        "resolution_state": "reported",
+        "memory_values": [
+          {
+            "number": 32.0,
+            "unit": "KB",
+            "text": "",
+            "role": "",
+            "qualifier": "",
+            "bytes": null,
+            "shownNumber": 32.0,
+            "shownUnit": "KB",
+            "shownText": "",
+            "identity": "[\"\",\"\",[32,\"KB\",\"\"]]"
+          }
+        ],
+        "memory_notes": [],
+        "specification_ids": [
+          10204
+        ]
+      },
+      "releases": [
+        {
+          "id": 1870,
+          "market": "Europa",
+          "release_date": "1982",
+          "discontinuation_date": null,
+          "price": null,
+          "currency": null,
+          "price_type": null,
+          "sources": [
+            {
+              "id": 7826,
+              "title": "Wikipedia — Grundy NewBrain (en)",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1375718570",
+              "author": "Collaboratori di Wikipedia",
+              "publisher": "Wikimedia Foundation",
+              "source_type": "encyclopedia",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "model",
+          "date_evidence": {
+            "kind": "documented_launch",
+            "source_ids": [
+              7826
+            ]
+          },
+          "commercialization_notes": [
+            "Introduzione del modello nel 1982 nel Regno Unito. Non è stato trovato un prezzo con documentazione sufficiente per questo pacchetto."
+          ],
+          "date_sources": [
+            7826
+          ],
+          "release_ids": [
+            1870
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1870,
+              "market": "Europa",
+              "release_date": "1982",
+              "discontinuation_date": null,
+              "price": null,
+              "currency": null,
+              "price_type": null,
+              "sources": [
+                {
+                  "id": 7826,
+                  "title": "Wikipedia — Grundy NewBrain (en)",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1375718570",
+                  "author": "Collaboratori di Wikipedia",
+                  "publisher": "Wikimedia Foundation",
+                  "source_type": "encyclopedia",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "model",
+              "date_evidence": {
+                "kind": "documented_launch",
+                "source_ids": [
+                  7826
+                ]
+              },
+              "commercialization_notes": [
+                "Introduzione del modello nel 1982 nel Regno Unito. Non è stato trovato un prezzo con documentazione sufficiente per questo pacchetto."
+              ],
+              "date_sources": [
+                7826
+              ]
+            }
+          ],
+          "countries": [
+            "Europa"
+          ],
+          "price_countries": [],
+          "original_markets": [
+            "Europa"
+          ],
+          "field_sources": {
+            "market": [
+              7826
+            ],
+            "release_date": [
+              7826
+            ],
+            "discontinuation_date": [],
+            "price": [],
+            "currency": [],
+            "price_type": []
+          }
+        }
+      ],
+      "images": [
+        {
+          "id": 682,
+          "computer_id": 1361,
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/New_Brain_IMG_4244.jpg/960px-New_Brain_IMG_4244.jpg",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/New_Brain_IMG_4244.jpg/960px-New_Brain_IMG_4244.jpg",
+          "caption": "NewBrain AD con display integrato; fotografia dell’esemplare al Musée Bolo.",
+          "author": "Rama & Musée Bolo",
+          "license_name": "CC BY-SA 2.0 fr",
+          "license_url": "https://creativecommons.org/licenses/by-sa/2.0/fr/deed.en",
+          "source_url": "https://commons.wikimedia.org/wiki/File:New_Brain_IMG_4244.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "sources": [
+        {
+          "id": 7827,
+          "title": "Gerald McMullon — testimonianza sul NewBrain e Grundy",
+          "url": "https://www.binarydinosaurs.co.uk/Museum/Grundy/gerald.php",
+          "author": "Gerald McMullon",
+          "publisher": "Binary Dinosaurs",
+          "source_type": "historical_account",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7831,
+          "title": "Grundy Business Systems — NewBrain Handbook, appendice 9",
+          "url": "https://archive.org/details/grundy-newbrain-handbook-manual",
+          "author": "Grundy Business Systems",
+          "publisher": "Grundy Business Systems",
+          "source_type": "technical_manual",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        },
+        {
+          "id": 7826,
+          "title": "Wikipedia — Grundy NewBrain (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1375718570",
+          "author": "Collaboratori di Wikipedia",
+          "publisher": "Wikimedia Foundation",
+          "source_type": "encyclopedia",
+          "publication_date": null,
+          "access_date": "2026-11-24"
+        }
+      ]
+    }
+  ],
+  "local_mac_database_updated": false,
+  "tests": {
+    "backend": {
+      "passed": 880,
+      "skipped": 2,
+      "subtests_passed": 7,
+      "skipped_reason": "PostgreSQL-only checks"
+    },
+    "final_scoped_sqlite": {
+      "passed": 8
+    },
+    "postgresql": {
+      "passed": 37,
+      "additional_concurrency_passed": 1
+    },
+    "frontend": {
+      "passed": 45,
+      "production_build": true,
+      "existing_warning": "Vite chunk size"
+    },
+    "docker_api_build_and_health": true,
+    "api": {
+      "native_catalog_timeline_dates": true,
+      "single_technical_sheets": true,
+      "robotron_profile_models": 3,
+      "analytics_total": 1152,
+      "comparison_sourced": true,
+      "offers_preserved_after_startup": true,
+      "assistant_retrieves_new_models_with_sources_without_paid_calls": true
+    },
+    "browser": {
+      "robotron_profile_three_cards": true,
+      "robotron_logo_loaded": true,
+      "company_dates_and_sources": true,
+      "models_checked": [
+        "NewBrain",
+        "Micro-Professor I",
+        "KC 85/1",
+        "KC 87",
+        "A 5105"
+      ],
+      "one_technical_sheet_each": true,
+      "ram_and_clock": true,
+      "kc87_distinct_prices": true,
+      "mobile_no_overflow": true,
+      "page_errors": [],
+      "image_method": "Exact Commons URLs fulfilled using the same files downloaded over HTTPS; direct cloud Chromium remote loading not asserted."
+    }
+  }
+}

@@ -1,0 +1,1212 @@
+{
+  "version": "earthstation-mistrum-2026-11-v1",
+  "researched_on": "2026-11-24",
+  "records": [
+    {
+      "manufacturer": "Alloy",
+      "model_name": "EarthStation-I",
+      "source": {
+        "title": "Jozef Bogin — ALLOY EarthStation-I",
+        "url": "https://boginjr.com/electronics/old/earthstation/",
+        "author": "Jozef Bogin",
+        "publisher": "BOGIN, JR.",
+        "source_type": "historical_article",
+        "publication_date": "2020-04-21",
+        "access_date": "2026-11-24",
+        "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+      },
+      "evidence": "Articolo tecnico con fotografie del computer e del manuale; esemplare dell’autore del 1987, non data certa del primo lancio.",
+      "description": "L’EarthStation-I è una workstation compatibile IBM PC sviluppata da Earth Computer Technologies e commercializzata anche nell’ambito Alloy. Nella seconda metà degli anni Ottanta proponeva un computer senza dischi, integrato nella tastiera, da collegare a un server attraverso ARCnet. Il NEC V40 a 8 MHz e il controller grafico NCR 7280 permettevano di usare applicazioni DOS e diversi tipi di monitor. La macchina privilegiava la gestione centralizzata dei programmi e dei dati, con possibilità di espansione locale molto limitate.",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "component_name": null,
+              "property_name": "Modello",
+              "numeric_value": null,
+              "text_value": "NEC V40",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Modello: NEC V40 ."
+            },
+            {
+              "component_type": "CPU",
+              "component_name": null,
+              "property_name": "Frequenza",
+              "numeric_value": 8,
+              "text_value": null,
+              "unit": "MHz",
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Frequenza: 8 MHz."
+            },
+            {
+              "component_type": "RAM",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 256,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Capacità: 256 KB."
+            },
+            {
+              "component_type": "RAM",
+              "component_name": null,
+              "property_name": "Opzioni di memoria",
+              "numeric_value": null,
+              "text_value": "Espandibile fino a 768 KB",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Opzioni di memoria: Espandibile fino a 768 KB ."
+            },
+            {
+              "component_type": "ROM",
+              "component_name": "BIOS",
+              "property_name": "Capacità",
+              "numeric_value": 32,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Capacità: 32 KB."
+            },
+            {
+              "component_type": "ROM",
+              "component_name": "Boot ROM",
+              "property_name": "Capacità",
+              "numeric_value": 32,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Capacità: 32 KB."
+            },
+            {
+              "component_type": "ROM",
+              "component_name": "BIOS",
+              "property_name": "Indirizzi",
+              "numeric_value": null,
+              "text_value": "FE00:0000–FE00:FFFF",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Indirizzi: FE00:0000–FE00:FFFF ."
+            },
+            {
+              "component_type": "ROM",
+              "component_name": "Boot ROM",
+              "property_name": "Indirizzi",
+              "numeric_value": null,
+              "text_value": "D800:0000",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Indirizzi: D800:0000 ."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Modello",
+              "numeric_value": null,
+              "text_value": "NCR 7280",
+              "unit": null,
+              "source": {
+                "title": "Jozef Bogin — ALLOY EarthStation-I",
+                "url": "https://boginjr.com/electronics/old/earthstation/",
+                "author": "Jozef Bogin",
+                "publisher": "BOGIN, JR.",
+                "source_type": "historical_article",
+                "publication_date": "2020-04-21",
+                "access_date": "2026-11-24",
+                "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+              },
+              "evidence": "L’articolo identifica il controller grafico NCR 7280."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Modalità",
+              "numeric_value": null,
+              "text_value": "MDA/Hercules, CGA e Hi-Res CGA",
+              "unit": null,
+              "source": {
+                "title": "Jozef Bogin — ALLOY EarthStation-I",
+                "url": "https://boginjr.com/electronics/old/earthstation/",
+                "author": "Jozef Bogin",
+                "publisher": "BOGIN, JR.",
+                "source_type": "historical_article",
+                "publication_date": "2020-04-21",
+                "access_date": "2026-11-24",
+                "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+              },
+              "evidence": "L’autore distingue Hi-Res CGA dalla denominazione MCGA erronea del manuale."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Risoluzione",
+              "numeric_value": null,
+              "text_value": "320 × 200 / 640 × 200; Hi-Res CGA 320 × 400 / 640 × 400",
+              "unit": null,
+              "source": {
+                "title": "Jozef Bogin — ALLOY EarthStation-I",
+                "url": "https://boginjr.com/electronics/old/earthstation/",
+                "author": "Jozef Bogin",
+                "publisher": "BOGIN, JR.",
+                "source_type": "historical_article",
+                "publication_date": "2020-04-21",
+                "access_date": "2026-11-24",
+                "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+              },
+              "evidence": "L’articolo descrive le due modalità CGA e il raddoppio verticale delle modalità Hi-Res CGA."
+            },
+            {
+              "component_type": "Tastiera",
+              "component_name": null,
+              "property_name": "Tipo",
+              "numeric_value": null,
+              "text_value": "Integrata, AT a 101 tasti",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Tipo: Integrata, AT a 101 tasti ."
+            },
+            {
+              "component_type": "Rete",
+              "component_name": null,
+              "property_name": "Interfaccia",
+              "numeric_value": null,
+              "text_value": "ARCnet, connettore BNC",
+              "unit": null,
+              "source": {
+                "title": "Jozef Bogin — ALLOY EarthStation-I",
+                "url": "https://boginjr.com/electronics/old/earthstation/",
+                "author": "Jozef Bogin",
+                "publisher": "BOGIN, JR.",
+                "source_type": "historical_article",
+                "publication_date": "2020-04-21",
+                "access_date": "2026-11-24",
+                "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+              },
+              "evidence": "Articolo e manuale: stack ARCnet, rete coassiale con connettore BNC."
+            },
+            {
+              "component_type": "Rete",
+              "component_name": null,
+              "property_name": "Cavo",
+              "numeric_value": null,
+              "text_value": "RG-62/U coassiale, 93 Ω",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Cavo: RG-62/U coassiale, 93 Ω ."
+            },
+            {
+              "component_type": "Rete",
+              "component_name": null,
+              "property_name": "Distanze documentate",
+              "numeric_value": null,
+              "text_value": "2.000 piedi da hub attivo; 100 piedi da hub passivo; estensione rete 4 miglia",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Distanze documentate: 2.000 piedi da hub attivo; 100 piedi da hub passivo; estensione rete 4 miglia ."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Parallela",
+              "numeric_value": null,
+              "text_value": "Centronics DB-25S (LPT1)",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Parallela: Centronics DB-25S (LPT1) ."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Seriale",
+              "numeric_value": null,
+              "text_value": "COM1 a bassa velocità, DB-9P",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Seriale: COM1 a bassa velocità, DB-9P ."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Video",
+              "numeric_value": null,
+              "text_value": "DB-9S, segnali TTL; nessuna uscita composita CGA diretta",
+              "unit": null,
+              "source": {
+                "title": "Jozef Bogin — ALLOY EarthStation-I",
+                "url": "https://boginjr.com/electronics/old/earthstation/",
+                "author": "Jozef Bogin",
+                "publisher": "BOGIN, JR.",
+                "source_type": "historical_article",
+                "publication_date": "2020-04-21",
+                "access_date": "2026-11-24",
+                "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+              },
+              "evidence": "Manuale: uscita IBM Standard DB-9S. L’articolo precisa che la prova su TV usa un adattatore TTL/composito esterno."
+            },
+            {
+              "component_type": "Memoria di massa",
+              "component_name": null,
+              "property_name": "Unità locali",
+              "numeric_value": null,
+              "text_value": "Nessuna; workstation senza dischi",
+              "unit": null,
+              "source": {
+                "title": "Jozef Bogin — ALLOY EarthStation-I",
+                "url": "https://boginjr.com/electronics/old/earthstation/",
+                "author": "Jozef Bogin",
+                "publisher": "BOGIN, JR.",
+                "source_type": "historical_article",
+                "publication_date": "2020-04-21",
+                "access_date": "2026-11-24",
+                "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+              },
+              "evidence": "L’articolo descrive una workstation diskless avviata da server tramite rete."
+            },
+            {
+              "component_type": "Sistema",
+              "component_name": null,
+              "property_name": "Compatibilità",
+              "numeric_value": null,
+              "text_value": "IBM PC, PC/XT, PC/AT e compatibili",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Compatibilità: IBM PC, PC/XT, PC/AT e compatibili ."
+            },
+            {
+              "component_type": "Sistema",
+              "component_name": null,
+              "property_name": "Ambiente di rete",
+              "numeric_value": null,
+              "text_value": "Novell NetWare e ambienti compatibili NetBIOS",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Ambiente di rete: Novell NetWare e ambienti compatibili NetBIOS ."
+            },
+            {
+              "component_type": "Chassis",
+              "component_name": null,
+              "property_name": "Dimensioni",
+              "numeric_value": null,
+              "text_value": "47 × 19,7 × 7 cm",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Dimensioni: 47 × 19,7 × 7 cm ."
+            },
+            {
+              "component_type": "Alimentazione",
+              "component_name": null,
+              "property_name": "Ingresso",
+              "numeric_value": null,
+              "text_value": "120 V CA 60 Hz oppure 240 V CA 50 Hz, 15 W",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Ingresso: 120 V CA 60 Hz oppure 240 V CA 50 Hz, 15 W ."
+            },
+            {
+              "component_type": "Alimentazione",
+              "component_name": null,
+              "property_name": "Uscita alimentatore",
+              "numeric_value": null,
+              "text_value": "16 V CA, 1 A",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Uscita alimentatore: 16 V CA, 1 A ."
+            },
+            {
+              "component_type": "Ambiente",
+              "component_name": null,
+              "property_name": "Temperatura operativa",
+              "numeric_value": null,
+              "text_value": "0–50 °C",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Temperatura operativa: 0–50 °C ."
+            },
+            {
+              "component_type": "Ambiente",
+              "component_name": null,
+              "property_name": "Umidità",
+              "numeric_value": null,
+              "text_value": "10–90%, senza condensa",
+              "unit": null,
+              "source": {
+                "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+                "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+                "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+                "source_type": "manual",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Umidità: 10–90%, senza condensa ."
+            }
+          ]
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Memoria installata",
+          "statement": "Il manuale indica 256 KB di base, espandibili a 768 KB. L’esemplare descritto da Jozef Bogin ha 768 KB installati; fino a 704 KB sono indirizzabili da DOS.",
+          "source": {
+            "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+            "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+            "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+            "source_type": "manual",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Manuale p. 24: 256K expandable to 768KBytes DRAM, 704K DOS addressable; articolo: esemplare con 768k."
+        },
+        {
+          "fact_type": "Cronologia documentata",
+          "statement": "L’articolo descrive un esemplare fabbricato nel 1987 e colloca la famiglia nella seconda metà degli anni Ottanta; non stabilisce la data esatta del primo lancio.",
+          "source": {
+            "title": "Jozef Bogin — ALLOY EarthStation-I",
+            "url": "https://boginjr.com/electronics/old/earthstation/",
+            "author": "Jozef Bogin",
+            "publisher": "BOGIN, JR.",
+            "source_type": "historical_article",
+            "publication_date": "2020-04-21",
+            "access_date": "2026-11-24",
+            "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+          },
+          "evidence": "Riquadro iniziale: mid to late 1980s, my model in 1987."
+        },
+        {
+          "fact_type": "Contesto del prezzo",
+          "statement": "L’autore riferisce un prezzo superiore a 1.000 dollari nel 1991. Non è un prezzo esatto né un prezzo di lancio documentato e non viene convertito in un’offerta.",
+          "source": {
+            "title": "Jozef Bogin — ALLOY EarthStation-I",
+            "url": "https://boginjr.com/electronics/old/earthstation/",
+            "author": "Jozef Bogin",
+            "publisher": "BOGIN, JR.",
+            "source_type": "historical_article",
+            "publication_date": "2020-04-21",
+            "access_date": "2026-11-24",
+            "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+          },
+          "evidence": "Articolo: on sale for over $1,000 in 1991; nessuna cifra esatta o primo lancio."
+        },
+        {
+          "fact_type": "Avvio alternativo",
+          "statement": "L’autore dimostra l’avvio da porta parallela con BootLPT/86 e una sessione MS-DOS 6.22: è una prova moderna, distinta dal normale avvio ARCnet/NetWare.",
+          "source": {
+            "title": "Jozef Bogin — ALLOY EarthStation-I",
+            "url": "https://boginjr.com/electronics/old/earthstation/",
+            "author": "Jozef Bogin",
+            "publisher": "BOGIN, JR.",
+            "source_type": "historical_article",
+            "publication_date": "2020-04-21",
+            "access_date": "2026-11-24",
+            "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+          },
+          "evidence": "Esperimenti di avvio descritti nell’articolo; non software fornito originariamente."
+        },
+        {
+          "fact_type": "Famiglia",
+          "statement": "EarthStation-Ie e i successivi EarthStation con processori 286/386 sono varianti successive citate nell’articolo: Ethernet e quei processori non sono attribuiti a questo modello.",
+          "source": {
+            "title": "Jozef Bogin — ALLOY EarthStation-I",
+            "url": "https://boginjr.com/electronics/old/earthstation/",
+            "author": "Jozef Bogin",
+            "publisher": "BOGIN, JR.",
+            "source_type": "historical_article",
+            "publication_date": "2020-04-21",
+            "access_date": "2026-11-24",
+            "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+          },
+          "evidence": "Distinzione esplicita fra EarthStation-I, EarthStation-Ie e modelli successivi."
+        }
+      ]
+    },
+    {
+      "manufacturer": "Amaterske RADIO",
+      "model_name": "Mistrum",
+      "source": {
+        "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+        "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+        "publisher": "Amatérské radio; copia Speccy4ever",
+        "source_type": "magazine",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Il collegamento Documentation nella pagina Speccy4ever porta al fascicolo Amatérské radio B/1/1989; sezione Mistrum dalla pagina stampata 12.",
+      "description": "Il Mistrum è un progetto cecoslovacco di autocostruzione compatibile con lo ZX Spectrum, descritto nella rivista Amatérské radio, serie B, numero 1 del 1989. Fu progettato per impiegare componenti reperibili localmente, sostituendo la ULA proprietaria dello Spectrum con logica discreta. La configurazione pubblicata usa un processore UA880D compatibile Z80A a 3,5 MHz, 64 KB di RAM e 16 KB di EPROM, con 8 KB separati per il video. Il progetto comprende schemi, circuito stampato, firmware e soluzioni costruttive; le repliche moderne ne proseguono la documentazione senza costituire nuovi allestimenti originali.",
+      "configurations": [
+        {
+          "variant_name": "Scheda tecnica",
+          "specifications": [
+            {
+              "component_type": "CPU",
+              "component_name": null,
+              "property_name": "Modello",
+              "numeric_value": null,
+              "text_value": "UA880D (compatibile Z80A)",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12: Modello: UA880D (compatibile Z80A) ."
+            },
+            {
+              "component_type": "CPU",
+              "component_name": null,
+              "property_name": "Frequenza",
+              "numeric_value": 3.5,
+              "text_value": null,
+              "unit": "MHz",
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12: Frequenza: 3.5 MHz."
+            },
+            {
+              "component_type": "RAM",
+              "component_name": null,
+              "property_name": "Capacità",
+              "numeric_value": 64,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12: Capacità: 64 KB."
+            },
+            {
+              "component_type": "ROM",
+              "component_name": "EPROM",
+              "property_name": "Capacità",
+              "numeric_value": 16,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12: Capacità: 16 KB."
+            },
+            {
+              "component_type": "ROM",
+              "component_name": "EPROM",
+              "property_name": "Organizzazione",
+              "numeric_value": null,
+              "text_value": "8 EPROM da 2 KB oppure una da 16 KB",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12: Organizzazione: 8 EPROM da 2 KB oppure una da 16 KB ."
+            },
+            {
+              "component_type": "Memoria video",
+              "component_name": "SRAM dedicata",
+              "property_name": "Capacità",
+              "numeric_value": 8,
+              "text_value": null,
+              "unit": "KB",
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "P. 12: memoria video statica separata da 8 kB, copia del DISPLAY FILE; non è sommata ai 64 kB di RAM principale."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Modello",
+              "numeric_value": null,
+              "text_value": "ULAM realizzata con logica discreta",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "P. 12: la sezione ULAM sostituisce funzionalmente la ULA proprietaria dello ZX Spectrum usando componenti disponibili localmente."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Risoluzione",
+              "numeric_value": null,
+              "text_value": "256 × 192 pixel",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "P. 4: DISPLAY FILE Spectrum 256 × 192. P. 12: Mistrum conserva il DISPLAY FILE di 6912 byte, copiato nella SRAM video e compatibile con il formato Spectrum. Il vecchio 352 × 296 includeva il raster esterno."
+            },
+            {
+              "component_type": "Video",
+              "component_name": null,
+              "property_name": "Uscite",
+              "numeric_value": null,
+              "text_value": "Video monocromatico; modulatori a colori e uscita RGB opzionali",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "P. 12: configurazione minima monocromatica; i modulatori colore/UHF e l’uscita RGB sono possibilità costruttive, non una dotazione universale."
+            },
+            {
+              "component_type": "Sistema",
+              "component_name": null,
+              "property_name": "Compatibilità",
+              "numeric_value": null,
+              "text_value": "Software ZX Spectrum",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12: Compatibilità: Software ZX Spectrum ."
+            },
+            {
+              "component_type": "Sistema",
+              "component_name": null,
+              "property_name": "Mappatura della memoria",
+              "numeric_value": null,
+              "text_value": "16 KB EPROM alle basse locazioni; EPROM disattivabile via software per rendere accessibili tutti i 64 KB RAM",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12 e 14: Mappatura della memoria: 16 KB EPROM alle basse locazioni; EPROM disattivabile via software per rendere accessibili tutti i 64 KB RAM ."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Joystick",
+              "numeric_value": null,
+              "text_value": "CURSOR e SINCLAIR 1",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12: Joystick: CURSOR e SINCLAIR 1 ."
+            },
+            {
+              "component_type": "Porte",
+              "component_name": null,
+              "property_name": "Registratore",
+              "numeric_value": null,
+              "text_value": "Ingresso e uscita separati per registratore a cassette; connettore DIN",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12 e 31: Registratore: Ingresso e uscita separati per registratore a cassette; connettore DIN ."
+            },
+            {
+              "component_type": "Audio",
+              "component_name": null,
+              "property_name": "Uscita",
+              "numeric_value": null,
+              "text_value": "Altoparlante integrato con regolazione del volume",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12 e 31: Uscita: Altoparlante integrato con regolazione del volume ."
+            },
+            {
+              "component_type": "Comandi",
+              "component_name": null,
+              "property_name": "Controlli",
+              "numeric_value": null,
+              "text_value": "RESET, NMI e inversione dell’immagine",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12: Controlli: RESET, NMI e inversione dell’immagine ."
+            },
+            {
+              "component_type": "Alimentazione",
+              "component_name": null,
+              "property_name": "Valori documentati",
+              "numeric_value": null,
+              "text_value": "Rete 220 V / 10 VA; circuito 5 V / 2 A",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12: Valori documentati: Rete 220 V / 10 VA; circuito 5 V / 2 A ."
+            },
+            {
+              "component_type": "Espansione",
+              "component_name": null,
+              "property_name": "Bus",
+              "numeric_value": null,
+              "text_value": "Bus esterno con buffer",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 12: Bus: Bus esterno con buffer ."
+            },
+            {
+              "component_type": "Tastiera",
+              "component_name": null,
+              "property_name": "Progetti",
+              "numeric_value": null,
+              "text_value": "Tre soluzioni costruttive alternative descritte nel fascicolo",
+              "unit": null,
+              "source": {
+                "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+                "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+                "publisher": "Amatérské radio; copia Speccy4ever",
+                "source_type": "magazine",
+                "access_date": "2026-11-24"
+              },
+              "evidence": "Amatérské radio B/1/1989, p. 29–31: Progetti: Tre soluzioni costruttive alternative descritte nel fascicolo ."
+            }
+          ]
+        }
+      ],
+      "facts": [
+        {
+          "fact_type": "Memoria e compatibilità",
+          "statement": "La RAM fisica è di 64 KB. All’accensione la EPROM occupa i primi 16 KB dello spazio di indirizzamento; disattivandola via software diventa accessibile l’intera RAM. Gli 8 KB SRAM del video sono separati.",
+          "source": {
+            "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+            "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+            "publisher": "Amatérské radio; copia Speccy4ever",
+            "source_type": "magazine",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Pp. 12 e 14: 64 kB DRAM, EPROM 0000H–3FFFH disattivabile, 8 kB SRAM per il video."
+        },
+        {
+          "fact_type": "Pubblicazione",
+          "statement": "Il documento conservato è Amatérské radio, serie B, fascicolo 1/1989. Questa è una data di pubblicazione del progetto, non la prova di un lancio commerciale. I 5 Kčs in copertina sono il prezzo della rivista.",
+          "source": {
+            "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+            "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+            "publisher": "Amatérské radio; copia Speccy4ever",
+            "source_type": "magazine",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Copertina con numero 1, anno 1989 e prezzo 5 Kčs; non prezzo del computer."
+        },
+        {
+          "fact_type": "Firmware documentato",
+          "statement": "L’indice Speccy4ever elenca quattro immagini ROM: Binary standard ZX Spectrum, Binary original Mistrum, EM e M. Non vengono importate come quattro computer o configurazioni hardware.",
+          "source": {
+            "title": "Speccy4ever — Amaterske RADIO / Mistrum",
+            "url": "https://speccy4ever.speccy.org/_AR.htm",
+            "publisher": "Speccy4ever",
+            "source_type": "archive_index",
+            "access_date": "2026-11-24"
+          },
+          "evidence": "Sezione ROM della pagina _AR.htm; file binari non scaricati o redistribuiti."
+        },
+        {
+          "fact_type": "Repliche moderne",
+          "statement": "Il repository di Lazarus Long raccoglie schemi, circuiti stampati, distinta componenti e documentazione di una replica moderna. Tastiera Cherry MX e adattatore video della replica non sono attribuiti al progetto del 1989.",
+          "source": {
+            "title": "Lazarus Long — replica Mistrum, README e fotografia",
+            "url": "https://github.com/Lazarus-L-o-n-g/Mistrum/blob/aa26429e2c25ac1d110006df405b51f3f540dad2/README.md",
+            "author": "Lazarus Long",
+            "publisher": "GitHub",
+            "source_type": "project_documentation",
+            "access_date": "2026-11-24",
+            "license": "CC BY-NC-SA 4.0 — https://creativecommons.org/licenses/by-nc-sa/4.0/"
+          },
+          "evidence": "README: contenuto del repository e sezioni Extended Cherry MX Keyboard e Adapter to analog RGBi or VGA 15kHz video output."
+        }
+      ]
+    }
+  ],
+  "corrections": [
+    {
+      "model_name": "EarthStation-I",
+      "before": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "NEC V20",
+        "unit": null
+      },
+      "after": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "NEC V40",
+        "unit": null
+      },
+      "source": {
+        "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+        "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+        "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+        "source_type": "manual",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Modello: NEC V40 ."
+    },
+    {
+      "model_name": "EarthStation-I",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 768,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 256,
+        "text_value": null,
+        "unit": "KB"
+      },
+      "source": {
+        "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+        "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+        "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+        "source_type": "manual",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Capacità: 256 KB."
+    },
+    {
+      "model_name": "EarthStation-I",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "512 KiB / 768 KiB",
+        "unit": null
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "Espandibile fino a 768 KB",
+        "unit": null
+      },
+      "source": {
+        "title": "EarthStation-I — manuale, specifiche pp. 24–25 (foto di Jozef Bogin)",
+        "url": "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+        "author": "Earth Computer Technologies; fotografia Jozef Bogin",
+        "source_type": "manual",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Manuale EarthStation-I, pp. 24–25 fotografate nell’articolo: Opzioni di memoria: Espandibile fino a 768 KB ."
+    },
+    {
+      "model_name": "EarthStation-I",
+      "before": {
+        "component_type": "Video",
+        "component_name": "isa1:cga:screen",
+        "property_name": "Risoluzione",
+        "numeric_value": null,
+        "text_value": "640 × 200 pixel",
+        "unit": null
+      },
+      "after": {
+        "component_type": "Video",
+        "component_name": null,
+        "property_name": "Risoluzione",
+        "numeric_value": null,
+        "text_value": "320 × 200 / 640 × 200; Hi-Res CGA 320 × 400 / 640 × 400",
+        "unit": null
+      },
+      "source": {
+        "title": "Jozef Bogin — ALLOY EarthStation-I",
+        "url": "https://boginjr.com/electronics/old/earthstation/",
+        "author": "Jozef Bogin",
+        "publisher": "BOGIN, JR.",
+        "source_type": "historical_article",
+        "publication_date": "2020-04-21",
+        "access_date": "2026-11-24",
+        "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+      },
+      "evidence": "L’articolo descrive le due modalità CGA e il raddoppio verticale delle modalità Hi-Res CGA."
+    },
+    {
+      "model_name": "Mistrum",
+      "before": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "Zilog Z80",
+        "unit": null
+      },
+      "after": {
+        "component_type": "CPU",
+        "component_name": null,
+        "property_name": "Modello",
+        "numeric_value": null,
+        "text_value": "UA880D (compatibile Z80A)",
+        "unit": null
+      },
+      "source": {
+        "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+        "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+        "publisher": "Amatérské radio; copia Speccy4ever",
+        "source_type": "magazine",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Amatérské radio B/1/1989, p. 12: Modello: UA880D (compatibile Z80A) ."
+    },
+    {
+      "model_name": "Mistrum",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 48,
+        "text_value": null,
+        "unit": "KiB"
+      },
+      "after": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Capacità",
+        "numeric_value": 64,
+        "text_value": null,
+        "unit": "KB"
+      },
+      "source": {
+        "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+        "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+        "publisher": "Amatérské radio; copia Speccy4ever",
+        "source_type": "magazine",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Amatérské radio B/1/1989, p. 12: Capacità: 64 KB."
+    },
+    {
+      "model_name": "Mistrum",
+      "before": {
+        "component_type": "RAM",
+        "component_name": null,
+        "property_name": "Opzioni di memoria",
+        "numeric_value": null,
+        "text_value": "16 KiB / 48 KiB",
+        "unit": null
+      },
+      "after": null,
+      "source": {
+        "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+        "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+        "publisher": "Amatérské radio; copia Speccy4ever",
+        "source_type": "magazine",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "Pp. 12 e 14: il progetto Mistrum ha 64 kB fisici. La scelta 16/48 kB dello Spectrum non è una configurazione documentata del Mistrum."
+    },
+    {
+      "model_name": "Mistrum",
+      "before": {
+        "component_type": "Video",
+        "component_name": "screen",
+        "property_name": "Risoluzione",
+        "numeric_value": null,
+        "text_value": "352 × 296 pixel",
+        "unit": null
+      },
+      "after": {
+        "component_type": "Video",
+        "component_name": null,
+        "property_name": "Risoluzione",
+        "numeric_value": null,
+        "text_value": "256 × 192 pixel",
+        "unit": null
+      },
+      "source": {
+        "title": "Amatérské radio, serie B, n. 1/1989 — Osobní mikropočítače / Mistrum",
+        "url": "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+        "publisher": "Amatérské radio; copia Speccy4ever",
+        "source_type": "magazine",
+        "access_date": "2026-11-24"
+      },
+      "evidence": "P. 4: DISPLAY FILE Spectrum 256 × 192. P. 12: Mistrum conserva il DISPLAY FILE di 6912 byte, copiato nella SRAM video e compatibile con il formato Spectrum. Il vecchio 352 × 296 includeva il raster esterno."
+    }
+  ],
+  "photos": {
+    "EarthStation-I": [
+      {
+        "image_url": "https://boginjr.com/wp-content/uploads/earthstation-1.jpg",
+        "caption": "EarthStation-I con alimentatore, manuale e scheda di registrazione. Foto: Jozef Bogin.",
+        "author": "Jozef Bogin",
+        "license_name": "© Jozef Bogin — uso autorizzato",
+        "license_url": "https://boginjr.com/disclaimer/",
+        "source_url": "https://boginjr.com/electronics/old/earthstation/",
+        "permission_basis": "Autorizzazione dell’autore confermata dall’utente in chat il 24 novembre 2026; non licenza libera."
+      },
+      {
+        "image_url": "https://boginjr.com/wp-content/uploads/earthstation-2.jpg",
+        "caption": "Connettori posteriori dell’EarthStation-I. Foto: Jozef Bogin.",
+        "author": "Jozef Bogin",
+        "license_name": "© Jozef Bogin — uso autorizzato",
+        "license_url": "https://boginjr.com/disclaimer/",
+        "source_url": "https://boginjr.com/electronics/old/earthstation/",
+        "permission_basis": "Autorizzazione dell’autore confermata dall’utente in chat il 24 novembre 2026; non licenza libera."
+      },
+      {
+        "image_url": "https://boginjr.com/wp-content/uploads/earthstation-4.jpg",
+        "caption": "Scheda madre dell’EarthStation-I. Foto: Jozef Bogin.",
+        "author": "Jozef Bogin",
+        "license_name": "© Jozef Bogin — uso autorizzato",
+        "license_url": "https://boginjr.com/disclaimer/",
+        "source_url": "https://boginjr.com/electronics/old/earthstation/",
+        "permission_basis": "Autorizzazione dell’autore confermata dall’utente in chat il 24 novembre 2026; non licenza libera."
+      }
+    ],
+    "Mistrum": [
+      {
+        "image_url": "https://user-images.githubusercontent.com/89099767/129786291-4849a68c-49f7-4a31-9ca0-8c69139bf45b.jpg",
+        "caption": "Replica moderna del Mistrum dal progetto di Lazarus Long; non un esemplare originale del 1989.",
+        "author": "Lazarus Long (repository Mistrum)",
+        "license_name": "CC BY-NC-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "source_url": "https://github.com/Lazarus-L-o-n-g/Mistrum/blob/aa26429e2c25ac1d110006df405b51f3f540dad2/README.md",
+        "permission_basis": "README del repository con fotografia; LICENSE CC BY-NC-SA 4.0 nella stessa revisione: https://github.com/Lazarus-L-o-n-g/Mistrum/blob/aa26429e2c25ac1d110006df405b51f3f540dad2/LICENSE"
+      }
+    ]
+  },
+  "wrong_automatic_photos": {
+    "EarthStation-I": [
+      "https://commons.wikimedia.org/wiki/File:Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_(42828603210)_(cropped).jpg"
+    ],
+    "Mistrum": [
+      "https://commons.wikimedia.org/wiki/File:Patricia_Jane%C4%8Dkov%C3%A1_2017.png"
+    ]
+  },
+  "category_corrections": [
+    {
+      "model_name": "EarthStation-I",
+      "before": [
+        "Personal computer"
+      ],
+      "after": [
+        "Workstation"
+      ],
+      "source": {
+        "title": "Jozef Bogin — ALLOY EarthStation-I",
+        "url": "https://boginjr.com/electronics/old/earthstation/",
+        "author": "Jozef Bogin",
+        "publisher": "BOGIN, JR.",
+        "source_type": "historical_article",
+        "publication_date": "2020-04-21",
+        "access_date": "2026-11-24",
+        "license": "Tutti i diritti riservati; foto autorizzate dall’autore secondo la dichiarazione dell’utente del 24 novembre 2026."
+      },
+      "evidence": "Articolo: workstation diskless x86 su rete ARCnet; non comune PC autonomo."
+    }
+  ],
+  "research": {
+    "original_pages": [
+      "https://boginjr.com/electronics/old/earthstation/",
+      "https://speccy4ever.speccy.org/_AR.htm"
+    ],
+    "linked_sources": [
+      "https://boginjr.com/wp-content/uploads/earthstation-9.jpg",
+      "https://speccy4ever.speccy.org/doc/Mistrum.pdf",
+      "https://github.com/Lazarus-L-o-n-g/Mistrum/blob/aa26429e2c25ac1d110006df405b51f3f540dad2/README.md",
+      "https://github.com/Lazarus-L-o-n-g/Mistrum/blob/aa26429e2c25ac1d110006df405b51f3f540dad2/LICENSE"
+    ],
+    "local_source_sha256": {
+      "earthstation.html": "501fc91b231083034677c995a82d12edf0b611d53153e1949a97dd996168f00d",
+      "amaterske.html": "4dbe689b6b35b0fbb590d00ec86825a7a8d392c12d6b0d9675992c4d1f864eaa",
+      "mistrum-manual.pdf": "115f8d8e84f5450a53d9f1810e206d980612b525e00dc60b1c8d5182fc4a0431",
+      "earthstation-specs.jpg": "096abfc8a03ec528b77dd6a917460602aa15f2ae3b5f627388c5c8bb1b938163"
+    },
+    "mistrum_repository_commit": "aa26429e2c25ac1d110006df405b51f3f540dad2",
+    "notes": [
+      "L’indice Speccy4ever è un archivio ROM e documentazione: la scheda da aggiornare è Mistrum del produttore catalogato Amaterske RADIO.",
+      "Articoli del 2020, commenti dei lettori, data della rivista e data dei file PDF non sono confusi con date di lancio.",
+      "Dati tecnici dal manuale EarthStation-I pp.24–25 e dalla sezione Mistrum del fascicolo B/1/1989 pp.12–35; OCR inglese assistito da ispezione visiva delle tabelle.",
+      "KB conserva la notazione storica del documento; nessuna conversione automatica da 1000 a 1024.",
+      "Contenuti della replica moderna separati dai dati del progetto storico.",
+      "Nessun prezzo esatto di lancio o mercato viene inventato; offerte esistenti conservate.",
+      "Nessun PDF, ROM o fotografia protetta redistribuito nel repository; immagini collegate per URL e attribuite.",
+      "Le due foto Commons estranee vengono rimosse solo se conservano fonte esatta e didascalia di scelta automatica, con metadati salvati nell’audit."
+    ]
+  }
+}

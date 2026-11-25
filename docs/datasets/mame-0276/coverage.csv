@@ -1,0 +1,1140 @@
+﻿external_id;produttore;nome;anni_MAME;CPU_emulate;clock_emulati_MHz;RAM_predefinite_MAME_KiB;configurazioni;prezzi_presenti
+mame:abc110;Acorn;ABC 110;1985;MOS Technology 6502;2.0;64.0;1;no
+mame:acw443;Acorn;ABC 210/Cambridge Workstation;1985;MOS Technology 6502;2.0;64.0;1;no
+mame:abc310;Acorn;ABC 310;1985;MOS Technology 6502;2.0;64.0;1;no
+mame:aa3010;Acorn;Acorn A3010;1992 | 1993;ARM;12.0;1024.0;2;no
+mame:aa3020;Acorn;Acorn A3020;1992;ARM;12.0;2048.0;1;no
+mame:aa4;Acorn;Acorn A4;1992;ARM;24.0;2048.0;1;no
+mame:aa4000;Acorn;Acorn A4000;1992;ARM;12.0;2048.0;1;no
+mame:aa5000;Acorn;Acorn A5000;1991;ARM;25.0;2048.0;1;no
+mame:aa5000a;Acorn;Acorn A5000 Alpha;1993;ARM;33.0;2048.0;1;no
+mame:accommb;Acorn;Acorn Briefcase Communicator;1987;WDC W65C816;2.0;512.0;1;no
+mame:accomm;Acorn;Acorn Communicator;1986 | 1988;WDC W65C816;2.0;512.0;2;no
+mame:electron;Acorn;Acorn Electron;1983;MOS Technology 6502;2.0;32.0;1;no
+mame:am4;Acorn;Acorn M4;1988;ARM;8.0;8192.0;1;no
+mame:ar140;Acorn;Acorn R140;1989;ARM;8.0;4096.0;1;no
+mame:ar225;Acorn;Acorn R225;1990;ARM;26.0;4096.0;1;no
+mame:ar260;Acorn;Acorn R260;1990;ARM;26.0;8192.0;1;no
+mame:acrnsys1;Acorn;Acorn System 1;1979;MOS Technology 6502;1.008;;1;no
+mame:acrnsys2;Acorn;Acorn System 2;1980;MOS Technology 6502;2.0;;1;no
+mame:acrnsys3;Acorn;Acorn System 3 (6502 CPU);1980;MOS Technology 6502;2.0;;1;no
+mame:acrnsys3_6809;Acorn;Acorn System 3 (6809 CPU);1980;Motorola MC6809;4.0;;1;no
+mame:acrnsys4;Acorn;Acorn System 4;1980;MOS Technology 6502;2.0;;1;no
+mame:acrnsys5;Acorn;Acorn System 5;1982;MOS Technology 6502;2.0;;1;no
+mame:aa305;Acorn;Archimedes 305;1987;ARM;8.0;512.0;1;no
+mame:aa310;Acorn;Archimedes 310;1987;ARM;8.0;1024.0;1;no
+mame:aa4101;Acorn;Archimedes 410/1;1989;ARM;8.0;1024.0;1;no
+mame:aa4201;Acorn;Archimedes 420/1;1989;ARM;8.0;2048.0;1;no
+mame:aa440;Acorn;Archimedes 440;1987;ARM;8.0;4096.0;1;no
+mame:aa4401;Acorn;Archimedes 440/1;1989;ARM;8.0;4096.0;1;no
+mame:aa540;Acorn;Archimedes 540;1990;ARM;26.0;16384.0;1;no
+mame:a7000;Acorn;Archimedes A7000;1995;ARM7500;32.0;;1;no
+mame:a7000p;Acorn;Archimedes A7000+;1997;ARM7500;48.0;;1;no
+mame:atom;Acorn;Atom;1979;MOS Technology 6502;1.0;32.0;1;no
+mame:atombb;Acorn;Atom with BBC Basic;1982;MOS Technology 6502;1.0;16.0;1;no
+mame:atomeb;Acorn;Atom with Eprom Box;1979;MOS Technology 6502;1.0;32.0;1;no
+mame:aa3000;Acorn;BBC A3000;1989;ARM;8.0;1024.0;1;no
+mame:bbcm;Acorn;BBC Master 128;1986;GTE G65SC12;2.0;128.0;1;no
+mame:bbcm512;Acorn;BBC Master 512;1986;GTE G65SC12;2.0;128.0;1;no
+mame:bbcmaiv;Acorn;BBC Master AIV;1986;GTE G65SC12;2.0;128.0;1;no
+mame:bbcmc;Acorn;BBC Master Compact;1986;GTE G65SC12;2.0;128.0;2;no
+mame:bbcmet;Acorn;BBC Master ET;1986;GTE G65SC12;2.0;128.0;1;no
+mame:bbcmt;Acorn;BBC Master Turbo;1986;GTE G65SC12;2.0;128.0;1;no
+mame:bbca;Acorn;BBC Micro Model A;1981;MOS Technology 6502;2.0;16.0;1;no
+mame:bbcb;Acorn;BBC Micro Model B;1981 | 1982 | 1983 | 1984;MOS Technology 6502;2.0;32.0;4;no
+mame:bbcbp128;Acorn;BBC Micro Model B+ 128K;1985;MOS Technology 6502;2.0;128.0;1;no
+mame:bbcbp;Acorn;BBC Micro Model B+ 64K;1985;MOS Technology 6502;2.0;64.0;1;no
+mame:econx25;Acorn;Econet X25 Gateway;1986;MOS Technology 6502;2.0;64.0;1;no
+mame:sarpc_j233;Acorn;J233 StrongARM Risc PC;1997;Intel StrongARM SA-1110;200.0;;1;no
+mame:reutapm;Acorn;Reuters APM;1985;MOS Technology 6502;2.0;64.0;1;no
+mame:rpc600;Acorn;Risc PC 600;1994;ARM7 (little);30.0;;1;no
+mame:rpc700;Acorn;Risc PC 700;1994;ARM710a;40.0;;1;no
+mame:sarpc;Acorn;StrongARM Risc PC;1997;Intel StrongARM SA-1110;200.0;;1;no
+mame:electron64;Acorn Computers / Slogger;Acorn Electron (64K Master RAM Board);1987;MOS Technology 6502;2.0;64.0;1;no
+mame:electronsp;Acorn Computers / Slogger;Acorn Electron (Stop Press 64i);1991;MOS Technology 6502;2.0;64.0;1;no
+mame:olystar20f;AEG Olympia;Olystar 20F;;Intel 8088;4.772727;640.0;1;no
+mame:olytext30;AEG Olympia;Olytext 30;;NEC V20;8.333333;768.0;1;no
+mame:albert;Albert Computers, Inc.;Albert;1984;MOS Technology 6502;1.0218;48.0;1;no
+mame:pent1024;Alex Zhabin;Pentagon 1024SL;2005;Zilog Z80;3.5;1024.0;1;no
+mame:earthst;Alloy;EarthStation-I;1987;NEC V20;8.0;768.0;1;no
+mame:mistrum;Amaterske RADIO;Mistrum;1988;Zilog Z80;3.5;48.0;1;no
+mame:cpc464;Amstrad plc;Amstrad CPC464;1984;Zilog Z80;4.0;64.0;1;no
+mame:cpc464p;Amstrad plc;Amstrad CPC464+;1990;Zilog Z80;4.0;128.0;1;no
+mame:cpc6128;Amstrad plc;Amstrad CPC6128;1985;Zilog Z80;4.0;128.0;2;no
+mame:cpc6128f;Amstrad plc;Amstrad CPC6128 (France, AZERTY Keyboard);1985;Zilog Z80;4.0;128.0;1;no
+mame:cpc6128s;Amstrad plc;Amstrad CPC6128 (Sweden/Finland);1985;Zilog Z80;4.0;128.0;1;no
+mame:cpc6128p;Amstrad plc;Amstrad CPC6128+;1990;Zilog Z80;4.0;128.0;1;no
+mame:cpc664;Amstrad plc;Amstrad CPC664;1985;Zilog Z80;4.0;64.0;1;no
+mame:pc20;Amstrad plc;Amstrad PC20;1988;Intel 8086;8.0;640.0;1;no
+mame:pc2086;Amstrad plc;Amstrad PC2086;1988;Intel 8086;8.0;640.0;1;no
+mame:pc3086;Amstrad plc;Amstrad PC3086;1990;Intel 8086;8.0;640.0;1;no
+mame:pc5086;Amstrad plc;Amstrad PC5086;;Intel 8086;8.0;640.0;1;no
+mame:ppc512;Amstrad plc;Amstrad PPC512;1987;NEC V30;8.0;512.0;1;no
+mame:ppc640;Amstrad plc;Amstrad PPC640;1987;NEC V30;8.0;640.0;1;no
+mame:nc100;Amstrad plc;NC100;1992;Zilog Z80;4.606;64.0;4;no
+mame:nc150fr;Amstrad plc;NC150;1992;Zilog Z80;4.606;128.0;2;no
+mame:nc200;Amstrad plc;NC200;1993;Zilog Z80;4.606;128.0;1;no
+mame:pc1512dd;Amstrad plc;PC1512 DD;1986;Intel 8086;8.0;512.0;1;no
+mame:pc1512hd10;Amstrad plc;PC1512 HD10;1986;Intel 8086;8.0;512.0;1;no
+mame:pc1512hd20;Amstrad plc;PC1512 HD20;1986;Intel 8086;8.0;512.0;1;no
+mame:pc1512;Amstrad plc;PC1512 SD;1986;Intel 8086;8.0;512.0;1;no
+mame:pc1640dd;Amstrad plc;PC1640 DD;1987;Intel 8086;8.0;640.0;1;no
+mame:pc1640hd20;Amstrad plc;PC1640 HD20;1987;Intel 8086;8.0;640.0;1;no
+mame:pc1640hd30;Amstrad plc;PC1640 HD30;1987;Intel 8086;8.0;640.0;1;no
+mame:pc1640;Amstrad plc;PC1640 SD;1987;Intel 8086;8.0;640.0;1;no
+mame:pcw10;Amstrad plc;PCW10;1993;Zilog Z80;4.0;512.0;1;no
+mame:pcw16;Amstrad plc;PcW16;1995;Zilog Z80;16.0;2048.0;1;no
+mame:pcw8256;Amstrad plc;PCW8256;1985;Zilog Z80;4.0;256.0;1;no
+mame:pcw8512;Amstrad plc;PCW8512;1985;Zilog Z80;4.0;512.0;1;no
+mame:pcw9256;Amstrad plc;PCW9256;1991;Zilog Z80;4.0;256.0;1;no
+mame:pcw9512;Amstrad plc;PCW9512;1987;Zilog Z80;4.0;512.0;1;no
+mame:pcw9512p;Amstrad plc;PCW9512 (+);1991;Zilog Z80;4.0;512.0;1;no
+mame:pda600;Amstrad plc;PenPad PDA 600;1993;Zilog Z8S180;14.318181;;1;no
+mame:specpls2;Amstrad plc;ZX Spectrum +2;1986;Zilog Z80;3.5469;128.0;1;no
+mame:specpl2a;Amstrad plc;ZX Spectrum +2a;1987;Zilog Z80;3.5469;128.0;1;no
+mame:specpls3;Amstrad plc;ZX Spectrum +3;1987;Zilog Z80;3.5469;128.0;1;no
+mame:apple3;Apple;Apple ///;1980;MOS Technology 6502;2.045454;256.0;1;no
+mame:apple2c;Apple;Apple //c;1984;WDC W65C02;1.016966 | 1.0218;128.0;5;no
+mame:apple2c4;Apple;Apple //c (rev 4);1986;WDC W65C02;1.0218;128.0;1;no
+mame:apple2c4fr;Apple;Apple //c (rev 4, France);1986;WDC W65C02;1.016966;128.0;1;no
+mame:apple2c4de;Apple;Apple //c (rev 4, Germany);1986;WDC W65C02;1.016966;128.0;1;no
+mame:apple2c4se;Apple;Apple //c (rev 4, Sweden);1986;WDC W65C02;1.016966;128.0;1;no
+mame:apple2c4uk;Apple;Apple //c (rev 4, UK);1986;WDC W65C02;1.016966;128.0;1;no
+mame:apple2c0;Apple;Apple //c (UniDisk 3.5);1985;WDC W65C02;1.0218;128.0;1;no
+mame:apple2c0fr;Apple;Apple //c (UniDisk 3.5, France);1985;WDC W65C02;1.016966;128.0;1;no
+mame:apple2c0de;Apple;Apple //c (UniDisk 3.5, Germany);1985;WDC W65C02;1.016966;128.0;1;no
+mame:apple2c0se;Apple;Apple //c (UniDisk 3.5, Sweden);1985;WDC W65C02;1.016966;128.0;1;no
+mame:apple2c0uk;Apple;Apple //c (UniDisk 3.5, UK);1985;WDC W65C02;1.016966;128.0;1;no
+mame:apple2cp;Apple;Apple //c Plus;1988;WDC W65C02;1.0218;128.0;1;no
+mame:apple2e;Apple;Apple //e;1983;MOS Technology 6502;1.016966 | 1.0218;64.0;6;no
+mame:apple2ee;Apple;Apple //e (enhanced);1985;WDC W65C02;1.0218;64.0;1;no
+mame:apple2eefr;Apple;Apple //e (enhanced, France);1985;WDC W65C02;1.016966;64.0;1;no
+mame:apple2eede;Apple;Apple //e (enhanced, Germany);1985;WDC W65C02;1.016966;64.0;1;no
+mame:apple2eese;Apple;Apple //e (enhanced, Sweden);1985;WDC W65C02;1.016966;64.0;1;no
+mame:apple2eeuk;Apple;Apple //e (enhanced, UK);1985;WDC W65C02;1.016966;64.0;1;no
+mame:apple2ep;Apple;Apple //e (Platinum);1987;WDC W65C02;1.0218;64.0;1;no
+mame:apple2epfr;Apple;Apple //e (Platinum, France);1987;WDC W65C02;1.016966;64.0;1;no
+mame:apple2epde;Apple;Apple //e (Platinum, Germany);1987;WDC W65C02;1.016966;64.0;1;no
+mame:apple2epse;Apple;Apple //e (Platinum, Sweden);1987;WDC W65C02;1.016966;64.0;1;no
+mame:apple2epuk;Apple;Apple //e (Platinum, UK);1987;WDC W65C02;1.016966;64.0;1;no
+mame:apple2;Apple;Apple ][;1977;MOS Technology 6502;1.0218;48.0;1;no
+mame:apple2jp;Apple;Apple ][ J-Plus;1980;MOS Technology 6502;1.0218;48.0;1;no
+mame:apple2p;Apple;Apple ][+;1979;MOS Technology 6502;1.0218;48.0;1;no
+mame:apple1;Apple;Apple I;1976;MOS Technology 6502;0.96;48.0;1;no
+mame:apple2gs;Apple;Apple IIgs;1986 | 1987 | 1989;WDC W65C816;2.863636;1280.0 | 2048.0;3;no
+mame:imac;Apple;iMac (Bondi blue);1998;IBM PowerPC 750;66.0;32768.0;1;no
+mame:lisa;Apple;Lisa;1983;Motorola MC68000;5.09376;;1;no
+mame:lisa2;Apple;Lisa2;1984;Motorola MC68000;5.09376;;1;no
+mame:lisa210;Apple;Lisa2/10;1984;Motorola MC68000;5.09376;;1;no
+mame:mac128k;Apple;Macintosh 128k;1984;Motorola MC68000;7.8336;128.0;1;no
+mame:mac512k;Apple;Macintosh 512k;1984;Motorola MC68000;7.8336;512.0;1;no
+mame:mac512ke;Apple;Macintosh 512ke;1986;Motorola MC68000;7.8336;512.0;1;no
+mame:macct610;Apple;Macintosh Centris 610;1993;Motorola MC68040;20.0;8192.0;1;no
+mame:macct650;Apple;Macintosh Centris 650;1993;Motorola MC68040;25.0;8192.0;1;no
+mame:macclasc;Apple;Macintosh Classic;1990;Motorola MC68000;7.8336;4096.0;1;no
+mame:macclas2;Apple;Macintosh Classic II;1991;Motorola MC68030;15.6672;4096.0;1;no
+mame:maccclas;Apple;Macintosh Color Classic;1993;Motorola MC68030;15.6672;4096.0;1;no
+mame:macii;Apple;Macintosh II;1987;Motorola MC68020PMMU;15.6672;2048.0;1;no
+mame:mac2fdhd;Apple;Macintosh II (FDHD);1988;Motorola MC68020PMMU;15.6672;2048.0;1;no
+mame:maciihmu;Apple;Macintosh II (w/o 68851 MMU);1987;Motorola MC68020HMMU;15.6672;2048.0;1;no
+mame:maciici;Apple;Macintosh IIci;1989;Motorola MC68030;25.0;2048.0;1;no
+mame:maciicx;Apple;Macintosh IIcx;1989;Motorola MC68030;15.6672;2048.0;1;no
+mame:maciifx;Apple;Macintosh IIfx;1990;Motorola MC68030;40.0;4096.0;1;no
+mame:maciisi;Apple;Macintosh IIsi;1990;Motorola MC68030;20.0;2048.0;1;no
+mame:maciivi;Apple;Macintosh IIvi;1993;Motorola MC68030;15.6672;4096.0;1;no
+mame:maciivx;Apple;Macintosh IIvx;1993;Motorola MC68030;31.3344;4096.0;1;no
+mame:maciix;Apple;Macintosh IIx;1988;Motorola MC68030;15.6672;2048.0;1;no
+mame:maclc;Apple;Macintosh LC;1990;Motorola MC68020HMMU;15.6672;2048.0;1;no
+mame:maclc520;Apple;Macintosh LC 520;1993;Motorola MC68030;25.0;4096.0;1;no
+mame:maclc550;Apple;Macintosh LC 550;1994;Motorola MC68030;33.0;4096.0;1;no
+mame:maclc2;Apple;Macintosh LC II;1991;Motorola MC68030;15.6672;4096.0;1;no
+mame:maclc3;Apple;Macintosh LC III;1993;Motorola MC68030;25.0;4096.0;1;no
+mame:maclc3p;Apple;Macintosh LC III+;1993;Motorola MC68030;33.0;4096.0;1;no
+mame:maclc475;Apple;Macintosh LC/Performa 475;1993;Motorola MC68040;25.0;4096.0;1;no
+mame:maclc575;Apple;Macintosh LC/Performa 575;1994;Motorola MC68040;33.0;5120.0;1;no
+mame:maclc580;Apple;Macintosh LC/Performa 580;1995;Motorola MC68040;33.0;4096.0;1;no
+mame:macplus;Apple;Macintosh Plus;1986;Motorola MC68000;7.8336;4096.0;1;no
+mame:macprtb;Apple;Macintosh Portable;1989;Motorola MC68000;15.6672;1024.0;1;no
+mame:macpb100;Apple;Macintosh PowerBook 100;1991;Motorola MC68000;15.6672;1024.0;1;no
+mame:macpb140;Apple;Macintosh PowerBook 140;1991;Motorola MC68030;15.6672;2048.0;1;no
+mame:macpb145;Apple;Macintosh PowerBook 145;1992;Motorola MC68030;25.0;2048.0;1;no
+mame:macpb145b;Apple;Macintosh PowerBook 145B;1993;Motorola MC68030;25.0;4096.0;1;no
+mame:macpb160;Apple;Macintosh PowerBook 160;1992;Motorola MC68030;25.0;2048.0;1;no
+mame:macpb165;Apple;Macintosh PowerBook 165;1993;Motorola MC68030;33.0;2048.0;1;no
+mame:macpb165c;Apple;Macintosh PowerBook 165c;1993;Motorola MC68030;33.0;2048.0;1;no
+mame:macpb170;Apple;Macintosh PowerBook 170;1991;Motorola MC68030;25.0;4096.0;1;no
+mame:macpb180;Apple;Macintosh PowerBook 180;1992;Motorola MC68030;33.0;2048.0;1;no
+mame:macpb180c;Apple;Macintosh PowerBook 180c;1993;Motorola MC68030;33.0;2048.0;1;no
+mame:macpd210;Apple;Macintosh PowerBook Duo 210;1992;Motorola MC68030;25.0;4096.0;1;no
+mame:macpd230;Apple;Macintosh PowerBook Duo 230;1992;Motorola MC68030;33.0;4096.0;1;no
+mame:macpd250;Apple;Macintosh PowerBook Duo 250;1993;Motorola MC68030;33.0;4096.0;1;no
+mame:macpd270c;Apple;Macintosh PowerBook Duo 270c;1993;Motorola MC68030;33.0;4096.0;1;no
+mame:macpd280;Apple;Macintosh PowerBook Duo 280;1994;Motorola MC68040;16.5;4096.0;1;no
+mame:macpd280c;Apple;Macintosh PowerBook Duo 280c;1994;Motorola MC68040;16.5;4096.0;1;no
+mame:macqd605;Apple;Macintosh Quadra 605;1993;Motorola MC68040;25.0;4096.0;1;no
+mame:macqd610;Apple;Macintosh Quadra 610;1993;Motorola MC68040;25.0;8192.0;1;no
+mame:macqd630;Apple;Macintosh Quadra 630;1994;Motorola MC68040;33.0;4096.0;1;no
+mame:macqd650;Apple;Macintosh Quadra 650;1993;Motorola MC68040;33.0;8192.0;1;no
+mame:macqd700;Apple;Macintosh Quadra 700;1991;Motorola MC68040;25.0;4096.0;1;no
+mame:macqd800;Apple;Macintosh Quadra 800;1993;Motorola MC68040;33.0;8192.0;1;no
+mame:macqd900;Apple;Macintosh Quadra 900;1991;Motorola MC68040;25.0;4096.0;1;no
+mame:macqd950;Apple;Macintosh Quadra 950;1992;Motorola MC68040;33.333;4096.0;1;no
+mame:macse;Apple;Macintosh SE;1987;Motorola MC68000;7.8336;4096.0;1;no
+mame:macsefd;Apple;Macintosh SE (FDHD);1987;Motorola MC68000;7.8336;4096.0;1;no
+mame:macse30;Apple;Macintosh SE/30;1989;Motorola MC68030;15.6672;2048.0;1;no
+mame:mactv;Apple;Macintosh TV;1994;Motorola MC68030;31.3344;4096.0;1;no
+mame:macxl;Apple;Macintosh XL;1985;Motorola MC68000;5.09376;;1;no
+mame:pmac6100;Apple;Power Macintosh 6100/60;1994;IBM PowerPC 601;60.0;8192.0;1;no
+mame:pwrmacg3;Apple;Power Macintosh G3;1997;IBM PowerPC 750;66.0;65536.0;1;no
+mame:discmate;Arbiter Leisure;Arbiter Discmate A-02;1988;GTE G65SC12;2.0;128.0;1;no
+mame:discmon;Arbiter Leisure;Arbiter Discmonitor A-01;1988;GTE G65SC12;2.0;128.0;1;no
+mame:am64;ASEM;AM 64;1985;MOS Technology 6502;1.0218;48.0;1;no
+mame:am100;ASEM S.p.A.;AM100;;MOS Technology 6502;1.0218;48.0;1;no
+mame:a1200xl;Atari;Atari 1200XL;1982;MOS Technology 6502;1.78979;64.0;1;no
+mame:a130xe;Atari;Atari 130XE;1986;MOS Technology 6502;1.78979;128.0;1;no
+mame:a400;Atari;Atari 400;1979;MOS Technology 6502;1.78979;16.0;2;no
+mame:a600xl;Atari;Atari 600XL;1983;MOS Technology 6502;1.78979;16.0;1;no
+mame:a65xe;Atari;Atari 65XE;1986;MOS Technology 6502;1.78979;64.0;2;no
+mame:a800;Atari;Atari 800;1979;MOS Technology 6502;1.78979;16.0;2;no
+mame:a800xe;Atari;Atari 800XE;1986;MOS Technology 6502;1.78979;64.0;1;no
+mame:a800xl;Atari;Atari 800XL;1983;MOS Technology 6502;1.773 | 1.78979;64.0;2;no
+mame:xegs;Atari;Atari XE Game System;1987;MOS Technology 6502;1.78979;;1;no
+mame:falcon30;Atari;Falcon030;1992;Motorola MC68000;8.021247;1024.0;1;no
+mame:megast;Atari;MEGA ST;1987;Motorola MC68000;8.021247;4096.0;5;no
+mame:megast_sg;Atari;MEGA ST (Switzerland);1987;Motorola MC68000;8.021247;4096.0;1;no
+mame:megaste;Atari;MEGA STe;1991;Motorola MC68000;8.021247;4096.0;7;no
+mame:ataripc1;Atari;PC1;1987;Intel 8088;4.772727;640.0;1;no
+mame:ataripc3;Atari;PC3;1988;Intel 8088;4.772727;640.0;1;no
+mame:pofo;Atari;Portfolio;1989;Intel 8088;4.9152;128.0;1;no
+mame:st;Atari;ST;1985;Motorola MC68000;8.021247;1024.0;7;no
+mame:st_sg;Atari;ST (Switzerland);1985;Motorola MC68000;8.021247;1024.0;1;no
+mame:ste;Atari;STe;1989;Motorola MC68000;8.021247;1024.0;7;no
+mame:ste_sg;Atari;STe (Switzerland);1989;Motorola MC68000;8.021247;1024.0;1;no
+mame:tt030;Atari;TT030;1990;Motorola MC68000;8.021247;1024.0;4;no
+mame:tt030_pl;Atari;TT030 (Poland);1990;Motorola MC68000;8.021247;1024.0;1;no
+mame:autoc15;Autocue Ltd.;Autocue 1500 Teleprompter;1988;GTE G65SC12;2.0;128.0;1;no
+mame:auvip800;AUVA;VIP 800;;Intel 8088;4.772727;640.0;1;no
+mame:basis108;Basis;Basis 108;1982;MOS Technology 6502;1.0218;48.0;1;no
+mame:perfect1;Bawareth;Perfect MSX1 (MSX1, Middle East);1986;Zilog Z80;3.579545;;1;no
+mame:byte;BEMZ;PEVM Byte;1990;Zilog Z80;3.5;48.0;1;no
+mame:bw230;Bondwell Holding;BW230 (PRO28 Series);1985;Intel 8088;4.77272;640.0;1;no
+mame:unitron;bootleg (Unitron);Mac 512;1985;Motorola MC68000;7.8336;512.0;1;no
+mame:utrn1024;bootleg (Unitron);Unitron 1024;1985;Motorola MC68000;7.8336;4096.0;1;no
+mame:btm2105;British Telecom Business Systems;BT Merlin M2105;1985;MOS Technology 6502;2.0;32.0;1;no
+mame:tonto;British Telecom Business Systems;Merlin M1800 Tonto;1984;;;128.0;1;no
+mame:z88;Cambridge Computers;Z88;1988;Zilog Z80;3.2768;128.0;9;no
+mame:z88ch;Cambridge Computers;Z88 (Swiss);1988;Zilog Z80;3.2768;128.0;1;no
+mame:z88tr;Cambridge Computers;Z88 (Turkish);1988;Zilog Z80;3.2768;128.0;1;no
+mame:lynx128k;Camputers;Lynx 128k;1983;Zilog Z80;6.0;320.0;1;no
+mame:lynx48k;Camputers;Lynx 48k;1983;Zilog Z80;4.0;256.0;1;no
+mame:lynx96k;Camputers;Lynx 96k;1983;Zilog Z80;4.0;256.0;1;no
+mame:canonv10;Canon;V-10;1984;Zilog Z80;3.579545;;1;no
+mame:canonv20;Canon;V-20;1984;Zilog Z80;3.579545;;1;no
+mame:canonv20e;Canon;V-20E;1985;Zilog Z80;3.579545;;1;no
+mame:canonv20f;Canon;V-20F;1985;Zilog Z80;3.579545;;1;no
+mame:canonv20g;Canon;V-20G;;Zilog Z80;3.579545;;1;no
+mame:canonv20s;Canon;V-20S;;Zilog Z80;3.579545;;1;no
+mame:canonv25;Canon;V-25;1985;Zilog Z80;3.579545;;1;no
+mame:canonv30f;Canon;V-30F;1985;Zilog Z80;3.579545;;1;no
+mame:canonv8;Canon;V-8;1985;Zilog Z80;3.579545;;1;no
+mame:mx10;Casio;MX-10;1985;Zilog Z80;3.579545;;1;no
+mame:mx101;Casio;MX-101;1987;Zilog Z80;3.579545;;1;no
+mame:mx15;Casio;MX-15;1986;Zilog Z80;3.579545;;1;no
+mame:pv16;Casio;PV-16;1985;Zilog Z80;3.579545;;1;no
+mame:pv7;Casio;PV-7;1984;Zilog Z80;3.579545;;1;no
+mame:hkc8800a;China HKC;HKC 8800A;1984;MOS Technology 6502;1.0218;48.0;1;no
+mame:expert3i;Ciel;Expert 3 IDE;;Zilog Z80;3.579545;;1;no
+mame:expert3t;Ciel;Expert 3 Turbo;1996;Zilog Z80;3.579545;;1;no
+mame:cd6809;Codimex;CD-6809;1983;Motorola MC6809E;0.894886;64.0;1;no
+mame:mpc1600;Columbia Data Products;MPC 1600;1982;Intel 8088;4.772727;128.0;1;no
+mame:a1000;Commodore;Amiga 1000;1985;Motorola MC68000;7.09379 | 7.15909;;2;no
+mame:a1200;Commodore;Amiga 1200;1992;Motorola MC68EC020;14.18758 | 14.318181;;2;no
+mame:a2000;Commodore;Amiga 2000;1987;Motorola MC68000;7.09379 | 7.15909;;2;no
+mame:a3000;Commodore;Amiga 3000;1990;Motorola MC68030;16.0;;2;no
+mame:a400030;Commodore;Amiga 4000/030;1993;Motorola MC68EC030;25.0;;2;no
+mame:a4000;Commodore;Amiga 4000/040;1992;Motorola MC68040;25.0;;2;no
+mame:a4000t;Commodore;Amiga 4000T;1994;Motorola MC68040;25.0;;2;no
+mame:a500;Commodore;Amiga 500;1987;Motorola MC68000;7.09379 | 7.15909;;2;no
+mame:a500p;Commodore;Amiga 500 Plus;1992;Motorola MC68000;7.09379 | 7.15909;;2;no
+mame:a600;Commodore;Amiga 600;1992;Motorola MC68000;7.09379 | 7.15909;;2;no
+mame:b128;Commodore;B128;1983;;;128.0;1;no
+mame:b128hp;Commodore;B128-80HP;1983;;;128.0;1;no
+mame:b256;Commodore;B256;1983;;;256.0;1;no
+mame:b256hp;Commodore;B256-80HP;1983;;;256.0;1;no
+mame:b500;Commodore;B500;1983;;;128.0;1;no
+mame:bx256hp;Commodore;BX256-80HP;1983;Intel 8088;12.0;256.0;1;no
+mame:cbm3008;Commodore;CBM 3008;1979;MOS Technology 6502;1.0;8.0;1;no
+mame:cbm3016;Commodore;CBM 3016;1979;MOS Technology 6502;1.0;16.0;1;no
+mame:cbm3032;Commodore;CBM 3032;1979;MOS Technology 6502;1.0;32.0;1;no
+mame:cbm3032b;Commodore;CBM 3032B;1979;MOS Technology 6502;1.0;32.0;1;no
+mame:cbm4016;Commodore;CBM 4016;1980;MOS Technology 6502;1.0;16.0;1;no
+mame:cbm4032;Commodore;CBM 4032;1980;MOS Technology 6502;1.0;32.0;1;no
+mame:cbm4032f;Commodore;CBM 4032 (Fat 40);1980;MOS Technology 6502;1.0;32.0;1;no
+mame:cbm4032b;Commodore;CBM 4032B;1980;MOS Technology 6502;1.0;32.0;1;no
+mame:cbm610;Commodore;CBM 610;1983;;;128.0;1;no
+mame:cbm620;Commodore;CBM 620;1983;;;256.0;1;no
+mame:cbm620_hu;Commodore;CBM 620 (Hungary);1983;;;256.0;1;no
+mame:cbm710;Commodore;CBM 710;1983;;;128.0;1;no
+mame:cbm720;Commodore;CBM 720;1983;;;256.0;2;no
+mame:cbm720_se;Commodore;CBM 720 (Sweden/Finland);1983;;;256.0;1;no
+mame:cbm730;Commodore;CBM 730;1983;Intel 8088;12.0;256.0;1;no
+mame:cbm8032;Commodore;CBM 8032;1981;MOS Technology 6502;1.0;32.0;3;no
+mame:cbm8032_se;Commodore;CBM 8032 (Sweden/Finland);1981;MOS Technology 6502;1.0;32.0;1;no
+mame:cbm8096;Commodore;CBM 8096;1981;MOS Technology 6502;1.0;96.0;1;no
+mame:cbm8296;Commodore;CBM 8296;1984;MOS Technology 6502;1.0;128.0;1;no
+mame:cbm8296ed;Commodore;CBM 8296 ExecuDesk;1984;MOS Technology 6502;1.0;128.0;1;no
+mame:cbm8296d;Commodore;CBM 8296-D;1984;MOS Technology 6502;1.0;128.0;2;no
+mame:cbm8296dgv_de;Commodore;CBM 8296-D GV?;1984;MOS Technology 6502;1.0;128.0;1;no
+mame:cbm8296gd;Commodore;CBM 8296GD;1984;MOS Technology 6502;1.0;128.0;1;no
+mame:c116;Commodore;Commodore 116;1984;MOS Technology 7501;0.886723;16.0;1;no
+mame:c128;Commodore;Commodore 128;1985;MOS Technology 8502 | Zilog Z80;0.985248 | 1.022727 | 3.940993 | 4.090908;128.0;3;no
+mame:c128_se;Commodore;Commodore 128 (Sweden/Finland);1985;MOS Technology 8502 | Zilog Z80;0.985248 | 3.940993;128.0;1;no
+mame:c128dp;Commodore;Commodore 128D;1986;MOS Technology 8502 | Zilog Z80;0.985248 | 3.940993;128.0;1;no
+mame:c128dcr;Commodore;Commodore 128DCR;1987;MOS Technology 8502 | Zilog Z80;0.985248 | 1.022727 | 3.940993 | 4.090908;128.0;3;no
+mame:c128dcr_se;Commodore;Commodore 128DCR (Sweden/Finland);1987;MOS Technology 8502 | Zilog Z80;0.985248 | 3.940993;128.0;1;no
+mame:c16;Commodore;Commodore 16;1984;MOS Technology 7501;0.886723 | 0.894886;16.0;2;no
+mame:c16_hu;Commodore;Commodore 16 (Hungary);1984;MOS Technology 7501;0.886723;16.0;1;no
+mame:c64;Commodore;Commodore 64;1982;MOS Technology 6510;0.985248 | 1.022727;64.0;3;no
+mame:c64_se;Commodore;Commodore 64 / VIC-64S (Sweden/Finland);1982;MOS Technology 6510;0.985248;64.0;1;no
+mame:c64c;Commodore;Commodore 64C;1986 | 1988;MOS Technology 6510;0.985248 | 1.022727;64.0;3;no
+mame:c64c_se;Commodore;Commodore 64C (Sweden/Finland);1986;MOS Technology 6510;0.985248;64.0;1;no
+mame:c64g;Commodore;Commodore 64G;1986;MOS Technology 6510;0.985248;64.0;1;no
+mame:compc10;Commodore;Commodore PC 10;1984;Intel 8088;9.54544;256.0;1;no
+mame:pc10iii;Commodore;Commodore PC-10 III;1987;Intel 8088;9.54544;256.0;1;no
+mame:dx64;Commodore;DX-64;1984;MOS Technology 6510;1.022727;64.0;1;no
+mame:edu64;Commodore;Educator 64;1983;MOS Technology 6510;1.022727;64.0;1;no
+mame:mmf9000;Commodore;MicroMainFrame 9000;1981;MOS Technology 6502;1.0;32.0;1;no
+mame:mmf9000_se;Commodore;MicroMainFrame 9000 (Sweden/Finland);1981;MOS Technology 6502;1.0;32.0;1;no
+mame:p500;Commodore;P500;1983;;;128.0;2;no
+mame:compc1;Commodore;PC-1;;Intel 8088;9.54544;256.0;1;no
+mame:pet2001;Commodore;PET 2001-4;1977;MOS Technology 6502;1.0;4.0;1;no
+mame:pet20018;Commodore;PET 2001-8;1977;MOS Technology 6502;1.0;8.0;1;no
+mame:pet2001b16;Commodore;PET 2001-B16;1979;MOS Technology 6502;1.0;16.0;1;no
+mame:pet2001b32;Commodore;PET 2001-B32;1979;MOS Technology 6502;1.0;32.0;1;no
+mame:pet2001b;Commodore;PET 2001-B8;1979;MOS Technology 6502;1.0;8.0;1;no
+mame:pet2001n16;Commodore;PET 2001-N16;1979;MOS Technology 6502;1.0;16.0;1;no
+mame:pet2001n32;Commodore;PET 2001-N32;1979;MOS Technology 6502;1.0;32.0;1;no
+mame:pet2001n;Commodore;PET 2001-N8;1979;MOS Technology 6502;1.0;8.0;1;no
+mame:pet4016;Commodore;PET 4016;1980;MOS Technology 6502;1.0;16.0;1;no
+mame:pet4032;Commodore;PET 4032;1980;MOS Technology 6502;1.0;32.0;1;no
+mame:pet4032f;Commodore;PET 4032 (Fat 40);1980;MOS Technology 6502;1.0;32.0;1;no
+mame:pet4032b;Commodore;PET 4032B;1980;MOS Technology 6502;1.0;32.0;1;no
+mame:pet64;Commodore;PET 64 / CBM 4064;1983;MOS Technology 6510;1.022727;64.0;1;no
+mame:pet8032;Commodore;PET 8032;1980;MOS Technology 6502;1.0;32.0;1;no
+mame:plus4;Commodore;Plus/4;1984;MOS Technology 7501;0.886723 | 0.894886;64.0;2;no
+mame:superpet;Commodore;SuperPET SP-9000;1981;MOS Technology 6502;1.0;32.0;1;no
+mame:sx64;Commodore;SX-64 / Executive 64;1984;MOS Technology 6510;0.985248 | 1.022727;64.0;2;no
+mame:vic10;Commodore;VIC-10 / Max Machine / UltiMax;1982;MOS Technology 6510;1.0;4.0;1;no
+mame:vic1001;Commodore;VIC-1001;1980;MOS Technology 6502;1.022727;5.0;1;no
+mame:vic20;Commodore;VIC-20;1981;MOS Technology 6502;1.022727;5.0;1;no
+mame:vic20_se;Commodore;VIC-20 (Sweden/Finland);1981;MOS Technology 6502;1.108404;5.0;1;no
+mame:vic20p;Commodore;VIC-20 / VC-20;1981;MOS Technology 6502;1.108404;5.0;1;no
+mame:vip64;Commodore;VIP-64 (Sweden/Finland);1984;MOS Technology 6510;0.985248;64.0;1;no
+mame:comport;Compaq;Compaq Portable;1983;Intel 8088;4.772727;128.0;1;no
+mame:comdesk;Compaq;Deskpro;1984;NEC V30;4.77272;640.0;1;no
+mame:cadd810;CompuAdd;810;;Intel 8088;4.772727;640.0;1;no
+mame:space84;ComputerTechnik/IBS;Space 84;1985;MOS Technology 6502;1.0218;48.0;1;no
+mame:daisy;Comus Instruments Ltd.;Comus Daisy;1987;GTE G65SC12;2.0;128.0;1;no
+mame:coppc400;Corona Data Systems, Inc.;Cordata PPC-400;;Intel 8088;4.772727;512.0;1;no
+mame:coppc21;Corona Data Systems, Inc.;Corona PPC-21;;Intel 8088;4.772727;512.0;1;no
+mame:craft2p;Craft;Craft II+;1982;MOS Technology 6502;1.0218;48.0;1;no
+mame:pow3000;Creon Enterprises;Power 3000;1983;Zilog Z80;3.25;2.0;1;no
+mame:cpc330k;Daewoo;CPC-330K KOBO;1988;Zilog Z80;3.579545;;1;no
+mame:cpc88;Daewoo;CPC-88;1984;Zilog Z80;3.579545;;1;no
+mame:dpc200e;Daewoo;DPC-200E;1985;Zilog Z80;3.579545;;1;no
+mame:dpc100;Daewoo;IQ-1000 DPC-100;1984;Zilog Z80;3.579545;;1;no
+mame:dpc180;Daewoo;IQ-1000 DPC-180;1984;Zilog Z80;3.579545;;1;no
+mame:dpc200;Daewoo;IQ-1000 DPC-200;1984;Zilog Z80;3.579545;;1;no
+mame:cpc300;Daewoo;IQ-2000 CPC-300;1986;Zilog Z80;3.579545;;1;no
+mame:cpc300e;Daewoo;IQ-2000 CPC-300E;1987;Zilog Z80;3.579545;;1;no
+mame:cpc400;Daewoo;X-II CPC-400;1987;Zilog Z80;3.579545;;1;no
+mame:cpc400s;Daewoo;X-II CPC-400S;1988;Zilog Z80;3.579545;;1;no
+mame:cpc50a;Daewoo;Zemmix CPC-50A;1986;Zilog Z80;3.579545;;1;no
+mame:cpc50b;Daewoo;Zemmix CPC-50B;1987;Zilog Z80;3.579545;;1;no
+mame:cpc51;Daewoo;Zemmix CPC-51;1988;Zilog Z80;3.579545;;1;no
+mame:cpc61;Daewoo;Zemmix CPC-61;1990;Zilog Z80;3.579545;;1;no
+mame:cpg120;Daewoo;Zemmix CPG-120 Normal;1991;Zilog Z80;3.579545;;1;no
+mame:dgone;Data General;Data General/One;1984;Intel 8088;4.772727;640.0;1;no
+mame:didakt90;Didaktik Skalica;Didaktik 90;1990;Zilog Z80;3.5;48.0;1;no
+mame:dgama87;Didaktik Skalica;Didaktik Gama 87;1987;Zilog Z80;3.5;48.0;1;no
+mame:dgama88;Didaktik Skalica;Didaktik Gama 88;1988;Zilog Z80;3.5;48.0;1;no
+mame:dgama89;Didaktik Skalica;Didaktik Gama 89;1989;Zilog Z80;3.5;48.0;1;no
+mame:didaktk;Didaktik Skalica;Didaktik Kompakt;1992;Zilog Z80;3.5;48.0;1;no
+mame:didakm91;Didaktik Skalica;Didaktik M 91;1991;Zilog Z80;3.5;48.0;1;no
+mame:didakm92;Didaktik Skalica;Didaktik M 92;1992;Zilog Z80;3.5;48.0;1;no
+mame:didakm93;Didaktik Skalica;Didaktik M 93;1993;Zilog Z80;3.5;48.0;1;no
+mame:d2k300axp;Digital Equipment Corporation;DEC 2000 Model 300 AXP;1993;DEC Alpha 21064;150.0;16384.0;1;no
+mame:d2k500axp;Digital Equipment Corporation;DEC 2000 Model 500 AXP;1993;DEC Alpha 21064;150.0;16384.0;1;no
+mame:decmate2;Digital Equipment Corporation;DECmate II (PC278);1982;Harris HD-6120;8.0;;1;no
+mame:decmate3;Digital Equipment Corporation;DECmate III (PC238);1984;Harris HD-6120;8.0;;1;no
+mame:dpcaxp150;Digital Equipment Corporation;DECpc AXP 150;1993;DEC Alpha 21064;150.0;16384.0;1;no
+mame:ds2100;Digital Equipment Corporation;DECstation 2100;1989;MIPS R2000;12.5;;1;no
+mame:ds3100;Digital Equipment Corporation;DECstation 3100;1989;MIPS R2000;16.665;;1;no
+mame:ds5k133;Digital Equipment Corporation;DECstation 5000/133;1992;MIPS R3000A;33.3;;1;no
+mame:mv3100m10;Digital Equipment Corporation;MicroVAX 3100 Model 10;1989;DEC DC341 CVAX CPU;11.111116;;1;no
+mame:mv3400;Digital Equipment Corporation;MicroVAX 3400;1988;DEC DC341 CVAX CPU;20.0;;1;no
+mame:mv3500;Digital Equipment Corporation;MicroVAX 3500;1988;DEC DC341 CVAX CPU;20.0;;1;no
+mame:uvax1;Digital Equipment Corporation;MicroVAX I;1984;DEC KD32-A MicroVAX I CPU;4.0;;1;no
+mame:uvax2;Digital Equipment Corporation;MicroVAX II;1984;DEC DC333 MicroVAX II CPU;40.0;;1;no
+mame:pdp1;Digital Equipment Corporation;PDP-1;1961;DEC PDP-1 Central Processor;1.0;;1;no
+mame:pdp11qb;Digital Equipment Corporation;PDP-11 [Q-BUS] (M7195 - MXV11-B);;DEC T11;4.0;;1;no
+mame:pdp11ub;Digital Equipment Corporation;PDP-11 [Unibus](M9301-YA);;DEC T11;4.0;;1;no
+mame:pdp11ub2;Digital Equipment Corporation;PDP-11 [Unibus](M9312);;DEC T11;4.0;;1;no
+mame:rainbow100a;Digital Equipment Corporation;Rainbow 100-A;1982;Intel 8088;4.81468;64.0;1;no
+mame:rainbow;Digital Equipment Corporation;Rainbow 100-B;1983;Intel 8088;4.81468;128.0;1;no
+mame:rainbow190;Digital Equipment Corporation;Rainbow 190-B;1985;Intel 8088;4.81468;128.0;1;no
+mame:vax785;Digital Equipment Corporation;VAX-11/785;1984;DEC T11;4.0;;1;no
+mame:dragon32;Dragon Data Ltd;Dragon 32;1982;Motorola MC6809E;0.888625;32.0;1;no
+mame:dragon64;Dragon Data Ltd;Dragon 64;1983;Motorola MC6809E;0.888625;64.0;1;no
+mame:d64plus;Dragon Data Ltd / Compusense;Dragon 64 Plus;1985;Motorola MC6809E;0.888625;64.0;1;no
+mame:tanodr64;Dragon Data Ltd / Tano Ltd;Tano Dragon 64;1983;Motorola MC6809E;0.894886;64.0;1;no
+mame:dtkerso;DTK Group;PC-XT-Clones with DTK/ERSO-BIOS;;Intel 8088;4.772727;640.0;1;no
+mame:mx1600;Dynacom;MX-1600;1984;Motorola MC6809E;0.894886;64.0;1;no
+mame:sys80p;EACA Computers Ltd;System-80 (50 Hz);1980;Zilog Z80;1.746666;;1;no
+mame:sys80;EACA Computers Ltd;System-80 (60 Hz);1980;Zilog Z80;1.774083;;1;no
+mame:eg3003;EACA Computers Ltd;Video Genie EG3003;1980;Zilog Z80;1.774083;;1;no
+mame:eagle1600;Eagle;Eagle 1600;1983;Intel 8086;8.0;640.0;1;no
+mame:eaglespirit;Eagle;Eagle PC Spirit;1983;Intel 8088;4.772727;640.0;1;no
+mame:eaglepc2;Eagle;PC-2;;Intel 8088;4.772727;640.0;1;no
+mame:jet;Electromagnetica;JET;1990;Zilog Z80;3.5;48.0;1;no
+mame:cip01;Electronica;CIP-01;1987;Zilog Z80;3.5;48.0;1;no
+mame:cip03;Electronica;CIP-03;1988;Zilog Z80;3.5;48.0;1;no
+mame:elwro800;Elwro;800-3 Junior;1986;Zilog Z80;3.5;64.0;1;no
+mame:ecm6032;Epson;Epson CM6032;1989;;;16.0;1;no
+mame:ecm6127;Epson;Epson CM6127;1993;;;16.0;1;no
+mame:ehx20;Epson;Epson HX-20;1983;;;16.0;2;no
+mame:pc286u;Epson;PC-286U;1987;NEC V30;10.0;640.0;1;no
+mame:pc286vs;Epson;PC-286VS;1989;Intel 80286;10.0;1664.0;1;no
+mame:pc386m;Epson;PC-386M;1990;Intel I386SX;16.0;1664.0;1;no
+mame:pc486mu;Epson;PC-486MU;1994;Intel I486;25.0;1664.0;1;no
+mame:pc486se;Epson;PC-486SE;1993;Intel I486;25.0;1664.0;1;no
+mame:px4;Epson;PX-4;1985;Zilog Z80;3.6864;64.0;1;no
+mame:px4p;Epson;PX-4+;1985;Zilog Z80;3.6864;64.0;1;no
+mame:px8;Epson;PX-8;1984;Zilog Z80;2.4576;64.0;1;no
+mame:qx10;Epson;QX-10;1983;Zilog Z80;3.9936;256.0;1;no
+mame:eppc;Ericsson Information System;Ericsson Portable PC;1985;Intel 8088;4.772727;640.0;1;no
+mame:dragon200;Eurohard S.A.;Dragon 200;1985;Motorola MC6809E;0.888625;64.0;1;no
+mame:dragon200e;Eurohard S.A.;Dragon 200-E;1985;Motorola MC6809E;0.888625;64.0;1;no
+mame:dgnmsx;Eurohard S.A.;Dragon MSX-64;1985;Zilog Z80;3.579545;;1;no
+mame:fdpc200;Fenner;DPC-200;1985;Zilog Z80;3.579545;;1;no
+mame:fpc500;Fenner;FPC-500;1985;Zilog Z80;3.579545;;1;no
+mame:fpc900;Fenner;FPC-900;1986;Zilog Z80;3.579545;;1;no
+mame:fspc800;Fenner;SPC-800;1984;Zilog Z80;3.579545;;1;no
+mame:bruc100;Frael;Bruc 100-1;1987;Zilog Z80;3.579545;;1;no
+mame:bruc100a;Frael;Bruc 100-2;1988;Zilog Z80;3.579545;;1;no
+mame:fraking;Frael;King;1989;NEC V20;8.0;768.0;1;no
+mame:ace100;Franklin Computer;Franklin ACE 100;1982;MOS Technology 6502;1.0218;48.0;1;no
+mame:ace1000;Franklin Computer;Franklin ACE 1000;1982;MOS Technology 6502;1.0218;48.0;1;no
+mame:ace2200;Franklin Computer;Franklin ACE 2200;1985;WDC W65C02;1.0218;128.0;1;no
+mame:ace500;Franklin Computer;Franklin ACE 500;1986;WDC W65C02;1.0218;128.0;1;no
+mame:fm11;Fujitsu;FM-11 EX;1982;Motorola MC6809E;2.0;;1;no
+mame:fm7;Fujitsu;FM-7;1982;Motorola MC6809;8.064;;1;no
+mame:fm77av;Fujitsu;FM-77AV;1985;Motorola MC6809E;2.016;;1;no
+mame:fm7740sx;Fujitsu;FM-77AV40SX;1985;Motorola MC6809E;2.016;;1;no
+mame:fm8;Fujitsu;FM-8;1981;Motorola MC6809;4.9152;;1;no
+mame:fmnew7;Fujitsu;FM-NEW7;1984;Motorola MC6809;8.064;;1;no
+mame:fmtowns;Fujitsu;FM-Towns (Model 1 / 2);1989;Intel I386;16.0;2048.0;1;no
+mame:fmtownsv03;Fujitsu;FM-Towns (unknown, V03 L01 00 91/07/09);1991;Intel I386;16.0;2048.0;1;no
+mame:fmtownsftv;Fujitsu;FM-Towns II FreshTV;1994;Intel I486;33.0;6144.0;1;no
+mame:fmtownshr;Fujitsu;FM-Towns II HR;1992;Intel I486;20.0;4096.0;1;no
+mame:fmtownsmx;Fujitsu;FM-Towns II MX;1993;Intel I486;66.0;8192.0;1;no
+mame:fmtownssj;Fujitsu;FM-Towns II SJ;;Intel I486;66.0;8192.0;1;no
+mame:fmtownsux;Fujitsu;FM-Towns II UX;1991;Intel I386SX;16.0;2048.0;1;no
+mame:fmx;Fujitsu;FM-X;1983;Zilog Z80;3.579545;;1;no
+mame:mpc800;G2 Systems;MasterPieCe 800 Series;1987;GTE G65SC12;2.0;128.0;1;no
+mame:mpc900;G2 Systems;MasterPieCe 900 Series;1988;GTE G65SC12;2.0;128.0;1;no
+mame:mpc900gx;G2 Systems;MasterPieCe 900GX Series;1990;GTE G65SC12;2.0;128.0;1;no
+mame:gsfc200;Goldstar;FC-200;1984;Zilog Z80;3.579545;;1;no
+mame:gsfc80u;Goldstar;FC-80U;1984;Zilog Z80;3.579545;;1;no
+mame:gfc1080;Goldstar;GFC-1080;1985;Zilog Z80;3.579545;;1;no
+mame:gfc1080a;Goldstar;GFC-1080A;1985;Zilog Z80;3.579545;;1;no
+mame:expert13;Gradiente;Expert 1.3;;Zilog Z80;3.579545;;1;no
+mame:expert20;Gradiente;Expert 2.0;1986;Zilog Z80;3.579545;;1;no
+mame:expertac;Gradiente;Expert AC88+;;Zilog Z80;3.579545;;1;no
+mame:expertdp;Gradiente;Expert DDPlus;1989;Zilog Z80;3.579545;;1;no
+mame:expertdx;Gradiente;Expert DDX+;;Zilog Z80;3.579545;;1;no
+mame:expertpl;Gradiente;Expert Plus;1989;Zilog Z80;3.579545;;1;no
+mame:expert10;Gradiente;Expert XP-800 (1.0);1985;Zilog Z80;3.579545;;1;no
+mame:expert11;Gradiente;Expert XP-800 (1.1) / Expert GPC-1;;Zilog Z80;3.579545;;1;no
+mame:dodo;GTAC;Do-Do;;MOS Technology 6502;1.0218;48.0;1;no
+mame:hhtiger;H/H Microcomputers;H/H Tiger;1983;Zilog Z80;4.0;64.0;1;no
+mame:h88;Heath Company;H-88;1979;Zilog Z80;2.048;64.0;1;no
+mame:h89;Heath Company;H-89;1979;Zilog Z80;2.048;64.0;1;no
+mame:h89_cdr;Heath Company;H-89 with CDR Equipment;1981;Zilog Z80;2.048;64.0;1;no
+mame:h89_mms;Heath Company;H-89 with MMS Equipment;1981;Zilog Z80;2.048;64.0;1;no
+mame:h8;Heath Company;Heathkit H8 Digital Computer;1977;Intel 8080;2.048;;1;no
+mame:hp9835a;Hewlett-Packard;9835A;1979;;;;1;no
+mame:hp9835b;Hewlett-Packard;9835B;1979;;;;1;no
+mame:hp9845a;Hewlett-Packard;9845A;1977;;;;1;no
+mame:hp9845b;Hewlett-Packard;9845B;1979;;;192.0;2;no
+mame:hp9845c;Hewlett-Packard;9845C;1980;;;192.0;2;no
+mame:hp9845s;Hewlett-Packard;9845S;1977;;;;1;no
+mame:hp9845t;Hewlett-Packard;9845T;1982;;;192.0;2;no
+mame:hp2100;Hewlett-Packard;HP 2100;1966;;;;1;no
+mame:hp95lx;Hewlett-Packard;HP 95LX;1991;NEC V20;5.37;512.0;1;no
+mame:hp9816;Hewlett-Packard;HP 9816;1982;Motorola MC68000;8.0;;1;no
+mame:hp9816a;Hewlett-Packard;HP 9816A;1982;Motorola MC68000;8.0;256.0;1;no
+mame:hp9825a;Hewlett-Packard;HP 9825A;1976;Hewlett-Packard HP-09825-67907;6.0;8.0;1;no
+mame:hp9825b;Hewlett-Packard;HP 9825B;1980;Hewlett-Packard HP-09825-67907;6.0;;1;no
+mame:hp9825t;Hewlett-Packard;HP 9825T;1980;Hewlett-Packard HP-09825-67907;6.0;;1;no
+mame:hp9826a;Hewlett-Packard;HP 9826A;1981;Motorola MC68000;8.0;256.0;1;no
+mame:hp9831;Hewlett-Packard;HP 9831A;1977;Hewlett-Packard HP-09825-67907;6.0;8.0;1;no
+mame:hp9836a;Hewlett-Packard;HP 9836A;1981;Motorola MC68000;8.0;256.0;1;no
+mame:hp9836c;Hewlett-Packard;HP 9836C;1983;Motorola MC68000;8.0;256.0;1;no
+mame:hp9k310;Hewlett-Packard;HP9000/310;1985;Motorola MC68010;10.0;;1;no
+mame:hp9k320;Hewlett-Packard;HP9000/320;1985;Motorola MC68020FPU;16.67;;1;no
+mame:hp9k330;Hewlett-Packard;HP9000/330;1987;Motorola MC68020PMMU;16.67;;1;no
+mame:hp9k332;Hewlett-Packard;HP9000/332;1987;Motorola MC68020PMMU;16.67;;1;no
+mame:hp9k340;Hewlett-Packard;HP9000/340;1989;Motorola MC68030;16.67;;1;no
+mame:hp9k360;Hewlett-Packard;HP9000/360;1988;Motorola MC68030;25.0;;1;no
+mame:hp9k370;Hewlett-Packard;HP9000/370;1988;Motorola MC68030;33.0;;1;no
+mame:hp9k380;Hewlett-Packard;HP9000/380;1991;Motorola MC68040;25.0;;1;no
+mame:hp9k382;Hewlett-Packard;HP9000/382;1991;Motorola MC68040;25.0;;1;no
+mame:hp_ipc;Hewlett-Packard;Integral Personal Computer 9807A;1985;Motorola MC68000;7.96;512.0;1;no
+mame:hp9808a;Hewlett-Packard;Integral Personal Computer 9808A;1985;Motorola MC68000;7.96;512.0;1;no
+mame:jorn720;Hewlett-Packard;Jornada 720;2000;Intel StrongARM SA-1110;206.0;;1;no
+mame:ht1080z;Hiradastechnika Szovetkezet;HT-1080Z Series I;1983;Zilog Z80;1.746666;;1;no
+mame:ht1080z2;Hiradastechnika Szovetkezet;HT-1080Z Series II;1984;Zilog Z80;1.746666;;1;no
+mame:ht108064;Hiradastechnika Szovetkezet;HT-1080Z/64;1985;Zilog Z80;1.746666;;1;no
+mame:mbh1;Hitachi;MB-H1;1983;Zilog Z80;3.579545;;1;no
+mame:mbh1e;Hitachi;MB-H1E;1984;Zilog Z80;3.579545;;1;no
+mame:mbh2;Hitachi;MB-H2;1984;Zilog Z80;3.579545;;1;no
+mame:mbh25;Hitachi;MB-H25;1988;Zilog Z80;3.579545;;1;no
+mame:mbh3;Hitachi;MB-H3;1985;Zilog Z80;3.579545;;1;no
+mame:mbh50;Hitachi;MB-H50;1986;Zilog Z80;3.579545;;1;no
+mame:mbh70;Hitachi;MB-H70;1986;Zilog Z80;3.579545;;1;no
+mame:hp85;HP;HP 85;1980;HP-Capricorn;0.613;;1;no
+mame:hp86b;HP;HP 86B;1983;HP-Capricorn;0.613;128.0;1;no
+mame:hp86b_001;HP;HP 86B Opt 001;1983;HP-Capricorn;0.613;128.0;1;no
+mame:hp86b_004;HP;HP 86B Opt 004;1983;HP-Capricorn;0.613;128.0;1;no
+mame:hyo88t;Hyosung;Topstar 88T;;Intel 8088;4.772727;640.0;1;no
+mame:hyu16t;Hyundai;Super 16 T;1986;Intel 8088;4.772727;640.0;1;no
+mame:hyu16te;Hyundai;Super 16 TE;1987;Intel 8088;4.772727;640.0;1;no
+mame:ibm5100;IBM;IBM 5100;1975;IBM PALM;15.0912;;1;no
+mame:ibm5110;IBM;IBM 5110;1978;IBM PALM;15.0912;;1;no
+mame:ibm6580;IBM;IBM 6580 Displaywriter;1980;Intel 8086;4.9152;128.0;1;no
+mame:ibm5140;IBM;IBM PC 5140 Convertible;1985;Intel 8088;4.772727;640.0;1;no
+mame:ibm5150;IBM;IBM PC 5150;1981;Intel 8088;4.772727;640.0;1;no
+mame:ibm5155;IBM;IBM PC 5155;1982;Intel 8088;4.772727;640.0;1;no
+mame:ibmpcjr;IBM;IBM PC Jr;1983;Intel 8088;4.772727;640.0;1;no
+mame:ibmpcjx;IBM;IBM PC JX;1985;Intel 8088;4.772727;512.0;1;no
+mame:i8530h31;IBM;IBM PS/2 8530-H31 (Model 30/286);1990;Intel 80286;10.0;1664.0;1;no
+mame:i8535043;IBM;IBM PS/2 8535-043 (Model 35SX);;Intel I386SX;12.0;1664.0;1;no
+mame:i8550021;IBM;IBM PS/2 8550-021 (Model 50);;Intel 80286;10.0;1664.0;1;no
+mame:i8550061;IBM;IBM PS/2 8550-061 (Model 50Z);;Intel 80286;10.0;1664.0;1;no
+mame:i8555081;IBM;IBM PS/2 8555-081 (Model 55SX);1989;Intel I386SX;12.0;1664.0;1;no
+mame:i8580071;IBM;IBM PS/2 8580-071 (Model 80);;Intel I386;12.0;1664.0;1;no
+mame:i8580111;IBM;IBM PS/2 8580-111 (Model 80);;Intel I386;12.0;1664.0;1;no
+mame:i8530286;IBM;IBM PS/2 Model 30-286;1988;Intel 80286;10.0;1664.0;1;no
+mame:rtpc010;IBM;IBM RT PC Model 010;1986;IBM ROMP;5.88235;;1;no
+mame:rtpc015;IBM;IBM RT PC Model 015;1986;IBM ROMP;5.88235;;1;no
+mame:rtpc020;IBM;IBM RT PC Model 020;1986;IBM ROMP;5.88235;;1;no
+mame:rtpc025;IBM;IBM RT PC Model 025;1986;IBM ROMP;5.88235;;1;no
+mame:rtpca25;IBM;IBM RT PC Model A25;1986;IBM ROMP;5.88235;;1;no
+mame:ibm5160;IBM;IBM XT 5160;1982;Intel 8088;4.772727;640.0;1;no
+mame:ibm5550;IBM;Multistation 5550;1983;Intel 8086;8.0;;1;no
+mame:rs6k7009;IBM;RS/6000 Type 7009 Model C10 Server;1994;IBM PowerPC 601;80.0;;1;no
+mame:thinkpad600;IBM;ThinkPad 600;1998;Intel Pentium II;300.0;;1;no
+mame:thinkpad600e;IBM;ThinkPad 600E;1999;Intel Pentium II;366.0;;1;no
+mame:thinkpad850;IBM;ThinkPad 850;1996;IBM PowerPC 603;99.999;;1;no
+mame:hc2000;ICE-Felix;HC-2000;1992;Zilog Z80;3.5;48.0;1;no
+mame:hc85;ICE-Felix;HC-85;1985;Zilog Z80;3.5;48.0;1;no
+mame:hc88;ICE-Felix;HC-88;1988;Zilog Z80;3.5;48.0;1;no
+mame:hc90;ICE-Felix;HC-90;1990;Zilog Z80;3.5;48.0;1;no
+mame:hc91;ICE-Felix;HC-91;1991;Zilog Z80;3.5;48.0;1;no
+mame:hc128;ICE-Felix;HC-91+ (HC-128);1991;Zilog Z80;3.5469;128.0;1;no
+mame:ms1600;ILCE / SEP;Micro-SEP 1600;1987;Motorola MC6809E;0.894886;64.0;1;no
+mame:msm3;ILCE / SEP;Micro-Sep Model 3;1987;Motorola MC6809E;0.894886;512.0;1;no
+mame:ep128;Intelligent Software / Enterprise Computers;Enterprise One Two Eight;1986;Zilog Z80;4.0;128.0;1;no
+mame:ep64;Intelligent Software / Enterprise Computers;Enterprise Sixty Four;1985;Zilog Z80;4.0;64.0;1;no
+mame:phc64;Intelligent Software / Hegener + Glaser;Mephisto PHC 64;1985;Zilog Z80;4.0;64.0;1;no
+mame:inves;Investronica;Inves Spectrum 48K+;1986;Zilog Z80;3.5;48.0;1;no
+mame:cobrasp;ITCI;Cobra (ITCI);1988;Zilog Z80;3.5;48.0;1;no
+mame:cobra80;ITCI;Cobra 80K (ITCI);1988;Zilog Z80;3.5;48.0;1;no
+mame:ittxtra;ITT Information Systems;ITT XTRA;1984;Intel 8088;4.772727;640.0;1;no
+mame:ivelultr;Ivasim;Ivel Ultra;1984;MOS Technology 6502;1.0218;48.0;1;no
+mame:juko16;JUKO;NEST 8086 and V30;;NEC V30;4.77272;640.0;1;no
+mame:juko8;JUKO;NEST 8088 and V20;;Intel 8088;4.772727;640.0;1;no
+mame:jvchc7gb;JVC;HC-7E / HC-7GB;1985;Zilog Z80;3.579545;;1;no
+mame:kmc5000;Kawai;KMC-5000;1987;Zilog Z80;3.579545;;1;no
+mame:kaypro1;Kaypro Corporation;Kaypro 1;1986;Zilog Z80;4.0;;1;no
+mame:kaypro1084;Kaypro Corporation;Kaypro 10;1984;Zilog Z80;4.0;;1;no
+mame:kaypro16;Kaypro Corporation;Kaypro 16;1985;Intel 8088;4.772727;256.0;1;no
+mame:kaypro284;Kaypro Corporation;Kaypro 2/84;1984;Zilog Z80;4.0;;1;no
+mame:kaypro2x;Kaypro Corporation;Kaypro 2x;1985;Zilog Z80;4.0;;1;no
+mame:kayproiip88;Kaypro Corporation;Kaypro 4 plus88 - 4/83;1983;Zilog Z80;2.5;;1;no
+mame:kaypro484;Kaypro Corporation;Kaypro 4/84;1984;Zilog Z80;4.0;;1;no
+mame:kaypro484p88;Kaypro Corporation;Kaypro 4/84 plus88;1984;Zilog Z80;4.0;;1;no
+mame:kaypro4x;Kaypro Corporation;Kaypro 4x;1985;Zilog Z80;4.0;;1;no
+mame:kaypronew2;Kaypro Corporation;Kaypro New 2;1985;Zilog Z80;4.0;;1;no
+mame:robie;Kaypro Corporation;Kaypro Robie;1984;Zilog Z80;4.0;;1;no
+mame:omni2;Kaypro Corporation;Omni II Logic Analyzer;;Zilog Z80;2.5;;1;no
+mame:kaypropc;Kaypro Corporation;PC;;Intel 8088;4.772727;640.0;1;no
+mame:radionic;Komtek;Radionic R1001/Komtek 1;1983;Zilog Z80;1.789772;;1;no
+mame:profi;Kondor and Kramis;Profi;1991;Zilog Z80;3.5;256.0;1;no
+mame:kyoxt;Kyocera;XT;;Intel 8088;4.772727;640.0;1;no
+mame:lambda;Lambda Electronics Ltd;Lambda 8300;1982;Zilog Z80;3.25;2.0;1;no
+mame:ltmpbp;Lawrie T&M Ltd.;LTM Portable (B+);1985;MOS Technology 6502;2.0;64.0;1;no
+mame:ltmpm;Lawrie T&M Ltd.;LTM Portable (Master);1986;GTE G65SC12;2.0;128.0;1;no
+mame:ledgmodd;Leading Edge Hardware Products, Inc.;Model D;;Intel 8088;4.772727;640.0;1;no
+mame:ledgmodm;Leading Edge Hardware Products, Inc.;Model M;;Intel 8088;8.0;640.0;1;no
+mame:lnw80;LNW Research;LNW-80;1981;Zilog Z80;1.777777;;1;no
+mame:max80;Lobo Systems;MAX-80;1982;Zilog Z80;5.066666;;1;no
+mame:alice;Matra & Hachette;Alice;1983;Motorola MC6803;3.579545;4.0;1;no
+mame:alice32;Matra & Hachette;Alice 32;1984;Motorola MC6803;3.579545;8.0;1;no
+mame:alice90;Matra & Hachette;Alice 90;1985;Motorola MC6803;3.579545;32.0;1;no
+mame:mtx500;Memotech Ltd;MTX 500;1983;Zilog Z80;4.0;32.0;1;no
+mame:mtx512;Memotech Ltd;MTX 512;1983;Zilog Z80;4.0;64.0;1;no
+mame:rs128;Memotech Ltd;RS 128;1984;Zilog Z80;4.0;128.0;1;no
+mame:meritum1;Mera-Elzab;Meritum I (Model 1);1983;Zilog Z80;2.5;;1;no
+mame:meritum2;Mera-Elzab;Meritum I (Model 2);1985;Zilog Z80;2.5;;1;no
+mame:meritum_net;Mera-Elzab;Meritum I (Model 2) (network);1985;Zilog Z80;2.5;;1;no
+mame:tk90x;Micro Digital;TK 90X Color Computer;1985;Zilog Z80;3.5;48.0;1;no
+mame:tk95;Micro Digital;TK 95 Color Computer;1986;Zilog Z80;3.5;48.0;1;no
+mame:atm;MicroART;ATM-Turbo (ATM-CP);1991;Zilog Z80;3.5469;128.0;1;no
+mame:atmtb2;MicroART;ATM-Turbo 2;1992;Zilog Z80;3.5469;512.0;1;no
+mame:atmtb2plus;MicroART;ATM-Turbo 2+;1993;Zilog Z80;3.5469;1024.0;1;no
+mame:tk2000;Microdigital;TK2000 Color Computer;1984;MOS Technology 6502;1.0218;64.0;1;no
+mame:tk3000;Microdigital;TK3000//e;1986;WDC W65C02;1.0218;64.0;1;no
+mame:tk85;Microdigital;TK85;1983;Zilog Z80;3.25;2.0;1;no
+mame:mpx16;Micromint;MPX-16;;Intel 8088;4.772727;640.0;1;no
+mame:laser2c;Milmar;Laser //c;1985;MOS Technology 6502;1.0218;48.0;1;no
+mame:mits680b;MITS;Altair 680b;1976;Motorola MC6800;0.5;;1;no
+mame:al8800bt;MITS;Altair 8800bt;1977;Intel 8080;2.0;;1;no
+mame:ml8000;Mitsubishi;ML-8000;1983;Zilog Z80;3.579545;;1;no
+mame:mlf110;Mitsubishi;ML-F110;1984;Zilog Z80;3.579545;;1;no
+mame:mlf120;Mitsubishi;ML-F120;1984;Zilog Z80;3.579545;;1;no
+mame:mlf48;Mitsubishi;ML-F48;1984;Zilog Z80;3.579545;;1;no
+mame:mlf80;Mitsubishi;ML-F80;1984;Zilog Z80;3.579545;;1;no
+mame:mlfx1;Mitsubishi;ML-FX1;1986;Zilog Z80;3.579545;;1;no
+mame:mlg1;Mitsubishi;ML-G1;1986;Zilog Z80;3.579545;;1;no
+mame:mlg10;Mitsubishi;ML-G10;1985;Zilog Z80;3.579545;;1;no
+mame:mlg3;Mitsubishi;ML-G3;1986;Zilog Z80;3.579545;;1;no
+mame:mlg30;Mitsubishi;ML-G30 Model 1;1985;Zilog Z80;3.579545;;1;no
+mame:mlg30_2;Mitsubishi;ML-G30 Model 2;1985;Zilog Z80;3.579545;;1;no
+mame:mononuxt;Monotech;NuXT;2019;NEC V20;8.0;640.0;1;no
+mame:mononuxt2;Monotech;NuXT v2;2020;NEC V20;8.0;640.0;1;no
+mame:md2;Morrow Designs;Micro Decision MD-2;1982;Zilog Z80;4.0;;1;no
+mame:md3;Morrow Designs;Micro Decision MD-3;1982;Zilog Z80;4.0;;1;no
+mame:mpz80;Morrow Designs;MPZ80;1980;Zilog Z80;4.0;65.0;1;no
+mame:tricep;Morrow Designs;Tricep;1985;Motorola MC68000;10.0;;1;no
+mame:kim1;MOS Technology;KIM-1;1976;MOS Technology 6502;1.0;;1;no
+mame:mpf2;Multitech;Microprofessor II;1982;MOS Technology 6502;1.0218;64.0;1;no
+mame:mprof3;Multitech;Microprofessor III;1983;MOS Technology 6502;1.0218;128.0;1;no
+mame:mpu9088vf;MY-COM;MPU-9088-VF;;Intel 8088;4.772727;640.0;1;no
+mame:zijini;Nanjing Computer Factory;Zi Jin I;1989;MOS Technology 6502;1.0218;64.0;1;no
+mame:nascom1;Nascom Microcomputers;Nascom 1;1978;Zilog Z80;2.0;48.0;1;no
+mame:nascom2;Nascom Microcomputers;Nascom 2;1979;Zilog Z80;4.0;48.0;1;no
+mame:nascom2c;Nascom Microcomputers;Nascom 2 (CP/M);1980;Zilog Z80;4.0;60.0;1;no
+mame:cf1200;National;CF-1200;1985;Zilog Z80;3.579545;;1;no
+mame:cf2000;National;CF-2000;1983;Zilog Z80;3.579545;;1;no
+mame:cf2700;National;CF-2700;1984;Zilog Z80;3.579545;;1;no
+mame:cf3000;National;CF-3000;1984;Zilog Z80;3.579545;;1;no
+mame:cf3300;National;CF-3300;1985;Zilog Z80;3.579545;;1;no
+mame:fs1300;National;FS-1300;1985;Zilog Z80;3.579545;;1;no
+mame:fs4000;National;FS-4000;1985;Zilog Z80;3.579545;;1;no
+mame:fs4000a;National;FS-4000 (alt);1985;Zilog Z80;3.579545;;1;no
+mame:fs4500;National;FS-4500;1986;Zilog Z80;3.579545;;1;no
+mame:fs4600f;National;FS-4600F;1986;Zilog Z80;3.579545;;1;no
+mame:fs4700f;National;FS-4700F;1986;Zilog Z80;3.579545;;1;no
+mame:fs5000f2;National;FS-5000F2;1986;Zilog Z80;3.579545;;1;no
+mame:fs5500f1;National;FS-5500F1;1985;Zilog Z80;3.579545;;1;no
+mame:fs5500f2;National;FS-5500F2;1985;Zilog Z80;3.579545;;1;no
+mame:ncrpc4i;NCR;PC4i;1985;Intel 8088;4.772727;640.0;1;no
+mame:ncrpc6;NCR;PC6;1985;Intel 8088;4.772727;640.0;1;no
+mame:apc;NEC;APC;1982;Intel 8086;5.0;;1;no
+mame:mini5sx;NEC;Bungo mini 5SX;1991;NEC V33;16.0;;1;no
+mame:ews4800_310;NEC;EWS4800/310;1993;MIPS R4000;40.0;16384.0;1;no
+mame:pc100;NEC;PC-100;;Intel 8086;6.9888;;1;no
+mame:pc6001;NEC;PC-6001;1981;Zilog Z80;3.9936;;1;no
+mame:pc6001a;NEC;"PC-6001A ""NEC Trek""";1981;Zilog Z80;3.9936;;1;no
+mame:pc6001mk2;NEC;PC-6001mkII;1983;Zilog Z80;3.9936;;1;no
+mame:pc6001mk2sr;NEC;PC-6001mkIISR;1984;Zilog Z80;3.579545;;1;no
+mame:pc6601;NEC;PC-6601;1983;Zilog Z80;3.9936;;1;no
+mame:pc6601sr;NEC;"PC-6601SR ""Mr. PC""";1984;Zilog Z80;3.579545;;1;no
+mame:pc8001;NEC;PC-8001;1979;Zilog Z80;4.0;16.0;1;no
+mame:pc8001mk2;NEC;PC-8001mkII;1983;Zilog Z80;4.0;64.0;1;no
+mame:pc8001mk2sr;NEC;PC-8001mkIISR;1985;Zilog Z80;4.0;64.0;1;no
+mame:pc8401bd;NEC;PC-8401BD;1984;Zilog Z80;3.9935;;1;no
+mame:pc8500;NEC;PC-8500;1985;Zilog Z80;3.9935;;1;no
+mame:pc8801;NEC;PC-8801;1981;Zilog Z80;3.9936;;1;no
+mame:pc8801fa;NEC;PC-8801FA;1987;Zilog Z80;3.9936;;1;no
+mame:pc8801ma;NEC;PC-8801MA;1987;Zilog Z80;3.9936;;1;no
+mame:pc8801ma2;NEC;PC-8801MA2;1988;Zilog Z80;3.9936;;1;no
+mame:pc8801mc;NEC;PC-8801MC;1989;Zilog Z80;3.9936;;1;no
+mame:pc8801mh;NEC;PC-8801MH;1986;Zilog Z80;3.9936;;1;no
+mame:pc8801mk2;NEC;PC-8801mkII;1983;Zilog Z80;3.9936;;1;no
+mame:pc8801mk2fr;NEC;PC-8801mkIIFR;1985;Zilog Z80;3.9936;;1;no
+mame:pc8801mk2mr;NEC;PC-8801mkIIMR;1985;Zilog Z80;3.9936;;1;no
+mame:pc8801mk2sr;NEC;PC-8801mkIISR;1985;Zilog Z80;3.9936;;1;no
+mame:pc88va;NEC;PC-88VA;1987;NEC V50;7.9872;;1;no
+mame:pc88va2;NEC;PC-88VA2;1988;NEC V50;7.9872;;1;no
+mame:pc9801;NEC;PC-9801;1982;Intel 8086;5.0;640.0;1;no
+mame:pc9801bx2;NEC;PC-9801BX2/U2 (98 FELLOW);1993;Intel I486;25.0;1664.0;1;no
+mame:pc9801dx;NEC;PC-9801DX;1990;Intel 80286;12.0;1664.0;1;no
+mame:pc9801f;NEC;PC-9801F;1983;Intel 8086;5.0;640.0;1;no
+mame:pc9801fs;NEC;PC-9801FS;1992;Intel I386SX;20.0;1664.0;1;no
+mame:pc9801rs;NEC;PC-9801RS;1989;Intel I386SX;15.9744;1664.0;1;no
+mame:pc9801rx;NEC;PC-9801RX;1988;Intel I386SX;15.9744;1664.0;1;no
+mame:pc9801us;NEC;PC-9801US;1992;Intel I386SX;15.9744;1664.0;1;no
+mame:pc9801ux;NEC;PC-9801UX;1987;Intel 80286;10.0;1664.0;1;no
+mame:pc9801vm;NEC;PC-9801VM;1985;NEC V30;10.0;640.0;1;no
+mame:pc9801vx;NEC;PC-9801VX;1986;Intel 80286;10.0;1664.0;1;no
+mame:pc9821;NEC;PC-9821 (98MULTi);1992;Intel I486;15.9744;1664.0;1;no
+mame:pc9821ap2;NEC;PC-9821Ap2/U8W (98MATE A);1993;Intel I486;66.0;1664.0;1;no
+mame:pc9821as;NEC;PC-9821As (98MATE A);1993;Intel I486;33.0;1664.0;1;no
+mame:pc9821ce2;NEC;PC-9821Ce2 (98MULTi CanBe);1994;Intel I486;25.0;1664.0;1;no
+mame:pc9821cx3;NEC;PC-9821Cx3 (98MULTi CanBe);1995;Intel Pentium;100.0;1664.0;1;no
+mame:pc9821ne;NEC;PC-9821Ne (98NOTE);1994;Intel I486;33.0;1664.0;1;no
+mame:pc9821nr15;NEC;PC-9821Nr15 (98NOTE Lavie);1996;Intel Pentium Pro;150.0;1664.0;1;no
+mame:pc9821nr166;NEC;PC-9821Nr166 (98NOTE Lavie);1997;Intel Pentium MMX;166.0;1664.0;1;no
+mame:pc9821nw150;NEC;PC-9821Nw150 (98NOTE Lavie);1997;Intel Pentium MMX;150.0;1664.0;1;no
+mame:pc9821ra20;NEC;PC-9821Ra20 (98MATE R);1996;Intel Pentium Pro;200.0;1664.0;1;no
+mame:pc9821ra266;NEC;PC-9821Ra266 (98MATE R);1997;Intel Pentium II;266.0;1664.0;1;no
+mame:pc9821ra333;NEC;PC-9821Ra333 (98MATE R);1998;Intel Pentium II;333.0;1664.0;1;no
+mame:pc9821v13;NEC;PC-9821V13 (98MATE VALUESTAR);1998;Intel Pentium;133.0;1664.0;1;no
+mame:pc9821v20;NEC;PC-9821V20 (98MATE VALUESTAR);1998;Intel Pentium;200.0;1664.0;1;no
+mame:pc9821xa16;NEC;PC-9821Xa16 (98MATE X);1996;Intel Pentium;166.0;1664.0;1;no
+mame:pc9821xs;NEC;PC-9821Xs (98MATE X);1994;Intel I486;66.0;1664.0;1;no
+mame:pc98ha;NEC;PC-98HA (Handy98);1990;NEC V50;10.0;;1;no
+mame:pc98lt;NEC;PC-98LT;1989;NEC V50;8.0;;1;no
+mame:pc_h98s;NEC;PC-H98S model 8/U8;1991;Intel I486;20.0;14336.0;1;no
+mame:tk80bs;NEC;TK-80BS;1980;Intel 8080;1.0;;1;no
+mame:kay1024;NEMO;Kay 1024;1998;Zilog Z80;3.5;256.0;1;no
+mame:next;Next Software Inc;NeXT Computer;1987;Motorola MC68030;25.0;;1;no
+mame:nextc;Next Software Inc;NeXTcube;1990;Motorola MC68030;25.0;;1;no
+mame:nextct;Next Software Inc;NeXTcube Turbo;1992;Motorola MC68040;33.0;;1;no
+mame:nextctc;Next Software Inc;NeXTcube Turbo Color;1992;Motorola MC68040;33.0;;1;no
+mame:nexts;Next Software Inc;NeXTstation;1990;Motorola MC68040;25.0;;1;no
+mame:nexts2;Next Software Inc;NeXTstation (X15 variant);1990;Motorola MC68040;25.0;;1;no
+mame:nextsc;Next Software Inc;NeXTstation Color;1990;Motorola MC68040;25.0;;1;no
+mame:nextst;Next Software Inc;NeXTstation Turbo;1990;Motorola MC68040;33.0;;1;no
+mame:nextstc;Next Software Inc;NeXTstation Turbo Color;1990;Motorola MC68040;33.0;;1;no
+mame:nixpc01;Nixdorf Computer AG;8810/25 CPC - PC01;;Intel 8088;4.772727;640.0;1;no
+mame:kaypro10;Non-Linear Systems;Kaypro 10 - 1983;1983;Zilog Z80;4.0;;1;no
+mame:kayproii;Non-Linear Systems;Kaypro II - 2/83;1982;Zilog Z80;2.5;;1;no
+mame:kayproiv;Non-Linear Systems;Kaypro IV - 4/83;1983;Zilog Z80;2.5;;1;no
+mame:lzcolor64;Novo Tempo / LZ Equipamentos;Color64;1983;Motorola MC6809E;0.894886;64.0;1;no
+mame:dw225;NTS Computer Systems;DreamWriter 225;1992;Zilog Z80;4.606;64.0;1;no
+mame:olivm15;Olivetti;M15;;Intel 8088;4.772727;448.0;1;no
+mame:m21;Olivetti;M21;1984;Intel 8086;8.0;640.0;1;no
+mame:m24;Olivetti;M24;1983;Intel 8086;8.0;640.0;1;no
+mame:m240;Olivetti;M240;1987;Intel 8086;8.0;640.0;1;no
+mame:m20;Olivetti;Olivetti L1 M20;1981;Zilog Z8001;4.0;160.0;1;no
+mame:m40;Olivetti;Olivetti L1 M40;1981;Zilog Z8001;4.0;160.0;1;no
+mame:m44;Olivetti;Olivetti L1 M44;1986;Zilog Z8001;4.0;160.0;1;no
+mame:olivpc1;Olivetti;Prodest PC 1;1987;NEC V40;16.0;512.0;1;no
+mame:pro128s;Olivetti;Prodest PC 128S;1987;GTE G65SC12;2.0;128.0;1;no
+mame:pro128;Olivetti / Thomson;Prodest PC 128;1986;Motorola MC6809E;1.0;128.0;1;no
+mame:phc2;Olympia;PHC-2;1985;Zilog Z80;3.579545;;1;no
+mame:phc28;Olympia;PHC-28;1984;Zilog Z80;3.579545;;1;no
+mame:omni4;Omni Logic Inc.;Omni 4 Logic Analyzer;;Zilog Z80;4.0;;1;no
+mame:bk08;Orel;BK-08;;Zilog Z80;3.5;48.0;1;no
+mame:osbexec;Osborne;Executive;1982;Zilog Z80;3.9936;136.0;1;no
+mame:osborne1;Osborne;Osborne-1;1981;Zilog Z80;3.9936;;1;no
+mame:osborne1sp;Osborne;Osborne-1 with SCREEN-PAC;1983;Zilog Z80;3.9936;;1;no
+mame:vixen;Osborne;Vixen;1984;Zilog Z80;3.9936;64.0;1;no
+mame:osborne1nv;Osborne/Nuevo;Osborne-1 (Nuevo Video);1984;Zilog Z80;3.9936;;1;no
+mame:cf2700g;Panasonic;CF-2700;1985;Zilog Z80;3.579545;;2;no
+mame:fsa1;Panasonic;FS-A1;1986;Zilog Z80;3.579545;;2;no
+mame:fsa1f;Panasonic;FS-A1F;1987;Zilog Z80;3.579545;;1;no
+mame:fsa1fm;Panasonic;FS-A1FM;1988;Zilog Z80;3.579545;;1;no
+mame:fsa1fx;Panasonic;FS-A1FX;1988;Zilog Z80;3.579545;;1;no
+mame:fsa1gt;Panasonic;FS-A1GT (MSX Turbo-R, Japan);1991;Zilog Z80;3.579545;;1;no
+mame:fsa1mk2;Panasonic;FS-A1MK2;1987;Zilog Z80;3.579545;;1;no
+mame:fsa1st;Panasonic;FS-A1ST (MSX Turbo-R, Japan);1991;Zilog Z80;3.579545;;1;no
+mame:fsa1wsx;Panasonic;FS-A1WSX;1989;Zilog Z80;3.579545;;1;no
+mame:fsa1wx;Panasonic;FS-A1WX;1988;Zilog Z80;3.579545;;2;no
+mame:al520ex;Patisonic;Aleste 520EX;1993;Zilog Z80;4.0;2048.0;1;no
+mame:sprinter;Peters Plus, Ivan Mak;Sprinter Sp2000;2000;Zilog Z84C015;3.5;65536.0;1;no
+mame:yes;Philips;:YES;1985;Intel 80186;16.0;;1;no
+mame:nms8220;Philips;NMS 8220;1987;Zilog Z80;3.579545;;1;no
+mame:nms8245;Philips;NMS 8245;1987;Zilog Z80;3.579545;;1;no
+mame:nms8245f;Philips;NMS 8245F;1987;Zilog Z80;3.579545;;1;no
+mame:nms8250;Philips;NMS 8250;1987;Zilog Z80;3.579545;;1;no
+mame:nms8250_16;Philips;NMS 8250/16;1987;Zilog Z80;3.579545;;1;no
+mame:nms8250_19;Philips;NMS 8250/19;1987;Zilog Z80;3.579545;;1;no
+mame:nms8255;Philips;NMS 8255;1987;Zilog Z80;3.579545;;1;no
+mame:nms8255f;Philips;NMS 8255F;1987;Zilog Z80;3.579545;;1;no
+mame:nms8280;Philips;NMS 8280;1987;Zilog Z80;3.579545;;1;no
+mame:nms8280f;Philips;NMS 8280F;1986;Zilog Z80;3.579545;;1;no
+mame:nms8280g;Philips;NMS 8280G;1986;Zilog Z80;3.579545;;1;no
+mame:nms9100;Philips;NMS 9100;;Intel 8088;4.772727;640.0;1;no
+mame:nms801;Philips;NMS-801;1989;Zilog Z80;3.579545;;1;no
+mame:p2000m;Philips;Philips P2000M;1980;Zilog Z80;2.5;16.0;1;no
+mame:p2000t;Philips;Philips P2000T;1980;Zilog Z80;2.5;16.0;1;no
+mame:vg5k;Philips;VG-5000;1984;Zilog Z80;4.0;16.0;1;no
+mame:vg8000;Philips;VG-8000;1984;Zilog Z80;3.579545;;1;no
+mame:vg8010;Philips;VG-8010 / VG-8010/00;1985;Zilog Z80;3.579545;;1;no
+mame:vg8010f;Philips;VG-8010F / VG-8010/19;1985;Zilog Z80;3.579545;;1;no
+mame:vg802000;Philips;VG-8020/00;1985;Zilog Z80;3.579545;;1;no
+mame:vg8020f;Philips;VG-8020/19 / VG-8020F;1985;Zilog Z80;3.579545;;1;no
+mame:vg802020;Philips;VG-8020/20;1985;Zilog Z80;3.579545;;1;no
+mame:vg8230;Philips;VG-8230;1986;Zilog Z80;3.579545;;1;no
+mame:vg8235;Philips;VG-8235;1986;Zilog Z80;3.579545;;1;no
+mame:vg8235f;Philips;VG-8235F;1986;Zilog Z80;3.579545;;1;no
+mame:piopx7;Pioneer;PX-07 Palcom;1984;Zilog Z80;3.579545;;1;no
+mame:piopx7uk;Pioneer;PX-07UK Palcom;1985;Zilog Z80;3.579545;;1;no
+mame:piopxv60;Pioneer;PX-V60;1986;Zilog Z80;3.579545;;1;no
+mame:ucv102;Pioneer;UC-V102;1987;Zilog Z80;3.579545;;1;no
+mame:maxxi;Polymax;Maxxi;1982;MOS Technology 6502;1.0218;48.0;1;no
+mame:prav82;Pravetz;Pravetz 82;1982;MOS Technology 6502;1.0218;48.0;1;no
+mame:prav8c;Pravetz;Pravetz 8C;1989;MOS Technology 6502;1.0218;64.0;1;no
+mame:prav8d;Pravetz;Pravetz 8D;1985;MOS Technology 6502;1.0;;1;no
+mame:prav8m;Pravetz;Pravetz 8M;1985;MOS Technology 6502;1.0218;48.0;1;no
+mame:clipper;Professional Data Computer;Clipper;1984;MOS Technology 6510;0.985248;64.0;1;no
+mame:cp500;Prológica;CP-500 (PVIII REV.3);1982;Zilog Z80;2.02752;;1;no
+mame:cp400;Prológica;CP400;1983;Motorola MC6809E;0.894886;64.0;1;no
+mame:cp400c2;Prológica;CP400 Color II;1985;Motorola MC6809E;0.894886;64.0;1;no
+mame:ringo470;Ritas do Brasil Ltda;Ringo R-470;1983;Zilog Z80;3.25;2.0;1;no
+mame:ax150;Sakhr;AX-150;1986;Zilog Z80;3.579545;;1;no
+mame:ax170;Sakhr;AX-170;1986;Zilog Z80;3.579545;;1;no
+mame:ax200;Sakhr;AX-200 (MSX1, Arabic/English);1986;Zilog Z80;3.579545;;1;no
+mame:ax200m;Sakhr;AX-200M (MSX1, Arabic/English);1986;Zilog Z80;3.579545;;1;no
+mame:ax230;Sakhr;AX-230;1986;Zilog Z80;3.579545;;1;no
+mame:ax350;Sakhr;AX-350;1987;Zilog Z80;3.579545;;1;no
+mame:ax350ii;Sakhr;AX-350 II;1987;Zilog Z80;3.579545;;1;no
+mame:ax350iif;Sakhr;AX-350 II F;1987;Zilog Z80;3.579545;;1;no
+mame:ax370;Sakhr;AX-370;1988;Zilog Z80;3.579545;;1;no
+mame:ax500;Sakhr;AX-500;1987;Zilog Z80;3.579545;;1;no
+mame:ssam88s;Samsung;Samtron 88S;1989;Intel 8088;4.772727;640.0;1;no
+mame:spc800;Samsung;SPC-800;1984;Zilog Z80;3.579545;;1;no
+mame:mbc16;Sanyo;MBC-16;;Intel 8088;4.772727;640.0;1;no
+mame:mbc16lt;Sanyo;MBC-16LT;;Intel 8088;4.772727;640.0;1;no
+mame:mbc200;Sanyo;MBC-200;1982;Zilog Z80;4.0;;1;no
+mame:mbc55x;Sanyo;MBC-55x;1983;Intel 8088;3.579545;128.0;1;no
+mame:mpc10;Sanyo;MPC-10 / Wavy10;1983;Zilog Z80;3.579545;;1;no
+mame:mpc100;Sanyo;MPC-100;1985;Zilog Z80;3.579545;;1;no
+mame:mpc200;Sanyo;MPC-200;1985;Zilog Z80;3.579545;;1;no
+mame:mpc200sp;Sanyo;MPC-200SP;1985;Zilog Z80;3.579545;;1;no
+mame:mpc2300;Sanyo;MPC-2300 (MSX2, USSR);1987;Zilog Z80;3.579545;;1;no
+mame:mpc2500f;Sanyo;MPC-2500FD (MSX2, USSR);1987;Zilog Z80;3.579545;;1;no
+mame:mpc25fd;Sanyo;MPC-25FD;1985;Zilog Z80;3.579545;;1;no
+mame:mpc25fs;Sanyo;MPC-25FS;1985;Zilog Z80;3.579545;;1;no
+mame:mpc27;Sanyo;MPC-27;1985;Zilog Z80;3.579545;;1;no
+mame:mpc64;Sanyo;MPC-64;1985;Zilog Z80;3.579545;;1;no
+mame:phc20;Sanyo;PHC-20;1982;Zilog Z80;3.579545;;1;no
+mame:phc23;Sanyo;PHC-23 / Wavy23;1986;Zilog Z80;3.579545;;1;no
+mame:phc23jb;Sanyo;PHC-23JB / Wavy23;1987;Zilog Z80;3.579545;;1;no
+mame:phc25;Sanyo;PHC-25;1983;Zilog Z80;4.0;;2;no
+mame:phc28l;Sanyo;PHC-28L;1985;Zilog Z80;3.579545;;1;no
+mame:phc28s;Sanyo;PHC-28S;1984;Zilog Z80;3.579545;;1;no
+mame:phc35j;Sanyo;PHC-35J / Wavy35;1989;Zilog Z80;3.579545;;1;no
+mame:phc55fd2;Sanyo;PHC-55FD2 / Wavy55FD2;1988;Zilog Z80;3.579545;;1;no
+mame:phc70fd;Sanyo;PHC-70FD / Wavy70FD;1988;Zilog Z80;3.579545;;1;no
+mame:phc70fd2;Sanyo;PHC-70FD2 / Wavy70FD2;1989;Zilog Z80;3.579545;;1;no
+mame:phc77;Sanyo;PHC-77 / Wavy77;1987;Zilog Z80;3.579545;;1;no
+mame:spc400d;Sanyo;SPC-400D;;Intel 8088;4.772727;640.0;1;no
+mame:sx16;Sanyo;SX-16;1988;Intel 8088;4.772727;640.0;1;no
+mame:iskr3104;Schetmash;Iskra 3104;1992;Intel 8086;4.77272;640.0;1;no
+mame:europc;Schneider Rdf. AG;EURO PC;1988;Intel 8088;9.54544;512.0;1;no
+mame:europc2;Schneider Rdf. AG;EURO PC II;;Intel 8088;9.54544;768.0;1;no
+mame:euroxt;Schneider Rdf. AG;EURO XT;;Intel 8088;9.54544;768.0;1;no
+mame:sms1000;Scientific Micro Systems;SMS-1000;1987;DEC T11;4.0;;1;no
+mame:spectred;Scopus/Spectrum;Spectrum ED;;MOS Technology 6502;1.0218;64.0;1;no
+mame:scorpiongmx;Scorpion, Ltd.;Scorpion GMX;1998;Zilog Z80;3.5;2048.0;1;no
+mame:scorpio;Scorpion, Ltd.;Scorpion ZS-256 (Yellow PCB);1992;Zilog Z80;3.5;256.0;1;no
+mame:scorpiontb;Scorpion, Ltd.;Scorpion ZS-256 TURBO+;1996;Zilog Z80;3.5;256.0;1;no
+mame:secoinsa20;Secoinsa;Serie 20;1981;Zilog Z80;4.0;;1;no
+mame:map1010;Seiko;MAP-1010;1983;Zilog Z80;4.0;;1;no
+mame:micro88;Sergey Kiselev;Micro 8088;2017;NEC V20;8.0;640.0;1;no
+mame:sergeysxt;Sergey Kiselev;Sergey's XT;2010;NEC V20;8.0;640.0;1;no
+mame:xiprocessor;Sergey Kiselev;Xi processor board;2012;NEC V20;8.0;640.0;1;no
+mame:cec2000;Shaanxi Province Computer Factory;China Education Computer 2000;1991;MOS Technology 6502;1.0218;64.0;1;no
+mame:cece;Shaanxi Province Computer Factory;China Education Computer E;1989;MOS Technology 6502;1.0218;64.0;1;no
+mame:cecg;Shaanxi Province Computer Factory;China Education Computer G;1989;MOS Technology 6502;1.0218;64.0;1;no
+mame:ceci;Shaanxi Province Computer Factory;China Education Computer I;1987;MOS Technology 6502;1.0218;64.0;1;no
+mame:cecm;Shaanxi Province Computer Factory;China Education Computer M;1989;MOS Technology 6502;1.0218;64.0;1;no
+mame:mz1500;Sharp;MZ-1500;1984;Zilog Z80;3.546894;64.0;1;no
+mame:mz2000;Sharp;MZ-2000;1982;Zilog Z80;3.546894;;1;no
+mame:mz2200;Sharp;MZ-2200;1982;Zilog Z80;3.546894;;1;no
+mame:mz2500;Sharp;MZ-2500;1985;Zilog Z80;6.0;;1;no
+mame:mz2520;Sharp;MZ-2520;1985;Zilog Z80;6.0;;1;no
+mame:mz3500;Sharp;MZ-3500;;Zilog Z80;4.0;;1;no
+mame:mz6500;Sharp;MZ-6500;;Intel 8086;8.0;;1;no
+mame:mz700;Sharp;MZ-700;1982;Zilog Z80;3.546894;64.0;2;no
+mame:mz800;Sharp;MZ-800;1984;Zilog Z80;3.546894;64.0;1;no
+mame:mz80a;Sharp;MZ-80A;1982;Zilog Z80;2.0;;1;no
+mame:mz80b;Sharp;MZ-80B;1981;Zilog Z80;3.546894;;1;no
+mame:mz80k;Sharp;MZ-80K;1979;Zilog Z80;2.0;;2;no
+mame:pc7000;Sharp;PC-7000;1985;Intel 8086;8.0;640.0;1;no
+mame:pce220;Sharp;PC-E220;1991;Zilog Z80;3.072;64.0;1;no
+mame:pcg815;Sharp;PC-G815;1992;Zilog Z80;3.072;64.0;1;no
+mame:pcg850v;Sharp;PC-G850V;2001;Zilog Z80;8.0;64.0;1;no
+mame:pc1245;Sharp;Pocket Computer 1245;1982;Sharp SC61860;0.192;;1;no
+mame:pc1250;Sharp;Pocket Computer 1250;1982;Sharp SC61860;0.192;;1;no
+mame:pc1251;Sharp;Pocket Computer 1251;1982;Sharp SC61860;0.192;;1;no
+mame:pc1255;Sharp;Pocket Computer 1255;1982;Sharp SC61860;0.192;;1;no
+mame:pc1260;Sharp;Pocket Computer 1260;1982;Sharp SC61860;0.192;;1;no
+mame:pc1261;Sharp;Pocket Computer 1261/1262;1982;Sharp SC61860;0.192;;1;no
+mame:pc1350;Sharp;Pocket Computer 1350;1984;Sharp SC61860;0.192;4.0;1;no
+mame:pc1360;Sharp;Pocket Computer 1360;;Sharp SC61860;0.192;;1;no
+mame:pc1401;Sharp;Pocket Computer 1401;1983;Sharp SC61860;0.192;;1;no
+mame:pc1402;Sharp;Pocket Computer 1402;1984;Sharp SC61860;0.192;;1;no
+mame:pc1403;Sharp;Pocket Computer 1403;1986;Sharp SC61860;0.256;;1;no
+mame:pc1403h;Sharp;Pocket Computer 1403H;;Sharp SC61860;0.256;;1;no
+mame:pc1450;Sharp;Pocket Computer 1450;;Sharp SC61860;0.192;4.0;1;no
+mame:pc1500;Sharp;Pocket Computer 1500;;Sharp LH5801;2.6;;1;no
+mame:x1;Sharp;X1 (CZ-800C);1982;Zilog Z80;4.0;;1;no
+mame:x1turbo;Sharp;X1 Turbo (CZ-850C);1984;Zilog Z80;4.0;;1;no
+mame:x1turbo40;Sharp;X1 Turbo (CZ-862C);1985;Zilog Z80;4.0;;1;no
+mame:x1twin;Sharp;X1 Twin (CZ-830C);1986;Zilog Z80;4.0;;1;no
+mame:x68000;Sharp;X68000;1987;Motorola MC68000;10.0;4096.0;1;no
+mame:x68ksupr;Sharp;X68000 Super;1990;Motorola MC68000;10.0;4096.0;1;no
+mame:x68kxvi;Sharp;X68000 XVI;1991;Motorola MC68000;16.665;4096.0;1;no
+mame:x68030;Sharp;X68030;1993;Motorola MC68030;25.0;4096.0;1;no
+mame:zsl5500;Sharp;"Zaurus SL-5500 ""Collie""";2002;Intel StrongARM SA-1110;206.0;;1;no
+mame:zsl5600;Sharp;"Zaurus SL-5600 / SL-B500 ""Poodle""";2002;Intel XScale PXA250;400.0;;1;no
+mame:zslc1000;Sharp;"Zaurus SL-C3000 ""Akita""";;Intel XScale PXA270;416.0;;1;no
+mame:zslc3000;Sharp;"Zaurus SL-C3000 ""Spitz""";;Intel XScale PXA270;416.0;;1;no
+mame:zslc500;Sharp;Zaurus SL-C500;2002;Intel XScale PXA250;400.0;;1;no
+mame:zslc750;Sharp;"Zaurus SL-C750 ""Shepherd""";2003;Intel XScale PXA255;400.0;;1;no
+mame:zslc760;Sharp;"Zaurus SL-C760 ""Husky""";2004;Intel XScale PXA255;400.0;;1;no
+mame:hb8000;Sharp / Epcom;HB-8000 Hotbit;1985;Zilog Z80;3.579545;;1;no
+mame:hotbi13b;Sharp / Epcom;HB-8000 Hotbit 1.3b;;Zilog Z80;3.579545;;1;no
+mame:hotbi13p;Sharp / Epcom;HB-8000 Hotbit 1.3p;;Zilog Z80;3.579545;;1;no
+mame:hotbit20;Sharp / Epcom;HB-8000 Hotbit 2.0;1986;Zilog Z80;3.579545;;1;no
+mame:sicpc1605;Siemens;Sicomp PC16-05;1985;Intel 8088;8.0;640.0;1;no
+mame:sintez2;Signal;Sintez 2;1989;Zilog Z80;3.5;48.0;1;no
+mame:indigo;Silicon Graphics;IRIS Indigo;1991;MIPS R3000A;33.0;;1;no
+mame:indigo_r4000;Silicon Graphics;IRIS Indigo R4000;1992;MIPS R4000;50.0;;1;no
+mame:indigo_r4400;Silicon Graphics;IRIS Indigo R4400;1991;MIPS R4400;75.0;;1;no
+mame:pi4d20;Silicon Graphics;Personal IRIS 4D/20;1988;MIPS R3000;12.5;;1;no
+mame:pi4d25;Silicon Graphics;Personal IRIS 4D/25;1989;MIPS R3000;20.0;;1;no
+mame:pi4d30;Silicon Graphics;Personal IRIS 4D/30;1991;MIPS R3000A;30.0;;1;no
+mame:pi4d35;Silicon Graphics;Personal IRIS 4D/35;1991;MIPS R3000A;36.0;;1;no
+mame:pi4d50;Silicon Graphics;Professional IRIS 4D/50;1987;;;;1;no
+mame:pi4d70;Silicon Graphics;Professional IRIS 4D/70;1987;;;;1;no
+mame:crimson;Silicon Graphics Inc;Crimson (R4000, 100MHz, Ver. 4.0.3);1992;MIPS R4000 (big);100.0;;1;no
+mame:indigo2_4415;Silicon Graphics Inc;Indigo2 (R4400, 150MHz);1993;MIPS R4400 (big);150.0;;1;no
+mame:indy_4610;Silicon Graphics Inc;Indy (R4600, 100MHz);1993;MIPS R4600 (big);100.0;;1;no
+mame:indy_4613;Silicon Graphics Inc;Indy (R4600, 133MHz);1993;MIPS R4600 (big);133.333332;;1;no
+mame:indy_5015;Silicon Graphics Inc;Indy (R5000, 150MHz);1996;MIPS R5000 (big);150.0;;1;no
+mame:iris3130;Silicon Graphics Inc;IRIS 3130 (IP2);1985;Motorola MC68020;16.0;;1;no
+mame:octane;Silicon Graphics Inc;Octane (Version 6.5 Rev 4.9 05/22/03);1997;MIPS R5000 (big);200.0;;1;no
+mame:o2;Silicon Graphics Inc.;O2;1996;MIPS R5000 (big);180.0;;1;no
+mame:pc200;Sinclair;PC200 Professional Series;1988;Intel 8086;8.0;640.0;1;no
+mame:ql;Sinclair;QL;1984 | 1985;;;128.0;8;no
+mame:ql_gr;Sinclair;QL (Greece);1985;;;128.0;1;no
+mame:spectrum;Sinclair;ZX Spectrum;1982;Zilog Z80;3.5;48.0;1;no
+mame:spec128;Sinclair;ZX Spectrum 128;1986;Zilog Z80;3.5469;128.0;1;no
+mame:zx80;Sinclair;ZX-80;1980;Zilog Z80;3.25;1.0;1;no
+mame:zx81;Sinclair;ZX-81;1981;Zilog Z80;3.25;16.0;1;no
+mame:hb10;Sony;HB-10;1985;Zilog Z80;3.579545;;1;no
+mame:hb101;Sony;HB-101;1984;Zilog Z80;3.579545;;1;no
+mame:hb101p;Sony;HB-101P;1984;Zilog Z80;3.579545;;1;no
+mame:hb10p;Sony;HB-10P;1986;Zilog Z80;3.579545;;1;no
+mame:hb201;Sony;HB-201;1985;Zilog Z80;3.579545;;1;no
+mame:hb201p;Sony;HB-201P;1985;Zilog Z80;3.579545;;1;no
+mame:hb20p;Sony;HB-20P;1986;Zilog Z80;3.579545;;1;no
+mame:hb501p;Sony;HB-501P;1984;Zilog Z80;3.579545;;1;no
+mame:hb55;Sony;HB-55;1983;Zilog Z80;3.579545;;1;no
+mame:hb55d;Sony;HB-55D;1984;Zilog Z80;3.579545;;1;no
+mame:hb55p;Sony;HB-55P;1984;Zilog Z80;3.579545;;1;no
+mame:hb701fd;Sony;HB-701FD;1984;Zilog Z80;3.579545;;1;no
+mame:hb75;Sony;HB-75;1984;Zilog Z80;3.579545;;1;no
+mame:hb75d;Sony;HB-75D;1984;Zilog Z80;3.579545;;1;no
+mame:hb75p;Sony;HB-75P;1984;Zilog Z80;3.579545;;1;no
+mame:hbf1;Sony;HB-F1;1986;Zilog Z80;3.579545;;1;no
+mame:hbf1ii;Sony;HB-F1II;1987;Zilog Z80;3.579545;;1;no
+mame:hbf1xd;Sony;HB-F1XD;1987;Zilog Z80;3.579545;;1;no
+mame:hbf1xdj;Sony;HB-F1XDJ;1988;Zilog Z80;3.579545;;1;no
+mame:hbf1xv;Sony;HB-F1XV;1989;Zilog Z80;3.579545;;1;no
+mame:hbf5;Sony;HB-F5;1985;Zilog Z80;3.579545;;1;no
+mame:hbf500;Sony;HB-F500;1986;Zilog Z80;3.579545;;1;no
+mame:hbf500_2;Sony;HB-F500 2nd version;1986;Zilog Z80;3.579545;;1;no
+mame:hbf500f;Sony;HB-F500F;1986;Zilog Z80;3.579545;;1;no
+mame:hbf500p;Sony;HB-F500P;1986;Zilog Z80;3.579545;;1;no
+mame:hbf700d;Sony;HB-F700D;1986;Zilog Z80;3.579545;;1;no
+mame:hbf700f;Sony;HB-F700F;1986;Zilog Z80;3.579545;;1;no
+mame:hbf700p;Sony;HB-F700P;1986;Zilog Z80;3.579545;;1;no
+mame:hbf700s;Sony;HB-F700S;1986;Zilog Z80;3.579545;;1;no
+mame:hbf900;Sony;HB-F900;1986;Zilog Z80;3.579545;;1;no
+mame:hbf900a;Sony;HB-F900 (alt);1986;Zilog Z80;3.579545;;1;no
+mame:hbf9p;Sony;HB-F9P;1986;Zilog Z80;3.579545;;1;no
+mame:hbf9s;Sony;HB-F9S;1986;Zilog Z80;3.579545;;1;no
+mame:hbg900ap;Sony;HB-G900AP;1987;Zilog Z80;3.579545;;1;no
+mame:hbg900p;Sony;HB-G900P;1986;Zilog Z80;3.579545;;1;no
+mame:nws5000x;Sony;NET WORK STATION NWS-5000X;1994;MIPS R4400;75.0;65536.0;1;no
+mame:nws1580;Sony;NWS-1580;1988;Motorola MC68030;25.0;8192.0;1;no
+mame:nws3260;Sony;NWS-3260;1991;MIPS R3000A;20.0;16384.0;1;no
+mame:nws3410;Sony;NWS-3410;1991;MIPS R3000A;20.0;8192.0;1;no
+mame:nws3720;Sony;NWS-3720;1991;MIPS R3000A;20.0;16384.0;1;no
+mame:nws3860;Sony;NWS-3860;1989;Motorola MC68030;25.0;16384.0;1;no
+mame:nws831;Sony;NWS-831;1987;Motorola MC68020FPU;16.67;8192.0;1;no
+mame:smc777;Sony;SMC-777;1983;Zilog Z80;4.027975;;1;no
+mame:m5;Sord;m.5;1983;Zilog Z80;3.579545;;2;no
+mame:tbblue;SpecNext Ltd., Victor Trucco, Fabio Belavenuto;ZX Spectrum Next: TBBlue;2017;Z80N;3.5;2048.0;1;no
+mame:svi318;Spectravideo;SVI-318;1983;Zilog Z80;3.579545;16.0;2;no
+mame:svi328;Spectravideo;SVI-328;1983;Zilog Z80;3.579545;64.0;2;no
+mame:svi728;Spectravideo;SVI-728;1984;Zilog Z80;3.579545;;2;no
+mame:svi738;Spectravideo;SVI-738;1985 | 1987;Zilog Z80;3.579545;;5;no
+mame:svi738pl;Spectravideo;SVI-738 (MSX1, Poland);1986;Zilog Z80;3.579545;;1;no
+mame:microeng;Spectrum Eletronica (SCOPUS);Micro Engenho;1982;MOS Technology 6502;1.0218;48.0;1;no
+mame:sun4_60;Sun Microsystems;SPARCstation 1 (Sun 4/60);1989;Sun SPARC v7;20.0;16384.0;1;no
+mame:sun4_65;Sun Microsystems;SPARCstation 1+ (Sun 4/65);1990;Sun SPARC v7;25.0;16384.0;1;no
+mame:sun_s10;Sun Microsystems;SPARCstation 10 (Sun S10);1992;Sun SPARC v7;20.0;16384.0;1;no
+mame:sun4_75;Sun Microsystems;SPARCstation 2 (Sun 4/75);1990;Sun SPARC v7;40.0;16384.0;1;no
+mame:sun_s20;Sun Microsystems;SPARCstation 20;1994;Sun SPARC v7;20.0;16384.0;1;no
+mame:sun4_25;Sun Microsystems;SPARCstation ELC (Sun 4/25);1992;Sun SPARC v7;33.0;65536.0;1;no
+mame:sun4_40;Sun Microsystems;SPARCstation IPC (Sun 4/40);1990;Sun SPARC v7;25.0;16384.0;1;no
+mame:sun4_50;Sun Microsystems;SPARCstation IPX (Sun 4/50);1991;Sun SPARC v7;40.0;16384.0;1;no
+mame:sun4_20;Sun Microsystems;SPARCstation SLC (Sun 4/20);;Sun SPARC v7;20.0;16384.0;1;no
+mame:sun2_120;Sun Microsystems;Sun 2/120;1984;Motorola MC68010;9.8304;2048.0;1;no
+mame:sun2_50;Sun Microsystems;Sun 2/50;1984;Motorola MC68010;9.8304;2048.0;1;no
+mame:sun3_110;Sun Microsystems;Sun 3/110;;Motorola MC68020;16.67;4096.0;1;no
+mame:sun3_260;Sun Microsystems;Sun 3/260/280;;Motorola MC68020;25.0;32768.0;1;no
+mame:sun3_460;Sun Microsystems;Sun 3/460/470/480;1989;Motorola MC68030;33.0;;1;no
+mame:sun3_50;Sun Microsystems;Sun 3/50;;Motorola MC68020;15.7;4096.0;1;no
+mame:sun3_60;Sun Microsystems;Sun 3/60;1988;Motorola MC68020;20.0;4096.0;1;no
+mame:sun3_150;Sun Microsystems;Sun 3/75/140/150/160/180;1985;Motorola MC68020;16.67;4096.0;1;no
+mame:sun3_80;Sun Microsystems;Sun 3/80;1989;Motorola MC68030;20.0;;1;no
+mame:sun3_e;Sun Microsystems;Sun 3/E;;Motorola MC68020;20.0;4096.0;1;no
+mame:sun4_110;Sun Microsystems;Sun 4/110;;Sun SPARC v7;16.67;16384.0;1;no
+mame:sun4_300;Sun Microsystems;Sun 4/3x0;1987;Sun SPARC v7;16.67;16384.0;1;no
+mame:sun4_400;Sun Microsystems;Sun 4/4x0;;Sun SPARC v7;16.67;16384.0;1;no
+mame:sun1;Sun Microsystems;Sun-1;1982;;;;1;no
+mame:ultra45;Sun Microsystems;Ultra 45;1996;Sun SPARC v8;20.0;;1;no
+mame:tadpc200b;Talent;DPC-200 (MSX1, Argentina, international keyboard);1986;Zilog Z80;3.579545;;1;no
+mame:tadpc200;Talent;DPC-200 (MSX1, Argentina, Spanish keyboard);1986;Zilog Z80;3.579545;;1;no
+mame:tadpc200a;Talent;DPC-200A (MSX1, Argentina);1988;Zilog Z80;3.579545;;1;no
+mame:tpc310;Talent;TPC-310 (MSX2, Argentina);1987;Zilog Z80;3.579545;;1;no
+mame:tpp311;Talent;TPP-311 (MSX2, Argentina);1987;Zilog Z80;3.579545;;1;no
+mame:tps312;Talent;TPS-312 (MSX2, Argentina);1987;Zilog Z80;3.579545;;1;no
+mame:coco;Tandy;Color Computer 1/2;1980;Motorola MC6809E;0.894886;64.0;1;no
+mame:coco2b;Tandy;Color Computer 2B;;Motorola MC6809E;0.894886;64.0;1;no
+mame:coco3;Tandy;Color Computer 3;1986;Motorola MC6809E;0.889843 | 0.894886;512.0;2;no
+mame:deluxecoco;Tandy;Deluxe Color Computer;1983;Motorola MC6809E;0.894886;64.0;1;no
+mame:mc10;Tandy;MC-10;1983;Motorola MC6803;3.579545;4.0;1;no
+mame:t1000hx;Tandy;Tandy 1000 HX;1987;Intel 8088;8.0;640.0;1;no
+mame:t1000rl;Tandy;Tandy 1000 RL;1989;Intel 8086;9.545454;640.0;1;no
+mame:t1000sl2;Tandy;Tandy 1000 SL/2;1988;Intel 8086;8.0;640.0;1;no
+mame:t1000sx;Tandy;Tandy 1000 SX;1987;Intel 8088;8.0;640.0;1;no
+mame:t1000tl;Tandy;Tandy 1000 TL;1988;Intel 80286;14.318181;640.0;1;no
+mame:t1000tl2;Tandy;Tandy 1000 TL/2;1989;Intel 80286;14.318181;640.0;1;no
+mame:t1000tx;Tandy;Tandy 1000 TX;1987;Intel 80286;14.318181;640.0;1;no
+mame:tandy2k;Tandy;Tandy 2000;1983;Intel 80186;16.0;128.0;1;no
+mame:tandy2khd;Tandy;Tandy 2000HD;1983;Intel 80186;16.0;128.0;1;no
+mame:trs80m16;Tandy;TRS-80 Model 16;1982;Motorola MC68000 | Zilog Z80;4.0 | 6.0;256.0;1;no
+mame:trs80m4;Tandy;TRS-80 Model 4;1980;Zilog Z80;2.02752;64.0;1;no
+mame:trs80m4p;Tandy;TRS-80 Model 4P;1983;Zilog Z80;2.02752;64.0;1;no
+mame:trs80;Tandy;TRS-80 Model I (Level I Basic);1977;Zilog Z80;1.774083;;1;no
+mame:trs80l2;Tandy;TRS-80 Model I (Level II Basic);1978;Zilog Z80;1.774083;;1;no
+mame:trs80m2;Tandy;TRS-80 Model II;1979;Zilog Z80;4.0;64.0;1;no
+mame:trs80m3;Tandy;TRS-80 Model III;1980;Zilog Z80;2.02752;;1;no
+mame:trs80pc3;Tandy;TRS-80 Pocket Computer PC-3;1983;Sharp SC61860;0.192;;1;no
+mame:micron;Tangerine;Micron;1980;MOS Technology 6502;0.75;;1;no
+mame:mt65;Tangerine;Microtan 65;1979;MOS Technology 6502;0.75;;1;no
+mame:mt6809;Tangerine;Microtan 6809 System;1984;Motorola MC6809;6.0;;1;no
+mame:orica;Tangerine;Oric Atmos;1984;MOS Technology 6502;1.0;;1;no
+mame:telstrat;Tangerine;Oric Telestrat;1986;MOS Technology 6502;1.0;;1;no
+mame:oric1;Tangerine;Oric-1;1983;MOS Technology 6502;1.0;;1;no
+mame:spinveti;Tangerine/ETI;Space Invasion (ETI);1980;MOS Technology 6502;0.75;;1;no
+mame:alphatan;Tantel;AlphaTantel;1981;MOS Technology 6504;4.43;;1;no
+mame:einst256;Tatung;Einstein 256;1986;Zilog Z80;4.0;64.0;1;no
+mame:einstein;Tatung;Einstein TC-01;1984;Zilog Z80;4.0;64.0;1;no
+mame:t4426;Terco AB;Terco 4426 CNC Programming station;1986;Motorola MC6809E;0.894886;64.0;1;no
+mame:tesa6240;Tesa Etikett;Etikettendrucker 6240;1984;MOS Technology 6510;0.985248;64.0;1;no
+mame:mo5;Thomson;MO5;1984;Motorola MC6809E;1.0;112.0;1;no
+mame:mo5nr;Thomson;MO5 NR;1986;Motorola MC6809E;1.0;128.0;1;no
+mame:mo5e;Thomson;MO5E;1986;Motorola MC6809E;1.0;112.0;1;no
+mame:mo6;Thomson;MO6;1986;Motorola MC6809E;1.0;128.0;1;no
+mame:t9000;Thomson;T9000;1980;Motorola MC6809;4.0;40.0;1;no
+mame:to7;Thomson;TO7;1982;Motorola MC6809;4.0;40.0;1;no
+mame:to770;Thomson;TO7/70;1984;Motorola MC6809E;1.0;128.0;2;no
+mame:to8;Thomson;TO8;1986;Motorola MC6809E;1.0;512.0;1;no
+mame:to8d;Thomson;TO8D;1987;Motorola MC6809E;1.0;512.0;1;no
+mame:to9;Thomson;TO9;1985;Motorola MC6809E;1.0;192.0;1;no
+mame:to9p;Thomson;TO9+;1986;Motorola MC6809E;1.0;512.0;1;no
+mame:to16;Thomson SIMIV;TO16;1987;Intel 8088;4.772727;640.0;1;no
+mame:tc2048;Timex of Portugal;TC-2048;1984;Zilog Z80;3.5;48.0;1;no
+mame:ts1000;Timex Sinclair;Timex Sinclair 1000;1982;Zilog Z80;3.25;2.0;1;no
+mame:ts1500;Timex Sinclair;Timex Sinclair 1500;1983;Zilog Z80;3.25;16.0;1;no
+mame:ts2068;Timex Sinclair;TS-2068;1983;Zilog Z80;3.528;48.0;1;no
+mame:cfa3000bp;Tinsley Medical Instruments;Henson CFA 3000 (B+);;MOS Technology 6502;2.0;64.0;1;no
+mame:cfa3000;Tinsley Medical Instruments;Henson CFA 3000 (Master);1989;GTE G65SC12;2.0;128.0;1;no
+mame:torchf;Torch Computers;Torch CF240;1982;MOS Technology 6502;2.0;32.0;1;no
+mame:torchh;Torch Computers;Torch CH240;1983;MOS Technology 6502;2.0;32.0;1;no
+mame:torch301;Torch Computers;Torch Model 301;1984;MOS Technology 6502;2.0;32.0;1;no
+mame:torch725;Torch Computers;Torch Model 725;1984;MOS Technology 6502;2.0;32.0;1;no
+mame:fstm1;Toshiba;FS-TM1;1986;Zilog Z80;3.579545;;1;no
+mame:hx10;Toshiba;HX-10AA;1984;Zilog Z80;3.579545;;1;no
+mame:hx10d;Toshiba;HX-10D;1983;Zilog Z80;3.579545;;1;no
+mame:hx10dp;Toshiba;HX-10DP;1984;Zilog Z80;3.579545;;1;no
+mame:hx10e;Toshiba;HX-10E;1984;Zilog Z80;3.579545;;1;no
+mame:hx10f;Toshiba;HX-10F;1984;Zilog Z80;3.579545;;1;no
+mame:hx10s;Toshiba;HX-10S;1983;Zilog Z80;3.579545;;1;no
+mame:hx10sa;Toshiba;HX-10SA;1984;Zilog Z80;3.579545;;1;no
+mame:hx20;Toshiba;HX-20;1984;Zilog Z80;3.579545;;1;no
+mame:hx20e;Toshiba;HX-20E;1985;Zilog Z80;3.579545;;1;no
+mame:hx20i;Toshiba;HX-20I;1985;Zilog Z80;3.579545;;1;no
+mame:hx21;Toshiba;HX-21;1984;Zilog Z80;3.579545;;1;no
+mame:hx21f;Toshiba;HX-21F;1985;Zilog Z80;3.579545;;1;no
+mame:hx22;Toshiba;HX-22;1984;Zilog Z80;3.579545;;1;no
+mame:hx22i;Toshiba;HX-22I;1985;Zilog Z80;3.579545;;1;no
+mame:hx23;Toshiba;HX-23;1985;Zilog Z80;3.579545;;1;no
+mame:hx23f;Toshiba;HX-23F;1985;Zilog Z80;3.579545;;1;no
+mame:hx32;Toshiba;HX-32;1985;Zilog Z80;3.579545;;1;no
+mame:hx33;Toshiba;HX-33 w/HX-R702;1985;Zilog Z80;3.579545;;1;no
+mame:hx34;Toshiba;HX-34 w/HX-R703;1985;Zilog Z80;3.579545;;1;no
+mame:hx51i;Toshiba;HX-51I;1985;Zilog Z80;3.579545;;1;no
+mame:paso1600;Toshiba;Pasopia 1600;;Intel 8086;8.0;;1;no
+mame:pasopia7;Toshiba;Pasopia 7 PA7007 (Raster);1983;Zilog Z80;3.9936;;1;no
+mame:pasopia7lcd;Toshiba;Pasopia 7 PA7007 with PA7170 (LCD);1983;Zilog Z80;3.9936;;1;no
+mame:pasopia;Toshiba;Personal Computer Pasopia PA7010;1982;Zilog Z80;3.9936;;1;no
+mame:tosh1000;Toshiba;Toshiba T1000;1987;Intel 8088;5.0;512.0;1;no
+mame:alphatp10;Triumph-Adler;Alphatronic P10;1985;Intel 8088;4.772727;640.0;1;no
+mame:alphatp50;Triumph-Adler;Alphatronic P50;1985;Intel 80186;16.0;512.0;1;no
+mame:ta1700pc;Triumph-Adler;TA 1700-PC;1984;Intel 80186;16.0;512.0;1;no
+mame:uk2086;Unipolbrit;UK-2086 ver. 1.2;1986;Zilog Z80;3.528;48.0;1;no
+mame:uniap2pt;Unitron Eletronica;Unitron AP II (in Brazilian Portuguese);1982;MOS Technology 6502;1.0218;48.0;1;no
+mame:uniap2en;Unitron Eletronica;Unitron AP II (in English);1982;MOS Technology 6502;1.0218;48.0;1;no
+mame:uniap2ti;Unitron Eletronica;Unitron AP II+ (Teclado Inteligente);1984;MOS Technology 6502;1.0218;48.0;1;no
+mame:hstrtpls;Vendex;HeadStart Plus;;Intel 8088;4.772727;640.0;1;no
+mame:hc5;Victor;HC-5;1983;Zilog Z80;3.579545;;1;no
+mame:hc6;Victor;HC-6;1984;Zilog Z80;3.579545;;1;no
+mame:hc7;Victor;HC-7;1985;Zilog Z80;3.579545;;1;no
+mame:victhc80;Victor;HC-80;1986;Zilog Z80;3.579545;;1;no
+mame:victhc90;Victor;HC-90;1986;Zilog Z80;3.579545;;1;no
+mame:victhc90a;Victor;HC-90A;1986;Zilog Z80;3.579545;;1;no
+mame:victhc95;Victor;HC-95;1986;Zilog Z80;3.579545;;1;no
+mame:victhc95a;Victor;HC-95A;1986;Zilog Z80;3.579545;;1;no
+mame:vpcii;Victor;VPC II;1987;Intel 8086;4.772727;640.0;1;no
+mame:elppa;Victor do Brasil;Elppa II+;;MOS Technology 6502;1.0218;48.0;1;no
+mame:laser128;Video Technology;Laser 128;1987;WDC W65C02;1.0218;128.0;1;no
+mame:laser128o;Video Technology;Laser 128 (original hardware);1987;WDC W65C02;1.0218;128.0;1;no
+mame:las128ex;Video Technology;Laser 128ex (version 4.5);1988;WDC W65C02;1.0218;128.0;1;no
+mame:las128e2;Video Technology;Laser 128ex2 (version 6.1);1988;WDC W65C02;1.0218;128.0;1;no
+mame:pentagon;Vladimir Drozdov;Pentagon 128K;1991;Zilog Z80;3.5;128.0;1;no
+mame:laser_turbo_xt;VTech;Laser Turbo XT;1988;Intel 8088;4.772727;640.0;1;no
+mame:laser_xt3;VTech;Laser XT/3;1989;Intel 8088;4.772727;640.0;1;no
+mame:cx5f1;Yamaha;CX5F w/SFG01;1984;Zilog Z80;3.579545;;1;no
+mame:cx5f;Yamaha;CX5F w/SFG05;1984;Zilog Z80;3.579545;;1;no
+mame:cx5m128;Yamaha;CX5M-128;1984;Zilog Z80;3.579545;;1;no
+mame:cx5miib;Yamaha;CX5MIIB;1984;Zilog Z80;3.579545;;1;no
+mame:cx5mu;Yamaha;CX5MU;1984;Zilog Z80;3.579545;;1;no
+mame:cx7128;Yamaha;CX7/128;1985;Zilog Z80;3.579545;;1;no
+mame:cx7m128;Yamaha;CX7M/128;1985;Zilog Z80;3.579545;;1;no
+mame:sx100;Yamaha;SX-100;1985;Zilog Z80;3.579545;;1;no
+mame:y503iiire;Yamaha;YIS-503 III R (MSX2, Estonian);;Zilog Z80;3.579545;;1;no
+mame:y503iiir;Yamaha;YIS-503 III R (MSX2, USSR);1985;Zilog Z80;3.579545;;1;no
+mame:yis303;Yamaha;YIS303;1984;Zilog Z80;3.579545;;1;no
+mame:yis503;Yamaha;YIS503;1984;Zilog Z80;3.579545;;1;no
+mame:yis503f;Yamaha;YIS503F;1984;Zilog Z80;3.579545;;1;no
+mame:yis503ii;Yamaha;YIS503II;1985;Zilog Z80;3.579545;;1;no
+mame:y503iir2;Yamaha;YIS503IIR (MSX1, Estonian);1986;Zilog Z80;3.579545;;1;no
+mame:y503iir;Yamaha;YIS503IIR (MSX1, USSR);1985;Zilog Z80;3.579545;;1;no
+mame:yis604;Yamaha;YIS604/128;1985;Zilog Z80;3.579545;;1;no
+mame:y805128;Yamaha;YIS805/128;1986;Zilog Z80;3.579545;;1;no
+mame:y805128r2e;Yamaha;YIS805/128R2 (MSX2, Estonian);;Zilog Z80;3.579545;;1;no
+mame:y805128r2;Yamaha;YIS805/128R2 (MSX2, USSR);1986;Zilog Z80;3.579545;;1;no
+mame:y805256;Yamaha;YIS805/256;;Zilog Z80;3.579545;;1;no
+mame:yc64;Yashica;YC-64;1984;Zilog Z80;3.579545;;1;no
+mame:mx64;Yeno;MX64;1985;Zilog Z80;3.579545;;1;no
+mame:pc8300;Your Computer;PC8300;1984;Zilog Z80;3.25;16.0;1;no
+mame:zdsupers;Zenith Data Systems;SuperSport;1987;Intel 8088;4.772727;640.0;1;no
+mame:z100;Zenith Data Systems;Z-100;1982;Intel 8088;5.0;;1;no
+mame:zdz150;Zenith Data Systems;Z-150 Series;;Intel 8088;4.772727;640.0;1;no
+mame:zdz160;Zenith Data Systems;Z-160 Series;;Intel 8088;4.772727;640.0;1;no
+mame:zdz180;Zenith Data Systems;Z-180 Series;1987;Intel 8088;4.772727;640.0;1;no
+mame:z90;Zenith Data Systems;Z-90;1981;Zilog Z80;2.048;64.0;1;no

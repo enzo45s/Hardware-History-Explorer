@@ -17,6 +17,7 @@ services:
       DATABASE_URL: postgresql+psycopg://history:history_dev@db:5432/hardware_history
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4.1-mini}
+      HHE_MANUFACTURER_ENRICHMENT_AUTO: ${HHE_MANUFACTURER_ENRICHMENT_AUTO:-1}
       CORS_ORIGINS: http://localhost:5173,http://localhost:8080
       UPLOAD_DIR: /code/uploads
     volumes:
@@ -26,6 +27,9 @@ services:
         condition: service_healthy
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=3)"]
+      # Whole-catalog rule upgrades run transactionally before serving requests.
+      # A successful early check still makes normal starts healthy immediately.
+      start_period: 600s
       interval: 5s
       timeout: 5s
       retries: 15

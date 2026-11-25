@@ -1,6 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { computerDraft, computerPayload, newComputer, sourcePayload } from '../src/admin-data.js';
+import { computerDraft, computerPayload, newComputer, newManufacturer, manufacturerPayload, sourcePayload } from '../src/admin-data.js';
+
+test('manufacturer payload keeps known metadata and excludes counts and IDs', () => {
+  assert.deepEqual(manufacturerPayload({ ...newManufacturer(), name: ' Example ', id: 1, computer_count: 42 }),
+    { name: 'Example', country: null, founded: null, website: null, legal_name: null, description: null, description_author: null, description_source_url: null, description_license_url: null, headquarters: null, founders: null,
+      ceased: null, logo_url: null, logo_author: null, logo_license: null, logo_license_url: null, logo_source_url: null, source_ids: [] });
+  assert.deepEqual(manufacturerPayload({ name: ' Example ', country: ' Italia ', founded: '1980-02-03', website: ' https://example.org ' }),
+    { name: 'Example', country: 'Italia', founded: '1980-02-03', website: 'https://example.org' });
+});
 
 test('editing preserves nested IDs, precision, zero values and source associations', () => {
   const dto = {
@@ -47,4 +55,49 @@ test('source payload excludes server fields and keeps optional dates unknown', (
   assert.equal(value.url, null);
   assert.equal(value.publication_date, null);
   assert.equal(value.access_date, '2026-11-11');
+});
+
+test('readable editor labels round trip raw import keys until explicitly edited', () => {
+  const dto = { ...newComputer(), id: 20, model_name: 'Example', manufacturer_id: 1,
+    description: 'Originale MAME', display_description: 'Descrizione leggibile',
+    configurations: [{ id: 5, variant_name: 'MAME example — Example', display_name: 'Configurazione di riferimento',
+      description: 'Configurazione emulata MAME; registrazione: Example.', display_description: '',
+      specifications: [{ id: 6, component_type: 'CPU', property_name: 'Modello emulato (MAME)',
+        display: { component_type: 'CPU', property_name: 'Modello' }, text_value: '6502', source_ids: [3] }] }] };
+  const draft = computerDraft(dto);
+  assert.equal(draft.description, 'Descrizione leggibile');
+  assert.equal(draft.configurations[0].variant_name, 'Configurazione di riferimento');
+  assert.equal(draft.configurations[0].description, '');
+  assert.equal(draft.configurations[0].specifications[0].property_name, 'Modello');
+  draft.model_name = 'Example aggiornato';
+  const sent = computerPayload(draft);
+  assert.equal(sent.description, dto.description);
+  assert.equal(sent.configurations[0].variant_name, dto.configurations[0].variant_name);
+  assert.equal(sent.configurations[0].description, dto.configurations[0].description);
+  assert.equal(sent.configurations[0].specifications[0].property_name, 'Modello emulato (MAME)');
+  assert.deepEqual(sent.configurations[0].specifications[0].source_ids, [3]);
+  assert.equal(JSON.stringify(sent).includes('_displayOriginal'), false);
+  assert.equal(JSON.stringify(sent).includes('display_name'), false);
+  draft.description = 'Testo scritto a mano';
+  draft.configurations[0].variant_name = 'Revisione A';
+  draft.configurations[0].specifications[0].property_name = 'Modello documentato';
+  const edited = computerPayload(draft);
+  assert.equal(edited.description, 'Testo scritto a mano');
+  assert.equal(edited.configurations[0].variant_name, 'Revisione A');
+  assert.equal(edited.configurations[0].specifications[0].property_name, 'Modello documentato');
+  assert.equal(dto.configurations[0].specifications[0].property_name, 'Modello emulato (MAME)');
+});
+
+test('company profile payload preserves partial dates, citations and logo attribution without API-only fields', () => {
+  const draft = { ...newManufacturer(), name: ' Azienda ', founded: '1980', ceased: '1995-06',
+    description: ' Storia italiana ', description_author: ' Collaboratori sintetici ', description_source_url: ' https://example.org/revision ', description_license_url: ' https://example.org/terms ', source_ids: [12], sources: [{ id: 12 }], catalog_year_range: [1981, 1990],
+    logo_url: ' https://example.org/logo.png ', logo_license: ' Condizioni ', legal_name: ' Azienda S.p.A. ' };
+  const before = structuredClone(draft), payload = manufacturerPayload(draft);
+  assert.equal(payload.founded, '1980'); assert.equal(payload.ceased, '1995-06');
+  assert.equal(payload.description, 'Storia italiana'); assert.equal(payload.legal_name, 'Azienda S.p.A.');
+  assert.equal(payload.description_author, 'Collaboratori sintetici'); assert.equal(payload.description_source_url, 'https://example.org/revision');
+  assert.equal(payload.description_license_url, 'https://example.org/terms');
+  assert.equal(payload.logo_url, 'https://example.org/logo.png'); assert.deepEqual(payload.source_ids, [12]);
+  assert(!Object.hasOwn(payload, 'sources') && !Object.hasOwn(payload, 'catalog_year_range'));
+  assert.deepEqual(draft, before);
 });

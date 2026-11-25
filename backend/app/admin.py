@@ -2,14 +2,17 @@
 from datetime import date
 from uuid import uuid4
 from typing import Annotated
+import unicodedata
 
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, field_validator, model_validator
-from sqlalchemy import select
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, field_validator, model_validator
+from sqlalchemy import delete, func, select, text, update
 from sqlalchemy.exc import IntegrityError
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, selectinload
 
 from .models import Category, Computer, Configuration, Manufacturer, Market, Release, Source, Specification
+
+from .catalog_display import description_text, configuration_displays, specification_display
 
 PositiveID = Annotated[int, Field(gt=0)]
 IDs = Annotated[list[PositiveID], Field(max_length=500)]
@@ -127,6 +130,85 @@ class ReferenceInput(Input):
     name: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100)]
 
 
+class ManufacturerInput(Input):
+    name: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=160)]
+    country: str | None = Field(default=None, max_length=100)
+    founded: str | None = None
+    ceased: str | None = None
+    website: str | None = Field(default=None, max_length=500)
+    legal_name: str | None = Field(default=None,max_length=250)
+    description: str | None = Field(default=None,max_length=20000)
+    description_author: str | None = Field(default=None,max_length=350)
+    description_source_url: str | None = Field(default=None,max_length=800)
+    description_license_url: str | None = Field(default=None,max_length=800)
+    headquarters: str | None = Field(default=None,max_length=250)
+    founders: str | None = Field(default=None,max_length=500)
+    logo_url: str | None = Field(default=None,max_length=800)
+    logo_author: str | None = Field(default=None,max_length=350)
+    logo_license: str | None = Field(default=None,max_length=160)
+    logo_license_url: str | None = Field(default=None,max_length=800)
+    logo_source_url: str | None = Field(default=None,max_length=800)
+    source_ids: IDs | None = None
+
+    @field_validator('name')
+    @classmethod
+    def clean_name(cls, value):
+        return ' '.join(value.split())
+
+    @field_validator('founded','ceased')
+    @classmethod
+    def historical_company_date(cls, value):
+        historical_date(value)
+        return value
+
+    @field_validator('website','logo_url','logo_source_url','logo_license_url','description_source_url','description_license_url', mode='before')
+    @classmethod
+    def valid_website(cls, value):
+        if value is None:
+            return None
+        url = HttpUrl(value)
+        if url.username is not None or url.password is not None:
+            raise ValueError('URL HTTP(S) senza credenziali richiesto')
+        return str(url)
+
+
+def apply_manufacturer(db,item,data):
+    from .manufacturer_profiles import DATE_FIELDS,date_label
+    dates={field:historical_date(getattr(data,field) if field in data.model_fields_set else
+        date_label(getattr(item,field),getattr(item,field+'_precision'))) for field in DATE_FIELDS}
+    start=dates['founded'][0];end,precision=dates['ceased']
+    if start and end:
+        from calendar import monthrange
+        upper=date(end.year,12,31) if precision=='year' else date(end.year,end.month,monthrange(end.year,end.month)[1]) if precision=='month' else end
+        if start>upper:raise HTTPException(422,'La cessazione precede la fondazione.')
+    citation=references(db,Source,data.source_ids) if data.source_ids is not None else None
+    if 'description' in data.model_fields_set and data.description!=item.description:
+        # A manual rewrite must not retain credits for the previous text.
+        for field in ('description_author','description_source_url','description_license_url'):
+            if field not in data.model_fields_set:setattr(item,field,None)
+    for field in data.model_fields_set-{'source_ids',*DATE_FIELDS}:setattr(item,field,getattr(data,field))
+    for field in DATE_FIELDS:
+        if field in data.model_fields_set:
+            setattr(item,field,dates[field][0]);setattr(item,field+'_precision',dates[field][1])
+    if citation is not None:item.sources=citation
+
+
+def catalog_lock(db):
+    """Keep the same lock order as imports, photo jobs and catalog reset."""
+    if db.bind.dialect.name == 'postgresql':
+        db.execute(text('SELECT pg_advisory_xact_lock(68484931)'))
+    else:
+        db.execute(text('BEGIN IMMEDIATE'))
+
+
+def manufacturer_data(db, item, count=None):
+    if count is None:
+        count = db.scalar(select(func.count()).select_from(Computer).where(Computer.manufacturer_id == item.id))
+    from .manufacturer_profiles import profile_data
+    return {'id': item.id, 'name': item.name, 'country': item.country,
+            'website': item.website, 'computer_count': count, **profile_data(item)}
+
+
 def references(db, model, ids):
     ordered = list(dict.fromkeys(ids))
     rows = {r.id: r for r in db.scalars(select(model).where(model.id.in_(ordered)))}
@@ -141,8 +223,8 @@ def date_text(value, precision):
     return str(value.year).zfill(4) if precision == 'year' else f'{value.year:04d}-{value.month:02d}' if precision == 'month' else value.isoformat()
 
 
-def editable(c):
-    return {
+def editable(c, readable=False):
+    result = {
         'id': c.id, 'model_name': c.model_name, 'manufacturer_id': c.manufacturer_id,
         'description': c.description, 'announcement_date': date_text(c.announcement_date, c.announcement_precision),
         'category_ids': [r.id for r in c.categories], 'source_ids': [r.id for r in c.sources],
@@ -160,6 +242,16 @@ def editable(c):
             } for s in sorted(cfg.specifications, key=lambda s: s.id)]
         } for cfg in sorted(c.configurations, key=lambda cfg: cfg.id)]
     }
+
+    # Opt in to presentation metadata; default editor DTO remains round-trippable.
+    if readable:
+        result['display_description'] = description_text(c.description)
+        displays = configuration_displays(c.configurations, c.model_name)
+        for cfg in result['configurations']:
+            cfg.update(displays[cfg['id']])
+            for spec in cfg['specifications']:
+                spec['display'] = specification_display(spec)
+    return result
 
 
 def apply_computer(db, c, data):
@@ -198,7 +290,12 @@ def apply_computer(db, c, data):
             r = releases.get(entry.id) or Release()
             for field in ('market_id', 'price', 'currency', 'price_type'):
                 setattr(r, field, getattr(entry, field))
-            r.release_date, r.release_precision = historical_date(entry.release_date)
+            release_date, release_precision = historical_date(entry.release_date)
+            if (r.release_date,r.release_precision)!=(release_date,release_precision):
+                r.catalog_details={k:v for k,v in (r.catalog_details or {}).items() if k not in {
+                    'date_evidence','date_sources','reference_dates','reference_note','commercialization_notes','date_scope'}}
+                r.catalog_details={**r.catalog_details,'date_manual':True}
+            r.release_date, r.release_precision = release_date, release_precision
             r.discontinuation_date, r.discontinuation_precision = historical_date(entry.discontinuation_date)
             if entry.source_ids is not None:
                 r.sources = references(db, Source, entry.source_ids)
@@ -213,10 +310,14 @@ def apply_computer(db, c, data):
         for entry in data.configurations:
             cfg = configs.get(entry.id) or Configuration()
             cfg.variant_name, cfg.description = entry.variant_name, entry.description
+            if (cfg.catalog_details or {}).get('catalog_clean'):
+                cfg.catalog_details={**cfg.catalog_details,'display_name':entry.variant_name}
             specs = {s.id: s for s in cfg.specifications}
             children = []
             for value in entry.specifications:
                 s = specs.get(value.id) or Specification()
+                if any(getattr(s,field,None)!=getattr(value,field) for field in ('component_type','component_name','property_name','numeric_value','text_value','unit')):
+                    s.catalog_details={}
                 for field in ('component_type', 'component_name', 'property_name', 'numeric_value', 'text_value', 'unit'):
                     setattr(s, field, getattr(value, field))
                 if value.source_ids is not None:
@@ -239,27 +340,127 @@ def create_admin_router(get_db):
             raise HTTPException(409, 'Dati in conflitto con un elemento esistente; ricarica e riprova') from exc
 
     @router.get('/admin/computers/{computer_id}')
-    def edit_computer(computer_id: int, db: Session = Depends(get_db)):
+    def edit_computer(computer_id: int, readable: bool = False, db: Session = Depends(get_db)):
         c = db.get(Computer, computer_id)
         if c is None:
             raise HTTPException(404, 'Calcolatore non trovato')
-        return editable(c)
+        return editable(c, readable)
 
     @router.post('/computers', status_code=201)
-    def create_computer(data: ComputerInput, db: Session = Depends(get_db)):
+    def create_computer(data: ComputerInput, readable: bool = False, db: Session = Depends(get_db)):
+        catalog_lock(db)
         c = Computer()
         apply_computer(db, c, data)
         commit(db)
-        return editable(c)
+        return editable(c, readable)
 
     @router.put('/computers/{computer_id}')
-    def update_computer(computer_id: int, data: ComputerInput, db: Session = Depends(get_db)):
+    def update_computer(computer_id: int, data: ComputerInput, readable: bool = False, db: Session = Depends(get_db)):
+        catalog_lock(db)
         c = db.scalar(select(Computer).where(Computer.id == computer_id).with_for_update())
         if c is None:
             raise HTTPException(404, 'Calcolatore non trovato')
         apply_computer(db, c, data)
         commit(db)
-        return editable(c)
+        return editable(c, readable)
+
+    @router.delete('/computers/{computer_id}', status_code=204)
+    def delete_computer(computer_id: int, db: Session = Depends(get_db)):
+        # Lazy imports avoid the Input/normalization/router import cycle.
+        from .import_models import CatalogReconciliation, ImportRow
+        from .importing.reconcile import snapshot
+        from .importing.bulk1000bit import BulkTarget
+        from .photo_jobs import PhotoItem, PhotoJob
+        catalog_lock(db)
+        c = db.scalar(select(Computer).where(Computer.id == computer_id).with_for_update())
+        if c is None:
+            raise HTTPException(404, 'Calcolatore non trovato')
+        original = snapshot(db, 'computer', c, c)
+        db.add(CatalogReconciliation(entity='computer_delete', source_id=c.id, target_id=c.id,
+            note='Eliminazione manuale del calcolatore dal pannello amministrativo.', snapshot=original))
+        # Invalidate staged matches and JSON candidates as well as foreign keys.
+        related_rows = [row['id'] for row in original['import_rows']]
+        for row in db.scalars(select(ImportRow).where(ImportRow.id.in_(related_rows))):
+            if computer_id in row.candidates:
+                row.candidates = [cid for cid in row.candidates if cid != computer_id]
+            if row.computer_id == computer_id:
+                if row.status in ('ready', 'ambiguous', 'failed'):
+                    row.status, row.error = 'skipped', 'Calcolatore eliminato dal catalogo; prepara una nuova anteprima per reimportarlo.'
+                row.computer_id = None
+        jobs = list(db.scalars(select(PhotoItem.job_id).where(PhotoItem.computer_id == computer_id, PhotoItem.status == 'pending')).unique())
+        db.execute(update(PhotoItem).where(PhotoItem.computer_id == computer_id, PhotoItem.status == 'pending')
+            .values(status='skipped', error='Calcolatore eliminato dal catalogo.').execution_options(synchronize_session=False))
+        db.execute(update(BulkTarget).where(BulkTarget.computer_id == computer_id).values(status='removed')
+            .execution_options(synchronize_session=False))
+        db.flush()
+        db.execute(delete(Computer).where(Computer.id == computer_id))
+        for jid in jobs:
+            if not db.scalar(select(PhotoItem.id).where(PhotoItem.job_id == jid, PhotoItem.status == 'pending').limit(1)):
+                db.execute(update(PhotoJob).where(PhotoJob.id == jid, PhotoJob.status.in_(['ready', 'paused']))
+                    .values(status='completed', active_key=None, lease_token=None, lease_until=None))
+        commit(db)
+
+    @router.get('/manufacturers')
+    def list_manufacturers(db: Session = Depends(get_db)):
+        rows = db.execute(select(Manufacturer, func.count(Computer.id)).options(selectinload(Manufacturer.sources)).outerjoin(Computer, Computer.manufacturer_id == Manufacturer.id)
+            .group_by(Manufacturer.id).order_by(func.lower(Manufacturer.name), Manufacturer.id))
+        return [manufacturer_data(db, item, count) for item, count in rows]
+
+    @router.get('/manufacturers/{manufacturer_id}')
+    def get_manufacturer(manufacturer_id: int, db: Session = Depends(get_db)):
+        item = db.get(Manufacturer, manufacturer_id)
+        if item is None:
+            raise HTTPException(404, 'Produttore non trovato')
+        return manufacturer_data(db,item)
+
+    @router.get('/manufacturers/{manufacturer_id}/profile')
+    def manufacturer_profile(manufacturer_id: int, db: Session = Depends(get_db)):
+        result=get_manufacturer(manufacturer_id,db)
+        first=select(Release.computer_id,func.min(Release.release_date).label('date')).group_by(Release.computer_id).subquery()
+        period=db.execute(select(func.min(first.c.date),func.max(first.c.date)).join(Computer,Computer.id==first.c.computer_id).where(Computer.manufacturer_id==manufacturer_id)).one()
+        result['catalog_year_range']=[value.year for value in period] if all(period) else None
+        return result
+
+    def unique_manufacturer(db, data, excluding=None):
+        def key(name):
+            return unicodedata.normalize('NFKC', ' '.join(name.split())).casefold()
+        if any(item.id != excluding and key(item.name) == key(data.name) for item in db.scalars(select(Manufacturer))):
+            raise HTTPException(409, 'Un produttore con questo nome è già presente')
+
+    @router.post('/manufacturers', status_code=201)
+    def create_manufacturer(data: ManufacturerInput, db: Session = Depends(get_db)):
+        catalog_lock(db)
+        unique_manufacturer(db, data)
+        item = Manufacturer()
+        apply_manufacturer(db,item,data)
+        db.add(item); commit(db)
+        return manufacturer_data(db, item)
+
+    @router.put('/manufacturers/{manufacturer_id}')
+    def update_manufacturer(manufacturer_id: int, data: ManufacturerInput, db: Session = Depends(get_db)):
+        catalog_lock(db)
+        item = db.scalar(select(Manufacturer).where(Manufacturer.id == manufacturer_id).with_for_update())
+        if item is None:
+            raise HTTPException(404, 'Produttore non trovato')
+        unique_manufacturer(db, data, excluding=manufacturer_id)
+        apply_manufacturer(db,item,data)
+        commit(db)
+        return manufacturer_data(db, item)
+
+    @router.delete('/manufacturers/{manufacturer_id}', status_code=204)
+    def delete_manufacturer(manufacturer_id: int, db: Session = Depends(get_db)):
+        from .import_models import CatalogReconciliation
+        from .importing.reconcile import snapshot
+        catalog_lock(db)
+        item = db.scalar(select(Manufacturer).where(Manufacturer.id == manufacturer_id).with_for_update())
+        if item is None:
+            raise HTTPException(404, 'Produttore non trovato')
+        count = manufacturer_data(db, item)['computer_count']
+        if count:
+            raise HTTPException(409, f'Produttore collegato a {count} calcolatori: riassegnali prima di eliminarlo.')
+        db.add(CatalogReconciliation(entity='manufacturer_delete', source_id=item.id, target_id=item.id,
+            note='Eliminazione manuale di un produttore senza calcolatori.', snapshot=snapshot(db, 'manufacturer', item, item)))
+        db.delete(item); commit(db)
 
     def reference_endpoint(model):
         def create(data: ReferenceInput, db: Session = Depends(get_db)):
@@ -270,6 +471,6 @@ def create_admin_router(get_db):
             commit(db)
             return {'id': item.id, 'name': item.name}
         return create
-    for path, model in [('manufacturers', Manufacturer), ('categories', Category), ('markets', Market)]:
+    for path, model in [('categories', Category), ('markets', Market)]:
         router.add_api_route('/' + path, reference_endpoint(model), methods=['POST'], status_code=201)
     return router

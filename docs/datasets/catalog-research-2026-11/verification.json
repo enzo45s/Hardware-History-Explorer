@@ -1,0 +1,899 @@
+{
+  "package_checksum": "4b0d8d960cf3b6111271bbb7cabd267697c113880ef60435f011faba437a0998",
+  "counts_before": {
+    "archive_resets": 2,
+    "bit1000_bulk_jobs": 3,
+    "categories": 13,
+    "commons_photo_jobs": 6,
+    "manufacturers": 187,
+    "markets": 19,
+    "bit1000_bulk_pages": 7696,
+    "computers": 1152,
+    "bit1000_bulk_targets": 3315,
+    "computer_aliases": 140,
+    "computer_images": 620,
+    "configurations": 1190,
+    "facts": 959,
+    "import_identities": 2616,
+    "releases": 1162,
+    "reviews": 0,
+    "sales": 0,
+    "commons_photo_items": 5203,
+    "specifications": 7456
+  },
+  "counts_after": {
+    "archive_resets": 2,
+    "bit1000_bulk_jobs": 3,
+    "categories": 13,
+    "commons_photo_jobs": 6,
+    "manufacturers": 188,
+    "markets": 19,
+    "bit1000_bulk_pages": 7696,
+    "computers": 1154,
+    "bit1000_bulk_targets": 3315,
+    "computer_aliases": 142,
+    "computer_images": 651,
+    "configurations": 1192,
+    "facts": 986,
+    "import_identities": 2616,
+    "releases": 1164,
+    "reviews": 0,
+    "sales": 0,
+    "commons_photo_items": 5203,
+    "specifications": 7728
+  },
+  "unchanged_native_rows": {
+    "categories": {
+      "checked": 13,
+      "changed": []
+    },
+    "manufacturers": {
+      "checked": 187,
+      "changed": []
+    },
+    "markets": {
+      "checked": 19,
+      "changed": []
+    },
+    "computers": {
+      "checked": 1051,
+      "changed": []
+    },
+    "bit1000_bulk_targets": {
+      "checked": 3003,
+      "changed": []
+    },
+    "computer_aliases": {
+      "checked": 114,
+      "changed": []
+    },
+    "computer_images": {
+      "checked": 600,
+      "changed": []
+    },
+    "configurations": {
+      "checked": 1086,
+      "changed": []
+    },
+    "facts": {
+      "checked": 884,
+      "changed": []
+    },
+    "import_identities": {
+      "checked": 2363,
+      "changed": []
+    },
+    "releases": {
+      "checked": 1059,
+      "changed": []
+    },
+    "commons_photo_items": {
+      "checked": 4643,
+      "changed": []
+    },
+    "specifications": {
+      "checked": 6994,
+      "changed": []
+    }
+  },
+  "verified_claims_preserved": 98,
+  "all_existing_release_sale_review_rows_unchanged": true,
+  "indy_configuration_ids": [
+    1754,
+    1051,
+    1052,
+    1053
+  ],
+  "new_models": {
+    "Sol-20": {
+      "id": 1366,
+      "manufacturer": "Processor Technology",
+      "year": 1976,
+      "specifications": 9,
+      "sources": 3,
+      "photos": 1
+    },
+    "Laser 500": {
+      "id": 1367,
+      "manufacturer": "Video Technology",
+      "year": 1985,
+      "specifications": 9,
+      "sources": 2,
+      "photos": 1
+    }
+  },
+  "assistant_context_new_models_and_sources": true,
+  "replay_all_native_tables_unchanged": true,
+  "applied": {
+    "version": "catalog-research-2026-11-v1",
+    "checksum": "4b0d8d960cf3b6111271bbb7cabd267697c113880ef60435f011faba437a0998",
+    "created": 2,
+    "updated": 101,
+    "specifications_added": 287,
+    "specifications_corrected": 130,
+    "specifications_retired": 15,
+    "descriptions_updated": 47,
+    "curated_descriptions_preserved": 30,
+    "photographs_added": 31,
+    "renamed": 2,
+    "skipped": [],
+    "protected": [
+      {
+        "model_name": "CPC-330K KOBO",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "Kaypro 10",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "Kaypro 2x",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "Kaypro 4/84",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "Kaypro Robie",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-8801",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-8801FA",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-8801MA",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-8801MA2",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-8801MC",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-8801MH",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-8801mkII",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-8801mkIIFR",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-8801mkIIMR",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-8801mkIISR",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-88VA",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "PC-88VA2",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "Kaypro 10 - 1983",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "Kaypro II - 2/83",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      },
+      {
+        "model_name": "Kaypro IV - 4/83",
+        "property": "Capacità",
+        "reason": "Dato verificato o non riconducibile al legacy: conservato."
+      }
+    ],
+    "conflicts": [
+      {
+        "model_name": "CPC-330K KOBO",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 128.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 128.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9575
+        ]
+      },
+      {
+        "model_name": "Kaypro 10",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9603
+        ]
+      },
+      {
+        "model_name": "Kaypro 2x",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9605
+        ]
+      },
+      {
+        "model_name": "Kaypro 4/84",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9606
+        ]
+      },
+      {
+        "model_name": "Kaypro Robie",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9608
+        ]
+      },
+      {
+        "model_name": "PC-8801",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9621
+        ]
+      },
+      {
+        "model_name": "PC-8801FA",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9622
+        ]
+      },
+      {
+        "model_name": "PC-8801MA",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 192.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 192.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9623
+        ]
+      },
+      {
+        "model_name": "PC-8801MA2",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 192.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 192.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9624
+        ]
+      },
+      {
+        "model_name": "PC-8801MC",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 192.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 192.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9625
+        ]
+      },
+      {
+        "model_name": "PC-8801MH",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 192.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 192.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9626
+        ]
+      },
+      {
+        "model_name": "PC-8801mkII",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9627
+        ]
+      },
+      {
+        "model_name": "PC-8801mkIIFR",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9628
+        ]
+      },
+      {
+        "model_name": "PC-8801mkIIMR",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 192.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 192.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9629
+        ]
+      },
+      {
+        "model_name": "PC-8801mkIISR",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9630
+        ]
+      },
+      {
+        "model_name": "PC-88VA",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 512.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 512.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9631
+        ]
+      },
+      {
+        "model_name": "PC-88VA2",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 512.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 512.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9632
+        ]
+      },
+      {
+        "model_name": "Kaypro 10 - 1983",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9641
+        ]
+      },
+      {
+        "model_name": "Kaypro II - 2/83",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9642
+        ]
+      },
+      {
+        "model_name": "Kaypro IV - 4/83",
+        "property": "Capacità",
+        "retained": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KiB"
+        },
+        "incoming": {
+          "numeric_value": 64.0,
+          "text_value": null,
+          "unit": "KB"
+        },
+        "candidate_ids": [
+          9643
+        ]
+      }
+    ],
+    "import_job_id": 3069,
+    "claims": {
+      "pending": 702,
+      "conflict": 20
+    },
+    "specifications_created_before_normalization": 318,
+    "specifications_consolidated": 31,
+    "net_specifications_change": 272
+  },
+  "remaining_without_image": [
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "CPC-330K KOBO"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "DPC-200E"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "IQ-1000 DPC-100"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "IQ-1000 DPC-180"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "IQ-2000 CPC-300"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "X-II CPC-400"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "X-II CPC-400S"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-50A"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-50B"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-51"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPC-61"
+    },
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "Zemmix CPG-120 Normal"
+    },
+    {
+      "manufacturer": "Fenner",
+      "model_name": "DPC-200"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 2/84"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 4 plus88 - 4/83"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 4/84"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 4/84 plus88"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro 4x"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro New 2"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Omni II Logic Analyzer"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Kaypro PC"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-8801FA"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-8801MA"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-8801MA2"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-8801MC"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-8801MH"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-8801mkIIFR"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-8801mkIIMR"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-88VA2"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9801BX2/U2"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9801FS"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9801RS"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9801US"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Ap2/U8W"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821As"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Cx3"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Ne"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Nr15"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Nr166"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Nw150"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Ra20"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Ra266"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Ra333"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821V13"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821V20"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Xa16"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-9821Xs"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-98HA"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-H98S model 8/U8"
+    },
+    {
+      "manufacturer": "Next Software Inc",
+      "model_name": "NeXTcube Turbo"
+    },
+    {
+      "manufacturer": "Next Software Inc",
+      "model_name": "NeXTcube Turbo con NeXTdimension"
+    },
+    {
+      "manufacturer": "Next Software Inc",
+      "model_name": "NeXTstation Color"
+    },
+    {
+      "manufacturer": "Next Software Inc",
+      "model_name": "NeXTstation Turbo"
+    },
+    {
+      "manufacturer": "Non-Linear Systems",
+      "model_name": "Kaypro IV - 4/83"
+    },
+    {
+      "manufacturer": "Silicon Graphics",
+      "model_name": "IRIS 3130"
+    },
+    {
+      "manufacturer": "Silicon Graphics",
+      "model_name": "IRIS Indigo R4400"
+    },
+    {
+      "manufacturer": "Silicon Graphics",
+      "model_name": "Professional IRIS 4D/50"
+    },
+    {
+      "manufacturer": "Silicon Graphics",
+      "model_name": "Professional IRIS 4D/70"
+    }
+  ],
+  "remaining_generic_descriptions": [
+    {
+      "manufacturer": "Daewoo",
+      "model_name": "DPC-200E"
+    },
+    {
+      "manufacturer": "Kaypro Corporation",
+      "model_name": "Omni II Logic Analyzer"
+    },
+    {
+      "manufacturer": "NEC",
+      "model_name": "PC-H98S model 8/U8"
+    }
+  ],
+  "tests": {
+    "backend_full_suite": {
+      "passed": 902,
+      "skipped": 2,
+      "note": "Suite completa eseguita durante la revisione; dopo le ultime tutele sono stati rieseguiti i test mirati su SQLite e PostgreSQL."
+    },
+    "final_sqlite_research_tests": 15,
+    "final_postgresql_research_and_neighboring_importers": 35,
+    "docker_compose_build_wait": "db/api/web healthy",
+    "paid_ai_calls": 0
+  },
+  "browser_api": {
+    "models": [
+      {
+        "name": "Sol-20",
+        "id": 1366,
+        "year": 1976,
+        "sources": 3,
+        "configurations": 1,
+        "images": 1
+      },
+      {
+        "name": "Laser 500",
+        "id": 1367,
+        "year": 1985,
+        "sources": 2,
+        "configurations": 1,
+        "images": 1
+      },
+      {
+        "name": "Kaypro PC",
+        "id": 604,
+        "year": null,
+        "sources": 3,
+        "configurations": 1,
+        "images": 0
+      },
+      {
+        "name": "H/H Tiger",
+        "id": 492,
+        "year": 1983,
+        "sources": 3,
+        "configurations": 1,
+        "images": 1
+      },
+      {
+        "name": "NeXTcube Turbo con NeXTdimension",
+        "id": 739,
+        "year": 1992,
+        "sources": 3,
+        "configurations": 1,
+        "images": 0
+      }
+    ],
+    "browser_errors": [],
+    "read_only_navigation": true
+  },
+  "selected_image_urls_checked": 32
+}

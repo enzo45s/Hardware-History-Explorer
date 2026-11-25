@@ -1,0 +1,3993 @@
+{
+  "database": "isolated PostgreSQL clone after NewBrain/MPF-I/Robotron",
+  "counts": {
+    "before": {
+      "computers": 1152,
+      "manufacturers": 187,
+      "configurations": 1190,
+      "specifications": 7456,
+      "releases": 1160,
+      "sales": 0,
+      "reviews": 0,
+      "facts": 959,
+      "computer_images": 616,
+      "sources": 7819,
+      "import_jobs": 3054,
+      "import_rows": 10958,
+      "import_claims": 72958,
+      "computer_aliases": 140
+    },
+    "after": {
+      "computers": 1152,
+      "manufacturers": 187,
+      "configurations": 1190,
+      "specifications": 7456,
+      "releases": 1162,
+      "sales": 0,
+      "reviews": 0,
+      "facts": 959,
+      "computer_images": 620,
+      "sources": 7833,
+      "import_jobs": 3055,
+      "import_rows": 10976,
+      "import_claims": 72969,
+      "computer_aliases": 140
+    }
+  },
+  "checks": {
+    "all_computer_data_unchanged_except_targeted_cover_pointer": true,
+    "manufacturers_all_previous_rows_unchanged": true,
+    "configurations_all_previous_rows_unchanged": true,
+    "specifications_all_previous_rows_unchanged": true,
+    "all_previous_prices_currencies_markets_and_end_dates_unchanged": true,
+    "all_non_sun_releases_unchanged": true,
+    "sales_all_previous_rows_unchanged": true,
+    "reviews_all_previous_rows_unchanged": true,
+    "facts_all_previous_rows_unchanged": true,
+    "only_whitelisted_automatic_wrong_photos_retired": true,
+    "manual_and_unrelated_images_preserved": true,
+    "sources_all_previous_rows_unchanged": true,
+    "import_jobs_all_previous_rows_unchanged": true,
+    "import_rows_all_previous_rows_unchanged": true,
+    "import_claims_all_previous_rows_unchanged": true,
+    "computer_aliases_all_previous_rows_unchanged": true,
+    "computer_category_previous_links_preserved": true,
+    "computer_sources_previous_links_preserved": true,
+    "manufacturer_sources_previous_links_preserved": true,
+    "specification_sources_previous_links_preserved": true,
+    "release_sources_previous_links_preserved": true
+  },
+  "result": {
+    "version": "sun-dates-photos-2026-11-v1",
+    "checksum": "cfbe53e3b7d90ac4d61faca5c02a307991fdd0f47e6a8dacb31632cc39baed73",
+    "updated": 18,
+    "dates_filled": 7,
+    "dates_corrected": 4,
+    "release_rows_created": 2,
+    "photos_added": 11,
+    "wrong_automatic_photos_retired": 7,
+    "skipped": [],
+    "preserved": [
+      {
+        "model_name": "Sun 2/120",
+        "release_id": 965,
+        "reason": "Data esistente non riconducibile esattamente al dato di base."
+      }
+    ],
+    "import_job_id": 3068
+  },
+  "models": [
+    {
+      "id": 1006,
+      "model_name": "SPARCstation 1",
+      "before_first_release": "1989",
+      "after_first_release": "1989",
+      "before_photos": 1,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — SPARCstation 1 (Sun 4/60)",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1886"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems SPARCstation 1 (Sun 4/60)",
+          "url": "https://www.latimes.com/archives/la-xpm-1989-04-12-fi-1797-story.html"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Fotografia — SPARCstation 1",
+          "url": "https://www.1000bit.it/scheda.asp?id=331"
+        }
+      ],
+      "images": [
+        {
+          "id": 687,
+          "computer_id": 1006,
+          "url": "https://www.1000bit.it/lista/s/sun/sparc1/sparc1.jpg",
+          "thumbnail_url": "https://www.1000bit.it/lista/s/sun/sparc1/sparc1.jpg",
+          "caption": "Sun SPARCstation 1 (4/60), vista del sistema dall’archivio 1000bit.",
+          "author": "Archivio 1000bit; fotografo non indicato",
+          "license_name": "Diritti dei rispettivi titolari; studio e ricerca, condizioni 1000bit",
+          "license_url": "https://www.1000bit.it/scheda.asp?id=331",
+          "source_url": "https://www.1000bit.it/scheda.asp?id=331",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 957,
+          "market": "Stati Uniti",
+          "release_date": "1989",
+          "discontinuation_date": null,
+          "price": 8995.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6561,
+              "title": "Ricerca prezzi — Sun Microsystems SPARCstation 1 (Sun 4/60)",
+              "url": "https://www.latimes.com/archives/la-xpm-1989-04-12-fi-1797-story.html",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "model_variant": "SPARCstation 1 (Sun 4/60)",
+          "display_model_variant": "SPARCstation 1",
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              5043
+            ],
+            "base": true
+          },
+          "reference_dates": [
+            "1989"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5043
+          ],
+          "release_ids": [
+            957
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 957,
+              "market": "Stati Uniti",
+              "release_date": "1989",
+              "discontinuation_date": null,
+              "price": 8995.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6561,
+                  "title": "Ricerca prezzi — Sun Microsystems SPARCstation 1 (Sun 4/60)",
+                  "url": "https://www.latimes.com/archives/la-xpm-1989-04-12-fi-1797-story.html",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "model_variant": "SPARCstation 1 (Sun 4/60)",
+              "display_model_variant": "SPARCstation 1",
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  5043
+                ],
+                "base": true
+              },
+              "reference_dates": [
+                "1989"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5043
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6561
+            ],
+            "release_date": [
+              5043
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6561
+            ],
+            "currency": [
+              6561
+            ],
+            "price_type": [
+              6561
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1007,
+      "model_name": "SPARCstation 1+",
+      "before_first_release": "1990",
+      "after_first_release": "1990",
+      "before_photos": 1,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — SPARCstation 1+ (Sun 4/65)",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1887"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems SPARCstation 1+ (Sun 4/65)",
+          "url": "https://www.upi.com/Archives/1990/05/15/Sun-Microsystems-introduces-low-cost-workstation/3851642744000/"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Fotografia — SPARCstation 1+",
+          "url": "https://commons.wikimedia.org/wiki/File:SPARCstation_1.jpg"
+        }
+      ],
+      "images": [
+        {
+          "id": 688,
+          "computer_id": 1007,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/SPARCstation_1.jpg",
+          "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/3/32/SPARCstation_1.jpg",
+          "caption": "SPARCstation 1+ con monitor e tastiera; il nome del file Commons è generico ma la descrizione identifica il modello 1+.",
+          "author": "Fourdee at English Wikipedia",
+          "license_name": "Public domain",
+          "license_url": "https://commons.wikimedia.org/wiki/Commons:Copyright_tags",
+          "source_url": "https://commons.wikimedia.org/wiki/File:SPARCstation_1.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 958,
+          "market": "Stati Uniti",
+          "release_date": "1990",
+          "discontinuation_date": null,
+          "price": 8995.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6562,
+              "title": "Ricerca prezzi — Sun Microsystems SPARCstation 1+ (Sun 4/65)",
+              "url": "https://www.upi.com/Archives/1990/05/15/Sun-Microsystems-introduces-low-cost-workstation/3851642744000/",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "model_variant": "SPARCstation 1+ (Sun 4/65)",
+          "display_model_variant": "SPARCstation 1+",
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              5048
+            ],
+            "base": true
+          },
+          "reference_dates": [
+            "1990"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5048
+          ],
+          "release_ids": [
+            958
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 958,
+              "market": "Stati Uniti",
+              "release_date": "1990",
+              "discontinuation_date": null,
+              "price": 8995.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6562,
+                  "title": "Ricerca prezzi — Sun Microsystems SPARCstation 1+ (Sun 4/65)",
+                  "url": "https://www.upi.com/Archives/1990/05/15/Sun-Microsystems-introduces-low-cost-workstation/3851642744000/",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "model_variant": "SPARCstation 1+ (Sun 4/65)",
+              "display_model_variant": "SPARCstation 1+",
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  5048
+                ],
+                "base": true
+              },
+              "reference_dates": [
+                "1990"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5048
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6562
+            ],
+            "release_date": [
+              5048
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6562
+            ],
+            "currency": [
+              6562
+            ],
+            "price_type": [
+              6562
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1008,
+      "model_name": "SPARCstation 10",
+      "before_first_release": "1992",
+      "after_first_release": "1992",
+      "before_photos": 1,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — SPARCstation 10 (Sun S10)",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1891"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems SPARCstation 10 (Sun S10)",
+          "url": "https://www.latimes.com/archives/la-xpm-1992-05-20-fi-292-story.html"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        }
+      ],
+      "images": [
+        {
+          "id": 603,
+          "computer_id": 1008,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Sun_Microsystems_SPARCstation_10.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Sun_Microsystems_SPARCstation_10.jpg/500px-Sun_Microsystems_SPARCstation_10.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "caption": "Scelta automatica Commons · File:Sun Microsystems SPARCstation 10.jpg",
+          "author": "Adrian Cockcroft",
+          "license_name": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sun_Microsystems_SPARCstation_10.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 959,
+          "market": "Stati Uniti",
+          "release_date": "1992",
+          "discontinuation_date": null,
+          "price": 18495.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6563,
+              "title": "Ricerca prezzi — Sun Microsystems SPARCstation 10 (Sun S10)",
+              "url": "https://www.latimes.com/archives/la-xpm-1992-05-20-fi-292-story.html",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "model_variant": "SPARCstation 10 (Sun S10)",
+          "display_model_variant": "SPARCstation 10",
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              5053
+            ],
+            "base": true
+          },
+          "reference_dates": [
+            "1992"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5053
+          ],
+          "release_ids": [
+            959
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 959,
+              "market": "Stati Uniti",
+              "release_date": "1992",
+              "discontinuation_date": null,
+              "price": 18495.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6563,
+                  "title": "Ricerca prezzi — Sun Microsystems SPARCstation 10 (Sun S10)",
+                  "url": "https://www.latimes.com/archives/la-xpm-1992-05-20-fi-292-story.html",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "model_variant": "SPARCstation 10 (Sun S10)",
+              "display_model_variant": "SPARCstation 10",
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  5053
+                ],
+                "base": true
+              },
+              "reference_dates": [
+                "1992"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5053
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6563
+            ],
+            "release_date": [
+              5053
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6563
+            ],
+            "currency": [
+              6563
+            ],
+            "price_type": [
+              6563
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1009,
+      "model_name": "SPARCstation 2",
+      "before_first_release": "1990",
+      "after_first_release": "1990",
+      "before_photos": 1,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — SPARCstation 2 (Sun 4/75)",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1888"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems SPARCstation 2 (Sun 4/75)",
+          "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Fotografia — SPARCstation 2",
+          "url": "https://commons.wikimedia.org/wiki/File:Sun_SparcStation_2_(1)_edit.jpg"
+        }
+      ],
+      "images": [
+        {
+          "id": 689,
+          "computer_id": 1009,
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Sun_SparcStation_2_%281%29_edit.jpg/1280px-Sun_SparcStation_2_%281%29_edit.jpg",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Sun_SparcStation_2_%281%29_edit.jpg/1280px-Sun_SparcStation_2_%281%29_edit.jpg",
+          "caption": "Sun SPARCstation 2, vista del sistema.",
+          "author": "Elizabeth K. Joseph",
+          "license_name": "CC BY 2.0",
+          "license_url": "https://creativecommons.org/licenses/by/2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sun_SparcStation_2_(1)_edit.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 960,
+          "market": "Stati Uniti",
+          "release_date": "1990",
+          "discontinuation_date": null,
+          "price": 15495.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6564,
+              "title": "Ricerca prezzi — Sun Microsystems SPARCstation 2 (Sun 4/75)",
+              "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "model_variant": "SPARCstation 2 (Sun 4/75)",
+          "display_model_variant": "SPARCstation 2",
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              5058
+            ],
+            "base": true
+          },
+          "reference_dates": [
+            "1990"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5058
+          ],
+          "release_ids": [
+            960
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 960,
+              "market": "Stati Uniti",
+              "release_date": "1990",
+              "discontinuation_date": null,
+              "price": 15495.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6564,
+                  "title": "Ricerca prezzi — Sun Microsystems SPARCstation 2 (Sun 4/75)",
+                  "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "model_variant": "SPARCstation 2 (Sun 4/75)",
+              "display_model_variant": "SPARCstation 2",
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  5058
+                ],
+                "base": true
+              },
+              "reference_dates": [
+                "1990"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5058
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6564
+            ],
+            "release_date": [
+              5058
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6564
+            ],
+            "currency": [
+              6564
+            ],
+            "price_type": [
+              6564
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1010,
+      "model_name": "SPARCstation 20",
+      "before_first_release": "1994",
+      "after_first_release": "1994",
+      "before_photos": 1,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — SPARCstation 20",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1892"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "1000bit — SparcStation 20",
+          "url": "https://www.1000bit.it/scheda.asp?id=1828"
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems SPARCstation 20",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/NfyG1WgGNzM"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        }
+      ],
+      "images": [
+        {
+          "id": 620,
+          "computer_id": 1010,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/SPARCstation20_front_and_rear.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/SPARCstation20_front_and_rear.jpg/500px-SPARCstation20_front_and_rear.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "caption": "SPARCstation20 front and rear.jpg",
+          "author": "Caroline Ford",
+          "license_name": "CC BY-SA 3.0",
+          "license_url": null,
+          "source_url": "https://commons.wikimedia.org/wiki/File:SPARCstation20_front_and_rear.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 1159,
+          "market": "Mercato non documentato",
+          "release_date": "1994",
+          "discontinuation_date": null,
+          "price": 18000.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6037,
+              "title": "1000bit — SparcStation 20",
+              "url": "https://www.1000bit.it/scheda.asp?id=1828",
+              "author": null,
+              "publisher": "1000bit",
+              "source_type": "website",
+              "publication_date": null,
+              "access_date": "2026-11-15"
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "market",
+          "date_evidence": {
+            "kind": "documented",
+            "source_ids": [
+              5063,
+              6037
+            ]
+          },
+          "date_sources": [
+            5063,
+            6037
+          ],
+          "release_ids": [
+            1159
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1159,
+              "market": "Mercato non documentato",
+              "release_date": "1994",
+              "discontinuation_date": null,
+              "price": 18000.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6037,
+                  "title": "1000bit — SparcStation 20",
+                  "url": "https://www.1000bit.it/scheda.asp?id=1828",
+                  "author": null,
+                  "publisher": "1000bit",
+                  "source_type": "website",
+                  "publication_date": null,
+                  "access_date": "2026-11-15"
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "market",
+              "date_evidence": {
+                "kind": "documented",
+                "source_ids": [
+                  5063,
+                  6037
+                ]
+              },
+              "date_sources": [
+                5063,
+                6037
+              ]
+            }
+          ],
+          "original_markets": [
+            "Mercato non documentato"
+          ],
+          "field_sources": {
+            "market": [],
+            "release_date": [
+              5063,
+              6037
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6037
+            ],
+            "currency": [
+              6037
+            ],
+            "price_type": [
+              6037
+            ]
+          }
+        },
+        {
+          "id": 1652,
+          "market": "Stati Uniti",
+          "release_date": "1994",
+          "discontinuation_date": null,
+          "price": 12195.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6565,
+              "title": "Ricerca prezzi — Sun Microsystems SPARCstation 20",
+              "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/NfyG1WgGNzM",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              5063
+            ],
+            "base": true
+          },
+          "reference_dates": [
+            "1994"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5063
+          ],
+          "release_ids": [
+            1652
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1652,
+              "market": "Stati Uniti",
+              "release_date": "1994",
+              "discontinuation_date": null,
+              "price": 12195.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6565,
+                  "title": "Ricerca prezzi — Sun Microsystems SPARCstation 20",
+                  "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/NfyG1WgGNzM",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  5063
+                ],
+                "base": true
+              },
+              "reference_dates": [
+                "1994"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5063
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6565
+            ],
+            "release_date": [
+              5063
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6565
+            ],
+            "currency": [
+              6565
+            ],
+            "price_type": [
+              6565
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1011,
+      "model_name": "SPARCstation ELC",
+      "before_first_release": "1992",
+      "after_first_release": "1991",
+      "before_photos": 0,
+      "after_photos": 0,
+      "sources": [
+        {
+          "title": "MAME — SPARCstation ELC (Sun 4/25)",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1885"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems SPARCstation ELC (Sun 4/25)",
+          "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Wikipedia — SPARCstation (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1350514928"
+        }
+      ],
+      "images": [],
+      "releases": [
+        {
+          "id": 962,
+          "market": "Stati Uniti",
+          "release_date": "1991",
+          "discontinuation_date": null,
+          "price": 4995.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6566,
+              "title": "Ricerca prezzi — Sun Microsystems SPARCstation ELC (Sun 4/25)",
+              "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            },
+            {
+              "id": 7841,
+              "title": "Wikipedia — SPARCstation (en)",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1350514928",
+              "author": "Collaboratori di Wikipedia",
+              "publisher": "Wikimedia Foundation",
+              "source_type": "encyclopedia",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            }
+          ],
+          "catalog_clean": true,
+          "model_variant": "SPARCstation ELC (Sun 4/25)",
+          "display_model_variant": "SPARCstation ELC",
+          "date_scope": "model",
+          "date_evidence": {
+            "kind": "documented_launch",
+            "source_ids": [
+              7841
+            ]
+          },
+          "reference_dates": [
+            "1992"
+          ],
+          "date_sources": [
+            7841
+          ],
+          "commercialization_notes": [
+            "Introduzione ELC nel 1991; il 1992 del precedente dato di base non è la data di lancio."
+          ],
+          "release_ids": [
+            962
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 962,
+              "market": "Stati Uniti",
+              "release_date": "1991",
+              "discontinuation_date": null,
+              "price": 4995.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6566,
+                  "title": "Ricerca prezzi — Sun Microsystems SPARCstation ELC (Sun 4/25)",
+                  "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                },
+                {
+                  "id": 7841,
+                  "title": "Wikipedia — SPARCstation (en)",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1350514928",
+                  "author": "Collaboratori di Wikipedia",
+                  "publisher": "Wikimedia Foundation",
+                  "source_type": "encyclopedia",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                }
+              ],
+              "catalog_clean": true,
+              "model_variant": "SPARCstation ELC (Sun 4/25)",
+              "display_model_variant": "SPARCstation ELC",
+              "date_scope": "model",
+              "date_evidence": {
+                "kind": "documented_launch",
+                "source_ids": [
+                  7841
+                ]
+              },
+              "reference_dates": [
+                "1992"
+              ],
+              "date_sources": [
+                7841
+              ],
+              "commercialization_notes": [
+                "Introduzione ELC nel 1991; il 1992 del precedente dato di base non è la data di lancio."
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6566,
+              7841
+            ],
+            "release_date": [
+              7841
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6566,
+              7841
+            ],
+            "currency": [
+              6566,
+              7841
+            ],
+            "price_type": [
+              6566,
+              7841
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1012,
+      "model_name": "SPARCstation IPC",
+      "before_first_release": "1990",
+      "after_first_release": "1990",
+      "before_photos": 0,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — SPARCstation IPC (Sun 4/40)",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1882"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems SPARCstation IPC (Sun 4/40)",
+          "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Fotografia — SPARCstation IPC",
+          "url": "https://commons.wikimedia.org/wiki/File:Sparcstation-ipc-01.jpg"
+        }
+      ],
+      "images": [
+        {
+          "id": 690,
+          "computer_id": 1012,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Sparcstation-ipc-01.jpg",
+          "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Sparcstation-ipc-01.jpg",
+          "caption": "Sun SPARCstation IPC nel contenitore compatto lunchbox.",
+          "author": "Stephen Edmonds",
+          "license_name": "CC BY-SA 2.5",
+          "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sparcstation-ipc-01.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 963,
+          "market": "Stati Uniti",
+          "release_date": "1990",
+          "discontinuation_date": null,
+          "price": 6995.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6567,
+              "title": "Ricerca prezzi — Sun Microsystems SPARCstation IPC (Sun 4/40)",
+              "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "model_variant": "SPARCstation IPC (Sun 4/40)",
+          "display_model_variant": "SPARCstation IPC",
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              5073
+            ],
+            "base": true
+          },
+          "reference_dates": [
+            "1990"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5073
+          ],
+          "release_ids": [
+            963
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 963,
+              "market": "Stati Uniti",
+              "release_date": "1990",
+              "discontinuation_date": null,
+              "price": 6995.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6567,
+                  "title": "Ricerca prezzi — Sun Microsystems SPARCstation IPC (Sun 4/40)",
+                  "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "model_variant": "SPARCstation IPC (Sun 4/40)",
+              "display_model_variant": "SPARCstation IPC",
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  5073
+                ],
+                "base": true
+              },
+              "reference_dates": [
+                "1990"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5073
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6567
+            ],
+            "release_date": [
+              5073
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6567
+            ],
+            "currency": [
+              6567
+            ],
+            "price_type": [
+              6567
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1013,
+      "model_name": "SPARCstation IPX",
+      "before_first_release": "1991",
+      "after_first_release": "1991",
+      "before_photos": 0,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — SPARCstation IPX (Sun 4/50)",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1883"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems SPARCstation IPX (Sun 4/50)",
+          "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Fotografia — SPARCstation IPX",
+          "url": "https://commons.wikimedia.org/wiki/File:Sun_SPARCstation_IPX.jpg"
+        }
+      ],
+      "images": [
+        {
+          "id": 691,
+          "computer_id": 1013,
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Sun_SPARCstation_IPX.jpg/1280px-Sun_SPARCstation_IPX.jpg",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Sun_SPARCstation_IPX.jpg/1280px-Sun_SPARCstation_IPX.jpg",
+          "caption": "Sun SPARCstation IPX, sistema di serie; non il prototipo IPC/IPX.",
+          "author": "htomari",
+          "license_name": "CC BY-SA 2.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sun_SPARCstation_IPX.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 964,
+          "market": "Stati Uniti",
+          "release_date": "1991",
+          "discontinuation_date": null,
+          "price": 11995.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6568,
+              "title": "Ricerca prezzi — Sun Microsystems SPARCstation IPX (Sun 4/50)",
+              "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "model_variant": "SPARCstation IPX (Sun 4/50)",
+          "display_model_variant": "SPARCstation IPX",
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              5078
+            ],
+            "base": true
+          },
+          "reference_dates": [
+            "1991"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5078
+          ],
+          "release_ids": [
+            964
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 964,
+              "market": "Stati Uniti",
+              "release_date": "1991",
+              "discontinuation_date": null,
+              "price": 11995.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6568,
+                  "title": "Ricerca prezzi — Sun Microsystems SPARCstation IPX (Sun 4/50)",
+                  "url": "https://vtda.org/pubs/SunExpert/SunExpert-v02n09-1991-09.pdf",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "model_variant": "SPARCstation IPX (Sun 4/50)",
+              "display_model_variant": "SPARCstation IPX",
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  5078
+                ],
+                "base": true
+              },
+              "reference_dates": [
+                "1991"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5078
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6568
+            ],
+            "release_date": [
+              5078
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6568
+            ],
+            "currency": [
+              6568
+            ],
+            "price_type": [
+              6568
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1014,
+      "model_name": "SPARCstation SLC",
+      "before_first_release": null,
+      "after_first_release": "1990",
+      "before_photos": 0,
+      "after_photos": 0,
+      "sources": [
+        {
+          "title": "MAME — SPARCstation SLC (Sun 4/20)",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1884"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems SPARCstation SLC (Sun 4/20)",
+          "url": "https://www.upi.com/Archives/1990/05/15/Sun-Microsystems-introduces-low-cost-workstation/3851642744000/"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        }
+      ],
+      "images": [],
+      "releases": [
+        {
+          "id": 1656,
+          "market": "Stati Uniti",
+          "release_date": "1990",
+          "discontinuation_date": null,
+          "price": 4995.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6569,
+              "title": "Ricerca prezzi — Sun Microsystems SPARCstation SLC (Sun 4/20)",
+              "url": "https://www.upi.com/Archives/1990/05/15/Sun-Microsystems-introduces-low-cost-workstation/3851642744000/",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "model_variant": "SPARCstation SLC (Sun 4/20)",
+          "display_model_variant": "SPARCstation SLC",
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              6569
+            ],
+            "base": false
+          },
+          "reference_dates": [
+            "1990"
+          ],
+          "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+          "commercialization_notes": [
+            "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+          ],
+          "date_sources": [
+            6569
+          ],
+          "release_ids": [
+            1656
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1656,
+              "market": "Stati Uniti",
+              "release_date": "1990",
+              "discontinuation_date": null,
+              "price": 4995.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6569,
+                  "title": "Ricerca prezzi — Sun Microsystems SPARCstation SLC (Sun 4/20)",
+                  "url": "https://www.upi.com/Archives/1990/05/15/Sun-Microsystems-introduces-low-cost-workstation/3851642744000/",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "model_variant": "SPARCstation SLC (Sun 4/20)",
+              "display_model_variant": "SPARCstation SLC",
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  6569
+                ],
+                "base": false
+              },
+              "reference_dates": [
+                "1990"
+              ],
+              "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+              "commercialization_notes": [
+                "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+              ],
+              "date_sources": [
+                6569
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6569
+            ],
+            "release_date": [
+              6569
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6569
+            ],
+            "currency": [
+              6569
+            ],
+            "price_type": [
+              6569
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1015,
+      "model_name": "Sun 2/120",
+      "before_first_release": "1984",
+      "after_first_release": "1984",
+      "before_photos": 1,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — Sun 2/120",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun2.cpp#L837"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 2/120",
+          "url": "https://graphsearch.epfl.ch/en/concept/3997050"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        }
+      ],
+      "images": [
+        {
+          "id": 499,
+          "computer_id": 1015,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Sun_2-120_Server.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Sun_2-120_Server.jpg/500px-Sun_2-120_Server.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "caption": "Scelta automatica Commons · File:Sun 2-120 Server.jpg",
+          "author": "Sun-collector at English Wikipedia",
+          "license_name": "CC BY 2.5",
+          "license_url": "https://creativecommons.org/licenses/by/2.5",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sun_2-120_Server.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 965,
+          "market": "Mercato non documentato",
+          "release_date": "1984",
+          "discontinuation_date": null,
+          "price": null,
+          "currency": null,
+          "price_type": null,
+          "sources": [],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "base": true,
+            "source_ids": [
+              5087
+            ]
+          },
+          "reference_dates": [
+            "1984"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5087
+          ],
+          "release_ids": [
+            965
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 965,
+              "market": "Mercato non documentato",
+              "release_date": "1984",
+              "discontinuation_date": null,
+              "price": null,
+              "currency": null,
+              "price_type": null,
+              "sources": [],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "base": true,
+                "source_ids": [
+                  5087
+                ]
+              },
+              "reference_dates": [
+                "1984"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5087
+              ]
+            }
+          ],
+          "original_markets": [
+            "Mercato non documentato"
+          ],
+          "field_sources": {
+            "market": [],
+            "release_date": [
+              5087
+            ],
+            "discontinuation_date": [],
+            "price": [],
+            "currency": [],
+            "price_type": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 1016,
+      "model_name": "Sun 2/50",
+      "before_first_release": "1984",
+      "after_first_release": "1984",
+      "before_photos": 1,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — Sun 2/50",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun2.cpp#L836"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 2/50",
+          "url": "https://msstconference.org/MSST-history/2025/Presentations/Day%202%20%28September%2023rd%29/Keynote/NFS_Keynote%20Romulus.pdf"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        }
+      ],
+      "images": [
+        {
+          "id": 500,
+          "computer_id": 1016,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Sun_2-50_Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Sun_2-50_Front.jpg/500px-Sun_2-50_Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "caption": "Scelta automatica Commons · File:Sun 2-50 Front.jpg",
+          "author": "Michael Thompson",
+          "license_name": "CC BY-SA 2.5",
+          "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sun_2-50_Front.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 966,
+          "market": "Stati Uniti",
+          "release_date": "1984",
+          "discontinuation_date": null,
+          "price": 8900.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6786,
+              "title": "Ricerca prezzi — Sun Microsystems Sun 2/50",
+              "url": "https://msstconference.org/MSST-history/2025/Presentations/Day%202%20%28September%2023rd%29/Keynote/NFS_Keynote%20Romulus.pdf",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              5092
+            ],
+            "base": true
+          },
+          "reference_dates": [
+            "1984"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5092
+          ],
+          "release_ids": [
+            966
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 966,
+              "market": "Stati Uniti",
+              "release_date": "1984",
+              "discontinuation_date": null,
+              "price": 8900.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6786,
+                  "title": "Ricerca prezzi — Sun Microsystems Sun 2/50",
+                  "url": "https://msstconference.org/MSST-history/2025/Presentations/Day%202%20%28September%2023rd%29/Keynote/NFS_Keynote%20Romulus.pdf",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  5092
+                ],
+                "base": true
+              },
+              "reference_dates": [
+                "1984"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5092
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6786
+            ],
+            "release_date": [
+              5092
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6786
+            ],
+            "currency": [
+              6786
+            ],
+            "price_type": [
+              6786
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1017,
+      "model_name": "Sun 3/110",
+      "before_first_release": null,
+      "after_first_release": "1986",
+      "before_photos": 0,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — Sun 3/110",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun3.cpp#L1337"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Sun Microsystems — Sun-3 Product Family Configuration Guide, ottobre 1986",
+          "url": "https://archive.org/details/bitsavers_sunsun3SunOct86_5356402"
+        },
+        {
+          "title": "Fotografia — Sun 3/110",
+          "url": "https://recycledgoods.com/sun-3-110-prism-16-67mhz-unix-computer-600-2051/"
+        }
+      ],
+      "images": [
+        {
+          "id": 692,
+          "computer_id": 1017,
+          "url": "https://cdn11.bigcommerce.com/s-a1x7hg2jgk/products/18561/images/327433/Sun-3110-Prism-1667Mhz-Unix-Computer-600-2051_103941__66123.1786189529.500.750.jpg",
+          "thumbnail_url": "https://cdn11.bigcommerce.com/s-a1x7hg2jgk/products/18561/images/327433/Sun-3110-Prism-1667Mhz-Unix-Computer-600-2051_103941__66123.1786189529.500.750.jpg",
+          "caption": "Sun 3/110 Prism, esemplare fotografato nella scheda Recycled Goods; non un Sun 3/260 o una scheda di altro modello.",
+          "author": "Recycled Goods, Inc. — fotografo non indicato dalla fonte",
+          "license_name": "Diritti riservati; nessuna licenza libera dichiarata dalla fonte",
+          "license_url": "https://recycledgoods.com/sun-3-110-prism-16-67mhz-unix-computer-600-2051/",
+          "source_url": "https://recycledgoods.com/sun-3-110-prism-16-67mhz-unix-computer-600-2051/",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 1876,
+          "market": "Mercato non documentato",
+          "release_date": "1986",
+          "discontinuation_date": null,
+          "price": null,
+          "currency": null,
+          "price_type": null,
+          "sources": [
+            {
+              "id": 7844,
+              "title": "Sun Microsystems — Sun-3 Product Family Configuration Guide, ottobre 1986",
+              "url": "https://archive.org/details/bitsavers_sunsun3SunOct86_5356402",
+              "author": "Sun Microsystems",
+              "publisher": "Sun Microsystems",
+              "source_type": "technical_manual",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              7844
+            ]
+          },
+          "reference_dates": [
+            "1986"
+          ],
+          "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+          "commercialization_notes": [
+            "Modello documentato nel catalogo Sun di ottobre 1986; anno di riferimento, data esatta di prima commercializzazione non accertata."
+          ],
+          "date_sources": [
+            7844
+          ],
+          "release_ids": [
+            1876
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1876,
+              "market": "Mercato non documentato",
+              "release_date": "1986",
+              "discontinuation_date": null,
+              "price": null,
+              "currency": null,
+              "price_type": null,
+              "sources": [
+                {
+                  "id": 7844,
+                  "title": "Sun Microsystems — Sun-3 Product Family Configuration Guide, ottobre 1986",
+                  "url": "https://archive.org/details/bitsavers_sunsun3SunOct86_5356402",
+                  "author": "Sun Microsystems",
+                  "publisher": "Sun Microsystems",
+                  "source_type": "technical_manual",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  7844
+                ]
+              },
+              "reference_dates": [
+                "1986"
+              ],
+              "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+              "commercialization_notes": [
+                "Modello documentato nel catalogo Sun di ottobre 1986; anno di riferimento, data esatta di prima commercializzazione non accertata."
+              ],
+              "date_sources": [
+                7844
+              ]
+            }
+          ],
+          "original_markets": [
+            "Mercato non documentato"
+          ],
+          "field_sources": {
+            "market": [],
+            "release_date": [
+              7844
+            ],
+            "discontinuation_date": [],
+            "price": [],
+            "currency": [],
+            "price_type": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 1018,
+      "model_name": "Sun 3/260/280",
+      "before_first_release": null,
+      "after_first_release": "1986",
+      "before_photos": 0,
+      "after_photos": 0,
+      "sources": [
+        {
+          "title": "MAME — Sun 3/260/280",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun3.cpp#L1339"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 3/260/280",
+          "url": "https://bitsavers.computerhistory.org/pdf/sun/Sun_Price_List_Dec88.pdf"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Sun Microsystems — Sun-3 Product Family Configuration Guide, ottobre 1986",
+          "url": "https://archive.org/details/bitsavers_sunsun3SunOct86_5356402"
+        }
+      ],
+      "images": [],
+      "releases": [
+        {
+          "id": 1761,
+          "market": "Stati Uniti",
+          "release_date": "1986",
+          "discontinuation_date": null,
+          "price": 27900.0,
+          "currency": "USD",
+          "price_type": "listino successivo",
+          "sources": [
+            {
+              "id": 6787,
+              "title": "Ricerca prezzi — Sun Microsystems Sun 3/260/280",
+              "url": "https://bitsavers.computerhistory.org/pdf/sun/Sun_Price_List_Dec88.pdf",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            },
+            {
+              "id": 7844,
+              "title": "Sun Microsystems — Sun-3 Product Family Configuration Guide, ottobre 1986",
+              "url": "https://archive.org/details/bitsavers_sunsun3SunOct86_5356402",
+              "author": "Sun Microsystems",
+              "publisher": "Sun Microsystems",
+              "source_type": "technical_manual",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_sources": [
+            7844
+          ],
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              7844
+            ]
+          },
+          "reference_note": "Sun 3/260 e 3/280 sono già documentati nel catalogo di ottobre 1986. Il listino 1988 resta distinto; data esatta del lancio non certificata.",
+          "commercialization_notes": [
+            "Sun 3/260 e 3/280 sono già documentati nel catalogo di ottobre 1986. Il listino 1988 resta distinto; data esatta del lancio non certificata."
+          ],
+          "release_ids": [
+            1761
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1761,
+              "market": "Stati Uniti",
+              "release_date": "1986",
+              "discontinuation_date": null,
+              "price": 27900.0,
+              "currency": "USD",
+              "price_type": "listino successivo",
+              "sources": [
+                {
+                  "id": 6787,
+                  "title": "Ricerca prezzi — Sun Microsystems Sun 3/260/280",
+                  "url": "https://bitsavers.computerhistory.org/pdf/sun/Sun_Price_List_Dec88.pdf",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                },
+                {
+                  "id": 7844,
+                  "title": "Sun Microsystems — Sun-3 Product Family Configuration Guide, ottobre 1986",
+                  "url": "https://archive.org/details/bitsavers_sunsun3SunOct86_5356402",
+                  "author": "Sun Microsystems",
+                  "publisher": "Sun Microsystems",
+                  "source_type": "technical_manual",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_sources": [
+                7844
+              ],
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  7844
+                ]
+              },
+              "reference_note": "Sun 3/260 e 3/280 sono già documentati nel catalogo di ottobre 1986. Il listino 1988 resta distinto; data esatta del lancio non certificata.",
+              "commercialization_notes": [
+                "Sun 3/260 e 3/280 sono già documentati nel catalogo di ottobre 1986. Il listino 1988 resta distinto; data esatta del lancio non certificata."
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6787,
+              7844
+            ],
+            "release_date": [
+              7844
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6787,
+              7844
+            ],
+            "currency": [
+              6787,
+              7844
+            ],
+            "price_type": [
+              6787,
+              7844
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1019,
+      "model_name": "Sun 3/460/470/480",
+      "before_first_release": "1989",
+      "after_first_release": "1989",
+      "before_photos": 0,
+      "after_photos": 0,
+      "sources": [
+        {
+          "title": "MAME — Sun 3/460/470/480",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun3x.cpp#L727"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 3/460/470/480",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Wikipedia · Sun-3",
+          "url": "https://en.wikipedia.org/w/index.php?title=Sun-3&oldid=1376338499"
+        }
+      ],
+      "images": [],
+      "releases": [
+        {
+          "id": 967,
+          "market": "Mercato non documentato",
+          "release_date": "1989",
+          "discontinuation_date": null,
+          "price": null,
+          "currency": null,
+          "price_type": null,
+          "sources": [],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "base": true,
+            "source_ids": [
+              5104
+            ]
+          },
+          "reference_dates": [
+            "1989"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5104
+          ],
+          "release_ids": [
+            967
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 967,
+              "market": "Mercato non documentato",
+              "release_date": "1989",
+              "discontinuation_date": null,
+              "price": null,
+              "currency": null,
+              "price_type": null,
+              "sources": [],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "base": true,
+                "source_ids": [
+                  5104
+                ]
+              },
+              "reference_dates": [
+                "1989"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5104
+              ]
+            }
+          ],
+          "original_markets": [
+            "Mercato non documentato"
+          ],
+          "field_sources": {
+            "market": [],
+            "release_date": [
+              5104
+            ],
+            "discontinuation_date": [],
+            "price": [],
+            "currency": [],
+            "price_type": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 1020,
+      "model_name": "Sun 3/50",
+      "before_first_release": null,
+      "after_first_release": "1986",
+      "before_photos": 1,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — Sun 3/50",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun3.cpp#L1335"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 3/50",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Fotografia — Sun 3/50",
+          "url": "https://commons.wikimedia.org/wiki/File:Sun3_50CPUwHelios4Mb.jpg"
+        }
+      ],
+      "images": [
+        {
+          "id": 693,
+          "computer_id": 1020,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Sun3_50CPUwHelios4Mb.jpg",
+          "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/a/af/Sun3_50CPUwHelios4Mb.jpg",
+          "caption": "Scheda madre Sun 3/50 con espansione Helios da 4 MB. È un componente del sistema, non una vista del contenitore.",
+          "author": "Robert.Harker at English Wikipedia",
+          "license_name": "CC BY-SA 2.5",
+          "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sun3_50CPUwHelios4Mb.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 1657,
+          "market": "Stati Uniti",
+          "release_date": "1986",
+          "discontinuation_date": null,
+          "price": 5495.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6570,
+              "title": "Ricerca prezzi — Sun Microsystems Sun 3/50",
+              "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              6570
+            ],
+            "base": false
+          },
+          "reference_dates": [
+            "1986"
+          ],
+          "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+          "commercialization_notes": [
+            "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+          ],
+          "date_sources": [
+            6570
+          ],
+          "release_ids": [
+            1657
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1657,
+              "market": "Stati Uniti",
+              "release_date": "1986",
+              "discontinuation_date": null,
+              "price": 5495.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6570,
+                  "title": "Ricerca prezzi — Sun Microsystems Sun 3/50",
+                  "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  6570
+                ],
+                "base": false
+              },
+              "reference_dates": [
+                "1986"
+              ],
+              "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+              "commercialization_notes": [
+                "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+              ],
+              "date_sources": [
+                6570
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6570
+            ],
+            "release_date": [
+              6570
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6570
+            ],
+            "currency": [
+              6570
+            ],
+            "price_type": [
+              6570
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1021,
+      "model_name": "Sun 3/60",
+      "before_first_release": "1988",
+      "after_first_release": "1987",
+      "before_photos": 1,
+      "after_photos": 2,
+      "sources": [
+        {
+          "title": "MAME — Sun 3/60",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun3.cpp#L1336"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 3/60",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Fotografia — Sun 3/60",
+          "url": "https://commons.wikimedia.org/wiki/File:Sun3_60_Disk_Tape.jpg"
+        }
+      ],
+      "images": [
+        {
+          "id": 694,
+          "computer_id": 1021,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Sun3_60_Disk_Tape.jpg",
+          "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Sun3_60_Disk_Tape.jpg",
+          "caption": "Workstation Sun 3/60 con unità disco e nastro.",
+          "author": "Robert Harker",
+          "license_name": "CC BY-SA 2.5",
+          "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sun3_60_Disk_Tape.jpg",
+          "is_primary": true,
+          "display_order": 1,
+          "storage": "external"
+        },
+        {
+          "id": 502,
+          "computer_id": 1021,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/X11R1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/X11R1.jpg/500px-X11R1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "caption": "Scelta automatica Commons · File:X11R1.jpg",
+          "author": "Techfury90",
+          "license_name": "CC0",
+          "license_url": null,
+          "source_url": "https://commons.wikimedia.org/wiki/File:X11R1.jpg",
+          "is_primary": false,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 968,
+          "market": "Stati Uniti",
+          "release_date": "1987",
+          "discontinuation_date": null,
+          "price": 9450.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6571,
+              "title": "Ricerca prezzi — Sun Microsystems Sun 3/60",
+              "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              6571
+            ],
+            "base": false
+          },
+          "reference_dates": [
+            "1987",
+            "1988"
+          ],
+          "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+          "commercialization_notes": [
+            "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+          ],
+          "date_sources": [
+            6571
+          ],
+          "release_ids": [
+            968
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 968,
+              "market": "Stati Uniti",
+              "release_date": "1987",
+              "discontinuation_date": null,
+              "price": 9450.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6571,
+                  "title": "Ricerca prezzi — Sun Microsystems Sun 3/60",
+                  "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  6571
+                ],
+                "base": false
+              },
+              "reference_dates": [
+                "1987",
+                "1988"
+              ],
+              "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+              "commercialization_notes": [
+                "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+              ],
+              "date_sources": [
+                6571
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6571
+            ],
+            "release_date": [
+              6571
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6571
+            ],
+            "currency": [
+              6571
+            ],
+            "price_type": [
+              6571
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1022,
+      "model_name": "Sun 3/75/140/150/160/180",
+      "before_first_release": "1985",
+      "after_first_release": "1985",
+      "before_photos": 0,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — Sun 3/75/140/150/160/180",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun3.cpp#L1338"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 3/75/140/150/160/180",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Fotografia — Sun 3/75/140/150/160/180",
+          "url": "https://commons.wikimedia.org/wiki/File:Sun3_CPU.jpg"
+        }
+      ],
+      "images": [
+        {
+          "id": 695,
+          "computer_id": 1022,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Sun3_CPU.jpg",
+          "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Sun3_CPU.jpg",
+          "caption": "Scheda CPU Carrera della famiglia Sun-3/100, condivisa dai modelli di questa scheda; immagine del componente, non dell’intero sistema.",
+          "author": "Robert.Harker at English Wikipedia",
+          "license_name": "CC BY-SA 2.5",
+          "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sun3_CPU.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 969,
+          "market": "Mercato non documentato",
+          "release_date": "1985",
+          "discontinuation_date": null,
+          "price": null,
+          "currency": null,
+          "price_type": null,
+          "sources": [],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "base": true,
+            "source_ids": [
+              5118
+            ]
+          },
+          "reference_dates": [
+            "1985"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5118
+          ],
+          "release_ids": [
+            969
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 969,
+              "market": "Mercato non documentato",
+              "release_date": "1985",
+              "discontinuation_date": null,
+              "price": null,
+              "currency": null,
+              "price_type": null,
+              "sources": [],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "base": true,
+                "source_ids": [
+                  5118
+                ]
+              },
+              "reference_dates": [
+                "1985"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5118
+              ]
+            }
+          ],
+          "original_markets": [
+            "Mercato non documentato"
+          ],
+          "field_sources": {
+            "market": [],
+            "release_date": [
+              5118
+            ],
+            "discontinuation_date": [],
+            "price": [],
+            "currency": [],
+            "price_type": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 1023,
+      "model_name": "Sun 3/80",
+      "before_first_release": "1989",
+      "after_first_release": "1989",
+      "before_photos": 1,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — Sun 3/80",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun3x.cpp#L726"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "1000bit — Sun 3/80",
+          "url": "https://www.1000bit.it/scheda.asp?id=332"
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 3/80",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Fotografia — Sun 3/80",
+          "url": "https://commons.wikimedia.org/wiki/File:Sun_3-80.jpg"
+        }
+      ],
+      "images": [
+        {
+          "id": 696,
+          "computer_id": 1023,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Sun_3-80.jpg",
+          "thumbnail_url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Sun_3-80.jpg",
+          "caption": "Workstation Sun 3/80.",
+          "author": "Lamune at English Wikipedia",
+          "license_name": "Public domain",
+          "license_url": "https://commons.wikimedia.org/wiki/Commons:Copyright_tags",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sun_3-80.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 1161,
+          "market": "Mercato non documentato",
+          "release_date": "1989",
+          "discontinuation_date": null,
+          "price": 5995.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6039,
+              "title": "1000bit — Sun 3/80",
+              "url": "https://www.1000bit.it/scheda.asp?id=332",
+              "author": null,
+              "publisher": "1000bit",
+              "source_type": "website",
+              "publication_date": null,
+              "access_date": "2026-11-15"
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "market",
+          "date_evidence": {
+            "kind": "documented",
+            "source_ids": [
+              5122,
+              6039
+            ]
+          },
+          "date_sources": [
+            5122,
+            6039
+          ],
+          "release_ids": [
+            1161
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1161,
+              "market": "Mercato non documentato",
+              "release_date": "1989",
+              "discontinuation_date": null,
+              "price": 5995.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6039,
+                  "title": "1000bit — Sun 3/80",
+                  "url": "https://www.1000bit.it/scheda.asp?id=332",
+                  "author": null,
+                  "publisher": "1000bit",
+                  "source_type": "website",
+                  "publication_date": null,
+                  "access_date": "2026-11-15"
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "market",
+              "date_evidence": {
+                "kind": "documented",
+                "source_ids": [
+                  5122,
+                  6039
+                ]
+              },
+              "date_sources": [
+                5122,
+                6039
+              ]
+            }
+          ],
+          "original_markets": [
+            "Mercato non documentato"
+          ],
+          "field_sources": {
+            "market": [],
+            "release_date": [
+              5122,
+              6039
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6039
+            ],
+            "currency": [
+              6039
+            ],
+            "price_type": [
+              6039
+            ]
+          }
+        },
+        {
+          "id": 1659,
+          "market": "Stati Uniti",
+          "release_date": "1989",
+          "discontinuation_date": null,
+          "price": 5995.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6572,
+              "title": "Ricerca prezzi — Sun Microsystems Sun 3/80",
+              "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              5122
+            ],
+            "base": true
+          },
+          "reference_dates": [
+            "1989"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5122
+          ],
+          "release_ids": [
+            1659
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1659,
+              "market": "Stati Uniti",
+              "release_date": "1989",
+              "discontinuation_date": null,
+              "price": 5995.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6572,
+                  "title": "Ricerca prezzi — Sun Microsystems Sun 3/80",
+                  "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  5122
+                ],
+                "base": true
+              },
+              "reference_dates": [
+                "1989"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5122
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6572
+            ],
+            "release_date": [
+              5122
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6572
+            ],
+            "currency": [
+              6572
+            ],
+            "price_type": [
+              6572
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1024,
+      "model_name": "Sun 3/E",
+      "before_first_release": null,
+      "after_first_release": "1988",
+      "before_photos": 1,
+      "after_photos": 0,
+      "sources": [
+        {
+          "title": "MAME — Sun 3/E",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun3.cpp#L1340"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 3/E",
+          "url": "https://bitsavers.computerhistory.org/pdf/sun/Sun_Price_List_Dec88.pdf"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        }
+      ],
+      "images": [],
+      "releases": [
+        {
+          "id": 1762,
+          "market": "Stati Uniti",
+          "release_date": "1988",
+          "discontinuation_date": null,
+          "price": 6300.0,
+          "currency": "USD",
+          "price_type": "listino successivo",
+          "sources": [
+            {
+              "id": 6790,
+              "title": "Ricerca prezzi — Sun Microsystems Sun 3/E",
+              "url": "https://bitsavers.computerhistory.org/pdf/sun/Sun_Price_List_Dec88.pdf",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_sources": [
+            6790
+          ],
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              6790
+            ]
+          },
+          "reference_note": "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio.",
+          "commercialization_notes": [
+            "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+          ],
+          "release_ids": [
+            1762
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1762,
+              "market": "Stati Uniti",
+              "release_date": "1988",
+              "discontinuation_date": null,
+              "price": 6300.0,
+              "currency": "USD",
+              "price_type": "listino successivo",
+              "sources": [
+                {
+                  "id": 6790,
+                  "title": "Ricerca prezzi — Sun Microsystems Sun 3/E",
+                  "url": "https://bitsavers.computerhistory.org/pdf/sun/Sun_Price_List_Dec88.pdf",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_sources": [
+                6790
+              ],
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  6790
+                ]
+              },
+              "reference_note": "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio.",
+              "commercialization_notes": [
+                "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6790
+            ],
+            "release_date": [
+              6790
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6790
+            ],
+            "currency": [
+              6790
+            ],
+            "price_type": [
+              6790
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1025,
+      "model_name": "Sun 4/110",
+      "before_first_release": null,
+      "after_first_release": "1988",
+      "before_photos": 0,
+      "after_photos": 0,
+      "sources": [
+        {
+          "title": "MAME — Sun 4/110",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1877"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 4/110",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        }
+      ],
+      "images": [],
+      "releases": [
+        {
+          "id": 1660,
+          "market": "Stati Uniti",
+          "release_date": "1988",
+          "discontinuation_date": null,
+          "price": 19950.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6573,
+              "title": "Ricerca prezzi — Sun Microsystems Sun 4/110",
+              "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              6573
+            ],
+            "base": false
+          },
+          "reference_dates": [
+            "1988"
+          ],
+          "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+          "commercialization_notes": [
+            "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+          ],
+          "date_sources": [
+            6573
+          ],
+          "release_ids": [
+            1660
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1660,
+              "market": "Stati Uniti",
+              "release_date": "1988",
+              "discontinuation_date": null,
+              "price": 19950.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6573,
+                  "title": "Ricerca prezzi — Sun Microsystems Sun 4/110",
+                  "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  6573
+                ],
+                "base": false
+              },
+              "reference_dates": [
+                "1988"
+              ],
+              "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+              "commercialization_notes": [
+                "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+              ],
+              "date_sources": [
+                6573
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6573
+            ],
+            "release_date": [
+              6573
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6573
+            ],
+            "currency": [
+              6573
+            ],
+            "price_type": [
+              6573
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1026,
+      "model_name": "Sun 4/3x0",
+      "before_first_release": "1987",
+      "after_first_release": "1989",
+      "before_photos": 0,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — Sun 4/3x0",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1878"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 4/3x0",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        },
+        {
+          "title": "Fotografia — Sun 4/3x0",
+          "url": "https://commons.wikimedia.org/wiki/File:Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_(MIH)_-_UNIZAR_-_Sun_Sparcstation_330_motherboard_-_full_view.jpg"
+        }
+      ],
+      "images": [
+        {
+          "id": 697,
+          "computer_id": 1026,
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_%28MIH%29_-_UNIZAR_-_Sun_Sparcstation_330_motherboard_-_full_view.jpg/1280px-Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_%28MIH%29_-_UNIZAR_-_Sun_Sparcstation_330_motherboard_-_full_view.jpg",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_%28MIH%29_-_UNIZAR_-_Sun_Sparcstation_330_motherboard_-_full_view.jpg/1280px-Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_%28MIH%29_-_UNIZAR_-_Sun_Sparcstation_330_motherboard_-_full_view.jpg",
+          "caption": "Scheda madre di Sun SPARCstation 330, modello 4/330 della famiglia 4/3x0; non rappresenta tutti i contenitori della famiglia.",
+          "author": "Jose Luis Briz Velasco",
+          "license_name": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_(MIH)_-_UNIZAR_-_Sun_Sparcstation_330_motherboard_-_full_view.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 971,
+          "market": "Mercato non documentato",
+          "release_date": "1989",
+          "discontinuation_date": null,
+          "price": null,
+          "currency": null,
+          "price_type": null,
+          "sources": [
+            {
+              "id": 6791,
+              "title": "Ricerca prezzi — Sun Microsystems Sun 4/3x0",
+              "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              6791
+            ]
+          },
+          "reference_dates": [
+            "1987",
+            "1989"
+          ],
+          "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+          "commercialization_notes": [
+            "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+          ],
+          "date_sources": [
+            6791
+          ],
+          "release_ids": [
+            971
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 971,
+              "market": "Mercato non documentato",
+              "release_date": "1989",
+              "discontinuation_date": null,
+              "price": null,
+              "currency": null,
+              "price_type": null,
+              "sources": [
+                {
+                  "id": 6791,
+                  "title": "Ricerca prezzi — Sun Microsystems Sun 4/3x0",
+                  "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  6791
+                ]
+              },
+              "reference_dates": [
+                "1987",
+                "1989"
+              ],
+              "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+              "commercialization_notes": [
+                "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+              ],
+              "date_sources": [
+                6791
+              ]
+            }
+          ],
+          "original_markets": [
+            "Mercato non documentato"
+          ],
+          "field_sources": {
+            "market": [],
+            "release_date": [
+              6791
+            ],
+            "discontinuation_date": [],
+            "price": [],
+            "currency": [],
+            "price_type": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 1027,
+      "model_name": "Sun 4/4x0",
+      "before_first_release": null,
+      "after_first_release": "1989",
+      "before_photos": 0,
+      "after_photos": 0,
+      "sources": [
+        {
+          "title": "MAME — Sun 4/4x0",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun4.cpp#L1879"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun 4/4x0",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc"
+        },
+        {
+          "title": "The Sun Hardware Reference (James Birdsall, 1994)",
+          "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/IsoB4t1zKG4"
+        }
+      ],
+      "images": [],
+      "releases": [
+        {
+          "id": 1877,
+          "market": "Mercato non documentato",
+          "release_date": "1989",
+          "discontinuation_date": null,
+          "price": null,
+          "currency": null,
+          "price_type": null,
+          "sources": [
+            {
+              "id": 6792,
+              "title": "Ricerca prezzi — Sun Microsystems Sun 4/4x0",
+              "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              6792
+            ]
+          },
+          "reference_dates": [
+            "1989"
+          ],
+          "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+          "commercialization_notes": [
+            "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+          ],
+          "date_sources": [
+            6792
+          ],
+          "release_ids": [
+            1877
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1877,
+              "market": "Mercato non documentato",
+              "release_date": "1989",
+              "discontinuation_date": null,
+              "price": null,
+              "currency": null,
+              "price_type": null,
+              "sources": [
+                {
+                  "id": 6792,
+                  "title": "Ricerca prezzi — Sun Microsystems Sun 4/4x0",
+                  "url": "https://groups.google.com/g/comp.sys.sun.hardware/c/TTcyB7SgIcc",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  6792
+                ]
+              },
+              "reference_dates": [
+                "1989"
+              ],
+              "reference_note": "Primo anno registrato nei dati disponibili; data di lancio non documentata.",
+              "commercialization_notes": [
+                "Anno riportato nel contesto del prezzo importato; è un riferimento della ricerca, non una conferma indipendente del primo lancio."
+              ],
+              "date_sources": [
+                6792
+              ]
+            }
+          ],
+          "original_markets": [
+            "Mercato non documentato"
+          ],
+          "field_sources": {
+            "market": [],
+            "release_date": [
+              6792
+            ],
+            "discontinuation_date": [],
+            "price": [],
+            "currency": [],
+            "price_type": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 1028,
+      "model_name": "Sun-1",
+      "before_first_release": "1982",
+      "after_first_release": "1982",
+      "before_photos": 1,
+      "after_photos": 1,
+      "sources": [
+        {
+          "title": "MAME — Sun-1",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/sun1.cpp#L126"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v1",
+          "url": null
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "1000bit — Sun 1",
+          "url": "https://www.1000bit.it/scheda.asp?id=1958"
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Sun-1",
+          "url": "https://www.computerhistory.org/revolution/computer-graphics-music-and-art/15/218/615"
+        },
+        {
+          "title": "Computer History Museum - Sun-1",
+          "url": "https://www.computerhistory.org/revolution/computer-graphics-music-and-art/15/218"
+        }
+      ],
+      "images": [
+        {
+          "id": 505,
+          "computer_id": 1028,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Computer_Museum_Sun-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "thumbnail_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Computer_Museum_Sun-1.jpg/500px-Computer_Museum_Sun-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "caption": "Scelta automatica Commons · File:Computer Museum Sun-1.jpg",
+          "author": "cmnit",
+          "license_name": "CC BY-SA 2.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Computer_Museum_Sun-1.jpg",
+          "is_primary": true,
+          "display_order": 0,
+          "storage": "external"
+        }
+      ],
+      "releases": [
+        {
+          "id": 1160,
+          "market": "Mercato non documentato",
+          "release_date": "1982",
+          "discontinuation_date": null,
+          "price": 13995.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6038,
+              "title": "1000bit — Sun 1",
+              "url": "https://www.1000bit.it/scheda.asp?id=1958",
+              "author": null,
+              "publisher": "1000bit",
+              "source_type": "website",
+              "publication_date": null,
+              "access_date": "2026-11-15"
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "market",
+          "date_evidence": {
+            "kind": "documented",
+            "source_ids": [
+              5141,
+              6038
+            ]
+          },
+          "date_sources": [
+            5141,
+            6038
+          ],
+          "release_ids": [
+            1160
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1160,
+              "market": "Mercato non documentato",
+              "release_date": "1982",
+              "discontinuation_date": null,
+              "price": 13995.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6038,
+                  "title": "1000bit — Sun 1",
+                  "url": "https://www.1000bit.it/scheda.asp?id=1958",
+                  "author": null,
+                  "publisher": "1000bit",
+                  "source_type": "website",
+                  "publication_date": null,
+                  "access_date": "2026-11-15"
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "market",
+              "date_evidence": {
+                "kind": "documented",
+                "source_ids": [
+                  5141,
+                  6038
+                ]
+              },
+              "date_sources": [
+                5141,
+                6038
+              ]
+            }
+          ],
+          "original_markets": [
+            "Mercato non documentato"
+          ],
+          "field_sources": {
+            "market": [],
+            "release_date": [
+              5141,
+              6038
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6038
+            ],
+            "currency": [
+              6038
+            ],
+            "price_type": [
+              6038
+            ]
+          }
+        },
+        {
+          "id": 1661,
+          "market": "Stati Uniti",
+          "release_date": "1982",
+          "discontinuation_date": null,
+          "price": 8900.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6574,
+              "title": "Ricerca prezzi — Sun Microsystems Sun-1",
+              "url": "https://www.computerhistory.org/revolution/computer-graphics-music-and-art/15/218/615",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "reference",
+          "date_evidence": {
+            "kind": "reference",
+            "source_ids": [
+              5141
+            ],
+            "base": true
+          },
+          "reference_dates": [
+            "1982"
+          ],
+          "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+          "date_sources": [
+            5141
+          ],
+          "release_ids": [
+            1661
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 1661,
+              "market": "Stati Uniti",
+              "release_date": "1982",
+              "discontinuation_date": null,
+              "price": 8900.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6574,
+                  "title": "Ricerca prezzi — Sun Microsystems Sun-1",
+                  "url": "https://www.computerhistory.org/revolution/computer-graphics-music-and-art/15/218/615",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "reference",
+              "date_evidence": {
+                "kind": "reference",
+                "source_ids": [
+                  5141
+                ],
+                "base": true
+              },
+              "reference_dates": [
+                "1982"
+              ],
+              "reference_note": "Anno di riferimento del modello; data di lancio non documentata.",
+              "date_sources": [
+                5141
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6574
+            ],
+            "release_date": [
+              5141
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6574
+            ],
+            "currency": [
+              6574
+            ],
+            "price_type": [
+              6574
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 1029,
+      "model_name": "Ultra 45",
+      "before_first_release": "1996",
+      "after_first_release": "2006",
+      "before_photos": 1,
+      "after_photos": 0,
+      "sources": [
+        {
+          "title": "MAME — Ultra 45",
+          "url": "https://github.com/mamedev/mame/blob/758c8a169a44f0ce3abfd28e8b5c44cc49148eba/src/mame/sun/ultra45.cpp#L83"
+        },
+        {
+          "title": "HHE · Sintesi italiana del catalogo",
+          "url": null
+        },
+        {
+          "title": "Ricerca prezzi — Sun Microsystems Ultra 45",
+          "url": "https://www.sunhelp.org/2006/01/30/new-ultra-40-and-ultra-45-workstations-from-sun/"
+        },
+        {
+          "title": "HHE · Classificazione editoriale v2",
+          "url": null
+        },
+        {
+          "title": "Sun Ultra 45 product specifications - SunHELP",
+          "url": "https://www.sunhelp.org/2006/01/30/new-ultra-40-and-ultra-45-workstations-from-sun/"
+        },
+        {
+          "title": "Wikipedia · Sun Ultra",
+          "url": "https://en.wikipedia.org/w/index.php?title=Sun_Ultra&oldid=1354697815"
+        },
+        {
+          "title": "Wikipedia — Sun Ultra (en)",
+          "url": "https://en.wikipedia.org/w/index.php?oldid=1354697815"
+        }
+      ],
+      "images": [],
+      "releases": [
+        {
+          "id": 973,
+          "market": "Stati Uniti",
+          "release_date": "2006",
+          "discontinuation_date": null,
+          "price": 3695.0,
+          "currency": "USD",
+          "price_type": "prezzo riportato",
+          "sources": [
+            {
+              "id": 6575,
+              "title": "Ricerca prezzi — Sun Microsystems Ultra 45",
+              "url": "https://www.sunhelp.org/2006/01/30/new-ultra-40-and-ultra-45-workstations-from-sun/",
+              "author": null,
+              "publisher": null,
+              "source_type": "research_reference",
+              "publication_date": null,
+              "access_date": null
+            },
+            {
+              "id": 7851,
+              "title": "Wikipedia — Sun Ultra (en)",
+              "url": "https://en.wikipedia.org/w/index.php?oldid=1354697815",
+              "author": "Collaboratori di Wikipedia",
+              "publisher": "Wikimedia Foundation",
+              "source_type": "encyclopedia",
+              "publication_date": null,
+              "access_date": "2026-11-24"
+            }
+          ],
+          "catalog_clean": true,
+          "date_scope": "model",
+          "date_evidence": {
+            "kind": "documented_launch",
+            "source_ids": [
+              7851
+            ]
+          },
+          "reference_dates": [
+            "1996"
+          ],
+          "date_sources": [
+            7851
+          ],
+          "commercialization_notes": [
+            "La Sun Ultra 45 è del 2006, non del 1996. La fonte del prezzo già importato resta separata e gli importi non cambiano."
+          ],
+          "release_ids": [
+            973
+          ],
+          "merged": false,
+          "original_releases": [
+            {
+              "id": 973,
+              "market": "Stati Uniti",
+              "release_date": "2006",
+              "discontinuation_date": null,
+              "price": 3695.0,
+              "currency": "USD",
+              "price_type": "prezzo riportato",
+              "sources": [
+                {
+                  "id": 6575,
+                  "title": "Ricerca prezzi — Sun Microsystems Ultra 45",
+                  "url": "https://www.sunhelp.org/2006/01/30/new-ultra-40-and-ultra-45-workstations-from-sun/",
+                  "author": null,
+                  "publisher": null,
+                  "source_type": "research_reference",
+                  "publication_date": null,
+                  "access_date": null
+                },
+                {
+                  "id": 7851,
+                  "title": "Wikipedia — Sun Ultra (en)",
+                  "url": "https://en.wikipedia.org/w/index.php?oldid=1354697815",
+                  "author": "Collaboratori di Wikipedia",
+                  "publisher": "Wikimedia Foundation",
+                  "source_type": "encyclopedia",
+                  "publication_date": null,
+                  "access_date": "2026-11-24"
+                }
+              ],
+              "catalog_clean": true,
+              "date_scope": "model",
+              "date_evidence": {
+                "kind": "documented_launch",
+                "source_ids": [
+                  7851
+                ]
+              },
+              "reference_dates": [
+                "1996"
+              ],
+              "date_sources": [
+                7851
+              ],
+              "commercialization_notes": [
+                "La Sun Ultra 45 è del 2006, non del 1996. La fonte del prezzo già importato resta separata e gli importi non cambiano."
+              ]
+            }
+          ],
+          "original_markets": [
+            "Stati Uniti"
+          ],
+          "field_sources": {
+            "market": [
+              6575,
+              7851
+            ],
+            "release_date": [
+              7851
+            ],
+            "discontinuation_date": [],
+            "price": [
+              6575,
+              7851
+            ],
+            "currency": [
+              6575,
+              7851
+            ],
+            "price_type": [
+              6575,
+              7851
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "local_mac_database_updated": false,
+  "repeat_no_changes": true,
+  "missing_photos": [
+    "SPARCstation ELC",
+    "SPARCstation SLC",
+    "Sun 3/260/280",
+    "Sun 3/460/470/480",
+    "Sun 3/E",
+    "Sun 4/110",
+    "Sun 4/4x0",
+    "Ultra 45"
+  ],
+  "tests": {
+    "backend": {
+      "passed": 888,
+      "skipped": 2,
+      "subtests_passed": 7,
+      "skipped_reason": "PostgreSQL-only checks"
+    },
+    "focused_sun_and_chronology": {
+      "passed": 14
+    },
+    "postgresql": {
+      "passed": 49
+    },
+    "frontend": {
+      "passed": 45,
+      "production_build": true,
+      "existing_warning": "Vite chunk size"
+    },
+    "docker_api_build_and_health": true,
+    "api": {
+      "all_24_sun_models_have_native_year": true,
+      "seven_previously_missing_dates_now_present": true,
+      "ultra45_2006_elc_1991": true,
+      "existing_prices_preserved": true,
+      "reference_year_qualified_after_service_startup": true,
+      "comparison_and_timeline_dates": true,
+      "analytics_sun_24_total_1152": true,
+      "assistant_uses_corrected_year_with_sources_without_paid_call": true
+    },
+    "browser": {
+      "sun_catalog_24_dated_cards": true,
+      "slc_year_and_price": true,
+      "ultra45_year_and_price_no_wrong_laptop": true,
+      "new_commons_and_external_images_load": true,
+      "component_caption": true,
+      "existing_pertinent_secondary_image_preserved": true,
+      "mobile_no_overflow": true,
+      "page_errors": [],
+      "image_method": "Exact new image URLs fulfilled with their original bytes downloaded over HTTPS; direct Chromium cloud loading not certified."
+    }
+  },
+  "known_technical_gap": "Ultra 45 has inconsistent legacy CPU/clock specifications. This operation changes dates and photos only; technical data remains unchanged."
+}
