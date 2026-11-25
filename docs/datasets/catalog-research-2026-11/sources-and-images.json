@@ -1,0 +1,1318 @@
+{
+  "researched_on": "2026-11-25",
+  "version": "catalog-research-2026-11-v1",
+  "computer_records": 103,
+  "technical_assertions": 514,
+  "source_citations": [
+    {
+      "title": "MSX Resource Center — Daewoo CPC-330K",
+      "url": "https://www.msx.org/wiki/Daewoo_CPC-330K",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 1608",
+      "url": "https://www.1000bit.it/scheda.asp?id=1608",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo CPC-88",
+      "url": "https://www.msx.org/wiki/Daewoo_CPC-88",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "Wikipedia — MSX, tabella hardware video",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1386179551",
+      "author": "Collaboratori di Wikipedia",
+      "publisher": "Wikimedia Foundation",
+      "source_type": "encyclopedia",
+      "access_date": "2026-11-25",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo DPC-100",
+      "url": "https://www.msx.org/wiki/Daewoo_DPC-100",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 1567",
+      "url": "https://www.1000bit.it/scheda.asp?id=1567",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo DPC-180",
+      "url": "https://www.msx.org/wiki/Daewoo_DPC-180",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 1612",
+      "url": "https://www.1000bit.it/scheda.asp?id=1612",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo DPC-200",
+      "url": "https://www.msx.org/wiki/Daewoo_DPC-200",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 1565",
+      "url": "https://www.1000bit.it/scheda.asp?id=1565",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo CPC-300",
+      "url": "https://www.msx.org/wiki/Daewoo_CPC-300",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 1599",
+      "url": "https://www.1000bit.it/scheda.asp?id=1599",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo CPC-300E",
+      "url": "https://www.msx.org/wiki/Daewoo_CPC-300E",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo CPC-400",
+      "url": "https://www.msx.org/wiki/Daewoo_CPC-400",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 1614",
+      "url": "https://www.1000bit.it/scheda.asp?id=1614",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo CPC-400S",
+      "url": "https://www.msx.org/wiki/Daewoo_CPC-400S",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 1615",
+      "url": "https://www.1000bit.it/scheda.asp?id=1615",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo CPC-50A",
+      "url": "https://www.msx.org/wiki/Daewoo_CPC-50A",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo CPC-50B",
+      "url": "https://www.msx.org/wiki/Daewoo_CPC-50B",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo CPC-51",
+      "url": "https://www.msx.org/wiki/Daewoo_CPC-51",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 1610",
+      "url": "https://www.1000bit.it/scheda.asp?id=1610",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo CPC-61",
+      "url": "https://www.msx.org/wiki/Daewoo_CPC-61",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 1570",
+      "url": "https://www.1000bit.it/scheda.asp?id=1570",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Daewoo CPG-120",
+      "url": "https://www.msx.org/wiki/Daewoo_CPG-120",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Fenner DPC-200",
+      "url": "https://www.msx.org/wiki/Fenner_DPC-200",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 571",
+      "url": "https://www.1000bit.it/scheda.asp?id=571",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Fenner FPC-500",
+      "url": "https://www.msx.org/wiki/Fenner_FPC-500",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 956",
+      "url": "https://www.1000bit.it/scheda.asp?id=956",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Fenner FPC-900",
+      "url": "https://www.msx.org/wiki/Fenner_FPC-900",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 957",
+      "url": "https://www.1000bit.it/scheda.asp?id=957",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "MSX Resource Center — Fenner SPC-800",
+      "url": "https://www.msx.org/wiki/Fenner_SPC-800",
+      "publisher": "MSX Resource Center",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 364",
+      "url": "https://www.1000bit.it/scheda.asp?id=364",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "Wikipedia — HH Audio — Tiger",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1376130161",
+      "publisher": "Wikimedia Foundation",
+      "source_type": "reference",
+      "access_date": "2026-11-25",
+      "author": "Collaboratori di Wikipedia",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "title": "1000bit — scheda 2532",
+      "url": "https://www.1000bit.it/scheda.asp?id=2532",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "Wikipedia — Kaypro",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1385462753",
+      "publisher": "Wikimedia Foundation",
+      "source_type": "reference",
+      "access_date": "2026-11-25",
+      "author": "Collaboratori di Wikipedia",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "title": "retrocmp — CP/M Kaypro versions",
+      "url": "https://retrocmp.de/kaypro/kay-p1_vers.htm",
+      "publisher": "retrocmp",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 675",
+      "url": "https://www.1000bit.it/scheda.asp?id=675",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 1006",
+      "url": "https://www.1000bit.it/scheda.asp?id=1006",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "Wikipedia — PC-8800 series",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1376225543",
+      "publisher": "Wikimedia Foundation",
+      "source_type": "reference",
+      "access_date": "2026-11-25",
+      "author": "Collaboratori di Wikipedia",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "title": "PC-9800.net — PC-9801",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9801.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9801bx2",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9801bx2.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9801dx",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9801dx.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9801f",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9801f.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9801fs",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9801fs.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9801rs",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9801rs.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9801rx",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9801rx.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9801us",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9801us.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9801ux",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9801ux.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9801vm",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9801vm.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9801vx",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9801vx.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821ap2",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821ap2.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821as",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821as.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821ce2",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821ce2.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821cx3",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821cx3.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821ne",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821ne.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821nr15",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821nr15.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821nr166",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821nr166.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821nw150",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821nw150.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821ra20",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821ra20.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821ra266",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821ra266.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821ra333",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821ra333.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821v13",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821v13.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821v20",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821v20.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821xa16",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821xa16.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-9821xs",
+      "url": "https://www.pc-9800.net/db_98/data/pc-9821xs.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-98ha",
+      "url": "https://www.pc-9800.net/db_98/data/pc-98ha.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "PC-9800.net — PC-98lt",
+      "url": "https://www.pc-9800.net/db_98/data/pc-98lt.htm",
+      "publisher": "PC-9800.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "Wikipedia — PC-98",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1386347726",
+      "publisher": "Wikimedia Foundation",
+      "source_type": "reference",
+      "access_date": "2026-11-25",
+      "author": "Collaboratori di Wikipedia",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "title": "Wikipedia — NeXT Computer",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1374178440",
+      "publisher": "Wikimedia Foundation",
+      "source_type": "reference",
+      "access_date": "2026-11-25",
+      "author": "Collaboratori di Wikipedia",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "title": "Wikipedia — NeXTcube",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1382945620",
+      "publisher": "Wikimedia Foundation",
+      "source_type": "reference",
+      "access_date": "2026-11-25",
+      "author": "Collaboratori di Wikipedia",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "title": "1000bit — scheda 1403",
+      "url": "https://www.1000bit.it/scheda.asp?id=1403",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "Wikipedia — NeXTdimension",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1335138296",
+      "publisher": "Wikimedia Foundation",
+      "source_type": "reference",
+      "access_date": "2026-11-25",
+      "author": "Collaboratori di Wikipedia",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "title": "Wikipedia — NeXTstation",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1353073665",
+      "publisher": "Wikimedia Foundation",
+      "source_type": "reference",
+      "access_date": "2026-11-25",
+      "author": "Collaboratori di Wikipedia",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "title": "1000bit — scheda 325",
+      "url": "https://www.1000bit.it/scheda.asp?id=325",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "Wikipedia — Sol-20",
+      "url": "https://en.wikipedia.org/w/index.php?oldid=1374669751",
+      "publisher": "Wikimedia Foundation",
+      "source_type": "reference",
+      "access_date": "2026-11-25",
+      "author": "Collaboratori di Wikipedia",
+      "license": "CC BY-SA 4.0"
+    },
+    {
+      "title": "SGIstuff — crimson",
+      "url": "http://www.sgistuff.net/hardware/systems/crimson.html",
+      "publisher": "Gerhard Lenerz / sgistuff.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "SGIstuff — iris3000",
+      "url": "http://www.sgistuff.net/hardware/systems/iris3000.html",
+      "publisher": "Gerhard Lenerz / sgistuff.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "SGIstuff — indigo",
+      "url": "http://www.sgistuff.net/hardware/systems/indigo.html",
+      "publisher": "Gerhard Lenerz / sgistuff.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "SGIstuff — indigo2",
+      "url": "http://www.sgistuff.net/hardware/systems/indigo2.html",
+      "publisher": "Gerhard Lenerz / sgistuff.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "SGIstuff — indy",
+      "url": "http://www.sgistuff.net/hardware/systems/indy.html",
+      "publisher": "Gerhard Lenerz / sgistuff.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "SGIstuff — o2",
+      "url": "http://www.sgistuff.net/hardware/systems/o2.html",
+      "publisher": "Gerhard Lenerz / sgistuff.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "SGIstuff — octane",
+      "url": "http://www.sgistuff.net/hardware/systems/octane.html",
+      "publisher": "Gerhard Lenerz / sgistuff.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "SGIstuff — personal",
+      "url": "http://www.sgistuff.net/hardware/systems/personal.html",
+      "publisher": "Gerhard Lenerz / sgistuff.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "SGIstuff — professional",
+      "url": "http://www.sgistuff.net/hardware/systems/professional.html",
+      "publisher": "Gerhard Lenerz / sgistuff.net",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    },
+    {
+      "title": "1000bit — scheda 342",
+      "url": "https://www.1000bit.it/scheda.asp?id=342",
+      "publisher": "1000bit",
+      "source_type": "reference",
+      "access_date": "2026-11-25"
+    }
+  ],
+  "photo_proposals": {
+    "Daewoo|IQ-1000 DPC-200": [
+      {
+        "image_url": "https://www.1000bit.it/lista/d/daewoo/daewoo_dpc-200.jpg",
+        "caption": "DPC-200",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=1565",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Fenner|FPC-500": [
+      {
+        "image_url": "https://www.1000bit.it/lista/f/fenner/fennerfpc500.jpg",
+        "caption": "FPC- 500",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=956",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Fenner|FPC-900": [
+      {
+        "image_url": "https://www.1000bit.it/lista/f/fenner/fennerfpc900.jpg",
+        "caption": "FPC-900",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=957",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Fenner|SPC-800": [
+      {
+        "image_url": "https://www.1000bit.it/lista/f/fenner/spc800/fenner%20spc-800%20%281%29.jpg",
+        "caption": "SPC-800",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=364",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "NEC|PC-8801": [
+      {
+        "image_url": "https://www.1000bit.it/lista/n/nec/pc8801/pc8801.jpg",
+        "caption": "PC-8801",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=766",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Kaypro Corporation|Kaypro 10": [
+      {
+        "image_url": "https://www.1000bit.it/lista/k/kaypro/kaypro10.jpg",
+        "caption": "Kaypro 10",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=221",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Kaypro Corporation|Kaypro 16": [
+      {
+        "image_url": "https://www.1000bit.it/lista/k/kaypro/kaypro16/kaypro16.jpg",
+        "caption": "Kaypro 16",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=675",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Kaypro Corporation|Kaypro 2x": [
+      {
+        "image_url": "https://www.1000bit.it/lista/k/kaypro/kaypro2x.jpg",
+        "caption": "Kaypro 2X",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=1004",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Kaypro Corporation|Kaypro Robie": [
+      {
+        "image_url": "https://www.1000bit.it/lista/k/kaypro/robie.jpg",
+        "caption": "Robie",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=905",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Non-Linear Systems|Kaypro 10 - 1983": [
+      {
+        "image_url": "https://www.1000bit.it/lista/k/kaypro/kaypro10.jpg",
+        "caption": "Kaypro 10",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=221",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Non-Linear Systems|Kaypro II - 2/83": [
+      {
+        "image_url": "https://www.1000bit.it/lista/k/kaypro/kayproii_1.jpg",
+        "caption": "Kaypro II - Kaycomp II - Kaypro 2",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=312",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "H/H Microcomputers|H/H Tiger": [
+      {
+        "image_url": "https://www.1000bit.it/lista/h/hhmicrocomputers/tiger.jpg",
+        "caption": "Tiger",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=2532",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Silicon Graphics|Crimson": [
+      {
+        "image_url": "https://www.1000bit.it/lista/s/sgi/crimson.jpg",
+        "caption": "IRIS Crimson (4D/510)",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=409",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Silicon Graphics|Indy": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/SGI_Indy_front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "SGI Indy front.jpg",
+        "author": "Thomas Kaiser",
+        "license_name": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:SGI_Indy_front.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "Silicon Graphics|Octane": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/61/SGI_Octane_Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "SGI Octane Front.jpg",
+        "author": "Rules666",
+        "license_name": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:SGI_Octane_Front.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "Silicon Graphics|Personal IRIS 4D/20": [
+      {
+        "image_url": "https://www.1000bit.it/lista/s/sgi/personaliris.jpg",
+        "caption": "Personal IRIS — illustrazione d’archivio della famiglia; allestimento non identificato",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=405",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Silicon Graphics|Personal IRIS 4D/25": [
+      {
+        "image_url": "https://www.1000bit.it/lista/s/sgi/personaliris.jpg",
+        "caption": "Personal IRIS — illustrazione d’archivio della famiglia; allestimento non identificato",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=406",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Silicon Graphics|Personal IRIS 4D/30": [
+      {
+        "image_url": "https://www.1000bit.it/lista/s/sgi/personaliris.jpg",
+        "caption": "Personal IRIS — illustrazione d’archivio della famiglia; allestimento non identificato",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=407",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Silicon Graphics|Personal IRIS 4D/35": [
+      {
+        "image_url": "https://www.1000bit.it/lista/s/sgi/personaliris.jpg",
+        "caption": "Personal IRIS — illustrazione d’archivio della famiglia; allestimento non identificato",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=408",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Video Technology|Laser 500": [
+      {
+        "image_url": "https://www.1000bit.it/lista/v/vtech/laser500.jpg",
+        "caption": "Laser 500",
+        "author": "Autore non indicato; immagine conservata da 1000bit",
+        "license_name": "Diritti riservati; consultazione locale per studio e ricerca",
+        "source_url": "https://www.1000bit.it/scheda.asp?id=342",
+        "license_url": "https://www.1000bit.it/",
+        "permission_basis": "Il footer 1000bit ammette private study, scholarship, or research. Collegamento esterno per HHE locale; nessuna copia o autorizzazione alla pubblicazione pubblica."
+      }
+    ],
+    "Daewoo|IQ-2000 CPC-300E": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/33/Daewoo_CPC-300E.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "Daewoo CPC-300E.png",
+        "author": "Shiru at Russian Wikipedia",
+        "license_name": "Public domain",
+        "license_url": "https://commons.wikimedia.org/wiki/Template:PD-self",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Daewoo_CPC-300E.png",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "Kaypro Corporation|Kaypro 1": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Kaypro_1%2C_1986.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "Kaypro 1, 1986.jpg",
+        "author": "LunchboxLarry",
+        "license_name": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Kaypro_1,_1986.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "NEC|PC-9801": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/PC-9801_computer_set.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "PC-9801 computer set.jpg",
+        "author": "Darklanlan",
+        "license_name": "CC0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "source_url": "https://commons.wikimedia.org/wiki/File:PC-9801_computer_set.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "NEC|PC-9801RX": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/NEC_PC-9801_RX_Personal_Computer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "NEC PC-9801 RX Personal Computer.jpg",
+        "author": "Flickr user: htomari",
+        "license_name": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:NEC_PC-9801_RX_Personal_Computer.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "NEC|PC-9821Ce2": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/84/NEC_PC-9821_ce2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "NEC PC-9821 ce2.jpg",
+        "author": "matsuyuki user of flickr",
+        "license_name": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:NEC_PC-9821_ce2.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "Next Software Inc|NeXTstation": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/16/NeXT_Pizzabox-IMG_7227.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "NeXT Pizzabox-IMG 7227.jpg",
+        "author": "Rama & Musée Bolo",
+        "license_name": "CC BY-SA 2.0 fr",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0/fr/deed.en",
+        "source_url": "https://commons.wikimedia.org/wiki/File:NeXT_Pizzabox-IMG_7227.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "Next Software Inc|NeXTstation Turbo Color": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/98/NeXTstation_Turbo_Color.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "NeXTstation Turbo Color.jpg",
+        "author": "Blake Patterson",
+        "license_name": "CC BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:NeXTstation_Turbo_Color.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "Silicon Graphics|Indigo2": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/24/SGI_Indigo2_Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "SGI Indigo2 Front.jpg",
+        "author": "Rules666",
+        "license_name": "CC BY-SA 4.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:SGI_Indigo2_Front.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "Silicon Graphics|O2": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/SGI_O2_front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "SGI O2 front.jpg",
+        "author": "Thomas Kaiser",
+        "license_name": "CC BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:SGI_O2_front.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "NEC|PC-88VA": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/30/NEC_PC-88_VA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "NEC PC-88 VA.jpg",
+        "author": "Steve Rainwater",
+        "license_name": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:NEC_PC-88_VA.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "Processor Technology|Sol-20": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Processor_Technology_SOL_20_Computer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "Processor Technology SOL 20 Computer.jpg",
+        "author": "Swtpc6800 en:User:Swtpc6800 Michael Holley",
+        "license_name": "Public domain",
+        "license_url": "https://commons.wikimedia.org/wiki/Template:PD-self",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Processor_Technology_SOL_20_Computer.jpg",
+        "permission_basis": "Licenza dichiarata nei metadati del file Commons consultati il 25 novembre 2026. File scelto per denominazione e descrizione del soggetto, non per posizione nei risultati."
+      }
+    ],
+    "NEC|PC-9801UX": [
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/3d/NEC_PC-9801UX21_%2814454022786%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "caption": "PC-9801UX21 — allestimento della famiglia UX",
+        "author": "htomari",
+        "license_name": "CC BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+        "source_url": "https://commons.wikimedia.org/wiki/File:NEC_PC-9801UX21_(14454022786).jpg",
+        "permission_basis": "File Commons identificato nel catalogo della famiglia PC-98, con licenza e autore dichiarati nei metadati."
+      }
+    ]
+  },
+  "research": {
+    "method": "Consultazioni mirate di schede e tabelle per modello; nessuna raccolta massiva. Sintesi originali in italiano; dati non verificati automaticamente.",
+    "limitations": [
+      "Le fonti secondarie discordano su date e memoria di alcuni MSX e PC-98: non si trasferiscono indiscriminatamente caratteristiche della famiglia ai singoli suffissi.",
+      "Le immagini di 1000bit sono collegamenti esterni per l’utilizzo locale di studio/ricerca previsto dall’archivio: non sono distribuite copie né attribuita una licenza libera.",
+      "I modelli senza immagine identificabile restano senza nuova foto, anziché ricevere una fotografia di un altro computer.",
+      "Scartate dopo controllo delle immagini: foto BX2/U7 per una scheda BX2/U2, un’illustrazione non pertinente per Indigo R3000 e una foto Kaypro 4 senza prova della revisione 1983."
+    ],
+    "unresolved_models": [
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "DPC-200E",
+        "reason": "Il suffisso DPC-200E non ha una scheda hardware autonoma nelle fonti consultate. Non sono stati copiati RAM, fotografie o dettagli del DPC-200 senza prova della corrispondenza."
+      },
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Omni II Logic Analyzer",
+        "reason": "Omni II Logic Analyzer richiede una fonte specifica sullo strumento: non si deducono RAM, fotografie o anno dalle sole caratteristiche dei computer Kaypro."
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821V20",
+        "reason": "La trascrizione contiene valori di CPU contrastanti tra allestimenti. Non viene applicata una frequenza unica né un prezzo comune a tutta la famiglia."
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Xa16",
+        "reason": "La trascrizione contiene valori di CPU contrastanti tra allestimenti. Non viene applicata una frequenza unica né un prezzo comune a tutta la famiglia."
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-98HA",
+        "reason": "La pagina consultata riporta 1993; altre fonti collocano HANDY98 nel 1990. La data esistente non viene sostituita automaticamente."
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-H98S model 8/U8",
+        "reason": "La configurazione S model 8/U8 non è documentata separatamente dalle fonti consultate; non le vengono assegnati memoria o prezzo dell’intera famiglia PC-H98."
+      }
+    ],
+    "photo_gaps": [
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "CPC-330K KOBO"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "CPC-88"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "DPC-200E"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "IQ-1000 DPC-100"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "IQ-1000 DPC-180"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "IQ-2000 CPC-300"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "X-II CPC-400"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "X-II CPC-400S"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "Zemmix CPC-50A"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "Zemmix CPC-50B"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "Zemmix CPC-51"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "Zemmix CPC-61"
+      },
+      {
+        "manufacturer": "Daewoo",
+        "model_name": "Zemmix CPG-120 Normal"
+      },
+      {
+        "manufacturer": "Fenner",
+        "model_name": "DPC-200"
+      },
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro 2/84"
+      },
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro 4 plus88 - 4/83"
+      },
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro 4/84"
+      },
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro 4/84 plus88"
+      },
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro 4x"
+      },
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Kaypro New 2"
+      },
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "Omni II Logic Analyzer"
+      },
+      {
+        "manufacturer": "Kaypro Corporation",
+        "model_name": "PC"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801FA"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MA"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MA2"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MC"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801MH"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801mkII"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801mkIIFR"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801mkIIMR"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-8801mkIISR"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-88VA2"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9801BX2/U2"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9801DX"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9801F"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9801FS"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9801RS"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9801US"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9801VM"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9801VX"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Ap2/U8W"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821As"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Cx3"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Ne"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Nr15"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Nr166"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Nw150"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Ra20"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Ra266"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Ra333"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821V13"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821V20"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Xa16"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-9821Xs"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-98HA"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-98LT"
+      },
+      {
+        "manufacturer": "NEC",
+        "model_name": "PC-H98S model 8/U8"
+      },
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXT Computer"
+      },
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXTcube"
+      },
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXTcube Turbo"
+      },
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXTcube Turbo Color"
+      },
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXTstation Color"
+      },
+      {
+        "manufacturer": "Next Software Inc",
+        "model_name": "NeXTstation Turbo"
+      },
+      {
+        "manufacturer": "Non-Linear Systems",
+        "model_name": "Kaypro IV - 4/83"
+      },
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "IRIS 3130"
+      },
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "IRIS Indigo"
+      },
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "IRIS Indigo R4000"
+      },
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "IRIS Indigo R4400"
+      },
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "Professional IRIS 4D/50"
+      },
+      {
+        "manufacturer": "Silicon Graphics",
+        "model_name": "Professional IRIS 4D/70"
+      }
+    ],
+    "conflicting_sources": [
+      "DPC-180: 1000bit riporta 32 KB, MSX Resource Center corregge esplicitamente a 64 KB sull’hardware reale.",
+      "Fenner FPC-900: 1000bit riporta 256 KB RAM/VRAM; MSX Resource Center identifica 128 KB per entrambe.",
+      "SGI 4D/35: la pagina SGIstuff contiene frequenze discordanti; non viene imposta una nuova frequenza.",
+      "PC-98HA: la data della trascrizione PC-9800.net è discordante; viene conservata la cronologia esistente.",
+      "Omni II Logic Analyzer e DPC-200E richiedono ancora una fonte specifica; non vengono compilati assimilando modelli dal nome simile."
+    ]
+  }
+}

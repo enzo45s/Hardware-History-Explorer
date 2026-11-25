@@ -514,3 +514,20 @@ docker compose -p hhe-import-test up -d --build --wait --wait-timeout 900
 ```
 
 [Selezione dei sistemi, navigazione, fotografie e verifiche](docs/HOME_PAGE.md).
+
+## Revisione NEC, NeXT, Kaypro, SGI, Daewoo e Fenner
+
+Il supplemento documentato del 25 novembre comprende 101 schede da arricchire,
+H/H Tiger incluso, e aggiunge soltanto **Sol-20** e **Video Technology Laser 500**.
+Usa fonti per modello, immagini con attribuzione e rettifiche legacy puntuali;
+conserva descrizioni curate, copertine, prezzi e configurazioni sostanziali.
+
+Dopo il pull e la ricostruzione dell’API, l’anteprima è:
+
+```bash
+docker compose -p hhe-import-test exec api python -m app.importing.catalog_research
+```
+
+Per applicare, aggiungi `--apply` allo stesso comando. L’avvio dei container
+non importa il pacchetto automaticamente.
+[Fonti, risultati verificati, lacune e istruzioni](docs/datasets/catalog-research-2026-11/README.md).
